@@ -1,0 +1,71 @@
+// these are the areas
+{
+	"Preprocess": {
+		"Perceive": {
+			// this module is to represent the sensor sources
+			// list of valid modules to receive inputs from
+			"InputSources" : [],
+			// list of valid modules to output to
+			"OutputDestinations": [],
+			// determines position in the default processing order
+			"ModuleOrder": "",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Imagine": {
+			// this module imagines possible alternatives to the current stimuli that made it past the ATTENTION module
+			// list of valid modules to receive inputs from
+			"InputSources" : [],
+			// list of valid modules to output to
+			"OutputDestinations": [],
+			// determines position in the default processing order
+			"ModuleOrder": "",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Notify": {
+			// this olog can prevent further processing
+			// list of valid modules to receive inputs from
+			"InputSources" : [],
+			// list of valid modules to output to
+			"OutputDestinations": [],
+			// determines position in the default processing order
+			"ModuleOrder": "",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"ModeControl": {
+			// this module determines whether or not the system is currently processing frames or consolidating Tours
+			// list of valid modules to receive inputs from
+			"InputSources" : ["Notify"],
+			// list of valid modules to output to
+			"OutputDestinations": [],
+			// determines position in the default processing order
+			"ModuleOrder": "",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	},
+	"Classify": {
+		"": {
+			// list of valid modules to receive inputs from
+			"InputSources" : [],
+			// list of valid modules to output to
+			"OutputDestinations": [],
+			// determines position in the default processing order
+			"ModuleOrder": "",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	}
+}

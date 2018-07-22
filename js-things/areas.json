@@ -1,0 +1,298 @@
+// these are the areas
+{
+	"Preprocess": {
+		"Perceive": {
+			// this module is to represent the sensor sources, and primary automatic input streams
+			// list of valid modules to receive inputs from
+			"InputSources" : ["WorkingMemory", "PreviousFrameExternal", "PreviousFrameInternal"],
+			// list of valid modules to output to
+			"OutputDestinations": ["Imagine", "Notify"],
+			// determines position in the default processing order
+			"ModuleOrder": "1",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Imagine": {
+			// this module imagines possible alternatives to the current stimuli that made it past the ATTENTION module
+			// list of valid modules to receive inputs from
+			"InputSources" : ["Agent", "Perceive"],
+			// list of valid modules to output to
+			"OutputDestinations": ["Notify", "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "2",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Notify": {
+			// this olog can prevent further processing or interrupt current processing
+			// it is the primary impact assessment module based on attachment/aversion, valence, boredom, etc...
+			// list of valid modules to receive inputs from
+			"InputSources" : ["Perceive", "Imagine", "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": ["ModeControl", "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "3",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"ModeControl": {
+			// this module determines whether or not the system is currently processing frames or consolidating Tours
+			// list of valid modules to receive inputs from
+			"InputSources" : ["Notify"],
+			// list of valid modules to output to
+			"OutputDestinations": ["Classify", "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "4",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	},
+	"Classify": {
+		"Identify": {
+			// returns connections or objects in a Frame
+			// list of valid modules to receive inputs from
+			"InputSources" : ["ModeControl", "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": ["Categorize", "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "5",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Categorize": {
+			// lumps objects, and relationships identified into logical top-level buckets
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "6",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Decode": {
+			// searches for potential semantic compositions of identities, and categories in a Frame
+			// i.e. it conforms to some relations validation ologs
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "7",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	},
+	"Guess" : {
+		"Predict" : {
+			// what comes in the next N frames given the current frame, and scenarios
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "8",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Postdict": {
+			// what could previous frames could have lead to the current frame (looking N frames back)
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "9",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"": {
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	},
+	"Filter": {
+		"Attention": {
+			// filters data that the agent sees based on agent priorities
+			// used to help prevent working memory buffer overflow
+			// things that don't make it to the agent system are filed into
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "10",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	},
+	"Analysis": {
+		// there are two top level modules which have very different overall complexities. Observing is far simpler than analyzing
+		"": {
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "11",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+		// also 11
+	},
+	"Model": {
+		"Interpret": {
+			// take the data, and assess need for system updates (new ologs, connections, or connection types, or modifications/updates)
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "12",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Describe" : {
+			// takes in a frame, and context then outputs the preferred semantic profiles that it attaches to the corresponding objects in the frames
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "13",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	},
+	"Respond": {
+		"Precompose" : {
+			// prepares the model for expression
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "14",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"ComposeHelper" : {
+			// ?
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Compose" : {
+			// combines disparate elements according to learned relations to solve identified problems
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "15",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	},
+	"Postprocess" : {
+		"Associate" : {
+			// Ties all the pieces of the Frame with scenarios and responses together, then pushes it into the Tour stack
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "16",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Declare" : {
+			// Agent output module for updates, changes, focusing, guiding, following, etc...
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "17",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	},
+	"Output" : {
+		"Express" : {
+			// outputs through external motor channels
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "18",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		},
+		"Internalize" : {
+			// outputs through internal channels
+			// list of valid modules to receive inputs from
+			"InputSources" : [, "Agent"],
+			// list of valid modules to output to
+			"OutputDestinations": [, "Attention"],
+			// determines position in the default processing order
+			"ModuleOrder": "18",
+			// Semantic name for the module that relates to its primary objectives
+			"ModuleName": "",
+			// whether or not it is possible to prune the olog
+			"CanDelete": false
+		}
+	}
+}
