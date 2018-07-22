@@ -8,15 +8,16 @@ class Region():
         possibilities are currently limited to
             - Cortex
             - Relay
+        Currently, I plan to extend for a subcortical series of problem domains, though it may just be one domain with lots of regions
+        perhaps the layers dict should be defined by the problem domain?
+            But then where would the common region definitions exist?
+            Where would the region to region connection profiles exist in that case?
     """
-    name = "Cortex"
-    length = 0
-    width = 0
-    num_layers = 0 # could also be called height but num_layers is more useful
     layers_dict = {"Cortex":6, "Relay": 4}
 
-    def __init__(self, region_type, length, width):
-        name = region_type
+    def __init__(self, region_key, length, width):
+        self.name = region_key
         self.length = length
         self.width = width
-        self.num_layers = layers_dict[name]
+         # could also be called height but num_layers is more useful
+        self.num_layers = layers_dict[self.name]
