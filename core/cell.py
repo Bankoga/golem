@@ -25,7 +25,7 @@ class Cell():
         """"cell type is determined by the containing layer
         controls the number of dendrites as well as their directions
         """
-        TODO: determine the different types of cells to account for
+        TODO: determine the different types of cells that need to be accounted
         self.cell_type = cell_type
         self.cell_state = ChemicalState()
         # needs to be expanded to handle cells that are in sub-cortical regions and problem domains
