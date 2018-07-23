@@ -9,7 +9,7 @@ from usageLimits import *
 # should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brainNetwork? Probably
 class Cell():
     #methods
-    def __init__(self, cell_type, location, use_limits):
+    def __init__(self, activation_type, cell_type, location, use_limits):
         """
          each cell should be able to handle its own initialization once given the necessary parameters from the higher levels
          probabilistically determine cell Type at the layer level (for inhib, and excitory. chem release cells will be dealt with later)
@@ -20,16 +20,22 @@ class Cell():
             and the cross region layer to layer profile
         """
          #properties
+         # 'inhibitory' || 'excitory' || 'modulatory' is determined by the containing layer and controls value of axon output
+        self.activation_type = activation_type
+        """"cell type is determined by the containing layer
+        controls the number of dendrites as well as their directions
+        """
+        TODO: determine the different types of cells to account for
         self.cell_type = cell_type
         self.cell_state = ChemicalState()
         # needs to be expanded to handle cells that are in sub-cortical regions and problem domains
-        self.loc = location 
+        self.loc = location
         """
             input directions, and output destinations are determined by the location and cell type
         """
-        self.axon_output_directions
-        self.dendrite_input_directions
-        self.output_terminals = Axon(cell_type, location)
+        self.axon_output_directions = self.get_destinations()
+        self.dendrite_input_directions = 
+        self.output_terminals = Axon(activation_type, self.axon_output_directions)
 
         #activation props
         # use limits should be modifiable by the chemical state of the cell
@@ -45,6 +51,26 @@ class Cell():
         self.stdp_window = 20 #timesteps
         self.inputBatchHistory = "sigh" #fixed length array/matrix of length stdp_window or a stack of inputs
 
+    def get_destinations():
+        """
+        determines where the cell outputs to based on the location, cell type, and inherited constraints
+        connection variables
+            - PD location in network
+                - for adjacency (what is physically next to the current PD)
+            - PD to PD
+                - for the interPD output layers of the regions
+                - for adjacency of dendrites across Regions
+            - Region to Region
+                - regions of the same type border each other based on PD adjacency
+                - for the interRegion output layers of the various regions
+            - Layer to Layer
+                - which layers can output to which other layers in the same PD
+                - which layers can output to layers of regions in adjacent PDs
+                - which layers can output to other regions in the same PD
+                - which layers can output to which layers of which regions of the output PDs
+        PD location in graph
+        """
+        return []
     def maintenance():
         """
         reset axon fatigue
