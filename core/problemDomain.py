@@ -4,4 +4,21 @@
 
 class ProblemDomain():
 
-    def __init__(self):
+    """
+    as currently conceived, there are 4 types of problem domains
+    - cortical | Relay -> Cortex | 2 Regions
+    - subcortical | undetermined regions | ?
+    - brainstem | undertermined regions | ?
+    - cerebellum | cerebellum | 1
+    Need to determine if give a number of cells to the domain, and have it determine the length and width of the regions
+        If we assume yes, then what defines a problem domains inputs?
+        Will position in the graph, and interdomain connectivity sufficiently differentiate PDs?
+    Will currently operate under the hypothesis that Problem domains are largely defined by usage which is a function of types of inputs and outputs
+    Consequently, 
+    
+    """
+    def __init__(self, name, domain_type, num_cells_primary):
+        self.name = name
+        self.regions # create the regions according to the domain_type definition
+        # when creating cortical regions, num_cells_primary determines the num_columns, and num cells in the relays
+        TODO: play around with efficiency of different lengths and widths instead of squares after all is working
