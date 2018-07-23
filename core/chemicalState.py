@@ -2,6 +2,7 @@
 # chemicalState affects/modulates the functions of cells
 from usageLimits import *
 
+TODO: implement a chemical class that can be used to handles types, their effects, and different strengths of effect
 class ChemicalState():
     def __init__():
         self.ap_thresh_mod = 0
