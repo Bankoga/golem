@@ -33,11 +33,10 @@ class Axon():
         else:
             raise ValueError('either the activation_type was incorrect, or no chemical_type was supplied')
 
-    def strength():
+    def strength(self):
         TODO: implement so that that axon only checks during init which type of strength method to return based on value
         TODO: implement axons getting weaker as the capacity diminishes
-        return {self.destinations, self.value }
+        return { self.destinations, self.value }
     
-    def reset():
-        # self.use_limits.
-        activation_rate = 0
+    def reset(self):
+        self.use_limits.reset()

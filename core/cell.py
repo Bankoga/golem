@@ -87,7 +87,7 @@ class Cell():
 
     def threshhold_plasticity():
 
-    def activate(mode, layer_state, input_batch):
+    def activate(self, mode, layer_state, input_batch):
         """
         TODO: determine if we need refactory/cooldown can't activate period
         if polarity >= ap_thresh: polarity -= (ap_thresh + depolarization_rate)
