@@ -6,8 +6,10 @@
 
 class Dendrite():
     #properties
+    """ activation rates should be handled via usage limits
     dendrite_activation_rate # this might need to be handled on a per synapse per dendrite basis...... oh my
     curr_dendrite_sensitivity # again may be best to handled on a per synapse per dendrite basis..... sigh
+    """
     synapse_weights # not the actual name because the form of the synapses has not yet been decided on. Placeholder reminder
     synapse_weight_limits = 0.2 to 100? # this needs work but so does everything.... waaa
     synapse_potentiation_weight_function
