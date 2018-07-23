@@ -6,15 +6,8 @@ class UsageLimits():
         self.activation_cost = cost # 8
         self.capacity_recharge = recharge # 1
         # the following are for stats calcs
-        self.ts = 1000
-        self.adjusted_activation_cost = cost - recharge
-        self.time_till_depletion = capacity/self.adjusted_activation_cost
-        self.raw_time_to_full = capacity/recharge
-        self.recharge_one_activation = cost / recharge
-        self.max_init_freq = (self.time_till_depletion + ((self.ts-self.time_till_depletion) / (self.recharge_one_activation)))
-        self.max_sustained_freq = capacity/self.recharge_one_activation * self.ts/capacity
-        # self.console.log('num steps till depletion: ' + time_till_depletion + '\nsteps till full: ' + raw_time_to_full + '\nmax_init_freq: ' + max_init_freq + '\nmax_sustained_freq: ' + max_sustained_freq)
-        """activity Counters
+    
+    """activity Counters
         simplistically, we could check frequency at intervals of N*time_period_of_interest but is doing so necessary?
         let's say that we are watching a section of a conveyor belt through a window
         upon said belt we can always see 10 buckets
@@ -31,6 +24,19 @@ class UsageLimits():
     # baseline_activation_rate = 0
     # session_activation_rate = 0
     # st_activation_rate = 0
-        activation_rate_boundaries # methinks that ARB will need to vary for cells in different locations, and for different types of cells.
-        activation rate no longer seems necessary, and can be replaced with an activation_capacity, where each activation costs X resources, which it regains at a fixed rate.
-        """
+activation_rate_boundaries # methinks that ARB will need to vary for cells in different locations, and for different types of cells.
+activation rate no longer seems necessary, and can be replaced with an activation_capacity, where each activation costs X resources, which it regains at a fixed rate.
+    """
+
+    def reset(self):
+        self.curr_capacity = self.max_capacity
+
+    def misc_stats(self):
+        self.ts = 1000
+        self.adjusted_activation_cost = self.activation_cost - self.capacity_recharge
+        self.time_till_depletion = self.max_capacity/self.adjusted_activation_cost
+        self.raw_time_to_full = self.max_capacity/self.capacity_recharge
+        self.recharge_one_activation = self.activation_cost / self.capacity_recharge
+        self.max_init_freq = (self.time_till_depletion + ((self.ts-self.time_till_depletion) / (self.recharge_one_activation)))
+        self.max_sustained_freq = self.max_capacity/self.recharge_one_activation * self.ts/self.max_capacity
+        # self.console.log('num steps till depletion: ' + time_till_depletion + '\nsteps till full: ' + raw_time_to_full + '\nmax_init_freq: ' + max_init_freq + '\nmax_sustained_freq: ' + max_sustained_freq)
