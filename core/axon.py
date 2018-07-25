@@ -10,7 +10,7 @@ class Axon():
         -1,1, or chemical is determined by cell type
         """
         self.value = self.get_value(activation_type, chemical_type)
-        """ refresh rate, and activation rate can be implemented via usage limits
+        """ refresh rate, and activation rate can be implemented via usage limits but raises num ops per cell
         self.refreshRate
         self.activationRate
         """
@@ -35,7 +35,7 @@ class Axon():
 
     def strength(self):
         TODO: implement so that that axon only checks during init which type of strength method to return based on value
-        TODO: implement axons getting weaker as the capacity diminishes
+        TODO: implement axons getting weaker as the capacity diminishes though this requires the axon be touched every timestep...
         return { self.destinations, self.value }
     
     def reset(self):
