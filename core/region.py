@@ -18,11 +18,34 @@ class Region():
             Where would the region to region connection profiles exist in that case?
                 If each region type is unique to a problem domain type, then R-R connections can be defined within the region type defs
     """
-    # layers_dict = {"Cortex":6, "Relay": 4}
 
-    def __init__(self, region_key, length, width):
-        self.name = region_key
+    def __init__(self, region_type, length, width):
+        self.name = region_type
         self.length = length
         self.width = width
+        TODO: grab the yaml that corresponds to region_type, and raise an exception if it doesn't exist
+        config_doc = region_type
+        self.config = yaml.dump(yaml.load(config_doc))
+        self.layers = create_layers()
+
+    def create_layers(self):
+        TODO: determine type of object for self.layers
          # could also be called height but num_layers is more useful
         # self.num_layers = layers_dict[self.name]
+        layers = []
+        """
+        foreach distinct (layer_name, layer_details) in config.layers:
+            create a new Layer() using the layer config, and the higher level destination data
+            add the new layer to the layers object
+            self.layer_config = self.get_layer_confs()
+        """
+        return layers
+    
+    def activate(self):
+        """
+            perhaps a new name will better fit but this is fine for now. It matches the cell func name
+            for each layer
+                collect all the input axons based on the connectivity profiles from the axon server(?) into input batches for the layers
+                collect the activation result of each layer on the input batch into an array
+            return the layer results to the axon server for the current timestep
+        """
