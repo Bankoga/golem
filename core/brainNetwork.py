@@ -10,7 +10,7 @@ class BrainNetwork():
     session_length = ts_per_sim_second * 60 * 12
 
     def __init__(self):
-        TODO: determine where blank network standup, new network init, and load network init should be handled
+        TODO: determine where blank network standup, new network creation, and load network init should be handled
 
     def run():
         tsCount = 0
