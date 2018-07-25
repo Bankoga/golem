@@ -80,3 +80,7 @@ class BrainNetwork():
             - avg baseline activation rate
             - baseline activation rate distributions
         """
+
+    def remap(self):
+        # map a pre-existing network to a new network architecture.
+        TODO: What degree of similarity between networks is required for this to work?
