@@ -1,3 +1,22 @@
-reticular
-cort_relay
-matrix
+---
+layers:
+    - reticular:
+        cell_types:
+            - ?
+        destinations:
+        order: 0
+    - cort_relay:
+        cell_types:
+            - ?
+        destinations:
+        order: 1
+    - relay_inhib:
+        cell_types:
+            - ?
+        destinations:
+        order: 2
+    - matrix:
+        cell_types:
+            - ?
+        destinations:
+        order: 3
