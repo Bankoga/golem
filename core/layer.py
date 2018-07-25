@@ -3,7 +3,8 @@
 
 class Layer():
     
-    def __init__(self):
+    def __init__(self, configs):
+        # using the provided layer properties provided by the config, create the layer object
         """
         given the region, and stack position, determine the connectivity profiles
             - region to region

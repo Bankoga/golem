@@ -1,0 +1,10 @@
+""" this is object type for region configs that is inherited by each type of region
+contains all the data needed to initialized a new region for a problem domain given the specific input/output constraints of the PD
+    - destination/connection data
+        - layer to layer connections
+        - substitution spots for cross-PD connections
+        - region to regions connections
+    - cell types for each layer
+    - plasticity data (if differs from generic)
+    - resource constraints (if differs from generic)
+"""
