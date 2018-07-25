@@ -14,11 +14,19 @@ class ProblemDomain():
         If we assume yes, then what defines a problem domains inputs?
         Will position in the graph, and interdomain connectivity sufficiently differentiate PDs?
     Will currently operate under the hypothesis that Problem domains are largely defined by usage which is a function of types of inputs and outputs
-    Consequently, 
-    
+    Consequently, can go with just num cells/columns/stacks for now
     """
     def __init__(self, name, domain_type, num_cells_primary):
         self.name = name
         self.regions # create the regions according to the domain_type definition
         # when creating cortical regions, num_cells_primary determines the num_columns, and num cells in the relays
         TODO: play around with efficiency of different lengths and widths instead of squares after all is working
+
+    def activate(self):
+        """
+            perhaps a new name will better fit but this is fine for now. It matches the cell func name
+            for each region
+                collect all the input axons based on the connectivity profiles from the axon server(?) into input batches for the region
+                collect the activation result of the region on the input batch into an array
+            return the regions results to the axon server for the current timestep
+        """

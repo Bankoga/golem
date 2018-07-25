@@ -31,7 +31,7 @@ class BrainNetwork():
                     - how is that external data collected and translated into spikes?
                 - match axon destinations with problem domain accepted inputs
                 - clear the old inputs
-                - activate each problem domain
+                - activate each problem domain (each PD activates it's region which in turn activate layers which activate cells)
                 - collect the ouputs from each problem domain
                 TODO: where do the external outputs get sent at the end of a timestep?
                 - tsCount++
