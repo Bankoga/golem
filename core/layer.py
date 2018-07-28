@@ -3,7 +3,15 @@
 
 class Layer():
     
-    def __init__(self, configs):
+    def __init__(self, configs, length, width):
+        # each region is composed of multiple layers and each layer spans the full length/width of the matrix
+        # region is 3D L x W x H, and each layer is a unit of height
+        # layer is 2D l x W, where each point is either a cell or an array of cells. The two types can't be mixed
+        # Either all points are cells, or all points are arrays
+        TODO: implement region wide layers that do cell operations using addressess
+        self.length = length
+        self.width = width
+        self.point_type = 'cell' or 'array'
         # using the provided layer properties provided by the config, create the layer object
         """
         given the region, and stack position, determine the connectivity profiles
