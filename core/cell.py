@@ -52,6 +52,8 @@ class Cell():
         self.inputBatchHistory = "sigh" #fixed length array/matrix of length stdp_window or a stack of inputs
 
     def get_destinations():
+        # all cells accept themselves as a destination that only they can read from
+        # i.e. cells are addressable but are not the same as destinations
         """
         determines where the cell outputs to based on the location, cell type, and inherited constraints
         connection variables
