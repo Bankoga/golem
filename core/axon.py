@@ -2,7 +2,7 @@
 from usageLimits import *
 
 class Axon():
-    def __init__(self, activation_type, terminal_destinations, chemical_type):
+    def __init__(self, origin, activation_type, terminal_destinations, chemical_type):
         """
         an axon needs to know the activation type which determines if the axon outputs a positive, negative, or chemical value
         'inhibitory' || 'excitory' || 'modulatory'
@@ -21,6 +21,8 @@ class Axon():
                 That makes more sense I guess
         """
         self.destinations = terminal_destinations
+        TODO: at present axons need to return their origin to enable consistent axon source ordering for the dendrites
+        self.origin = origin
 
     def get_value(activation_type, chemical_type):
         if activation_type == 'inhibitory':
@@ -36,7 +38,7 @@ class Axon():
     def strength(self):
         TODO: implement so that that axon only checks during init which type of strength method to return based on value
         TODO: implement axons getting weaker as the capacity diminishes though this requires the axon be touched every timestep...
-        return { self.destinations, self.value }
+        return { self.destinations, self.origin, self.value }
     
     def reset(self):
         self.use_limits.reset()
