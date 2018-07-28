@@ -1,45 +1,40 @@
 ---
-# this is object type for region configs that is inherited by each type of region
-# contains all the data needed to initialized a new region for a problem domain given the specific input/output constraints of the PD
-#     - destination/connection data
-#         - layer to layer connections
-#         - substitution spots for cross-PD connections
-#         - region to regions connections
-#     - cell types for each layer
-#     - plasticity data (if differs from generic)
-#     - resource constraints (if differs from generic)
-# it is perhaps the case that l1-6 naming convention works fine normally, something more descriptive may be nice
-# What should be used as the destination between semantically named layers? The order? What about cross-region references?
-# The destinations should use the path data schema with appropriate substitution slots, and relative paths
 layers:
     - one:
-        cell_types:
-            - ?
-        destinations:
+        cell_types: none
+        destinations: none
         order: 0
     - two:
         cell_types:
+            - pyramid
             - ?
         destinations:
         order: 1
     - three:
         cell_types:
+            - pyramid
             - ?
         destinations:
         order: 2
     - four:
         cell_types:
+            - pyramid
+            - star
             - ?
         destinations:
         order: 3
     - five:
         cell_types:
+            - pyramid
             - ?
         destinations:
-            - ext_sub
+            - output
+            - pair
+            - [same, same, ]
         order: 4
     - six:
         cell_types:
+            - pyramid
             - ?
         destinations:
         order: 5
