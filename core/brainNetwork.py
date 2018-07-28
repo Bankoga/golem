@@ -9,11 +9,14 @@ class BrainNetwork():
     ts_per_sim_second = 1000
     session_length = ts_per_sim_second * 60 * 12
 
-    def __init__(self):
+    def __init__(self, is_pair):
         TODO: determine where blank network standup, new network creation, and load network init should be handled
+        self.pair = false # will be implemented using is_pair
 
     def run():
         tsCount = 0
+        #the ts_count can perhaps be used to create temporary objects that are released by the last cell to access it.
+        # Each layer would this need to keep track of how many times it had been touched during the timestep, and self delete before returning
         """
         create the repl to listen for external interrupts
         while waiting for interrupts run through a timestep
