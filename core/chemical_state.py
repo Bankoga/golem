@@ -1,6 +1,6 @@
 # contains definition for the chemical_state of a layer or cell
 # chemical_state affects/modulates the functions of cells
-from usageLimits import *
+from usage_limits import *
 
 TODO: implement a chemical class that can be used to handles types, their effects, and different strengths of effect
 class ChemicalState():

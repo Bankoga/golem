@@ -1,5 +1,5 @@
 # contains the definitions for cell axons
-from usageLimits import *
+from usage_limits import *
 
 class Axon():
     def __init__(self, origin, activation_type, terminal_destinations, chemical_type):

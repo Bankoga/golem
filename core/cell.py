@@ -4,7 +4,7 @@
 from axon import *
 from chemical_state import *
 from dendrite import *
-from usageLimits import *
+from usage_limits import *
 
 # should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brain_network? Probably
 class Cell():
