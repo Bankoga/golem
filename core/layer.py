@@ -3,11 +3,16 @@
 
 class Layer():
     
+    TODO: Add a flag for point to cell or point to array of cells which change how the init works to avoid if clauses or other such checks during activation
+    TODO: minimize the number of conditions to be checked during activation
     def __init__(self, configs, length, width):
-        # each region is composed of multiple layers and each layer spans the full length/width of the matrix
-        # region is 3D L x W x H, and each layer is a unit of height
-        # layer is 2D l x W, where each point is either a cell or an array of cells. The two types can't be mixed
-        # Either all points are cells, or all points are arrays
+        """
+        each region is composed of multiple layers and each layer spans the full length/width of the matrix
+        region is 3D L x W x H, and each layer is a unit of height
+        layer is 2D l x W, where each point is either a cell or an array of cells. The two types can't be mixed
+        Either all points are cells, or all points are arrays
+        regardless, a point in a layer of a region is a DESTINATION
+        """
         TODO: implement region wide layers that do cell operations using addressess
         self.length = length
         self.width = width
@@ -25,9 +30,9 @@ class Layer():
         """
         Local aspects of a layer and/or region that can differ
         - plasticity rules (inhib, excitory, modulatory) (timing, decay/potentiate funcs, etc...)
-        - cell types
+        - cell morphologys
         - allowed layer destinations (with blanks for cross-region, and cross-pd destination insertion. Example: cortical layer 5 and 6)
-        - resource constraints (can each cell type have diff constraints?)
+        - resource constraints (can each cell morphology have diff constraints?)
         - what else
         """
 
@@ -45,9 +50,9 @@ class Layer():
         """ since each region type has it's own layer types, where should destination mappings live?
         I feel that it may be best for layer destination mappings to live outside the class in a json, yaml, or other such file
         Why?
-            the cortical region alone has 6 distinct layers with different output connection patterns, cell types, plasticity rules, (what else?)
+            the cortical region alone has 6 distinct layers with different output connection patterns, cell morphologys, plasticity rules, (what else?)
             There are at least 3 types of regions that I know need to be created, and at least two problem domains with undetermined regions
             Those other problem domains should at least have 1 type of region each, though they will likely have more than one
             So at this point, we can safely expect 5 or more regions that we need predefined to get info from
-            Greater flexibility results from localizing cell types, plas rules, resource constraints, connect patterns, etc... to each layer or region
+            Greater flexibility results from localizing cell morphologys, plas rules, resource constraints, connect patterns, etc... to each layer or region
         """
