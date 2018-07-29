@@ -1,6 +1,6 @@
-# contains the definitions for the top level neural network object. brainNetwork
+# contains the definitions for the top level neural network object. brain_network
 # herein lie the details for initialization, saving, and loading an entire network of distinct problem domains
-# A brainNetwork consists of multiple problem domains wired together to form a cohesive dynamical system
+# A brain_network consists of multiple problem domains wired together to form a cohesive dynamical system
 # top level goals live here
 from .imports import *
 
