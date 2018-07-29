@@ -2,11 +2,11 @@
 # While a cell will always live in some layer, some of it's init details come from each of it's higher level containers
 # 
 from axon import *
-from chemicalState import *
+from chemical_state import *
 from dendrite import *
 from usageLimits import *
 
-# should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brainNetwork? Probably
+# should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brain_network? Probably
 class Cell():
     #methods
     def __init__(self, activation_type, cell_morphology, location, use_limits):
