@@ -16,7 +16,7 @@ class Cell():
          set activaton type during init
          create dendrite connections to other layers in the same region according to the connectivity profile of the region type, as well as to other regions
          create axon connection to the other layers, regions, and problem domains
-            according to the connectivity profile of the containing problemDomain in the network, the same region layer to layer profile,
+            according to the connectivity profile of the containing problem_domain in the network, the same region layer to layer profile,
             and the cross region layer to layer profile
         """
          #properties
