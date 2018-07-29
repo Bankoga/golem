@@ -1,22 +1,22 @@
 ---
 layers:
     - reticular:
-        cell_types:
+        cell_morphology:
             - ?
         destinations:
         order: 0
     - cort_relay:
-        cell_types:
+        cell_morphology:
             - ?
         destinations:
         order: 1
     - relay_inhib:
-        cell_types:
+        cell_morphology:
             - ?
         destinations:
         order: 2
     - matrix:
-        cell_types:
+        cell_morphology:
             - ?
         destinations:
         order: 3

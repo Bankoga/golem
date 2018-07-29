@@ -1,30 +1,31 @@
 ---
+# aside from layer data, what other data needs to be stored in a region config?
 layers:
     - one:
-        cell_types: none
+        cell_morphology: none
         destinations: none
         order: 0
     - two:
-        cell_types:
+        cell_morphology:
             - pyramid
             - ?
         destinations:
         order: 1
     - three:
-        cell_types:
+        cell_morphology:
             - pyramid
             - ?
         destinations:
         order: 2
     - four:
-        cell_types:
+        cell_morphology:
             - pyramid
             - star
             - ?
         destinations:
         order: 3
     - five:
-        cell_types:
+        cell_morphology:
             - pyramid
             - ?
         destinations:
@@ -33,7 +34,7 @@ layers:
             - [same, same, ]
         order: 4
     - six:
-        cell_types:
+        cell_morphology:
             - pyramid
             - ?
         destinations:

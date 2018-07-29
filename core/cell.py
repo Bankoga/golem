@@ -9,11 +9,11 @@ from usageLimits import *
 # should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brainNetwork? Probably
 class Cell():
     #methods
-    def __init__(self, activation_type, cell_type, location, use_limits):
+    def __init__(self, activation_type, cell_morphology, location, use_limits):
         """
          each cell should be able to handle its own initialization once given the necessary parameters from the higher levels
-         probabilistically determine cell Type at the layer level (for inhib, and excitory. chem release cells will be dealt with later)
-         set cell type during init
+         probabilistically determine activation Type at the layer level (for inhib, and excitory. chem release cells will be dealt with later)
+         set activaton type during init
          create dendrite connections to other layers in the same region according to the connectivity profile of the region type, as well as to other regions
          create axon connection to the other layers, regions, and problem domains
             according to the connectivity profile of the containing problemDomain in the network, the same region layer to layer profile,
@@ -22,16 +22,16 @@ class Cell():
          #properties
          # 'inhibitory' || 'excitory' || 'modulatory' is determined by the containing layer and controls value of axon output
         self.activation_type = activation_type
-        """"cell type is determined by the containing layer
+        """"cell_morphology is determined by the containing layer
         controls the number of dendrites as well as their directions
         """
         TODO: determine the different types of cells that need to be accounted
-        self.cell_type = cell_type
+        self.cell_morphology = cell_morphology
         self.cell_state = ChemicalState()
         # needs to be expanded to handle cells that are in sub-cortical regions and problem domains
         self.loc = location
         """
-            input directions, and output destinations are determined by the location and cell type
+            input directions, and output destinations are determined by the location and cell_morphology
         """
         self.axon_output_directions = self.get_destinations()
         self.dendrite_input_directions = 
@@ -55,7 +55,7 @@ class Cell():
         # all cells accept themselves as a destination that only they can read from
         # i.e. cells are addressable but are not the same as destinations
         """
-        determines where the cell outputs to based on the location, cell type, and inherited constraints
+        determines where the cell outputs to based on the location, cell_morphology, and inherited constraints
         connection variables
             - PD location in network
                 - for adjacency (what is physically next to the current PD)
