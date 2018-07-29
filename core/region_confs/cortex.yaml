@@ -1,5 +1,4 @@
 ---
-# aside from layer data, what other data needs to be stored in a region config?
 layers:
     - one:
         cell_morphology: none

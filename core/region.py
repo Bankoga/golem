@@ -4,14 +4,7 @@
 
 class Region():
      """
-        determines region connection profile and layer organization
-        possibilities are currently limited to
-            - Cortex
-            - Relay
-            - Cerebellum
-        Currently, I plan to extend for a subcortical series of problem domains, though it may just be one domain with lots of regions
-            As well as add a brain stem problem domain
-            The issue with single PD subcort is that a single layer then actually be multiple layers which breaks the currentregion paradigm
+
             In a sense, a region adds "height" to a problem domain that is otherwise length and width onlys
         perhaps the layers dict should be defined by the problem domain? No. Problem Domain types define regions. Regions define layers
             But then where would the common region definitions exist? In a separate file or class

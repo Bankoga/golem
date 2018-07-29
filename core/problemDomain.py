@@ -5,11 +5,6 @@
 class ProblemDomain():
 
     """
-    as currently conceived, there are 4 types of problem domains
-    - cortical | Relay -> Cortex | 2 Regions
-    - subcortical | undetermined regions | ?
-    - brainstem | undertermined regions | ?
-    - cerebellum | cerebellum | 1
     Need to determine if give a number of cells to the domain, and have it determine the length and width of the regions
         If we assume yes, then what defines a problem domains inputs?
         Will position in the graph, and interdomain connectivity sufficiently differentiate PDs?
