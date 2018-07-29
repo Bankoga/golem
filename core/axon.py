@@ -7,7 +7,7 @@ class Axon():
         an axon needs to know the activation type which determines if the axon outputs a positive, negative, or chemical value
         'inhibitory' || 'excitory' || 'modulatory'
         it also needs to know where the axon terminates
-        -1,1, or chemical is determined by cell type
+        -1,1, or chemical is determined by activation type in conjunction with chemical type
         """
         self.value = self.get_value(activation_type, chemical_type)
         """ refresh rate, and activation rate can be implemented via usage limits but raises num ops per cell
