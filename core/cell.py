@@ -49,6 +49,9 @@ class Cell():
         #plasticity props
         self.threshhold_change_function
         self.stdp_window = 20 #timesteps
+        TODO: what if instead of storing batch history, we count num steps since last use per synapse?
+        uses num synapses * 2 instead of num synapses * 20
+        though doing so does not track multiple uses within the stdp_window
         self.inputBatchHistory = "sigh" #fixed length array/matrix of length stdp_window or a stack of inputs
 
     def get_destinations():
