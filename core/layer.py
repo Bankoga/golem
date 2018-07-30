@@ -1,11 +1,11 @@
 # contains the definition for the layer object. Regions have multiple layers, and each layer contains an array of cells.
 # layers are the primary cell container in this architecture
 
-class Layer():
+class Layer:
     
     TODO: Add a flag for point to cell or point to array of cells which change how the init works to avoid if clauses or other such checks during activation
     TODO: minimize the number of conditions to be checked during activation
-    def __init__(self, configs, length, width):
+    def __init__(self, config, source, location, length, width):
         """
         each region is composed of multiple layers and each layer spans the full length/width of the matrix
         region is 3D L x W x H, and each layer is a unit of height
@@ -14,19 +14,14 @@ class Layer():
         regardless, a point in a layer of a region is a DESTINATION
         """
         TODO: implement region wide layers that do cell operations using addressess
+        self.location = [location[len(location):] = [source]
         self.length = length
         self.width = width
-        self.point_type = 'cell' or 'array'
+        self.point_type = config['point_type'] #'cell' or 'array'
+        self.morphs = config['cell_morphology']
+        self.dests = config['destinations']
+        self.destinations = create_destinations()
         # using the provided layer properties provided by the config, create the layer object
-        """
-        given the region, and stack position, determine the connectivity profiles
-            - region to region
-            - layer to layer
-            - problem domain to problem domain
-                most layers inside the boundary of a problem domain will not connect to another problem domain
-        determine the number of excitory and inhibitory cells
-        initialize all the cells
-        """
         """
         Local aspects of a layer and/or region that can differ
         - plasticity rules (inhib, excitory, modulatory) (timing, decay/potentiate funcs, etc...)
@@ -36,7 +31,19 @@ class Layer():
         - what else
         """
 
-    
+    def create_destinations(self):
+        """
+        given the region, and stack position, determine the connectivity profiles
+            - region to region
+            - layer to layer
+            - problem domain to problem domain
+                most layers inside the boundary of a problem domain will not connect to another problem domain
+        determine the number of excitory and inhibitory cells for each morphology
+        initialize all the cells
+        """
+        destinations = [][]
+        return destinations
+
     def activate(self):
         """
             perhaps a new name will better fit but this is fine for now. It matches the cell func name
