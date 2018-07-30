@@ -1,8 +1,14 @@
 # contains the definition for the primary region object which will have two types
 # this is the cortical stack, or thalamic relay stack level object
 # perhaps the other sub cortical pieces could be a third type of region object. Wrapping all them together in an addressable manner
+from yaml import load, dump
+from layer import *
 
-class Region():
+def str_to_class(str):
+    return getattr(sys.modules[__name__], str)
+
+
+class Region:
      """
 
             In a sense, a region adds "height" to a problem domain that is otherwise length and width onlys
@@ -12,23 +18,30 @@ class Region():
                 If each region type is unique to a problem domain type, then R-R connections can be defined within the region type defs
     """
 
-    def __init__(self, region_type, length, width):
+    def __init__(self, source, region_type, length, width):
         self.name = region_type
+        self.location = [source]
         self.length = length
         self.width = width
-        TODO: grab the yaml that corresponds to region_type, and raise an exception if it doesn't exist
-        config_doc = region_type
-        self.config = yaml.dump(yaml.load(config_doc))
-        self.layers = create_layers()
+        TODO: raise an exception if the yaml doesn't exist
+        config_fname = 'region_confs\\{0}.yaml'.format(region_type)
+        self.config = load(open(config_fname))
+        self.layers = self.create_layers()
 
     def create_layers(self):
         TODO: determine type of object for self.layers
          # could also be called height but num_layers is more useful
         # self.num_layers = layers_dict[self.name]
         layers = []
+        for i in self.config['layers']:
+            # if I want to do something like name, morphs, dests, order = i.values() then I should be using an ordered dict
+            name = i['name']
+            # if the layers config object is an ordered list, then order is unnecessary
+            # order = config.['order']
+            [layers[len(layers):] = [Layer(config, self.name, self.location, self.length, self.width)]
         """
-        foreach distinct (layer_name, layer_details) in config.layers:
-            create a new Layer() using the layer config, and the higher level destination data
+        foreach distinct (layer_name, layer_details) in self.config['layers']:
+            create a new Layer() using the layer config, and self.location
             add the new layer to the layers object
             self.layer_config = self.get_layer_confs()
         """
