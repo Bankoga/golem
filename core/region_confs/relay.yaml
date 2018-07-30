@@ -1,22 +1,35 @@
 ---
 layers:
-    - reticular:
+    - name: reticular
+      details:
+        point_type: cell
         cell_morphology:
-            - ?
+            - none
         destinations:
+            - none
         order: 0
-    - cort_relay:
+    - name: cort_relay
+      details:
+        point_type: cell
         cell_morphology:
-            - ?
+            - none
         destinations:
+            - none
         order: 1
-    - relay_inhib:
+    - name: relay_inhib
+      details:
+        point_type: cell
         cell_morphology:
-            - ?
+            - none
         destinations:
+            - none
         order: 2
-    - matrix:
+    - name: matrix
+      details:
+        point_type: cell
         cell_morphology:
-            - ?
+            - none
         destinations:
+            - none
         order: 3
+...

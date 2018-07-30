@@ -66,15 +66,19 @@ The two major properties, determine the general other properties of the cell lik
 Since the framework is, for the most part, region, and layer agnostic, the specifics of each region are determined by a configuration yaml which contains all the data needed to initialize the region with all of its layers given the specific input/output constraints of the problem domain object.
 
 - aside from layer data, what other data needs to be stored in a region config?
-- Layer Data
-  - cell morphology
-    - lengths of dendrites?
-    - plasticity data (if differs from generic)
-    - resource constraints (if differs from generic)
-  - connection data
-    - types of cells that can project to the destination
-    - layer to layer connections within the region
-    - substitution spots for cross-PD connections
+- layers list
+  - layer dict
+    - name: layer_name
+    - details: 
+      - point_type: cell or array of cells
+      - cell morphology
+        - lengths of dendrites?
+        - plasticity data (if differs from generic)
+        - resource constraints (if differs from generic)
+      - connection data
+        - types of cells that can project to the destination
+        - layer to layer connections within the region
+        - substitution spots for cross-PD connections
 
 > Note on Cortex Region: it is perhaps the case that l1-6 naming convention works fine normally, though something more descriptive may be nice
 
@@ -106,9 +110,21 @@ Not all region_locs @ the layer_key will have multiple cell indices. Some layers
 Config destinations are patterns that indicate where cells in a layer can project outputs. Substitution keywords are replaced during init with generated info.
 Furthermore, each destination applies to one or more activation type of cells. 
 
+#### activation keys
+
+- e_type : excitory neuron only destination
+- i_type: inhibitory neuron only destination
+- m_type : modulatory neuron only destination
+- num_type : excitory and inhibitory neuron only destination
+- all_type : all activation types destination
+
+#### path substitution keys
+
 - pair : project to mirrored location in the paired problem domain
 - same : reuse current path data for the matching level of the new path
 - output : substitute output paths for the destination
 - "name" : use the name as the key in the path
 - none : layer serves as a destination without any cells in the layer
   - in other words, the layer will have dendrites that receive from it but it won't return any outputs
+- adjacent : projects to neighboring destinations
+  - all vs specific adjacency?

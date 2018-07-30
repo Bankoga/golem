@@ -1,41 +1,54 @@
 ---
 layers:
-    - one:
+    - name: one
+      details:
+        point_type: array
         cell_morphology: none
-        destinations: none
+        destinations:
+            - none
         order: 0
-    - two:
+    - name: two
+      details:
+        point_type: array
         cell_morphology:
             - pyramid
-            - ?
         destinations:
+            - none
         order: 1
-    - three:
+    - name: three
+      details:
+        point_type: array
         cell_morphology:
             - pyramid
-            - ?
         destinations:
+            - none
         order: 2
-    - four:
+    - name: four
+      details:
+        point_type: array
         cell_morphology:
             - pyramid
             - star
-            - ?
         destinations:
+            - none
         order: 3
-    - five:
+    - name: five
+      details:
+        point_type: array
         cell_morphology:
             - pyramid
-            - ?
         destinations:
+            - none
             - output
             - pair
             - [same, same, ]
         order: 4
-    - six:
+    - name: six
+      details:
+        point_type: array
         cell_morphology:
             - pyramid
-            - ?
         destinations:
+            - none
         order: 5
 ...
