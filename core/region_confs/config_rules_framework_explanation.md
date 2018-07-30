@@ -2,7 +2,7 @@
 
 ## Overview
 
-Biological brains are 3D objects with complex patterns of connectivity. However, because each cell is effectively a processor, brains are highly parallel, and seemingly modular. The human brain for instance has a routine pattern of connectivity between the neocortex and the thalamus. Although wetware brains have the software of intelligence expressed via the hardware, it's possible to implement said software in a different hardware substrate though with contraints. The hierarchical, modular, and ordered nature of wetware brains led to the notions defined below of problem domains, regions and layers. Connecitivty is the major paradigm of a processor graph like a human brain. In our framework, the connectivity patterns of cells are determined by the higher level organizational properties of their containers, with the framework code implementing generic behaviours based upon the organization. In essence, configuration is separate from 
+Biological brains are 3D objects with complex patterns of connectivity. However, because each cell is effectively a processor, brains are highly parallel, and seemingly modular. The human brain for instance has a routine pattern of connectivity between the neocortex and the thalamus. Although wetware brains have the software of intelligence expressed via the hardware, it's possible to implement said software in a different hardware substrate though with contraints. The hierarchical, modular, and ordered nature of wetware brains led to the notions defined below of problem domains, regions and layers. Connecitivty is the major paradigm of a processor graph like a human brain. In our framework, the connectivity patterns of cells are determined by the higher level organizational properties of their containers, with the framework code implementing generic behaviours based upon the organization. In essence, configuration is separate, and can be considered hyperparams.
 
 ## The Purpose of Problem Domains, Regions, and Layers
 
@@ -59,7 +59,7 @@ The two major properties of a cell are activation_type, and cell_morphology
 > The different supported cell morphologies are still a WIP
 > What determines the length of each dendrite?
 
-The two major properties, determine the general other properties of the cell like the plasticity properties, resource constraints, etc... 
+The two major properties, determine the general other properties of the cell like the plasticity properties, resource constraints, etc...
 
 ## Region Config Files
 
@@ -69,7 +69,7 @@ Since the framework is, for the most part, region, and layer agnostic, the speci
 - layers list
   - layer dict
     - name: layer_name
-    - details: 
+    - details:
       - point_type: cell or array of cells
       - cell morphology
         - lengths of dendrites?
@@ -108,7 +108,7 @@ Not all region_locs @ the layer_key will have multiple cell indices. Some layers
 ### Config Destination Substitutions
 
 Config destinations are patterns that indicate where cells in a layer can project outputs. Substitution keywords are replaced during init with generated info.
-Furthermore, each destination applies to one or more activation type of cells. 
+Furthermore, each destination applies to one or more activation type of cells.
 
 #### activation keys
 
