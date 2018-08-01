@@ -1,11 +1,11 @@
 # contains the definition for the layer object. Regions have multiple layers, and each layer contains an array of cells.
 # layers are the primary cell container in this architecture
+import numpy as np
+from destination import *
 
 class Layer:
-    
-    TODO: Add a flag for point to cell or point to array of cells which change how the init works to avoid if clauses or other such checks during activation
     TODO: minimize the number of conditions to be checked during activation
-    def __init__(self, config, source, location, length, width):
+    def __init__(self, config, source, location, length, width, index):
         """
         each region is composed of multiple layers and each layer spans the full length/width of the matrix
         region is 3D L x W x H, and each layer is a unit of height
@@ -14,12 +14,13 @@ class Layer:
         regardless, a point in a layer of a region is a DESTINATION
         """
         TODO: implement region wide layers that do cell operations using addressess
-        self.location = [location[len(location):] = [source]
+        TODO: determine name vs index for the path data
+        self.name = config['name']
+        self.index = index
+        self.location = location.append(source)
         self.length = length
         self.width = width
-        self.point_type = config['point_type'] #'cell' or 'array'
-        self.morphs = config['cell_morphology']
-        self.dests = config['destinations']
+        self.config = config
         self.destinations = create_destinations()
         # using the provided layer properties provided by the config, create the layer object
         """
@@ -41,9 +42,13 @@ class Layer:
         determine the number of excitory and inhibitory cells for each morphology
         initialize all the cells
         """
-        destinations = [][]
+        destinations = np.zeros(shape=(self.length,self.width))
+        for i in range(0, self.length):
+            for j in range (0 self.width):
+                destinations[i][j] = Destination(self.config, self.index, self.location, [i,j])
         return destinations
 
+    TODO: expand activate to have the current mode, time step, and the destination keyed input batches
     def activate(self):
         """
             perhaps a new name will better fit but this is fine for now. It matches the cell func name
@@ -51,15 +56,8 @@ class Layer:
             collect the activation result of each cell on the input batch into an array
             return the destinations set, and activation result array to the axon server for the current timestep
         """
-
-
-    def get_destinations(self):
-        """ since each region type has it's own layer types, where should destination mappings live?
-        I feel that it may be best for layer destination mappings to live outside the class in a json, yaml, or other such file
-        Why?
-            the cortical region alone has 6 distinct layers with different output connection patterns, cell morphologys, plasticity rules, (what else?)
-            There are at least 3 types of regions that I know need to be created, and at least two problem domains with undetermined regions
-            Those other problem domains should at least have 1 type of region each, though they will likely have more than one
-            So at this point, we can safely expect 5 or more regions that we need predefined to get info from
-            Greater flexibility results from localizing cell morphologys, plas rules, resource constraints, connect patterns, etc... to each layer or region
-        """
+        activations = []
+        for i in range(0, self.length):
+            for j in range (0 self.width):
+                activations.extend(self.destinations[i][j].activate())
+        return activations
