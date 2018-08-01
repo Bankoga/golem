@@ -1,35 +1,31 @@
 ---
 layers:
     - name: reticular
-      details:
-        point_size: 1
-        cell_morphology:
-            - none
-        destinations:
-            - none
-        order: 0
+      point_size: 1
+      cell_morphology:
+          - none
+      destinations:
+          - none
+      order: 0
     - name: cort_relay
-      details:
-        point_size: 1
-        cell_morphology:
-            - none
-        destinations:
-            - none
-        order: 1
+      point_size: 1
+      cell_morphology:
+          - none
+      destinations:
+          - none
+      order: 1
     - name: relay_inhib
-      details:
-        point_size: 1
-        cell_morphology:
-            - none
-        destinations:
-            - none
-        order: 2
+      point_size: 1
+      cell_morphology:
+          - none
+      destinations:
+          - none
+      order: 2
     - name: matrix
-      details:
-        point_size: 1
-        cell_morphology:
-            - none
-        destinations:
-            - none
-        order: 3
+      point_size: 1
+      cell_morphology:
+          - none
+      destinations:
+          - none
+      order: 3
 ...
