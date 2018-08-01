@@ -13,6 +13,10 @@ class BrainNetwork():
         TODO: determine where blank network standup, new network creation, and load network init should be handled
         self.pair = false # will be implemented using is_pair
 
+    def batch_inputs():
+        TODO: batch inputs to each destination based on their input profiles
+        # this seems like a very problematic step
+
     def run():
         tsCount = 0
         #the ts_count can perhaps be used to create temporary objects that are released by the last cell to access it.
