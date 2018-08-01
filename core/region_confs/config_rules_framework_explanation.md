@@ -2,7 +2,7 @@
 
 ## Overview
 
-Biological brains are 3D objects with complex patterns of connectivity. However, because each cell is effectively a processor, brains are highly parallel, and seemingly modular. The human brain for instance has a routine pattern of connectivity between the neocortex and the thalamus. Although wetware brains have the software of intelligence expressed via the hardware, it's possible to implement said software in a different hardware substrate though with contraints. The hierarchical, modular, and ordered nature of wetware brains led to the notions defined below of problem domains, regions and layers. Connecitivty is the major paradigm of a processor graph like a human brain. In our framework, the connectivity patterns of cells are determined by the higher level organizational properties of their containers, with the framework code implementing generic behaviours based upon the organization. In essence, configuration is separate, and can be considered hyperparams.
+Biological brains are 3D objects with complex patterns of connectivity. However, because each cell is effectively a processor, brains are highly parallel, and seemingly modular. The human brain for instance has a routine pattern of connectivity between the neocortex and the thalamus. Although wetware brains have the software of intelligence expressed via the hardware, it's possible to implement said software in a different hardware substrate though with contraints. The hierarchical, modular, and ordered nature of wetware brains led to the notions defined below of problem domains, regions and layers. Connecitivty is the major paradigm of a processor graph like a human brain. In our framework, the connectivity patterns of cells are determined by the higher level organizational properties of their containers, with the framework code implementing generic behaviours based upon the organization. In essence, configuration is separate, and could be considered hyperparams.
 
 ## The Purpose of Problem Domains, Regions, and Layers
 
@@ -28,6 +28,11 @@ As currently conceived, there are 4 types of problem domains:
 Currently, I plan to extend for a subcortical series of problem domains, though it may just be one domain with lots of regions. As well as add a brain stem problem domain
 > The issue with single PD subcort is that a single level of a problem domain could actually be multiple regions which breaks the current region paradigm. Does it?
 
+Each problem domain type has specific region for accepting output from other PDs.
+>How is this indicated, and how does the framework handle this during init?
+For example, the Cortical type accepts external inputs via the cort_relay layer in the relay region which then passes input to the cortex region. Doing so starts a cascade of signal passing between layers of the two regions.
+> During init, how does the framework know to build a path to a cort_relay dest, and with what distribution?
+
 ### Regions
 
 The point of a region is to determine the connection patterns of the layers. Given that cells are the units of Input, and Output, they are the units of connectivity. The type of region determines to what other types of regions cells within it can connect. With the how being governed by the organization of the layers within the region.
@@ -49,12 +54,22 @@ A cell in a human brain can broadly be described by two categories: neuronal, an
 
 The two major properties of a cell are activation_type, and cell_morphology
 
+> Randomly generate the lengths of seconday dendrites based on morphology?
+> Usage based growth may need to be implemented at some point
+
 - activation_type : controls the type of value returned by the axon
   - -1, 1, or modulatory chemical
 - cell_morphology : controls the number of dendrites, and their direction
-  - pyramid : 4 adjacent dendrites, a local dendrite, and a long apical dendrite
-  - interneruon : apical dendrite
-  - ?
+  - pyramid : 4 adjacent or basal dendrites, a local dendrite, a long apical dendrite, and axon
+  - bipolar : 1 dendrite, and axon
+  - unipolar : receptor directly to axon (sensory cells)
+- inhibitory types in cortex
+  - chandelier
+  - pv basket
+  - long projecting (l6 to relay)
+  - martinotti (l2 to l3)
+  - interneuron selective (l2/3 to l5/6)
+  - cck basket
 
 > The different supported cell morphologies are still a WIP
 > What determines the length of each dendrite?
@@ -71,6 +86,7 @@ Since the framework is, for the most part, region, and layer agnostic, the speci
     - name: layer_name
     - details:
       - point_type: cell or array of cells
+      - vs point_size: 1, n
       - cell morphology
         - lengths of dendrites?
         - plasticity data (if differs from generic)
@@ -89,8 +105,7 @@ The destination of a cells axon can't be absolutely determined before initializa
 > What should be used as the destination between semantically named layers? The order? What about cross-region references?
 > The destinations should use the path data schema with appropriate substitution slots, and relative paths
 
-Path Substitutions
-Each part of the (what was the purpose of this sentence?)
+Some cells project to multiple destinations via the same axon. The axon will branch.
 
 ### Formats of a full path
 
@@ -122,7 +137,7 @@ Furthermore, each destination applies to one or more activation type of cells.
 
 - pair : project to mirrored location in the paired problem domain
 - same : reuse current path data for the matching level of the new path
-- output : substitute output paths for the destination
+- output : substitute the output paths to other nodes for the destination according to PD type
 - "name" : use the name as the key in the path
 - none : layer serves as a destination without any cells in the layer
   - in other words, the layer will have dendrites that receive from it but it won't return any outputs
