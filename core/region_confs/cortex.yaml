@@ -6,7 +6,7 @@ layers:
       destinations:
           - none
       order: 0
-    - me: two
+    - name: two
       point_size: 30
       cell_morphology:
           - pyramid
