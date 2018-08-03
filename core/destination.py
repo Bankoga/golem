@@ -11,7 +11,9 @@ class Destination:
     def create_cells(self):
         """
         create a number of cells equal to point_size, according to the rules for distribution, types, and destinations from the config
+        # each cell type takes up a % of the num cells (point_type)
         """
+        cell_type_distribution = []
         cells = []
         for i in range(0, self.point_size):
             cells.append(Cell())
