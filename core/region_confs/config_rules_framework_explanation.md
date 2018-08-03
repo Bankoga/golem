@@ -25,14 +25,6 @@ As currently conceived, there are 4 types of problem domains:
 | Cerebellum    | 1 (revisit)           | ?             |
 |---------------|-----------------------|---------------|
 
-Currently, I plan to extend for a subcortical series of problem domains, though it may just be one domain with lots of regions. As well as add a brain stem problem domain
-> The issue with single PD subcort is that a single level of a problem domain could actually be multiple regions which breaks the current region paradigm. Does it?
-
-Each problem domain type has specific region for accepting output from other PDs.
->How is this indicated, and how does the framework handle this during init?
-For example, the Cortical type accepts external inputs via the cort_relay layer in the relay region which then passes input to the cortex region. Doing so starts a cascade of signal passing between layers of the two regions.
-> During init, how does the framework know to build a path to a cort_relay dest, and with what distribution?
-
 ### Regions
 
 The point of a region is to determine the connection patterns of the layers. Given that cells are the units of Input, and Output, they are the units of connectivity. The type of region determines to what other types of regions cells within it can connect. With the how being governed by the organization of the layers within the region.
@@ -74,6 +66,10 @@ The two major properties of a cell are activation_type, and cell_morphology
 > The different supported cell morphologies are still a WIP
 > What determines the length of each dendrite?
 
+A Cell Type is a tuple of an activation_type, a single cell_morphology, & one or more destinations.
+
+> cell_type = {activation_type, cell_morphology, destinations[]}
+
 The two major properties, determine the general other properties of the cell like the plasticity properties, resource constraints, etc...
 
 ## Region Config Files
@@ -84,17 +80,19 @@ Since the framework is, for the most part, region, and layer agnostic, the speci
 - layers list
   - layer dict
     - name: layer_name
-    - details:
-      - point_type: cell or array of cells
-      - vs point_size: 1, n
-      - cell morphology
-        - lengths of dendrites?
-        - plasticity data (if differs from generic)
-        - resource constraints (if differs from generic)
-      - connection data
-        - types of cells that can project to the destination
-        - layer to layer connections within the region
-        - substitution spots for cross-PD connections
+      - used as key for layers dict inside a region
+    - point_size: number of cells at a point (i.e. destination) in the layer
+    - cells list: a list of tuples of cell type, and percent of cells in layer
+      - cell type
+        - cell morphology
+          - lengths of dendrites?
+          - plasticity data (if differs from generic)
+          - resource constraints (if differs from generic)
+        - connection data
+          - types of cells that can project to the destination
+          - layer to layer connections within the region
+          - substitution spots for cross-PD connections
+        - distribution percentage: indicates what % of point_size should be composed of the paired cell type
 
 > Note on Cortex Region: it is perhaps the case that l1-6 naming convention works fine normally, though something more descriptive may be nice
 
@@ -107,12 +105,12 @@ The destination of a cells axon can't be absolutely determined before initializa
 
 Some cells project to multiple destinations via the same axon. The axon will branch.
 
-### Formats of a full path
+### Format of a full path
 
 - [pd_key, region_key, region_loc, layer_key]
 - [pd_key, region_key, region_loc, layer_key, cell_index]
 
-### Format of Config
+### Format of Destination Config
 
 - [activation_key, [pd_key, region_key, region_loc, layer_key]]
 - [activation_key, [pd_key, region_key, region_loc, layer_key, cell_index]]
