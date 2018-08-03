@@ -30,6 +30,7 @@ class Region:
         TODO: determine type of object for self.layers
          # could also be called height but num_layers is more useful
         # self.num_layers = layers_dict[self.name]
+        TODO: convert layers to a dictionary so that name can be used for pathing to have more semantic locations
         layers = []
         ind = 0
         for l in self.config['layers']:
