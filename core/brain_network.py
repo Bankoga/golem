@@ -18,19 +18,19 @@ class BrainNetwork():
         # this seems like a very problematic step
 
     def run():
-        tsCount = 0
+        ts_count = 0
         #the ts_count can perhaps be used to create temporary objects that are released by the last cell to access it.
         # Each layer would this need to keep track of how many times it had been touched during the timestep, and self delete before returning
         """
         create the repl to listen for external interrupts
         while waiting for interrupts run through a timestep
-            - if tsCount >= session_length
+            - if ts_count >= session_length
                 mode = "maintenance"
                 - clear the old inputs
                 - activate each problem domain
                 TODO: simply clearing the old inputs creates an inputs disconnect here that needs to be solved.
                     Implement clear so as to not affect sensory input collection
-                - tsCount = 0
+                - ts_count = 0
             - else:
                 - collect sensory input
                     - should this be done inside the corresponding problem domain?
@@ -41,7 +41,7 @@ class BrainNetwork():
                 - activate each problem domain (each PD activates it's region which in turn activate layers which activate cells)
                 - collect the ouputs from each problem domain
                 TODO: where do the external outputs get sent at the end of a timestep?
-                - tsCount++
+                - ts_count++
         if interrupted by a REPL command
             - skip the loop
             - eval the command
