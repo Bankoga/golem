@@ -28,7 +28,7 @@ Language note: when receiving outputs that go to some destination it's called a 
     If we want to avoid passing around the actual location for each possible activation to a source, then I don't currently see a way to avoid guaranteeing activation ordering.
     Consequently, all of this is determined during init so when the network is running the source input order won't change. The list of activations to each source needs to be built with the same order so that we can do array multiplication with the # of projections to a source by the # of synapses at a receiving cells dendrite. This is to avoid interpretation changes. Unfortunately, this means that even inactive cells will have to indicate that they were not active.
 
-- Now let us say we have dests 1 - 5, and dest 2 has 3 cells (A,B,C, D) with each cell receiving from potentially different sets of sources
+Now let us say we have dests 1 - 5, and dest 2 has 3 cells (A,B,C, D) with each cell receiving from potentially different sets of sources
 
 A <- 1, 2, 3 (i.e. A can form connections to cells that output to 1 & 3)
 B <- 1, 2, 4
