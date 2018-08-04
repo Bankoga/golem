@@ -4,6 +4,32 @@
 
 There are plenty of open problems with the framework at the moment. For code changes that need implementation, and decisions on how to proceed.
 
+### Connection Distribution Between Domains
+
+> Open Question: How is the distribution of inputs from disparate sources spread across the finite input slots of a single problem domain?
+
+- Does each distinct source of inputs, correspond to a subrange of the total num of input slots?
+  - What happens when there are more inputs from a source than there are input slots?
+  - What happens when the sum of inputs from all sources exceed the number of input slots?
+- ?
+
+For example, we have 3 pds (a, b, c) as inputs to 3 pds (d, e, f)
+
+| **Domain**    | **Num Slots** |
+|---------------|---------------|
+| A             | 20            |
+| B             | 10            |
+| C             | 40            |
+|---------------|---------------|
+Total Inputs: 60
+
+| **Domain**    | **Num Slots** |
+|---------------|---------------|
+| D             | 30            |
+| E             | 40            |
+| F             | 60            |
+|---------------|---------------|
+
 ### Problem Domain Configs
 
 > Open Question: Do we need configs for the problem domain types? YES. See below for reason why.
