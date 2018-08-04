@@ -2,6 +2,14 @@
 
 These are open problems concerning config files, and thoughts on how to resolve them.
 
+## Brain Network Config
+
+The top level abstraction is the brain network. A graph whose nodes are individual problem domains.
+
+> Open Question: Do we define the brain network in the code, or do we use a config? **use a config**
+
+If we want to continue with the same approach that we have been using, then going with a config seems to be the best route.
+
 ## Problem Domain Configs
 
 > Open Question: Do we need configs for the problem domain types? YES. See below for reason why.
