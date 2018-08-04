@@ -1,8 +1,8 @@
 from yaml import load, dump
 # import pytest
-region_type = 'cortex'
-config_fname = 'region_confs\\{0}.yaml'.format(region_type)
-config = dump(load(open(config_fname)))
+
+cort = dump(load(open('region_confs\\cortex.yaml')))
+relay = dump(load(open('region_confs\\relay.yaml')))
 
 # from core.region import *
 # r = Region("unknown", "cortex", 20, 20)
