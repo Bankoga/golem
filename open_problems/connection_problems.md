@@ -8,7 +8,7 @@ The brain is an open system, that has dedicated routes for external input, and o
 
 > Open Question: How do we translate external sensor data into spikes for the corresponding problem domains?
 > Open Question: Does the translation change based on the available input slots for the corresponding problem domain?
-> Open Question: Where do we pass the translated data to the 
+> Open Question: Where and how do we pass the translated data into the brain network?
 
 ## Wiring Together Problem Domains
 
@@ -20,6 +20,8 @@ There are several different problems associated with wiring domains together
   - i.e. How to declare input slots
 - How to distribute outputs across the available input slots
 - How to distribute outputs to subsequent problem domains
+
+**Does size of PD change based on the number of inputs to the PD?**
 
 ### Indicating Input Slots for a Problem Domain
 
@@ -108,3 +110,8 @@ Diff ways of splitting output across cells in diff domains
 > Open Question: Do we want to have problem domain types that connect adjacently outside of the dedicated output layers?
 
 In the human neocortex, this would be having adjacent broadmann areas connect to each other near the borders via the layers that handle adjacency.
+
+## Unique vs Split Destinations
+
+> Open Question: How are split destinations represented?
+> Open Question: How can an axon plasticly split by usage?
