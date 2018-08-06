@@ -22,8 +22,9 @@ class BrainNetwork:
         buckets = {}
         sort all outputs based on dests
         for o in outputs:
-            get bucket (pd) key from o
-            path_key
+            get bucket (pd name) key from o
+            path_key is filled based on the switch
+            At present partial paths are intended for neuromodulation not direct excitation or inhibition, thus are consumed by the destination
             switch dict based on length of path
                 1 = all regions in pd partial
                     path_key = 'all_regions'

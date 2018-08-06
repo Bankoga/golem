@@ -58,6 +58,7 @@ class Destination:
     TODO: add mode, time step, and input batches to the activation method
     def activate(self):
         activations = []
+        TODO: eval the chem state then consume all partials to ascertain effects on the chemical state
         for c in cells:
             activations.extend(c.activate())
         return activations
