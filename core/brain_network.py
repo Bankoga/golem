@@ -4,29 +4,66 @@
 # top level goals live here
 from .imports import *
 
-class BrainNetwork():
-    mode = "work" # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
-    ts_per_sim_second = 1000
-    session_length = ts_per_sim_second * 60 * 12
-
+class BrainNetwork:
     def __init__(self, is_pair):
         TODO: determine where blank network standup, new network creation, and load network init should be handled
         self.pair = false # will be implemented using is_pair
+        # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
+        self.mode = "work"
+        self.ts_per_sim_second = 1000
+        self.session_length = self.ts_per_sim_second * 60 * 12
 
-    def batch_inputs():
+    def batch_inputs(self, outputs):
         TODO: batch inputs to each destination based on their input profiles
         # this seems like a very problematic step
+        """
+        # buckets is a dictionary of dictionaries where list length is equal to the number of problem domains
+        # each bucket (dictionary) is a collection of the outputs to destinations by level, or address
+        buckets = {}
+        sort all outputs based on dests
+        for o in outputs:
+            get bucket (pd) key from o
+            path_key
+            switch dict based on length of path
+                1 = all regions in pd partial
+                    path_key = 'all_regions'
+                2 = all layers in region partial
+                    path_key = 'all_layers'
+                3 = all dests in layer partial
+                    path_key = 'all_dests'
+                4 = specific destination. full path
+                    path_key = layer_key
+            if bucket key does not exist in buckets
+                add bucket key dict to buckets
+            if path_key array does not exist in bucket key dict
+                add new path_key array to the bucket key dict with new item
+            elif:
+                append new item into path_key array in bucket key dict
+        return buckets
+        """
 
-    def run():
+    def run(self):
+        """
+        create the repl to listen for external interrupts
+        interrupt = self.loop()
+        if interrupted by a REPL command
+            - eval the interrupt
+            - if pause, wait for new commands without looping
+            - else if command shutsdown then terminate program
+            - else if command is unrecognized throw an error message
+            self.loop()
+        """
+
+    def loop(self):
         ts_count = 0
         #the ts_count can perhaps be used to create temporary objects that are released by the last cell to access it.
         # Each layer would this need to keep track of how many times it had been touched during the timestep, and self delete before returning
         """
-        create the repl to listen for external interrupts
         while waiting for interrupts run through a timestep
             - if ts_count >= session_length
                 mode = "maintenance"
                 - clear the old inputs
+                inputs = []
                 - activate each problem domain
                 TODO: simply clearing the old inputs creates an inputs disconnect here that needs to be solved.
                     Implement clear so as to not affect sensory input collection
@@ -36,21 +73,18 @@ class BrainNetwork():
                     - should this be done inside the corresponding problem domain?
                     - where do external inputs plug into the network?
                     - how is that external data collected and translated into spikes?
-                - match axon destinations with problem domain accepted inputs
-                - clear the old inputs
-                - activate each problem domain (each PD activates it's region which in turn activate layers which activate cells)
-                - collect the ouputs from each problem domain
+                outputs.extend(sensor_data)
+                # match axon destinations with problem domain accepted inputs
+                inputs = self.batch_inputs(outputs)
+                outputs = []
+                for pd in pds:
+                    # activate each problem domain (each PD activates it's region which in turn activate layers which activate cells)
+                    # collect the ouputs from each problem domain
+                    outputs.extend(pd.activate(mode, ts_count, inputs[pd.name]))
                 TODO: where do the external outputs get sent at the end of a timestep?
                 - ts_count++
-        if interrupted by a REPL command
-            - skip the loop
-            - eval the command
-            - if command pauses, wait for new commands without looping
-            - else if command is unrecognized throw an error message
-            - else if command shutsdown then terminate program
-            - resume looping
+        return interrupt
         """
-
     def save(fn, a): 
         """Utility function that savess model, function, etc as pickle"""    
         pickle.dump(a, open(fn,'wb'))
