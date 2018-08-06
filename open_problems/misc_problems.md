@@ -7,7 +7,6 @@ Myelination of axons determines how quickly a signal propgates through the axon 
 Not only does myelination affect signal speed, synapses with other cells can only form on unmyelinated sections of the axon. The two segments that are almost universally unmyelinated, are the segment where the axon connects to the cell body, and the treelike endpoint terminal. In our model, this means that all cells with basal dendrites may be able to accept inputs from their neighbors in the destination.
 
 > Open Question: whether or not to include distance based propagation timing to outputs based on distance
-> Open Question: do all cell types with basal dendrites accept inputs from their neighbors at the destination?
 
 ## Input Batching
 
