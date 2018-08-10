@@ -1,5 +1,50 @@
 # Miscellaneous Problems
 
+## Graph Storage
+
+It has come to my attention that even a modestly sized graph as an adjacency list of just the cells, and their edges would consume tons of memory. Thus the issue of the data structure of the graph has become imperative. Regardless of how many other questions are answered, if the final object is of an unrealizable size then the enterprise is doomed to failure. This is not acceptable! While some memory usage optimizations will result once we move to another language after validating the test framework in python, the space complexity of the system still matters for the python implementation. In order to have a successful proof of approach that can be optimized, we must decide on the data structure of the destination graph.
+
+> ~~Open Question: Go with the object nesting approach, where each layer is a matrix of destinations, unify all destinations into a single adjacency list, or some other data structure?~~
+
+Answer: **Stay the course! For now anyway...**
+
+Refactoring the code to use a single list for all destinations seems doable later on. For now, manifesting the conceptual aspects of each destination as actual code objects, helps with implementation. If it is necessary to reduce the number of objects to a single list of destinations with the meta levels merely used to build the list, then we can handle that later.
+
+> ~~Open Question: Does every destination/cell need to be touched during each timestep?~~
+
+Answer: **Yes because we need to know if the cell activated based on the inputs it received**
+
+> Open Question: What data structure should be used for storing destinations, and cells?
+
+Previously, each destination was going to live inside of an actual 2D matrix, and contain a list of cells. **The 2D matrix may live on in concept being used during the init, but it may not be efficient enough for use as the actual data structure to store destinations.**
+Cells would use lists of edges to grab the data sets they needed for dendrite summation from the universe of outputs. Grabbing the source sets for each destinations requires sorting the outputs into a bucket per source set, then looping through each cell while grabbing the outputs by source set key.
+
+Cost_of_sort = num_destinations + num_outputs (i.e num_edges) or Merge_sort(num_destinations) + num_outputs
+Cost_source_grab = sum_all_cells(sources_to_grab) = num_cells * num_sources_to_grab (i.e. num_edges)
+ops_input_to_cell_per_ts = Cost_of_Sort + Cost_source_grab
+
+num_cells = 1 * Math.pow(10,9)
+edges_per_cell = 3000
+num_edges = num_cells * edges_per_cell
+ops_prep_cells_per_ts = num_edges + num_cells + (num_edges + num_cells)
+
+var num_cells = 16 * Math.pow(10,9)
+var edges_per_cell = 3000
+var num_edges = num_cells * edges_per_cell
+var ops_prep_cells_per_ts = (num_edges + num_cells + (num_edges+num_cells))
+var ops_cell = edges_per_cellMath.pow(3,2) + edges_per_cell3 + edges_per_cellMath.pow(3,2)
+var pflops_per_sec = 1000(ops_cell*num_cells+ops_prep_cells_per_ts )/Math.pow(10,15)
+
+The actual number of operations is larger because we have not accounted for the number of operations it takes to activate a cell.
+This is simply a rough estimate of the number of operations it takes to get all the data to each cell
+
+Iterate through, and activate all cells which returns a list of destination-result pairs
+Each cell then has to multiply the input sources by the corresponding dendrite arrays, sum the results, and calculate plasticity changes for each synapse...
+ops_cell = edges_per_cell*Math.pow(3,2) + edges_per_cell*3 + edges_per_cell*Math.pow(3,2)
+
+**The problem we have is that biological brains are exemplars of the fact that hardware is an expression of software.**
+Implementing software optimized for specific hardware in a substrate with different paradigms is inefficient.
+
 ## Signal Propagation Speed
 
 Myelination of axons determines how quickly a signal propgates through the axon terminal. Though it takes time for signals to propagate through dendrites as well. In both cases, the number, and sizes of ion channels, and pumps in the respective parts also directly affect signal speed. Myelination is considered to be a very important part of structural plasticity because our neurons are timing dependent, and myelination directly affects timing. In the brains of martial arts experts, there is more white matter between the cerebellum, and the neocortex. In humans myelination changes seems to, with some exceptions, stop after the brain stops developing.
