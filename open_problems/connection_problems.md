@@ -25,7 +25,7 @@ There are several different problems associated with wiring domains together
 - How to distribute outputs to subsequent problem domains
 
 **Does size of PD change based on the number of inputs to the PD?**
-They do seem to be correlated.
+They do seem to be correlated. Though the answer for this problem seems to relate to the answers for input, and output interpretation.
 
 ### Indicating Input Slots for a Problem Domain
 
@@ -44,8 +44,13 @@ Consequently, we know that each problem domain type requires specific layers wit
 
 For example, the Cortical type accepts external inputs via the cort_relay layer in the relay region which then passes input to the cortex region. Doing so starts a cascade of signal passing between layers of the two regions.
 
-> **During init, how does the framework know to build a path to a cort_relay dest, and with what distribution?**
-> **How do we indicate for a problem domain type that an external input goes to three seperate layers across 2 regions?**
+> Open Question: **During init, how does the framework know to build a path to a cort_relay dest, and with what distribution?**
+
+Partial Answer: The brain network edges are used to determine output replacements for destinations inside a problem domain. How to determine the appropriate distribution is still an open question.
+
+> ~~Open Question: How do we indicate for a problem domain type that an external input goes to three seperate layers across 2 regions?~~
+
+Answer: If a problem domain type config specifies which regions serve as input, and those regions specify which layers serve as their inputs, then we don't need to specify at the pd type level which layers are inputs. Though this does seem somewhat clunky.
 
 ### Input Distribution Between Domains
 
@@ -121,3 +126,11 @@ In the human neocortex, this would be having adjacent broadmann areas connect to
 
 > Open Question: How are split destinations represented?
 > Open Question: How can an axon plasticly split by usage?
+
+## Dendrite Sources
+
+Each segment of a dendrite is an edge that connects a cell to some vertex (destination). Most dendrites pass through multiple destinations, and thus create multiple edges.
+
+> Open Question: What determines the length of each dendrite?
+
+Answer: in most cases, it is the type of dendrite. However for apical dendrites, it is the distance from the source. For the local dendrite, it accepts outputs from it's neighboring cells

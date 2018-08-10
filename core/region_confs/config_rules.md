@@ -64,7 +64,6 @@ The two major properties of a cell are activation_type, and cell_morphology
   - cck basket
 
 > The different supported cell morphologies are still a WIP
-> What determines the length of each dendrite?
 
 A Cell Type is a tuple of an activation_type, a single cell_morphology, & one or more destinations.
 
