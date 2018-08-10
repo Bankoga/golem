@@ -1,48 +1,48 @@
 ---
 layers:
-    - name: one
-      point_size: 0
-      cell_morphology: none
-      destinations:
-          - none
-      order: 0
-    - name: two
-      point_size: 30
-      cell_morphology:
-          - pyramid
-      destinations:
-          - none
-      order: 1
-    - name: three
-      point_size: 30
-      cell_morphology:
-          - pyramid
-      destinations:
-          - none
-      order: 2
-    - name: four
-      point_size: 30
-      cell_morphology:
-          - pyramid
-          - star
-      destinations:
-          - none
-        order: 3
-    - name: five
-      point_size: 30
-      cell_morphology:
-          - pyramid
-      destinations:
-          - none
-          - output
-          - pair
-          - [same, same, ]
-        order: 4
-    - name: six
-      point_size: 30
-      cell_morphology:
-          - pyramid
-      destinations:
-          - none
-      order: 5
+  - name: one
+    point_size: 0
+    cell_morphology: none
+    destinations:
+      - none
+    order: 0
+  - name: two
+    point_size: 30
+    cell_morphology:
+      - pyramid
+    destinations:
+      - none
+    order: 1
+  - name: three
+    point_size: 30
+    cell_morphology:
+      - pyramid
+    destinations:
+      - none
+    order: 2
+  - name: four
+    point_size: 30
+    cell_morphology:
+      - pyramid
+      - star
+    destinations:
+      - none
+      order: 3
+  - name: five
+    point_size: 30
+    cell_morphology:
+      - pyramid
+    destinations:
+      - none
+      - output
+      - pair
+      - [same, same, ]
+      order: 4
+  - name: six
+    point_size: 30
+    cell_morphology:
+      - pyramid
+    destinations:
+      - none
+    order: 5
 ...
