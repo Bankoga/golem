@@ -1,6 +1,6 @@
 ---
 name: name of the region (will normally match the file name)
-external_input_dests: [input]
+external_input_dests: [first]
 act_types:
   - excitory
   - inhibitory
@@ -10,17 +10,18 @@ dendrite_types:
   basal: {direction: 0, length: 0, spread: line}
   adjacent: {direction: 0, length: 0, spread: line}
   local: {direction: 0, length: 0, spread: line}
+  preceding: {direction: 0, length: 0, spread: line}
 morphologies:
   star: {adjacent, apical, basal, local}
-  pyramid: {}
+  pyramid: {adjacent, apical, local}
   bipolar: {}
   unipolar: {}
 layers:
-  - name: input
+  - name: first
     point_size: 20
   - name: middle
     point_size: 20
-  - name: output
+  - name: last
     point_size: 20
     cells:
       - pct: 0.8
