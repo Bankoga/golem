@@ -75,3 +75,4 @@ class Destination:
             So at this point, we can safely expect 5 or more regions that we need predefined to get info from
             Greater flexibility results from localizing cell morphologys, plas rules, resource constraints, connect patterns, etc... to each layer or region
         """
+        TODO: determine if this is handled by the dendrites class
