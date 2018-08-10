@@ -1,0 +1,36 @@
+---
+name: name of the region (will normally match the file name)
+external_input_dests: [input]
+act_types:
+  - excitory
+  - inhibitory
+  - modulatory
+dendrite_types:
+  apical: {direction: 0, length: 0, spread: line}
+  basal: {direction: 0, length: 0, spread: line}
+  adjacent: {direction: 0, length: 0, spread: line}
+  local: {direction: 0, length: 0, spread: line}
+morphologies:
+  star: {adjacent, apical, basal, local}
+  pyramid: {}
+  bipolar: {}
+  unipolar: {}
+layers:
+  - name: input
+    point_size: 20
+  - name: middle
+    point_size: 20
+  - name: output
+    point_size: 20
+    cells:
+      - pct: 0.8
+        act_type: excitory
+        morphology: star
+        source: DO WE WANT TO HAVE EACH CELL TYPE KNOW WHERE IT SHOULD BE RECEIVING FROM FOR THE PRIMARY DENDRITE?
+        destinations: [output]
+      - pct: 0.2
+        act_type: inhibitory
+        morphology: star
+        source: middle
+        destinations: [input]
+...
