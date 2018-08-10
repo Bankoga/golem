@@ -14,7 +14,7 @@ class BrainNetwork:
         self.session_length = self.ts_per_sim_second * 60 * 12
 
     def batch_inputs(self, outputs):
-        TODO: batch inputs to each destination based on their input profiles
+        TODO: batch inputs to destinations based on their respective input profiles. Destinations or Cells can handle which cells deal with which sources
         TODO: Guarantee consistent order of sources in each bucket
         # this seems like a very problematic step
         """
