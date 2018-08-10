@@ -43,7 +43,7 @@ Each cell then has to multiply the input sources by the corresponding dendrite a
 ops_cell = edges_per_cell*Math.pow(3,2) + edges_per_cell*3 + edges_per_cell*Math.pow(3,2)
 
 **The problem we have is that biological brains are exemplars of the fact that hardware is an expression of software.**
-Implementing software optimized for specific hardware in a substrate with different paradigms is inefficient.
+Implementing software optimized for specific hardware in a substrate with different paradigms is inefficient. A biological brain is a highly efficient implementation of a graph. The computational cost is distributed because each vertex is a processor. Modern computer architectures rely on centralized, serial processing with parallel implemented via increasing the core count.
 
 ## Signal Propagation Speed
 
@@ -51,7 +51,7 @@ Myelination of axons determines how quickly a signal propgates through the axon 
 
 Not only does myelination affect signal speed, synapses with other cells can only form on unmyelinated sections of the axon. The two segments that are almost universally unmyelinated, are the segment where the axon connects to the cell body, and the treelike endpoint terminal. In our model, this means that all cells with basal dendrites may be able to accept inputs from their neighbors in the destination.
 
-> Open Question: whether or not to include distance based propagation timing to outputs based on distance
+> Open Question: Is distance based propagation timing to outputs based on distance necessary for, or does improve the effeciency of an stdp network?
 
 ## Input Batching
 
@@ -87,4 +87,10 @@ Which are three different batches of source across 5 different sources for 4 dif
 I'm not sure what degree of uniformity is acceptable across destinations, and sources for cells @ a destination. Regardless, 2 seems like the worst case scenario. That being said, all from same dests does simplify things, but it only sort of affects the complexity of input batching. Whereas all to same dests seems to limit the potential complexity of the network without any real affect on runtime complexity while marginally affecting init complexity. Init complexity doesn't matter all that much. It's always going to take longer than evaluating a single timestep
 
 > Open Question: Should all cells at a destination, receive from the same sources?
+
+This question can also be reframed as, to what degree does this cut down on the amount of processing required, to what extent does this affect capability, and are the reductions worth the cost to network capability?
+
 > Open Question: Should all cells at a destination, project to the same destinations?
+
+Partial Answer: **No. Each cell type should have different destinations, and output distributions.**
+Why: Good question!
