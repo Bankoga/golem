@@ -10,6 +10,9 @@ The brain is an open system, that has dedicated routes for external input, and o
 > Open Question: Does the translation change based on the available input slots for the corresponding problem domain?
 > Open Question: Where and how do we pass the translated data into the brain network?
 
+Images -> Spikes
+Spikes -> numbers, images, sounds, etc...
+
 ## Wiring Together Problem Domains
 
 The top level abstraction for a single node in the brain network is the problem domain. Currently we have several types of problem domains, with the Cortical type being the most prevalent. The others may have 1 paired usage at most based on current thinking.
@@ -22,6 +25,7 @@ There are several different problems associated with wiring domains together
 - How to distribute outputs to subsequent problem domains
 
 **Does size of PD change based on the number of inputs to the PD?**
+They do seem to be correlated.
 
 ### Indicating Input Slots for a Problem Domain
 
@@ -68,6 +72,8 @@ Total Inputs: 60
 | E             | 40            |
 | F             | 60            |
 |---------------|---------------|
+
+> Open Question: Why would there be fewer output slots than there are points in a layer?
 
 ### Output Distribution to other Domains
 
