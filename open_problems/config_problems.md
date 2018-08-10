@@ -6,13 +6,20 @@ These are open problems concerning config files, and thoughts on how to resolve 
 
 The top level abstraction is the brain network. A graph whose nodes are individual problem domains.
 
-> Open Question: Do we define the brain network in the code, or do we use a config? **use a config**
+> ~~Open Question: Do we define the brain network in the code, or do we use a config?~~
+
+**Use a config to define each problem domain.**
 
 If we want to continue with the same approach that we have been using, then going with a config seems to be the best route.
 
+> Open Question: How is input passed to sensor problem domains?
+> Open Question: How is output passed from motor control domains?
+
 ## Problem Domain Configs
 
-> Open Question: Do we need configs for the problem domain types? **YES. See below for reason why.**
+> ~~Open Question: Do we need configs for the problem domain types?~~
+
+**YES. See below for reason why.**
 
 Problem domain type information has to be stored somewhere, be it in an object that lives in the framework, or in a config of some sort. Since we have decided on a config based approach in order to separate specific connection details from general framework behaviour, then we should continue with this approach for problem domains.
 
@@ -27,8 +34,13 @@ For a fully evolutionary approach, it seems like each problem domain would be a 
 
 ## Cell Type Configs
 
-> Open Question: What determines cell type for our model?
+> ~~Open Question: What determines cell type for our model?~~
+
+Answer: **an object with the properties {activation_type, list(dendrite_type), list(destinations)}**
+
 > Open Question: Is there a master list of all possible cell types?
+
+Partial Answer: **Each region config has it's own list of cell type components.**
 
 Given that in a human brain, a single region like the Hippocampus can easily have over 20 different types of cells. Though because of the complexities of implementation via organic chemistry leads to a greater number of cell types, it's still easy to have tons of cells in a region. For now we are going with major cell types using generic patterns with the intent to use evolutionary algs to design configs later on. That being said, what cell types should be implemented, and how to implement them is still an open question.
 
@@ -36,6 +48,7 @@ Biological neuron typing is in fact an open question in neuroscience. The shape 
 
 > Open Question: do all cell types with basal dendrites accept inputs from their neighbors at the destination?
 > Open Question: how are the lengths of dendrites determined?
+
 Random length between 1 and some max based on type?
 Do apical dendrites have different lengths in different regions, and layers? This seems like a yeah
 So how is the length of a given apical dendrite determined?
