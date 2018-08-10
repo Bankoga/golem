@@ -15,6 +15,7 @@ class BrainNetwork:
 
     def batch_inputs(self, outputs):
         TODO: batch inputs to each destination based on their input profiles
+        TODO: Guarantee consistent order of sources in each bucket
         # this seems like a very problematic step
         """
         # buckets is a dictionary of dictionaries where list length is equal to the number of problem domains
