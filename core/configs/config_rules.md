@@ -19,10 +19,10 @@ As currently conceived, there are 4 types of problem domains:
 
 | **Type**      | **Regions**           | **Is_Paired** |
 |---------------|-----------------------|---------------|
-| Cortical      | Relay, Cortex         | True          |
-| SubCortex     | Many (undetermined)   | True          |
-| BrainStem     | Undetermined          | ?             |
-| Cerebellum    | 1 (revisit)           | ?             |
+| cortical      | relay, cortex         | True          |
+| subcortex     | Many (undetermined)   | True          |
+| brainstem     | Undetermined          | ?             |
+| cerebellum    | 1 (revisit)           | ?             |
 |---------------|-----------------------|---------------|
 
 ### Regions
@@ -77,7 +77,7 @@ The two major properties, determine the general other properties of the cell lik
 
 ## Region Config Files
 
-Since the framework is, for the most part, region, and layer agnostic, the specifics of each region are determined by a configuration yaml which contains all the data needed to initialize the region with all of its layers given the specific input/output constraints of the problem domain object.
+Since the framework is, for the most part, problem domain type, region, and layer agnostic, the specifics of each region are determined by a configuration yaml which contains all the data needed to initialize the region with all of its layers given the specific input/output constraints of the problem domain object.
 
 - aside from layer data, what other data needs to be stored in a region config?
 - layers list
