@@ -1,8 +1,14 @@
 ---
-name: prototype
+name: prototype brain
 nodes:
   - name: name of problem domain
     type: Cortical
+    outputs:
+      - name of pd
+      - name of pd
+      - name of pd
   - name: name of pd
     type: Cortical
+    outputs:
+      - this is a tricky one. requires answering open problems first
 ...
