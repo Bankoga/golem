@@ -40,7 +40,7 @@ AND we need to know the specific layers, and regions designated as input by the 
 Consequently, we know that each problem domain type requires specific layers within certain region for accepting output from other PDs.
 
 > Open Question: How are the specific input destinations indicated, and how does the framework handle this during init?
-> Open Question: When building connections between cells and destinations, how does we indicate that a problem domain type receives all inputs to a specific location or set of locations?
+> Open Question: When building connections between cells and destinations, how do we indicate that a problem domain type receives all inputs to a specific location or set of locations?
 
 For example, the Cortical type accepts external inputs via the cort_relay layer in the relay region which then passes input to the cortex region. Doing so starts a cascade of signal passing between layers of the two regions.
 
@@ -134,3 +134,10 @@ Each segment of a dendrite is an edge that connects a cell to some vertex (desti
 > Open Question: What determines the length of each dendrite?
 
 Answer: in most cases, it is the type of dendrite. However for apical dendrites, it is the distance from the source. For the local dendrite, it accepts outputs from it's neighboring cells
+
+> Open Question: do all cell types with basal dendrites accept inputs from their neighbors at the destination?
+> Open Question: how are the lengths of dendrites determined?
+
+Random length between 1 and some max based on type?
+Do apical dendrites have different lengths in different regions, and layers? This seems like a yeah
+So how is the length of a given apical dendrite determined?

@@ -40,6 +40,10 @@ Known types of regions are currently limited to:
 
 The purpose of a layer is to create destinations for cells, and constrain the possible connections of cells. In essence, a layer is an addressable container for cells. Every point in a layer corresponds to either a single cell XOR an array of cells. For convenience, mixing the paradigms of single vs array of cells within a given type of layer is not supported. Furthermore, a layer is a unit of height for a region.
 
+### Destinations
+
+Each point in a layer is a destination. Destinations are end points for cell axon projections. They contain either one or more cells based on the specs of the relevant config.
+
 ### Cells
 
 A cell in a human brain can broadly be described by two categories: neuronal, and glial. Neurons are the processors of the brain, and glial cells serve as maintenance, neuromodulation, and scaffolding. In this framework, the role of glial cells are largely played by the framework itself. Additionally, certain aspects of the brain that are controlled by glial cells, like myelination, are currently excluded in order to reduce the complexity of initializing a network, and the ongoing structural plasticity during activation.

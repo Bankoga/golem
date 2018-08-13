@@ -40,15 +40,8 @@ Answer: **an object with the properties {activation_type, list(dendrite_type), l
 
 > Open Question: Is there a master list of all possible cell types?
 
-Partial Answer: **Each region config has it's own list of cell type components.**
+Partial Answer: **Each region config has its own list of cell type components.**
 
 Given that in a human brain, a single region like the Hippocampus can easily have over 20 different types of cells. Though because of the complexities of implementation via organic chemistry leads to a greater number of cell types, it's still easy to have tons of cells in a region. For now we are going with major cell types using generic patterns with the intent to use evolutionary algs to design configs later on. That being said, what cell types should be implemented, and how to implement them is still an open question.
 
 Biological neuron typing is in fact an open question in neuroscience. The shape of the dendrites, the different receptors in the dendrites, the shape of the cell body, the number of axons, and the types of outputs from the axon are all considered relevant to the type of neuron. Neuron typing is further complicated by structural plasticity in the brain that causes changes to all of those properties on an individual neuron basis according to usage based on poorly understood plasticity rules. Moreover, these changes are predominant during development which stops ~25 years of age in humans.
-
-> Open Question: do all cell types with basal dendrites accept inputs from their neighbors at the destination?
-> Open Question: how are the lengths of dendrites determined?
-
-Random length between 1 and some max based on type?
-Do apical dendrites have different lengths in different regions, and layers? This seems like a yeah
-So how is the length of a given apical dendrite determined?
