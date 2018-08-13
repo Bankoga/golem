@@ -12,9 +12,9 @@ dendrite_types:
   local: {direction: 0, length: 0, spread: line}
   preceding: {direction: 0, length: 0, spread: line}
 morphologies:
-  star: {adjacent, apical, basal, local}
+  star: {adjacent, apical, basal, local, preceding}
   pyramid: {adjacent, apical, local}
-  bipolar: {}
+  bipolar: {apical, local}
   unipolar: {}
 layers:
   - name: first
