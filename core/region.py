@@ -22,7 +22,7 @@ class Region:
         self.length = length
         self.width = width
         TODO: raise an exception and exit if the yaml does not exist
-        config_fname = 'region_confs\\{0}.yaml'.format(region_type)
+        config_fname = 'configs\\regions\\{0}.yaml'.format(region_type)
         self.config = load(open(config_fname))
         self.layers = self.create_layers()
 
