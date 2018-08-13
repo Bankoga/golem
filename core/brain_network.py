@@ -57,6 +57,7 @@ class BrainNetwork:
     def batch_inputs(self, outputs):
         TODO: batch inputs to destinations based on their respective input profiles. Destinations or Cells can handle which cells deal with which sources
         TODO: Guarantee consistent order of sources in each bucket
+        TODO: Ensure that the aggregated sources are useable in a matrix mult
         # this seems like a very problematic step
         """
         # buckets is a dictionary of dictionaries where list length is equal to the number of problem domains
