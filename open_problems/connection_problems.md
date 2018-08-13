@@ -39,18 +39,22 @@ AND we need to know the specific layers, and regions designated as input by the 
 
 Consequently, we know that each problem domain type requires specific layers within certain region for accepting output from other PDs.
 
-> Open Question: How are the specific input destinations indicated, and how does the framework handle this during init?
-> Open Question: When building connections between cells and destinations, how do we indicate that a problem domain type receives all inputs to a specific location or set of locations?
-
+> ~~Open Question: How are the specific input destinations indicated/When building connections between cells and destinations, how do we indicate that a problem domain type receives all inputs to a specific location or set of locations?~~
 For example, the Cortical type accepts external inputs via the cort_relay layer in the relay region which then passes input to the cortex region. Doing so starts a cascade of signal passing between layers of the two regions.
+
+Answer: Each problem domain type specifies which regions serve as inputs. Furthermore, each region specifies which layers should receive inputs. All projections to the domain type are split according to that data.
+
+> ~~Open Question: How do we indicate for a problem domain type that an external input goes to three seperate layers across 2 regions?~~
+
+Answer: If a problem domain type config specifies which regions serve as input, and those regions specify which layers serve as their inputs, then we don't need to specify at the pd type level which layers are inputs. Though this does seem somewhat clunky. **This question and answer relate to the preceeding question.**
+
+> ~~Open Question: How does the framework handle this during init?~~
+
+Answer: If we do not save the configs at each level of abstraction, and only keep a copy at the highest level, then initialization is more memory intensive than the created network. However, each level of abstraction needs to know about the higher levels of abstraction that it works with. So we pass a reference to the master copy to all lower levels that they use for creation of the network, while saving only the necessary details for the current level.
 
 > Open Question: **During init, how does the framework know to build a path to a cort_relay dest, and with what distribution?**
 
 Partial Answer: The brain network edges are used to determine output replacements for destinations inside a problem domain. How to determine the appropriate distribution is still an open question.
-
-> ~~Open Question: How do we indicate for a problem domain type that an external input goes to three seperate layers across 2 regions?~~
-
-Answer: If a problem domain type config specifies which regions serve as input, and those regions specify which layers serve as their inputs, then we don't need to specify at the pd type level which layers are inputs. Though this does seem somewhat clunky.
 
 ### Input Distribution Between Domains
 

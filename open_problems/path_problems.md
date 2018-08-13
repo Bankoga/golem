@@ -19,6 +19,12 @@ These components are as follows:
 At present, I'm leaning towards l_pos because each layer is in fact a 2D matrix whereas a region is a stack of matrices.
 > [pd_key, r_key, l_key, l_pos(i,j), c_ind]
 
+### Destination Keys
+
+> Open Question: What should be used as the destination between semantically named layers? The order? What about cross-region references?
+
+The destinations should use the path data schema with appropriate substitution slots, and relative paths. Though that does not answer the question.
+
 ## Object Level Representation
 
 > Open Question: For each level of the network, do we represent the current location or path to the current location?
@@ -37,14 +43,21 @@ The levels of a brain network in this framework are as follows from highest to l
 
 The top 3 levels are basically meta.
 
-> Open Question: How are distances calculated for the top 3 levels of the hierarchy?
+> ~~Open Question: How are distances calculated for the top 3 levels of the hierarchy?~~
 
-Layers can be though of as an ordered list, or stack. The length of the list then would represent the height of the region. Each layer though is still another level of meta that encapsulates the lowest level vertices in the brain network graph, the destinations. All the higher level vertices bound the connection possibilities for any given destination.
+Answer: Layers can be though of as an ordered list, or stack. The length of the list then would represent the height of the region. Each layer though is still another level of meta that encapsulates the lowest level vertices in the brain network graph, the destinations. All the higher level vertices bound the connection possibilities for any given destination.
 Regions in a problem domain are themselves very much like a graph. Each region is a vertice, and connection profiles of the regions determines how the edges between regions are built. Though that's redundant, and doesn't explain why a layer connects to a different region, or how it connects.
 
 ## Brain Network Graph
 
 The brain network is effectively a graph where each node is a problem domain. The brain network itself is a high level abstraction used to better understand what the system does, and how it does it.
 
-> Open Question: How do we indicate the stage of a PD in the brain network?
-> Open Question: Are we able to use the graph to represent distinct steps in a processing sequence?
+> Open Question: How do we determine distance between two cells? (i.e. How do we indicate the stage of a PD in the brain network?)
+Animal brains are literal processing graphs. Unlike abstract graphs which can be drawn in many ways because its structure is based solely on edges, each biological vertex in the graph has an intrinsic volume, and position in space. This constrains the rendered representations of the graph, and determines distances between vertices. Consequently, while two vertices may have an edge, the length of the edge either in our graph must be stored explicitly or as a property of a difference between their positions if we are to implement distance based signal propagation. The stage of a PD is one way to handle this though it may not be the best or most intuitive solution. There are two questions here, do we want to determine distance between cells, and what structure should we use to calculate distance?
+
+Answer: ?
+
+> ~~Open Question: Are we able to use the graph to represent distinct steps in a processing sequence?~~
+This question is related to the distance between cells question.
+
+Answer: Yes though it is unclear what value doing so brings. All cells are evaluated at each time step so the step in a sequence is a high level abstraction useful for building brain configs. It makes more sense to talk about position in the graph than it does steps in a sequence. Though it is unlikely that a node near the "back" (closest to external input domains) of the graph would directly be one of the last steps in the processing sequence. In such a case, said node probably is receiving feedback.

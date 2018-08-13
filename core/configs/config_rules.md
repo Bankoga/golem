@@ -6,7 +6,7 @@ Biological brains are 3D objects with complex patterns of connectivity. However,
 
 ## The Purpose of Problem Domains, Regions, and Layers
 
-A brain network, as implemented by this framework, has 3 levels of organization that affect how cells, at the lowest level, operate. The levels, from highest to lowest, are as follows:
+A brain network, as implemented by this framework, has 3 levels of asbtraction/organization that affect how cells, at the lowest level, operate. The levels, from highest to lowest, are as follows:
 
 - Problem Domain
 - Region
@@ -48,7 +48,7 @@ Each point in a layer is a destination. Destinations are end points for cell axo
 
 A cell in a human brain can broadly be described by two categories: neuronal, and glial. Neurons are the processors of the brain, and glial cells serve as maintenance, neuromodulation, and scaffolding. In this framework, the role of glial cells are largely played by the framework itself. Additionally, certain aspects of the brain that are controlled by glial cells, like myelination, are currently excluded in order to reduce the complexity of initializing a network, and the ongoing structural plasticity during activation.
 
-The two major properties of a cell are activation_type, and cell_morphology
+The two major properties of a cell are activation_type, and cell_morphology. Activation type determines how a cell is consumed, and morphology determines how it consumes. We assume that all cells project to some destination(s).
 
 > Randomly generate the lengths of seconday dendrites based on morphology?
 > Usage based growth may need to be implemented at some point
@@ -103,8 +103,7 @@ Since the framework is, for the most part, problem domain type, region, and laye
 
 The destination of a cells axon can't be absolutely determined before initialization due to the relative nature of the connectivity patterns. Consequently, we need to use keys in the config that are parsed during init, and replaced with the absolute path data. For example, if a layer has cells that project to adjacent columns, we won't know the indices of the adjacent columns until we know the size of the region which is determined during initialization.
 
-> What should be used as the destination between semantically named layers? The order? What about cross-region references?
-> The destinations should use the path data schema with appropriate substitution slots, and relative paths
+**SEE PATH PROBLEMS FOR OPEN QUESTIONS CONCERNING DESTINATION KEYS!**
 
 Some cells project to multiple destinations via the same axon. The axon will branch.
 
