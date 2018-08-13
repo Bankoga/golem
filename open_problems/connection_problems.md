@@ -59,30 +59,80 @@ Partial Answer: The brain network edges are used to determine output replacement
 ### Input Distribution Between Domains
 
 > Open Question: How is the distribution of inputs from disparate sources spread across the finite input slots of a single problem domain?
+This may be a good reason to add a structural plasticity phase to the network eventually. So that we can tune based on usage.
 
 - Does each distinct source of inputs, correspond to a subrange of the total num of input slots?
   - What happens when there are more inputs from a source than there are input slots?
-  - What happens when the sum of inputs from all sources exceed the number of input slots?
+  - **What happens when the sum of inputs from all sources exceed the number of input slots?**
+    - This is in fact the case with the striatum, and several other areas within the subcortex!
 - ?
 
-For example, we have 3 pds (a, b, c) as inputs to 3 pds (d, e, f)
+**FACT: Axons rarely have large numbers of branches. Concurrently, there is evidence that higher iq brains have more specific axons (i.e. those that branch less or go to fewer cells).**
+From this fact we can infer that densely connected layers, like in a conv net, where all cells go to all outputs, are probably not the route to take.
 
-| **Domain**    | **Num Slots** |
-|---------------|---------------|
-| A             | 20            |
-| B             | 10            |
-| C             | 40            |
-|---------------|---------------|
-Total Inputs: 60
+Partial Answer: If we only had D as an output for all 3, and if we ensure that all output slots are used, then, in part, this becomes a question of compression. 70 -> 30 so each domain must have multiple cells connect to the same output proportional to the number of domains. So in 70 -> 30 with 3 domains, each domain would project to a percent of the output cells based on num outputs.
 
-| **Domain**    | **Num Slots** |
-|---------------|---------------|
-| D             | 30            |
-| E             | 40            |
-| F             | 60            |
-|---------------|---------------|
+| **Domain**    | **Pct of Outputs** | **Num Cells** |
+| --- | --- | --- |
+| A | 0.286 | 8.571 |
+| B | 0.143 | 4.286 |
+| C | 0.571 | 17.143 |
+
+Three options for decimals:
+
+- floor the results, then add the difference between expected and result to the domain with the greatest num cells
+- ceil the results, then subtract the difference between expected and result from the domain with the greatest num cells
+- round the results, then add/subtract the diff between expected and result to domain with greatest num cells
+
+For example, we have 3 pds (a, b, c) as inputs to 3 pds (d, e, f). Here we have to calculate the num of cells available to each domain for each output, and num avail for input to calculate the ratio of output slots to input slots that would be used to determine the number of destination per output slot.
+
+| **Domain**    | **Num Slots** | **Avail D** | **Avail E** | **Avail F** |
+| --- | --- | --- | --- | --- |
+| A             | 20            | 4.286 | 5.714 | 10 |
+| B             | 10            | 2.143 | 2.857 | 5 |
+| C             | 40            | 8.57 | 11.429 | 20 |
+| --- | --- | --- | --- | --- |
+Total Inputs: 70
+
+| **Domain**    | **Num Slots** | **Num For A** | **Num For B** | **Num For C** |
+| --- | --- | --- | --- | --- |
+| D             | 30            | 8.571 | 4.286 | 17.143 |
+| E             | 40            | 11.429 | 5.714 | 22.857 |
+| F             | 70            | 20 | 10 | 40 |
+| --- | --- | --- | --- | --- |
+Total Outputs: 140
+
+| **Domain** | **Ratio to D** | **Ratio to E** | **Ratio to F** |
+| --- | --- | --- | --- |
+| A | 4.286 : 8.571 | 5.714 : 4.2868 | 10 : 17.143 |
+| B | 2.143 : 11.429 | 2.857 : 5.714 | 5 : 22.857 |
+| C | 8.57 : 20 | 11.429 : 10 | 20 : 40 |
+| --- | --- | --- | --- |
+
+| **Domain** | **Ratio to D** | **Ratio to E** | **Ratio to F** |
+| --- | --- | --- | --- |
+| A | 4->9 | 6->4 | 10->17 |
+| B | 2->11 | 3->6 | 5->23 |
+| C | 9->20 | 11->10 | 20->40 |
+| --- | --- | --- | --- |
+
+These ratios represent the actual numbers of output cells to input cells. They would be used to determine the number of destinations each output cell projects to. Though in fact this would be calculated by the destination, and used to create the cells.(?)
+
+var cnt = 70
+var sum = 20+10+40
+var a = 20/sum*cnt
+var b = 10/sum*cnt
+var c = 40/sum*cnt
+console.log(a)
+console.log(b)
+console.log(c)
+Math.round(a) + Math.round(b) + Math.round(c)
 
 > Open Question: Why would there be fewer output slots than there are points in a layer?
+I.E. under what conditions would it be possible for a layer to have fewer output slots than points?
+
+Answer: When the layer is sequential, and returns a sequence. Why would that be a thing though?
+The claustrum may be configured in this manner!
 
 ### Output Distribution to other Domains
 
@@ -90,9 +140,17 @@ Each problem domain type has a set number of dedicated output layers for the gen
 
 While these problems are affected by the solution to the input distribution problem, it does require separate handling.
 
-> Open Question: How is the distribution of outputs to multiple domains handled?
-> Open Question: Are all the outputs sent to all the subsequent domains?
+> ~~Open Question: How is the distribution of outputs to multiple domains handled?~~
+
+Answer: Outside of adjacency, and pairing points, for now we assume that all output slots are split across the output domains. This is because axon sparsity, or branch minimization, is apparently related to the IQ of the network.
+
+> ~~Open Question: Are all the outputs sent to all the subsequent domains?~~
+
+Answer: For now we assume no. Though this does beg the question, what does it mean for the number of outputs to be split across different domains? Very much a matter of the semantics of the numbers, patterns, and timing of spikes.
+
 > Open Question: Are the outputs split across the subsequent domains?
+
+Answer: For now we assume that each subsequent domain, consumes a pct of the number of output slots based on how many total slots are at the destination.
 
 For example, we have 1 PD (a) that outputs to 3 other PDs (b, c, d)
 
@@ -103,10 +161,17 @@ For example, we have 1 PD (a) that outputs to 3 other PDs (b, c, d)
 
 | **Domain**    | **Num Slots** |
 |---------------|---------------|
-| B             | 10            |
-| C             | 40            |
-| D             | 20            |
+| B             | 20            |
+| C             | 10            |
+| D             | 40            |
 |---------------|---------------|
+Total Output Slots: 70
+
+| **Domain**    | **Pct of Outputs** | **Num Cells** |
+| --- | --- | --- |
+| B | 0.286 | 5.714 |
+| C | 0.143 | 2.857 |
+| D | 0.571 | 11.429 |
 
 Diff ways of splitting output across cells in diff domains
 
@@ -124,7 +189,13 @@ Diff ways of splitting output across cells in diff domains
 
 > Open Question: Do we want to have problem domain types that connect adjacently outside of the dedicated output layers?
 
-In the human neocortex, this would be having adjacent broadmann areas connect to each other near the borders via the layers that handle adjacency.
+In the human neocortex, this would be having adjacent broadmann areas connect to each other near the borders via the layers that handle adjacency. Also, it would be having the relays connect to each other. The relay case is more compelling than the broadmann area case.
+
+### Distribution Complexity
+
+> Open Question: Is it a good idea, or even necessary to do the availability based splitting of inputs, and outputs with the ratios used to determine the destinations?
+
+Answer: I currently do not have a clue!
 
 ## Unique vs Split Destinations
 
