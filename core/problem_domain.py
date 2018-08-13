@@ -12,7 +12,7 @@ class ProblemDomain:
     Will currently operate under the hypothesis that Problem domains are largely defined by usage which is a function of types of inputs and outputs
     Consequently, can go with just num cells/columns/stacks for now
     """
-    def __init__(self, name, domain_type, num_cells_primary):
+    def __init__(self, name, domain_type, outputs, num_cells_primary):
         self.name = name
         TODO: raise an exception and exit if the yaml does not exist
         config_fname = 'configs\\domain_types\\{0}.yaml'.format(domain_type)
@@ -24,7 +24,7 @@ class ProblemDomain:
 
     def create_regions(self):
         regions = {}
-        for region in config['regions']:
+        for region in self.config['regions']:
             TODO: add new region to regions dictionary
         return regions
 
