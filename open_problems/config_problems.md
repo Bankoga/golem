@@ -12,8 +12,14 @@ The top level abstraction is the brain network. A graph whose nodes are individu
 
 If we want to continue with the same approach that we have been using, then going with a config seems to be the best route.
 
+> Open Question: Can we use a flag in some config to handle input stream creation, and processing?
+
+This is currently unknown!
+
 > Open Question: How is input passed to sensor problem domains?
 > Open Question: How is output passed from motor control domains?
+
+Those are both difficult questions!
 
 ## Problem Domain Configs
 

@@ -1,0 +1,8 @@
+---
+name: prototype
+nodes:
+  - name: name of problem domain
+    type: Cortical
+  - name: name of pd
+    type: Cortical
+...
