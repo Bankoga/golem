@@ -1,9 +1,10 @@
 # contains the definition for the problem domain level object
 # e.g. a combination of a relay layer, and a cortex layer as initially devised
 # will perhaps refactor in the future so as to include sub cortical aspects that are not the thalamus. It is still unclear how to do so though
+from yaml import load, dump
+from layer import *
 
-class ProblemDomain():
-
+class ProblemDomain:
     """
     Need to determine if give a number of cells to the domain, and have it determine the length and width of the regions
         If we assume yes, then what defines a problem domains inputs?
@@ -13,10 +14,21 @@ class ProblemDomain():
     """
     def __init__(self, name, domain_type, num_cells_primary):
         self.name = name
-        self.regions # create the regions according to the domain_type definition
+        TODO: raise an exception and exit if the yaml does not exist
+        config_fname = 'configs\\domain_types\\{0}.yaml'.format(domain_type)
+        self.config = load(open(config_fname))
+         # create the regions according to the domain_type definition
+        self.regions = self.create_regions()
         # when creating cortical regions, num_cells_primary determines the num_columns, and num cells in the relays
         TODO: play around with efficiency of different lengths and widths instead of squares after all is working
 
+    def create_regions(self):
+        regions = {}
+        for region in config['regions']:
+            TODO: add new region to regions dictionary
+        return regions
+
+    TODO: add activation parameters to activate
     def activate(self):
         """
             perhaps a new name will better fit but this is fine for now. It matches the cell func name
@@ -25,3 +37,7 @@ class ProblemDomain():
                 collect the activation result of the region on the input batch into an array
             return the regions results to the axon server for the current timestep
         """
+        activations = []
+        for region in self.regions:
+            activations.extend(region.activate())
+        return activations
