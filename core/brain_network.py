@@ -3,6 +3,8 @@
 # A brain_network consists of multiple problem domains wired together to form a cohesive dynamical system
 # top level goals live here
 from .imports import *
+from yaml import load, dump
+from layer import *
 
 class BrainNetwork:
     def __init__(self, is_pair):
@@ -12,6 +14,11 @@ class BrainNetwork:
         self.mode = "work"
         self.ts_per_sim_second = 1000
         self.session_length = self.ts_per_sim_second * 60 * 12
+
+    def create_network(self, brain_name):
+        TODO: raise an exception and exit if the yaml does not exist
+        config_fname = 'configs\\brains\\{0}.yaml'.format(brain_name)
+        self.config = load(open(config_fname))
 
     def batch_inputs(self, outputs):
         TODO: batch inputs to destinations based on their respective input profiles. Destinations or Cells can handle which cells deal with which sources
