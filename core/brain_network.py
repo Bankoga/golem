@@ -19,6 +19,40 @@ class BrainNetwork:
         TODO: raise an exception and exit if the yaml does not exist
         config_fname = 'configs\\brains\\{0}.yaml'.format(brain_name)
         self.config = load(open(config_fname))
+        self.name = self.config['name']
+        TODO: parse each node, grab the config details, and build the nodes contents/destinations
+        graph = {}
+        i_counts = get_input_counts(self.config['nodes'])
+        for pd in self.config['nodes']:
+            TODO: add new problem domain to graph dict
+            key = pd['name']
+            num_cells = get_num_cells()
+            obj = ProblemDomain(key, pd['type'], pd['outputs'], get_num_cells(i_counts[key]))
+            graph.add(key, obj)
+        self.brain = graph
+
+    def get_input_counts(nodes):
+        TODO: determine if this should instead return a dict of pd keys and input domains instead
+        TODO: Determine method for calculating number of cells in a problem domain
+        # Build adjacency matrix, and count number of inputs to each node?
+        cells_dict = {}
+        for pd in nodes:
+            key = pd['name']
+            count = 0
+            inps = []
+            for apd in nodes:
+                if key != apd['name']:
+                    if pd['outputs'].contains(key):
+                        count += 1
+                        inps.append(apd['name'])
+            cells_dict.add(key, count, inps)
+        return cells_dict
+
+    def get_num_cells(self, edge_count):
+        num_cells = 0
+        TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
+        TODO: determine if this needs to be done at a lower level of abstraction. This seems likely
+        return num_cells
 
     def batch_inputs(self, outputs):
         TODO: batch inputs to destinations based on their respective input profiles. Destinations or Cells can handle which cells deal with which sources
@@ -86,7 +120,7 @@ class BrainNetwork:
                 # match axon destinations with problem domain accepted inputs
                 inputs = self.batch_inputs(outputs)
                 outputs = []
-                for pd in pds:
+                for pd in self.brain:
                     # activate each problem domain (each PD activates it's region which in turn activate layers which activate cells)
                     # collect the ouputs from each problem domain
                     outputs.extend(pd.activate(mode, ts_count, inputs[pd.name]))
@@ -94,6 +128,7 @@ class BrainNetwork:
                 - ts_count++
         return interrupt
         """
+
     def save(fn, a): 
         """Utility function that savess model, function, etc as pickle"""    
         pickle.dump(a, open(fn,'wb'))
