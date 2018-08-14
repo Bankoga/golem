@@ -32,9 +32,9 @@ class BrainNetwork:
             num_cells = get_num_cells()
             pd_type = pd['type']
             if pd_type == 'decoder':
-                obj = Decoder(pd_type, pd['outputs'])
+                obj = Decoder(pd['controller'], pd['outputs'])
             elif pd_type == 'encoder':
-                obj = Encoder(pd_type, pd['outputs'])
+                obj = Encoder(pd['controller'], pd['outputs'])
             else:
                 obj = ProblemDomain(key, pd_type, pd['outputs'], get_num_cells(i_counts[key]))
             graph.add(key, obj)
