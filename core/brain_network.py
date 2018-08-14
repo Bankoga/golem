@@ -5,6 +5,9 @@
 from .imports import *
 from yaml import load, dump
 from layer import *
+from problem_domain import *
+from decoder import *
+from encoder import *
 
 class BrainNetwork:
     def __init__(self, is_pair):
@@ -27,7 +30,13 @@ class BrainNetwork:
             TODO: add new problem domain to graph dict
             key = pd['name']
             num_cells = get_num_cells()
-            obj = ProblemDomain(key, pd['type'], pd['outputs'], get_num_cells(i_counts[key]))
+            pd_type = pd['type']
+            if pd_type == 'decoder':
+                obj = Decoder(pd_type, pd['outputs'])
+            elif pd_type == 'encoder':
+                obj = Encoder(pd_type, pd['outputs'])
+            else:
+                obj = ProblemDomain(key, pd_type, pd['outputs'], get_num_cells(i_counts[key]))
             graph.add(key, obj)
         self.brain = graph
 
