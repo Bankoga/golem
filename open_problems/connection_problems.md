@@ -6,7 +6,7 @@ There are plenty of open problems with the framework at the moment. For code cha
 
 The brain is an open system, that has dedicated routes for external input, and output.
 
-> Open Question: How do we translate external sensor data into spikes for the corresponding problem domains?
+> ~~Open Question: How do we translate external sensor data into spikes for the corresponding problem domains?~~
 
 Answer: Translation must be done on a sensor type basis, with each sensor having unique code for handling the translation.
 
@@ -105,17 +105,17 @@ For example, we have 3 pds (a, b, c) as inputs to 3 pds (d, e, f). Here we have 
 
 | **Domain**    | **Num Slots** | **Avail D** | **Avail E** | **Avail F** |
 | --- | --- | --- | --- | --- |
-| A             | 20            | 4.286 | 5.714 | 10 |
-| B             | 10            | 2.143 | 2.857 | 5 |
-| C             | 40            | 8.57 | 11.429 | 20 |
+| A | 20 | 4.286 | 5.714 | 10 |
+| B | 10 | 2.143 | 2.857 | 5 |
+| C | 40 | 8.57 | 11.429 | 20 |
 | --- | --- | --- | --- | --- |
 Total Inputs: 70
 
 | **Domain**    | **Num Slots** | **Num For A** | **Num For B** | **Num For C** |
 | --- | --- | --- | --- | --- |
-| D             | 30            | 8.571 | 4.286 | 17.143 |
-| E             | 40            | 11.429 | 5.714 | 22.857 |
-| F             | 70            | 20 | 10 | 40 |
+| D | 30 | 8.571 | 4.286 | 17.143 |
+| E | 40 | 11.429 | 5.714 | 22.857 |
+| F | 70 | 20 | 10 | 40 |
 | --- | --- | --- | --- | --- |
 Total Outputs: 140
 
@@ -148,7 +148,7 @@ Math.round(a) + Math.round(b) + Math.round(c)
 > Open Question: Why would there be fewer output slots than there are points in a layer?
 I.E. under what conditions would it be possible for a layer to have fewer output slots than points?
 
-Answer: When the layer is sequential, and returns a sequence. Why would that be a thing though?
+Answer: When the layer is sequential, and returns a sequence. Why would that be a thing though? What other cases are there?
 The claustrum may be configured in this manner!
 
 ### Output Distribution to other Domains
@@ -212,7 +212,7 @@ In the human neocortex, this would be having adjacent broadmann areas connect to
 
 > Open Question: Is it a good idea, or even necessary to do the availability based splitting of inputs, and outputs with the ratios used to determine the destinations?
 
-Answer: I currently do not have a clue!
+Bad Answer: I currently do not have a clue!
 
 ## Unique vs Split Destinations
 
@@ -222,16 +222,17 @@ Answer: As an array with multiple values in the config.
 
 > Open Question: How can an axon plasticly split by usage?
 
+Answer: ?
+
 ## Dendrite Sources
 
 Each segment of a dendrite is an edge that connects a cell to some vertex (destination). Most dendrites pass through multiple destinations, and thus create multiple edges.
 
 > Open Question: What determines the length of each dendrite?
 
-Partial Answer: In most cases, it is the type of dendrite. However for apical dendrites, it is the distance from the source. For the local dendrite, it accepts outputs from it's neighboring cells. Though each type of dendrite may be able to behave differently based on the its location in the brain. Consequently, it may be necessary to have each layer define its own dendrite types. Which would be a giant pain.
+Partial Answer: In most cases, it is the type of dendrite. However for apical dendrites, it is the distance from the source. For the local dendrite, it accepts outputs from its neighboring cells. Though each type of dendrite may be able to behave differently based on the its location in the brain. Consequently, it may be necessary to have each layer define its own dendrite types. Which would be a giant pain.
 
 > Open Question: do all cell types with basal dendrites accept inputs from their neighbors at the destination?
-> Open Question: how are the lengths of dendrites determined?
 
 Random length between 1 and some max based on type?
 Do apical dendrites have different lengths in different regions, and layers? This seems like a yeah
