@@ -29,7 +29,6 @@ class BrainNetwork:
         for pd in self.config['nodes']:
             TODO: add new problem domain to graph dict
             key = pd['name']
-            num_cells = get_num_cells()
             pd_type = pd['type']
             if pd_type == 'decoder':
                 obj = Decoder(pd['controller'], pd['outputs'])
