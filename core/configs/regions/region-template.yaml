@@ -7,20 +7,24 @@ act_types:
   - modulatory
 dendrite_types:
   apical: {direction: 0, length: 0, spread: line}
-  basal: {direction: 0, length: 0, spread: line}
-  adjacent: {direction: 0, length: 0, spread: line}
+  basal: {direction: 0, length: 0, spread: cone}
+  adjacent: {direction: 0, length: 0, spread: cone}
   local: {direction: 0, length: 0, spread: line}
-  preceding: {direction: 0, length: 0, spread: line}
+  preceding: {direction: 0, length: 0, spread: cone}
 morphologies:
   star: {adjacent, apical, basal, local, preceding}
-  pyramid: {adjacent, apical, local}
+  pyramid: {adjacent, apical, basal, local}
   bipolar: {apical, local}
-  unipolar: {}
+  unipolar: {local}
 layers:
   - name: first
     point_size: 20
+    cells:
+      - ?
   - name: middle
     point_size: 20
+    cells:
+      - ?
   - name: last
     point_size: 20
     cells:

@@ -1,14 +1,18 @@
 ---
 name: prototype brain
 nodes:
+  - name: sense
+    type: encoder
+    outputs:
+      - name of problem domain
   - name: name of problem domain
-    type: Cortical
+    type: cortical
     outputs:
       - name of pd
       - name of pd
       - name of pd
   - name: name of pd
-    type: Cortical
+    type: cortical
     outputs:
       - this is a tricky one. requires answering open problems first
 ...
