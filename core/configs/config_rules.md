@@ -15,15 +15,21 @@ A brain network, as implemented by this framework, has 3 levels of asbtraction/o
 ### Problem Domains
 
 There are several types of problem domains, each with a unique set of regions. Problem domains are high level objects built using lots of smaller shapes. Kind of like polygons for graphics.
-As currently conceived, there are 4 types of problem domains:
+As currently conceived, there are several types of problem domains:
 
-| **Type**      | **Regions**           | **Is_Paired** |
-|---------------|-----------------------|---------------|
-| cortical      | relay, cortex         | True          |
-| subcortex     | Many (undetermined)   | True          |
-| brainstem     | Undetermined          | ?             |
-| cerebellum    | 1 (revisit)           | ?             |
-|---------------|-----------------------|---------------|
+| **Type** | **Regions** | **Is_Paired** |
+| --- | --- | --- |
+| cortical | relay, cortex | True |
+| subcortex | Many (undetermined) | True |
+| brainstem | Undetermined | ? |
+| cerebellum | 1 (revisit) | ? |
+| encoder | 0 | ? |
+| decoder | 0 | ? |
+| --- | --- | --- |
+
+Because brains are highly connected, and strongly interdependent, cleanly separating all the pieces can be difficult. Whenever we hit a rough spot, we will have to refactor.
+
+Encoder domains are unique, and must have predefined support in the framework. This will probably be the same for the decoder type of problem domains. Both are interaction points outside the network, and thus require specific handling that does not apply to the other types of domains.
 
 ### Regions
 
@@ -74,6 +80,8 @@ A Cell Type is a tuple of an activation_type, a single cell_morphology, & one or
 > cell_type = {activation_type, cell_morphology, destinations[]}
 
 The two major properties, determine the general other properties of the cell like the plasticity properties, resource constraints, etc...
+
+**All cells include receptors for the destination that contains them!**
 
 ## Region Config Files
 

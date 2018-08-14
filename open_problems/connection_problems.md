@@ -7,11 +7,28 @@ There are plenty of open problems with the framework at the moment. For code cha
 The brain is an open system, that has dedicated routes for external input, and output.
 
 > Open Question: How do we translate external sensor data into spikes for the corresponding problem domains?
-> Open Question: Does the translation change based on the available input slots for the corresponding problem domain?
-> Open Question: Where and how do we pass the translated data into the brain network?
 
-Images -> Spikes
-Spikes -> numbers, images, sounds, etc...
+Answer: Translation must be done on a sensor type basis, with each sensor having unique code for handling the translation.
+
+> Open Question: Does the translation change based on the available input slots for the corresponding problem domain?
+
+Answer: ?
+
+> ~~Open Question: Where and how do we pass the translated data into the brain network?~~
+
+Answer: For each type of sensor, and output format, we will use predefined interaction code for decoding, and encoding. Because for a given network type, we can know what sensors will be available, and the actions it will be able to take outside the network, we can use unique handling for those problem domain types. Each type serves as a point of interaction with the external world, and can be processed on a per timestep basis to ensure consistency of internally generated data. However, the code that does the processing will look fundamentally different. Most sensors will not serve as destinations for other problem domains, and thus won't have any region or destinations. Those few sensors that do receive some minimal feedback, will use a different method for processing the outputs from other problem domains because the data must be translated.
+
+Sensor Types
+
+- Image
+- Audio
+
+Output Types
+
+- characters
+- images
+- sounds
+- etc...
 
 ## Wiring Together Problem Domains
 
@@ -199,7 +216,10 @@ Answer: I currently do not have a clue!
 
 ## Unique vs Split Destinations
 
-> Open Question: How are split destinations represented?
+> ~~Open Question: How are split destinations represented?~~
+
+Answer: As an array with multiple values in the config.
+
 > Open Question: How can an axon plasticly split by usage?
 
 ## Dendrite Sources
@@ -208,7 +228,7 @@ Each segment of a dendrite is an edge that connects a cell to some vertex (desti
 
 > Open Question: What determines the length of each dendrite?
 
-Answer: in most cases, it is the type of dendrite. However for apical dendrites, it is the distance from the source. For the local dendrite, it accepts outputs from it's neighboring cells
+Partial Answer: In most cases, it is the type of dendrite. However for apical dendrites, it is the distance from the source. For the local dendrite, it accepts outputs from it's neighboring cells. Though each type of dendrite may be able to behave differently based on the its location in the brain. Consequently, it may be necessary to have each layer define its own dendrite types. Which would be a giant pain.
 
 > Open Question: do all cell types with basal dendrites accept inputs from their neighbors at the destination?
 > Open Question: how are the lengths of dendrites determined?
