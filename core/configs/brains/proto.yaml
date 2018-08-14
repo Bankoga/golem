@@ -3,6 +3,7 @@ name: prototype brain
 nodes:
   - name: sense
     type: encoder
+    controller: images
     outputs:
       - name of problem domain
   - name: name of problem domain
