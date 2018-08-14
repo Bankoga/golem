@@ -45,6 +45,8 @@ class Cell():
         self.ap_thresh = 100 # +- 75
         self.resting_potential = 0
         self.polarity = resting_potential
+        # need a min polarity in order to limit the depression of the cell
+        self.polarity_min = -25
 
         #plasticity props
         self.threshhold_change_function
