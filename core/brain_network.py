@@ -60,6 +60,7 @@ class BrainNetwork:
         num_cells = 0
         TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
         TODO: determine if this needs to be done at a lower level of abstraction. This seems likely
+        TODO: determine how to handle non standard problem domains like the decoder, encoder, & subcortex
         return num_cells
 
     def batch_inputs(self, outputs):
