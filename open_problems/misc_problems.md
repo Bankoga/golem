@@ -16,7 +16,7 @@ Answer: **Yes because we need to know if the cell activated based on the inputs 
 
 > Open Question: What data structure should be used for storing destinations, and cells?
 
-Previously, each destination was going to live inside of an actual 2D matrix, and contain a list of cells. **The 2D matrix may live on in concept being used during the init, but it may not be efficient enough for use as the actual data structure to store destinations.**
+Previously, each destination was going to live inside of an actual 2D matrix, and contain a list of cells. **The 2D matrix may live on in concept for use during the init, but it may not be efficient enough for use as the actual data structure to store destinations.**
 Cells would use lists of edges to grab the data sets they needed for dendrite summation from the universe of outputs. Grabbing the source sets for each destinations requires sorting the outputs into a bucket per source set, then looping through each cell while grabbing the outputs by source set key.
 
 Cost_of_sort = num_destinations + num_outputs (i.e num_edges) or Merge_sort(num_destinations) + num_outputs
@@ -88,11 +88,37 @@ Which are three different batches of source across 5 different sources for 4 dif
 
 I'm not sure what degree of uniformity is acceptable across destinations, and sources for cells @ a destination. Regardless, 2 seems like the worst case scenario. That being said, all from same dests does simplify things, but it only sort of affects the complexity of input batching. Whereas all to same dests seems to limit the potential complexity of the network without any real affect on runtime complexity while marginally affecting init complexity. Init complexity doesn't matter all that much. It's always going to take longer than evaluating a single timestep
 
-> Open Question: Should all cells at a destination, receive from the same sources?
-
+> ~~Open Question: Should all cells at a destination, receive from the same sources?~~
 This question can also be reframed as, to what degree does this cut down on the amount of processing required, to what extent does this affect capability, and are the reductions worth the cost to network capability?
+Actually, there is a better reframing because if all cells @ a dest use the same sources, then cell morphology no longer matters within a destination. Thus, do we need different cell morphologies within a destination?
 
-> Open Question: Should all cells at a destination, project to the same destinations?
+Answer: Without different types of cell morphologies in a layer, the approach here isn't all that different from the mainstream neural networks in use today. Moreover, local connection scheme differentiation matters. Thus, each cell within a destination should have potentially unique sources.
 
-Partial Answer: **No. Each cell type should have different destinations, and output distributions.**
-Why: Good question!
+> ~~Open Question: Should all cells at a destination, project to the same destinations?~~
+
+Answer: **No. Each cell type should have different destinations, and output distributions.**
+Why: Axons in human brains have specific targets, and tend to not have many branches. Furthermore, different types of cells often project to different locations for different purposes.
+
+## Determining Graph Size
+
+There are several problems that need to be solved before we can know how graph size will be indicated, and where that data will live.
+
+> ~~Open Question: Is the size of one or more problem domains relative to the number of inputs it receives?~~
+
+Answer: For cortical problem domains, this would seem to be the case.
+
+> ~~Open Question: Are there problem domains which have fixed ratio sizes or other absolute sizes?~~
+
+Answer: Yes. Almost all of the structures in subcortex are much smaller than the neocortex, and many accept from a large number of problem domains but don't get larger or smaller based on the number of problem domains. That being said, some subcortical structures have different sizes which are largely unchanged by the size of the brain. Furthermore, certain sequences of regions within the subcortex decrease in size according to fixed ratios, regardless of brain size. Consequently, we need to support the following:
+
+- Regions
+  - which have independently determined sizes
+  - where size is determined according to some ratio of the size of another region
+  - with an absolute size
+- Problem domains
+  - which are a fixed ratio of the total number columns across all cortical type problem domains
+  - which have regions with varying sizes
+
+> Open Question: How do we indicate that a problem domain should have a minimum number of destinations in the input or output layers?
+> Open Question: How do we indicate that an output layer has some number of output slots fewer than the number of destinations within the layer?
+> Open Question: How do we indicate what length, and width each region occupies?
