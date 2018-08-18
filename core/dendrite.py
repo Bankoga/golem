@@ -20,11 +20,12 @@ class Dendrite():
     def __init__(self, source_location):
         # each dendrite chain/tree/? should be able to handle its own initialization once given the necessary parameters from the higher levels
         # each dendrite knows the path key for the destination it pulls data from
-        self.source = source_location
+        self.source_loc = source_location
         TODO: what if instead of storing batch history, we count num steps since last use per synapse?
         # uses num synapses * 2 instead of num synapses * 20
         # though doing so does not track multiple uses within the stdp_window
         self.inputBatchHistory = "sigh" #fixed length array/matrix of length stdp_window or a stack of inputs
+        self.synapse = number array with length equal to source
 
     def dendrite_sensitivity(self):
         dendrite_sensitivity_decay_function # perhaps this is just a method instead of a parameter
