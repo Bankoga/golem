@@ -44,6 +44,17 @@ There are several different problems associated with wiring domains together
 **Does size of PD change based on the number of inputs to the PD?**
 They do seem to be correlated. Though the answer for this problem seems to relate to the answers for input, and output interpretation.
 
+Comment removed from destinations.py
+since each region type has it's own layer types, where should destination mappings live?
+I feel that it may be best for layer destination mappings to live outside the class in a json, yaml, or other such file
+Why?
+    the cortical region alone has 6 distinct layers with different output connection patterns, cell morphologys, plasticity rules, (what else?)
+    There are at least 3 types of regions that I know need to be created, and at least two problem domains with undetermined regions
+    Those other problem domains should at least have 1 type of region each, though they will likely have more than one
+    So at this point, we can safely expect 5 or more regions that we need predefined to get info from
+    Greater flexibility results from localizing cell morphologys, plas rules, resource constraints, connect patterns, etc... to each layer or region
+> NOTE: Removed method stub for collecting all sources from cells in a destination because of cost. Leaving the comments about it here for posterity.
+
 ### Indicating Input Slots for a Problem Domain
 
 Given that a brain network is a graph of problem domains
@@ -237,3 +248,11 @@ Partial Answer: In most cases, it is the type of dendrite. However for apical de
 Random length between 1 and some max based on type?
 Do apical dendrites have different lengths in different regions, and layers? This seems like a yeah
 So how is the length of a given apical dendrite determined?
+
+## Cell Threading
+
+Stiching together the vertices of the graph, each cell must handle its own threading which requires knowledge of all other destinations. Thus each level needs to have the corresponding details filled in.
+
+> Open Question: Where to thread cells together?
+
+Answer: ?
