@@ -26,28 +26,29 @@ class Dendrite():
         # though doing so does not track multiple uses within the stdp_window
         self.inputBatchHistory = "sigh" #fixed length array/matrix of length stdp_window or a stack of inputs
 
-    def dendrite_sensitivity():
+    def dendrite_sensitivity(self):
         dendrite_sensitivity_decay_function # perhaps this is just a method instead of a parameter
 
     def summate(self, input):
         total = 0
         """
         weights = multiply synapse array by the input array
-        total = sum of values in weights
+        total = (sum of values in weights) * self.curr_sensitivity
         do plasticity
         """
         return total
 
-    def synapse_plasticity():
+    def synapse_plasticity(self, is_active):
         """
          implements the various synapse rules
          - use it or lose it
          - can only be 1
          - synapse resource competition / avg synapse weight / synapse weight distribution
          TODO: still undetermined if distance based decay of weighting will be implemented
+        TODO: calculate sensitivity changes for the timestep based on is_active
         """
 
-    def synapse_creation():
+    def synapse_creation(self):
         """ for each synapse that is currently of 0 weight, and hasn't been just pruned, roll for creating a new synapse at a base creation weight """
         TODO: determine what works as a good weight starting weight for new synapses
         base_creation_weight = 10
