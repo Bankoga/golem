@@ -51,6 +51,7 @@ class Cell:
         # number of timesteps for the cooldown
         self.cooldown_duration = 3
         self.cooldown = self.cooldown_duration
+        TODO: determine if the cooldown period should be longer than 1 timestep. 1 timestep can be handled by boolean
 
         #plasticity props
         self.threshhold_change_function
