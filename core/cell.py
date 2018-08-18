@@ -50,14 +50,11 @@ class Cell:
         self.steps_since_active = 0
         # number of timesteps for the cooldown
         self.cooldown_duration = 3
+        self.cooldown = self.cooldown_duration
 
         #plasticity props
         self.threshhold_change_function
         self.stdp_window = 20 #timesteps
-        TODO: what if instead of storing batch history, we count num steps since last use per synapse?
-        uses num synapses * 2 instead of num synapses * 20
-        though doing so does not track multiple uses within the stdp_window
-        self.inputBatchHistory = "sigh" #fixed length array/matrix of length stdp_window or a stack of inputs
 
     def get_destinations():
         # all cells accept themselves as a destination that only they can read from
@@ -99,22 +96,27 @@ class Cell:
     def threshhold_plasticity():
 
     def activate(self, mode, timestep, destination_state, input_batch):
-        TODO: 
-        """
-        TODO: determine if we need refactory/cooldown can't activate period
-        if polarity >= ap_thresh: polarity -= (ap_thresh + depolarization_rate)
-        else if polarity > restingPotential: polarity -= depolarization_rate
-        if polarity < 0: polarity = 0
+        if self.polarity >= self.ap_thresh:
+            self.polarity -= (self.ap_thresh + self.depolarization_rate)
+        elif self.polarity > self.resting_potential:
+            self.polarity -= self.depolarization_rate
+        elif self.polarity < self.polarity_min:
+            self.polarity = self.polarity_min
+        sum = 0
         send the input to the corresponding dendrites
-        sum = summate each dendrite
-        polarity += sum
-        if polarity > apThreh:
-            timeSinceLast = 0
-            trigger stdp strengthen
-            return axonStrength
+        for dendrite in dendrites:
+            sum += dendrite.summate(input_batch[dendrite.source])
+        self.polarity += sum
+        TODO: add refactory period to cell activation
+        if self.cooldown >= self.cooldown_duration AND self.polarity > apThreh:
+            self.time_since_last = 0
+            self.cooldown = 0
+            is_active = True
         else:
-            trigger stdp with timeSinceLast (if timeSinceLast > stdpWindow then there will be no change in synapses)
-            return 0
-        """
+            self.time_since_last += 1
+            self.cooldown += 1
+            is_active = False
+        trigger stdp with self.time_since_last (if self.time_since_last > self.stdp_window then there will be no change in synapses)
+        return self.axon(is_active)
 
     def bar_update():
