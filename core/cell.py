@@ -7,8 +7,9 @@ from dendrite import *
 from usage_limits import *
 
 # should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brain_network? Probably
-class Cell():
+class Cell:
     #methods
+    TODO: Optim: move the cell constants to another file so that each cell does not duplicate unnecessary data
     def __init__(self, activation_type, cell_morphology, location, use_limits):
         """
          each cell should be able to handle its own initialization once given the necessary parameters from the higher levels
@@ -30,9 +31,7 @@ class Cell():
         self.cell_state = ChemicalState()
         # needs to be expanded to handle cells that are in sub-cortical regions and problem domains
         self.loc = location
-        """
-            input directions, and output destinations are determined by the location and cell_morphology
-        """
+        """input directions, and output destinations are determined by the location and cell_morphology"""
         self.axon_output_directions = self.get_destinations()
         self.dendrite_input_directions = 
         self.output_terminals = Axon(activation_type, self.axon_output_directions)
@@ -47,6 +46,10 @@ class Cell():
         self.polarity = resting_potential
         # need a min polarity in order to limit the depression of the cell
         self.polarity_min = -25
+        # used as countdown untill it can process inputs again
+        self.steps_since_active = 0
+        # number of timesteps for the cooldown
+        self.cooldown_duration = 3
 
         #plasticity props
         self.threshhold_change_function
@@ -96,6 +99,7 @@ class Cell():
     def threshhold_plasticity():
 
     def activate(self, mode, timestep, destination_state, input_batch):
+        TODO: 
         """
         TODO: determine if we need refactory/cooldown can't activate period
         if polarity >= ap_thresh: polarity -= (ap_thresh + depolarization_rate)
