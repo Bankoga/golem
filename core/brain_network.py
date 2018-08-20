@@ -24,6 +24,7 @@ class BrainNetwork:
         self.config = load(open(config_fname))
         self.name = self.config['name']
         TODO: parse each node, grab the config details, and build the nodes contents/destinations
+        TODO: determine size of each region, and layer so that cells can be stitched together
         graph = {}
         i_counts = get_input_counts(self.config['nodes'])
         for pd in self.config['nodes']:
@@ -37,6 +38,8 @@ class BrainNetwork:
             else:
                 obj = ProblemDomain(key, pd_type, pd['outputs'], get_num_cells(i_counts[key]))
             graph.add(key, obj)
+        for pd in graph:
+            pd.stitch(graph)
         self.brain = graph
 
     def get_input_counts(nodes):

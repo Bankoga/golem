@@ -41,3 +41,12 @@ class ProblemDomain:
         for region in self.regions:
             activations.extend(region.activate())
         return activations
+
+    def stitch(self, graph):
+        """
+        Takes an initialized graph without axons, and dendrites.
+        Adds axons, and dendrites to the problem domain based on the details stored in the graph.
+        """
+        TODO: account for pass by reference, and either ensure no side effects xor entirely use side effects
+        # new_graph = graph
+        # old_graph = graph
