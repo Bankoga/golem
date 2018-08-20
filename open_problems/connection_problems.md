@@ -255,4 +255,4 @@ Stiching together the vertices of the graph, each cell must handle its own threa
 
 > Open Question: Where to thread cells together?
 
-Answer: ?
+Answer: Unless we can know the size of each region, and layer independently of their initialization, then we have to thread all the destinations together after the hierarchy is created. Thus, we thread the cells together after all the problem domains have been initialized.
