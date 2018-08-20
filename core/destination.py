@@ -1,6 +1,11 @@
 class Destination:
 
     def __init__(self, config, source, location, coord):
+        """
+        Creates a new destination (container of cells) using the provided config, and details.
+        Size is determined by the config.
+        Cells must be wired together separately.
+        """
         TODO: change how the destination init works based on cell size to avoid if clauses or other such checks during activation
         TODO: Confirm that inits do not mutate variables passed to them by accident
         self.location = location.extend([source, coord])

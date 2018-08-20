@@ -13,6 +13,10 @@ class ProblemDomain:
     Consequently, can go with just num cells/columns/stacks for now
     """
     def __init__(self, name, domain_type, outputs, num_cells_primary):
+        """
+        Initialization creates a new problem domain using the provided details, and selected config
+        Size is determined during initialization, but cells remain without axons, and dendrites
+        """
         self.name = name
         TODO: raise an exception and exit if the yaml does not exist
         config_fname = 'configs\\domain_types\\{0}.yaml'.format(domain_type)

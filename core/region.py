@@ -15,8 +15,11 @@ class Region:
             Where would the region to region connection profiles exist in that case?
                 If each region type is unique to a problem domain type, then R-R connections can be defined within the region type defs
     """
-
     def __init__(self, source, location, region_type, length, width):
+        """
+        Initializes a new region object with the provided details, and config
+        Size of the region is determined but the cells remain without axons, and dendrites
+        """
         self.name = region_type
         self.location = location.append(source)
         self.length = length

@@ -4,6 +4,7 @@ from usage_limits import *
 class Axon():
     def __init__(self, origin, activation_type, terminal_destinations, chemical_type):
         """
+        Creates a new axon using the provided details.
         an axon needs to know the activation type which determines if the axon outputs a positive, negative, or chemical value
         'inhibitory' || 'excitory' || 'modulatory'
         it also needs to know where the axon terminates

@@ -8,17 +8,13 @@ from usage_limits import *
 
 # should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brain_network? Probably
 class Cell:
-    #methods
     TODO: Optim: move the cell constants to another file so that each cell does not duplicate unnecessary data
     def __init__(self, activation_type, cell_morphology, location, use_limits):
         """
-         each cell should be able to handle its own initialization once given the necessary parameters from the higher levels
-         probabilistically determine activation Type at the layer level (for inhib, and excitory. chem release cells will be dealt with later)
-         set activaton type during init
-         create dendrite connections to other layers in the same region according to the connectivity profile of the region type, as well as to other regions
-         create axon connection to the other layers, regions, and problem domains
-            according to the connectivity profile of the containing problem_domain in the network, the same region layer to layer profile,
-            and the cross region layer to layer profile
+        Creates a new cell given the necessary parameters from the higher levels
+        probabilistically determine activation Type at the layer level (for inhib, and excitory. chem release cells will be dealt with later)
+        sets the activaton type
+        Cell init does not create axons, and dendrites
         """
          #properties
          # 'inhibitory' || 'excitory' || 'modulatory' is determined by the containing layer and controls value of axon output
@@ -56,6 +52,14 @@ class Cell:
         #plasticity props
         self.threshhold_change_function
         self.stdp_window = 20 #timesteps
+
+    def stitch(self, graph):
+        """
+        Create dendrite connections to other layers in the same region according to the connectivity profile of the region type, as well as to other regions
+        Create axon connection to the other layers, regions, and problem domains
+            according to the connectivity profile of the containing problem_domain in the network, the same region layer to layer profile,
+            and the cross region layer to layer profile
+        """
 
     def get_destinations():
         # all cells accept themselves as a destination that only they can read from

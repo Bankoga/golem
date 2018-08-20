@@ -18,6 +18,9 @@ class Dendrite():
 
     #methods
     def __init__(self, source_location):
+        """
+        Creates a new dendrite given the provided details
+        """
         # each dendrite chain/tree/? should be able to handle its own initialization once given the necessary parameters from the higher levels
         # each dendrite knows the path key for the destination it pulls data from
         self.source_loc = source_location

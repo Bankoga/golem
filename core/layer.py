@@ -7,6 +7,11 @@ class Layer:
     TODO: minimize the number of conditions to be checked during activation
     def __init__(self, config, source, location, length, width, index):
         """
+        Creates a new layer according the provided config, and details.
+        Size is determined by the containing region.
+        Cells must be wired together separately.
+        """
+        """
         each region is composed of multiple layers and each layer spans the full length/width of the matrix
         region is 3D L x W x H, and each layer is a unit of height
         layer is 2D l x W, where each point is either a cell or an array of cells. The two types can't be mixed
