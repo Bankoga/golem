@@ -30,7 +30,10 @@ Those are both difficult questions!
 
 Problem domain type information has to be stored somewhere, be it in an object that lives in the framework, or in a config of some sort. Since we have decided on a config based approach in order to separate specific connection details from general framework behaviour, then we should continue with this approach for problem domains.
 
-> Open Question: Is it necessary for each problem domain type to have a unified config?
+> ~~Open Question: Is it necessary for each problem domain type to have a unified config?~~
+
+Answer: Not initially, and perhaps not even when using a genetic alg to build configs. Problem domains should have their own config so that they can be varied when necessary. However, we can use pd types, and region types as file name references with a flag that indicates to check for file. This allows us to have fully unified problem domain configs, while simultaneously providing for configs with some of the details stored elsewhere.
+
 > Open Question: Can we have problem domain type configs that indicate the external input destinations, and otherwise leverage the region configs?
 
 If we have generic patterns that exist across all problem domains of a type for the numbers of layers, then it is unclear if we should have all the region data live in the pd type config, or a separate config. At present, we have region types living inside their own config files.
