@@ -16,14 +16,14 @@ class Region:
             Where would the region to region connection profiles exist in that case?
                 If each region type is unique to a problem domain type, then R-R connections can be defined within the region type defs
     """
-    def __init__(self, key, ploc, region_type, length, width):
+    def __init__(self, region_type, ploc, length, width):
         """
         Initializes a new region object with the provided details, and config
         Size of the region is determined but the cells remain without axons, and dendrites
         """
         self.name = region_type
         TODO: Fix location data so that each level only needs to add its own key to the location.
-        self.loc = Location(key, ploc)
+        self.loc = Location(name, ploc)
         self.length = length
         self.width = width
         TODO: raise an exception and exit if the yaml does not exist
