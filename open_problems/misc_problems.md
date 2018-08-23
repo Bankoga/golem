@@ -99,6 +99,10 @@ Answer: Without different types of cell morphologies in a layer, the approach he
 Answer: **No. Each cell type should have different destinations, and output distributions.**
 Why: Axons in human brains have specific targets, and tend to not have many branches. Furthermore, different types of cells often project to different locations for different purposes.
 
+> ~~Open Question: Does input batching prepare bundles per cell or per destination?~~
+
+Answer: If we pass a destination bundled reference to each cell, then it can select the sources it requires at activation time. Thus we only need to batch per destination, and not per cell.
+
 ## Determining Graph Size
 
 There are several problems that need to be solved before we can know how graph size will be indicated, and where that data will live.
@@ -121,4 +125,56 @@ Answer: Yes. Almost all of the structures in subcortex are much smaller than the
 
 > Open Question: How do we indicate that a problem domain should have a minimum number of destinations in the input or output layers?
 > Open Question: How do we indicate that an output layer has some number of output slots fewer than the number of destinations within the layer?
-> Open Question: How do we indicate what length, and width each region occupies?
+
+Answer: We use properties set in the config that indicate which size, and layout case to use for num destinations, inputs, and outputs.
+
+Opts for layer size:
+
+- absolute quantity
+- func of sum of inputs
+- fixed ratio of brain size
+
+Opts for # avail inputs/outpus for a layer:
+
+- All dests serve as I/O slots
+- Subset of dests has 2 cases with 2 options each
+  - Cases
+    - Absolute number
+    - Fixed ratio of total dests
+  - Options for positions of I/O
+    - randomn postitions within the layer
+    - fixed positions
+      - largest N indices
+      - smallest N indices
+
+> ~~Open Question: How do we indicate what length, and width each region occupies?~~
+
+Answer: There are two cases for length x width. We can specify a ratio to use when splitting the number of destinations in the layers, or we can automatically split them into a square. This is indicated by a flag in the config.
+
+From micro to macro, level sizes are determined by the following funcs:
+
+- cell_size = 1
+- dest_size = f(num_cells, cell_size)
+  - length only
+- layer_size = f(num_dests, dest_size)
+  - length
+  - width
+- region_size = f(num_layers, layer_sizes[]) each layer can be of different size
+  - length
+  - width
+  - height
+- pd_size = f(num_regions, region_sizes[]) each region can be of different sizes
+  - length
+  - width
+  - height
+- brain_size = f(num_pds, pd_sizes[]) each pd can be of different sizes
+  - length
+  - width
+  - height
+
+Each region, and pd are 3D objects. Distance between two dests is thus determined by the size and layout of each of the pds between them.
+
+## Order of Destinations in Layer
+
+> Open Question: Do we need the ability to specify a direction of flow through the destinations in a region or layer?
+> Open Question: How do we indicate the direction of flow through destinations in a region or layer?
