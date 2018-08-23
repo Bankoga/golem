@@ -5,6 +5,9 @@ How to represent paths to cells, aka indicating cell position, is currently hand
 ## Path Format
 
 > Open Question: Should the location of a component, and the path data be handled via a class?
+
+Answer: This doesn't seem necessary. Though it could be useful.
+
 > Open Question: How many pieces compose a full destination?
 We have confirmed that there are at least 4,5 components of a full destination. Most of the time, cells will not be addressed directly for I/O handling. The handling of the brain network graph data will determine if there are more.
 These components are as follows:
@@ -19,16 +22,20 @@ These components are as follows:
 At present, I'm leaning towards l_pos because each layer is in fact a 2D matrix whereas a region is a stack of matrices.
 > [pd_key, r_key, l_key, l_pos(i,j), c_ind]
 
+If necessary, we can turn the location arrrays into string keys by joining with a '-' or ':' between each item.
+
 ### Destination Keys
 
 > Open Question: What should be used as the destination between semantically named layers? The order? What about cross-region references?
-
 The destinations should use the path data schema with appropriate substitution slots, and relative paths. Though that does not answer the question.
+
+Answer: ?
 
 ## Object Level Representation
 
-> Open Question: For each level of the network, do we represent the current location or path to the current location?
-> Open Question: Does the current location include the name of the location, or just the precursors to the location?
+> ~~Open Question: For each level of the network, do we represent the current location or path to the current location? In other words, does the current location include the name of the location, or just the precursors to the location?~~
+
+Answer: The location stored at each level should include it's own key or position. Thus each new level does not need to look up it's source, and can just append it's own data to the location.
 
 The levels of a brain network in this framework are as follows from highest to lowest:
 
