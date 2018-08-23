@@ -1,4 +1,6 @@
 ---
 name: cortical
-
+regions:
+  - cortex
+  - relay
 ...
