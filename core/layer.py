@@ -6,7 +6,7 @@ from location import *
 
 class Layer:
     TODO: minimize the number of conditions to be checked during activation
-    def __init__(self, config, key, ploc, length, width):
+    def __init__(self, config, ploc, length, width):
         """
         Creates a new layer according the provided config, and details.
         Size is determined by the containing region.
