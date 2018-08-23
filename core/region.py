@@ -32,16 +32,10 @@ class Region:
         self.layers = self.create_layers()
 
     def create_layers(self):
-        TODO: determine type of object for self.layers
-         # could also be called height but num_layers is more useful
-        # self.num_layers = layers_dict[self.name]
-        TODO: convert layers to a dictionary so that name can be used for pathing to have more semantic locations
-        layers = []
-        ind = 0
+        layers = dict()
         for l in self.config['layers']:
             # if the layers config object is an ordered list, then order is an unnecessary config item
-            layers.append(Layer(l, self.loc, self.length, self.width, ind))
-            ind+=1
+            layers[l['name']] = Layer(l, self.loc, self.length, self.width)
         return layers
     
     TODO: expand activate to have current mode, time step, and the layer keyed input batched
