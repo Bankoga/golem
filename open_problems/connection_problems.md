@@ -256,3 +256,9 @@ Stiching together the vertices of the graph, each cell must handle its own threa
 > Open Question: Where to thread cells together?
 
 Answer: Unless we can know the size of each region, and layer independently of their initialization, then we have to thread all the destinations together after the hierarchy is created. Thus, we thread the cells together after all the problem domains have been initialized.
+
+## Mixed number of synapses
+
+Some cells only have one possible connection for a given source. In such cases, we want to ensure that every cell using that source will always have a synapse to that source.
+
+> Open Question: How do we ensure that sources which require all cells using them to fully connect to them, do so?
