@@ -30,9 +30,8 @@ class ProblemDomain:
 
     def create_regions(self):
         regions = dict()
-        for region in self.config['regions']:
-            TODO: add new region to regions dictionary
-            regions[key] = value
+        for r in self.config['regions']:
+            regions[r] = Region(r, self.loc)
         return regions
 
     TODO: add activation parameters to activate
@@ -45,8 +44,8 @@ class ProblemDomain:
             return the regions results to the axon server for the current timestep
         """
         activations = []
-        for region in self.regions:
-            activations.extend(region.activate())
+        for r in self.regions:
+            activations.extend(r.activate())
         return activations
 
     def stitch(self, graph):
