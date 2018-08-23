@@ -29,9 +29,10 @@ class ProblemDomain:
         TODO: play around with efficiency of different lengths and widths instead of squares after all is working
 
     def create_regions(self):
-        regions = {}
+        regions = dict()
         for region in self.config['regions']:
             TODO: add new region to regions dictionary
+            regions[key] = value
         return regions
 
     TODO: add activation parameters to activate
