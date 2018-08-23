@@ -6,7 +6,7 @@ from location import *
 
 class Layer:
     TODO: minimize the number of conditions to be checked during activation
-    def __init__(self, config, key, ploc, length, width, index):
+    def __init__(self, config, key, ploc, length, width):
         """
         Creates a new layer according the provided config, and details.
         Size is determined by the containing region.
@@ -20,9 +20,7 @@ class Layer:
         regardless, a point in a layer of a region is a DESTINATION
         """
         TODO: implement region wide layers that do cell operations using addressess
-        TODO: determine name vs index for the path data
         self.name = config['name']
-        self.index = index
         self.loc = Location(self.name, ploc)
         self.length = length
         self.width = width
