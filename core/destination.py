@@ -1,6 +1,8 @@
+from location import *
+
 class Destination:
 
-    def __init__(self, config, source, location, coord):
+    def __init__(self, config, key, ploc):
         """
         Creates a new destination (container of cells) using the provided config, and details.
         Size is determined by the config.
@@ -8,7 +10,7 @@ class Destination:
         """
         TODO: change how the destination init works based on cell size to avoid if clauses or other such checks during activation
         TODO: Confirm that inits do not mutate variables passed to them by accident
-        self.location = location.extend([source, coord])
+        self.loc = Location(key, ploc)
         self.point_size = config['point_size'] # num cells at the destination
         self.morphs = config['cell_morphology']
         self.dests = config['destinations']

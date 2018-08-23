@@ -3,6 +3,7 @@
 # will perhaps refactor in the future so as to include sub cortical aspects that are not the thalamus. It is still unclear how to do so though
 from yaml import load, dump
 from layer import *
+from location import *
 
 class ProblemDomain:
     """
@@ -18,6 +19,7 @@ class ProblemDomain:
         Size is determined during initialization, but cells remain without axons, and dendrites
         """
         self.name = name
+        self.loc = Location(name)
         TODO: raise an exception and exit if the yaml does not exist
         config_fname = 'configs\\domain_types\\{0}.yaml'.format(domain_type)
         self.config = load(open(config_fname))

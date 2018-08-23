@@ -2,10 +2,11 @@
 # layers are the primary cell container in this architecture
 import numpy as np
 from destination import *
+from location import *
 
 class Layer:
     TODO: minimize the number of conditions to be checked during activation
-    def __init__(self, config, source, location, length, width, index):
+    def __init__(self, config, key, ploc, length, width, index):
         """
         Creates a new layer according the provided config, and details.
         Size is determined by the containing region.
@@ -22,7 +23,7 @@ class Layer:
         TODO: determine name vs index for the path data
         self.name = config['name']
         self.index = index
-        self.location = location.append(source)
+        self.loc = Location(self.name, ploc)
         self.length = length
         self.width = width
         self.config = config
@@ -50,7 +51,7 @@ class Layer:
         destinations = np.zeros(shape=(self.length,self.width))
         for i in range(0, self.length):
             for j in range (0 self.width):
-                destinations[i][j] = Destination(self.config, self.index, self.location, [i,j])
+                destinations[i][j] = Destination(self.config, [i,j], self.loc)
         return destinations
 
     TODO: expand activate to have the current mode, time step, and the destination keyed input batches

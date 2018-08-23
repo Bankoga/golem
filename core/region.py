@@ -3,6 +3,7 @@
 # perhaps the other sub cortical pieces could be a third type of region object. Wrapping all them together in an addressable manner
 from yaml import load, dump
 from layer import *
+from location import *
 
 def str_to_class(str):
     return getattr(sys.modules[__name__], str)
@@ -15,14 +16,14 @@ class Region:
             Where would the region to region connection profiles exist in that case?
                 If each region type is unique to a problem domain type, then R-R connections can be defined within the region type defs
     """
-    def __init__(self, source, location, region_type, length, width):
+    def __init__(self, key, ploc, region_type, length, width):
         """
         Initializes a new region object with the provided details, and config
         Size of the region is determined but the cells remain without axons, and dendrites
         """
         self.name = region_type
         TODO: Fix location data so that each level only needs to add its own key to the location.
-        self.location = location.append(source)
+        self.loc = Location(key, ploc)
         self.length = length
         self.width = width
         TODO: raise an exception and exit if the yaml does not exist
@@ -39,7 +40,7 @@ class Region:
         ind = 0
         for l in self.config['layers']:
             # if the layers config object is an ordered list, then order is an unnecessary config item
-            layers.append(Layer(l, self.name, self.location, self.length, self.width, ind))
+            layers.append(Layer(l, self.loc, self.length, self.width, ind))
             ind+=1
         return layers
     

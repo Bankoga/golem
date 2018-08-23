@@ -5,11 +5,12 @@ from axon import *
 from chemical_state import *
 from dendrite import *
 from usage_limits import *
+from location import *
 
 # should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brain_network? Probably
 class Cell:
     TODO: Optim: move the cell constants to another file so that each cell does not duplicate unnecessary data
-    def __init__(self, activation_type, cell_morphology, location, use_limits):
+    def __init__(self, activation_type, cell_morphology, key, ploc, use_limits):
         """
         Creates a new cell given the necessary parameters from the higher levels
         probabilistically determine activation Type at the layer level (for inhib, and excitory. chem release cells will be dealt with later)
@@ -25,8 +26,7 @@ class Cell:
         TODO: determine the different types of cells that need to be accounted
         self.cell_morphology = cell_morphology
         self.cell_state = ChemicalState()
-        # needs to be expanded to handle cells that are in sub-cortical regions and problem domains
-        self.loc = location
+        self.loc = Location(key, ploc)
         """input directions, and output destinations are determined by the location and cell_morphology"""
         self.axon_output_directions = self.get_destinations()
         self.dendrite_input_directions = 
