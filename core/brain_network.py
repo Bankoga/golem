@@ -40,6 +40,7 @@ class BrainNetwork:
             graph.add(key, obj)
         for pd in graph:
             pd.stitch(graph)
+        TODO: Optim: pull all dests from all pds into a single adjacency list
         self.brain = graph
 
     def get_input_counts(nodes):
