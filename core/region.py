@@ -21,6 +21,7 @@ class Region:
         Size of the region is determined but the cells remain without axons, and dendrites
         """
         self.name = region_type
+        TODO: Fix location data so that each level only needs to add its own key to the location.
         self.location = location.append(source)
         self.length = length
         self.width = width
