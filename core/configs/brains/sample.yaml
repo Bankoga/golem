@@ -2,33 +2,33 @@
 name: sample architecture
 decoders:
   - name: decoder_a
-    type: ?
-    size: ?
-    output_dest: ?
+    type: null
+    size: null
+    output_dest: null
 encoders:
   - name: encoder_a
     type: image
-    length: ?
-    width: ?
-    num_channels: ?
-    input_source: ?
+    length: null
+    width: null
+    num_channels: null
+    input_source: null
     outputs: [vis_a]
 problem_domains:
   - name: vis_a
     type: cortical
-    size: ?
+    size: null
     outputs: [vis_b,vis_c]
   - name: vis_b
     type: cortical
-    size: ?
+    size: null
     outputs: [comb_a]
   - name: vis_c
     type: cortical
-    size: ?
+    size: null
     outputs: [comb_a]
   - name: comb_a
     type: cortical
-    size: ?
+    size: null
     outputs: [decoder_a]
 edges:
   - encoder_a:vis_a
