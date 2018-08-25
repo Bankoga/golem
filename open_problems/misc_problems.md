@@ -156,25 +156,128 @@ From micro to macro, level sizes are determined by the following funcs:
 - cell_size = 1
 - dest_size = f(num_cells, cell_size)
   - length only
+  - determined by the layer configs
 - layer_size = f(num_dests, dest_size)
-  - length
-  - width
+  - length, width
+  - is dynamic based on the region_size
 - region_size = f(num_layers, layer_sizes[]) each layer can be of different size
-  - length
-  - width
-  - height
-- pd_size = f(num_regions, region_sizes[]) each region can be of different sizes
-  - length
-  - width
-  - height
-- brain_size = f(num_pds, pd_sizes[]) each pd can be of different sizes
-  - length
-  - width
-  - height
+  - length, width, & height
+  - can be absolute, or ratio of total num destinations avail to the problem domain
+- pd_size = f(num_regions, region_sizes[]) each region can be of different size
+  - length, width, & height
+  - determines what fraction of total is consumed by the pd
+    - equal share
+    - separate count (does not consume population size, and silently increases the total)
+    - ratio sub share (intended for subcortical apparati which have fixed proportions)
+- brain_size = f(num_pds, pd_sizes[]) each pd can be of different size
+  - length, width, & height
+  - determines minimum number of destinations
+    - used for building problem domains
 
 Each region, and pd are 3D objects. Distance between two dests is thus determined by the size and layout of each of the pds between them.
+
+> Open Question: Do we want the number of dests to be hard coded for each level?
+
+Answer: No. We want to be able to set a desired number of dests at the top level, then have those split across the problem domains appropriately.
+
+> Open Question: If I want a brain with ~N neurons, how do I indicate that when creating a brain network with a given architecture?
+
+Answer: In order to set a desired number of destinations, at the brain network level, the configs must contain certain data pertaining to size that can be used as a series of forumlas where we solve for the missing variables.
+
+Layers control their dest size.
+Regions have a number of dests based on some ratio, or value that determine how many of the dests allotted to a problem domain are consumed by the specific region.
+Problem domains contain multiple dests, and are some fraction of the total number of dests. The fraction of dests consumed by a problem domain, are then split across the various regions according to the region size formulas. All region size formulas in a problem domain should add up to 1. They can not lead to consuming more dests than supplied by the problem domain.
+The brain network sets a specific number of dests, which are split across the problem domains.
+Thus it would seem to be the case that there is a minimum number of reasonably supported dests for any given brain network architecture.
+
+### Toy architecture with N PDs of the cortical type
+
+total_dests: 1000
+
+```yaml
+---
+name: sample architecture
+decoders:
+  - name: decoder_a
+    type: ?
+    size: ?
+    output_dest: ?
+encoders:
+  - name: encoder_a
+    type: image
+    length: ?
+    width: ?
+    num_channels: ?
+    input_source: ?
+    outputs: [vis_a]
+problem_domains:
+  - name: vis_a
+    type: cortical
+    size: ?
+    outputs: [vis_b,vis_c]
+  - name: vis_b
+    type: cortical
+    size: ?
+    outputs: [comb_a]
+  - name: vis_c
+    type: cortical
+    size: ?
+    outputs: [comb_a]
+  - name: comb_a
+    type: cortical
+    size: ?
+    outputs: [decoder_a]
+edges:
+  - encoder_a:vis_a
+  - vis_a:vis_b
+  - vis_a:vis_c
+  - vis_b:comb_a
+  - vis_c:comb_a
+  - comb_a:decoder_a
+...
+```
+
+> Open Question: A good question is how to record the edges. Do we record the edges as a list of edges, or have a list of outputs for each node?
+
+### Simple Way of handling pd size
+
+The base case for pd size can be handled rather simply. When all the pds are of relatively similar size, we can simply assign an integer unit size to each pd, and sum them all together to get the total num units. Then the % of total_dests consumed by a given PD is equal to pd.size/total_num_units.
+total_num_units = sum of all pd.size
+num_dests_arb_pd = round((arb_pd.size/total_num_units) * total_dests)
+Which allows us to then set the length, and width of each region based on the LxW ratio. Or we could simply make them all squares.
+
+> ~~Open Question: How do we handle fractional dests?~~
+
+Answer: We are going to use rounding for now.
+
+> Open Question: Are the External I/O PDs included in the dest consumption?
+
+Answer: While that is one possibility, for now it is easier to have those be separate due to the fact that decoders, and encoders must be handled separately from normal (internal) problem domains. Thus they won't scale with the brain network.
+
+### Complex Case for handling PD size
+
+**TO HANDLE AT A LATER TIME**
+The simple case for pd size works when all the pds are of relatively similar size. It does not work when 1 or more PDs are not a simple % of the total number of dests.
+
+> Open Question: How do we indicate the size of non-standard problem domains like the subcortex?
+
+Answer: A proper answer to this question would seem to require a greater understanding of the subcortex...
 
 ## Order of Destinations in Layer
 
 > Open Question: Do we need the ability to specify a direction of flow through the destinations in a region or layer?
+
+Answer: At a bare minimum, the claustrum seems to either need this flow, or we use a large number of small layers instead. **REQUIRE MORE RESEARCH FOR OTHER EXAMPLES**
+
 > Open Question: How do we indicate the direction of flow through destinations in a region or layer?
+
+## Consciousness
+
+> Open Question: What are the minimum requirements of consciousness?
+> Open Question: What is consciousness?
+
+A good starting point is that consciousness relates to "there is a thing that it is like to be the conscious entity". The essence of consciousness is experience. But if I don't need to be aware of why I made some decision, and only need to be aware of the decision, then it would seem that knowledge of memory or memories are not necessary for consciousness.
+Awareness seems to be key. External senses do not seem to be necessary for consciousness. I am still conscious when deprived of my external senses.
+It seems to be inseparable from processing what is being processed. It seems to be related to focus (selection, and exclusion) on/between different streams of computation.
+Processing thoughts (results of computation) that have occurred then may be one of the necessary characteristics of consciousness.
+More robust forms of consciousness may be able to affect what is processed, and how.
