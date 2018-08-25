@@ -18,9 +18,10 @@ class BrainNetwork:
         self.ts_per_sim_second = 1000
         self.session_length = self.ts_per_sim_second * 60 * 12
 
-    def create_network(self, brain_name):
+    def create_network(self, brain_name, num_dests):
         TODO: raise an exception and exit if the yaml does not exist
         config_fname = 'configs\\brains\\{0}.yaml'.format(brain_name)
+        self.desired_dests = num_dests
         self.config = load(open(config_fname))
         self.name = self.config['name']
         TODO: parse each node, grab the config details, and build the nodes contents/destinations
@@ -32,11 +33,11 @@ class BrainNetwork:
             key = pd['name']
             pd_type = pd['type']
             if pd_type == 'decoder':
-                obj = Decoder(pd['controller'], pd['outputs'])
+                obj = Decoder(pd['controller'], pd['outputs'], pd['size'])
             elif pd_type == 'encoder':
-                obj = Encoder(pd['controller'], pd['outputs'])
+                obj = Encoder(pd['controller'], pd['outputs'], pd['size'])
             else:
-                obj = ProblemDomain(key, pd_type, pd['outputs'], get_num_cells(i_counts[key]))
+                obj = ProblemDomain(key, pd_type, pd['outputs'], i_counts[key])
             graph.add(key, obj)
         for pd in graph:
             pd.stitch(graph)
@@ -44,28 +45,26 @@ class BrainNetwork:
         self.brain = graph
 
     def get_input_counts(nodes):
-        TODO: determine if this should instead return a dict of pd keys and input domains instead
-        TODO: Determine method for calculating number of cells in a problem domain
+        TODO: Determine method for calculating number of dests consumed by each problem domain
+        # use self.desired_dests and pd config info to determine how many dests are available to the problem domain during initialization
+        TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
+        # though each level cumulatively effects the size of the brain network, they have different impacts and consumption requirements
+        TODO: determine how to handle non standard problem domains like the decoder, encoder, & subcortex
         # Build adjacency matrix, and count number of inputs to each node?
-        cells_dict = {}
+        self.desired_dests
+        cells_dict = dict()
         for pd in nodes:
             key = pd['name']
             count = 0
             inps = []
+            num_dests = 0
             for apd in nodes:
                 if key != apd['name']:
                     if pd['outputs'].contains(key):
                         count += 1
                         inps.append(apd['name'])
-            cells_dict.add(key, count, inps)
+            cells_dict.[(key] = count, inps, num_dests
         return cells_dict
-
-    def get_num_cells(self, edge_count):
-        num_cells = 0
-        TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
-        TODO: determine if this needs to be done at a lower level of abstraction. This seems likely
-        TODO: determine how to handle non standard problem domains like the decoder, encoder, & subcortex
-        return num_cells
 
     def batch_inputs(self, outputs):
         TODO: batch inputs based on their destination. The batched inputs will be passed by reference to cells for consumption.
