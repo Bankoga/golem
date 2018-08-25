@@ -18,11 +18,9 @@ class BrainNetwork:
         self.ts_per_sim_second = 1000
         self.session_length = self.ts_per_sim_second * 60 * 12
 
-    def create_network(self, brain_name, num_dests):
-        TODO: raise an exception and exit if the yaml does not exist
-        config_fname = 'configs\\brains\\{0}.yaml'.format(brain_name)
+    def create_network(self, brain_fname, num_dests):
         self.desired_dests = num_dests
-        self.config = load(open(config_fname))
+        self.build_full_config(brain_fname)
         self.name = self.config['name']
         TODO: parse each node, grab the config details, and build the nodes contents/destinations
         TODO: determine size of each region, and layer so that cells can be stitched together
@@ -44,7 +42,30 @@ class BrainNetwork:
         TODO: Optim: pull all dests from all pds into a single adjacency list
         self.brain = graph
 
+    def build_full_config(brain_fname):
+        TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...
+        TODO: raise an exception and exit if the yaml does not exist
+        config_fname = 'core\\configs\\brains\\{0}.yaml'.format(brain_fname)
+        config = load(open(config_fname))
+
+        for i, pd in enumerate(config['problem_domains']):
+            TODO: raise an exception and exit if the yaml does not exist
+            pd_conf_fname = 'core\\configs\\domain_types\\{0}.yaml'.format(pd['type'])
+            pd_conf = load(open(pd_conf_fname))
+
+            for j, region in enumerate(pd_conf['regions']):
+                TODO: raise an exception and exit if the yaml does not exist
+                rconf_fname = 'core\\configs\\regions\\{0}.yaml'.format(region)
+                rconf = load(open(rconf_fname))
+                pd_conf['regions'][j] = rconf
+
+            config['problem_domains'][i]['type'] = pd_conf
+
+        print(dump(config))
+        self.config = config
+
     def get_input_counts(nodes):
+        TODO: Calculate minimum number of destinations supported by the provided architecture. This does require that the top level have a fully expanded copy of the brain config.
         TODO: Determine method for calculating number of dests consumed by each problem domain
         # use self.desired_dests and pd config info to determine how many dests are available to the problem domain during initialization
         TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
