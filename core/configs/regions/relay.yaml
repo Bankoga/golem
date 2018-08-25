@@ -1,4 +1,5 @@
 ---
+name: relay
 layers:
   - name: reticular
     point_size: 1
@@ -6,26 +7,22 @@ layers:
       - none
     destinations:
       - none
-    order: 0
   - name: cort_relay
     point_size: 1
     cell_morphology:
       - none
     destinations:
       - none
-    order: 1
   - name: relay_inhib
     point_size: 1
     cell_morphology:
       - none
     destinations:
       - none
-    order: 2
   - name: matrix
     point_size: 1
     cell_morphology:
       - none
     destinations:
       - none
-    order: 3
 ...
