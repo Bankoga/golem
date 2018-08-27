@@ -8,9 +8,10 @@ decoders:
 encoders:
   - name: encoder_a
     type: image
-    length: null
-    width: null
-    num_channels: null
+    size:
+      length: null
+      width: null
+      num_channels: null
     input_source: null
     outputs: [vis_a]
 problem_domains:
@@ -30,11 +31,4 @@ problem_domains:
     type: cortical
     size: null
     outputs: [decoder_a]
-edges:
-  - encoder_a:vis_a
-  - vis_a:vis_b
-  - vis_a:vis_c
-  - vis_b:comb_a
-  - vis_c:comb_a
-  - comb_a:decoder_a
 ...
