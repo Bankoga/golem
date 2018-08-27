@@ -1,7 +1,6 @@
 # contains the definition for the primary region object which will have two types
 # this is the cortical stack, or thalamic relay stack level object
 # perhaps the other sub cortical pieces could be a third type of region object. Wrapping all them together in an addressable manner
-from yaml import load, dump
 from layer import *
 from location import *
 
@@ -16,19 +15,16 @@ class Region:
             Where would the region to region connection profiles exist in that case?
                 If each region type is unique to a problem domain type, then R-R connections can be defined within the region type defs
     """
-    def __init__(self, region_type, ploc, length, width):
+    def __init__(self, region_type_config, ploc, length, width):
         """
         Initializes a new region object with the provided details, and config
         Size of the region is determined but the cells remain without axons, and dendrites
         """
         self.name = region_type
-        TODO: Fix location data so that each level only needs to add its own key to the location.
         self.loc = Location(name, ploc)
         self.length = length
         self.width = width
-        TODO: raise an exception and exit if the yaml does not exist
-        config_fname = 'configs\\regions\\{0}.yaml'.format(region_type)
-        self.config = load(open(config_fname))
+        self.config = region_type_config
         self.layers = self.create_layers()
 
     def create_layers(self):
@@ -37,7 +33,7 @@ class Region:
             # if the layers config object is an ordered list, then order is an unnecessary config item
             layers[l['name']] = Layer(l, self.loc, self.length, self.width)
         return layers
-    
+
     TODO: expand activate to have current mode, time step, and the layer keyed input batched
     def activate(self):
         """
@@ -51,3 +47,9 @@ class Region:
         for l in layers:
             activations.extend(l.activate())
         return activations
+
+    def stitch(self, graph):
+        """
+        Takes an initialized graph without axons, and dendrites.
+        Adds axons, and dendrites to the region based on the details stored in the graph.
+        """
