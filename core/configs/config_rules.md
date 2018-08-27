@@ -42,6 +42,10 @@ Known types of regions are currently limited to:
 - Relay
 - Cerebellum (this is a WIP that needs to be revisited)
 
+The cortex and relay regions within the cortical problem domain type have the same dimensions, and thus can be unified into a single region. If we want the thalamus to exist as a separate region inside a subcortical problem domain, then they will have to be stitched together according to some rules.
+
+Regions within a problem domain type, are largely defined by their dimensions rows x columns x layers (length x width x height). Layers with the same number of rows and columns can or should be stacked together inside the same region if they are functionally interconnected.
+
 ### Layers
 
 The purpose of a layer is to create destinations for cells, and constrain the possible connections of cells. In essence, a layer is an addressable container for cells. Every point in a layer corresponds to either a single cell XOR an array of cells. For convenience, mixing the paradigms of single vs array of cells within a given type of layer is not supported. Furthermore, a layer is a unit of height for a region.
