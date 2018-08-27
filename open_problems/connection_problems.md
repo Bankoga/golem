@@ -262,3 +262,11 @@ Answer: Unless we can know the size of each region, and layer independently of t
 Some cells only have one possible connection for a given source. In such cases, we want to ensure that every cell using that source will always have a synapse to that source.
 
 > Open Question: How do we ensure that sources which require all cells using them to fully connect to them, do so?
+
+## Thalamus Region
+
+In the human brain, the thalamus is considered a part of the subcortex. However, it is strongly defined in conjunction with the neocortical columns. Consequently, we have so far been defining it within the cortical problem domain type. This approach makes having thalamic adjacency/bleed more difficult.
+
+> Open Question: Is thalamic adjacency/bleed necessary?
+
+There are several ways to answer this question. One is that this depends on the degree to which we want mimic the architecture of the human brain. Another is that such adjacency may play an important functional role.
