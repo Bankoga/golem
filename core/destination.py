@@ -12,8 +12,7 @@ class Destination:
         TODO: Confirm that inits do not mutate variables passed to them by accident
         self.loc = Location(key, ploc)
         self.point_size = config['point_size'] # num cells at the destination
-        self.morphs = config['cell_morphology']
-        self.dests = config['destinations']
+        self.ctypes = config['cell_types']
         self.cells = self.create_cells()
 
     def create_cells(self):
