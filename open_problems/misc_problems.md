@@ -213,19 +213,19 @@ encoders:
 problem_domains:
   - name: vis_a
     type: cortical
-    size: ?
+    size: 4
     outputs: [vis_b,vis_c]
   - name: vis_b
     type: cortical
-    size: ?
+    size: 2
     outputs: [comb_a]
   - name: vis_c
     type: cortical
-    size: ?
+    size: 2
     outputs: [comb_a]
   - name: comb_a
     type: cortical
-    size: ?
+    size: 1
     outputs: [decoder_a]
 edges:
   - encoder_a:vis_a
