@@ -22,23 +22,16 @@ class BrainNetwork:
         self.desired_dests = num_dests
         self.build_full_config(brain_fname)
         self.name = self.config['name']
+        graph = dict()
         TODO: parse each node, grab the config details, and build the nodes contents/destinations
+        graph.extend(self.parse_decoders())
+        graph.extend(self.parse_encoders())
+        graph.extend(self.parse_problem_domains())
         TODO: determine size of each region, and layer so that cells can be stitched together
-        graph = {}
-        i_counts = get_input_counts(self.config['nodes'])
-        for pd in self.config['nodes']:
-            TODO: add new problem domain to graph dict
-            key = pd['name']
-            pd_type = pd['type']
-            if pd_type == 'decoder':
-                obj = Decoder(pd['controller'], pd['outputs'], pd['size'])
-            elif pd_type == 'encoder':
-                obj = Encoder(pd['controller'], pd['outputs'], pd['size'])
-            else:
-                obj = ProblemDomain(key, pd_type, pd['outputs'], i_counts[key])
-            graph.add(key, obj)
-        for pd in graph:
-            pd.stitch(graph)
+        i_counts = self.get_input_counts(graph)
+        for node in graph:
+            TODO: ensure that all nodes have a stitch method which fully populates cells with axons
+            node.stitch(graph)
         TODO: Optim: pull all dests from all pds into a single adjacency list
         self.brain = graph
 
@@ -47,24 +40,47 @@ class BrainNetwork:
         TODO: raise an exception and exit if the yaml does not exist
         config_fname = 'core\\configs\\brains\\{0}.yaml'.format(brain_fname)
         config = load(open(config_fname))
-
         for i, pd in enumerate(config['problem_domains']):
             TODO: raise an exception and exit if the yaml does not exist
             pd_conf_fname = 'core\\configs\\domain_types\\{0}.yaml'.format(pd['type'])
             pd_conf = load(open(pd_conf_fname))
-
             for j, region in enumerate(pd_conf['regions']):
                 TODO: raise an exception and exit if the yaml does not exist
                 rconf_fname = 'core\\configs\\regions\\{0}.yaml'.format(region)
                 rconf = load(open(rconf_fname))
                 pd_conf['regions'][j] = rconf
-
             config['problem_domains'][i]['type'] = pd_conf
-
         print(dump(config))
         self.config = config
 
-    def get_input_counts(nodes):
+    def parse_decoders(self):
+        TODO: raise an exception if there are no decoders
+        graph = dict()
+        for pd in self.config['decoders']:
+            key = pd['name']
+            obj = Decoder(key, pd['type'], pd['output_dest'], pd['size'])
+            graph[key] = obj
+        return graph
+
+    def parse_encoders(self):
+        TODO: raise an exception if there are no encoders
+        graph = dict()
+        for pd in self.config['encoders']:
+            key = pd['name']
+            obj = Encoder(key, pd['type'], pd['input_source'], pd['outputs'], pd['size'])
+            graph[key] = obj
+        return graph
+
+    def parse_problem_domains(self):
+        TODO: raise an exception if there are no problem domains
+        graph = dict()
+        for pd in self.config['problem_domains']:
+            key = pd['name']
+            obj = ProblemDomain(key, pd['type'], pd['outputs'], i_counts[key])
+            graph[key] = obj
+        return graph
+
+    def get_input_counts(self, nodes):
         TODO: Calculate minimum number of destinations supported by the provided architecture. This does require that the top level have a fully expanded copy of the brain config.
         TODO: Determine method for calculating number of dests consumed by each problem domain
         # use self.desired_dests and pd config info to determine how many dests are available to the problem domain during initialization
@@ -74,17 +90,17 @@ class BrainNetwork:
         # Build adjacency matrix, and count number of inputs to each node?
         self.desired_dests
         cells_dict = dict()
-        for pd in nodes:
-            key = pd['name']
+        for node in graph:
+            key = node.name
             count = 0
             inps = []
             num_dests = 0
-            for apd in nodes:
-                if key != apd['name']:
-                    if pd['outputs'].contains(key):
+            for alt_node in graph:
+                if key != alt_node.name:
+                    if alt_node.outputs.contains(key):
                         count += 1
-                        inps.append(apd['name'])
-            cells_dict.[(key] = count, inps, num_dests
+                        inps.append(alt_node.name)
+            cells_dict[key] = count, inps, num_dests
         return cells_dict
 
     def batch_inputs(self, outputs):
