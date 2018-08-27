@@ -1,43 +1,111 @@
 ---
 name: cortex
+inputs: [relay, relay_inhib, four]
+shapes:
+  pyramid:
+    dendrites:
+      - spread:
+        directions: []
+      - spread:
+        directions: []
+  star:
+    dendrites:
+      - spread:
+        directions: []
+      - spread:
+        directions: []
+  rose:
+    dendrites:
+      - spread:
+        directions: []
+  granule:
+    dendrites:
+      - spread:
+        directions: []
 layers:
   - name: one
     point_size: 0
-    cell_morphology: none
-    destinations:
-      - none
+    cell_types: none
   - name: two
     point_size: 30
-    cell_morphology:
-      - pyramid
-    destinations:
-      - none
+    cell_types:
+      - pct: 1
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [none]
   - name: three
     point_size: 30
-    cell_morphology:
-      - pyramid
-    destinations:
-      - none
+    cell_types:
+      - pct: 1
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [none]
   - name: four
     point_size: 30
-    cell_morphology:
-      - pyramid
-      - star
-    destinations:
-      - none
+    cell_types:
+      - pct: 1
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [none]
   - name: five
     point_size: 30
-    cell_morphology:
-      - pyramid
-    destinations:
-      - none
-      - output
-      - pair
-      - [same, same]
+    cell_types:
+      - pct: 0.3
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [output]
+      - pct: 0.3
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [pair]
+      - pct: 0.4
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [[same,same]]
   - name: six
     point_size: 30
-    cell_morphology:
-      - pyramid
-    destinations:
-      - none
+    cell_types:
+      - pct: 1
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [none]
+  - name: trn
+    point_size: 1
+    cell_types:
+      - pct: 1
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [none]
+  - name: relay
+    point_size: 1
+    cell_types:
+      - pct: 1
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [none]
+  - name: relay_inhib
+    point_size: 1
+    cell_types:
+      - pct: 1
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [none]
+  - name: assoc_matrix
+    point_size: 1
+    cell_types:
+      - pct: 1
+        dendrites:
+        - shape: none
+          len: 5
+        destinations: [none]
 ...

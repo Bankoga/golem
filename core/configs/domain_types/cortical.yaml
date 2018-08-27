@@ -1,6 +1,6 @@
 ---
 name: cortical
+inputs: [cortex]
 regions:
   - cortex
-  - relay
 ...
