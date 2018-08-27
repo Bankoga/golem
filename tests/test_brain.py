@@ -18,4 +18,4 @@ def build_full_config(brain_fname):
 
         config['problem_domains'][i]['type'] = pd_conf
 
-    print(dump(config))
+    return config
