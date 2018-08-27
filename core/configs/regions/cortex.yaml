@@ -30,82 +30,93 @@ layers:
     point_size: 30
     cell_types:
       - pct: 1
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
+          - shape: none
+            len: 5
         destinations: [none]
   - name: three
     point_size: 30
     cell_types:
       - pct: 1
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
+          - shape: none
+            len: 5
         destinations: [none]
   - name: four
     point_size: 30
     cell_types:
       - pct: 1
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
+          - shape: none
+            len: 5
         destinations: [none]
   - name: five
     point_size: 30
     cell_types:
       - pct: 0.3
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
+          - shape: none
+            len: 5
         destinations: [output]
       - pct: 0.3
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
+          - shape: none
+            len: 5
         destinations: [pair]
       - pct: 0.4
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
+          - shape: none
+            len: 5
         destinations: [[same,same]]
   - name: six
     point_size: 30
     cell_types:
       - pct: 1
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
+          - shape: none
+            len: 5
         destinations: [none]
   - name: trn
     point_size: 1
     cell_types:
       - pct: 1
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
-        destinations: [none]
+          - shape: none
+            len: 5
+        destinations: [relay]
   - name: relay
     point_size: 1
     cell_types:
       - pct: 1
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
-        destinations: [none]
+          - shape: none
+            len: 5
+        destinations: [four]
   - name: relay_inhib
     point_size: 1
     cell_types:
       - pct: 1
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
-        destinations: [none]
+          - shape: none
+            len: 5
+        destinations: [relay]
   - name: assoc_matrix
     point_size: 1
     cell_types:
       - pct: 1
+        act_type: NULL
         dendrites:
-        - shape: none
-          len: 5
+          - shape: none
+            len: 5
         destinations: [none]
 ...
