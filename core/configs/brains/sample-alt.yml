@@ -1,0 +1,33 @@
+---
+name: sample architecture
+nodes:
+  - type: decoder
+    name: decoder_a
+    controller: null
+    size: null
+    output_dest: null
+  - type: encoder
+    name: encoder_a
+    controller: image
+    length: null
+    width: null
+    num_channels: null
+    input_source: null
+    outputs: [vis_a]
+  - name: vis_a
+    type: cortical
+    size: null
+    outputs: [vis_b,vis_c]
+  - name: vis_b
+    type: cortical
+    size: null
+    outputs: [comb_a]
+  - name: vis_c
+    type: cortical
+    size: null
+    outputs: [comb_a]
+  - name: comb_a
+    type: cortical
+    size: null
+    outputs: [decoder_a]
+...
