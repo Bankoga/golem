@@ -9,11 +9,17 @@ We want to have several different types of senses supported for a variety of use
 List of desired input encoders
 
 - Video Stream (camera)
+  - to allow for real world interactivity
 - Audo Stream (mic)
+  - so that we can have systems which process external sound
 - Screen Stream (monitor)
+  - necessary for some types of agents that leverage pc capabilities
 - Speaker Stream (default pc audio)
+  - necessary to pick up on audio played on a pc that an agent is leveraging
 - Session Timer or Maintenance Countdown
   - so the system can intuitively know how long till the next maintenance cycle
+- File stream
+  - to provide for the ability to read a file without a monitor, or while using the available screens for other tasks
 
 ## Output Streams
 
@@ -33,6 +39,8 @@ List of desired output decoders
 - Audio Stream
   - Must support different streams like speakers, and mic
   - to convert spikes to sounds
+- File buffer
+  - to enable writing to a file directly without mediation through other output streams
 
 ## Potential Pitfalls
 
