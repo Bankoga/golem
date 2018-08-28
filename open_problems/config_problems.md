@@ -2,11 +2,11 @@
 
 These are open problems concerning config files, and thoughts on how to resolve them.
 
-## Brain Network Config
+## cell map Config
 
-The top level abstraction is the brain network. A graph whose nodes are individual problem domains.
+The top level abstraction is the cell map. A graph whose nodes are individual problem domains.
 
-> ~~Open Question: Do we define the brain network in the code, or do we use a config?~~
+> ~~Open Question: Do we define the cell map in the code, or do we use a config?~~
 
 Answer: **Use a config to define each problem domain.** If we want to continue with the same approach that we have been using, then going with a config seems to be the best route.
 
