@@ -25,14 +25,14 @@ class Region:
         self.length = length
         self.width = width
         self.config = region_type_config
-        self.layers = self.create_layers()
+        self.create_layers()
 
     def create_layers(self):
         layers = dict()
         for l in self.config['layers']:
             # if the layers config object is an ordered list, then order is an unnecessary config item
             layers[l['name']] = Layer(l, self.loc, self.length, self.width)
-        return layers
+        self.layers = layers
 
     TODO: expand activate to have current mode, time step, and the layer keyed input batched
     def activate(self):

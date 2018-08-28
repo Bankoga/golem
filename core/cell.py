@@ -125,3 +125,8 @@ class Cell:
         return self.axon(is_active)
 
     def bar_update():
+
+    def stitch(self, graph):
+        """
+        use the graph to build the axons, and dendrites
+        """

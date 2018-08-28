@@ -8,12 +8,12 @@ class Destination:
         Size is determined by the config.
         Cells must be wired together separately.
         """
-        TODO: change how the destination init works based on cell size to avoid if clauses or other such checks during activation
         TODO: Confirm that inits do not mutate variables passed to them by accident
         self.loc = Location(key, ploc)
+        TODO: Avoid saving the config details to each destination so as to save on memory usage
         self.point_size = config['point_size'] # num cells at the destination
         self.ctypes = config['cell_types']
-        self.cells = self.create_cells()
+        self.create_cells()
 
     def create_cells(self):
         """
@@ -28,7 +28,7 @@ class Destination:
         for i in range(0, self.point_size):
             c, cell_type_distribution = self.get_cell(cell_type_distribution)
             cells.append(c)
-        return cells
+        self.cells = cells
 
     def get_distributions(self):
         """
@@ -68,3 +68,8 @@ class Destination:
         for c in cells:
             activations.extend(c.activate())
         return activations
+
+    def stitch(self, graph):
+        """
+        use the graph to create the cells axons, and dendrites
+        """

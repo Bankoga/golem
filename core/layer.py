@@ -24,8 +24,9 @@ class Layer:
         self.loc = Location(self.name, ploc)
         self.length = length
         self.width = width
+        TODO: Avoid saving config details to each layer to save on memory usage
         self.config = config
-        self.destinations = create_destinations()
+        create_destinations()
         # using the provided layer properties provided by the config, create the layer object
         """
         Local aspects of a layer and/or region that can differ
@@ -50,7 +51,7 @@ class Layer:
         for i in range(0, self.length):
             for j in range (0 self.width):
                 destinations[i][j] = Destination(self.config, [i,j], self.loc)
-        return destinations
+        self.destinations = destinations
 
     TODO: expand activate to have the current mode, time step, and the destination keyed input batches
     def activate(self):
@@ -65,3 +66,9 @@ class Layer:
             for j in range (0 self.width):
                 activations.extend(self.destinations[i][j].activate())
         return activations
+
+    def stitch(self, graph):
+        """
+        use the graph to add axons, and dendrites to cells
+        There is a lot of traversing through the hierarchy at the moment with this architecture....
+        """
