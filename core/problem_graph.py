@@ -9,7 +9,7 @@ from problem_domain import *
 from decoder import *
 from encoder import *
 
-class CellMap:
+class ProblemGraph:
     def __init__(self, is_pair):
         self.pair = false # will be implemented using is_pair
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
@@ -17,7 +17,7 @@ class CellMap:
         self.ts_per_sim_second = 1000
         self.session_length = self.ts_per_sim_second * 60 * 12
 
-    def create_network(self, brain_fname, num_dests):
+    def build_graph(self, brain_fname, num_dests):
         self.desired_dests = num_dests
         self.build_full_config(brain_fname)
         self.name = self.config['name']
@@ -84,7 +84,7 @@ class CellMap:
         TODO: Determine method for calculating number of dests consumed by each problem domain
         # use self.desired_dests and pd config info to determine how many dests are available to the problem domain during initialization
         TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
-        # though each level cumulatively effects the size of the cell map, they have different impacts and consumption requirements
+        # though each level cumulatively effects the size of the problem graph, they have different impacts and consumption requirements
         TODO: determine how to handle non standard problem domains like the decoder, encoder, & subcortex
         # Build adjacency matrix, and count number of inputs to each node?
         self.desired_dests

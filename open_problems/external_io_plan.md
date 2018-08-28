@@ -1,6 +1,6 @@
 # Externalities
 
-In order for a cell map to be useful, we need to have external points of interaction.
+In order for a problem graph to be useful, we need to have external points of interaction.
 
 ## Sensory Streams
 
@@ -23,7 +23,7 @@ List of desired input encoders
 
 ## Output Streams
 
-In order for a cell map to do things, it needs to have dedicated decoders points that take spikes, and convert them into other types of data.
+In order for a problem graph to do things, it needs to have dedicated decoders points that take spikes, and convert them into other types of data.
 
 List of desired output decoders
 
