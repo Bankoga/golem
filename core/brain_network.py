@@ -11,7 +11,6 @@ from encoder import *
 
 class BrainNetwork:
     def __init__(self, is_pair):
-        TODO: determine where blank network standup, new network creation, and load network init should be handled
         self.pair = false # will be implemented using is_pair
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
         self.mode = "work"
@@ -137,6 +136,7 @@ class BrainNetwork:
 
     def run(self):
         """
+        Blank network standup, new network creation, and load network should be handled by commands in the REPL
         create the repl to listen for external interrupts
         interrupt = self.loop()
         if interrupted by a REPL command
