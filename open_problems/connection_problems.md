@@ -202,7 +202,7 @@ Total Input Slots: 70
 | C | 0.143 | 2.857 |
 | D | 0.571 | 11.429 |
 
-Need formula that calculates the number of actual input slots that can go to a dest PD, and how much of the source it consumes given the list of PDs, their edges, count of input slots, and count of output slots
+Need formula that calculates the number of actual input, and output slots that can be used between two connected PDs without excluding any input or output slot across every PD, given a list of PDs, their edges, count of input slots, and count of output slots. It's an edge weight assignment problem
 
 PctOutX to D = X as Pct of total outputs to D by Xs = NumO @ X / Total O to D
 PctInpD from Ys = D as Pct of total inputs to Ds from Ys = NumI @ D / Total I across Ds
