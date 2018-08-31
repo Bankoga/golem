@@ -120,7 +120,7 @@ For example, we have 3 pds (a, b, c) as inputs to 3 pds (d, e, f). Here we have 
 | B | 10 | 2.143 | 2.857 | 5 |
 | C | 40 | 8.57 | 11.429 | 20 |
 | --- | --- | --- | --- | --- |
-Total Inputs: 70
+Total Outputs: 70
 
 | **Domain**    | **Num Slots** | **Num For A** | **Num For B** | **Num For C** |
 | --- | --- | --- | --- | --- |
@@ -128,7 +128,7 @@ Total Inputs: 70
 | E | 40 | 11.429 | 5.714 | 22.857 |
 | F | 70 | 20 | 10 | 40 |
 | --- | --- | --- | --- | --- |
-Total Outputs: 140
+Total Inputs: 140
 
 | **Domain** | **Ratio to D** | **Ratio to E** | **Ratio to F** |
 | --- | --- | --- | --- |
@@ -186,6 +186,7 @@ For example, we have 1 PD (a) that outputs to 3 other PDs (b, c, d)
 |---------------|---------------|
 | A             | 20            |
 |---------------|---------------|
+Total Output Slots: 20
 
 | **Domain**    | **Num Slots** |
 |---------------|---------------|
@@ -193,13 +194,27 @@ For example, we have 1 PD (a) that outputs to 3 other PDs (b, c, d)
 | C             | 10            |
 | D             | 40            |
 |---------------|---------------|
-Total Output Slots: 70
+Total Input Slots: 70
 
 | **Domain**    | **Pct of Outputs** | **Num Cells** |
 | --- | --- | --- |
 | B | 0.286 | 5.714 |
 | C | 0.143 | 2.857 |
 | D | 0.571 | 11.429 |
+
+Need formula that calculates the number of actual input slots that can go to a dest PD, and how much of the source it consumes given the list of PDs, their edges, count of input slots, and count of output slots
+
+PctOutX to D = X as Pct of total outputs to D by Xs = NumO @ X / Total O to D
+PctInpD from Ys = D as Pct of total inputs to Ds from Ys = NumI @ D / Total I across Ds
+
+AvailInpX = Avail inps out of total for X among Ds = PctOutX to D * NumI @ D
+AvailOutD of X = Avail out of total to D among dests of X = PctInpD from Ys * NumO @ X
+
+Ratio of Avail out to Avail inps = compression or expansion ratio for?
+
+Random num dests labelled A-Z
+Random edges between dests
+random num I, and num I at each dest
 
 Diff ways of splitting output across cells in diff domains
 
@@ -256,6 +271,14 @@ Stiching together the vertices of the graph, each cell must handle its own threa
 > Open Question: Where to thread cells together?
 
 Answer: Unless we can know the size of each region, and layer independently of their initialization, then we have to thread all the destinations together after the hierarchy is created. Thus, we thread the cells together after all the problem domains have been initialized.
+
+### Inter-layer stitching
+
+How are layer destinations consumed to build axons for cells within the same region?
+
+### Inter-region stitching
+
+How are layer destinations consumed to build axons for cells across regions?
 
 ## Mixed number of synapses
 

@@ -281,3 +281,5 @@ Awareness seems to be key. External senses do not seem to be necessary for consc
 It seems to be inseparable from processing what is being processed. It seems to be related to focus (selection, and exclusion) on/between different streams of computation.
 Processing thoughts (results of computation) that have occurred then may be one of the necessary characteristics of consciousness.
 More robust forms of consciousness may be able to affect what is processed, and how.
+
+It is necessary for strong agents to be able to observe their own intent, reflect on it, and then choose to act differently.
