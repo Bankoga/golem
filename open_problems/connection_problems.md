@@ -234,6 +234,15 @@ Diff ways of splitting output across cells in diff domains
 
 In the human neocortex, this would be having adjacent broadmann areas connect to each other near the borders via the layers that handle adjacency. Also, it would be having the relays connect to each other. The relay case is more compelling than the broadmann area case.
 
+For each PD in the graph we start with the first row of data, and calculate the rest
+Start: {pd_key, outgoing_edges[], num_input_slots, num_output_slots}
+Calc: incoming_edges[]
+Calc: total_num_output_slots_to_pd (sum of output slots sent here from incoming edges), total_num_input_slots_across_edge_pds (sum of input slots at each outgoing edge)
+Calc: [{incoming_edge_pd_key: pct_of_output_slots_from_incoming_edge_pd}] // calc pct of output slots out of total slots sent here that are from the incoming pd
+Calc: [{outgoing_edge_pd_key: pct_of_total_output_slots_used_by_pd}] // calc pct of output slots that are sent to the outgoing edge out of all output slots for the originating pd
+Calc: [{outgoing_edge_pd_key: num_avail_input_slots_at_edge}] & [{outgoing_edge_pd_key: num_output_slots_avail_for_edge}]
+Then we can combine avail_input_slots, and num_out_avail_for_edge in order to determine the compression or expansion ratio between two connected Problem Domains
+
 ### Distribution Complexity
 
 > Open Question: Is it a good idea, or even necessary to do the availability based splitting of inputs, and outputs with the ratios used to determine the destinations?
