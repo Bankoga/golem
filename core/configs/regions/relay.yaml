@@ -1,5 +1,7 @@
 ---
 name: relay
+inputs: []
+stitch_type: none
 layers:
   - name: reticular
     point_size: 1

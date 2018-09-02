@@ -1,6 +1,7 @@
 ---
 name: cortex
 inputs: [relay, relay_inhib, four]
+stitch_type: none
 shapes:
   pyramid:
     dendrites:
