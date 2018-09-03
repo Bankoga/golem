@@ -54,3 +54,5 @@ class ProblemDomain:
         TODO: account for pass by reference, and either ensure no side effects xor entirely use side effects
         # new_graph = graph
         # old_graph = graph
+        self.stitch_type
+        # pairs of Input slot to Output slot function mappings
