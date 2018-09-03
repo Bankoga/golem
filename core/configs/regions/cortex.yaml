@@ -36,6 +36,7 @@ layers:
           - shape: none
             len: 5
         destinations: [none]
+        primary_souce: none
   - name: three
     point_size: 30
     cell_types:
@@ -45,6 +46,7 @@ layers:
           - shape: none
             len: 5
         destinations: [none]
+        primary_souce: none
   - name: four
     point_size: 30
     cell_types:
@@ -54,6 +56,7 @@ layers:
           - shape: none
             len: 5
         destinations: [none]
+        primary_souce: none
   - name: five
     point_size: 30
     cell_types:
@@ -62,19 +65,22 @@ layers:
         dendrites:
           - shape: none
             len: 5
-        destinations: [output]
+        destinations: [relay, output]
+        primary_souce: none
       - pct: 0.3
         act_type: NULL
         dendrites:
           - shape: none
             len: 5
         destinations: [pair]
+        primary_souce: none
       - pct: 0.4
         act_type: NULL
         dendrites:
           - shape: none
             len: 5
         destinations: [[same,same]]
+        primary_souce: none
   - name: six
     point_size: 30
     cell_types:
@@ -84,6 +90,7 @@ layers:
           - shape: none
             len: 5
         destinations: [none]
+        primary_souce: none
   - name: trn
     point_size: 1
     cell_types:
@@ -93,6 +100,7 @@ layers:
           - shape: none
             len: 5
         destinations: [relay]
+        primary_souce: none
   - name: relay
     point_size: 1
     cell_types:
@@ -102,6 +110,7 @@ layers:
           - shape: none
             len: 5
         destinations: [four]
+        primary_souce: none
   - name: relay_inhib
     point_size: 1
     cell_types:
@@ -111,6 +120,7 @@ layers:
           - shape: none
             len: 5
         destinations: [relay]
+        primary_souce: none
   - name: assoc_matrix
     point_size: 1
     cell_types:
@@ -120,4 +130,5 @@ layers:
           - shape: none
             len: 5
         destinations: [none]
+        primary_souce: none
 ...
