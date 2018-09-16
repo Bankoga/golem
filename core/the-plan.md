@@ -9,7 +9,13 @@ In order to achieve the seemingly impossible, shit needs to get done! To that en
 - Review all that has been done
 - Optimize for computational efficiency
 
-## Ready to Code!
+## What am I doing
+
+What is the brain? It is a physical graph of processors. Axons, and Dendrites cover areas, and intersect to form directed edges in the processor graph.
+
+What am I building? A software framework for building, and running networks of processors/learning units which can emulate physical brains.
+
+## Ready to Code
 
 This document is for tracking which pieces of the framework are ready for implementation. Not necessarily the interaction points between different bits of code. This for pieces where the bulk alg, or sub program can be made functional with little modification necessary to hook it in.
 
