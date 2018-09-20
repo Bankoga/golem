@@ -16,4 +16,11 @@ nodes:
     type: cortical
     outputs:
       - this is a tricky one. requires answering open problems first
+  - name: mem_encoder_a
+    type: olfact-insp
+    outputs:
+      - memory
+  - name: mem_store
+  - name: nav_mem
+  - name: nav_map
 ...
