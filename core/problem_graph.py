@@ -18,6 +18,7 @@ class ProblemGraph:
         self.session_length = self.ts_per_sim_second * 60 * 12
 
     def build_graph(self, brain_fname, num_dests):
+        TODO: Convert to use cell factory to reduce cell object size
         self.desired_dests = num_dests
         self.build_full_config(brain_fname)
         self.name = self.config['name']
