@@ -28,7 +28,7 @@ general:
 
 ## Problem Domain Types
 
-Decoders, and Encoders are handled via code. They do not have config type files. General, or internal, problem domains have config files which specify crucial information.
+Decoders, and Encoders are handled via code. They do not have config type files. General, or internal, problem domain types have config files which specify crucial information. TODO: ADD MORE EXPLANATION!
 
 ### General
 
@@ -66,11 +66,7 @@ pairing_props:
   personality: distinct|overlap
 input_shapes:
   key:
-    dendrites:
-      - spread:
-        directions: []
-      - spread:
-        directions: []
+    dendrites: SEE_CELL_TYPES_PROPS
 layers:
   - SEE_LAYERS_PROPS
 ...
@@ -81,11 +77,12 @@ layers:
 ```yaml
 ---
 key: one
-point_size: n >= 0
+point_size: f(n) = (int(n) >= 0)
 cell_types:
-  - key: NULL
+  - key: NULL (this does not seem a necessary prop to have for cell types in a layer)
     type: SEE_CELL_TYPES_PROPS
-    pct: n where 0 < n <= 1 && all pct in layer sum to 1
+    pct: f(n) = (0 < n <= 1 && all pct in layer sum to 1)
+    len: overrides default type length
 ...
 ```
 
@@ -94,14 +91,23 @@ cell_types:
 ```yaml
 ---
 key: NULL
-act_type: NULL
+activation_type|behavior|?:
+  type: direct
+  effect:
+    value: f(n) = +1|-1
+  type: meta
+  effect:
+    property: name of property affected
+    selector: query to choose which cells are effected
+    value: strength of the effect
 dendrites:
-  - shape: NULL
-    len: 5
-  - spread: NULL
-    directions: []
-    len: NULL
+  - shape: predefined_input_shapes_key
+    len: f(n) = (int(n) >= 0)
+  - spread: cone|line|tree|NULL
+    directions: [Cardinals[N|S|E|W|NW|SW|NE|SE] | Levels[A(bove)|B(elow)] | Combos[AxCardinal|BxCardinal]]
+    len: f(n) = (int(n) >= 0)
+  - NULL
 destinations: [NULL]
-primary_source: NULL
+primary_sources: [NULL]
 ...
 ```
