@@ -5,20 +5,37 @@
 ```yaml
 ---
 key: NULL
-nodes:
+decoders:
+  - name: NULL
+    type: image|text_stream|character|keyboard_stream|mouse_stream|NULL
+    size: NULL
+    output_dest: filename|directory|NULL
+encoders:
   - key: NULL
-    type: encoder|decoder|
-    controller: images|NULL
-    outputs:
-      - key of problem domain
+    type: image|video|audio|NULL
+    size:
+      length: NULL
+      width: NULL
+      num_channels: NULL
+    input_source: NULL
+    outputs: [pd_key]
+general:
+  - key: NULL
+    type: NULL
+    outputs: [NULL]
 ...
 ```
 
 ## Problem Domain Types
 
+Decoders, and Encoders are handled via code. They do not have config type files. General, or internal, problem domains have config files which specify crucial information.
+
+### General
+
 ```yaml
 ---
 key: NULL
+size: NULL
 inputs: [region_key, region_key]
 regions:
   - key: region_key
@@ -27,6 +44,8 @@ regions:
 ...
 ```
 
+> **Currently, stitch type, fill, and pairing config details are still up in the air!**
+
 ## Regions
 
 ```yaml
@@ -34,10 +53,14 @@ regions:
 key: cortex
 inputs: [layer_key, layer_key]
 stitch_type: NULL
-fill_props:
+in_fill_props:
   order: ascending|descending|random|manual(explicit)
   pattern: row|column|square|etc
-  density|saturation: full, min_ratio(2:2 etc), repeat_n_times, random
+  density|saturation: full|min_ratio(1:1 etc)|repeat_n_times|random
+out_fill_props:
+  order: ascending|descending|random|manual(explicit)
+  pattern: row|column|square|etc
+  density|saturation: full|min_ratio(1:1 etc)|repeat_n_times|random
 pairing_props:
   type: solo|shared
   personality: distinct|overlap
@@ -58,9 +81,11 @@ layers:
 ```yaml
 ---
 key: one
-    point_size: n >= 0
-    cell_types:
-      - SEE_CELL_TYPES_PROPS
+point_size: n >= 0
+cell_types:
+  - key: NULL
+    type: SEE_CELL_TYPES_PROPS
+    pct: n where 0 < n <= 1 && all pct in layer sum to 1
 ...
 ```
 
@@ -68,7 +93,7 @@ key: one
 
 ```yaml
 ---
-pct: 1
+key: NULL
 act_type: NULL
 dendrites:
   - shape: NULL
