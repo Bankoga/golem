@@ -37,34 +37,46 @@ All cells in a container read from that container
 Cells go to different places, with different spreads
 Dests tell their cells where to go based on a mapping of lxw's, and fill props for relevant PDs
 
-self/same dest
+PD level maps of different levels of destination to destination mapping
+Dest -> Dest mapping are used by cells for projection & reception filling of connection paths
 
-- all cells project to dests as described in the relevant config
-  - output dests are filled based on the output pds input layers arrays
-- all cells read from their container
+Cells to/from:
 
-same layer
+- self/same dest
+  - all cells project to dests as described in the relevant config
+    - output dests are filled based on the output pds input layers arrays
+  - all cells read from their container
+- same layer
+  - for projection: ???? and use the Axon spread rules
+  - for reading: use the Dendrite spread rules
+- same region (regions in the same PD are assumed to have 1:1 LxW mapping between Layers)
+  - for projection: reuse self layer coords in the target layer
+  - for reading: use the Dendrite spread rules
+- diff region in the same PD
+  - for projection: use the identity mapping between LxW (raw LxW ratio mapping(?))
+  - for reading: use the Adjacency rules
+- diff PD:
+  - for projection: always use input layers array mapping
+  - for reading: always use raw LxW's ratio mapping(?)
 
-- for projection: 
-- for reading: use the dendrite spread rules
+### Alg of creation
 
-same region (regions are assumed to have 1:1 LxW)
+- count outgoing edges, LxW of destination PDs, shape of output per destination PD
+- count incoming edges, LxW of each input PD, shape of each input PD
+- map destinations of layers within each region to layers within the same region (UNNECESSARY?)
+- map destinations of layers with output paths to destination PD layers+LxW coords
+  - f(a,r_a,l_a,x_a,y_a,d) => d, (d,r_d,l_d,x_d,y_d)
 
-- for projection: reuse self layer coords in the target layer
-- for reading: use the dendrite spread rules
+## Axon Spread Rules
 
-diff region
-
-- for projection: 
-- for reading: 
-
-diff PD:
-
-- for projection, always use input layers array mapping
-- for reading, always use raw LxW's ratio mapping(?)
+What have I done?
+All cell destinations use the axon spread rules. But what are they?
 
 ## Dendrite Spread Rules
 
-## Adjacency Rules
+Oh me...
+
+## Adjacency Rules (physicality rules)
 
 Oh my...
+
