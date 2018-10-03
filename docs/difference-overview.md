@@ -30,6 +30,14 @@ An organic brain is a highly parallel, and extremely modular network of processo
 
 While an organic brain is a graph, in CS a graph is an abstract data type with no notions of physicallity. Organic brains are physical implementations of the abstract type, and whose growth is guided by physical constraints. While we don't need a physical positioning system for our graph if we ignore distance based decay of signal strength, and distance based timing, it is still useful to leverage the relative positions of other cells to build structures as well as help determine structural plasticity. To that end, our framework contains a system for structurally representing regions in the graph, and using those structures to determine things like adjacency, distance, and proximity.
 
+Distance is determined by a function of number of edges between two points in the graph, the lengths of those edges, and the adjacency/arrangement of the structures in the graph relative to one another.
+
 ## Scalability
 
 Brain neuron counts across earth-like animals, span many orders of magnitude. From small 100K brains to large 100B brains. In many cases, this will happen with brains that are roughly of similar architecture. Thus, our framework includes a system for arbitrarily scaling brain-like architectures without a need to change the architecture. Sizes of regions are a function of their place, and purpose in an architecture.
+
+Interpretation of inputs to a pd/region?
+each point maps a part of the input space that is usually many:1 (**what about output space?**)
+
+multiple - overlapping, distint
+individual - distinct, dense

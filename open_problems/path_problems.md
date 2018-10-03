@@ -64,6 +64,8 @@ Animal brains are literal processing graphs. Unlike abstract graphs which can be
 
 Answer: ?
 
+Number of edges between two problem domains, adjacency fill base separation of structures, and edge length (as determined by adjacency fill) are used to determine distance between cells.
+
 > ~~Open Question: Are we able to use the graph to represent distinct steps in a processing sequence?~~
 This question is related to the distance between cells question.
 
