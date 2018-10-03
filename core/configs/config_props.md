@@ -13,10 +13,7 @@ decoders:
 encoders:
   - key: NULL
     type: image | video | audio | NULL
-    size:
-      length: NULL
-      width: NULL
-      num_channels: NULL
+    size: NULL
     input_source: NULL
     outputs: [pd_key]
 general:
@@ -25,6 +22,14 @@ general:
     outputs: [NULL]
 ...
 ```
+
+### Size Objects
+
+Descriptions/examples of the different size objects for each decoder & encoder type
+image
+length: NULL
+width: NULL
+num_channels: NULL
 
 ## Problem Domain Types
 
@@ -36,7 +41,7 @@ Decoders, and Encoders are handled via code. They do not have config type files.
 ---
 key: NULL
 size: NULL
-inputs: [region_key, region_key]
+input_layers: [region_key, region_key]
 regions:
   - key: region_key
     type: region_type
@@ -44,14 +49,19 @@ regions:
 ...
 ```
 
+PDs determine fill boundaries of output shape for Regions, and Layers
+Regions determine fill rules for between its Layers
+Layers determine how to fill the output shape via their config
+Destinations use the map to build axons & dendrites
+
 > **Currently, stitch type, fill, and pairing config details are still up in the air!**
 
 ## Regions
 
 ```yaml
 ---
-key: cortex
-inputs: [layer_key, layer_key]
+type: cortex
+input_layers: [layer_key, layer_key]
 stitch_type: NULL
 in_fill_props:
   order: ascending | descending | random | manual(explicit)
