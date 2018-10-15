@@ -59,6 +59,9 @@ Cells to/from:
   - for projection: always use input layers array mapping
   - for reading: always use raw LxW's ratio mapping(?)
 
+Cross PD axons go through designated input layers, and require entry mappings
+Cross PD dendrites pass through boundaries, and cross matrices. They require adjacency Position to Position mappings. I.E. we need to know what the terrain looks like.
+
 ### Alg of creation
 
 - count outgoing edges, LxW of destination PDs, shape of output per destination PD
@@ -69,8 +72,8 @@ Cells to/from:
 
 ## Axon Spread Rules
 
-What have I done?
-All cell destinations use the axon spread rules. But what are they?
+Axons have core target Destinations set as per the relevant mapping via the layers cell type axon config. At these destinations, the axon can branch out in shapes (like a square) of some size (like 4x4). So it will put the target in the middle of the shape, and add all dests that fit inside the shape to the axons projections. Axons can also project specifically to a single destination without spreading upon arrival. Spreading is handled at each axon branch terminal/end point.
+Cells thus handled output spread from core targets, and are separate from layer filling.
 
 ## Dendrite Spread Rules
 
