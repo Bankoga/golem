@@ -19,9 +19,16 @@ encoders:
 general:
   - key: NULL
     type: NULL
-    outputs: [NULL]
+    forward_edges: [NULL]
+    feedback_edges: [NULL]
 ...
 ```
+
+We can have different types of output for cells which would allow us greater control over which outputs to send projections
+
+Input zones for a region are used to partion input from different PDs into bounded areas
+
+At present, it may be quickest, and easiest to have users define physical adjacency for nodes in the brain/graph config
 
 ### Size Objects
 
@@ -99,6 +106,9 @@ cell_types:
 per output location fill (i.e. per cell type)
 per layer output fill
 per region output fill
+      length: NULL
+      width: NULL
+      num_channels: NULL
 
 ## Cell Types
 
