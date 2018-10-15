@@ -99,6 +99,7 @@ class Cell:
         # ugh naming, and not sure where this needs to live nor how it's supposed to behave.....
 
     def threshhold_plasticity():
+        # Hebbian/STDP plasticity is limited to the site of activity? https://medicalxpress.com/news/2018-10-seemingly-opposing-brain-cooperate-memory.html
 
     def activate(self, mode, timestep, destination_state, input_batch):
         if self.polarity >= self.ap_thresh:
