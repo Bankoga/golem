@@ -243,6 +243,8 @@ Calc: [{outgoing_edge_pd_key: pct_of_total_output_slots_used_by_pd}] // calc pct
 Calc: [{outgoing_edge_pd_key: num_avail_input_slots_at_edge}] & [{outgoing_edge_pd_key: num_output_slots_avail_for_edge}]
 Then we can combine avail_input_slots, and num_out_avail_for_edge in order to determine the compression or expansion ratio between two connected Problem Domains
 
+** THIS IS A PER OUTPUT EDGE SET. Each set of pds which receive the same distribution of outputs is glommed into sets**
+
 ### Distribution Complexity
 
 > Open Question: Is it a good idea, or even necessary to do the availability based splitting of inputs, and outputs with the ratios used to determine the destinations?
