@@ -48,7 +48,7 @@ class Dendrite():
          - use it or lose it
          - can only be 1
          - synapse resource competition / avg synapse weight / synapse weight distribution
-         TODO: still undetermined if distance based decay of weighting will be implemented
+         TODO: still undetermined if distance based decay of weighting will be implemented. There is a growing body of evidence which suggests that dendrites weaken signals based on distance from the soma.
         TODO: calculate sensitivity changes for the timestep based on is_active
         """
 

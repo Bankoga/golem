@@ -32,6 +32,8 @@ While an organic brain is a graph, in CS a graph is an abstract data type with n
 
 Distance is determined by a function of number of edges between two points in the graph, the lengths of those edges, and the adjacency/arrangement of the structures in the graph relative to one another.
 
+**There is a growing body of evidence which suggests that dendrites weaken signals based on distance from the soma. Thus, distance based decay becomes necessary for dendrites.**
+
 ## Scalability
 
 Brain neuron counts across earth-like animals, span many orders of magnitude. From small 100K brains to large 100B brains. In many cases, this will happen with brains that are roughly of similar architecture. Thus, our framework includes a system for arbitrarily scaling brain-like architectures without a need to change the architecture. Sizes of regions are a function of their place, and purpose in an architecture.
