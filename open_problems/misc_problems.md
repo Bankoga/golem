@@ -147,9 +147,11 @@ Opts for # avail inputs/outpus for a layer:
       - largest N indices
       - smallest N indices
 
-> ~~Open Question: How do we indicate what length, and width each region occupies?~~
+> Open Question: How do we indicate what length, and width each region occupies?
 
-Answer: There are two cases for length x width. We can specify a ratio to use when splitting the number of destinations in the layers, or we can automatically split them into a square. This is indicated by a flag in the config.
+Pseudo Answer: We can use a base unit LxW that is set during init. Each config would specify size in terms of base units, sum units from a list of domains, or ???
+
+Pseudo Answer: There are two cases for length x width. We can specify a ratio to use when splitting the number of destinations in the layers, or we can automatically split them into a square. This is indicated by a flag in the config.
 
 From micro to macro, level sizes are determined by the following funcs:
 
@@ -178,7 +180,7 @@ Each region, and pd are 3D objects. Distance between two dests is thus determine
 
 > Open Question: Do we want the number of dests to be hard coded for each level?
 
-Answer: No. We want to be able to set a desired number of dests at the top level, then have those split across the problem domains appropriately.
+Answer: No. We want to be able to set a desired number of dests at the top level, then have those split across the problem domains appropriately. **SEE ANSWER TO LENGTH X WIDTH OF REGIONS Q!**
 
 > Open Question: If I want a brain with ~N neurons, how do I indicate that when creating a problem graph with a given architecture?
 
