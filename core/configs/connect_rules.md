@@ -26,6 +26,8 @@ From one Layer to:
     - within the same PD
     - in a different PD
 
+Diff rules/ways for connecting/stitching: Stitching (nxm -> cxr), Convolving (nxn -> 1, dilate, skips)
+
 From one Cell || Destination to:
 is there a diff?
 
