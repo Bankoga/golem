@@ -33,6 +33,7 @@ class ProblemGraph:
             TODO: ensure that all nodes have a stitch method which fully populates cells with axons
             node.stitch(graph)
         TODO: Optim: pull all dests from all pds into a single adjacency list
+        TODO: Build relay problem domain out of region
         self.brain = graph
 
     def build_full_config(brain_fname):
