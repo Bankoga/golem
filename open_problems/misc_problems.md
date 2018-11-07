@@ -291,3 +291,55 @@ Processing thoughts (results of computation) that have occurred then may be one 
 More robust forms of consciousness may be able to affect what is processed, and how.
 
 It is necessary for strong agents to be able to observe their own intent, reflect on it, and then choose to act differently.
+
+## Eye Encoder Size and Distribution
+
+Eye Encoder area distribution calcs
+var diam_d = 22
+var diam_b = 2.5
+var diam_c = 5.5
+var diam_blind = 3
+var d = (Math.PI*Math.pow(diam_d/2,2))
+var B = (Math.PI*Math.pow(diam_b/2,2))
+var C = (Math.PI*Math.pow(diam_c/2,2)-B)
+var blind = Math.PI*Math.pow(diam_blind/2,2)
+var D = d - (B+blind+C)
+var sum = D + B + C
+var pctD = D / sum
+var pctB = B / sum
+var cnt = 130e6
+var cones = 6e6
+var rods = 120e6
+var dist = function(pct,n,a){return (pct*n)/a}
+var totalCnt = (dist(pctD,cnt,D)+dist(pctB,cnt,B));
+(dist(pctB,cones,B))*Math.pow(0.001,2);
+totalC - ((dist(1,rods,D)) + ((dist(0.5,cones,B))*2));
+(pctD*cnt/D)/(cones/(B+C));
+
+**IMPORTANT**: ENSURE THAT LENGTHS ARE ALWAYS EVEN!!!
+var sz_rat_b = diam_b/diam_d
+var sz_rat_c = diam_c/diam_d
+var sz_rat_d = (diam_d-(diam_b+diam_c))/diam_d //+diam_blind
+
+var len_abs = 128
+var half_len = Math.ceil(len_abs/2)
+var len_b = Math.ceil(sz_rat_b*half_len)*2
+var len_c = Math.ceil(sz_rat_c*half_len)*2
+var len_d = Math.ceil(sz_rat_d*half_len)*2
+
+var sz_statblock = function(len_abs,len_b,len_c,len_d) {
+  return `Filter Props:
+  window_sz: ${len_abs}x${len_abs}
+  parafvea_sz: ${len_b}x${len_b}
+  perifvea-macula_sz_: ${len_c}x${len_c}
+  rtna_inr_brdr_sz: ${len_d}x${len_d}`
+}
+var sz_stat = function (len_abs) {
+  var half_len = Math.ceil(len_abs/2)
+  var len_b = Math.ceil(sz_rat_b*half_len)*2
+  var len_c = Math.ceil(sz_rat_c*half_len)*2
+  var len_d = Math.ceil(sz_rat_d*half_len)*2
+  return sz_statblock(len_abs,len_b,len_c,len_d)
+}
+
+console.log(32*rat + ' : ' + 128*rat + ' : ' + 256*rat)
