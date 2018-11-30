@@ -36,7 +36,7 @@ class Cell:
         # use limits should be modifiable by the chemical state of the cell
         self.use_limits = use_limits
         TODO: determine acceptable depolarization rates
-        self.depolarization_rate = 25
+        self.depolarization_rate_ms = 25
         self.ap_thresh = 100 # +- 75
         self.resting_potential = 0
         self.polarity = resting_potential
@@ -45,7 +45,7 @@ class Cell:
         # used as countdown untill it can process inputs again
         self.steps_since_active = 0
         # number of timesteps for the cooldown
-        self.cooldown_duration = 3
+        self.cooldown_duration_ms = 3
         self.cooldown = self.cooldown_duration
         TODO: determine if the cooldown period should be longer than 1 timestep. 1 timestep can be handled by boolean
 
@@ -131,3 +131,13 @@ class Cell:
         """
         use the graph to build the axons, and dendrites
         """
+
+4 Aspects to WoW RP Combat
+Health: 3/3 seems too low but large health bars unnecessarily slow things down
+AP: roll 5 (roll determines cost of action. Can't spend more than 5 total cost in a single round)
+
+Health and AP make sense to me. Health gets mod based on agent rank I presume (even if not still is k)
+Action success, and effectiveness seem to need minor changes. As a former tabletop GM and player, my toons success shouldn't rely on DM rolls
+Proposal:
+Action success (nat 1 crit fail, 2-9 fail, >10 success, nat 20 crit (roll for effectiveness twice))
+Action effectiveness (damage/heal) (opposing 1-20 with higher winning, outside melee range does not incur defense win counterattack. No spell counter attacks unless explicit mechanics)
