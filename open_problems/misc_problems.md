@@ -293,7 +293,6 @@ More robust forms of consciousness may be able to affect what is processed, and 
 It is necessary for strong agents to be able to observe their own intent, reflect on it, and then choose to act differently.
 
 ## Eye Encoder Size and Distribution
-
 Eye Encoder area distribution calcs
 var diam_d = 22
 var diam_b = 2.5
@@ -313,33 +312,34 @@ var rods = 120e6
 var dist = function(pct,n,a){return (pct*n)/a}
 var totalCnt = (dist(pctD,cnt,D)+dist(pctB,cnt,B));
 (dist(pctB,cones,B))*Math.pow(0.001,2);
-totalC - ((dist(1,rods,D)) + ((dist(0.5,cones,B))*2));
+totalCnt - ((dist(1,rods,D)) + ((dist(0.5,cones,B))*2));
 (pctD*cnt/D)/(cones/(B+C));
-
-**IMPORTANT**: ENSURE THAT LENGTHS ARE ALWAYS EVEN!!!
-var sz_rat_b = diam_b/diam_d
-var sz_rat_c = diam_c/diam_d
-var sz_rat_d = (diam_d-(diam_b+diam_c))/diam_d //+diam_blind
 
 var len_abs = 128
 var half_len = Math.ceil(len_abs/2)
-var len_b = Math.ceil(sz_rat_b*half_len)*2
-var len_c = Math.ceil(sz_rat_c*half_len)*2
-var len_d = Math.ceil(sz_rat_d*half_len)*2
+var len_b = Math.ceil(diam_rat_b*half_len)*2
+var len_c = Math.ceil(diam_rat_c*half_len)*2
+
+var diam_rat_b = diam_b/diam_d
+var diam_rat_c = diam_c/diam_d
 
 var sz_statblock = function(len_abs,len_b,len_c,len_d) {
   return `Filter Props:
-  window_sz: ${len_abs}x${len_abs}
-  parafvea_sz: ${len_b}x${len_b}
-  perifvea-macula_sz_: ${len_c}x${len_c}
-  rtna_inr_brdr_sz: ${len_d}x${len_d}`
+  parafvea_sz: ${len_b}x${len_b}=${Math.pow(len_b,2)}px
+  perifvea-macula_sz: ${len_c}x${len_c}=${Math.pow(len_c,2)}px
+  window_sz: ${len_abs}x${len_abs}=${Math.pow(len_abs,2)}px`
 }
-var sz_stat = function (len_abs) {
+var sz_stat = function (len_abs,hq_sz) {
   var half_len = Math.ceil(len_abs/2)
-  var len_b = Math.ceil(sz_rat_b*half_len)*2
-  var len_c = Math.ceil(sz_rat_c*half_len)*2
-  var len_d = Math.ceil(sz_rat_d*half_len)*2
-  return sz_statblock(len_abs,len_b,len_c,len_d)
+  var len_b = Math.ceil(diam_rat_b*half_len)*2
+  var len_c = Math.ceil(diam_rat_c*half_len)*2
+  //var len_d = Math.ceil(diam_rat_d*half_len)*2
+  var stats = 'Using len_abs:\n'+sz_statblock(len_abs,len_b,len_c)
+  if (typeof hq_sz != 'undefined') {
+    half_len = Math.ceil(hq_sz/diam_rat_c)/2
+    len_b = Math.ceil(diam_rat_b*half_len)*2
+    len_c = Math.ceil(diam_rat_c*half_len)*2
+    console.log('Using hq:\n'+sz_statblock(half_len*2,len_b,len_c))
+  }
+  return stats
 }
-
-console.log(32*rat + ' : ' + 128*rat + ' : ' + 256*rat)
