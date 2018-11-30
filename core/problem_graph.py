@@ -14,6 +14,7 @@ class ProblemGraph:
         self.pair = false # will be implemented using is_pair
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
         self.mode = "work"
+        TODO: Pull ts level global data into config for use in other files for num ts calcs
         self.ts_per_sim_second = 1000
         self.session_length = self.ts_per_sim_second * 60 * 12
 
