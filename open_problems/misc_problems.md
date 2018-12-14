@@ -293,6 +293,7 @@ More robust forms of consciousness may be able to affect what is processed, and 
 It is necessary for strong agents to be able to observe their own intent, reflect on it, and then choose to act differently.
 
 ## Eye Encoder Size and Distribution
+
 Eye Encoder area distribution calcs
 var diam_d = 22
 var diam_b = 2.5
@@ -339,7 +340,36 @@ var sz_stat = function (len_abs,hq_sz) {
     half_len = Math.ceil(hq_sz/diam_rat_c)/2
     len_b = Math.ceil(diam_rat_b*half_len)*2
     len_c = Math.ceil(diam_rat_c*half_len)*2
-    console.log('Using hq:\n'+sz_statblock(half_len*2,len_b,len_c))
+  stats+='Using hq:\n'+sz_statblock(half_len*2,len_b,len_c)
   }
   return stats
 }
+
+## Memory in a Machine
+
+an interesting way to think of memory in a neural network is as a well defined, stable set of interdependent activity within, or path through, the network
+
+The cortex then is a bunch of models that are used each day to operate the entity according to the construction the subcortex
+When resting, the models are maintained, and updated incorporating data from the new session (record of time spent operating alertly), as well as from stored sessions (temporary, and permanent)
+Thus the network prunes what wasn't used, and reinforces that which was used. Along with a variety of homeostasis mechanisms to maintain the models previous cabilities
+All help to achieve the primary or basic goals of the system
+
+Thus we have a few types of weight for cells
+Session unique - isn't weighted strongly enough to change the network, gets removed during the next rest cycle
+Transient - lasts a few sessions because of initial or sporadic reuse, but either gets used sufficiently within a given time period to crystallize (permanently affect the model), or decays long enough to get pruned (think of a weighted moving average that goes away if not used more than some threshold number of times within the past 7 cycles)
+Crystallized - changes that have been permanently added
+Seed - Inherited weight/random initialization value
+
+Which explains the several forms of memory we see in humans
+Working memory - local system memory
+Short term - session unique
+Mid term - local variance duration (1 - 3 months, temporary sessions limit)
+Long term - Habits, Reflexes, Knowledge, etc... (base weights, saved sessions)
+
+As well as models habits, and muscle memory (muscle memory not so much)
+Habit formation difficulty - converting transient to crystallized is difficult
+Habit loss ease - rapid adaption via deactivation of irrelevant engram weights
+Old Habits die hard - Large scale drift difficulty as func of complexity, and degree of integration of change
+
+TIME BASED USAGE CAN BE MODELED AS CHEMICAL CONCENTRATION CHANGES WITH VARIOUS VALUE THRESHHOLDS USED TO MAKE UPDATES
+
