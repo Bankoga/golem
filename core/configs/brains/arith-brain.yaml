@@ -1,0 +1,39 @@
+---
+name: arith-brain
+ts_data:
+  ts_per_sec: 1000
+  session_length: 43200
+decoders:
+  - name: decoder_a
+    types: [output, number,flag-error,flag-warning]
+    model: Spike2Num
+    size:
+      num_words: 1
+      len_words: 9
+    output_dest: return
+    outputs: null
+encoders:
+  - name: encoder_a
+    model: Word2Spike
+    types: [input,untrusted]
+    size:
+      num_words: 3
+      len_words: 3
+    input_source: file
+    outputs:
+      - dest: statement
+        distributions: word
+modules:
+  - name: statement
+    model: cortical
+    circuits: [primary-relay]
+    size: 9
+    outputs:
+      - dest: decoder_a
+        distributions: adjusted
+  - name: relay
+    model: thalamus
+    circuits: [primary-relay]
+    size: size_primary-relay
+    outputs: reciprocal
+...

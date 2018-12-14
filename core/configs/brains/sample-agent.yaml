@@ -1,0 +1,210 @@
+---
+name: sample-agent
+ts_data:
+  ts_per_sec: 1000
+  session_length: 43200
+decoders:
+  - name: decoder_a
+    types: [output, number,flag-error,flag-warning]
+    model: Spike2Num
+    size:
+      num_words: 1
+      len_words: 9
+    output_dest: return
+    outputs: null
+encoders:
+  - name: eye_a
+    model: Eye2Spike
+    types: [input,untrusted]
+    size:
+      eye_diameter: 128
+      color_channels: RGB
+    input_source: screen
+    outputs:
+      - dest: V1
+        distributions: topographic # i.e. whatever we want to represent point to point
+  - name: eye_b
+    model: Eye2Spike
+    types: [input,untrusted]
+    size:
+      eye_diameter: 128
+      color_channels: RGB
+    input_source: file
+    outputs:
+      - dest: statement
+        distributions: word
+  - name: primary_terminal
+    model: Term2Spike
+    types: [input, trusted, self]
+    size: null
+    input_source: terminal
+    outputs: ?
+framework:
+  - name: striatum, nucleus accumbens
+    model: ?
+    size: null
+    outputs: null
+  - name: striatum, olfactory tubercle
+    model: ?
+    size: null
+    outputs: null
+  - name: striatum, caudate nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: striatum, lentiform nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: striatum, putamen
+    model: ?
+    size: null
+    outputs: null
+  - name: globus-pallidus-interior
+    model: ?
+    size: null
+    outputs: null
+  - name: globus-pallidus-exterior
+    model: ?
+    size: null
+    outputs: null
+  - name: ventral pallidum
+    model: ?
+    size: null
+    outputs: null
+  - name: substantia nigra, pars compacta
+    model: ?
+    size: null
+    outputs: null
+  - name: substantia nigra, pars reticularis
+    model: ?
+    size: null
+    outputs: null
+  - name: subthalamic nuclei
+    model: ?
+    size: null
+    outputs: null
+  - name: hypothalamus
+    model: hypothalamus
+    size: null
+    outputs: null
+  - name: relay
+    model: thalamus
+    circuits: [primary-relay]
+    size: size_primary-relay
+    outputs: reciprocal
+  - name: ventral tegmental area
+    model: ?
+    size: null
+    outputs: null
+  - name: lateral habenula
+    model: ?
+    size: null
+    outputs: null
+  - name: medial habenula
+    model: ?
+    size: null
+    outputs: null
+  - name: hippocampus, dentate gyrus
+    model: ?
+    size: null
+    outputs: null
+  - name: hippocampus, subiculum
+    model: ?
+    size: null
+    outputs: null
+  - name: hippocampus, CA1
+    model: ?
+    size: null
+    outputs: null
+  - name: hippocampus, CA2
+    model: ?
+    size: null
+    outputs: null
+  - name: hippocampus, CA3
+    model: ?
+    size: null
+    outputs: null
+  - name: hippocampus, CA4
+    model: ?
+    size: null
+    outputs: null
+  - name: red nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: median raphe nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: dorsal raphe nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: cerebellar penduncles
+    model: ?
+    size: null
+    outputs: null
+  - name: colliculus, inferior
+    model: ?
+    size: null
+    outputs: null
+  - name: colliculus, superior
+    model: ?
+    size: null
+    outputs: null
+  - name: amygdala
+    model: ?
+    size: null
+    outputs: null
+  - name: claustrum
+    model: ?
+    size: null
+    outputs: null
+  - name: cerebellum
+    model: ?
+    size: null
+    outputs: null
+  - name: cerebellum, dentate nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: cerebellum, emboliform nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: cerebellum, globose nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: cerebellum, gastigial nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: septum
+    model: ?
+    size: null
+    outputs: null
+  - name: 
+    model: ?
+    size: null
+    outputs: null
+modules:
+  - name: V1
+    model: cortical
+    circuits: [primary-relay]
+    size: size_eye_a
+    outputs:
+      - dest: decoder_a
+        distributions: adjusted
+  - name: monitor-eye-control
+    model: null
+    circuits: null
+    size: null
+    outputs: eye_a
+  - name: null
+    model: null
+    circuits: null
+    size: null
+    outputs: null
+...
