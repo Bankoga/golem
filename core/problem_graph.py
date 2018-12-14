@@ -2,47 +2,68 @@
 # herein lie the details for initialization, saving, and loading an entire network of distinct problem domains
 # A brain_network consists of multiple problem domains wired together to form a cohesive dynamical system
 # top level goals live here
-from .imports import *
+# from imports import *
 from yaml import load, dump
 from layer import *
 from problem_domain import *
 from decoder import *
 from encoder import *
 
+# NEED to rename this class because as I intend to use it, it's a brain that builds other brains.... Dayum....
 class ProblemGraph:
-    def __init__(self, is_pair):
-        self.pair = false # will be implemented using is_pair
+    def __init__(self, brain_fname, is_pair=False, num_dests=0):
+        self.brain_fname = brain_fname
+        self.desired_dests = num_dests
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
         self.mode = "work"
-        TODO: Pull ts level global data into config for use in other files for num ts calcs
-        self.ts_per_sim_second = 1000
-        self.session_length = self.ts_per_sim_second * 60 * 12
+        self.pair = is_pair
 
-    def build_graph(self, brain_fname, num_dests):
+    def init_ts(ts_data):
+        TODO: Pull ts level global data into config for use in other files for num ts calcs. MWAHAHAHAAAA
+        # plan is to have simulated sec defined, and num ts per sec evald to see how fast it compares to analagous physically implemented systems. Does it have more time than us?
+        self.ts_per_sim_second = ts_data['ts_per_sec']#1000
+        self.session_length = self.ts_per_sim_second * ts_data['session_length'] #60 * 60 * 12
+
+    def build_brain(self, brain_fname, num_dests):
         TODO: Convert to use cell factory to reduce cell object size
-        self.desired_dests = num_dests
-        self.build_full_config(brain_fname)
-        self.name = self.config['name']
+        brain = self.build(brain_fname, num_dests)
+        return brain
+
+    def build_self(self):
+        brain = self.build(self.brain_fname, self.desired_dests)
+        self.config = brain['config']
+        self.name = brain['name']
+        self.ts = brain['ts']
+        self.graph = brain['graph']
+
+    def build(self, brain_fname, num_dests):
+        config = self.build_full_config(brain_fname)
+        brain = {
+            'config': config,
+            'name': config['name'],
+            'ts': init_ts(config['ts_data'])
+        }
         graph = dict()
         TODO: parse each node, grab the config details, and build the nodes contents/destinations
-        graph.extend(self.parse_decoders())
-        graph.extend(self.parse_encoders())
-        graph.extend(self.parse_problem_domains())
+        graph.extend(self.parse_decoders(brain))
+        graph.extend(self.parse_encoders(brain))
+        graph.extend(self.parse_modules(brain))
         TODO: determine size of each region, and layer so that cells can be stitched together
-        i_counts = self.get_input_counts(graph)
+        i_counts = self.get_input_counts(graph, num_dests)
         for node in graph:
             TODO: ensure that all nodes have a stitch method which fully populates cells with axons
             node.stitch(graph)
         TODO: Optim: pull all dests from all pds into a single adjacency list
         TODO: Build relay problem domain out of region
-        self.brain = graph
+        return brain.extend({'graph': graph})
 
     def build_full_config(brain_fname):
         TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...
         TODO: raise an exception and exit if the yaml does not exist
         config_fname = 'core\\configs\\brains\\{0}.yaml'.format(brain_fname)
         config = load(open(config_fname))
-        for i, pd in enumerate(config['problem_domains']):
+        TODO: rename problem domains to modules?
+        for i, pd in enumerate(config['modules']):
             TODO: raise an exception and exit if the yaml does not exist
             pd_conf_fname = 'core\\configs\\domain_types\\{0}.yaml'.format(pd['type'])
             pd_conf = load(open(pd_conf_fname))
@@ -51,9 +72,9 @@ class ProblemGraph:
                 rconf_fname = 'core\\configs\\regions\\{0}.yaml'.format(region)
                 rconf = load(open(rconf_fname))
                 pd_conf['regions'][j] = rconf
-            config['problem_domains'][i]['type'] = pd_conf
+            config['modules'][i]['type'] = pd_conf
         print(dump(config))
-        self.config = config
+        return config
 
     def parse_decoders(self):
         TODO: raise an exception if there are no decoders
@@ -73,24 +94,23 @@ class ProblemGraph:
             graph[key] = obj
         return graph
 
-    def parse_problem_domains(self):
+    def parse_modules(self):
         TODO: raise an exception if there are no problem domains
         graph = dict()
-        for pd in self.config['problem_domains']:
+        for pd in self.config['modules']:
             key = pd['name']
             obj = ProblemDomain(key, pd['type'], pd['outputs'], i_counts[key])
             graph[key] = obj
         return graph
 
-    def get_input_counts(self, nodes):
+    def get_input_counts(self, nodes, desired_dests):
         TODO: Calculate minimum number of destinations supported by the provided architecture. This does require that the top level have a fully expanded copy of the brain config.
         TODO: Determine method for calculating number of dests consumed by each problem domain
-        # use self.desired_dests and pd config info to determine how many dests are available to the problem domain during initialization
+        # use desired_dests and pd config info to determine how many dests are available to the problem domain during initialization
         TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
         # though each level cumulatively effects the size of the problem graph, they have different impacts and consumption requirements
         TODO: determine how to handle non standard problem domains like the decoder, encoder, & subcortex
         # Build adjacency matrix, and count number of inputs to each node?
-        self.desired_dests
         cells_dict = dict()
         for node in graph:
             key = node.name
@@ -165,21 +185,27 @@ class ProblemGraph:
                     Implement clear so as to not affect sensory input collection
                 - ts_count = 0
             - else:
-                - collect sensory input
+                ext_data = collect sensory input
                     - should this be done inside the corresponding problem domain?
                     - where do external inputs plug into the network?
                     - how is that external data collected and translated into spikes?
-                outputs.extend(sensor_data)
-                # match axon destinations with problem domain accepted inputs
-                inputs = self.batch_inputs(outputs)
-                outputs = []
-                for pd in self.brain:
-                    # activate each problem domain (each PD activates it's region which in turn activate layers which activate cells)
-                    # collect the ouputs from each problem domain
-                    outputs.extend(pd.activate(mode, ts_count, inputs[pd.name]))
-                TODO: where do the external outputs get sent at the end of a timestep?
-                - ts_count++
+                activate(ts, ext_data)
+                calc_reward()
+                ts_count++
         return interrupt
+        """
+
+    def activate(self, ts, ext_data):
+        """
+        outputs.extend(ext_data)
+        # match axon destinations with problem domain accepted inputs
+        inputs = self.batch_inputs(outputs)
+        outputs = []
+        for pd in self.brain:
+            # activate each problem domain (each PD activates it's region which in turn activate layers which activate cells)
+            # collect the ouputs from each problem domain
+            outputs.extend(pd.activate(mode, ts_count, inputs[pd.name]))
+        TODO: where do the external outputs get sent at the end of a timestep?
         """
 
     def save(fn, a): 
