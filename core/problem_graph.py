@@ -175,6 +175,7 @@ class ProblemGraph:
         #the ts_count can perhaps be used to create temporary objects that are released by the last cell to access it.
         # Each layer would this need to keep track of how many times it had been touched during the timestep, and self delete before returning
         """
+        https://blog.sicara.com/perfect-python-command-line-interfaces-7d5d4efad6a2 CLI tips
         while waiting for interrupts run through a timestep
             - if ts_count >= session_length
                 mode = "maintenance"
