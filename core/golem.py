@@ -29,52 +29,63 @@ Option 2: Extract to any folder and add the path to this folder to the command s
 Option 3: Extract to any folder and define that path in the python.workspaceSymbols.ctagsPath setting of your user settings file (settings.json).
         """
         golem_type_config = read config that corresponds to golem_type
-        core_config = read golem_type_config['core_type']
+        core_config = read golem_type_config['core_type_fname']
         settings = golem_type_config.extend({
-            'desired_dests': num_dests,
+            'desired_base_dests': num_dests,
             'paired': is_pair #should be capable of handling through config as well at some point
             #'core_type_fname': config.core_type_fname. CORE_TYPE or CORE_TYPE_FNAME SHOULD BE INCLUDED IN GOLEM_TYPE config already
         })
         return settings
 
-    def generate_golem_id(golem_type):
-        rh = 0#calc random 1024-hex hash
-        cts = 0#get current timestamp()
-        return '{0}-{1}-{2}'.format(golem_type, rh, cts)
-
     def construct_self(self):
-        egg = self.assemble_egg(self.settings.core_type_fname, self.desired_dests)
+        egg = self.assemble_egg(self.settings['core_type_fname'], self.desired_dests)
         self.settings.core_config = egg['core_config']
-        self.name = egg['name']
-        self.id = self.generate_golem_id(self.golem_type)
+        # contain ts within a hearbeat system?
         self.settings.ts = egg['ts']
-        self.os = egg['graph']
+        self.name = egg['name']
+        self.id = egg['id']
+        self.brain = egg['graph']
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
-        self.mode = "new-construct"
+        self.mode = 'new-construct'
 
-    def construct_golem(self, golem_type, is_pair=False, num_dests=0):
+    def construct_golem(self, golem_type, num_dests=0, is_pair=False):
+        # this should really leverage the Golem class
         # merged build brain into construct golem
         # builds, validates, and returns a new golem
+        golem = Golem(golem_type, num_dests, is_pair)
+        golem.construct_self()
+        """
         stngs = parse_gt_config(golem_type, num_dests, is_pair)
-        self.construct_core(stngs)
-        settings.core_config = egg['core_type_config']
-        name = egg['name']
-        id = self.generate_golem_id(golem_type)
-        settings.ts = egg['ts']
-        os = egg['graph']
+        egg = self.assemble_egg(stngs['core_type_fname'], num_dests)
+        stngs['core_config'] = egg['core_type_config']
+        stngs['ts'] = egg['ts']
+        golem = {
+            'settings': stngs
+            'name': egg['name'],
+            'id': egg['id'],
+            'brain': egg['graph'],
+            'mode': 'new-construct'
+            }
+        """
+        return golem
 
-    def construct_auxillary_core(self, core_type_fname, num_dests):
+    def construct_core(self, core_type_fname, num_dests):
         # for use by the build golem function, and for some golem types to eventually dynamically enhance their own capabilities
         TODO: Convert to use cell factory to reduce cell object size
-        brain = self.assemble_egg(core_type_fname, num_dests)
+        egg = self.assemble_egg(core_type_fname, num_dests)
         TODO: find way to integrate brains? Modular sub-brain creation for golems to give dynamic capability enhancements? Sounds pretty nifty
-        return brain
+        return egg
 
     def init_ts(ts_data):
         TODO: Pull ts level global data into config for use in other files for num ts calcs. MWAHAHAHAAAA
         # plan is to have simulated sec defined, and num ts per sec evald to see how fast it compares to analagous physically implemented systems. Does it have more time than us?
         self.ts_per_sim_second = ts_data['ts_per_sec']#1000
         self.session_length = self.ts_per_sim_second * ts_data['session_length'] #60 * 60 * 12
+
+    def generate_golem_id(golem_type):
+        rh = 0#calc random 1024-hex hash
+        cts = 0#get current timestamp()
+        return '{0}-{1}-{2}'.format(golem_type, rh, cts)
 
     def assemble_egg(self, core_type_fname, num_dests):
         config = self.build_full_config(core_type_fname)
@@ -95,7 +106,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
             node.stitch(graph)
         TODO: Optim: pull all dests from all pds into a single adjacency list
         TODO: Build relay problem domain out of region
-        return brain.extend({'graph': graph})
+        return brain.extend({'graph': graph, 'id': self.generate_golem_id(self.golem_type)})
 
     def build_full_config(core_type_fname):
         TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...
