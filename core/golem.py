@@ -10,12 +10,65 @@ from decoder import *
 from encoder import *
 
 class Golem:
-    def __init__(self, brain_fname, is_pair=False, num_dests=0):
-        self.brain_fname = brain_fname
-        self.desired_dests = num_dests
+    def __init__(self, golem_type, num_dests=0, is_pair=False):
+        self.golem_type == golem_type
+        TODO: READ golem config
+        self.settings = parse_gt_config(golem_type, num_dests, is_pair)
+        self.mode = "pre_construction"
+
+    def parse_gt_config(golem_type, num_dests, is_pair):
+        """
+        validate inputs
+        check for a valid golem type file in the golem type database (lol. it's a directory for the MVP)
+        throw an error for existance of validation operational violations
+        ctags --options=C:\Users\sturmy\.vscode\extensions\ms-python.python-2018.12.1\resources\ctagOptions --languages=Python --exclude=**/site-packages/** -o d:\Projects\golem-factory\.vscode\tags .
+Install Universal Ctags Win32 to enable support for Workspace Symbols
+Download the CTags binary from the Universal CTags site.
+Option 1: Extract ctags.exe from the downloaded zip to any folder within your PATH so that Visual Studio Code can run it.
+Option 2: Extract to any folder and add the path to this folder to the command setting.
+Option 3: Extract to any folder and define that path in the python.workspaceSymbols.ctagsPath setting of your user settings file (settings.json).
+        """
+        golem_type_config = read config that corresponds to golem_type
+        core_config = read golem_type_config['core_type']
+        settings = golem_type_config.extend({
+            'desired_dests': num_dests,
+            'paired': is_pair #should be capable of handling through config as well at some point
+            #'core_type_fname': config.core_type_fname. CORE_TYPE or CORE_TYPE_FNAME SHOULD BE INCLUDED IN GOLEM_TYPE config already
+        })
+        return settings
+
+    def generate_golem_id(golem_type):
+        rh = 0#calc random 1024-hex hash
+        cts = 0#get current timestamp()
+        return '{0}-{1}-{2}'.format(golem_type, rh, cts)
+
+    def construct_self(self):
+        egg = self.assemble_egg(self.settings.core_type_fname, self.desired_dests)
+        self.settings.core_config = egg['core_config']
+        self.name = egg['name']
+        self.id = self.generate_golem_id(self.golem_type)
+        self.settings.ts = egg['ts']
+        self.os = egg['graph']
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
-        self.mode = "work"
-        self.pair = is_pair
+        self.mode = "new-construct"
+
+    def construct_golem(self, golem_type, is_pair=False, num_dests=0):
+        # merged build brain into construct golem
+        # builds, validates, and returns a new golem
+        stngs = parse_gt_config(golem_type, num_dests, is_pair)
+        self.construct_core(stngs)
+        settings.core_config = egg['core_type_config']
+        name = egg['name']
+        id = self.generate_golem_id(golem_type)
+        settings.ts = egg['ts']
+        os = egg['graph']
+
+    def construct_auxillary_core(self, core_type_fname, num_dests):
+        # for use by the build golem function, and for some golem types to eventually dynamically enhance their own capabilities
+        TODO: Convert to use cell factory to reduce cell object size
+        brain = self.assemble_egg(core_type_fname, num_dests)
+        TODO: find way to integrate brains? Modular sub-brain creation for golems to give dynamic capability enhancements? Sounds pretty nifty
+        return brain
 
     def init_ts(ts_data):
         TODO: Pull ts level global data into config for use in other files for num ts calcs. MWAHAHAHAAAA
@@ -23,21 +76,9 @@ class Golem:
         self.ts_per_sim_second = ts_data['ts_per_sec']#1000
         self.session_length = self.ts_per_sim_second * ts_data['session_length'] #60 * 60 * 12
 
-    def build_brain(self, brain_fname, num_dests):
-        TODO: Convert to use cell factory to reduce cell object size
-        brain = self.build(brain_fname, num_dests)
-        return brain
-
-    def build_self(self):
-        brain = self.build(self.brain_fname, self.desired_dests)
-        self.config = brain['config']
-        self.name = brain['name']
-        self.ts = brain['ts']
-        self.graph = brain['graph']
-
-    def build(self, brain_fname, num_dests):
-        config = self.build_full_config(brain_fname)
-        brain = {
+    def assemble_egg(self, core_type_fname, num_dests):
+        config = self.build_full_config(core_type_fname)
+        egg = {
             'config': config,
             'name': config['name'],
             'ts': init_ts(config['ts_data'])
@@ -56,10 +97,10 @@ class Golem:
         TODO: Build relay problem domain out of region
         return brain.extend({'graph': graph})
 
-    def build_full_config(brain_fname):
+    def build_full_config(core_type_fname):
         TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...
         TODO: raise an exception and exit if the yaml does not exist
-        config_fname = 'core\\configs\\brains\\{0}.yaml'.format(brain_fname)
+        config_fname = 'core\\configs\\golem_core_types\\{0}.yaml'.format(core_type_fname)
         config = load(open(config_fname))
         TODO: rename problem domains to modules?
         for i, pd in enumerate(config['modules']):
