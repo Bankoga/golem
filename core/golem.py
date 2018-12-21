@@ -43,7 +43,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         egg = self.assemble_egg(self.settings['core_type_fname'], self.desired_dests)
         self.settings['core_config'] = egg['core_config']
         # contain ts within a hearbeat system?
-        self.settings['ts'] = egg['ts']
+        # self.settings['ts'] = egg['ts']
         self.id = egg['id']
         self.brain = egg['graph']
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
