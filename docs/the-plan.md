@@ -21,9 +21,9 @@ This document is for tracking which pieces of the framework are ready for implem
 
 Anything that relies on the completed configs is not ready for implementation. Even then, some pieces that operate on items returned by the config can still be worked on.
 
-### problem graph
+### golem
 
-Most of the problem graph relies on the form of the configs being finalized. However some of the pieces are ready for work.
+Most of the golem relies on the form of the configs being finalized. However some of the pieces are ready for work.
 
 - Batch Inputs
 - repl

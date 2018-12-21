@@ -10,7 +10,7 @@ from decoder import *
 from encoder import *
 
 # NEED to rename this class because as I intend to use it, it's a brain that builds other brains.... Dayum....
-class ProblemGraph:
+class Golem:
     def __init__(self, brain_fname, is_pair=False, num_dests=0):
         self.brain_fname = brain_fname
         self.desired_dests = num_dests
@@ -108,7 +108,7 @@ class ProblemGraph:
         TODO: Determine method for calculating number of dests consumed by each problem domain
         # use desired_dests and pd config info to determine how many dests are available to the problem domain during initialization
         TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
-        # though each level cumulatively effects the size of the problem graph, they have different impacts and consumption requirements
+        # though each level cumulatively effects the size of the golem, they have different impacts and consumption requirements
         TODO: determine how to handle non standard problem domains like the decoder, encoder, & subcortex
         # Build adjacency matrix, and count number of inputs to each node?
         cells_dict = dict()

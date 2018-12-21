@@ -182,15 +182,15 @@ Each region, and pd are 3D objects. Distance between two dests is thus determine
 
 Answer: No. We want to be able to set a desired number of dests at the top level, then have those split across the problem domains appropriately. **SEE ANSWER TO LENGTH X WIDTH OF REGIONS Q!**
 
-> Open Question: If I want a brain with ~N neurons, how do I indicate that when creating a problem graph with a given architecture?
+> Open Question: If I want a brain with ~N neurons, how do I indicate that when creating a golem with a given architecture?
 
-Answer: In order to set a desired number of destinations, at the problem graph level, the configs must contain certain data pertaining to size that can be used as a series of forumlas where we solve for the missing variables.
+Answer: In order to set a desired number of destinations, at the golem level, the configs must contain certain data pertaining to size that can be used as a series of forumlas where we solve for the missing variables.
 
 Layers control their dest size.
 Regions have a number of dests based on some ratio, or value that determine how many of the dests allotted to a problem domain are consumed by the specific region. Though it seems possible that, depending on architecture, some regions may need to break this paradigm. **If anything, regions may be able to wholly replace problem domains as a layer of abstraction.**
 Problem domains contain multiple dests, and are some fraction of the total number of dests. The fraction of dests consumed by a problem domain, are then split across the various regions according to the region size formulas. All region size formulas in a problem domain should add up to 1. They can not lead to consuming more dests than supplied by the problem domain.
-The problem graph sets a specific number of dests, which are split across the problem domains.
-Thus it would seem to be the case that there is a minimum number of reasonably supported dests for any given problem graph architecture.
+The golem sets a specific number of dests, which are split across the problem domains.
+Thus it would seem to be the case that there is a minimum number of reasonably supported dests for any given golem architecture.
 
 ### Toy architecture with N PDs of the cortical type
 
@@ -256,7 +256,7 @@ Answer: We are going to use rounding for now.
 
 > Open Question: Are the External I/O PDs included in the dest consumption?
 
-Answer: While that is one possibility, for now it is easier to have those be separate due to the fact that decoders, and encoders must be handled separately from normal (internal) problem domains. Thus they won't scale with the problem graph.
+Answer: While that is one possibility, for now it is easier to have those be separate due to the fact that decoders, and encoders must be handled separately from normal (internal) problem domains. Thus they won't scale with the golem.
 
 **PD size also depends on how we handle pd types. If the thalamus is a region within the subcortex problem domain type, and it specifically needs to have enough slots for every single cortex pd type whereas all the other regions in the domain use a different size paradigm, then how do we indicate that?**
 

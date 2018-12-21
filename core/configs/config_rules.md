@@ -6,7 +6,7 @@ Biological brains are 3D objects with complex patterns of connectivity. However,
 
 ## The Purpose of Problem Domains, Regions, and Layers
 
-A problem graph, as implemented by this framework, has 3 levels of asbtraction/organization that affect how cells, at the lowest level, operate. The levels, from highest to lowest, are as follows:
+A golem, as implemented by this framework, has 3 levels of brain asbtraction/organization that affect how cells, at the lowest level, operate. The levels, from highest to lowest, are as follows:
 
 - Problem Domain
 - Region

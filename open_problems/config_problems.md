@@ -2,11 +2,11 @@
 
 These are open problems concerning config files, and thoughts on how to resolve them.
 
-## problem graph Config
+## golem Config
 
-The top level abstraction is the problem graph. A graph whose nodes are individual problem domains. Each problem domain has a region type, a list of outgoing edges, and a stitch type. Upon review, it has been found that historical problem domains, and regions could be unified for greater simplicity. A problem domain roughly corresponded to a broadmann area in the human brain. However not all parts of the brain are broadmann areas, and each functionally different piece (region) of the brain could be considered a separate problem domain. Consequently, we are moving forward with unifying problem domains, and regions into one class/level of the hierarchy.
+The top level abstraction is the golem. A graph whose nodes are individual problem domains. Each problem domain has a region type, a list of outgoing edges, and a stitch type. Upon review, it has been found that historical problem domains, and regions could be unified for greater simplicity. A problem domain roughly corresponded to a broadmann area in the human brain. However not all parts of the brain are broadmann areas, and each functionally different piece (region) of the brain could be considered a separate problem domain. Consequently, we are moving forward with unifying problem domains, and regions into one class/level of the hierarchy.
 
-> ~~Open Question: Do we define the problem graph in the code, or do we use a config?~~
+> ~~Open Question: Do we define the golem in the code, or do we use a config?~~
 
 Answer: **Use a config to define each problem domain.** If we want to continue with the same approach that we have been using, then going with a config seems to be the best route.
 

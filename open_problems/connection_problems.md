@@ -14,7 +14,7 @@ Answer: Translation must be done on a sensor type basis, with each sensor having
 
 Answer: ?
 
-> ~~Open Question: Where and how do we pass the translated data into the problem graph?~~
+> ~~Open Question: Where and how do we pass the translated data into the golem?~~
 
 Answer: For each type of sensor, and output format, we will use predefined interaction code for decoding, and encoding. Because for a given network type, we can know what sensors will be available, and the actions it will be able to take outside the network, we can use unique handling for those problem domain types. Each type serves as a point of interaction with the external world, and can be processed on a per timestep basis to ensure consistency of internally generated data. However, the code that does the processing will look fundamentally different. Most sensors will not serve as destinations for other problem domains, and thus won't have any region or destinations. Those few sensors that do receive some minimal feedback, will use a different method for processing the outputs from other problem domains because the data must be translated.
 
@@ -32,7 +32,7 @@ Output Types
 
 ## Wiring Together Problem Domains
 
-The top level abstraction for a single node in the problem graph is the problem domain. Currently we have several types of problem domains, with the Cortical type being the most prevalent. The others may have 1 paired usage at most based on current thinking.
+The top level abstraction for a single node in the golem is the problem domain. Currently we have several types of problem domains, with the Cortical type being the most prevalent. The others may have 1 paired usage at most based on current thinking.
 
 There are several different problems associated with wiring domains together
 
@@ -57,7 +57,7 @@ Why?
 
 ### Indicating Input Slots for a Problem Domain
 
-Given that a problem graph is a graph of problem domains
+Given that a golem is a graph of problem domains
 AND each domain is a point in the graph
 When a point projects to another point
 AND the init needs to build the output destinations
@@ -82,7 +82,7 @@ Answer: If we do not save the configs at each level of abstraction, and only kee
 
 > Open Question: **During init, how does the framework know to build a path to a cort_relay dest, and with what distribution?**
 
-Partial Answer: The problem graph edges are used to determine output replacements for destinations inside a problem domain. How to determine the appropriate distribution is still an open question.
+Partial Answer: The golem edges are used to determine output replacements for destinations inside a problem domain. How to determine the appropriate distribution is still an open question.
 
 ### Input Distribution Between Domains
 

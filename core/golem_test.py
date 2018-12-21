@@ -1,12 +1,12 @@
 from yaml import load, dump
-from problem_graph import ProblemGraph
+from golem import Golem
 
 
 def String2SpikeEncoder(cur_str):
     return cur_str
 
 def arith_brain():
-    brain = ProblemGraph('arith-brain')
+    arithby = Golem('arith-brain')
     brain.build_self()
     ts = 0
     trns_sts = {}
