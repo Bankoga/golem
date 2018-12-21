@@ -9,7 +9,6 @@ from problem_domain import *
 from decoder import *
 from encoder import *
 
-# NEED to rename this class because as I intend to use it, it's a brain that builds other brains.... Dayum....
 class Golem:
     def __init__(self, brain_fname, is_pair=False, num_dests=0):
         self.brain_fname = brain_fname
