@@ -28,12 +28,13 @@ Option 1: Extract ctags.exe from the downloaded zip to any folder within your PA
 Option 2: Extract to any folder and add the path to this folder to the command setting.
 Option 3: Extract to any folder and define that path in the python.workspaceSymbols.ctagsPath setting of your user settings file (settings.json).
         """
-        TODO: READ golem config
-        golem_type_config = read config that corresponds to golem_type
-        core_config = read golem_type_config['core_type_fname']
+        config_fname = 'core\\configs\\golem_types\\{0}.yaml'.format(golem_type)
+        golem_type_config = load(open(config_fname))
+        # core_config = self.build_full_config(golem_type_config['core_type_fname'])
         settings = golem_type_config.extend({
             'desired_base_dests': num_dests,
-            'paired': is_pair #should be capable of handling through config as well at some point
+            'paired': is_pair, #should be capable of handling through config as well at some point
+            # 'core_config': core_config
             #'core_type_fname': config.core_type_fname. CORE_TYPE or CORE_TYPE_FNAME SHOULD BE INCLUDED IN GOLEM_TYPE config already
         })
         return settings
@@ -43,7 +44,6 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         self.settings['core_config'] = egg['core_config']
         # contain ts within a hearbeat system?
         self.settings['ts'] = egg['ts']
-        self.name = egg['name']
         self.id = egg['id']
         self.brain = egg['graph']
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
@@ -54,6 +54,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         TODO: Convert to use cell factory to reduce cell object size
         egg = self.assemble_egg(core_type_fname, num_dests)
         TODO: find way to integrate brains? Modular sub-brain creation for golems to give dynamic capability enhancements? Sounds pretty nifty
+        egg.mode = 'new-construct'
         return egg
 
     def init_ts(ts_data):
@@ -76,9 +77,9 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         }
         graph = dict()
         TODO: parse each node, grab the config details, and build the nodes contents/destinations
-        graph.extend(self.parse_decoders(brain))
-        graph.extend(self.parse_encoders(brain))
-        graph.extend(self.parse_modules(brain))
+        graph.extend(self.parse_decoders(egg))
+        graph.extend(self.parse_encoders(egg))
+        graph.extend(self.parse_modules(egg))
         TODO: determine size of each region, and layer so that cells can be stitched together
         i_counts = self.get_input_counts(graph, num_dests)
         for node in graph:
@@ -86,7 +87,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
             node.stitch(graph)
         TODO: Optim: pull all dests from all pds into a single adjacency list
         TODO: Build relay problem domain out of region
-        return brain.extend({'graph': graph, 'id': self.generate_golem_id(self.golem_type)})
+        return egg.extend({'graph': graph, 'id': self.generate_golem_id(self.golem_type)})
 
     def build_full_config(core_type_fname):
         TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...

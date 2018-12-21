@@ -1,4 +1,5 @@
 ---
+name: arith-go
 core_type_fname: arith-brain
 framework_type_fname: ?
 encoders: ?
