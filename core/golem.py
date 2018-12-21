@@ -11,10 +11,10 @@ from encoder import *
 
 class Golem:
     def __init__(self, golem_type, num_dests=0, is_pair=False):
+        # move num_dests, and is_pair to golem type config
         self.golem_type == golem_type
-        TODO: READ golem config
         self.settings = parse_gt_config(golem_type, num_dests, is_pair)
-        self.mode = "pre_construction"
+        self.mode = 'pre-construction'
 
     def parse_gt_config(golem_type, num_dests, is_pair):
         """
@@ -28,6 +28,7 @@ Option 1: Extract ctags.exe from the downloaded zip to any folder within your PA
 Option 2: Extract to any folder and add the path to this folder to the command setting.
 Option 3: Extract to any folder and define that path in the python.workspaceSymbols.ctagsPath setting of your user settings file (settings.json).
         """
+        TODO: READ golem config
         golem_type_config = read config that corresponds to golem_type
         core_config = read golem_type_config['core_type_fname']
         settings = golem_type_config.extend({
@@ -39,38 +40,17 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
 
     def construct_self(self):
         egg = self.assemble_egg(self.settings['core_type_fname'], self.desired_dests)
-        self.settings.core_config = egg['core_config']
+        self.settings['core_config'] = egg['core_config']
         # contain ts within a hearbeat system?
-        self.settings.ts = egg['ts']
+        self.settings['ts'] = egg['ts']
         self.name = egg['name']
         self.id = egg['id']
         self.brain = egg['graph']
         # at present the only other mode is maintenance which is toggled after running for the number of timesteps in the session_length
         self.mode = 'new-construct'
 
-    def construct_golem(self, golem_type, num_dests=0, is_pair=False):
-        # this should really leverage the Golem class
-        # merged build brain into construct golem
-        # builds, validates, and returns a new golem
-        golem = Golem(golem_type, num_dests, is_pair)
-        golem.construct_self()
-        """
-        stngs = parse_gt_config(golem_type, num_dests, is_pair)
-        egg = self.assemble_egg(stngs['core_type_fname'], num_dests)
-        stngs['core_config'] = egg['core_type_config']
-        stngs['ts'] = egg['ts']
-        golem = {
-            'settings': stngs
-            'name': egg['name'],
-            'id': egg['id'],
-            'brain': egg['graph'],
-            'mode': 'new-construct'
-            }
-        """
-        return golem
-
-    def construct_core(self, core_type_fname, num_dests):
-        # for use by the build golem function, and for some golem types to eventually dynamically enhance their own capabilities
+    def construct_auxillary_core(self, core_type_fname, num_dests):
+        # for use by some golem types to eventually dynamically enhance their own capabilities
         TODO: Convert to use cell factory to reduce cell object size
         egg = self.assemble_egg(core_type_fname, num_dests)
         TODO: find way to integrate brains? Modular sub-brain creation for golems to give dynamic capability enhancements? Sounds pretty nifty
@@ -300,3 +280,29 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
     def remap(self):
         # map a pre-existing network to a new network architecture.
         TODO: What degree of similarity between networks is required for this to work?
+
+class GolemFactory:
+    TODO: Have golemfactory extend the golem class
+    def __init__():
+
+    def construct_golem(self, golem_type, num_dests=0, is_pair=False):
+        TODO: this should really leverage the Golem class. Make golem factory a type of golem!
+        # merged build brain into construct golem
+        # builds, validates, and returns a new golem
+        golem = Golem(golem_type, num_dests, is_pair)
+        golem.construct_self()
+        """
+        stngs = parse_gt_config(golem_type, num_dests, is_pair)
+        egg = self.assemble_egg(stngs['core_type_fname'], num_dests)
+        stngs['core_config'] = egg['core_type_config']
+        stngs['ts'] = egg['ts']
+        golem = {
+            'settings': stngs
+            'name': egg['name'],
+            'id': egg['id'],
+            'brain': egg['graph'],
+            'mode': 'new-construct'
+            }
+        """
+        return golem
+

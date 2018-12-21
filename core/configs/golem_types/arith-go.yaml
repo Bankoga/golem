@@ -1,0 +1,9 @@
+---
+core_type_fname: arith-brain
+framework_type_fname: ?
+encoders: ?
+decoders: ?
+desired_base_dests: 0
+paired: FALSE
+notes: 'What else should go in these configs? They seem like they may be a good place to store sensor, motor, and framework configurations instead of having them be in the golem core types'
+...
