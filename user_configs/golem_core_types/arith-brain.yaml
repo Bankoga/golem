@@ -1,0 +1,128 @@
+---
+name: arith-brain
+ts_data:
+  ts_per_sec: 1000
+  session_length: 43200
+decoders:
+  - name: decoder_a
+    types: [output, number,flag-error,flag-warning]
+    model: Spike2Num
+    size:
+      num_words: 1
+      len_words: 9
+    output_dest: return
+    outputs: null
+encoders:
+  - name: encoder_a
+    model: Word2Spike
+    types: [input,untrusted]
+    size:
+      num_words: 3
+      len_words: 3
+    input_source: file
+    outputs:
+      - dest: statement
+        distributions: word
+framework:
+  - name: ?
+    model: null
+    size: null
+    outputs: null
+  - name: ?
+    model: null
+    size: null
+    outputs: null
+  - name: striatum, nucleus accumbens
+    model: ?
+    size: null
+    outputs: null
+  - name: striatum, olfactory tubercle
+    model: ?
+    size: null
+    outputs: null
+  - name: striatum, caudate nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: striatum, lentiform nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: striatum, putamen
+    model: ?
+    size: null
+    outputs: null
+  - name: globus-pallidus-interior
+    model: ?
+    size: null
+    outputs: null
+  - name: globus-pallidus-exterior
+    model: ?
+    size: null
+    outputs: null
+  - name: ventral pallidum
+    model: ?
+    size: null
+    outputs: null
+  - name: substantia nigra, pars compacta
+    model: ?
+    size: null
+    outputs: null
+  - name: substantia nigra, pars reticularis
+    model: ?
+    size: null
+    outputs: null
+  - name: subthalamic nuclei
+    model: ?
+    size: null
+    outputs: null
+  - name: hypothalamus
+    model: hypothalamus
+    size: null
+    outputs: null
+  - name: relay
+    model: thalamus
+    circuits: [primary-relay]
+    size: size_primary-relay
+    outputs: reciprocal
+  - name: ventral tegmental area
+    model: ?
+    size: null
+    outputs: null
+  - name: red nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: median raphe nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: dorsal raphe nucleus
+    model: ?
+    size: null
+    outputs: null
+  - name: cerebellar penduncles
+    model: ?
+    size: null
+    outputs: null
+  - name: colliculus, inferior
+    model: ?
+    size: null
+    outputs: null
+  - name: colliculus, superior
+    model: ?
+    size: null
+    outputs: null
+  - name: global_synch
+    model: claustrum
+    size: null
+    outputs: null
+modules:
+  - name: statement
+    model: cortical
+    circuits: [primary-relay]
+    size: 9
+    outputs:
+      - dest: decoder_a
+        distributions: adjusted
+...

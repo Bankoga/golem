@@ -373,3 +373,7 @@ Old Habits die hard - Large scale drift difficulty as func of complexity, and de
 
 TIME BASED USAGE CAN BE MODELED AS CHEMICAL CONCENTRATION CHANGES WITH VARIOUS VALUE THRESHHOLDS USED TO MAKE UPDATES
 
+## Extendable Golems
+
+A hugely beneficial feature of most individual organic lifeforms is an innate ability to adapt to a range of local environmental changes via genetic config/setting tweaks, and as a species through genetic configuration drift over time. Being able to extend ones capabilities directly by adding, removing, enabling, or deactivating modular sub-systems over time would be hugely benefical. Cephalopods exemplar this by virtue of a genetic framework that allows for extremely dynamic flexibility of RNA routines.
+However, extendable sensorimotor capabilties for a golem requires that the framework and core systems can detect the circuits, and networks in the auxillary or secondary/tertiary cores then integrate them holistically. This may imply an eventual need for a sub-system that handles rewriting alternate cores for compatibility with the primary core.
