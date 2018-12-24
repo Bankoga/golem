@@ -1,0 +1,276 @@
+!_TAG_FILE_FORMAT	3	/extended format with meta character escaping/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/701c53dc/
+0	js-things\\objectives.json	/^	"primary": [""],$/;"	s	array:primary
+0	js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
+1	js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
+2	js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
+3	js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
+4	js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
+5	js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
+Analysis	js-things\\areas.json	/^	"Analysis": {$/;"	o
+Associate	js-things\\areas.json	/^		"Associate" : {$/;"	o	object:Postprocess
+Attention	js-things\\areas.json	/^		"Attention": {$/;"	o	object:Filter
+Axon	cell\\axon.py	/^class Axon():$/;"	c
+Axon	tests\\tests_cell\\test_axon.py	/^class Axon():$/;"	c
+Categorize	js-things\\areas.json	/^		"Categorize": {$/;"	o	object:Classify
+Cell	cell\\cell.py	/^class Cell:$/;"	c
+Cell	tests\\tests_cell\\test_cell.py	/^class Cell:$/;"	c
+ChainCell	js-things\\cell.js	/^	"ChainCell": {$/;"	c	class:cell
+ChainCell	js-things\\olog.js	/^	"ChainCell": {$/;"	c	class:olog
+ChemicalState	helpers\\chemical_state.py	/^class ChemicalState():$/;"	c
+ChemicalState	tests\\tests_helpers\\test_chemical_state.py	/^class ChemicalState():$/;"	c
+Children	js-things\\cell.js	/^		"Children": []$/;"	p	class:cell.ChainCell
+Children	js-things\\olog.js	/^		"Children": []$/;"	p	class:olog.ChainCell
+Classify	js-things\\areas.json	/^	"Classify": {$/;"	o
+Classify	js-things\\def.json	/^	"Classify": {$/;"	o
+Compose	js-things\\areas.json	/^		"Compose" : {$/;"	o	object:Respond
+ComposeHelper	js-things\\areas.json	/^		"ComposeHelper" : {$/;"	o	object:Respond
+Declare	js-things\\areas.json	/^		"Declare" : {$/;"	o	object:Postprocess
+Decode	js-things\\areas.json	/^		"Decode": {$/;"	o	object:Classify
+Decoder	decoders\\decoder.py	/^class Decoder:$/;"	c
+Decoder	tests\\tests_decoders\\test_decoder.py	/^class Decoder:$/;"	c
+Dendrite	cell\\dendrite.py	/^class Dendrite():$/;"	c
+Dendrite	tests\\tests_cell\\test_dendrite.py	/^class Dendrite():$/;"	c
+Describe	js-things\\areas.json	/^		"Describe" : {$/;"	o	object:Model
+Destination	matrix\\destination.py	/^class Destination:$/;"	c
+Destination	tests\\tests_graph\\test_destination.py	/^class Destination:$/;"	c
+Encoder	encoders\\encoder.py	/^class Encoder:$/;"	c
+Encoder	tests\\tests_encoders\\test_encoder.py	/^class Encoder:$/;"	c
+Express	js-things\\areas.json	/^		"Express" : {$/;"	o	object:Output
+Filter	js-things\\areas.json	/^	"Filter": {$/;"	o
+Golem	golem.py	/^class Golem:$/;"	c
+Golem	tests\\test_golem.py	/^class Golem:$/;"	c
+GolemFactory	golem.py	/^class GolemFactory:$/;"	c
+GolemFactory	tests\\test_golem.py	/^class GolemFactory:$/;"	c
+Guess	js-things\\areas.json	/^	"Guess" : {$/;"	o
+IOrganism	js-things\\thoughts.js	/^var IOrganism = {$/;"	c
+Identify	js-things\\areas.json	/^		"Identify": {$/;"	o	object:Classify
+Imagine	js-things\\areas.json	/^		"Imagine": {$/;"	o	object:Preprocess
+Imagine	js-things\\def.json	/^		"Imagine": {$/;"	o	object:Preprocess
+Inputs	js-things\\olog.js	/^	"Inputs" : [],$/;"	p	class:olog
+Internalize	js-things\\areas.json	/^		"Internalize" : {$/;"	o	object:Output
+Interpret	js-things\\areas.json	/^		"Interpret": {$/;"	o	object:Model
+Layer	matrix\\layer.py	/^class Layer:$/;"	c
+Layer	tests\\tests_graph\\test_layer.py	/^class Layer:$/;"	c
+Location	helpers\\location.py	/^class Location:$/;"	c
+Location	tests\\tests_helpers\\test_location.py	/^class Location:$/;"	c
+ModeControl	js-things\\areas.json	/^		"ModeControl": {$/;"	o	object:Preprocess
+ModeControl	js-things\\def.json	/^		"ModeControl": {$/;"	o	object:Preprocess
+Model	js-things\\areas.json	/^	"Model": {$/;"	o
+Notify	js-things\\areas.json	/^		"Notify": {$/;"	o	object:Preprocess
+Notify	js-things\\def.json	/^		"Notify": {$/;"	o	object:Preprocess
+Objects	js-things\\olog.js	/^	"Objects": [],$/;"	p	class:olog
+Output	js-things\\areas.json	/^	"Output" : {$/;"	o
+Outputs	js-things\\olog.js	/^	"Outputs": [],$/;"	p	class:olog
+Parent	js-things\\cell.js	/^		"Parent": "",$/;"	p	class:cell.ChainCell
+Parent	js-things\\olog.js	/^		"Parent": "",$/;"	p	class:olog.ChainCell
+Perceive	js-things\\areas.json	/^		"Perceive": {$/;"	o	object:Preprocess
+Perceive	js-things\\def.json	/^		"Perceive": {$/;"	o	object:Preprocess
+Postdict	js-things\\areas.json	/^		"Postdict": {$/;"	o	object:Guess
+Postprocess	js-things\\areas.json	/^	"Postprocess" : {$/;"	o
+Precompose	js-things\\areas.json	/^		"Precompose" : {$/;"	o	object:Respond
+Predict	js-things\\areas.json	/^		"Predict" : {$/;"	o	object:Guess
+Preprocess	js-things\\areas.json	/^	"Preprocess": {$/;"	o
+Preprocess	js-things\\def.json	/^	"Preprocess": {$/;"	o
+ProblemDomain	matrix\\problem_domain.py	/^class ProblemDomain:$/;"	c
+ProblemDomain	tests\\tests_graph\\test_problem_domain.py	/^class ProblemDomain:$/;"	c
+Region	matrix\\region.py	/^class Region:$/;"	c
+Respond	js-things\\areas.json	/^	"Respond": {$/;"	o
+String2SpikeEncoder	golem_test.py	/^def String2SpikeEncoder(cur_str):$/;"	f
+String2SpikeEncoder	tests\\test_golem_test.py	/^def String2SpikeEncoder(cur_str):$/;"	f
+Type	js-things\\cell.js	/^		"Type": "",$/;"	p	class:cell.ChainCell
+Type	js-things\\olog.js	/^		"Type": "",$/;"	p	class:olog.ChainCell
+UsageLimits	helpers\\usage_limits.py	/^class UsageLimits():$/;"	c
+UsageLimits	tests\\tests_helpers\\test_usage_limits.py	/^class UsageLimits():$/;"	c
+Y	encoders\\img-filter.py	/^Y = np.arange(mat_sz).reshape(row_sz,col_sz)$/;"	v
+__init__	cell\\axon.py	/^    def __init__(self, origin, activation_type, terminal_destinations, chemical_type):$/;"	m	class:Axon
+__init__	cell\\cell.py	/^    def __init__(self, activation_type, cell_morphology, key, ploc, use_limits):$/;"	m	class:Cell
+__init__	cell\\dendrite.py	/^    def __init__(self, source_location):$/;"	m	class:Dendrite
+__init__	decoders\\decoder.py	/^    def __init__(self, type, outputs):$/;"	m	class:Decoder
+__init__	encoders\\encoder.py	/^    def __init__(self, type, outputs):$/;"	m	class:Encoder
+__init__	golem.py	/^    def __init__():$/;"	m	class:GolemFactory
+__init__	golem.py	/^    def __init__(self, golem_type, num_dests=0, is_pair=False):$/;"	m	class:Golem
+__init__	helpers\\chemical_state.py	/^    def __init__():$/;"	m	class:ChemicalState
+__init__	helpers\\location.py	/^    def __init__(self, loc, parent_location=None):$/;"	m	class:Location
+__init__	helpers\\usage_limits.py	/^    def __init__(self, capacity, cost, recharge):$/;"	m	class:UsageLimits
+__init__	matrix\\destination.py	/^    def __init__(self, config, key, ploc):$/;"	m	class:Destination
+__init__	matrix\\layer.py	/^    def __init__(self, config, ploc, length, width):$/;"	m	class:Layer
+__init__	matrix\\problem_domain.py	/^    def __init__(self, name, domain_type_config, outputs, num_cells_primary):$/;"	m	class:ProblemDomain
+__init__	matrix\\region.py	/^    def __init__(self, region_type_config, ploc, length, width):$/;"	m	class:Region
+__init__	tests\\test_golem.py	/^    def __init__():$/;"	m	class:GolemFactory
+__init__	tests\\test_golem.py	/^    def __init__(self, golem_type, num_dests=0, is_pair=False):$/;"	m	class:Golem
+__init__	tests\\tests_cell\\test_axon.py	/^    def __init__(self, origin, activation_type, terminal_destinations, chemical_type):$/;"	m	class:Axon
+__init__	tests\\tests_cell\\test_cell.py	/^    def __init__(self, activation_type, cell_morphology, key, ploc, use_limits):$/;"	m	class:Cell
+__init__	tests\\tests_cell\\test_dendrite.py	/^    def __init__(self, source_location):$/;"	m	class:Dendrite
+__init__	tests\\tests_decoders\\test_decoder.py	/^    def __init__(self, type, outputs):$/;"	m	class:Decoder
+__init__	tests\\tests_encoders\\test_encoder.py	/^    def __init__(self, type, outputs):$/;"	m	class:Encoder
+__init__	tests\\tests_graph\\test_destination.py	/^    def __init__(self, config, key, ploc):$/;"	m	class:Destination
+__init__	tests\\tests_graph\\test_layer.py	/^    def __init__(self, config, ploc, length, width):$/;"	m	class:Layer
+__init__	tests\\tests_graph\\test_problem_domain.py	/^    def __init__(self, name, domain_type_config, outputs, num_cells_primary):$/;"	m	class:ProblemDomain
+__init__	tests\\tests_helpers\\test_chemical_state.py	/^    def __init__():$/;"	m	class:ChemicalState
+__init__	tests\\tests_helpers\\test_location.py	/^    def __init__(self, loc, parent_location=None):$/;"	m	class:Location
+__init__	tests\\tests_helpers\\test_usage_limits.py	/^    def __init__(self, capacity, cost, recharge):$/;"	m	class:UsageLimits
+activate	cell\\cell.py	/^    def activate(self, mode, timestep, destination_state, input_batch):$/;"	m	class:Cell
+activate	golem.py	/^    def activate(self, ts, ext_data):$/;"	f
+activate	matrix\\destination.py	/^    def activate(self):$/;"	m	class:Destination
+activate	matrix\\layer.py	/^    def activate(self):$/;"	m	class:Layer
+activate	matrix\\problem_domain.py	/^    def activate(self):$/;"	m	class:ProblemDomain
+activate	matrix\\region.py	/^    def activate(self):$/;"	m	class:Region
+activate	tests\\test_golem.py	/^    def activate(self, ts, ext_data):$/;"	m	class:Golem
+activate	tests\\tests_cell\\test_cell.py	/^    def activate(self, mode, timestep, destination_state, input_batch):$/;"	m	class:Cell
+activate	tests\\tests_graph\\test_destination.py	/^    def activate(self):$/;"	m	class:Destination
+activate	tests\\tests_graph\\test_layer.py	/^    def activate(self):$/;"	m	class:Layer
+activate	tests\\tests_graph\\test_problem_domain.py	/^    def activate(self):$/;"	m	class:ProblemDomain
+arith_brain	golem_test.py	/^def arith_brain():$/;"	f
+arith_brain	tests\\test_golem_test.py	/^def arith_brain():$/;"	f
+assemble_egg	golem.py	/^    def assemble_egg(self, core_type_fname, num_dests):$/;"	f
+assemble_egg	tests\\test_golem.py	/^    def assemble_egg(self, core_type_fname, num_dests):$/;"	m	class:Golem
+bar_update	cell\\cell.py	/^    def bar_update():$/;"	m	class:Cell
+bar_update	tests\\tests_cell\\test_cell.py	/^    def bar_update():$/;"	m	class:Cell
+batch_inputs	golem.py	/^    def batch_inputs(self, outputs):$/;"	f
+batch_inputs	tests\\test_golem.py	/^    def batch_inputs(self, outputs):$/;"	m	class:Golem
+build_full_config	golem.py	/^    def build_full_config(core_type_fname):$/;"	f
+build_full_config	golem_test.py	/^def build_full_config(brain_fname):$/;"	f
+build_full_config	tests\\test_golem.py	/^    def build_full_config(core_type_fname):$/;"	m	class:Golem
+build_full_config	tests\\test_golem_test.py	/^def build_full_config(brain_fname):$/;"	f
+calc_mem_use	tests\\tests_graph\\test_region.py	/^def calc_mem_use(num_cells, edges_per_cell, cell_size):$/;"	f
+cell	js-things\\cell.js	/^var cell = {$/;"	c
+col_sz	encoders\\img-filter.py	/^col_sz = int(math.sqrt(mat_sz))$/;"	v
+col_sz	encoders\\img-filter.py	/^row_sz, col_sz, num_ch = imdat.shape$/;"	v
+construct_auxillary_core	golem.py	/^    def construct_auxillary_core(self, core_type_fname, num_dests):$/;"	m	class:Golem
+construct_auxillary_core	tests\\test_golem.py	/^    def construct_auxillary_core(self, core_type_fname, num_dests):$/;"	m	class:Golem
+construct_golem	golem.py	/^    def construct_golem(self, golem_type, num_dests=0, is_pair=False):$/;"	m	class:GolemFactory
+construct_golem	tests\\test_golem.py	/^    def construct_golem(self, golem_type, num_dests=0, is_pair=False):$/;"	m	class:GolemFactory
+construct_self	golem.py	/^    def construct_self(self):$/;"	m	class:Golem
+construct_self	tests\\test_golem.py	/^    def construct_self(self):$/;"	m	class:Golem
+consume_chemical	helpers\\chemical_state.py	/^    def consume_chemical(chem_type, chem_quantity):$/;"	m	class:ChemicalState
+consume_chemical	tests\\tests_helpers\\test_chemical_state.py	/^    def consume_chemical(chem_type, chem_quantity):$/;"	m	class:ChemicalState
+cort	tests\\tests_graph\\test_region.py	/^cort = dump(load(open('region_confs\\\\cortex.yaml')))$/;"	v
+create_cells	matrix\\destination.py	/^    def create_cells(self):$/;"	m	class:Destination
+create_cells	tests\\tests_graph\\test_destination.py	/^    def create_cells(self):$/;"	m	class:Destination
+create_destinations	matrix\\layer.py	/^    def create_destinations(self):$/;"	m	class:Layer
+create_destinations	tests\\tests_graph\\test_layer.py	/^    def create_destinations(self):$/;"	m	class:Layer
+create_layers	matrix\\region.py	/^    def create_layers(self):$/;"	m	class:Region
+create_regions	matrix\\problem_domain.py	/^    def create_regions(self):$/;"	m	class:ProblemDomain
+create_regions	tests\\tests_graph\\test_problem_domain.py	/^    def create_regions(self):$/;"	m	class:ProblemDomain
+dendrite_sensitivity	cell\\dendrite.py	/^    def dendrite_sensitivity(self):$/;"	m	class:Dendrite
+dendrite_sensitivity	tests\\tests_cell\\test_dendrite.py	/^    def dendrite_sensitivity(self):$/;"	m	class:Dendrite
+details	js-things\\thoughts.js	/^    details: {$/;"	p	class:IOrganism
+diam_b	encoders\\img-filter.py	/^diam_b = 2.5$/;"	v
+diam_c	encoders\\img-filter.py	/^diam_c = 5.5$/;"	v
+diam_d	encoders\\img-filter.py	/^diam_d = 22$/;"	v
+diam_rat_b	encoders\\img-filter.py	/^diam_rat_b = diam_b\/diam_d$/;"	v
+diam_rat_c	encoders\\img-filter.py	/^diam_rat_c = diam_c\/diam_d$/;"	v
+eat	js-things\\thoughts.js	/^    eat: function(IFud){$/;"	m	class:IOrganism
+end_col	encoders\\img-filter.py	/^  end_col = start_col+inr_wdth$/;"	v
+end_row	encoders\\img-filter.py	/^  end_row = start_row+inr_hght$/;"	v
+extend	helpers\\location.py	/^    def extend(self, key):$/;"	m	class:Location
+extend	tests\\tests_helpers\\test_location.py	/^    def extend(self, key):$/;"	m	class:Location
+generate_golem_id	golem.py	/^    def generate_golem_id(golem_type):$/;"	f
+generate_golem_id	tests\\test_golem.py	/^    def generate_golem_id(golem_type):$/;"	m	class:Golem
+get_cell_data	matrix\\destination.py	/^    def get_cell_data(self, ct_dist):$/;"	m	class:Destination
+get_cell_data	tests\\tests_graph\\test_destination.py	/^    def get_cell_data(self, ct_dist):$/;"	m	class:Destination
+get_destinations	cell\\cell.py	/^    def get_destinations():$/;"	m	class:Cell
+get_destinations	tests\\tests_cell\\test_cell.py	/^    def get_destinations():$/;"	m	class:Cell
+get_distributions	matrix\\destination.py	/^    def get_distributions(self):$/;"	m	class:Destination
+get_distributions	tests\\tests_graph\\test_destination.py	/^    def get_distributions(self):$/;"	m	class:Destination
+get_input_counts	golem.py	/^    def get_input_counts(self, nodes, desired_dests):$/;"	f
+get_input_counts	tests\\test_golem.py	/^    def get_input_counts(self, nodes, desired_dests):$/;"	m	class:Golem
+get_value	cell\\axon.py	/^    def get_value(activation_type, chemical_type):$/;"	m	class:Axon
+get_value	tests\\tests_cell\\test_axon.py	/^    def get_value(activation_type, chemical_type):$/;"	m	class:Axon
+init_ts	golem.py	/^    def init_ts(ts_data):$/;"	f
+init_ts	tests\\test_golem.py	/^    def init_ts(ts_data):$/;"	m	class:Golem
+inr_hght	encoders\\img-filter.py	/^inr_hght = int(diam_rat_c*row_sz)$/;"	v
+inr_wdth	encoders\\img-filter.py	/^inr_wdth = int(diam_rat_c*col_sz)$/;"	v
+load	golem.py	/^    def load(fn): $/;"	f
+load	tests\\test_golem.py	/^    def load(fn): $/;"	m	class:Golem
+load2	golem.py	/^    def load2(fn):$/;"	f
+load2	tests\\test_golem.py	/^    def load2(fn):$/;"	m	class:Golem
+loop	golem.py	/^    def loop(self):$/;"	f
+loop	tests\\test_golem.py	/^    def loop(self):$/;"	m	class:Golem
+maintenance	cell\\cell.py	/^    def maintenance():$/;"	m	class:Cell
+maintenance	tests\\tests_cell\\test_cell.py	/^    def maintenance():$/;"	m	class:Cell
+mat_sz	encoders\\img-filter.py	/^mat_sz = 64$/;"	v
+misc_stats	helpers\\usage_limits.py	/^    def misc_stats(self):$/;"	m	class:UsageLimits
+misc_stats	tests\\tests_helpers\\test_usage_limits.py	/^    def misc_stats(self):$/;"	m	class:UsageLimits
+newFunction	js-things\\stuff.js	/^function newFunction() {$/;"	f
+np	imports.py	/^import PIL, os, numpy as np, math, collections, threading, json, bcolz, random, scipy#, cv2$/;"	I
+np	matrix\\layer.py	/^import numpy as np$/;"	I
+np	tests\\test_imports.py	/^import PIL, os, numpy as np, math, collections, threading, json, bcolz, random, scipy#, cv2$/;"	I
+np	tests\\tests_graph\\test_layer.py	/^import numpy as np$/;"	I
+num_ch	encoders\\img-filter.py	/^row_sz, col_sz, num_ch = imdat.shape$/;"	v
+olog	js-things\\olog.js	/^var olog = {$/;"	c
+parse_decoders	golem.py	/^    def parse_decoders(self):$/;"	f
+parse_decoders	tests\\test_golem.py	/^    def parse_decoders(self):$/;"	m	class:Golem
+parse_encoders	golem.py	/^    def parse_encoders(self):$/;"	f
+parse_encoders	tests\\test_golem.py	/^    def parse_encoders(self):$/;"	m	class:Golem
+parse_gt_config	golem.py	/^    def parse_gt_config(golem_type, num_dests, is_pair):$/;"	m	class:Golem
+parse_gt_config	tests\\test_golem.py	/^    def parse_gt_config(golem_type, num_dests, is_pair):$/;"	m	class:Golem
+parse_modules	golem.py	/^    def parse_modules(self):$/;"	f
+parse_modules	tests\\test_golem.py	/^    def parse_modules(self):$/;"	m	class:Golem
+pd	imports.py	/^import pandas as pd, pickle, sys, itertools, string, sys, re, datetime, time, shutil, copy$/;"	I
+pd	tests\\test_imports.py	/^import pandas as pd, pickle, sys, itertools, string, sys, re, datetime, time, shutil, copy$/;"	I
+primary	js-things\\objectives.json	/^	"primary": [""],$/;"	a
+print_stats	golem.py	/^    def print_stats():$/;"	f
+print_stats	tests\\test_golem.py	/^    def print_stats():$/;"	m	class:Golem
+python.pythonPath	.vscode\\settings.json	/^  "python.pythonPath": "C:\\\\ProgramData\\\\Anaconda3\\\\python.exe",$/;"	s
+relay	tests\\tests_graph\\test_region.py	/^relay = dump(load(open('region_confs\\\\relay.yaml')))$/;"	v
+remap	golem.py	/^    def remap(self):$/;"	f
+remap	tests\\test_golem.py	/^    def remap(self):$/;"	m	class:Golem
+reproduce	js-things\\thoughts.js	/^    reproduce: function(IOrganism) {$/;"	m	class:IOrganism
+reset	cell\\axon.py	/^    def reset(self):$/;"	m	class:Axon
+reset	cell\\dendrite.py	/^    def reset():$/;"	m	class:Dendrite
+reset	helpers\\usage_limits.py	/^    def reset(self):$/;"	m	class:UsageLimits
+reset	tests\\tests_cell\\test_axon.py	/^    def reset(self):$/;"	m	class:Axon
+reset	tests\\tests_cell\\test_dendrite.py	/^    def reset():$/;"	m	class:Dendrite
+reset	tests\\tests_helpers\\test_usage_limits.py	/^    def reset(self):$/;"	m	class:UsageLimits
+reset_state	helpers\\chemical_state.py	/^    def reset_state(self):$/;"	m	class:ChemicalState
+reset_state	tests\\tests_helpers\\test_chemical_state.py	/^    def reset_state(self):$/;"	m	class:ChemicalState
+row_sz	encoders\\img-filter.py	/^row_sz = int(math.sqrt(mat_sz))$/;"	v
+row_sz	encoders\\img-filter.py	/^row_sz, col_sz, num_ch = imdat.shape$/;"	v
+run	golem.py	/^    def run(self):$/;"	f
+run	tests\\test_golem.py	/^    def run(self):$/;"	m	class:Golem
+save	golem.py	/^    def save(fn, a): $/;"	f
+save	tests\\test_golem.py	/^    def save(fn, a): $/;"	m	class:Golem
+scaling	cell\\cell.py	/^    def scaling():$/;"	m	class:Cell
+scaling	tests\\tests_cell\\test_cell.py	/^    def scaling():$/;"	m	class:Cell
+search.showLineNumbers	.vscode\\settings.json	/^  "search.showLineNumbers": true$/;"	b
+secondary	js-things\\objectives.json	/^	"secondary": [],$/;"	a
+sleep	js-things\\thoughts.js	/^    sleep: function(){},$/;"	m	class:IOrganism
+start_col	encoders\\img-filter.py	/^  start_col = ?$/;"	v
+start_col	encoders\\img-filter.py	/^  start_col = int(0 + (col_sz\/2) - (inr_wdth\/2))$/;"	v
+start_row	encoders\\img-filter.py	/^  start_row = ?$/;"	v
+start_row	encoders\\img-filter.py	/^  start_row = int(0 + (row_sz\/2) - (inr_hght\/2))$/;"	v
+stitch	cell\\cell.py	/^    def stitch(self, graph):$/;"	m	class:Cell
+stitch	matrix\\destination.py	/^    def stitch(self, graph):$/;"	m	class:Destination
+stitch	matrix\\layer.py	/^    def stitch(self, graph):$/;"	m	class:Layer
+stitch	matrix\\problem_domain.py	/^    def stitch(self, graph):$/;"	m	class:ProblemDomain
+stitch	matrix\\region.py	/^    def stitch(self, graph):$/;"	m	class:Region
+stitch	tests\\tests_cell\\test_cell.py	/^    def stitch(self, graph):$/;"	m	class:Cell
+stitch	tests\\tests_graph\\test_destination.py	/^    def stitch(self, graph):$/;"	m	class:Destination
+stitch	tests\\tests_graph\\test_layer.py	/^    def stitch(self, graph):$/;"	m	class:Layer
+stitch	tests\\tests_graph\\test_problem_domain.py	/^    def stitch(self, graph):$/;"	m	class:ProblemDomain
+str_to_class	matrix\\region.py	/^def str_to_class(str):$/;"	f
+strength	cell\\axon.py	/^    def strength(self):$/;"	m	class:Axon
+strength	tests\\tests_cell\\test_axon.py	/^    def strength(self):$/;"	m	class:Axon
+summate	cell\\dendrite.py	/^    def summate(self, input):$/;"	m	class:Dendrite
+summate	tests\\tests_cell\\test_dendrite.py	/^    def summate(self, input):$/;"	m	class:Dendrite
+synapse_creation	cell\\dendrite.py	/^    def synapse_creation(self):$/;"	m	class:Dendrite
+synapse_creation	tests\\tests_cell\\test_dendrite.py	/^    def synapse_creation(self):$/;"	m	class:Dendrite
+synapse_plasticity	cell\\dendrite.py	/^    def synapse_plasticity(self, is_active):$/;"	m	class:Dendrite
+synapse_plasticity	tests\\tests_cell\\test_dendrite.py	/^    def synapse_plasticity(self, is_active):$/;"	m	class:Dendrite
+synapse_prune	cell\\dendrite.py	/^    def synapse_prune():$/;"	m	class:Dendrite
+synapse_prune	tests\\tests_cell\\test_dendrite.py	/^    def synapse_prune():$/;"	m	class:Dendrite
+synapse_weight_limits	cell\\dendrite.py	/^    synapse_weight_limits = 0.2 to 100? # this needs work but so does everything.... waaa$/;"	v	class:Dendrite
+synapse_weight_limits	tests\\tests_cell\\test_dendrite.py	/^    synapse_weight_limits = 0.2 to 100? # this needs work but so does everything.... waaa$/;"	v	class:Dendrite
+sz_stat	encoders\\img-filter.py	/^sz_stat = (len_abs,hq_sz) => {$/;"	v
+sz_statblock	encoders\\img-filter.py	/^sz_statblock = (len_abs,len_b,len_c,len_d) => {$/;"	v
+tertiary	js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	a
+that	helpers\\chemical_state.py	/^TODO: implement a chemical class that can be used to handles types, their effects, and different/;"	c
+that	tests\\tests_helpers\\test_chemical_state.py	/^TODO: implement a chemical class that can be used to handles types, their effects, and different/;"	c
+threshhold_plasticity	cell\\cell.py	/^    def threshhold_plasticity():$/;"	m	class:Cell
+threshhold_plasticity	tests\\tests_cell\\test_cell.py	/^    def threshhold_plasticity():$/;"	m	class:Cell
