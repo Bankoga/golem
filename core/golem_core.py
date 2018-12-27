@@ -1,1 +1,0 @@
-# the golem core class. Needs to be extracted from the golem class
