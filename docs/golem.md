@@ -1,6 +1,6 @@
 # G.O.L.E.M: The myth, the package, the legend
 
-G.O.L.E.M: Goal oriented, logic encapsulating matrix. A noble endeavor for the logic minded.
+G.O.L.E.M: Goal oriented, logic encapsulation matrix. A noble endeavor for the logic minded.
 This package is for building, deploying, and maintaining golems.
 
 ## Overview
