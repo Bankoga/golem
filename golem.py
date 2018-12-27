@@ -41,7 +41,8 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         return settings
 
     def construct_self(self):
-        egg = self.assemble_egg(self.settings['core_type_fname'], self.desired_dests)
+        self.config = self.build_full_config(core_type_fname)
+        egg = Core(self.config, self.settings['core_type_fname'], self.desired_dests)
         self.settings['core_config'] = egg['core_config']
         # contain ts within a hearbeat system?
         # self.settings['ts'] = egg['ts']
@@ -70,8 +71,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         cts = 0#get current timestamp()
         return '{0}-{1}-{2}'.format(golem_type, rh, cts)
 
-    def assemble_egg(self, core_type_fname, num_dests):
-        config = self.build_full_config(core_type_fname)
+    def assemble_egg(self, config, core_type_fname, num_dests):
         egg = {
             'config': config,
             'name': config['name'],
@@ -158,6 +158,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
                         inps.append(alt_node.name)
             cells_dict[key] = count, inps, num_dests
         return cells_dict
+
 
     def batch_inputs(self, outputs):
         TODO: batch inputs based on their destination. The batched inputs will be passed by reference to cells for consumption.
