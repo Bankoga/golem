@@ -14,7 +14,7 @@ This package is for building, deploying, and maintaining golems.
 
 ## Core
 
-> Definition: The primary processing system of a golem. i.e. the seat of intelligence. Can only have 1 per golem.
+> Definition: The primary processing system of a golem. i.e. the seat of intelligence. Can only have 1 per golem, and can be paired.
 
 ### Purpose of the Core
 
@@ -22,7 +22,7 @@ Determines the types of logos encapsulation a golem can perform. The core determ
 
 ## Framework
 
-> Definition: The construction, deployment, and maintenance systems of a golem. Can only have 1 per golem.
+> Definition: The construction, deployment, and maintenance systems of a golem. Can only have 1 per golem, and can be paired.
 
 ### Purpose of the Framework
 
@@ -30,7 +30,7 @@ The framework handles all primary routing inbetween all model type modules (rega
 
 ## Regulator
 
-> Definition: The modulation, and directly supported metaoperation capabilities of the golem. Can only have 1 per golem.
+> Definition: The modulation, and directly supported metaoperation capabilities of the golem. Can only have 1 per golem. Can't be paired.
 
 ### Purpose of the Regulator
 
@@ -38,7 +38,7 @@ There are a lot of matrix wide support operations required to have a functioning
 
 ## Shell
 
-> Definition: The housing, and I/O systems of a golem. A golem only has an aggregate shell which can be composed of many different distinct, or interconnected sub-shells.
+> Definition: The housing, and I/O systems of a golem. A golem only has an aggregate shell which can be composed of many different distinct, or interconnected sub-shells. Can be paired.
 
 ### Purpose of the Shell
 
