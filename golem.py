@@ -63,6 +63,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         # plan is to have simulated sec defined, and num ts per sec evald to see how fast it compares to analagous physically implemented systems. Does it have more time than us?
         self.ts_per_sim_second = ts_data['ts_per_sec']#1000
         self.session_length = self.ts_per_sim_second * ts_data['session_length'] #60 * 60 * 12
+        TODO: determine timestep vs update cycle ontology
 
     def generate_golem_id(golem_type):
         rh = 0#calc random 1024-hex hash
