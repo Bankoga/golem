@@ -12,6 +12,8 @@ This package is for building, deploying, and maintaining golems.
 - Regulator
 - Shell
 
+These pieces are composed of modules, circuits, pathways, & networks.
+
 ## Core
 
 > Definition: The primary processing system of a golem. i.e. the seat of intelligence. Can only have 1 per golem, and can be paired.
@@ -30,7 +32,7 @@ The framework handles all primary routing inbetween all model type modules (rega
 
 ## Regulator
 
-> Definition: The modulation, and directly supported metaoperation capabilities of the golem. Can only have 1 per golem. Can't be paired.
+> Definition: The modulation, and directly supported metaoperation capabilities of the golem. Can only have 1 per golem. Certain parts can't be paired.
 
 ### Purpose of the Regulator
 
