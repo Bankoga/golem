@@ -24,56 +24,56 @@ encoders:
       - dest: statement
         distributions: word
 framework:
-  - name: ?
+  - name: UNK
     model: null
     size: null
     outputs: null
-  - name: ?
+  - name: UNK
     model: null
     size: null
     outputs: null
   - name: striatum, nucleus accumbens
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: striatum, olfactory tubercle
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: striatum, caudate nucleus
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: striatum, lentiform nucleus
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: striatum, putamen
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: globus-pallidus-interior
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: globus-pallidus-exterior
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: ventral pallidum
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: substantia nigra, pars compacta
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: substantia nigra, pars reticularis
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: subthalamic nuclei
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: hypothalamus
@@ -86,31 +86,31 @@ framework:
     size: size_primary-relay
     outputs: reciprocal
   - name: ventral tegmental area
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: red nucleus
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: median raphe nucleus
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: dorsal raphe nucleus
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: cerebellar penduncles
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: colliculus, inferior
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: colliculus, superior
-    model: ?
+    model: UNK
     size: null
     outputs: null
   - name: global_synch
