@@ -21,10 +21,10 @@ Each component type section consists of the following:
 - an overview of types/sub-types
 - ?
 
-What are shells?
-What purpose do they serve?
-How are they useful/what are the benefits of this paradigm?
-How are they detrimental/what are the drawbacks of this paradigm?
+What are _BLANK_?
+What purpose do _BLANK_ serve?
+How are _BLANK_ useful/what are the benefits of this paradigm?
+How are _BLANK_ detrimental/what are the drawbacks of this paradigm?
 
 ## Core
 
@@ -34,6 +34,8 @@ How are they detrimental/what are the drawbacks of this paradigm?
 
 Determines the types of logos encapsulation a golem can perform. The core determines the extent to which a golem can adapt, learn, or remember. Semantic processing, world modeling, relational reasoning, agent capabilities, multi-modal support or aggregation, location mapping, etc... are all aspects of a golems primary purpose.
 
+### Types of Cores
+
 ## Framework
 
 > Definition: The construction, deployment, and maintenance systems of a golem. Can only have 1 per golem, and can be paired.
@@ -42,6 +44,8 @@ Determines the types of logos encapsulation a golem can perform. The core determ
 
 The framework handles all primary routing inbetween all model type modules (regardless of location, and model type module is structurally analogous to some part of the neocortex), I/O regulation & modulation, association, and fine-tuning. It also determines dynamic shell reconfiguration capabilities, and the output selection controller.
 
+### Types of Frameworks
+
 ## Regulator
 
 > Definition: The modulation, and directly supported metaoperation capabilities of the golem. Can only have 1 per golem. Certain parts can't be paired.
@@ -49,6 +53,8 @@ The framework handles all primary routing inbetween all model type modules (rega
 ### Purpose of the Regulator
 
 There are a lot of matrix wide support operations required to have a functioning golem. Interactivity between the golem matrix, and operators is vital for a large number of operations. Thus mechanisms for feedback, and matrix-wide property modulation are necessary. All feedback, as well as the primary drives/goals, reside herein. A golems regulator determines the types of feedback (neg/pos/both i.e. pain/pleasure) it can receive, and, in some instances, generates part, or most, of the golems feedback internally.
+
+### Types of Regulators
 
 ## Shell
 
