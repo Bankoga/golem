@@ -33,7 +33,7 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - ?: ?
   - ?: ?
 - Matrix: An flow-based operational/cognitive data network/graph of nodes, and edges
-  - Power source: The sources of flow which drive the processing.
+  - Power source: The sources of flow which drive the processing. Externally, and Internally generated inputs can be leveraged to drive the spike flow system of the Matrix.
     - Internal: Power sources that allow the matrix to operate in the absence of external input
       - Pacemakes/Temporal Alternators: Sources which fire spontaneously at some frequency thus contributing to baseline activity levels within the Matrix.
       - Mode Regulators: Sources whose fire rate determines the overall activity level of the Matrix.
@@ -49,10 +49,13 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - Edges: Axons, Dendrites
   - Construction: Growth
   - Definition: Language, Documents, and Configs
-    - circuit/cycle : A templated closed path through several modules/layers
-    - path : a connected walk between several modules through a series of edges or edge production rules
-    - edge : a data bearing connection between two nodes
-    - network : A templated distribution of some input source(s) across a distinct set of directed paths that operate in conjunction to provide one or more unified output edges.
+    - ?
+  - Path : A connected walk between destinations (containers for small sets of cells) through a series of edges or edge production rules.
+  - Path Templates: The different ways to define connections between non-adjacent modules, layers, and destinations within any arbitrary Matrix. Does not allow for arbitrary/manual edge specification between packages to help reduce specific package dependencies. However, in-matrix adjacency can lead to growth outside the initialization paradigm which is restricted to edge distribution formation rules/templates.
+    - circuits/cycles : A type of path template that makes a closed directly linked loop of cells, by type, through different destinations.
+    - network : A type of path template where some set of input source(s) (pipelines or modules) are distributed across a distinct set of directed paths that operate in conjunction to provide one or more unified output edges.
+    - pipeline : A type of path template which is composed of a sequence of modules that form one or more distinct routes.
+    - relay : A type of path template where an output from one destination, A, to another, B, is gated by a third, C, which either is controlled externally and thus passes the input from A to B directly, or temporally aggregates input from A before passing it on to B. Interestingly, when viewed under this definition, Neurons in organic entities appear to act as contextually sensitive/dynamic relays with the entire brain being built out of networks of relays
   - Operation
   - Load/Save: File Type, Options, etc...
   - Resource Types: Learning Paradigm Value Types
