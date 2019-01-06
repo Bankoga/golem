@@ -3,7 +3,7 @@
 from usage_limits import *
 
 TODO: implement a chemical class that can be used to handles types, their effects, and different strengths of effect
-class ChemicalState():
+class EnvState():
     def __init__():
         self.ap_thresh_mod = 0
         self.synapse_weight_mod = 0
