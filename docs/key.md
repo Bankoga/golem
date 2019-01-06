@@ -10,11 +10,19 @@ This document serves as an overview of all primary terms, and mappings ordered b
 - Cell:
   - Afferents: ?
   - Efferents: ?
+  - Charge: A real numer betwen [-256,256] that represents the energy level of the cell
+  - Channel Type : A type of conditional gateway that connects a cells Chemical State to another destinations chemical state via an edge, or to its container destinations chemical State directly that gets evaluated every time step.
+  - Channel Properties: The properties that determine how a channel operates.
+    - Open Conditions: A list of boolean clauses which can cause the channel to open when true. Examples of properties used in conditionals in human neurons are membrane voltage, chemical shape, and the motion of internal fluids in the cell.
+    - Close Conditions: A list of boolean clauses which can cause the channel to open when true. Examples of properties used in conditionals in human neurons are membrane voltage, chemical shape, and the motion of internal fluids in the cell.
+    - Effect-Value pairs on State: What operations are performed using which properties between the two states, and the increment by which change can occur at each time step. A pair of examples are listed below:
+      - Flow Direction: the direction of the effect on state for pressure differential based properties.
+      - Flow Volume: the size of the pressure based equilization channel.
   - Axon: A one-way edge that projects resource production data to one or more other addresses. Cannot project to other axons.
   - Dendrite: A one-way edge that collections resource production data from one or more other addresses. Can be configured to also read from other directly connected dendrites, and not just from Axons.
-  - Spike: A real number between [0,1], which represents the refreshedness/cooldown/fatigue/ of the resource production source used by all synapses to determine the number of resources generated.
-  - State: Represents the cells internal environment which affect cell operation.
-  - Synapses: A connection between two edges at a specific address with different sources that determines the number of resources to be produced for collection. By default, synapses can only form between axons, and dendrites.
+  - Spike: A real number between [0,1] that used by all synapses to determine the number of resources generated. The distance of the spike value from 1 represents the refreshedness/cooldown/fatigue/? of the resource production source, i.e. the axons level of fatigue.
+  - Chemical State: Represents the cells internal environment which drives cell operations.
+  - Synapses: A specific type of channel that forms between two edges at a specific address with different sources which determines the number of resources to be produced for collection in the reading edge. By default, synapses can only form between axons, and dendrites.
   - Threshhold: The energy level required to generate resources at directly down-stream synapses.
   - ?: ?
   - ?: ?
@@ -43,6 +51,9 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - Edge: A data-bearing conduit between two nodes.
   - Address: A uniquely generated string which serves as a shorthard representation for each destination within the Matrix.
   - Destination: The container/environment which hosts, operates, and prepares a set of nodes.
+    - State: Represents the environment which affects the operations of a small set of cells
+      - Charge: A real numer betwen [-256,256] that represents the background energy level of the operating environment of some small set of cells
+      - Chemical : An object that triggers specific changes in cell behavior by manipulating dynamic modifiers in the operation method definitions. Can only affect cells which possess a corresponding type of channel.
   - Layer: A group/set/2d matrix of destinations produced by the same production rules. Akin to a layer in BP neural nets.
   - Module: A collection of inter-, and intra-connected layers which serve as a distinct semantic whole/sub-set of the graph.
   - Nodes/Vertices: Cells
