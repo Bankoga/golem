@@ -5,7 +5,7 @@
 This document serves as an overview of all primary terms, and mappings ordered by ? as they are defined, and used within this particular Golem Meta.
 
 > TODO: Have this document, or the connected actual document get generated as part of a dev build task!
-
+- Graph/Matrix
 - Adaptation/Growth/Plasticity/?: ?
 - Cell:
   - Afferents: ?
@@ -40,35 +40,7 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - Matrix: Golem paradigm specific matrix terminology
   - ?: ?
   - ?: ?
-- Matrix: An flow-based operational/cognitive data network/graph of nodes, and edges
-  - Power source: The sources of flow which drive the processing. Externally, and Internally generated inputs can be leveraged to drive the spike flow system of the Matrix.
-    - Internal: Power sources that allow the matrix to operate in the absence of external input
-      - Pacemakes/Temporal Alternators: Sources which fire spontaneously at some frequency thus contributing to baseline activity levels within the Matrix.
-      - Mode Regulators: Sources whose fire rate determines the overall activity level of the Matrix.
-    - External: The primary sources of activity generation.
-      - ?
-  - Node: An arbitrary type unit of data procesing.
-  - Edge: A data-bearing conduit between two nodes.
-  - Address: A uniquely generated string which serves as a shorthard representation for each destination within the Matrix.
-  - Destination: The container/environment which hosts, operates, and prepares a set of nodes.
-    - State: Represents the environment which affects the operations of a small set of cells
-      - Charge: A real numer betwen [-256,256] that represents the background energy level of the operating environment of some small set of cells
-      - Chemical : An object that triggers specific changes in cell behavior by manipulating dynamic modifiers in the operation method definitions. Can only affect cells which possess a corresponding type of channel.
-  - Layer: A group/set/2d matrix of destinations produced by the same production rules. Akin to a layer in BP neural nets.
-  - Module: A collection of inter-, and intra-connected layers which serve as a distinct semantic whole/sub-set of the graph.
-  - Nodes/Vertices: Cells
-  - Edges: Axons, Dendrites
-  - Construction: Growth
-  - Definition: Language, Documents, and Configs
-    - ?
-  - Path : A connected walk between destinations (containers for small sets of cells) through a series of edges or edge production rules.
-  - Path Templates: The different ways to define connections between non-adjacent modules, layers, and destinations within any arbitrary Matrix. Does not allow for arbitrary/manual edge specification between packages to help reduce specific package dependencies. However, in-matrix adjacency can lead to growth outside the initialization paradigm which is restricted to edge distribution formation rules/templates.
-    - circuits/cycles : A type of path template that makes a closed directly linked loop of cells, by type, through different destinations.
-    - network : A type of path template where some set of input source(s) (pipelines or modules) are distributed across a distinct set of directed paths that operate in conjunction to provide one or more unified output edges.
-    - pipeline : A type of path template which is composed of a sequence of modules that form one or more distinct routes.
-    - relay : A type of path template where an output from one destination, A, to another, B, is gated by a third, C, which either is controlled externally and thus passes the input from A to B directly, or temporally aggregates input from A before passing it on to B. Interestingly, when viewed under this definition, Neurons in organic entities appear to act as contextually sensitive/dynamic relays with the entire brain being built out of networks of relays
-  - Operation
-  - Load/Save: File Type, Options, etc...
+- Golem Matrix Modulation/Resources:
   - Resource Types: Learning Paradigm Value Types
   - Node Resource : Resource Type : Effects on Node
     - Energy : Glutamate : Increases charge which is used like FP from DS3 for spike generation
@@ -79,7 +51,6 @@ This document serves as an overview of all primary terms, and mappings ordered b
     - ? : Norepinephrine : ?
   - Node Input: On spike connection strength multiplier (perhaps just calc the diff between injector, and receptor sizes for some sort of loss adjustment that we can leverage for plasticity? This seems like a nifty thing... Wat teh heck. So useful)
   - Node Output: Off/On spike-destination pair
-- Matrix Modulation/Resources:
   - Plasticity Factors: Matrix resources which modulate the level of malleability of nodes within the Matrix.
   - Spiking Factors: ?
     - Glutamate: ?
@@ -90,9 +61,51 @@ This document serves as an overview of all primary terms, and mappings ordered b
     - ?: ?
   - Structural Factors: Matrix resources which modulate structural changes within, and between modules. Structural changes impact module composition, shape, size, and I/O(i.e edge) profiles, but don't directly impact cell state, or connection plasticity aside from adding or removing cells, and/or intersection points where synapses can form.
     - ?: ?
-    - ?: ?
-    - ?: ?
-    - ?
+- Matrix: An flow-based operational/cognitive data network/graph of nodes, and edges.
+  - Components: Matrices are broken down into two sets of primary structures.
+    - Organizational: (modules, layers, and composition)
+    - Functional: (nodes, edges, operations)
+  - Component Pieces: Each graph/matrix component is made of the same pieces across different scales. From nodes and edges, to submodules and modules.
+    - Input Shape: The graph of available (direct/send, and indirect/read) input sources gated by accepted input types.
+    - Output Shape: The graph of potential (direct/send only) output sources gated by possible output types.
+    - Internal Function: The sequence of steps that a piece takes when transforming input into output.
+  - Properties of Matrix Pieces: Each matrix component has the same primary property sets.
+    - Definition/Description: The initial form of the matrix component.
+      - Is it a copy of the config, or the post init state?
+    - Initialization: The rules for creating the initial object.
+    - State: The current state of the component.
+    - Usage Rules: The rules for changing the object according to usage, and modulation.
+  - Power source: The sources of flow which drive the processing. Externally, and Internally generated inputs can be leveraged to drive the spike flow system of the Matrix.
+    - Internal: Power sources that allow the matrix to operate in the absence of external input.
+      - Pacemakes/Temporal Alternators: Sources which fire spontaneously at some frequency thus contributing to baseline activity levels within the Matrix.
+      - Mode Regulators: Sources whose fire rate determines the overall activity level of the Matrix.
+    - External: The primary sources of activity generation.
+      - ?
+  - Node: An arbitrary type unit of data procesing. In other words, a function of some sort.
+  - Edge: A data-bearing conduit between two nodes.
+  - Address: A uniquely generated string which serves as a shorthard representation for each destination within the Matrix.
+  - Destination: The container/environment which hosts, operates, and prepares a set of nodes.
+    - State: Represents the environment which affects the operations of a small set of cells
+      - Charge: A real numer betwen [-256,256] that represents the background energy level of the operating environment of some small set of cells
+      - Chemical : An object that triggers specific changes in cell behavior by manipulating dynamic modifiers in the operation method definitions. Can only affect cells which possess a corresponding type of channel.
+  - Layer: A group/set/2d matrix of destinations produced by the same production rules. Akin to a layer in BP neural nets.
+  - Module: A collection of inter-, and intra-connected layers which serve as a distinct semantic whole/sub-set of the graph.
+  - Composition: The components used/responsible for connecting different organizational and functional components.
+    - Circuits: They operate based on hook tags. A modules circuit support is determined by the hooks described in the module.
+
+Misc stuff to be incorporated
+
+- Construction: Growth
+- Definition: Language, Documents, and Configs
+  - ?
+- Path : A connected walk between destinations (containers for small sets of cells) through a series of edges or edge production rules.
+- Path Templates: The different ways to define connections between non-adjacent modules, layers, and destinations within any arbitrary Matrix. Does not allow for arbitrary/manual edge specification between packages to help reduce specific package dependencies. However, in-matrix adjacency can lead to growth outside the initialization paradigm which is restricted to edge distribution formation rules/templates.
+  - circuits/cycles : A type of path template that makes a closed directly linked loop of cells, by type, through different destinations.
+  - network : A type of path template where some set of input source(s) (pipelines or modules) are distributed across a distinct set of directed paths that operate in conjunction to provide one or more unified output edges.
+  - pipeline : A type of path template which is composed of a sequence of modules that form one or more distinct routes.
+  - relay : A type of path template where an output from one destination, A, to another, B, is gated by a third, C, which either is controlled externally and thus passes the input from A to B directly, or temporally aggregates input from A before passing it on to B. Interestingly, when viewed under this definition, Neurons in organic entities appear to act as contextually sensitive/dynamic relays with the entire brain being built out of networks of relays
+- Operation
+- Load/Save: File Type, Options, etc...
 
 ## Paradigms
 
