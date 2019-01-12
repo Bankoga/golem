@@ -61,7 +61,7 @@ This document serves as an overview of all primary terms, and mappings ordered b
     - ?: ?
   - Structural Factors: Matrix resources which modulate structural changes within, and between modules. Structural changes impact module composition, shape, size, and I/O(i.e edge) profiles, but don't directly impact cell state, or connection plasticity aside from adding or removing cells, and/or intersection points where synapses can form.
     - ?: ?
-- Matrix: An flow-based operational/cognitive data network/graph of nodes, and edges.
+- Matrix: A flow-based operational/cognitive data network/graph of nodes, and edges.
   - Components: Matrices are broken down into two sets of primary structures.
     - Organizational: (modules, layers, and composition)
     - Functional: (nodes, edges, operations)
@@ -69,6 +69,8 @@ This document serves as an overview of all primary terms, and mappings ordered b
     - Input Shape: The graph of available (direct/send, and indirect/read) input sources gated by accepted input types.
     - Output Shape: The graph of potential (direct/send only) output sources gated by possible output types.
     - Internal Function: The sequence of steps that a piece takes when transforming input into output.
+    - State: Objects at each organizational scale of a matrix, shares a homeostatic environment. This shared environment is a state object. Thus each component has a state which interacts with its parent, and child component states.
+      - Hierarchy of States (top-down): Golem, Matrix, Graph/Pair(Gen or Advers, Left or right), Pipeline, Stage, Module, Layer, Destination, Node, Edge.
   - Properties of Matrix Pieces: Each matrix component has the same primary property sets.
     - Definition/Description: The initial form of the matrix component.
       - Is it a copy of the config, or the post init state?
@@ -81,6 +83,7 @@ This document serves as an overview of all primary terms, and mappings ordered b
       - Mode Regulators: Sources whose fire rate determines the overall activity level of the Matrix.
     - External: The primary sources of activity generation.
       - ?
+- Matrix Components: Specific components of a matrix.
   - Node: An arbitrary type unit of data procesing. In other words, a function of some sort.
   - Edge: A data-bearing conduit between two nodes.
   - Address: A uniquely generated string which serves as a shorthard representation for each destination within the Matrix.
@@ -91,7 +94,8 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - Layer: A group/set/2d matrix of destinations produced by the same production rules. Akin to a layer in BP neural nets.
   - Module: A collection of inter-, and intra-connected layers which serve as a distinct semantic whole/sub-set of the graph.
   - Composition: The components used/responsible for connecting different organizational and functional components.
-    - Circuits: They operate based on hook tags. A modules circuit support is determined by the hooks described in the module.
+    - Circuit: A set of rules for building a continuous path of cells across multiple destination stacks (layer matrix i,j) that eventually return to the starting stack. They operate based on hook tags. A modules circuit support is determined by the hooks described in the module.
+    - Pipeline: A set of rules for building a continuous path of information through several modules. All pipelines have 3 sets of connections/parts: input(s), output(s), internal(s) which can span an arbitrary number of stages between input, and output.
 
 Misc stuff to be incorporated
 
