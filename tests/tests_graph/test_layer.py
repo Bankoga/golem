@@ -1,7 +1,7 @@
 # contains the definition for the layer object. Regions have multiple layers, and each layer contains an array of cells.
 # layers are the primary cell container in this architecture
 import numpy as np
-from destination import *
+from pod import *
 from location import *
 
 class Layer:
@@ -32,7 +32,7 @@ class Layer:
         Local aspects of a layer and/or region that can differ
         - plasticity rules (inhib, excitory, modulatory) (timing, decay/potentiate funcs, etc...)
         - cell morphologys
-        - allowed layer destinations (with blanks for cross-region, and cross-pd destination insertion. Example: cortical layer 5 and 6)
+        - allowed layer destinations (with blanks for cross-region, and cross-pd pod insertion. Example: cortical layer 5 and 6)
         - resource constraints (can each cell morphology have diff constraints?)
         - what else
         """
@@ -50,10 +50,10 @@ class Layer:
         destinations = np.zeros(shape=(self.length,self.width))
         for i in range(0, self.length):
             for j in range (0 self.width):
-                destinations[i][j] = Destination(self.config, [i,j], self.loc)
+                destinations[i][j] = Pod(self.config, [i,j], self.loc)
         self.destinations = destinations
 
-    TODO: expand activate to have the current mode, time step, and the destination keyed input batches
+    TODO: expand activate to have the current mode, time step, and the pod keyed input batches
     def activate(self):
         """
             perhaps a new name will better fit but this is fine for now. It matches the cell func name

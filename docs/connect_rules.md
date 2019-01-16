@@ -28,18 +28,18 @@ From one Layer to:
 
 Diff rules/ways for connecting/stitching: Stitching (nxm -> cxr), Convolving (nxn -> 1, dilate, skips)
 
-From one Cell || Destination to:
+From one Cell || Pod to:
 is there a diff?
 
 Cell -> Dest
 Cell <- Dest
 
-Cells tell their container where to read from. The destination collects a list of all other destinations to read from at each timestep.
+Cells tell their container where to read from. The pod collects a list of all other destinations to read from at each timestep.
 All cells in a container read from that container
 Cells go to different places, with different spreads
 Dests tell their cells where to go based on a mapping of lxw's, and fill props for relevant PDs
 
-PD level maps of different levels of destination to destination mapping
+PD level maps of different levels of pod to pod mapping
 Dest -> Dest mapping are used by cells for projection & reception filling of connection paths
 
 Cells to/from:
@@ -66,15 +66,15 @@ Cross PD dendrites pass through boundaries, and cross matrices. They require adj
 
 ### Alg of creation
 
-- count outgoing edges, LxW of destination PDs, shape of output per destination PD
+- count outgoing edges, LxW of pod PDs, shape of output per pod PD
 - count incoming edges, LxW of each input PD, shape of each input PD
 - map destinations of layers within each region to layers within the same region (UNNECESSARY?)
-- map destinations of layers with output paths to destination PD layers+LxW coords
+- map destinations of layers with output paths to pod PD layers+LxW coords
   - f(a,r_a,l_a,x_a,y_a,d) => d, (d,r_d,l_d,x_d,y_d)
 
 ## Axon Spread Rules
 
-Axons have core target Destinations set as per the relevant mapping via the layers cell type axon config. At these destinations, the axon can branch out in shapes (like a square) of some size (like 4x4). So it will put the target in the middle of the shape, and add all dests that fit inside the shape to the axons projections. Axons can also project specifically to a single destination without spreading upon arrival. Spreading is handled at each axon branch terminal/end point.
+Axons have core target Destinations set as per the relevant mapping via the layers cell type axon config. At these destinations, the axon can branch out in shapes (like a square) of some size (like 4x4). So it will put the target in the middle of the shape, and add all dests that fit inside the shape to the axons projections. Axons can also project specifically to a single pod without spreading upon arrival. Spreading is handled at each axon branch terminal/end point.
 Cells thus handled output spread from core targets, and are separate from layer filling.
 
 ## Dendrite Spread Rules

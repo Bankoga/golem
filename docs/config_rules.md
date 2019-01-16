@@ -52,13 +52,13 @@ The purpose of a layer is to create destinations for cells, and constrain the po
 
 ### Destinations
 
-Each point in a layer is a destination. Destinations are end points for cell axon projections. They contain either one or more cells based on the specs of the relevant config.
+Each point in a layer is a pod. Destinations are end points for cell axon projections. They contain either one or more cells based on the specs of the relevant config.
 
 ### Cells
 
 A cell in a human brain can broadly be described by two categories: neuronal, and glial. Neurons are the processors of the brain, and glial cells serve as maintenance, neuromodulation, and scaffolding. In this framework, the role of glial cells are largely played by the framework itself. Additionally, certain aspects of the brain that are controlled by glial cells, like myelination, are currently excluded in order to reduce the complexity of initializing a network, and the ongoing structural plasticity during activation.
 
-The two major properties of a cell are activation_type, and cell_morphology. Activation type determines how a cell is consumed, and morphology determines how it consumes. We assume that all cells project to some destination(s).
+The two major properties of a cell are activation_type, and cell_morphology. Activation type determines how a cell is consumed, and morphology determines how it consumes. We assume that all cells project to some pod(s).
 
 > Randomly generate the lengths of seconday dendrites based on morphology?
 > Usage based growth may need to be implemented at some point
@@ -85,7 +85,7 @@ A Cell Type is a tuple of an activation_type, a single cell_morphology, & one or
 
 The two major properties, determine the general other properties of the cell like the plasticity properties, resource constraints, etc...
 
-**All cells include receptors for the destination that contains them!**
+**All cells include receptors for the pod that contains them!**
 
 ## Region Config Files
 
@@ -96,7 +96,7 @@ Since the framework is, for the most part, problem domain type, region, and laye
   - layer dict
     - name: layer_name
       - used as key for layers dict inside a region
-    - point_size: number of cells at a point (i.e. destination) in the layer
+    - point_size: number of cells at a point (i.e. pod) in the layer
     - cells list: a list of tuples of cell type, and percent of cells in layer
       - cell type
         - cell morphology
@@ -104,16 +104,16 @@ Since the framework is, for the most part, problem domain type, region, and laye
           - plasticity data (if differs from generic)
           - resource constraints (if differs from generic)
         - connection data
-          - types of cells that can project to the destination
+          - types of cells that can project to the pod
           - layer to layer connections within the region
           - substitution spots for cross-PD connections
         - distribution percentage: indicates what % of point_size should be composed of the paired cell type
 
 > Note on Cortex Region: it is perhaps the case that l1-6 naming convention works fine normally, though something more descriptive may be nice
 
-## Destination Keys
+## Pod Keys
 
-The destination of a cells axon can't be absolutely determined before initialization due to the relative nature of the connectivity patterns. Consequently, we need to use keys in the config that are parsed during init, and replaced with the absolute path data. For example, if a layer has cells that project to adjacent columns, we won't know the indices of the adjacent columns until we know the size of the region which is determined during initialization.
+The pod of a cells axon can't be absolutely determined before initialization due to the relative nature of the connectivity patterns. Consequently, we need to use keys in the config that are parsed during init, and replaced with the absolute path data. For example, if a layer has cells that project to adjacent columns, we won't know the indices of the adjacent columns until we know the size of the region which is determined during initialization.
 
 **SEE PATH PROBLEMS FOR OPEN QUESTIONS CONCERNING DESTINATION KEYS!**
 
@@ -124,7 +124,7 @@ Some cells project to multiple destinations via the same axon. The axon will bra
 - [pd_key, region_key, region_loc, layer_key]
 - [pd_key, region_key, region_loc, layer_key, cell_index]
 
-### Format of Destination Config
+### Format of Pod Config
 
 - [activation_key, [pd_key, region_key, region_loc, layer_key]]
 - [activation_key, [pd_key, region_key, region_loc, layer_key, cell_index]]
@@ -132,26 +132,26 @@ Some cells project to multiple destinations via the same axon. The axon will bra
 region_loc is either (x, y) or (x, y, z). If layer_key's are enumerable then we can use (x, y, z)
 Not all region_locs @ the layer_key will have multiple cell indices. Some layers have a cell at each point instead of an array of cells at each point
 
-### Config Destination Substitutions
+### Config Pod Substitutions
 
 Config destinations are patterns that indicate where cells in a layer can project outputs. Substitution keywords are replaced during init with generated info.
-Furthermore, each destination applies to one or more activation type of cells.
+Furthermore, each pod applies to one or more activation type of cells.
 
 #### activation keys
 
-- e_type : excitory neuron only destination
-- i_type: inhibitory neuron only destination
-- m_type : modulatory neuron only destination
-- num_type : excitory and inhibitory neuron only destination
-- all_type : all activation types destination
+- e_type : excitory neuron only pod
+- i_type: inhibitory neuron only pod
+- m_type : modulatory neuron only pod
+- num_type : excitory and inhibitory neuron only pod
+- all_type : all activation types pod
 
 #### path substitution keys
 
 - pair : project to mirrored location in the paired problem domain
 - same : reuse current path data for the matching level of the new path
-- output : substitute the output paths to other nodes for the destination according to PD type
+- output : substitute the output paths to other nodes for the pod according to PD type
 - "name" : use the name as the key in the path
-- none : layer serves as a destination without any cells in the layer
+- none : layer serves as a pod without any cells in the layer
   - in other words, the layer will have dendrites that receive from it but it won't return any outputs
 - adjacent : projects to neighboring destinations
   - all vs specific adjacency?

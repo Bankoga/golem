@@ -1,17 +1,17 @@
 from location import *
 
-class Destination:
+class Pod:
 
     def __init__(self, config, key, ploc):
         """
-        Creates a new destination (container of cells) using the provided config, and details.
+        Creates a new pod (container of cells) using the provided config, and details.
         Size is determined by the config.
         Cells must be wired together separately.
         """
         TODO: Confirm that inits do not mutate variables passed to them by accident
         self.loc = Location(key, ploc)
-        TODO: Avoid saving the config details to each destination so as to save on memory usage
-        self.point_size = config['point_size'] # num cells at the destination
+        TODO: Avoid saving the config details to each pod so as to save on memory usage
+        self.point_size = config['point_size'] # num cells at the pod
         self.ctypes = config['cell_types']
         self.create_cells()
 

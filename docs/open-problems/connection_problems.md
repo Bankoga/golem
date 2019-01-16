@@ -45,15 +45,15 @@ There are several different problems associated with wiring domains together
 They do seem to be correlated. Though the answer for this problem seems to relate to the answers for input, and output interpretation.
 
 Comment removed from destinations.py
-since each region type has it's own layer types, where should destination mappings live?
-I feel that it may be best for layer destination mappings to live outside the class in a json, yaml, or other such file
+since each region type has it's own layer types, where should pod mappings live?
+I feel that it may be best for layer pod mappings to live outside the class in a json, yaml, or other such file
 Why?
     the cortical region alone has 6 distinct layers with different output connection patterns, cell morphologys, plasticity rules, (what else?)
     There are at least 3 types of regions that I know need to be created, and at least two problem domains with undetermined regions
     Those other problem domains should at least have 1 type of region each, though they will likely have more than one
     So at this point, we can safely expect 5 or more regions that we need predefined to get info from
     Greater flexibility results from localizing cell morphologys, plas rules, resource constraints, connect patterns, etc... to each layer or region
-> NOTE: Removed method stub for collecting all sources from cells in a destination because of cost. Leaving the comments about it here for posterity.
+> NOTE: Removed method stub for collecting all sources from cells in a pod because of cost. Leaving the comments about it here for posterity.
 
 ### Indicating Input Slots for a Problem Domain
 
@@ -112,7 +112,7 @@ Three options for decimals:
 - ceil the results, then subtract the difference between expected and result from the domain with the greatest num cells
 - round the results, then add/subtract the diff between expected and result to domain with greatest num cells
 
-For example, we have 3 pds (a, b, c) as inputs to 3 pds (d, e, f). Here we have to calculate the num of cells available to each domain for each output, and num avail for input to calculate the ratio of output slots to input slots that would be used to determine the number of destination per output slot.
+For example, we have 3 pds (a, b, c) as inputs to 3 pds (d, e, f). Here we have to calculate the num of cells available to each domain for each output, and num avail for input to calculate the ratio of output slots to input slots that would be used to determine the number of pod per output slot.
 
 | **Domain**    | **Num Slots** | **Avail D** | **Avail E** | **Avail F** |
 | --- | --- | --- | --- | --- |
@@ -144,7 +144,7 @@ Total Inputs: 140
 | C | 9->20 | 11->10 | 20->40 |
 | --- | --- | --- | --- |
 
-These ratios represent the actual numbers of output cells to input cells. They would be used to determine the number of destinations each output cell projects to. Though in fact this would be calculated by the destination, and used to create the cells.(?)
+These ratios represent the actual numbers of output cells to input cells. They would be used to determine the number of destinations each output cell projects to. Though in fact this would be calculated by the pod, and used to create the cells.(?)
 
 var cnt = 70
 var sum = 20+10+40
@@ -178,7 +178,7 @@ Answer: For now we assume no. Though this does beg the question, what does it me
 
 > Open Question: Are the outputs split across the subsequent domains?
 
-Answer: For now we assume that each subsequent domain, consumes a pct of the number of output slots based on how many total slots are at the destination.
+Answer: For now we assume that each subsequent domain, consumes a pct of the number of output slots based on how many total slots are at the pod.
 
 For example, we have 1 PD (a) that outputs to 3 other PDs (b, c, d)
 
@@ -263,13 +263,13 @@ Answer: ?
 
 ## Dendrite Sources
 
-Each segment of a dendrite is an edge that connects a cell to some vertex (destination). Most dendrites pass through multiple destinations, and thus create multiple edges.
+Each segment of a dendrite is an edge that connects a cell to some vertex (pod). Most dendrites pass through multiple destinations, and thus create multiple edges.
 
 > Open Question: What determines the length of each dendrite?
 
 Partial Answer: In most cases, it is the type of dendrite. However for apical dendrites, it is the distance from the source. For the local dendrite, it accepts outputs from its neighboring cells. Though each type of dendrite may be able to behave differently based on the its location in the brain. Consequently, it may be necessary to have each layer define its own dendrite types. Which would be a giant pain.
 
-> Open Question: do all cell types with basal dendrites accept inputs from their neighbors at the destination?
+> Open Question: do all cell types with basal dendrites accept inputs from their neighbors at the pod?
 
 Random length between 1 and some max based on type?
 Do apical dendrites have different lengths in different regions, and layers? This seems like a yeah

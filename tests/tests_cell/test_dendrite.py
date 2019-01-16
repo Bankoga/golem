@@ -1,8 +1,8 @@
 # contains the definitions for cell dendrites
-# includes initialization and destination based branching
+# includes initialization and pod based branching
 
-# dendrites determine which destinations inputs are accepted from. Each axon goes to a specific destination
-# any dendrite that accepts from that destination counts as being that destination
+# dendrites determine which destinations inputs are accepted from. Each axon goes to a specific pod
+# any dendrite that accepts from that pod counts as being that pod
 
 class Dendrite():
     #properties
@@ -22,7 +22,7 @@ class Dendrite():
         Creates a new dendrite given the provided details
         """
         # each dendrite chain/tree/? should be able to handle its own initialization once given the necessary parameters from the higher levels
-        # each dendrite knows the path key for the destination it pulls data from
+        # each dendrite knows the path key for the pod it pulls data from
         self.source_loc = source_location
         TODO: what if instead of storing batch history, we count num steps since last use per synapse?
         # uses num synapses * 2 instead of num synapses * 20

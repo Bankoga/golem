@@ -63,7 +63,7 @@ class Cell:
         """
 
     def get_destinations():
-        # all cells accept themselves as a destination that only they can read from
+        # all cells accept themselves as a pod that only they can read from
         # i.e. cells are addressable but are not the same as destinations
         """
         determines where the cell outputs to based on the location, cell_morphology, and inherited constraints

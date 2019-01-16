@@ -158,7 +158,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         return cells_dict
 
     def batch_inputs(self, outputs):
-        TODO: batch inputs based on their destination. The batched inputs will be passed by reference to cells for consumption.
+        TODO: batch inputs based on their pod. The batched inputs will be passed by reference to cells for consumption.
         TODO: Guarantee consistent order of sources in each bucket
         TODO: Ensure that the aggregated sources are useable in a matrix mult
         # this seems like a very problematic step
@@ -170,7 +170,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         for o in outputs:
             get bucket (pd name) key from o
             path_key is filled based on the switch
-            At present partial paths are intended for neuromodulation not direct excitation or inhibition, thus are consumed by the destination
+            At present partial paths are intended for neuromodulation not direct excitation or inhibition, thus are consumed by the pod
             switch dict based on length of path
                 1 = all regions in pd partial
                     path_key = 'all_regions'
@@ -178,7 +178,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
                     path_key = 'all_layers'
                 3 = all dests in layer partial
                     path_key = 'all_dests'
-                4 = specific destination. full path
+                4 = specific pod. full path
                     path_key = layer_key
             if bucket key does not exist in buckets
                 add bucket key dict to buckets

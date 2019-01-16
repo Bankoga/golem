@@ -11,7 +11,7 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - Afferents: ?
   - Efferents: ?
   - Charge: A real numer betwen [-256,256] that represents the energy level of the cell
-  - Channel Type : A type of conditional gateway that connects a cells Chemical State to another destinations chemical state via an edge, or to its container destinations chemical State directly that gets evaluated every time step.
+  - Channel Type : A type of conditional gateway that connects a cells Chemical State to another pods chemical state via an edge, or to its container pods chemical State directly that gets evaluated every time step.
   - Channel Properties: The properties that determine how a channel operates.
     - Open Conditions: A list of boolean clauses which can cause the channel to open when true. Examples of properties used in conditionals in human neurons are membrane voltage, chemical shape, and the motion of internal fluids in the cell.
     - Close Conditions: A list of boolean clauses which can cause the channel to open when true. Examples of properties used in conditionals in human neurons are membrane voltage, chemical shape, and the motion of internal fluids in the cell.
@@ -50,7 +50,7 @@ This document serves as an overview of all primary terms, and mappings ordered b
     - ? : Acetylcholine : ?
     - ? : Norepinephrine : ?
   - Node Input: On spike connection strength multiplier (perhaps just calc the diff between injector, and receptor sizes for some sort of loss adjustment that we can leverage for plasticity? This seems like a nifty thing... Wat teh heck. So useful)
-  - Node Output: Off/On spike-destination pair
+  - Node Output: Off/On spike-pod pair
   - Plasticity Factors: Matrix resources which modulate the level of malleability of nodes within the Matrix.
   - Spiking Factors: ?
     - Glutamate: ?
@@ -61,7 +61,8 @@ This document serves as an overview of all primary terms, and mappings ordered b
     - ?: ?
   - Structural Factors: Matrix resources which modulate structural changes within, and between modules. Structural changes impact module composition, shape, size, and I/O(i.e edge) profiles, but don't directly impact cell state, or connection plasticity aside from adding or removing cells, and/or intersection points where synapses can form.
     - ?: ?
-- Matrix: A flow-based operational/cognitive data network/graph of nodes, and edges.
+- Matrix: A flow-based operational/cognitive data network/graph of nodes, and edges.The hierarchy follows the compositional levels of matrix component description.
+  - Compositional Levels of States (top-down): Golem, Matrix/Graph/Pair(Gen or Advers, Left or right), Meld, Pipeline, Stage, Module, Layer, pod, Node, Edge, Port.
   - Components: Matrices are broken down into two sets of primary structures.
     - Organizational: (modules, layers, and composition)
     - Functional: (nodes, edges, operations)
@@ -69,14 +70,13 @@ This document serves as an overview of all primary terms, and mappings ordered b
     - Input Shape: The graph of available (direct/send, and indirect/read) input sources gated by accepted input types.
     - Output Shape: The graph of potential (direct/send only) output sources gated by possible output types.
     - Internal Function: The sequence of steps that a piece takes when transforming input into output.
-    - State: Objects at each organizational scale of a matrix, shares a homeostatic environment. This shared environment is a state object. Thus each component has a state which interacts with its parent, and child component states.
-      - Hierarchy of States (top-down): Golem, Matrix, Graph/Pair(Gen or Advers, Left or right), Pipeline, Stage, Module, Layer, Destination, Node, Edge.
+    - State: Objects at each organizational scale of a matrix, shares a homeostatic environment. This shared environment is a state object. Thus each component has a state which interacts with its parent, and child component states. The hierarchy follows the compositional level of component states.
   - Properties of Matrix Pieces: Each matrix component has the same primary property sets.
     - Definition/Description: The initial form of the matrix component.
       - Is it a copy of the config, or the post init state?
     - Initialization: The rules for creating the initial object.
     - State: The current state of the component.
-    - Usage Rules: The rules for changing the object according to usage, and modulation.
+    - Usage Rules: The rules for changing the object according to usage, homeostasis operations, and activity modulation.
   - Power source: The sources of flow which drive the processing. Externally, and Internally generated inputs can be leveraged to drive the spike flow system of the Matrix.
     - Internal: Power sources that allow the matrix to operate in the absence of external input.
       - Pacemakes/Temporal Alternators: Sources which fire spontaneously at some frequency thus contributing to baseline activity levels within the Matrix.
@@ -86,28 +86,35 @@ This document serves as an overview of all primary terms, and mappings ordered b
 - Matrix Components: Specific components of a matrix.
   - Node: An arbitrary type unit of data procesing. In other words, a function of some sort.
   - Edge: A data-bearing conduit between two nodes.
-  - Address: A uniquely generated string which serves as a shorthard representation for each destination within the Matrix.
-  - Destination: The container/environment which hosts, operates, and prepares a set of nodes.
+  - Address: A uniquely generated string which serves as a shorthard representation for each pod within the Matrix.
+  - Pod: The container/environment which hosts, operates, and prepares several set of nodes.
     - State: Represents the environment which affects the operations of a small set of cells
       - Charge: A real numer betwen [-256,256] that represents the background energy level of the operating environment of some small set of cells
       - Chemical : An object that triggers specific changes in cell behavior by manipulating dynamic modifiers in the operation method definitions. Can only affect cells which possess a corresponding type of channel.
-  - Layer: A group/set/2d matrix of destinations produced by the same production rules. Akin to a layer in BP neural nets.
+  - Layer: A group/set/2d matrix of pods produced by the same production rules. Akin to a layer in BP neural nets.
   - Module: A collection of inter-, and intra-connected layers which serve as a distinct semantic whole/sub-set of the graph.
   - Composition: The components used/responsible for connecting different organizational and functional components.
-    - Circuit: A set of rules for building a continuous path of cells across multiple destination stacks (layer matrix i,j) that eventually return to the starting stack. They operate based on hook tags. A modules circuit support is determined by the hooks described in the module.
-    - Pipeline: A set of rules for building a continuous path of information through several modules. All pipelines have 3 sets of connections/parts: input(s), output(s), internal(s) which can span an arbitrary number of stages between input, and output.
+    - Circuit: A set of rules for building a continuous path of cells across multiple pod stacks (layer matrix i,j). They operate based on hook tags. A modules circuit support is determined by the hooks described in the module.
+    - Cycle: A set of rules for building a special type of circuit which eventually returns to the starting pod.
+    - Pipeline: A set of rules for building a continuous path of information through several modules. All pipelines have 4 sets of connections/parts: input(s), output(s), internal(s), and state(s) which can span an arbitrary number of stages between input, and output.
+    - Meld: A set of rules for building a continuous path of information through several pipelines, and modules. As with all matrix components, it has 4 sets of parts. Melds are the highest level of compositional structure within a matrix.
+- Hooks: ?
+  - Ontology Level: hooks can be described at each ontological level of matrix organization.
+  - What configs are used to define hooks?
+  - What defines a hook?
+  - How do we define a hook?
 
 Misc stuff to be incorporated
 
 - Construction: Growth
 - Definition: Language, Documents, and Configs
   - ?
-- Path : A connected walk between destinations (containers for small sets of cells) through a series of edges or edge production rules.
-- Path Templates: The different ways to define connections between non-adjacent modules, layers, and destinations within any arbitrary Matrix. Does not allow for arbitrary/manual edge specification between packages to help reduce specific package dependencies. However, in-matrix adjacency can lead to growth outside the initialization paradigm which is restricted to edge distribution formation rules/templates.
-  - circuits/cycles : A type of path template that makes a closed directly linked loop of cells, by type, through different destinations.
+- Path : A connected walk between pods (containers for small sets of cells) through a series of edges or edge production rules.
+- Path Templates: The different ways to define connections between non-adjacent modules, layers, and pods within any arbitrary Matrix. Does not allow for arbitrary/manual edge specification between packages to help reduce specific package dependencies. However, in-matrix adjacency can lead to growth outside the initialization paradigm which is restricted to edge distribution formation rules/templates.
+  - circuits/cycles : A type of path template that makes a closed directly linked loop of cells, by type, through different pods.
   - network : A type of path template where some set of input source(s) (pipelines or modules) are distributed across a distinct set of directed paths that operate in conjunction to provide one or more unified output edges.
   - pipeline : A type of path template which is composed of a sequence of modules that form one or more distinct routes.
-  - relay : A type of path template where an output from one destination, A, to another, B, is gated by a third, C, which either is controlled externally and thus passes the input from A to B directly, or temporally aggregates input from A before passing it on to B. Interestingly, when viewed under this definition, Neurons in organic entities appear to act as contextually sensitive/dynamic relays with the entire brain being built out of networks of relays
+  - relay : A type of path template where an output from one pod, A, to another, B, is gated by a third, C, which either is controlled externally and thus passes the input from A to B directly, or temporally aggregates input from A before passing it on to B. Interestingly, when viewed under this definition, Neurons in organic entities appear to act as contextually sensitive/dynamic relays with the entire brain being built out of networks of relays
 - Operation
 - Load/Save: File Type, Options, etc...
 
