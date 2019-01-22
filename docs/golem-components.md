@@ -7,7 +7,7 @@ This package is for building, deploying, and maintaining golems.
 
 ### Golem Components
 
-- Core
+- Tekija
 - Framework
 - Regulator
 - Shell
@@ -26,15 +26,15 @@ What purpose do _BLANK_ serve?
 How are _BLANK_ useful/what are the benefits of this paradigm?
 How are _BLANK_ detrimental/what are the drawbacks of this paradigm?
 
-## Core
+## Tekija
 
 > Definition: The primary processing system of a golem. i.e. the seat of intelligence. Can only have 1 per golem, and can be paired.
 
-### Purpose of the Core
+### Purpose of the Tekija
 
-Determines the types of logos encapsulation a golem can perform. The core determines the extent to which a golem can adapt, learn, or remember. Semantic processing, world modeling, relational reasoning, agent capabilities, multi-modal support or aggregation, location mapping, etc... are all aspects of a golems primary purpose.
+Determines the types of logos encapsulation a golem can perform. The Tekija determines the extent to which a golem can adapt, learn, or remember. Semantic processing, world modeling, relational reasoning, agent capabilities, multi-modal support or aggregation, location mapping, etc... are all aspects of a golems primary purpose.
 
-### Types of Cores
+### Types of Tekijas
 
 ## Framework
 

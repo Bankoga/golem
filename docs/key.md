@@ -35,7 +35,7 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - Module Depth: Number of Layers
   - Module Mass: Memory Consumption based on (num nodes, num edges, ?)
   - Malleability: Plasticity props/degree, and Crystallization degree
-- Golem: ?
+- Golem: Goal oriented logos encapsulation matrix
   - Components/Parts/Pieces/Package/?: ?
   - Matrix: Golem paradigm specific matrix terminology
   - ?: ?
