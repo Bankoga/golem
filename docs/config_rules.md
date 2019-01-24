@@ -58,12 +58,12 @@ Each point in a layer is a pod. Destinations are end points for cell axon projec
 
 A cell in a human brain can broadly be described by two categories: neuronal, and glial. Neurons are the processors of the brain, and glial cells serve as maintenance, neuromodulation, and scaffolding. In this framework, the role of glial cells are largely played by the framework itself. Additionally, certain aspects of the brain that are controlled by glial cells, like myelination, are currently excluded in order to reduce the complexity of initializing a network, and the ongoing structural plasticity during activation.
 
-The two major properties of a cell are activation_type, and cell_morphology. Activation type determines how a cell is consumed, and morphology determines how it consumes. We assume that all cells project to some pod(s).
+The two major properties of a cell are resource_type, and cell_morphology. Activation type determines how a cell is consumed, and morphology determines how it consumes. We assume that all cells project to some pod(s).
 
 > Randomly generate the lengths of seconday dendrites based on morphology?
 > Usage based growth may need to be implemented at some point
 
-- activation_type : controls the type of value returned by the axon
+- resource_type : controls the type of value returned by the axon
   - -1, 1, or modulatory chemical
 - cell_morphology : controls the number of dendrites, and their direction
   - pyramid : 4 adjacent or basal dendrites, a local dendrite, a long apical dendrite, and axon
@@ -79,9 +79,9 @@ The two major properties of a cell are activation_type, and cell_morphology. Act
 
 > The different supported cell morphologies are still a WIP
 
-A Cell Type is a tuple of an activation_type, a single cell_morphology, & one or more destinations.
+A Cell Type is a tuple of an resource_type, a single cell_morphology, & one or more destinations.
 
-> cell_type = {activation_type, cell_morphology, destinations[]}
+> cell_type = {resource_type, cell_morphology, destinations[]}
 
 The two major properties, determine the general other properties of the cell like the plasticity properties, resource constraints, etc...
 

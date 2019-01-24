@@ -57,7 +57,7 @@ Answer: ?
 
 ## Input Batching
 
-The problem of input batching has been looming for a while now, and I'm at the point where the layer config approach will affect the input batching approach. This is because of cell type distribution in a layer. Where cell_type = {activation_type[-1,1], cell_morphology, destinations[]}. I plan to eventually expand to modulatory cell types that return objects (chems) which affect cell operations so as to proxy the affect of various neurotransmitters in the brain. Most of the neurotransmitters in the brain don't directly pertain to cell activation.
+The problem of input batching has been looming for a while now, and I'm at the point where the layer config approach will affect the input batching approach. This is because of cell type distribution in a layer. Where cell_type = {resource_type[-1,1], cell_morphology, destinations[]}. I plan to eventually expand to modulatory cell types that return objects (chems) which affect cell operations so as to proxy the affect of various neurotransmitters in the brain. Most of the neurotransmitters in the brain don't directly pertain to cell activation.
 At present, we have the following possibilities depending on whether or not cell_type contains destinations, and the allowed morphology variance
 
 - all cells go to the same destinations

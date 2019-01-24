@@ -46,7 +46,7 @@ For a fully evolutionary approach, it seems like each problem domain would be a 
 
 > ~~Open Question: What determines cell type for our model?~~
 
-Answer: **An object with the properties {activation_type, list(dendrite_type), list(destinations)}**
+Answer: **An object with the properties {resource_type, list(dendrite_type), list(destinations)}**
 
 > Open Question: Is there a master list of all possible cell types?
 

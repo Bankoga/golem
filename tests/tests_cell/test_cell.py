@@ -10,7 +10,7 @@ from location import *
 # should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brain_network? Probably
 class Cell:
     TODO: Optim: move the cell constants to another file so that each cell does not duplicate unnecessary data
-    def __init__(self, activation_type, cell_morphology, key, ploc, use_limits):
+    def __init__(self, resource_type, cell_morphology, key, ploc, use_limits):
         """
         Creates a new cell given the necessary parameters from the higher levels
         probabilistically determine activation Type at the layer level (for inhib, and excitory. chem release cells will be dealt with later)
@@ -19,7 +19,7 @@ class Cell:
         """
          #properties
          # 'inhibitory' || 'excitory' || 'modulatory' is determined by the containing layer and controls value of axon output
-        self.activation_type = activation_type
+        self.resource_type = resource_type
         """"cell_morphology is determined by the containing layer
         controls the number of dendrites as well as their directions
         """
@@ -30,7 +30,7 @@ class Cell:
         """input directions, and output destinations are determined by the location and cell_morphology"""
         self.axon_output_directions = self.get_destinations()
         self.dendrite_input_directions = 
-        self.output_terminals = Axon(activation_type, self.axon_output_directions)
+        self.output_terminals = Axon(resource_type, self.axon_output_directions)
 
         #activation props
         # use limits should be modifiable by the chemical state of the cell

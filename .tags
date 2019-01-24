@@ -87,8 +87,8 @@ Type	js-things\\olog.js	/^		"Type": "",$/;"	p	class:olog.ChainCell
 UsageLimits	helpers\\usage_limits.py	/^class UsageLimits():$/;"	c
 UsageLimits	tests\\tests_helpers\\test_usage_limits.py	/^class UsageLimits():$/;"	c
 Y	encoders\\img-filter.py	/^Y = np.arange(mat_sz).reshape(row_sz,col_sz)$/;"	v
-__init__	cell\\axon.py	/^    def __init__(self, origin, activation_type, terminal_destinations, chemical_type):$/;"	m	class:Axon
-__init__	cell\\cell.py	/^    def __init__(self, activation_type, cell_morphology, key, ploc, use_limits):$/;"	m	class:Cell
+__init__	cell\\axon.py	/^    def __init__(self, origin, resource_type, terminal_destinations, chemical_type):$/;"	m	class:Axon
+__init__	cell\\cell.py	/^    def __init__(self, resource_type, cell_morphology, key, ploc, use_limits):$/;"	m	class:Cell
 __init__	cell\\dendrite.py	/^    def __init__(self, source_location):$/;"	m	class:Dendrite
 __init__	decoders\\decoder.py	/^    def __init__(self, type, outputs):$/;"	m	class:Decoder
 __init__	encoders\\encoder.py	/^    def __init__(self, type, outputs):$/;"	m	class:Encoder
@@ -103,8 +103,8 @@ __init__	matrix\\problem_domain.py	/^    def __init__(self, name, domain_type_co
 __init__	matrix\\region.py	/^    def __init__(self, region_type_config, ploc, length, width):$/;"	m	class:Region
 __init__	tests\\test_golem.py	/^    def __init__():$/;"	m	class:GolemFactory
 __init__	tests\\test_golem.py	/^    def __init__(self, golem_type, num_dests=0, is_pair=False):$/;"	m	class:Golem
-__init__	tests\\tests_cell\\test_axon.py	/^    def __init__(self, origin, activation_type, terminal_destinations, chemical_type):$/;"	m	class:Axon
-__init__	tests\\tests_cell\\test_cell.py	/^    def __init__(self, activation_type, cell_morphology, key, ploc, use_limits):$/;"	m	class:Cell
+__init__	tests\\tests_cell\\test_axon.py	/^    def __init__(self, origin, resource_type, terminal_destinations, chemical_type):$/;"	m	class:Axon
+__init__	tests\\tests_cell\\test_cell.py	/^    def __init__(self, resource_type, cell_morphology, key, ploc, use_limits):$/;"	m	class:Cell
 __init__	tests\\tests_cell\\test_dendrite.py	/^    def __init__(self, source_location):$/;"	m	class:Dendrite
 __init__	tests\\tests_decoders\\test_decoder.py	/^    def __init__(self, type, outputs):$/;"	m	class:Decoder
 __init__	tests\\tests_encoders\\test_encoder.py	/^    def __init__(self, type, outputs):$/;"	m	class:Encoder
@@ -180,8 +180,8 @@ get_distributions	matrix\\pod.py	/^    def get_distributions(self):$/;"	m	class:
 get_distributions	tests\\tests_graph\\test_destination.py	/^    def get_distributions(self):$/;"	m	class:Pod
 get_input_counts	golem.py	/^    def get_input_counts(self, nodes, desired_dests):$/;"	f
 get_input_counts	tests\\test_golem.py	/^    def get_input_counts(self, nodes, desired_dests):$/;"	m	class:Golem
-get_value	cell\\axon.py	/^    def get_value(activation_type, chemical_type):$/;"	m	class:Axon
-get_value	tests\\tests_cell\\test_axon.py	/^    def get_value(activation_type, chemical_type):$/;"	m	class:Axon
+get_value	cell\\axon.py	/^    def get_value(resource_type, chemical_type):$/;"	m	class:Axon
+get_value	tests\\tests_cell\\test_axon.py	/^    def get_value(resource_type, chemical_type):$/;"	m	class:Axon
 init_ts	golem.py	/^    def init_ts(ts_data):$/;"	f
 init_ts	tests\\test_golem.py	/^    def init_ts(ts_data):$/;"	m	class:Golem
 inr_hght	encoders\\img-filter.py	/^inr_hght = int(diam_rat_c*row_sz)$/;"	v

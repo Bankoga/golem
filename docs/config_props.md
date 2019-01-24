@@ -115,7 +115,7 @@ per region output fill
 ```yaml
 ---
 key: NULL
-activation_type|behavior|?:
+resource_type|behavior|?:
   type: direct
   effect:
     value: f(n) = +1|-1

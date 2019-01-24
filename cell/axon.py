@@ -2,7 +2,7 @@
 from usage_limits import *
 
 class Axon():
-    def __init__(self, origin, activation_type, terminal_destinations, chemical_type):
+    def __init__(self, origin, resource_type, terminal_destinations, chemical_type):
         """
         Creates a new axon using the provided details.
         an axon needs to know the activation type which determines if the axon outputs a positive, negative, or chemical value
@@ -10,7 +10,7 @@ class Axon():
         it also needs to know where the axon terminates
         -1,1, or chemical is determined by activation type in conjunction with chemical type
         """
-        self.value = self.get_value(activation_type, chemical_type)
+        self.value = self.get_value(resource_type, chemical_type)
         """ refresh rate, and activation rate can be implemented via usage limits but raises num ops per cell
         self.refreshRate
         self.activationRate
@@ -25,21 +25,29 @@ class Axon():
         TODO: at present axons need to return their origin to enable consistent axon source ordering for the dendrites
         self.origin = origin
 
-    def get_value(activation_type, chemical_type):
-        if activation_type == 'inhibitory':
+    def get_value(resource_type, chemical_type):
+        if resource_type == 'inhibitory':
             return -1
-        elif activation_type == 'excitory':
+        elif resource_type == 'excitory':
             return 1
-        elif activation_type == 'modulatory' AND chemical_type != NULL:
+        elif resource_type == 'modulatory' AND chemical_type != NULL:
             TODO: implement modulatory axon terminals
             raise SystemError('modulatory chemical type axons are not currently implemented')
         else:
-            raise ValueError('either the activation_type was incorrect, or no chemical_type was supplied')
+            raise ValueError('either the resource_type was incorrect, or no chemical_type was supplied')
 
     def strength(self):
         TODO: implement so that that axon only checks during init which type of strength method to return based on value
         TODO: implement axons getting weaker as the capacity diminishes though this requires the axon be touched every timestep...
+        TODO: Implement axons returning number of resources produced per port and chemical/resource type
+        """
+        - Certain inhib cells axons use inverse plasticity. I.E. they produce more resources the more they are used (specifically when to suppress an output?), and produce fewer resources the less they are used
+            There are boundaries on both ends because the degree of change attenuates in both directions
+            However, in such cells, their dendrites get weaker the more they are used. Thus balancing the strength growth with the dendrite decay leads to what?
+        """
         return { self.destinations, self.origin, self.value }
     
     def reset(self):
         self.use_limits.reset()
+
+    "Axons and dendrites that are underused under certain wiring schemes (random or probabilistic distribution rule covered edges) could have a chance of rewiring according to the rules again
