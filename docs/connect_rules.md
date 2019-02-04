@@ -2,6 +2,11 @@
 
 The rules used to map connections between descriptions of regions of graphs.
 
+TODO: REWRITE THIS ENTIRE DOCUMENT
+
+When Stitching together problem domains/modules, we can key off of Corresponding Semantic Fields between modules input, and output melds.
+If we force a correspondence between said fields using a globally unqiue dictionary of fields, then initialization becomes a much simpler problem.
+
 ## General Rules
 
 PD Level

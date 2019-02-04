@@ -14,7 +14,6 @@ class Dendrite():
     synapse_weight_limits = 0.2 to 100? # this needs work but so does everything.... waaa
     synapse_potentiation_weight_function
     synapse_decay_weight_function
-    TODO: Determine if track the weight that was activated, time since active, or something other flag for use when calculating weight changes
 
     #methods
     def __init__(self, source_location):

@@ -2,6 +2,15 @@
 
 In order to make meaningful headway, it can be quite nice to have a toy problem to solve first in order to validate premises. For this architecture, we are starting with the problem of learning how to parse arbitrarily long, simple arithmetic statements.
 
+## Problem Definition
+
+Given a 3 part statement in the selected formal alphabet
+When it is a valid arithmetic statment
+Then return the result alongside system confidence percentage in answer
+Else return a flag to indicate invalid input alongside system considence percentage in answer
+
+> Note on statement size: Large statements that cannot be consumed at once require focus, world composition, and decision making abilities. Memory can probably be tested with both so it's best to start with the less complex case.
+
 ## Problem Overview
 
 In short, an overview of what we are trying to get the system to learn. Furthermore, it can be thought of as testing whether or not the system learns, or gets adapted to an environment.
