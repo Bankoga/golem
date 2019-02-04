@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Delivery
+Name: Delivery
 Layers: BCLL
 Cell Details: Typical BCLL Node Distributions
 Purpose: To serve as signoff(L2&2'), preprod(L3), and deploy(L5)

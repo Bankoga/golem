@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Ch, Reward Availability Modulator
+Name: Ch, Reward Availability Modulator
 Layers: N
 Cell Details: -----
 Purpose: Used to determine which modules under the DMs purview are more likely to contribute to a reward if they were to sample faster (i.e. fire more frequently) or those that need to sample faster in order to contribute to the reward or those that can be used to contribute to the reward?

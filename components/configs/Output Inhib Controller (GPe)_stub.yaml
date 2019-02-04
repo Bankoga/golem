@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Output Inhib Controller (GPe)
+Name: Output Inhib Controller (GPe)
 Layers: Custom
 Cell Details: High freq pacemaker 68 Hz
 Purpose: To passively disinhibit output, and to further disinhibit output based on input from the I/O pipelines

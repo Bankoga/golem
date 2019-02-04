@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Repo, Statements
+Name: Repo, Statements
 Layers: BCLL+
 Cell Details: Typical BCLL+ Node Distributions
 Purpose: Mappings super-structure for input env state level modules in processing pipelines

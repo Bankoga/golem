@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Mode Controller
+Name: Mode Controller
 Layers: Custom
 Cell Details: Outputs Modant, Energy, and Hybrid Changes (backend)
 Purpose: Determines the current operational mode of the Matrix by modulating the ability to generate other resources, and (or by) the current matrix operational state

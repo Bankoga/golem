@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Reward Availability Detector (Raphe Nuclei)
+Name: Reward Availability Detector (Raphe Nuclei)
 Layers: Custom
 Cell Details: Outputs 1 type of serotonin to I20, Active Release, Part B,Assoc,? Regions based on the availability of reward detected in the input (over time the notion of reward will change but it can be bootstrapped with something simple)
 Purpose: When rewards are possible to attain, it outputs more threshhold reducer, thus making the system more likely to act in some way to get the reward

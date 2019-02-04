@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Repo, Tokens
+Name: Repo, Tokens
 Layers: BCLL+
 Cell Details: Typical BCLL+ Node Distributions
 Purpose: Mapping super-structure for token level modules in processing pipelines

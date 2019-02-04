@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Direct-from-Core Shell Output Bypass
+Name: Direct-from-Core Shell Output Bypass
 Layers: Coder
 Cell Details: Dedicated Functions that can act as Nodes. They are not acting as cells though
 Purpose: To serve as the muscle/motor the system executes. A way to return strings directly to some destination N characters at a time

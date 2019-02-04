@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Synchronizer
+Name: Synchronizer
 Layers: Custom
 Cell Details: -----
 Purpose: Serves to globally synchronize the Module states/waves

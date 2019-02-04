@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Compression Controller
+Name: Compression Controller
 Layers: BCLL+
 Cell Details: Typical BCLL+ Node Distributions
 Purpose: Handles converting a concept into a condensed motor phrase for staging

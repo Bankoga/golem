@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Passive Output Inhib Controller (STN)
+Name: Passive Output Inhib Controller (STN)
 Layers: Custom
 Cell Details: High frequency pacekmaker 68 Hz, which activates the passive activity inhibitors (GPi, and SNpr)
 Purpose: Primarirly responsible for DM Activity inhibition by serving as an extra driver of the external, and internal action inhibitors. It allows for a much higher degree of activity inhibition

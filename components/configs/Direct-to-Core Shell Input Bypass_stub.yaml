@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Direct-to-Core Shell Input Bypass
+Name: Direct-to-Core Shell Input Bypass
 Layers: Coder
 Cell Details: Dedicated Functions that can act as Nodes. They are not acting as cells though
 Purpose: To serve as a placeholder for input that would otherwise be extracted by the Shell Input Pipelines. A way to send strings directly to the higher-level semantic structure Expounders without need for another form of shell

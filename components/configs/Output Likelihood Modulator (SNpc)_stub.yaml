@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Output Likelihood Modulator (SNpc)
+Name: Output Likelihood Modulator (SNpc)
 Layers: Custom
 Cell Details: Low freq pacemaker <8 Hz like all dopamine production systems (min global module freq is arb gonna be 5 Hz)
 Purpose: Determines the ? driven current Dopamine Levels of modules within the Output Control Pipeline

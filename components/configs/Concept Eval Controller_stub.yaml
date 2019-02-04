@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Concept Eval Controller
+Name: Concept Eval Controller
 Layers: BCLL+
 Cell Details: Typical BCLL+ Node Distributions
 Purpose: Performs operations on concepts to determine if/what to output

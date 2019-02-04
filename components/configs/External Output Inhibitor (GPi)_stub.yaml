@@ -1,5 +1,5 @@
 ---
-Module or Part Name: External Output Inhibitor (GPi)
+Name: External Output Inhibitor (GPi)
 Layers: Custom
 Cell Details: High freq pacemaker 68 Hz
 Purpose: Passively inhibits output from the I/O pipelines to the motors through the Output gates to prevent accidental or noisy output

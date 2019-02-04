@@ -1,5 +1,5 @@
 ---
-Module or Part Name: Focus Controller
+Name: Focus Controller
 Layers: Custom
 Cell Details: 100% Activant
 Purpose: Produces the top-down inhibition of DM circuit points via Activant specific inhib gates on primary and alternate pipeline inputs at those points. This is for focus control, and reality vs imagination processing
