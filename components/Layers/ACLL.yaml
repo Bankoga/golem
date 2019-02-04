@@ -1,0 +1,31 @@
+- ID:  Advanced Cortical Loop Layers	Type	A reusuable set of layers	
+
+    L_[TypeAShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight
+    L_[TypeBShape] = (assoc shape + context shape + misc shape)*L_TypeBWeight
+    L_[TypeCShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight*0.4+(assoc shape + context shape + misc shape)*L_TypeBWeight*0.6
+    n	L1	Contextual Inhib	Input, Alternate	Circuits	I->L2&L3 | A->L1'
+    
+    L_[TypeAShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight
+    L_[TypeBShape] = (assoc shape + context shape + misc shape)*L_TypeBWeight
+    L_[TypeCShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight*0.4+(assoc shape + context shape + misc shape)*L_TypeBWeight*0.6
+    n	L2	Work, Initial	Input, Backup	Circuits, Melds, Pipelines	A->L3 | I->L5
+    
+    L_[TypeAShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight
+    L_[TypeBShape] = (assoc shape + context shape + misc shape)*L_TypeBWeight
+    L_[TypeCShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight*0.4+(assoc shape + context shape + misc shape)*L_TypeBWeight*0.6
+    n	L3	Work, Follow Up	Circuits, Melds, Pipelines	A->L5&6 | I->L6
+    
+    L_[TypeAShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight
+    L_[TypeBShape] = (assoc shape + context shape + misc shape)*L_TypeBWeight
+    L_[TypeCShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight*0.4+(assoc shape + context shape + misc shape)*L_TypeBWeight*0.6
+    (Each unit is internally fully connected at the L4 layer as L4'. This can vary in different modules)	L4	Control	Input, Primary	Circuits, Module	A->L2&L4' | I->L3
+    
+    L_[TypeAShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight
+    L_[TypeBShape] = (assoc shape + context shape + misc shape)*L_TypeBWeight
+    L_[TypeCShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight*0.4+(assoc shape + context shape + misc shape)*L_TypeBWeight*0.6
+    n	L5	Output, Direct	Output, Primary	Circuits, Module	A->[Direct Outputs]
+    
+    L_[TypeAShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight
+    L_[TypeBShape] = (assoc shape + context shape + misc shape)*L_TypeBWeight
+    L_[TypeCShape] = (assoc shape + context shape + misc shape)*L_TypeAWeight*0.4+(assoc shape + context shape + misc shape)*L_TypeBWeight*0.6
+    n	L6	Output, Indirect (Gateways)	Output, Primary, Output, Alternate	Circuits, Module	A->[Indirect Outputs] | I->L2

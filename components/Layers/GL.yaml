@@ -1,0 +1,9 @@
+---
+- ID: Gateway Loop Layers	Type	The set of layers for the Gateway	n	n	n
+    n	LFI	Loop focusing Inhib (frm Loop)	Circuits	I->GLR,GII
+    n	LR	Loop Relay	Input, Primary	Circuits, Module	None
+    n	IFI	Input focusing inhib (frm GAM||External)	Primary Iput	Circuits, Module	I->GLR,GLI
+    n	AFI	Conditional Inhib (assoc matrix focusing inhib)	None	I -> GLR
+    n	GAM	Context (assoc matrix) projects to each other pod in the meta-unit	Circuits	A->GII,GAM'
+    n	GGI	Gateway Group Inhib	None	n
+...
