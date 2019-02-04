@@ -1,0 +1,19 @@
+---
+Module or Part Name: Ch, DM Activity Control
+Layers: N
+Cell Details: -----
+Purpose: Regulates increases to the activity rates of modules under the DMs purview, also serves as a separate mechanism to make motor output more likely
+Pipeline: N
+Input Melds: base
++ previous rates (on top of what's from the gate?)
+Input Semantic Field Sizes (Key:Shape): base/base_fract
++ previous/n_fract
+Internal Melds (wht bt fld mpngs?): DM Activity Circuit
+Output Melds: Energy->Activant Controller
+Output Semantic Field Sizes: base
+Circuits it Defines: DM Activity
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: Ch, DM Activity Control
+...

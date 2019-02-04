@@ -1,0 +1,26 @@
+---
+Module or Part Name: Passive Output Inhib Controller (STN)
+Layers: Custom
+Cell Details: High frequency pacekmaker 68 Hz, which activates the passive activity inhibitors (GPi, and SNpr)
+Purpose: Primarirly responsible for DM Activity inhibition by serving as an extra driver of the external, and internal action inhibitors. It allows for a much higher degree of activity inhibition
+Pipeline: Output Control
+Input Melds: Exec Circuit
+DM Activity Circuit (overlayed onto others)
+Output Likelihood Inc Circuit (overlayed onto others)
+Active Release, Whole Circuit
+Input Semantic Field Sizes (Key:Shape): OutputA
+MeldId_Self
+MeldId_Self
+ActionMashA+ActionMashB
+Internal Melds (wht bt fld mpngs?): Passive Output Inhib Circuit
+Output Melds: Energy->External Output Ctrl
+Energy->Internal Output Ctrl
+Output Semantic Field Sizes: MeldId_ExternalOutputInhibitor
+MeldId_InternalOutputInhibitor
+Circuits it Defines: Passive Output Inhib
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 for External Activity
+1 for Internal Activity
+...

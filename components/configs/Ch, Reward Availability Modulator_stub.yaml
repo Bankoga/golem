@@ -1,0 +1,19 @@
+---
+Module or Part Name: Ch, Reward Availability Modulator
+Layers: N
+Cell Details: -----
+Purpose: Used to determine which modules under the DMs purview are more likely to contribute to a reward if they were to sample faster (i.e. fire more frequently) or those that need to sample faster in order to contribute to the reward or those that can be used to contribute to the reward?
+Pipeline: N
+Input Melds: base
++ previous rates
+Input Semantic Field Sizes (Key:Shape): base/base_fract
++ previous/n_fract
+Internal Melds (wht bt fld mpngs?): Availability Modulation Circuit
+Output Melds: Energy->Reward Availability Detector
+Output Semantic Field Sizes: base
+Circuits it Defines: Availability Modulation
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: Ch, Reward Availability Modulator
+...

@@ -1,0 +1,34 @@
+---
+Module or Part Name: Need Mediator (Olfactory Tubercule)
+Layers: Custom
+Cell Details: Major Outputs
+VenP
+Tail of VTA (i.e. Inhib channel or layer)
+SN
+Reticular formation of the Pons (which is made of three parts so it's to one or more of the 3: raphe nuclei (median), gigantocellular reticular nuclei (medial zone), and parvocellular reticular nuclei (lateral zone).)
+
+Same composition as VenP, and Putamen/CadN
+Purpose: Major glutamergic inputs are from the following
+PFC (particulary prelimbic, and infralimbic which correspond to specific DM channels),
+basolateral amygdala
+ventral hippocampus
+thalamic nuclei (midline, and intralaminar)
+and glutamergic from the VTA
+Pipeline: Operations Control
+Input Melds: Needs Circuit
+Reward Activity Rate Circuit (overlayed onto the others)
+Input Semantic Field Sizes (Key:Shape): MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Need Mediation Circuit
+Output Melds: Inhib->Reward Rate Brake
+Inhib->Undesired Action Inhibitor
+Inhib->Internal Output Inhibitor
+Output Semantic Field Sizes: MeldId_RewardRateBrake
+MeldId_UndesiredActionInhibitor
+MeldId_InternalOutputInhibitor
+Circuits it Defines: Need Mediation
+Misc Circuits it uses: Need Mediator
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1
+...

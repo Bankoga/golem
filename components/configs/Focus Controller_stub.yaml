@@ -1,0 +1,22 @@
+---
+Module or Part Name: Focus Controller
+Layers: Custom
+Cell Details: 100% Activant
+Purpose: Produces the top-down inhibition of DM circuit points via Activant specific inhib gates on primary and alternate pipeline inputs at those points. This is for focus control, and reality vs imagination processing
+Pipeline: DM
+Input Melds: Focus Activity Circuit
+Input Semantic Field Sizes (Key:Shape): GlobalMashA
+Internal Melds (wht bt fld mpngs?): Focus Activity Circuit
+Output Melds: Chln->L4 of * in DM Circuit
+Chln->L1,2 of * in DM Circuit
+Energy->RewardModulator
+Output Semantic Field Sizes: GlobalMashA
+GlobalMashA
+MeldId_RewardModulator
+Circuits it Defines: N
+Misc Circuits it uses: Focus Activity->* in DM not Self
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 input channel
+1 output channel per region modulated
+...

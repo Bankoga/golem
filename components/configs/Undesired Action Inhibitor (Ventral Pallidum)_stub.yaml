@@ -1,0 +1,30 @@
+---
+Module or Part Name: Undesired Action Inhibitor (Ventral Pallidum)
+Layers: Custom
+Cell Details: It (and the internal globus pallidus and substantia nigra pars reticulata) receives input from the temporal lobes, and the hippocampus via the ventral striatum
+Purpose: Serves to inhibit the DM gates. Perhaps in part by decreasing the signals associated with need. Everything else we glom on via our associative nature elsewheres? If so then it may correspond only to the parts of the DM cort responsible for current (perhaps all) goal selection, and for intrinsic need generation? The intensity of a need could inversely correspond to the rate of inhibition of activity/action pipelines in the Matrix. Higher need means low VenP inhibition of the activity pipelines gateways. Low need means higher inhibition of the activity pipelines gateways.
+
+It is an output nucleus whose fibres project to thalamic nuclei, such as the ventral anterior nucleus (planning/program repo gate), the ventral lateral nucleus (staging & execution gates), and the medial dorsal nucleus (DM gate)
+(apparently the perception of pleasure that results from eating food is mediated by the VenP)
+Pipeline: Operations Control
+Input Melds: Need Inhib, Direction Circuit
+Need Inhib, Strength Circuit
+Need Mediation Circuit (overlayed onto others)
+Reward Activity Circuit
+Input Semantic Field Sizes (Key:Shape): MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Undesired Activity Circuit
+Output Melds: Inhib->Gate[DM]
+Inhib->Gate[Exec]
+Inhib->Reward Rate Brake
+Output Semantic Field Sizes: MeldId_Gate[DM]
+MeldId_Gate[Exec]
+MeldId_RewardRateBrake
+Circuits it Defines: Undesired Activity
+Misc Circuits it uses: Undesired Activity
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1
+...

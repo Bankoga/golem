@@ -1,0 +1,24 @@
+---
+Module or Part Name: IO Gateway
+Layers: GLL + GCLL
+Cell Details: Typical GLL + GCLL Node Distributions
+Purpose: To serve as the mode control, I/O, and processing gateways. Controls external input to, data looping from, proc stack/cort column plasticity, and current global I/O context|state
+Pipeline: Operations Control
+Input Melds: Gate key circuit connected modules
+Reward Attempts Circuit
+DM Activity Ctrl Circuit
+Mode Circuit
+Synch Circuit
+Input Semantic Field Sizes (Key:Shape): MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Gate Circuit
+Output Melds: Gate key circuit connected modules
+Output Semantic Field Sizes: MeldId_ per * in Gate connected module
+Circuits it Defines: Gate
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: N
+Channels: 1 per gated module
+...

@@ -1,0 +1,26 @@
+---
+Module or Part Name: Output Likelihood Modulator (SNpc)
+Layers: Custom
+Cell Details: Low freq pacemaker <8 Hz like all dopamine production systems (min global module freq is arb gonna be 5 Hz)
+Purpose: Determines the ? driven current Dopamine Levels of modules within the Output Control Pipeline
+Pipeline: Output Control
+Input Melds: DirectInput Circuit
+Reward Rate Brake (overlayed onto others)
+DM Activity Circuit (overlayed onto others)
+Input Semantic Field Sizes (Key:Shape): InputA
+MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Output Likelihood Inc Circuit
+Output Melds: Dpmn->Response Output Ctrlr
+Dpmn->DM Output Ctrlr
+Dpmn->Passive Output Inhib Ctrlr
+Output Semantic Field Sizes: MeldId_ResponseOutputController
+MeldId_DMOutputController
+MeldId_PassiveOutputInhibController
+Circuits it Defines: Output Likelihood Increase
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 input channel
+1 output channel per edge set modulated
+...

@@ -1,0 +1,29 @@
+---
+Module or Part Name: Concept Eval Controller
+Layers: BCLL+
+Cell Details: Typical BCLL+ Node Distributions
+Purpose: Performs operations on concepts to determine if/what to output
+Pipeline: Evaluation
+Input Melds: Extraction Circuit
+DirectFeedback
+Reward Attempts Circuit (overlayed onto the others)
+Input Semantic Field Sizes (Key:Shape): 1 InputA Field
+MeldId_Self Field
+MeldId_Self Field
+Internal Melds (wht bt fld mpngs?): Evaluation Circuit
+Output Melds: Energy->Condensor Ctrlr
+Output Semantic Field Sizes: 16 of 1/16 Len in DomainA-Ch
+8 of 1/8 Len in DomainA-Tk
+4 of 1/4 Len in DomainA-Ph
+DomainA: InputA+OutputA, 4 Keys
+Circuits it Defines: Evaluation
+Misc Circuits it uses: Active Release, Part A
+DM
+Gate
+Synch
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 per Input Meld to it
+1 for Response Chain meld
+1 for DM Pipeline meld
+...

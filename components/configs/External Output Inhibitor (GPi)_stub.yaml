@@ -1,0 +1,26 @@
+---
+Module or Part Name: External Output Inhibitor (GPi)
+Layers: Custom
+Cell Details: High freq pacemaker 68 Hz
+Purpose: Passively inhibits output from the I/O pipelines to the motors through the Output gates to prevent accidental or noisy output
+(also, Advancing an item through staging requires going through a passively inhibited gateway)
+Pipeline: Output Control
+Input Melds: Active Release, Part A Circuit
+Passive Output Inhib Circuit
+Need Inhib, Direction Circuit
+Need Inhib, Strength Circuit
+DM Activity Circuit (overlayed onto otthers)
+Input Semantic Field Sizes (Key:Shape): ActionMashA
+ActionMashA
+MeldId_Self Field
+MeldId_Self Field
+MeldId_Self Field
+Internal Melds (wht bt fld mpngs?): External Output Inhib Circuit
+Output Melds: Inhib->Gate[Exec]
+Output Semantic Field Sizes: MeldId_Gate[Exec]
+Circuits it Defines: External Output Inhib
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 for Motor Gates
+...

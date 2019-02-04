@@ -1,0 +1,17 @@
+---
+Module or Part Name: Hash(ing) Relay & Controller
+Layers: BCLL+
+Cell Details: -----
+Purpose: -----
+Pipeline: -----
+Input Melds: -----
+Input Semantic Field Sizes (Key:Shape): -----
+Internal Melds (wht bt fld mpngs?): -----
+Output Melds: -----
+Output Semantic Field Sizes: -----
+Circuits it Defines: -----
+Misc Circuits it uses: DM
+Input Circuits: 
+Output Circuits: -----
+Channels: -----
+...

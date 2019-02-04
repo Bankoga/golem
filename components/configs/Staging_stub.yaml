@@ -1,0 +1,30 @@
+---
+Module or Part Name: Staging
+Layers: BCLL+
+Cell Details: Typical BCLL+ Node Distributions
+Purpose: To serve as placeholders for a dev(L2&2'), acc(L3) , and qa (L5) life cycle expanded overland water bridge style flow repository
+Pipeline: Execution
+Input Melds: Compression Circuit
+DM Activity Circuit (overlayed onto others)
+Reward Attempts Circuit (overlayed onto the others)
+Input Semantic Field Sizes (Key:Shape): 1 OutputA Field
+MeldId_Self Field
+MeldId_Self Field
+Internal Melds (wht bt fld mpngs?): Staging Circuit
+Output Melds: Energy->Delivery
+Energy->Passive Output Ctrlr
+Output Semantic Field Sizes: OutputA
+OutputA
+Circuits it Defines: Staging
+Misc Circuits it uses: Active Release, Part A
+Active Release, Part B
+DM
+Gate
+Synch
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Staging Circuit
+Channels: 1 per Input Meld to the I20 Pipeline
+1 for Response Pipeline meld
+1 for DM Pipeline meld
+...

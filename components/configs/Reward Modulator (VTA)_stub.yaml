@@ -1,0 +1,44 @@
+---
+Module or Part Name: Reward Modulator (VTA)
+Layers: Custom
+Cell Details: The VTA is located in the midbrain and consists of dopaminergic, GABAergic, and glutamatergic neurons.[10] 
+
+Outputs 2 types of dopamine, repeat-assoc & avoid-assoc
+Purpose: Determines the Internal Output Review driven Dopamine Levels of some modules within the Output Control, Memory, and Decision pipelines
+Depeletion of dopamine in the pathway to the OT, and VenP from the VTA decreases the number of actions a creature is willing to take before giving up on the current goal or reward item
+
+Almost all areas receiving projections from the VTA project back to it. It's reciprocally connected with a wide range of structures throughtout the brange.
+GABAergic inputs include NAC, VenP, Tail of VTA. Most subpallidal structures that project to the VTA are inhibitory
+Gluta comes from the Activant,DM,STN,Mode Ctrl,Focus Ctrl modules (not counting recip connection so some overlap)
+VTA->Amygdala,Cingulate,NAC,OT,DM
+
+Dop->1 per DM(diff per channel),NAC,VenP,OT,CL,Memory,?
+Pipeline: Operations Control
+Input Melds: Reward Activity Rate Circuit
+DirectFeedback Circuit (overlayed or not?)
+Need Inhib, Direction Circuit
+Need Inhib, Strength Circuit
+Reward Rate Brake Circuit (overlayed onto others)
+Input Semantic Field Sizes (Key:Shape): MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Reward Activity Circuit
+Output Melds: Energy->Undesired Action Inhibitor
+Dpmn->DM
+Dpmn->Need Mediator
+Dpmn->Need Determinator, Direction
+Dpmn->Need Determinator, Strength
+Output Semantic Field Sizes: MeldId_UndesiredActionInhibitor
+MeldId_ per * in DM sans RewardActivityRateDeterminator
+MeldId_NeedMediator
+MeldId_NeedDeterminatorDirection
+MeldId_NeedDeterminatorStrength
+Circuits it Defines: Reward Activity
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 2 input channels
+1 output channel per edge set modulated per input channel
+...

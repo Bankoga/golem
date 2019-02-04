@@ -1,0 +1,24 @@
+---
+Module or Part Name: response output ctrlr (Putamen)
+Layers: Custom
+Cell Details: -----
+Purpose: The response systems output controller
+Combines with the CadN to form the Matrix output controller.
+Pipeline: Output Control
+Input Melds: * of Proc in Active Release, Part A Circuit
+Output Likelihood Inc (overlayed onto others)
+Active Release, Part B Circuit (overlayed?)
+Input Semantic Field Sizes (Key:Shape): ActionMashA
+MeldId_Self Field
+ActionMashB
+Internal Melds (wht bt fld mpngs?): Active Release, Part A Circuit
+Output Melds: Inhib->Output Inhib Controller
+Inhib->External Output Inhibitor
+Output Semantic Field Sizes: ActionMashA
+ActionMashA
+Circuits it Defines: Active Release, Part A
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 for the aggregate effect on output
+...

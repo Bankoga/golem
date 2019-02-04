@@ -1,0 +1,22 @@
+---
+Module or Part Name: Ch, Focus Control
+Layers: N
+Cell Details: -----
+Purpose: Can enhance, reduce, create, destory, modify, or interfere with spike input activity in every module to which it changes the rate of outputs
+Though at present I don't think I've included a good way to distinguish imagination from reality without a separate module. This requires further research later on.
+Pipeline: N
+Input Melds: base
++other dm channels
++previous focus rates
+Input Semantic Field Sizes (Key:Shape): base/base_fract
++ other/othr_fract
++ previous focus rates
+Internal Melds (wht bt fld mpngs?): Focus Activity Circuit
+Output Melds: Energy->Focus Controller
+Output Semantic Field Sizes: base
+Circuits it Defines: Focus Activity
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: Ch, Focus Control
+...

@@ -1,0 +1,29 @@
+---
+Module or Part Name: Need Determinator, Direction of Needed Activity Level (Nucleus Accumbens, Shell)
+Layers: Custom
+Cell Details: The nucleus accumbens and olfactory tubercle are located in the ventral striatum and are primarily composed of medium spiny neurons.[2][11][12]
+Mostly composed of Medium Spiny Neurons split evenly between Type-1, and Type-2 Dopamine receptors with ~40% having both. One type comes from the SNpc, and the other comes from the VTA. Though it's possible it could just be two different streams of outputs from the VTA instead, which may make more sense.
+Purpose: The nucleus accumbens is subdivided into limbic and motor subregions known as the NAcc shell and NAcc core.[10] 
+The medium spiny neurons in the nucleus accumbens receive input from both the dopaminergic neurons of the VTA and the glutamatergic neurons of the hippocampus, amygdala, and medial prefrontal cortex. When they are activated by these inputs, the medium spiny neurons' projections release GABA onto the ventral pallidum.[10] Thus the NAC as a whole determines the rate of Unnecessary Action Inhibition. High NAC activity should correspond to high Levels of need. Whereas low levesl of NAC activity should correspond to low levels of need.
+Pipeline: Operations Control
+Input Melds: Needs Change Circuit
+Reward ActivityCircuit
+Input Semantic Field Sizes (Key:Shape): MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Need Inhib, Direction Circuit
+Output Melds: Inhib->Gate[DM]
+Inhib->Gate[Exec]
+Inhib->Reward Modulator
+Inhib->Reward Rate Brake
+Inhib->Undesired Action Inhibitor
+Output Semantic Field Sizes: MeldId_Gate[DM]
+MeldId_Gate[Exec]
+MeldId_RewardModulator
+MeldId_RewardRateBrake
+MeldId_UndesiredActionInhibitor
+Circuits it Defines: Need Inhib, Direction
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1
+...

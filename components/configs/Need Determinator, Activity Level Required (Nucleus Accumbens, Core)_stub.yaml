@@ -1,0 +1,30 @@
+---
+Module or Part Name: Need Determinator, Activity Level Required (Nucleus Accumbens, Core)
+Layers: Custom
+Cell Details: Composed mostly (95%) of Medium Spiny Neurons split ~evenly between Type-1, and Type-2 Dopamine receptors, and compared to the neurons in the Shell have an increased density of dendritic spines, branch segments, and terminal segments. GABA receptors are also abundant among the MSns of the NAcc
+There is evidence that in the NACs Type-1 mediates pos assoc (i.e. reward/increased dopamine) related, and Type-2 mediates neg assoc (i.e. avoidance)
+2% are aspiny cholinergic interneurons (for mode bottom-up, or top-down activity control)
+2% are GABAergic interneurons
+Purpose: Determines the activity level required in the various sub-regions, and projects Inhibitors to the passive output control inhibitors (SNpr, GPi,VenP)
+Pipeline: Operations Control
+Input Melds: Needs Change Circuit
+Reward ActivityCircuit
+Input Semantic Field Sizes (Key:Shape): MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Need Inhib, Strength Circuit
+Output Melds: Inhib->Gate[DM]
+Inhib->Gate[Exec]
+Inhib->Reward Modulator
+Inhib->Reward Rate Brake
+Inhib->Undesired Action Inhibitor
+Output Semantic Field Sizes: MeldId_Gate[DM]
+MeldId_Gate[Exec]
+MeldId_RewardModulator
+MeldId_RewardRateBrake
+MeldId_UndesiredActionInhibitor
+Circuits it Defines: Need Inhib, Strength
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1
+...

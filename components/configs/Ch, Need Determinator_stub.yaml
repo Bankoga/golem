@@ -1,0 +1,20 @@
+---
+Module or Part Name: Ch, Need Determinator
+Layers: N
+Cell Details: -----
+Purpose: Can determine additional needs to the intrinsic needs determined during input parsing
+So a different output channel for the need mediators output channels
+Pipeline: N
+Input Melds: base
++ previous rates
+Input Semantic Field Sizes (Key:Shape): base/base_fract
++ previous/n_fract
+Internal Melds (wht bt fld mpngs?): Needs Circuit
+Output Melds: Energy->Need Mediator
+Output Semantic Field Sizes: base
+Circuits it Defines: Needs
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: Ch, Need Determinator
+...

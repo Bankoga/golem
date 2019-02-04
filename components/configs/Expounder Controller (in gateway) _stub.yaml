@@ -1,0 +1,26 @@
+---
+Module or Part Name: Expounder Controller (in gateway) 
+Layers: BCLL+
+Cell Details: Typical BCLL+ Node Distributions
+Purpose: Takes a statement, decomposes and recomposes it, and then relays it to the Concept Eval. Oftentimes, a good way to understand something is by ripping it apart and putting it back together again
+Pipeline: Extraction
+Input Melds: DirectInput Circuit
+Reward Attempts Circuit (overlayed onto the others)
+Input Semantic Field Sizes (Key:Shape): 1 InputA Field
+MeldId_Self Field
+Internal Melds (wht bt fld mpngs?): Extractor Circuit
+Output Melds: Energy->Concept Eval Ctrlr
+Output Semantic Field Sizes: 16 of 1/16 Len in InputA-Ch, 4 Keys (all keys are for assoc or mapping but then they become a separate stream)
+8 of 1/8 Len in InputA-Tk, 4 Keys
+4 of 1/4 Len in InputA-Ph, 4 Keys
+InputA, 4 Keys
+Circuits it Defines: Extraction
+Misc Circuits it uses: Active Release, Part A
+DM
+Gate
+Synch
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 per Input Meld to it
+Just D2CSIB for now
+...

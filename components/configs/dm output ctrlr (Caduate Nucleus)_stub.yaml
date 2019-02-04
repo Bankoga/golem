@@ -1,0 +1,25 @@
+---
+Module or Part Name: dm output ctrlr (Caduate Nucleus)
+Layers: Custom
+Cell Details: Same as Putamen
+Purpose: The decision making/review systems output controller
+Combines with the Putamen to form the Matrix output controller.
+Pipeline: Output Control
+Input Melds: * of Proc in Active Release, Part B Circuit
+Output Likelihood Inc (overlayed onto others)
+Active Release, Part A Circuit (overlayed?)
+Input Semantic Field Sizes (Key:Shape): ActionMashB
+MeldId_Self Field
+ActionMashA
+Internal Melds (wht bt fld mpngs?): Active Release, Part B Circuit
+Output Melds: Inhib->Output Inhib Controller
+Inhib->External Output Inhibitor
+Inhib->Internal Output Inhibitor
+Output Semantic Field Sizes: ActionMashB
+ActionMashB
+Circuits it Defines: Active Release, Part B
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 for the aggregate effect on output
+...

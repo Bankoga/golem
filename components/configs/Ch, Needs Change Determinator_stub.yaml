@@ -1,0 +1,21 @@
+---
+Module or Part Name: Ch, Needs Change Determinator
+Layers: N
+Cell Details: -----
+Purpose: Can enhance or reduce the rate of need driven activity through each Need Determinaton, in direction and/orstrength.
+So a different output channel for the unique joint list across each need determinator modules output melds
+Pipeline: N
+Input Melds: base
++ previous rates
+Input Semantic Field Sizes (Key:Shape): base/base_fract
++ previous/n_fract
+Internal Melds (wht bt fld mpngs?): Need Change Circuit
+Output Melds: Energy->Need Determinator, Directions of Need Pos need + Need Determinator, Activity Level of Pos Need
+Energy->Need Determinator, Directions of Need Neg need + Need Determinator, Activity Level of Neg Need
+Output Semantic Field Sizes: base
+Circuits it Defines: Needs Change
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: Ch, Needs Change Determinator
+...

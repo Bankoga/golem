@@ -1,0 +1,31 @@
+---
+Module or Part Name: Repo, Characters
+Layers: BCLL+
+Cell Details: Typical BCLL+ Node Distributions
+Purpose: Mapping super-structure for character level modules in processing pipelines
+Pipeline: Memory
+Input Melds: Extraction Circuit
+Evaluation Circuit
+Compression Circuit
+Reward Attempts Circuit (overlayed onto the others)
+Input Semantic Field Sizes (Key:Shape): Alt->?
+Prim->1/2 num afferents from meld
+Internal Melds (wht bt fld mpngs?): Extraction Circuit
+Evaluation Circuit
+Compression Circuit
+Output Melds: Extraction Circuit
+Evaluation Circuit
+Compression Circuit
+Output Semantic Field Sizes: Alt->?
+Prim->Same num as input, 4 semantic keys per field
+Circuits it Defines: N
+Misc Circuits it uses: Active Release, Part A
+DM
+Gate
+Synch
+Input Circuits: Input Meld
+Internal Meld
+Output Circuits: Alt->Output Meld, Alternate
+Prim->Output Meld, Prim
+Channels: 1 per Input Meld to it for now, we can try containers later
+...

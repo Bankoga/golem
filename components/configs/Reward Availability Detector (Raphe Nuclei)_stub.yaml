@@ -1,0 +1,34 @@
+---
+Module or Part Name: Reward Availability Detector (Raphe Nuclei)
+Layers: Custom
+Cell Details: Outputs 1 type of serotonin to I20, Active Release, Part B,Assoc,? Regions based on the availability of reward detected in the input (over time the notion of reward will change but it can be bootstrapped with something simple)
+Purpose: When rewards are possible to attain, it outputs more threshhold reducer, thus making the system more likely to act in some way to get the reward
+Can thus be used as part of a way to limit the number of steps taken before giving up
+Pipeline: Operations Control
+Input Melds: DirectInput Circuit
+DM Activity Circuit (overlayed onto others)
+Reward Rate Brake Circuit (overlayed onto others)
+Availability Modulation Circuit (overlayed or not?)
+Input Semantic Field Sizes (Key:Shape): MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Reward Attempts Circuit
+Output Melds: Srtn->* Proc
+Srtn->Gate[Exec]
+Srtn->Gate[DM]
+Srtn->Cerebellum
+Srtn->DirectOutput Circuit
+Srtn->Reward Rate Brake
+Output Semantic Field Sizes: MeldId_ per * in Proc
+MeldId_Gate[Exec]
+MeldId_Gate[DM]
+MeldId_Cerebellum
+MeldId_DirectOutput
+MeldId_RewardRateBrake
+Circuits it Defines: Reward Attempts
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 per output meld
+...

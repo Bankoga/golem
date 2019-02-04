@@ -1,0 +1,30 @@
+---
+Module or Part Name: Internal Output Inhibitor (SNpr)
+Layers: Custom
+Cell Details: High freq pacemaker 68 Hz alongside the STN, and GPe
+Similar in Composition to the GPe with less density than the SNpc, and smaller neurons than the SNpc
+Purpose: Passively Inhibits eye motor movement, and planning?
+(Responsible for primary external sensor focus ctrl & planning/internal output inhib so what should it be called?primary external sensor focus ctrl & planning/internal output inhib)
+Pipeline: Output Control
+Input Melds: Active Release, Part B Circuit
+Passive Output Inhib Circuit
+Need Mediation Circuit
+Need Inhib, Direction Circuit
+Need Inhib, Strength Circuit
+Input Semantic Field Sizes (Key:Shape): Action Mash B
+MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Internal Output Inhib Circuit
+Output Melds: Inhib->Gate[DM]
+Inhib->Gate[Exec]
+Output Semantic Field Sizes: MeldId_Gate[DM]
+MeldId_Gate[Exec]
+Circuits it Defines: Internal Output Inhib
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 input channel
+1 output channel per edge set modulated
+...

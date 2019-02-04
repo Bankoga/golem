@@ -1,0 +1,21 @@
+---
+Module or Part Name: Ch, Reward Activity Rate Determinator
+Layers: N
+Cell Details: -----
+Purpose: Can enhance or reduce the rate of reward activity across all reward activity generators in the brain, up to the Non-Intrinsic Max, or to the Intrinsic Minimum
+So a different output channel for the unique joint list across each reward producing modules output melds
+Pipeline: N
+Input Melds: base
++ previous rates
+Input Semantic Field Sizes (Key:Shape): base/base_fract
++ previous/n_fract
+Internal Melds (wht bt fld mpngs?): Reward Activity Rate Circuit
+Output Melds: Energy->Reward Modulator
+Energy->Reward Rate Brake
+Output Semantic Field Sizes: base
+Circuits it Defines: Reward Activity Rate
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: Ch, Reward Activity Rate Determinator
+...

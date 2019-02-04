@@ -1,0 +1,26 @@
+---
+Module or Part Name: Delivery
+Layers: BCLL
+Cell Details: Typical BCLL Node Distributions
+Purpose: To serve as signoff(L2&2'), preprod(L3), and deploy(L5)
+Pipeline: Execution
+Input Melds: Staging Circuit
+Reward Attempts Circuit (overlayed onto the others)
+Input Semantic Field Sizes (Key:Shape): 1 OutputA Field
+MeldId_Self Field
+Internal Melds (wht bt fld mpngs?): Delivery Circuit
+Output Melds: Gate,Energy->DirectOutput
+Energy->Passive Output Ctrlr
+Output Semantic Field Sizes: OutputA
+OutputA
+Circuits it Defines: Delivery
+Misc Circuits it uses: Active Release, Part A
+Active Release, Part B
+Gate
+Synch
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 per Input Meld to the I20 Pipeline
+1 for Response chain meld
+1 for DM Pipeline meld
+...

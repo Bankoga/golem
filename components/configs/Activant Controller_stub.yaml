@@ -1,0 +1,34 @@
+---
+Module or Part Name: Activant Controller
+Layers: Custom
+Cell Details: 50% Activant, and 50% energy
+Purpose: Determines the internally driven current Activant level of subsystem within the Matrix
+Corresponds to the Pedunculopontine Nucleus in Humans which projects to [Execution,Staging,Somatosensory],[Gate,Cerebellum,Motor],[BFB(raphe,mynert,septal)], also projects to the SNpc, &GPi but not the SNpr, while receiving from the SNpr, but not the SNpc
+While this can be used for now as part of the Reward Availability by being used to help control DM determined reward availability (as opposed to only sampling the external input for possible reward signals), eventually it may/could be best to break that out into a Reward Likelihood sampler that also takes input from here
+
+Pipeline: DM
+Input Melds: DM Activity Circuit
+Input Semantic Field Sizes (Key:Shape): GlobalMashA
+Internal Melds (wht bt fld mpngs?): Focus Activity Circuit
+Output Melds: Act->L4,? of * in DM Circuit
+Act->Gate[Delivery] Circuit
+Act->DirectOutput Circuit
+Act->External Output Inhibitor
+Act->Passive Output Inhibitor
+Act->Output Likelihood Modulator
+Energy->Output Likelihood Modulator
+Output Semantic Field Sizes: (every module or channel can generate a meld id field on demand. MeldId = size/fract. The fract is a constant. Thinking 2 or 3)
+Distinct ModuleMeldId Set per * in DM Circuit
+MeldId_Delivery
+MeldId_DirectOut
+MeldId_ExternalOut
+MeldId_PassiveOut
+MeldId_OutLikeMod
+MeldId_OutLikeMod
+Circuits it Defines: N
+Misc Circuits it uses: DM Activity->* in DM not Self
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 input channel
+1 output channel per edge set modulated
+...

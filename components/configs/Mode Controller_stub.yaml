@@ -1,0 +1,19 @@
+---
+Module or Part Name: Mode Controller
+Layers: Custom
+Cell Details: Outputs Modant, Energy, and Hybrid Changes (backend)
+Purpose: Determines the current operational mode of the Matrix by modulating the ability to generate other resources, and (or by) the current matrix operational state
+Pipeline: Operations Control
+Input Melds: N
+Input Semantic Field Sizes (Key:Shape): N
+Internal Melds (wht bt fld mpngs?): Mode Circuit
+Output Melds: A->1 per Act,SNpc,VTA,Sero, G[* modules GII]
+I->1 per Act,SNpc,VTA,Sero, G[* modules GII]
+Output Semantic Field Sizes: MeldId_ per * in A
+MeldId_ per * in I
+Circuits it Defines: Mode
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: N
+Channels: 1
+...

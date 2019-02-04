@@ -1,0 +1,36 @@
+---
+Module or Part Name: Reward Rate Brake (Tail of VTA)
+Layers: 
+Cell Details: The tail is major inhibitory nucleus that possesses robust functional, and structural links to the dopamine pathways. Acts as a master brake for the mid-brain dopamine system
+Tail receives inputs from Medial PFC (The DM), Cingulate, Preoptic, Lateral Hypothal (mode controller), Lateral Habenula (which is suspected to be part of the reward likelihood module), Superior Collic (i.e. the response direction indicating sub-cort map), Dorsal Raphe (serotonin system), Laterodorsal Teg (i.e. the Activant Ctrlr), SN, NAC, VenP
+Tail outputs t- Serotonin, Preoptic, Mode Controller, SN, VTA, Activant Ctrl, Periaqueductal gray
+(Do I need to update tail to incorporate output from the output function?)
+Purpose: Linearly? down-regulates reward activity
+Pipeline: Operations Control
+Input Melds: Reward Activity Rate Circuit
+Undesired Activity Circuit
+Need Inhib, Direction Circuit
+Need Inhib, Strength Circuit
+DirectFeedback Circuit (overlayed or not?)
+Need Mediation Circuit
+Reward Attemps Circuit
+Input Semantic Field Sizes (Key:Shape): MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+MeldId_Self
+Internal Melds (wht bt fld mpngs?): Reward Rate Brake Circuit
+Output Melds: Inhib->Reward Modulator
+Inhib->Output Likelihood
+Inhib->Reward Availability Detector
+Output Semantic Field Sizes: MeldId_RewardModulator
+MeldId_OutputLikelihoodModulator
+MeldId_RewardAvailabilityDetector
+Circuits it Defines: Reward Rate Brake
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 per output meld
+...

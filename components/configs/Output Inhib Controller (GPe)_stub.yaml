@@ -1,0 +1,22 @@
+---
+Module or Part Name: Output Inhib Controller (GPe)
+Layers: Custom
+Cell Details: High freq pacemaker 68 Hz
+Purpose: To passively disinhibit output, and to further disinhibit output based on input from the I/O pipelines
+Pipeline: Output Control
+Input Melds: Active Release, Part A Circuit
+Active Release, Part B Circuit
+Input Semantic Field Sizes (Key:Shape): ActionMashA
+ActionMashB
+Internal Melds (wht bt fld mpngs?): Active Release, Whole Circuit
+Output Melds: Inhib->Passive Output Inhib Ctrl, Ch 1
+Inhib->Passive Output Inhib Ctrl, Ch 2
+Output Semantic Field Sizes: ActionMashA
+ActionMashB
+Circuits it Defines: Active Release, Whole
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 for External Activity
+1 for Internal Activity
+...

@@ -1,0 +1,30 @@
+---
+Module or Part Name: Compression Controller
+Layers: BCLL+
+Cell Details: Typical BCLL+ Node Distributions
+Purpose: Handles converting a concept into a condensed motor phrase for staging
+Condenser Controller (General Concept -> Object + Background)(Condensing Pathways as defined by the pipeline)
+Pipeline: Compression
+Input Melds: Evaluation Circuit
+DM Activity Circuit (overlayed onto others)
+Reward Attempts Circuit (overlayed onto the others)
+Input Semantic Field Sizes (Key:Shape): 1 DomainA Field
+MeldId_Self Field
+MeldId_Self Field
+Internal Melds (wht bt fld mpngs?): Compression Circuit
+Output Melds: Energy->Staging
+Output Semantic Field Sizes: 16 OutputA-Ch, 4 Keys (all keys are for assoc or mapping but then they become a separate stream)
+8 OuputtA-Tk, 4 Keys
+4 OutputA-Ph, 4 Keys
+OutputA, 4 Keys
+Circuits it Defines: Compression
+Misc Circuits it uses: Active Release, Part A
+DM
+Gate
+Synch
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1 per Input Meld to the I20 Pipeline
+1 for Response Chain meld
+1 for DM Pipeline meld
+...

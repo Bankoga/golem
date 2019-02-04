@@ -1,0 +1,23 @@
+---
+Module or Part Name: Direct-from-Core Shell Output Bypass
+Layers: Coder
+Cell Details: Dedicated Functions that can act as Nodes. They are not acting as cells though
+Purpose: To serve as the muscle/motor the system executes. A way to return strings directly to some destination N characters at a time
+For now though, it will also be used to proxy an intrinsic reward using a Node function instead of Node cells. Semantically corresponds to an objective function in other ML lit.
+Generates reward loss information based on output that it sends to ?????????
+Pipeline: Output
+Input Melds: Gate[Delivery]
+Input Semantic Field Sizes (Key:Shape): OutputA:2+2+9 8-Pod Characters
+Internal Melds (wht bt fld mpngs?): N
+Output Melds: A->Gate[Delivery] (I->G[Motor]?)
+A->DirectFeedback
+A->AssocCtrl
+Output Semantic Field Sizes: 3 Variables to External,
+1 88-Pod Statement?
+Circuits it Defines: DirectOutput
+DirectFeedback
+Misc Circuits it uses: N
+Input Circuits: Input Meld
+Output Circuits: Output Meld
+Channels: 1
+...
