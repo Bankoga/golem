@@ -161,7 +161,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
 
 
     def batch_inputs(self, outputs):
-        TODO: batch inputs based on their pod. The batched inputs will be passed by reference to cells for consumption.
+        TODO: batch inputs based on their module. The batched inputs will be passed by reference to modules for consumption.
         TODO: Guarantee consistent order of sources in each bucket
         TODO: Ensure that the aggregated sources are useable in a matrix mult
         # this seems like a very problematic step
@@ -169,7 +169,7 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
         # buckets is a dictionary of dictionaries where list length is equal to the number of problem domains
         # each bucket (dictionary) is a collection of the outputs to containers by level, or to specific destinations
         buckets = {}
-        sort all outputs based on dests
+        sort all outputs based on id (though if we built a dictionary or outputs by module destination key, then we don't need to sort, they are already sorted)
         for o in outputs:
             get bucket (pd name) key from o
             path_key is filled based on the switch
