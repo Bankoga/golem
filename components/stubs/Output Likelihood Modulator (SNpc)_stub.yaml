@@ -8,15 +8,15 @@ Input Melds: DirectInput Circuit
 Reward Rate Brake (overlayed onto others)
 DM Activity Circuit (overlayed onto others)
 Input Semantic Field Sizes (Key:Shape): InputA
-MeldId_Self
-MeldId_Self
+SynchId_Self
+SynchId_Self
 Internal Melds (wht bt fld mpngs?): Output Likelihood Inc Circuit
 Output Melds: Dpmn->Response Output Ctrlr
 Dpmn->DM Output Ctrlr
 Dpmn->Passive Output Inhib Ctrlr
-Output Semantic Field Sizes: MeldId_ResponseOutputController
-MeldId_DMOutputController
-MeldId_PassiveOutputInhibController
+Output Semantic Field Sizes: SynchId_ResponseOutputController
+SynchId_DMOutputController
+SynchId_PassiveOutputInhibController
 Circuits it Defines: Output Likelihood Increase
 Misc Circuits it uses: N
 Input Circuits: Input Meld

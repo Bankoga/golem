@@ -8,8 +8,8 @@ Input Melds: Compression Circuit
 DM Activity Circuit (overlayed onto others)
 Reward Attempts Circuit (overlayed onto the others)
 Input Semantic Field Sizes (Key:Shape): 1 OutputA Field
-MeldId_Self Field
-MeldId_Self Field
+SynchId_Self Field
+SynchId_Self Field
 Internal Melds (wht bt fld mpngs?): Staging Circuit
 Output Melds: Energy->Delivery
 Energy->Passive Output Ctrlr

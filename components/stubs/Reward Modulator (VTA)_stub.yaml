@@ -19,22 +19,22 @@ DirectFeedback Circuit (overlayed or not?)
 Need Inhib, Direction Circuit
 Need Inhib, Strength Circuit
 Reward Rate Brake Circuit (overlayed onto others)
-Input Semantic Field Sizes (Key:Shape): MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
+Input Semantic Field Sizes (Key:Shape): SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
 Internal Melds (wht bt fld mpngs?): Reward Activity Circuit
 Output Melds: Energy->Undesired Action Inhibitor
 Dpmn->DM
 Dpmn->Need Mediator
 Dpmn->Need Determinator, Direction
 Dpmn->Need Determinator, Strength
-Output Semantic Field Sizes: MeldId_UndesiredActionInhibitor
-MeldId_ per * in DM sans RewardActivityRateDeterminator
-MeldId_NeedMediator
-MeldId_NeedDeterminatorDirection
-MeldId_NeedDeterminatorStrength
+Output Semantic Field Sizes: SynchId_UndesiredActionInhibitor
+SynchId_ per * in DM sans RewardActivityRateDeterminator
+SynchId_NeedMediator
+SynchId_NeedDeterminatorDirection
+SynchId_NeedDeterminatorStrength
 Circuits it Defines: Reward Activity
 Misc Circuits it uses: N
 Input Circuits: Input Meld

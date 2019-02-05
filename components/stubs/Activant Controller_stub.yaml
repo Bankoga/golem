@@ -17,14 +17,14 @@ Act->External Output Inhibitor
 Act->Passive Output Inhibitor
 Act->Output Likelihood Modulator
 Energy->Output Likelihood Modulator
-Output Semantic Field Sizes: (every module or channel can generate a meld id field on demand. MeldId = size/fract. The fract is a constant. Thinking 2 or 3)
-Distinct ModuleMeldId Set per * in DM Circuit
-MeldId_Delivery
-MeldId_DirectOut
-MeldId_ExternalOut
-MeldId_PassiveOut
-MeldId_OutLikeMod
-MeldId_OutLikeMod
+Output Semantic Field Sizes: (every module or channel can generate a meld id field on demand. SynchId = size/fract. The fract is a constant. Thinking 2 or 3)
+Distinct ModuleSynchId Set per * in DM Circuit
+SynchId_Delivery
+SynchId_DirectOut
+SynchId_ExternalOut
+SynchId_PassiveOut
+SynchId_OutLikeMod
+SynchId_OutLikeMod
 Circuits it Defines: N
 Misc Circuits it uses: DM Activity->* in DM not Self
 Input Circuits: Input Meld

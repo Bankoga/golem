@@ -9,14 +9,14 @@ DM Activity Circuit (overlayed onto others)
 Output Likelihood Inc Circuit (overlayed onto others)
 Active Release, Whole Circuit
 Input Semantic Field Sizes (Key:Shape): OutputA
-MeldId_Self
-MeldId_Self
+SynchId_Self
+SynchId_Self
 ActionMashA+ActionMashB
 Internal Melds (wht bt fld mpngs?): Passive Output Inhib Circuit
 Output Melds: Energy->External Output Ctrl
 Energy->Internal Output Ctrl
-Output Semantic Field Sizes: MeldId_ExternalOutputInhibitor
-MeldId_InternalOutputInhibitor
+Output Semantic Field Sizes: SynchId_ExternalOutputInhibitor
+SynchId_InternalOutputInhibitor
 Circuits it Defines: Passive Output Inhib
 Misc Circuits it uses: N
 Input Circuits: Input Meld

@@ -33,10 +33,12 @@ Fields = {
     }
 }
 Extractor Circuit
-Expected Input Fields
+Expected Input Shapes
 - InAWhl
-Generated Output Fields broken into the number of field shapes used to generate them
-- OutFunAtms: np.array_split(16, InAWhl)
-- OutFunTkns: np.array_split(8, InAWhl)
-- OutFunPrts: np.array_split(4, InAWhl)
-- OutFunWhl: Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl
+Generated Output Shapes
+- OutFunWhl: Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl + PrevAWhl
+Actual Output Shapes broken into the number of field shapes used to generate them
+- OutFunAtms: np.array_split(16, OutFunWhl)
+- OutFunTkns: np.array_split(8, OutFunWhl)
+- OutFunPrts: np.array_split(4, OutFunWhl)
+- OutFunWhl: OutFunWhl

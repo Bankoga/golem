@@ -12,7 +12,7 @@ Chln->L1,2 of * in DM Circuit
 Energy->RewardModulator
 Output Semantic Field Sizes: GlobalMashA
 GlobalMashA
-MeldId_RewardModulator
+SynchId_RewardModulator
 Circuits it Defines: N
 Misc Circuits it uses: Focus Activity->* in DM not Self
 Input Circuits: Input Meld

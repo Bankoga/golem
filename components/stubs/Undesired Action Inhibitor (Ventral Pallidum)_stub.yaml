@@ -11,17 +11,17 @@ Input Melds: Need Inhib, Direction Circuit
 Need Inhib, Strength Circuit
 Need Mediation Circuit (overlayed onto others)
 Reward Activity Circuit
-Input Semantic Field Sizes (Key:Shape): MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
+Input Semantic Field Sizes (Key:Shape): SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
 Internal Melds (wht bt fld mpngs?): Undesired Activity Circuit
 Output Melds: Inhib->Gate[DM]
 Inhib->Gate[Exec]
 Inhib->Reward Rate Brake
-Output Semantic Field Sizes: MeldId_Gate[DM]
-MeldId_Gate[Exec]
-MeldId_RewardRateBrake
+Output Semantic Field Sizes: SynchId_Gate[DM]
+SynchId_Gate[Exec]
+SynchId_RewardRateBrake
 Circuits it Defines: Undesired Activity
 Misc Circuits it uses: Undesired Activity
 Input Circuits: Input Meld

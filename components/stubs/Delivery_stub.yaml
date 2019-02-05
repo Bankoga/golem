@@ -7,7 +7,7 @@ Pipeline: Execution
 Input Melds: Staging Circuit
 Reward Attempts Circuit (overlayed onto the others)
 Input Semantic Field Sizes (Key:Shape): 1 OutputA Field
-MeldId_Self Field
+SynchId_Self Field
 Internal Melds (wht bt fld mpngs?): Delivery Circuit
 Output Melds: Gate,Energy->DirectOutput
 Energy->Passive Output Ctrlr

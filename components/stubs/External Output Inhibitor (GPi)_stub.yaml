@@ -12,12 +12,12 @@ Need Inhib, Strength Circuit
 DM Activity Circuit (overlayed onto otthers)
 Input Semantic Field Sizes (Key:Shape): ActionMashA
 ActionMashA
-MeldId_Self Field
-MeldId_Self Field
-MeldId_Self Field
+SynchId_Self Field
+SynchId_Self Field
+SynchId_Self Field
 Internal Melds (wht bt fld mpngs?): External Output Inhib Circuit
 Output Melds: Inhib->Gate[Exec]
-Output Semantic Field Sizes: MeldId_Gate[Exec]
+Output Semantic Field Sizes: SynchId_Gate[Exec]
 Circuits it Defines: External Output Inhib
 Misc Circuits it uses: N
 Input Circuits: Input Meld

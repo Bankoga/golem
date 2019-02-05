@@ -9,10 +9,10 @@ Input Melds: DirectInput Circuit
 DM Activity Circuit (overlayed onto others)
 Reward Rate Brake Circuit (overlayed onto others)
 Availability Modulation Circuit (overlayed or not?)
-Input Semantic Field Sizes (Key:Shape): MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
+Input Semantic Field Sizes (Key:Shape): SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
 Internal Melds (wht bt fld mpngs?): Reward Attempts Circuit
 Output Melds: Srtn->* Proc
 Srtn->Gate[Exec]
@@ -20,12 +20,12 @@ Srtn->Gate[DM]
 Srtn->Cerebellum
 Srtn->DirectOutput Circuit
 Srtn->Reward Rate Brake
-Output Semantic Field Sizes: MeldId_ per * in Proc
-MeldId_Gate[Exec]
-MeldId_Gate[DM]
-MeldId_Cerebellum
-MeldId_DirectOutput
-MeldId_RewardRateBrake
+Output Semantic Field Sizes: SynchId_ per * in Proc
+SynchId_Gate[Exec]
+SynchId_Gate[DM]
+SynchId_Cerebellum
+SynchId_DirectOutput
+SynchId_RewardRateBrake
 Circuits it Defines: Reward Attempts
 Misc Circuits it uses: N
 Input Circuits: Input Meld

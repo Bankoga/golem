@@ -5,22 +5,26 @@ Cell Details: Typical BCLL+ Node Distributions
 Purpose: Takes a statement, decomposes and recomposes it, and then relays it to the Concept Eval. Oftentimes, a good way to understand something is by ripping it apart and putting it back together again
 Pipeline: Extraction
 Input Melds:
-  - DirectInput,AWhl
-  - RewardAttempts,MeldId_ExpounderController
-Internal Melds: BCCL+(InputA, [Destinations])
+  - DirectInput,Energy,AWhl
+  - RewardAttempts,RESOURCE,SynchId_ExpounderController
 Output Melds: Energy,*
-Output Shapes:
-  OutFunAtms: np.array_split(16, InAWhl)
-  OutFunTkns: np.array_split(8, InAWhl)
-  OutFunPrts: np.array_split(4, InAWhl)
-  OutFunWhl: Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl
-
+Generated Shapes:
+  OutFunWhl: Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl + PrevAWhl
+Output Melds:
+  OutFunAtms: Energy,np.array_split(16, InAWhl)
+  OutFunTkns: Energy,np.array_split(8, InAWhl)
+  OutFunPrts: Energy,np.array_split(4, InAWhl)
+  OutFunWhl: Energy,OutFunWhl
+  OutFunDm: Energy,
+  OutFunActiveReleasePartA: Energy,
+  OutFunGate: Energy,
+  OutFunSynch: Energy,
 Circuits it Defines: Extraction
-Misc Circuits it uses:
-  - ActiveReleasePartA
-  - DM
-  - Gate
-  - Synch
+Misc Circuits:
+  - ActiveReleasePartA, OutFunWhl
+  - DM, OutFunWhl
+  - Gate, OutFunWhl
+  - Synch, OutFunWhl
 Channels:
   - 1 per Input Meld to it
   - Just D2CSIB for now

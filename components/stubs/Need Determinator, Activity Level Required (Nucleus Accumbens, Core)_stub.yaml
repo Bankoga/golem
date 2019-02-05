@@ -9,19 +9,19 @@ Purpose: Determines the activity level required in the various sub-regions, and 
 Pipeline: Operations Control
 Input Melds: Needs Change Circuit
 Reward ActivityCircuit
-Input Semantic Field Sizes (Key:Shape): MeldId_Self
-MeldId_Self
+Input Semantic Field Sizes (Key:Shape): SynchId_Self
+SynchId_Self
 Internal Melds (wht bt fld mpngs?): Need Inhib, Strength Circuit
 Output Melds: Inhib->Gate[DM]
 Inhib->Gate[Exec]
 Inhib->Reward Modulator
 Inhib->Reward Rate Brake
 Inhib->Undesired Action Inhibitor
-Output Semantic Field Sizes: MeldId_Gate[DM]
-MeldId_Gate[Exec]
-MeldId_RewardModulator
-MeldId_RewardRateBrake
-MeldId_UndesiredActionInhibitor
+Output Semantic Field Sizes: SynchId_Gate[DM]
+SynchId_Gate[Exec]
+SynchId_RewardModulator
+SynchId_RewardRateBrake
+SynchId_UndesiredActionInhibitor
 Circuits it Defines: Need Inhib, Strength
 Misc Circuits it uses: N
 Input Circuits: Input Meld

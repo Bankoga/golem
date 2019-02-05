@@ -9,13 +9,13 @@ Pipeline: Operations Control
 Input Melds: Synch Circuit connected Modules
 Reward Activity Circuit
 Reward Attempts Circuit
-Input Semantic Field Sizes (Key:Shape): MeldId_Self per channel per connected module
+Input Semantic Field Sizes (Key:Shape): SynchId_Self per channel per connected module
 Internal Melds (wht bt fld mpngs?): Synch Circuit
 Output Melds: Synch Circuit connected Modules data reciprocal for all but Active Release
 All Synch Circuit connected channels project to the Active Release Part A &| B that their corresponding Defining (creates a channel) Modules projec to
-Output Semantic Field Sizes: MeldId_ReciprocalModule
-MeldId_ResponseOutputController
-MeldId_DMOutputController
+Output Semantic Field Sizes: SynchId_ReciprocalModule
+SynchId_ResponseOutputController
+SynchId_DMOutputController
 Circuits it Defines: Synch
 Misc Circuits it uses: N
 Input Circuits: Input Meld

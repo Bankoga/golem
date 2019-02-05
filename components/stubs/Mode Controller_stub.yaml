@@ -9,8 +9,8 @@ Input Semantic Field Sizes (Key:Shape): N
 Internal Melds (wht bt fld mpngs?): Mode Circuit
 Output Melds: A->1 per Act,SNpc,VTA,Sero, G[* modules GII]
 I->1 per Act,SNpc,VTA,Sero, G[* modules GII]
-Output Semantic Field Sizes: MeldId_ per * in A
-MeldId_ per * in I
+Output Semantic Field Sizes: SynchId_ per * in A
+SynchId_ per * in I
 Circuits it Defines: Mode
 Misc Circuits it uses: N
 Input Circuits: Input Meld

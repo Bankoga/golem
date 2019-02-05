@@ -14,20 +14,20 @@ Need Inhib, Strength Circuit
 DirectFeedback Circuit (overlayed or not?)
 Need Mediation Circuit
 Reward Attemps Circuit
-Input Semantic Field Sizes (Key:Shape): MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
+Input Semantic Field Sizes (Key:Shape): SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
 Internal Melds (wht bt fld mpngs?): Reward Rate Brake Circuit
 Output Melds: Inhib->Reward Modulator
 Inhib->Output Likelihood
 Inhib->Reward Availability Detector
-Output Semantic Field Sizes: MeldId_RewardModulator
-MeldId_OutputLikelihoodModulator
-MeldId_RewardAvailabilityDetector
+Output Semantic Field Sizes: SynchId_RewardModulator
+SynchId_OutputLikelihoodModulator
+SynchId_RewardAvailabilityDetector
 Circuits it Defines: Reward Rate Brake
 Misc Circuits it uses: N
 Input Circuits: Input Meld

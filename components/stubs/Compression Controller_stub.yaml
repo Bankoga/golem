@@ -9,8 +9,8 @@ Input Melds: Evaluation Circuit
 DM Activity Circuit (overlayed onto others)
 Reward Attempts Circuit (overlayed onto the others)
 Input Semantic Field Sizes (Key:Shape): 1 DomainA Field
-MeldId_Self Field
-MeldId_Self Field
+SynchId_Self Field
+SynchId_Self Field
 Internal Melds (wht bt fld mpngs?): Compression Circuit
 Output Melds: Energy->Staging
 Output Semantic Field Sizes: 16 OutputA-Ch, 4 Keys (all keys are for assoc or mapping but then they become a separate stream)

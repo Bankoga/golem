@@ -8,8 +8,8 @@ Input Melds: Extraction Circuit
 DirectFeedback
 Reward Attempts Circuit (overlayed onto the others)
 Input Semantic Field Sizes (Key:Shape): 1 InputA Field
-MeldId_Self Field
-MeldId_Self Field
+SynchId_Self Field
+SynchId_Self Field
 Internal Melds (wht bt fld mpngs?): Evaluation Circuit
 Output Melds: Energy->Condensor Ctrlr
 Output Semantic Field Sizes: 16 of 1/16 Len in DomainA-Ch

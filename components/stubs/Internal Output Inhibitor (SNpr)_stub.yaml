@@ -12,15 +12,15 @@ Need Mediation Circuit
 Need Inhib, Direction Circuit
 Need Inhib, Strength Circuit
 Input Semantic Field Sizes (Key:Shape): Action Mash B
-MeldId_Self
-MeldId_Self
-MeldId_Self
-MeldId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
+SynchId_Self
 Internal Melds (wht bt fld mpngs?): Internal Output Inhib Circuit
 Output Melds: Inhib->Gate[DM]
 Inhib->Gate[Exec]
-Output Semantic Field Sizes: MeldId_Gate[DM]
-MeldId_Gate[Exec]
+Output Semantic Field Sizes: SynchId_Gate[DM]
+SynchId_Gate[Exec]
 Circuits it Defines: Internal Output Inhib
 Misc Circuits it uses: N
 Input Circuits: Input Meld

@@ -17,15 +17,15 @@ and glutamergic from the VTA
 Pipeline: Operations Control
 Input Melds: Needs Circuit
 Reward Activity Rate Circuit (overlayed onto the others)
-Input Semantic Field Sizes (Key:Shape): MeldId_Self
-MeldId_Self
+Input Semantic Field Sizes (Key:Shape): SynchId_Self
+SynchId_Self
 Internal Melds (wht bt fld mpngs?): Need Mediation Circuit
 Output Melds: Inhib->Reward Rate Brake
 Inhib->Undesired Action Inhibitor
 Inhib->Internal Output Inhibitor
-Output Semantic Field Sizes: MeldId_RewardRateBrake
-MeldId_UndesiredActionInhibitor
-MeldId_InternalOutputInhibitor
+Output Semantic Field Sizes: SynchId_RewardRateBrake
+SynchId_UndesiredActionInhibitor
+SynchId_InternalOutputInhibitor
 Circuits it Defines: Need Mediation
 Misc Circuits it uses: Need Mediator
 Input Circuits: Input Meld
