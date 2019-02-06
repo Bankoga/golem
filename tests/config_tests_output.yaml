@@ -1,0 +1,28 @@
+---
+Name: ConfigTestsOutput
+LayerRules: BCLL+
+LayerDetails: Typical BCLL+ Node Distributions
+Purpose: To help fully test the config parsing, and manipulation class config.py by mimicing an output module
+Pipeline: Test
+InputMelds:
+  Links: 1 per Energy,ExtractionLink
+  DirectInput: Energy,AWhl
+  RewardAvailabilityDetector: RESOURCE,SynchId_ExtractionController
+Generated Shapes:
+  OutFunWhl: Energy,Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl + PrevAWhl
+  OutFunAtms: Energy,np.array_split(16, InAWhl)
+  OutFunTkns: Energy,np.array_split(8, InAWhl)
+  OutFunPrts: Energy,np.array_split(4, InAWhl)
+OutputMelds:
+  ConceptEvalController: OutFunWhl
+Links:
+  ResponseOutputController: OutFunWhl
+  DM: OutFunWhl
+  Gate: OutFunWhl
+  Synch: OutFunWhl
+Function: ?????
+Links it defines: Extraction
+Channels:
+  - 1 per Input Meld to it
+  - Just D2CSIB for now
+...

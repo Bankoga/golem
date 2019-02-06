@@ -1,13 +1,13 @@
 ---
-Name: Expounder Controller (in gateway)
-Layers: BCLL+
-Cell Details: Typical BCLL+ Node Distributions
+Name: eEtraction Controller (in gateway)
+LayerRules: BCLL+
+LayerDetails: Typical BCLL+ Node Distributions
 Purpose: Takes a statement, decomposes and recomposes it, and then relays it to the Concept Eval. Oftentimes, a good way to understand something is by ripping it apart and putting it back together again
 Pipeline: Extraction
 InputMelds:
-  Links: 1 Energy shape per Extraction link to the expounder
+  Links: 1 Energy shape per Extraction link to the extractor
   DirectInput: Energy,AWhl
-  RewardAvailabilityDetector: RESOURCE,SynchId_ExpounderController
+  RewardAvailabilityDetector: RESOURCE,SynchId_ExtractionController
 Generated Shapes:
   OutFunWhl: Energy,Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl + PrevAWhl
   OutFunAtms: Energy,np.array_split(16, InAWhl)
