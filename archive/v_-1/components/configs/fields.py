@@ -2,18 +2,6 @@ At every time step of golem operation, we have an active dictionary of all dest 
 Each module has a unique set of input shapes that has to be generated. This set is defined by the module, and must correspond to the number of output shapes actually generated or else an error will be thrown
 During init, we can read the config for each module, and build the dictionary of input shapes it requires
 
-Internal Melds (wht bt fld mpngs?): BCCL+(InputA, [Destinations])
-  InputA -> Repo, Characters
-  InputA -> Repo, Tokens
-  InputA -> Repo, Phrases
-  InputA -> Repo, InputA
-Output Melds: Energy->Concept Eval Ctrlr
-Output Semantic Field Sizes:
-16 of 1/16 Len in InputA-Ch, 4 Keys (all keys are for assoc or mapping but then they become a separate stream)
-8 of 1/8 Len in InputA-Tk, 4 Keys
-4 of 1/4 Len in InputA-Ph, 4 Keys
-InputA, 4 Keys
-
 In- & Out- Are added to fields within functions to denote afference vs efference.
 Fields = {
     'AWhl': {
@@ -28,17 +16,7 @@ Fields = {
     'APrt': {
         'max_shape': 1 x 144/4 = 1 x 36
     },
-    '': {
-        'max_shape': 1 x ?
+    'SynchIds': {
+        'max_shape': MAX(1/2 shape dimension, 1)
     }
 }
-Extractor Circuit
-Expected Input Shapes
-- InAWhl
-Generated Output Shapes
-- OutFunWhl: Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl + PrevAWhl
-Actual Output Shapes broken into the number of field shapes used to generate them
-- OutFunAtms: np.array_split(16, OutFunWhl)
-- OutFunTkns: np.array_split(8, OutFunWhl)
-- OutFunPrts: np.array_split(4, OutFunWhl)
-- OutFunWhl: OutFunWhl

@@ -1,0 +1,65 @@
+Expounder:
+  InputMelds:
+    DirectInput: Energy,AWhl
+    RewardAvailabilityDetector: RESOURCE,SynchId_ExpounderController
+  Generated Shapes:
+    OutFunWhl: Energy,Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl + PrevAWhl
+    OutFunAtms: Energy,np.array_split(16, InAWhl)
+    OutFunTkns: Energy,np.array_split(8, InAWhl)
+    OutFunPrts: Energy,np.array_split(4, InAWhl)
+  OutputMelds:
+    ConceptEvalController: OutFunWhl
+    DMOutputController: OutFunWhl
+    DM: OutFunWhl
+    Gateway: OutFunWhl
+    Synch: "OutFunWhl
+what I need to do is finalize the input melds, output melds, and generated shapes naming
+as well as decide on how I want to handle converting a description of some number of shapes into different shapes
+
+But I need a formulaic way to convert lists of Key,Resource,Shape sets of InputMelds, OutputMelds, and Generated Shapes into working code.
+Which is in fact me asking for a programming language. I'm pretty sure that a programming language is out of scope at this time.
+So I should probably use direct code objects for the matrix modules instead of configs.
+
+What are the open variables in the equations for generating the output shapes that are replaced by inputs?
+Each module generates a set of output shapes that corresponds to the number of Output melds in it's config
+Each index in a module is an input to the whole function that produces the activations
+Each index in a module thus directly contributes to some number of points inside each relevant output shape
+The output shape always corresponds to the size of the field that is expected by the receiver. Which in many cases is the same as the size of the receiver.
+Regardless, it always has the same primary components: Key, Resource, and Shape
+
+Operations can thus be broken down, in part, by Key Category, Resource, and Shape
+
+However, each module has a specific layer based cell composition, which affects the rate at which neurons are active on the other side of the module.
+Each layer affects one or more outputs based on the corresponding layer function.
+A layer function produces output meld changes for any arbitrary subset of the total number of Output Melds in the module, as defined during initialization!
+Thus, our primary purpose here, is to write the layer functions. If we can reuse the same function using different initialization properties, that would be ideal.
+Once we have the layer functions, then we can combine them together, into a module function
+
+All I ever needed for representing a single cells dendrites, is the shape of a 3dimensional convolution.....
+Each layer is a sigmoid or tanh of the number of different convolutions per resource shape, and the effect of an activation per convolution (energy effects output shape on, modulation effects current and future processing, inhibition reduces activation chance)
+And an index in a module is the sum of all layer functions on an initially blank set of output shapes
+Positive Energy is used to calc chance of activation
+Negative Energy is used to reduce chance of activation
+Dopamine raises the base chance of activation, and increases the effects of plasticity
+Activant raises the base chance of activation
+Catalyst lowers the the threshhold for activation
+
+Each output shape has between 0 and N activations per index
+
+A cell could aggregate 6 separate 2d convolutions into the output with a fixed hidden bias to each. So I don't have to use 3D convolutions directly
+Time to start digging through fast ai code again?
+Trackable goal selection is a must
+Need a proper course
+"
+L1:
+  Energy
+L2:
+  Energy
+L3:
+  Energy
+L4:
+  Energy
+L5:
+  Energy
+L6:
+  Energy

@@ -1,0 +1,27 @@
+---
+Name: dm output ctrlr (Caduate Nucleus)
+Layers: Custom
+Cell Details: Same as Putamen
+Purpose: The decision making/review systems output controller Combines with the Putamen to form the Matrix output controller.
+Pipeline: Output Control
+Input Melds:
+  Channels: 1 energy shape per channel
+  ChFocus: Energy,SynchId_DMOutputController
+  ChActivity: Energy,
+  ChRewardAvailability: Energy,
+  ChRewardActivity: Energy,
+  ChNeedsChanged: Energy,
+  ChNeedDeterminator: Energy,
+  OutputLikelihoodModulator: Energy,SynchId_DMOutputController
+  ResponseOutputController: Energy,SynchId_ResponseOutputController
+Generated Shapes:
+  TtlOut: Energy, SynchId_DMOutputController
+  ExtOut: Energy, SynchId_DMOutputController[0 - 1/2n-1]
+  IntOut: Energy,SynchId_DMOutputController[1/2n - n-1]
+Output Melds:
+  Output Inhib Controller: TtlOut
+  External Output Inhibitor: ExtOut
+  Internal Output Inhibitor: IntOut
+Function: ?????
+Circuits it Defines: ActiveReleasePartB
+...

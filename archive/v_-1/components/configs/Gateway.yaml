@@ -1,0 +1,28 @@
+---
+Name: Gateway
+Layers: GLL + GCLL
+Cell Details: Typical GLL + GCLL Node Distributions
+Purpose: To serve as the mode control, I/O, and processing gateways. Controls external input to, data looping from, proc stack/cort column plasticity, and current global I/O context|state
+Pipeline: Operations Control
+InputMelds:
+  Links: (1 per module which creates a Gate link with the gateway)
+  ExpounderController: Energy,SynchId_ExpounderController
+  RewardAvailabilityDetector: Energy,SynchId_Gateway
+  DMActivityController: Energy,SynchId_Gateway
+  ModeController: Energy,SynchId_Gateway
+  Synchronizer: Energy,SynchId_Gateway
+  ExternalOutputController:
+  InternalOutputController:
+  NeedMediator:
+Generated Shapes:
+  OutAWhl: Energy,Gt[ExpounderController]
+  GlblSt: Energy,Join(* in Gt[])
+Output Melds:
+  Links: (Gate key circuit connected modules and then some)
+  ExpounderController: OutAWhl
+  NeedMediator: GlblSt
+Function: ?????
+Links it Defines: Gate
+Links:
+Channels: 1 per gated module
+...

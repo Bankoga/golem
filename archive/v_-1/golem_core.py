@@ -4,6 +4,8 @@ class Core:
     def __init__():
 
 
+When creating a golem, after going through all module configs, their must be a one to one correspondence between all input melds, and all outputmelds before intialization. If not, then throw an error
+
 TODO: should each module have a uniquely defined list of input shapes, or should we use a dynamic approach?
 def activateModule(inputShapes, assocShape, contextShape):
     """
@@ -16,7 +18,7 @@ def activateModule(inputShapes, assocShape, contextShape):
         'Outputs':dict()
     }
 
-    for layer in the module we calculate its cumulative effects on the output field activation shapes for the current module (which always start out empty)
+    for layer in the module we calculate its cumulative effects on the output field resource shapes for the current module (which always start out empty)
         for each i
             for each j in the internal shape we calculate whether or not it will be active in the next timestep by doing the below
             An i,j corresponds to a Pod
