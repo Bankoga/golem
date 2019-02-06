@@ -1,7 +1,7 @@
 ---
 Name: eEtraction Controller (in gateway)
 LayerRules: BCLL+
-LayerDetails: Typical BCLL+ Node Distributions
+LayersDetails: Typical BCLL+ Node Distributions
 Purpose: Takes a statement, decomposes and recomposes it, and then relays it to the Concept Eval. Oftentimes, a good way to understand something is by ripping it apart and putting it back together again
 Pipeline: Extraction
 InputMelds:

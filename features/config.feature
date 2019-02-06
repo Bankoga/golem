@@ -1,8 +1,13 @@
-@config @initialization
-Feature: DuckDuckGo Web Browsing
-  As a web surfer,
-  I want to find information online,
-  So I can learn new things and get tasks done.
+@config @initialization @testarchitecture
+Feature: Configs
+  As a cognitive matrix architect,
+  I want to build modular matrices using configs that can be automatically generated directly from the research data,
+  So I can quickly test out altered module properties
+
+  @remove
+  Scenario: Build Module Function
+    Given the test architecture is loaded
+    When the user 
 
   # Web scenarios can be highly declarative, which focuses on behavior.
   # Don't get caught up in button names and layouts at the Gherkin level.

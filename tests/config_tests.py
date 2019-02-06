@@ -9,23 +9,3 @@ class ConfigTests(unittest.TestCase):
 
     def test_module_function_builder(lyrRls, lyrDtls, inMlds, outMlds, gendShpDscrps, lnks):
         return False
-
-    VALID_NAME_CHARS = ascii_lowercase + '_-.'
-    
-    def valid_module_names():
-        return st.text(alphabet=letters, min_size=1, max_size=112).map(lambda t: t.lower()) | st.just("master")
-
----
-Name
-LayerRules
-LayerDetails
-Purpose
-Pipeline
-InputMelds
-Generated Shapes
-OutputMelds
-Links
-Function
-Links it defines
-Channels
-...
