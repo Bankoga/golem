@@ -36,9 +36,6 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
     })
     return settings
 
-def module_function_builder(lyrRls, lyrDtls, inMlds, outMlds, gendShpDscrps, lnks):
-  return "lol"
-
 def init_ts(ts_data):
     TODO: Pull ts level global data into config for use in other files for num ts calcs. MWAHAHAHAAAA
     # plan is to have simulated sec defined, and num ts per sec evald to see how fast it compares to analagous physically implemented systems. Does it have more time than us?
@@ -136,10 +133,21 @@ def evaluate_melds():
         - 
     we start with a list of modules which, if well formed, will have all the data necessary and referenced. Otherwise we throw error
     for each module
-        collect inputMelds,outputMelds,linkMelds
-        convert ShapeDictList into the unique list of all shapes
+        globally collect inputMelds,outputMelds,linkMelds
+        locally collect procGroupInputMelds,procGroupDetails,procGroupOutputMelds
+        convert and procStageGroupsDict into the "function_data" module config property
+        convert and add ShapeDictList into the dict of all shapes
     for each item in inputMelds,outputMelds,linkMelds:
         replace template components
     for each link in inputMelds,outputMelds,linkMelds:
         expand links descriptions into full links
+    try {
+        validate_all()
+    }
+    throw (validation_error err){
+        do error things
+        hard fail out
+        return
+    }
+    return updated_configs
     """
