@@ -1,5 +1,5 @@
 ---
-Name: ConfigsTestsInput
+Name: TestInput
 LayerRules: BCLL+
 LayersDetails: Typical BCLL+ Node Distributions
 Purpose: To help fully test the config parsing, and manipulation class config.py by mimicing an input module
@@ -17,7 +17,4 @@ Links:
   ConfigTestsAlternate: OutFunWhl
 Function: ?????
 Links it defines: ConfigTestsInput
-Channels:
-  - 1 per Input Meld to it
-  - Just D2CSIB for now
 ...

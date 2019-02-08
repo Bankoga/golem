@@ -26,7 +26,7 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - ?: ?
   - ?: ?
 
-#### A note on Module Inputs
+#### A note on Module Inputs and Config Revamp
 
 Every word is a function
 Every function is a concept

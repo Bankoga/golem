@@ -9,7 +9,7 @@ InputMelds:
   DirectInput: Energy,AWhl
   RewardAvailabilityDetector: RESOURCE,SynchId_ExtractionController
 Generated Shapes:
-  OutFunWhl: Energy,Join(InAAtms) + Join(InATkns) + Join(InAPrts) + InAWhl + PrevAWhl
+  OutFunWhl: Energy,"".Join(InAAtms) + "".Join(InATkns) + "".Join(InAPrts) + "".InAWhl + "".PrevAWhl
   OutFunAtms: Energy,np.array_split(16, InAWhl)
   OutFunTkns: Energy,np.array_split(8, InAWhl)
   OutFunPrts: Energy,np.array_split(4, InAWhl)
@@ -26,3 +26,5 @@ Channels:
   - 1 per Input Meld to it
   - Just D2CSIB for now
 ...
+
+generated shapes currently represents a dictionary of OutputFunctionKey to Input Melds used along input preprocessing

@@ -1,5 +1,5 @@
 ---
-Name: ConfigTestsOutput
+Name: TestOutput
 LayerRules: BCLL+
 LayersDetails: Typical BCLL+ Node Distributions
 Purpose: To help fully test the config parsing, and manipulation class config.py by mimicing an output module

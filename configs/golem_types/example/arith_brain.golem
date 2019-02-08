@@ -1,0 +1,10 @@
+---
+TypeData:
+  Id:
+  Name:
+  Purpose: Should be a short explanation or links to documentation about the purpose of this type of golem
+MatrixData:
+  Modules:
+    - a very long list of the modules used in the golem. If done correctly, modules will be sufficiently dynamic to support this so long as their paramters are changed accordingly
+  
+...

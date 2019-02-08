@@ -8,7 +8,33 @@ gendShpDscrps = {}
 lnks = {}
 
 def parse_module_config():
+    # each module should pass a consistency check between items listed in the melds and items used in the function dict
+    # As well as check items listed in the function dict and used in the output melds and link melds
   return "lol"
+
+
+def parse_gt_config(golem_type, num_dests, is_pair):
+    """
+    validate inputs
+    check for a valid golem type file in the golem type database (lol. it's a directory for the MVP)
+    throw an error for existance of validation operational violations
+    ctags --options=C:\Users\sturmy\.vscode\extensions\ms-python.python-2018.12.1\resources\ctagOptions --languages=Python --exclude=**/site-packages/** -o d:\Projects\golem-factory\.vscode\tags .
+Install Universal Ctags Win32 to enable support for Workspace Symbols
+Download the CTags binary from the Universal CTags site.
+Option 1: Extract ctags.exe from the downloaded zip to any folder within your PATH so that Visual Studio Code can run it.
+Option 2: Extract to any folder and add the path to this folder to the command setting.
+Option 3: Extract to any folder and define that path in the python.workspaceSymbols.ctagsPath setting of your user settings file (settings.json).
+    """
+    config_fname = 'core\\configs\\golem_types\\{0}.yaml'.format(golem_type)
+    golem_type_config = load(open(config_fname))
+    # core_config = self.build_full_config(golem_type_config['core_type_fname'])
+    settings = golem_type_config.extend({
+        'desired_base_dests': num_dests,
+        'paired': is_pair, #should be capable of handling through config as well at some point
+        # 'core_config': core_config
+        #'core_type_fname': config.core_type_fname. CORE_TYPE or CORE_TYPE_FNAME SHOULD BE INCLUDED IN GOLEM_TYPE config already
+    })
+    return settings
 
 def module_function_builder(lyrRls, lyrDtls, inMlds, outMlds, gendShpDscrps, lnks):
   return "lol"
@@ -24,6 +50,14 @@ def generate_golem_id(golem_type):
     rh = 0#calc random 1024-hex hash
     cts = 0#get current timestamp()
     return '{0}-{1}-{2}'.format(golem_type, rh, cts)
+
+def build_full_config(core_type_fname):
+    TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...
+    TODO: raise an exception and exit if the yaml does not exist
+    config_fname = 'core\\configs\\golem_core_types\\{0}.yaml'.format(core_type_fname)
+    config = load(open(config_fname))
+    print(dump(config))
+    return config
 
 def assemble_egg(self, config, core_type_fname, num_dests):
     egg = {
@@ -44,25 +78,6 @@ def assemble_egg(self, config, core_type_fname, num_dests):
     TODO: Optim: pull all dests from all pds into a single adjacency list
     TODO: Build relay problem domain out of region
     return egg.extend({'graph': graph, 'id': self.generate_golem_id(self.golem_type)})
-
-def build_full_config(core_type_fname):
-    TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...
-    TODO: raise an exception and exit if the yaml does not exist
-    config_fname = 'core\\configs\\golem_core_types\\{0}.yaml'.format(core_type_fname)
-    config = load(open(config_fname))
-    TODO: rename problem domains to modules?
-    for i, pd in enumerate(config['modules']):
-        TODO: raise an exception and exit if the yaml does not exist
-        pd_conf_fname = 'core\\configs\\domain_types\\{0}.yaml'.format(pd['type'])
-        pd_conf = load(open(pd_conf_fname))
-        for j, region in enumerate(pd_conf['regions']):
-            TODO: raise an exception and exit if the yaml does not exist
-            rconf_fname = 'core\\configs\\regions\\{0}.yaml'.format(region)
-            rconf = load(open(rconf_fname))
-            pd_conf['regions'][j] = rconf
-        config['modules'][i]['type'] = pd_conf
-    print(dump(config))
-    return config
 
 def parse_decoders(self):
     TODO: raise an exception if there are no decoders
@@ -112,3 +127,19 @@ def get_input_counts(self, nodes, desired_dests):
                     inps.append(alt_node.name)
         cells_dict[key] = count, inps, num_dests
     return cells_dict
+
+def evaluate_melds():
+    """
+    when evaluating a config there are several list categories of properties that need to be generated
+        - categories: fields, modules, links, inputMelds, outputMelds, linkMelds
+        - properties: referenced categories, unreferenced categories
+        - 
+    we start with a list of modules which, if well formed, will have all the data necessary and referenced. Otherwise we throw error
+    for each module
+        collect inputMelds,outputMelds,linkMelds
+        convert ShapeDictList into the unique list of all shapes
+    for each item in inputMelds,outputMelds,linkMelds:
+        replace template components
+    for each link in inputMelds,outputMelds,linkMelds:
+        expand links descriptions into full links
+    """
