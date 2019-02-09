@@ -13,70 +13,93 @@ class ModuleValidatorTests(unittest.TestCase):
         self.assertTrue(isValid)
 
     def test_inputMeldsValidation():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_funcType():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_funcType():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_procStageGroupsDict():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_procStageGroupsDict():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_procStageShape():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_procStageShape():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_procGroupInputMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_procGroupInputMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_procGroupDetails():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_procGroupDetails():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_procGroupOutputMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_procGroupOutputMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_procOutputMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_procOutputMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_shapeComposition():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_shapeComposition():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_outputMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_outputMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_linkMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_linkMelds():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_arbitrary_linksDefined():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
 
     def test_linksDefined():
-        return False
+        isValid=validator.?Validation(?):
+        self.assertTrue(isValid)
