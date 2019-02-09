@@ -39,7 +39,7 @@ The type of matrix modules used for bringing data into or out of the matrix.
 | ProcType | Both | --- | --- |
 | ProcComposition | ProcType | --- | --- |
 | ProcStageGroupsDict | ProcType | --- | --- |
-| ProcGroupShape | Module | --- | --- |
+| ProcStageShape | Module | Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
 | ProcGroupInputMelds | Module | --- | --- |
 | ProcGroupDetails | Module | Used to store population level details for modules that represent large groups of nodes. Not really used for coders which require framework level hook support | N |
 | ProcGroupOutputMelds | Module | --- | --- |
@@ -54,9 +54,9 @@ The type of matrix modules used for performing operations that can be interferre
 | ProcType | Both | --- | --- |
 | ProcComposition | ProcType | --- | --- |
 | ProcStageGroupsDict | ProcType | --- | --- |
-| ProcGroupShape | Module | --- | --- |
+| ProcStageShape | Module | Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
 | ProcGroupInputMelds | Module | --- | --- |
-| ProcGroupDetails | Module | --- | GroupId: NodeDetails,OutputMelds |
+| ProcGroupDetails | Module | --- | GroupId: {[NodeDetails],node_count} |
 | ProcGroupOutputMelds | Module | --- | --- |
 | ProcOutputMelds | Module | --- | --- |
 
@@ -69,8 +69,8 @@ Corresponds to the type of matrix modules used for bringing data into or out of 
 | ProcType | Both | --- | --- |
 | ProcComposition | ProcType | --- | --- |
 | ProcStageGroupsDict | ProcType | --- | --- |
-| ProcGroupShape | Module | --- | --- |
+| ProcStageShape | Module | Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
 | ProcGroupInputMelds | Module | --- | --- |
-| ProcGroupDetails | Module | --- | [GroupId: {NodeDetails,OutputMelds}] |
+| ProcGroupDetails | Module | --- | GroupId: {[NodeDetails],node_count} |
 | ProcGroupOutputMelds | Module | --- | --- |
 | ProcOutputMelds | Module | --- | --- |

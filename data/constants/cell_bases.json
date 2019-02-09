@@ -79,7 +79,17 @@
   },
   "Plate": {
     "cnv_tmplts":[
-      ["ABS",["4x4","8x8,1"]]
+      ["S",["4x4","8x8,1"]]
+    ],
+    "freq_range": [5,256],
+    "init_freq": 5,
+    "pct_of_pod": 0,
+    "init_threshhold":0.98,
+    "activation_function":"tanh"
+  },
+  "Point": {
+    "cnv_tmplts":[
+      ["S",["1x1"]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
