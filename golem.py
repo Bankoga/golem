@@ -9,7 +9,7 @@ from problem_domain import *
 from decoder import *
 from encoder import *
 
-class Golem:
+class Golem():
     # Goal oriented, logos encapsulating modeler
     def __init__(self, golem_type, num_dests=0, is_pair=False):
         # move num_dests, and is_pair to golem type config
