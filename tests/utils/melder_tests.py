@@ -10,8 +10,13 @@ from string import ascii_lowercase
 class MelderTests(unittest.TestCase):
   def setUp(self):
     self.melder = Melder()
-  
-  def test_
+
+  @given(st)
+  def test_read_datapack(self,address,resource,shape):
+    datp=DataPack(address,resource,shape)
+    self.assertIs(datp.address,address)
+    self.assertIs(datp.resource,resource)
+    self.assertIs(datp.shape,shape)
 
   def test_eval_description(self):
     self.assertTrue(False)
@@ -23,6 +28,9 @@ class MelderTests(unittest.TestCase):
     """given a list of meld templates, and WHAT DATA IS REQ?
     When the full list of melds is evaluated
     Then <count> results should be in the <format>"""
+    self.assertTrue(False)
+  
+  def test_eval_meld(self):
     self.assertTrue(False)
 """
 Every data bearing connection between two components (modules, nodes, or otherwise) is a Meld.

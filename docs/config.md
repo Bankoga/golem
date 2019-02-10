@@ -22,10 +22,10 @@ Each Module config has the following properties
 
 ### Melds
 
-Every data bearing connection between two components (modules, nodes, or otherwise) is a Meld. All melds have the same overall full format, with several definitional formats.
+Every data bearing connection between two components (modules, nodes, or otherwise) is described via a Meld. A meld is a pattern for describing one or more data_pack. Each of which contains an address,resource_type, and shape. All melds have the same overall full format, with several definitional formats.
 
-- Full: Module_key-subdest,Resource_type,Field_shape
-- Definition_A: Link_key,Resource_types
+- DataPack: Module_key-subdest,Resource_type,Field_shape
+- Meld: patter of keys, types, and shapes used to build data_packs
 
 Each link type can have it's own field shape that needs to be accounted for, and each link must be counted separately so we have to dynamically generate all link input and output melds
 
