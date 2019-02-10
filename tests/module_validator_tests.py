@@ -1,8 +1,7 @@
 import unittest
 from hypothesis import *
-from module_validator.py import *
 from string import ascii_lowercase
-from .context import validators.module_validator
+from validators.module_validator import *
 # from config_tests_data.py import *
 
 class ModuleValidatorTests(unittest.TestCase):
