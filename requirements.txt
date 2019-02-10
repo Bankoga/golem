@@ -1,5 +1,6 @@
 name: golem
 dependencies:
+- behave
 - hypothesis
 - numpy
 - pillow
