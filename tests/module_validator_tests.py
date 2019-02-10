@@ -32,7 +32,3 @@ class ModuleValidatorTests(unittest.TestCase):
         self.assertTrue(self.validator.link_melds_validation())
     def test_links_defined_validation(self):
         self.assertTrue(self.validator.links_defined_validation())
-
-
-if __name__ == "__main__":
-    unittest.main()
