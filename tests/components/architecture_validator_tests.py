@@ -7,5 +7,5 @@ from string import ascii_lowercase
 class ConfigTests(unittest.TestCase):
     TODO: Move the GOLEM conda env from conda envs in AppData local to the package...
 
-    def test_module_function_builder(lyrRls, lyrDtls, inMlds, outMlds, gendShpDscrps, lnks):
-        return False
+    def test_module_function_builder(self, lyrRls, lyrDtls, inMlds, outMlds, gendShpDscrps, lnks):
+        self.assertTrue(False)

@@ -5,7 +5,7 @@ from string import ascii_lowercase
 # from config_tests_data.py import *
 
 class ModuleTests(unittest.TestCase):
-    TODO: Move the GOLEM conda env from conda envs in AppData local to the package...
+    # TODO: Move the GOLEM conda env from conda envs in AppData local to the package...
     VALID_inputMelds=
     VALID_funcType=
     VALID_procStageGroupsDict=

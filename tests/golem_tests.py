@@ -1,3 +1,4 @@
+import unittest
 from yaml import load, dump
 from golem import Golem
 
@@ -26,6 +27,8 @@ def arith_brain():
         res_diff = diff(actual, result)
         TODO: L2FreezeNetworkPlasticity
         ts++
+    
+    self.assertTrue(False)
 
 def build_full_config(brain_fname):
     # TODO: raise an exception and exit if the yaml does not exist
@@ -44,5 +47,5 @@ def build_full_config(brain_fname):
             pd_conf['regions'][j] = rconf
 
         config['modules'][i]['type'] = pd_conf
-
+    self.assertTrue(False)
     return config
