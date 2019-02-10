@@ -1,8 +1,10 @@
 import unittest
 from hypothesis import given
 import hypothesis.strategies as st
-from utils import melder as Melder
+from utils.melder import *
+from utils.datapack import *
 from string import ascii_lowercase
+from data.constants.matrix import resource_types
 # from config_tests_data.py import *
 
 # It is an open question as to whether or not links need to be defined as part of the proc group
@@ -11,28 +13,52 @@ class MelderTests(unittest.TestCase):
   def setUp(self):
     self.melder = Melder()
 
-  @given(st)
-  def test_read_datapack(self,address,resource,shape):
-    datp=DataPack(address,resource,shape)
-    self.assertIs(datp.address,address)
-    self.assertIs(datp.resource,resource)
-    self.assertIs(datp.shape,shape)
-
-  def test_eval_description(self):
-    self.assertTrue(False)
-
-  def test_eval_proto_melds(self):
-    self.assertTrue(False)
-
-  def test_eval_melds(self):
+  def test_eval_melds(self, meld):
     """given a list of meld templates, and WHAT DATA IS REQ?
     When the full list of melds is evaluated
     Then <count> results should be in the <format>"""
     self.assertTrue(False)
-  
-  def test_eval_meld(self):
-    self.assertTrue(False)
+
+  # FOR EACH SET OF MELDTYPES/PATTERNS/FORMATS THAT ARE HANDLED IN THEIR OWN FUNCTION HAVE UNIQUE TEST METHOD
+  @given(st.from_regex(f'[/w|/d](_[/w|/d|].*)_?(-[/w|/d].*)?,({"|".join(resource_types.keys())})(,SHAPE)'))
+  def test_eval_full(self, meld):
+    datp = self.melder.eval_full(meld)
+    self.assertIsInstance(datp,Datapack)
+    parts=meld.split(",")
+    self.assertTrue(datp.address==parts[0])
+    self.assertTrue(datp.resource==parts[1])
+    self.assertTrue(datp.shape==parts[2])
 """
+It seems like each type of pattern, is its own test case
+Scenario Outline: Eval Meld
+  Given a <meld> string of <type>
+  When it is evaluated
+  Then <count> results should be in the <format>
+
+  Examples: SingleResourcePatterns
+  | meld | type | count | format |
+  | ?,Resource | InputMeld | ? | ?|
+  | ?,Resource | ProcGroupInputMeld | ? | ?|
+  | ?,Resource | ProcGroupOutputMeld | ? | ?|
+  | ?,Resource | OutputMeld | ? | ?|
+  | [],Resource | ? | ? | ?|
+  | [ID],Resource | LinkMeld | ? | ?|
+  | ID,Resource | LinkMeld | ? | ?|
+  | ID_?,Resource | LinkMeld | ? | ?|
+  | [ID_?],Resource | LinkMeld | ? | ?|
+
+  Examples: MultiResourcePatterns
+  | meld | type | count | format |
+  | A,[ResourceA,ResourceB] | ? | ? | ?|
+  | A,[ResourceA,ResourceB],SHAPE | ? | ? | ?|
+  | ?,[ResourceA,ResourceB],SHAPE | ? | ? | ?|
+  | [],[ResourceA,ResourceB] | ? | ? | ?|
+  | [ID],[ResourceA,ResourceB] | LinkMeld | ? | ?|
+  | ID,[ResourceA,ResourceB] | LinkMeld | ? | ?|
+  | ID_?,[ResourceA,ResourceB] | LinkMeld | ? | ?|
+  | [ID_?],[ResourceA,ResourceB] | LinkMeld | ? | ?|
+
+
 Every data bearing connection between two components (modules, nodes, or otherwise) is a Meld.
 All melds have the same overall full format, with several definitional formats.
 A melder object can be used to do the following:
