@@ -2,4 +2,4 @@ init:
 	pip install -r requirements.txt
 
 test:
-	unittest
+	unittest discover . "*_tests.py"
