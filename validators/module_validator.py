@@ -4,7 +4,7 @@ class ModuleValidator():
 
     def input_melds_validation(self):
         return False
-    def func_type_validation(self):
+    def proc_type_validation(self,proc_type):
         return False
     def proc_stage_groups_dict_validation(self):
         return False

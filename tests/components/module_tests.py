@@ -18,13 +18,13 @@ class ModuleTests(unittest.TestCase):
     VALID_outputMelds=
     VALID_linkMelds=
     VALID_linksDefined=
-    VALID_funcStr=
+    VALID_funcStrs=[]
 
     def setUp(self):
         self.module = Module()
 
-    def test_compose_function(self):
-        funcStr=self.module.compose_function(
+    def test_compose_functions(self):
+        funcStrs=self.module.compose_functions(
             VALID_inputMelds,
             VALID_funcType,
             VALID_procStageGroupsDict,
@@ -37,11 +37,11 @@ class ModuleTests(unittest.TestCase):
             VALID_outputMelds,
             VALID_linkMelds,
             VALID_linksDefined)
-        self.assertIsNot(funcStr,NULL)
-        self.assertIs(funcStr,VALID_funcStr)
+        self.assertIsNot(funcStrs,NULL)
+        self.assertIs(funcStrs,VALID_funcStrs)
     
-    def test_arbitrary_compose_function(self):
-        funcStr=self.module.compose_function(
+    def test_arbitrary_compose_functions(self):
+        funcStr=self.module.compose_functions(
             funcStr,
             inputMelds,
             funcType,

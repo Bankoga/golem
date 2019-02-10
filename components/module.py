@@ -15,7 +15,7 @@ class Module():
                 # If this is the last group, after adding the value, throw each point through a ReLU
         return outputShapes
 
-    def compose_function(self,inputMelds,funcType,procStageGroupsDict,procStageShape,procGroupInputMelds,procGroupDetails,procGroupOutputMelds,procOutputMelds,shapeComposition,outputMelds,linkMelds,linksDefined):
+    def compose_functions(self,inputMelds,funcType,procStageGroupsDict,procStageShape,procGroupInputMelds,procGroupDetails,procGroupOutputMelds,procOutputMelds,shapeComposition,outputMelds,linkMelds,linksDefined):
         # just preparing a nice battery of for loops for all the looping that's gunna be done
         for inMeld in inputMelds:
         for outMeld in outputMelds:

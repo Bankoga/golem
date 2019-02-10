@@ -1,10 +1,13 @@
 # Configs
 
-Golem processing matrices are defined via module function configs.
+Golems configs are based on a composable field component grouping system where each piece can be eventually subjected to an evolutionary algorithm for architecture design, or multi-golem architecture combining. Ultimately however, there are two types of configs that define a type of golem.
+
+- Module Configs: Golem processing matrix components (groups) and their interconnections are defined via module function configs. A module config determines the internal properties of object, sans Links
+- Type Configs: Each type of golem corresponds to a specific set of interconnected functions. Each function is defined via a key that corresponds to some module config, with the connections between modules largely being defined here.
 
 ## Properties
 
-Each config has the following properties
+Each Module config has the following properties
 
 - Name: The primary id, and semantic label for the module
 - Purpose: A description of what the module does at a high level within the cognitive matrix
@@ -19,12 +22,17 @@ Each config has the following properties
 
 ### Melds
 
-Every data bearing connection between two modules is a Meld. All melds have the same format except for link rule specifiying input melds. The formats are:
+Every data bearing connection between two components (modules, nodes, or otherwise) is a Meld. All melds have the same overall full format, with several definitional formats.
 
-- Default: Module_key-subdest,Resource_type,Field_shape
-- Links: Link_key,Resource_type
+- Full: Module_key-subdest,Resource_type,Field_shape
+- Definition_A: Link_key,Resource_types
 
 Each link type can have it's own field shape that needs to be accounted for, and each link must be counted separately so we have to dynamically generate all link input and output melds
+
+Anywhere a link is specified
+
+ModuleId-StageId||GroupId
+LinkTypeId_ModuleId-StageId||GroupId
 
 ### Proc Func
 
