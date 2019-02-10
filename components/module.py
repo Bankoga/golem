@@ -1,7 +1,19 @@
 class Module():
 
     def __init__(self):
-        pass
+        # once fully initialized, a module has very few aggregate properties to consider during operation
+        self.prevActivationShapes=dict()
+        self.processingGroups=dict()
+
+    def operate(self,inputShapes):
+        outputShapes = prepareBlankOutputShapes()
+        for group in self.processingGroups:
+            # group.transform  needs to handle calculating its own activation shape which it adds to the outputShape to be processed by the primary dispatcher
+            outputs = group.transform(inputShapes)
+            for outputShape in outputs:
+                outputShapes[outputShape.key]+=outputShape.value
+                # If this is the last group, after adding the value, throw each point through a ReLU
+        return outputShapes
 
     def compose_function(self,inputMelds,funcType,procStageGroupsDict,procStageShape,procGroupInputMelds,procGroupDetails,procGroupOutputMelds,procOutputMelds,shapeComposition,outputMelds,linkMelds,linksDefined):
         # just preparing a nice battery of for loops for all the looping that's gunna be done
