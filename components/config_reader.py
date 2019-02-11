@@ -27,7 +27,6 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
   """
     config_fname = f'{paths['golem']}{config}.golem'
     golem_type_config = load(open(config_fname))
-    # core_config = self.build_full_config(golem_type_config['core_type_fname'])
     settings = golem_type_config.extend({
         'desired_base_dests': num_dests,
         'paired': is_pair, #should be capable of handling through config as well at some point
@@ -38,9 +37,12 @@ Option 3: Extract to any folder and define that path in the python.workspaceSymb
 
 
 def _read_from_proc(config):
-    song_element = et.Element('song', attrib={'id': song.song_id})
-    title = et.SubElement(song_element, 'title')
-    title.text = song.title
-    artist = et.SubElement(song_element, 'artist')
-    artist.text = song.artist
-    return et.tostring(song_element, encoding='unicode')
+    config_fname = f'{paths['golem']}{config}.golem'
+    proc_type_config = load(open(config_fname))
+    settings = golem_type_config.extend({
+        'desired_base_dests': num_dests,
+        'paired': is_pair, #should be capable of handling through config as well at some point
+        # 'core_config': core_config
+        #'core_type_fname': config.core_type_fname. CORE_TYPE or CORE_TYPE_FNAME SHOULD BE INCLUDED IN GOLEM_TYPE config already
+    })
+    return settings

@@ -1,0 +1,92 @@
+---
+Id: TestGate
+Name: Test Gate Layer Groups
+StageToGroupsDicts:
+  - Stage: NoiseCtrl
+    Groups: [NoiseDwnInhib,NoiseAdjInhib]
+    TotalCount: 2
+  - Stage: CycleRelay
+    Groups: [CycleGateCtrl,CycleStgAdv]
+    TotalCount: 2
+  - Stage: CntxtRelay
+    Groups: [CntxtStgAdv,CntxtUpInhib]
+    TotalCount: 2
+  - Stage: Relay
+    Groups: [StgAdv]
+    TotalCount: 1
+GroupDetails:
+  NoiseDwnInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  NoiseAdjInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  CycleGateCtrl:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  CycleStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  CntxtStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  CntxtUpInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  Relay:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 1
+InputMelds:
+  NoiseDwnInhib: [NoiseAdjInhib-Inhibitor,NoiseCtrl-Energy]
+  NoiseAdjInhib: [NoiseCtrl-Energy]
+  CycleGateCtrl: [CycleRelay-Energy,NoiseDwnInhib-Inhibitor]
+  CycleStgAdv: [CycleRelay-Energy]
+  CntxtStgAdv: [CntxtRelay-Energy]
+  CntxtUpInhib: [CntxtRelay-Energy]
+  Relay: null
+OutputMelds:
+  NoiseDwnInhib: [CntxtUpInhib-Inhbitor,CycleRelay-Inhibitor,CntxtRelay-Inhibitor]
+  NoiseAdjInhib: [NoiseDwnInhib-Inhibitor]
+  CycleGateCtrl: [CycleRelay-Inhibitor]
+  CycleStgAdv: [CycleRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
+  CntxtStgAdv: [CntxtRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
+  CntxtUpInhib: [CntxtRelay-Inhibitor]
+  Relay: null
+HooksInTo:
+  NoiseIn: [NoiseDwnInhib,NoiseAdjInhib]
+  CycleIn: [CycleGateCtrl,CycleStgAdv]
+  CntxtIn: [CntxtStgAdv,CntxtUpInhib]
+  RelayIn: [Relay]
+HooksOutOf:
+    CycleOut: [CycleStgAdv]
+    CntxtOut: [CntxtStgAdv]
+    RelayOut: [Relay]
+LinksDefined:
+  - LinkId: G_i
+    HooksRequired:
+      - CntxtIn
+      - CntxtOut
+      - CycleIn
+      - CycleOut
+      - NoiseIn
+      - NoiseOut
+  - LinkId: Gate_i
+    HooksRequired:
+      - RelayIn
+      - RelayOut
+LinksUsed: null
+...
