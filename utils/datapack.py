@@ -3,3 +3,4 @@ class Datapack:
     self.address=meld_tuple[0]
     self.resource=meld_tuple[1]
     self.shape=meld_tuple[2]
+    self.type = f'{self.address}:{self.resource}'

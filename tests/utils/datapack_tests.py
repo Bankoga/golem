@@ -11,6 +11,7 @@ class DataPackTests(unittest.TestCase):
   @given(st.tuples(st.from_regex(dest_key_pattern),st.text(),st.text()))
   def test_read_data(self,meld_tuple):
     datp=Datapack(meld_tuple)
-    self.assertIs(datp.address,meld_tuple[0])
-    self.assertIs(datp.resource,meld_tuple[1])
-    self.assertIs(datp.shape,meld_tuple[2])
+    self.assertTrue(datp.address==meld_tuple[0])
+    self.assertTrue(datp.resource==meld_tuple[1])
+    self.assertTrue(datp.shape==meld_tuple[2])
+    self.assertTrue(datp.type==f'{meld_tuple[0]}:{meld_tuple[1]}')

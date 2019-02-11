@@ -14,17 +14,35 @@ class MelderTests(unittest.TestCase):
   def setUp(self):
     self.melder = Melder()
 
-  def test_eval_melds(self, meld):
-    """given a list of meld templates, and WHAT DATA IS REQ?
-    When the full list of melds is evaluated
-    Then <count> results should be in the <format>"""
-    self.assertTrue(False)
+  # def test_eval_melds(self, meld):
+  #   """given a list of meld templates, and WHAT DATA IS REQ?
+  #   When the full list of melds is evaluated
+  #   Then <count> results should be in the <format>"""
+  #   self.assertTrue(False)
 
   # FOR EACH SET OF MELDTYPES/PATTERNS/FORMATS THAT ARE HANDLED IN THEIR OWN FUNCTION HAVE UNIQUE TEST METHOD
   @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
   def test_eval_full_meld(self, meld):
     datp = self.melder.eval_meld(meld)
     self.assertIsInstance(datp,Datapack)
+    parts=meld.split(",")
+    self.assertTrue(datp.address==parts[0])
+    self.assertTrue(datp.resource==parts[1])
+    self.assertTrue(datp.shape==parts[2])
+
+  @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
+  def test_eval_proto_meld(self, meld):
+    datp = self.melder.eval_meld(meld)
+    self.assertIsInstance(datp,Datapack)
+    parts=meld.split(",")
+    self.assertTrue(datp.address==parts[0])
+    self.assertTrue(datp.resource==parts[1])
+    self.assertTrue(datp.shape==parts[2])
+
+  @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
+  def test_eval_proto_melds(self, meld):
+    datp = self.melder.eval_meld(meld)
+    self.assertIsInstance(datp,list(Datapack))
     parts=meld.split(",")
     self.assertTrue(datp.address==parts[0])
     self.assertTrue(datp.resource==parts[1])
@@ -87,7 +105,5 @@ A melder object can be used to do the following:
 - Definition_A: Link_key,Resource_types
 
 Each link type can have it's own field shape that needs to be accounted for, and each link must be counted separately so we have to dynamically generate all link input and output melds anywhere a link id is specified
-
-
 
 """
