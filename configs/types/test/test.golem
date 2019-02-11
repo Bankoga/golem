@@ -1,7 +1,7 @@
 ---
 TypeData:
-  Id:
-  Name:
+  Id: Test
+  Name: Config Behavior Test Architecture
   Purpose: Should be a short explanation or links to documentation about the purpose of this type of golem
 Modules:
   TestA:

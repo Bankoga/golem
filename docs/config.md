@@ -10,7 +10,8 @@ Golems configs are based on a composable field component grouping system where e
 
 Each Golem config has the following properties:
 
-- Name: The primary id, and semantic label for the module
+- Id: The primary type id of the golem. THIS IS NOT THE CONTAINER OR INSTANCE ID.
+- Name: The semantic label of the type of golem. THIS IS NOT THE CONTAINER OR INSTANCE NAME.
 - Purpose: A description of what the module does at a high level within the cognitive matrix
 - Modules: The list of processing containers that define the skeletion of the cognitive matrix of the golem
   - ShapeToGroupsDicts: Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
