@@ -4,8 +4,8 @@ import hypothesis.strategies as st
 from utils.melder import *
 from utils.datapack import *
 from string import ascii_lowercase
-from data.constants.matrix import resource_types
-from data.constants.matrix import dest_key_pattern
+from data.axioms.matrix import resource_types
+from data.axioms.matrix import dest_key_pattern
 # from config_tests_data.py import *
 
 # It is an open question as to whether or not links need to be defined as part of the proc group

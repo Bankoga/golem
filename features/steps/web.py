@@ -11,7 +11,7 @@ from behave import *
 from selenium.webdriver.common.keys import Keys
 
 
-# "Constants"
+# "axioms"
 
 DUCKDUCKGO_HOME = 'https://duckduckgo.com/'
 

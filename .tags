@@ -6,168 +6,168 @@
 !_TAG_PROGRAM_VERSION	0.0.0	/701c53dc/
 0	archive\\v_-1\\js-things\\objectives.json	/^	"primary": [""],$/;"	s	array:primary
 0	archive\\v_-1\\js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
-0	data\\constants\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	a	array:Star.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	s	array:Star.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	s	array:Star.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	s	array:Star.cnv_tmplts.1
-0	data\\constants\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	s	array:Star.cnv_tmplts.1.1
-0	data\\constants\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	a	array:MaxPoolAll.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	s	array:MaxPoolAll.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	s	array:MaxPoolAll.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	s	array:MaxPoolAll.cnv_tmplts.0.2
-0	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	a	array:Granule.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	a	array:Pyramid.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["A",["4x4"]],$/;"	a	array:Crown.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["A",["4x4"]],$/;"	a	array:Rose.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["A",["4x4"]],$/;"	s	array:Crown.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["A",["4x4"]],$/;"	s	array:Crown.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["A",["4x4"]],$/;"	s	array:Rose.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["A",["4x4"]],$/;"	s	array:Rose.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	s	array:Crown.cnv_tmplts.1
-0	data\\constants\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	s	array:Crown.cnv_tmplts.1.1
-0	data\\constants\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	s	array:Rose.cnv_tmplts.1
-0	data\\constants\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	s	array:Rose.cnv_tmplts.1.1
-0	data\\constants\\cell_bases.json	/^      ["AB",["4x4"]],$/;"	a	array:Basket.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["AB",["4x4"]],$/;"	s	array:Basket.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["AB",["4x4"]],$/;"	s	array:Basket.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["AB",["8x8,1"]],$/;"	s	array:Basket.cnv_tmplts.1
-0	data\\constants\\cell_bases.json	/^      ["AB",["8x8,1"]],$/;"	s	array:Basket.cnv_tmplts.1.1
-0	data\\constants\\cell_bases.json	/^      ["B",["4x4"]],$/;"	a	array:InvCrown.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["B",["4x4"]],$/;"	s	array:InvCrown.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["B",["4x4"]],$/;"	s	array:InvCrown.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["B",["4x4"]],$/;"	s	array:Pyramid.cnv_tmplts.1
-0	data\\constants\\cell_bases.json	/^      ["B",["4x4"]],$/;"	s	array:Pyramid.cnv_tmplts.1.1
-0	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:Granule.cnv_tmplts.1
-0	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:Granule.cnv_tmplts.1.1
-0	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:InvCrown.cnv_tmplts.1
-0	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:InvCrown.cnv_tmplts.1.1
-0	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:Pyramid.cnv_tmplts.2
-0	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:Pyramid.cnv_tmplts.2.1
-0	data\\constants\\cell_bases.json	/^      ["S",["1x1"]]$/;"	a	array:Point.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["S",["1x1"]]$/;"	s	array:Point.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["S",["1x1"]]$/;"	s	array:Point.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Crown.cnv_tmplts.2
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Crown.cnv_tmplts.2.1
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Granule.cnv_tmplts.2
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Granule.cnv_tmplts.2.1
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:InvCrown.cnv_tmplts.2
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:InvCrown.cnv_tmplts.2.1
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Pyramid.cnv_tmplts.3
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Pyramid.cnv_tmplts.3.1
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Rose.cnv_tmplts.2
-0	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Rose.cnv_tmplts.2.1
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	s	array:Basket.cnv_tmplts.2
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	s	array:Basket.cnv_tmplts.2.1
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	a	array:Plate.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	s	array:Plate.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	s	array:Plate.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	a	array:Bipolar.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	s	array:Bipolar.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	s	array:Bipolar.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	s	array:Bipolar.cnv_tmplts.0.2
-0	data\\constants\\cell_bases.json	/^      ["S",["NxN"]]$/;"	a	array:DensePoolSame.cnv_tmplts
-0	data\\constants\\cell_bases.json	/^      ["S",["NxN"]]$/;"	s	array:DensePoolSame.cnv_tmplts.0
-0	data\\constants\\cell_bases.json	/^      ["S",["NxN"]]$/;"	s	array:DensePoolSame.cnv_tmplts.0.1
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Basket.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Bipolar.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Crown.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:DensePoolSame.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Granule.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:InvCrown.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:MaxPoolAll.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Plate.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Point.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Pyramid.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Rose.freq_range
-0	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Star.freq_range
+0	data\\axioms\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	a	array:Star.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	s	array:Star.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	s	array:Star.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	s	array:Star.cnv_tmplts.1
+0	data\\axioms\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	s	array:Star.cnv_tmplts.1.1
+0	data\\axioms\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	a	array:MaxPoolAll.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	s	array:MaxPoolAll.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	s	array:MaxPoolAll.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	s	array:MaxPoolAll.cnv_tmplts.0.2
+0	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	a	array:Granule.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	a	array:Pyramid.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["A",["4x4"]],$/;"	a	array:Crown.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["A",["4x4"]],$/;"	a	array:Rose.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["A",["4x4"]],$/;"	s	array:Crown.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["A",["4x4"]],$/;"	s	array:Crown.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["A",["4x4"]],$/;"	s	array:Rose.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["A",["4x4"]],$/;"	s	array:Rose.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	s	array:Crown.cnv_tmplts.1
+0	data\\axioms\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	s	array:Crown.cnv_tmplts.1.1
+0	data\\axioms\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	s	array:Rose.cnv_tmplts.1
+0	data\\axioms\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	s	array:Rose.cnv_tmplts.1.1
+0	data\\axioms\\cell_bases.json	/^      ["AB",["4x4"]],$/;"	a	array:Basket.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["AB",["4x4"]],$/;"	s	array:Basket.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["AB",["4x4"]],$/;"	s	array:Basket.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["AB",["8x8,1"]],$/;"	s	array:Basket.cnv_tmplts.1
+0	data\\axioms\\cell_bases.json	/^      ["AB",["8x8,1"]],$/;"	s	array:Basket.cnv_tmplts.1.1
+0	data\\axioms\\cell_bases.json	/^      ["B",["4x4"]],$/;"	a	array:InvCrown.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["B",["4x4"]],$/;"	s	array:InvCrown.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["B",["4x4"]],$/;"	s	array:InvCrown.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["B",["4x4"]],$/;"	s	array:Pyramid.cnv_tmplts.1
+0	data\\axioms\\cell_bases.json	/^      ["B",["4x4"]],$/;"	s	array:Pyramid.cnv_tmplts.1.1
+0	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:Granule.cnv_tmplts.1
+0	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:Granule.cnv_tmplts.1.1
+0	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:InvCrown.cnv_tmplts.1
+0	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:InvCrown.cnv_tmplts.1.1
+0	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:Pyramid.cnv_tmplts.2
+0	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	s	array:Pyramid.cnv_tmplts.2.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["1x1"]]$/;"	a	array:Point.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["S",["1x1"]]$/;"	s	array:Point.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["S",["1x1"]]$/;"	s	array:Point.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Crown.cnv_tmplts.2
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Crown.cnv_tmplts.2.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Granule.cnv_tmplts.2
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Granule.cnv_tmplts.2.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:InvCrown.cnv_tmplts.2
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:InvCrown.cnv_tmplts.2.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Pyramid.cnv_tmplts.3
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Pyramid.cnv_tmplts.3.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Rose.cnv_tmplts.2
+0	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	s	array:Rose.cnv_tmplts.2.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	s	array:Basket.cnv_tmplts.2
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	s	array:Basket.cnv_tmplts.2.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	a	array:Plate.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	s	array:Plate.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	s	array:Plate.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	a	array:Bipolar.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	s	array:Bipolar.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	s	array:Bipolar.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	s	array:Bipolar.cnv_tmplts.0.2
+0	data\\axioms\\cell_bases.json	/^      ["S",["NxN"]]$/;"	a	array:DensePoolSame.cnv_tmplts
+0	data\\axioms\\cell_bases.json	/^      ["S",["NxN"]]$/;"	s	array:DensePoolSame.cnv_tmplts.0
+0	data\\axioms\\cell_bases.json	/^      ["S",["NxN"]]$/;"	s	array:DensePoolSame.cnv_tmplts.0.1
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Basket.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Bipolar.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Crown.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:DensePoolSame.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Granule.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:InvCrown.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:MaxPoolAll.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Plate.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Point.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Pyramid.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Rose.freq_range
+0	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Star.freq_range
 1	archive\\v_-1\\js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
-1	data\\constants\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	a	array:Star.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	s	array:Star.cnv_tmplts.0.1
-1	data\\constants\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	a	array:Star.cnv_tmplts
-1	data\\constants\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	a	array:Star.cnv_tmplts.1
-1	data\\constants\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	s	array:Star.cnv_tmplts.1.1
-1	data\\constants\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	a	array:MaxPoolAll.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	a	array:Granule.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	a	array:Pyramid.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
-1	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
-1	data\\constants\\cell_bases.json	/^      ["A",["4x4"]],$/;"	a	array:Crown.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["A",["4x4"]],$/;"	a	array:Rose.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	a	array:Crown.cnv_tmplts
-1	data\\constants\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	a	array:Crown.cnv_tmplts.1
-1	data\\constants\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	a	array:Rose.cnv_tmplts
-1	data\\constants\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	a	array:Rose.cnv_tmplts.1
-1	data\\constants\\cell_bases.json	/^      ["AB",["4x4"]],$/;"	a	array:Basket.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["AB",["8x8,1"]],$/;"	a	array:Basket.cnv_tmplts
-1	data\\constants\\cell_bases.json	/^      ["AB",["8x8,1"]],$/;"	a	array:Basket.cnv_tmplts.1
-1	data\\constants\\cell_bases.json	/^      ["B",["4x4"]],$/;"	a	array:InvCrown.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["B",["4x4"]],$/;"	a	array:Pyramid.cnv_tmplts
-1	data\\constants\\cell_bases.json	/^      ["B",["4x4"]],$/;"	a	array:Pyramid.cnv_tmplts.1
-1	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:Granule.cnv_tmplts
-1	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:Granule.cnv_tmplts.1
-1	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:InvCrown.cnv_tmplts
-1	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:InvCrown.cnv_tmplts.1
-1	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:Pyramid.cnv_tmplts.2
-1	data\\constants\\cell_bases.json	/^      ["S",["1x1"]]$/;"	a	array:Point.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Crown.cnv_tmplts.2
-1	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Granule.cnv_tmplts.2
-1	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:InvCrown.cnv_tmplts.2
-1	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Pyramid.cnv_tmplts.3
-1	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Rose.cnv_tmplts.2
-1	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	a	array:Basket.cnv_tmplts.2
-1	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	s	array:Basket.cnv_tmplts.2.1
-1	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	a	array:Plate.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	s	array:Plate.cnv_tmplts.0.1
-1	data\\constants\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	a	array:Bipolar.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^      ["S",["NxN"]]$/;"	a	array:DensePoolSame.cnv_tmplts.0
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Basket.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Bipolar.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Crown.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:DensePoolSame.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Granule.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:InvCrown.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:MaxPoolAll.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Plate.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Point.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Pyramid.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Rose.freq_range
-1	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Star.freq_range
+1	data\\axioms\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	a	array:Star.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	s	array:Star.cnv_tmplts.0.1
+1	data\\axioms\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	a	array:Star.cnv_tmplts
+1	data\\axioms\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	a	array:Star.cnv_tmplts.1
+1	data\\axioms\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	s	array:Star.cnv_tmplts.1.1
+1	data\\axioms\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	a	array:MaxPoolAll.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	a	array:Granule.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	a	array:Pyramid.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
+1	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
+1	data\\axioms\\cell_bases.json	/^      ["A",["4x4"]],$/;"	a	array:Crown.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["A",["4x4"]],$/;"	a	array:Rose.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	a	array:Crown.cnv_tmplts
+1	data\\axioms\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	a	array:Crown.cnv_tmplts.1
+1	data\\axioms\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	a	array:Rose.cnv_tmplts
+1	data\\axioms\\cell_bases.json	/^      ["A",["8x8,1"]],$/;"	a	array:Rose.cnv_tmplts.1
+1	data\\axioms\\cell_bases.json	/^      ["AB",["4x4"]],$/;"	a	array:Basket.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["AB",["8x8,1"]],$/;"	a	array:Basket.cnv_tmplts
+1	data\\axioms\\cell_bases.json	/^      ["AB",["8x8,1"]],$/;"	a	array:Basket.cnv_tmplts.1
+1	data\\axioms\\cell_bases.json	/^      ["B",["4x4"]],$/;"	a	array:InvCrown.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["B",["4x4"]],$/;"	a	array:Pyramid.cnv_tmplts
+1	data\\axioms\\cell_bases.json	/^      ["B",["4x4"]],$/;"	a	array:Pyramid.cnv_tmplts.1
+1	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:Granule.cnv_tmplts
+1	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:Granule.cnv_tmplts.1
+1	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:InvCrown.cnv_tmplts
+1	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:InvCrown.cnv_tmplts.1
+1	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:Pyramid.cnv_tmplts.2
+1	data\\axioms\\cell_bases.json	/^      ["S",["1x1"]]$/;"	a	array:Point.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Crown.cnv_tmplts.2
+1	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Granule.cnv_tmplts.2
+1	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:InvCrown.cnv_tmplts.2
+1	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Pyramid.cnv_tmplts.3
+1	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Rose.cnv_tmplts.2
+1	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	a	array:Basket.cnv_tmplts.2
+1	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	s	array:Basket.cnv_tmplts.2.1
+1	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	a	array:Plate.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1"]]$/;"	s	array:Plate.cnv_tmplts.0.1
+1	data\\axioms\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	a	array:Bipolar.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^      ["S",["NxN"]]$/;"	a	array:DensePoolSame.cnv_tmplts.0
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Basket.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Bipolar.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Crown.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:DensePoolSame.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Granule.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:InvCrown.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:MaxPoolAll.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Plate.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Point.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Pyramid.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Rose.freq_range
+1	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	n	array:Star.freq_range
 2	archive\\v_-1\\js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
-2	data\\constants\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	s	array:Star.cnv_tmplts.0.1
-2	data\\constants\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	s	array:Star.cnv_tmplts.1.1
-2	data\\constants\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	a	array:MaxPoolAll.cnv_tmplts.0
-2	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
-2	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
-2	data\\constants\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:Pyramid.cnv_tmplts
-2	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Crown.cnv_tmplts
-2	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Granule.cnv_tmplts
-2	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:InvCrown.cnv_tmplts
-2	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Rose.cnv_tmplts
-2	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	a	array:Basket.cnv_tmplts
-2	data\\constants\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	s	array:Basket.cnv_tmplts.2.1
-2	data\\constants\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	a	array:Bipolar.cnv_tmplts.0
+2	data\\axioms\\cell_bases.json	/^      ["*",["4x4","5x5","6x6"]],$/;"	s	array:Star.cnv_tmplts.0.1
+2	data\\axioms\\cell_bases.json	/^      ["*",["8x8,1","10x10,1","12x12,1"]]$/;"	s	array:Star.cnv_tmplts.1.1
+2	data\\axioms\\cell_bases.json	/^      ["*",["NxN"],["8x8,1"]]$/;"	a	array:MaxPoolAll.cnv_tmplts.0
+2	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
+2	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
+2	data\\axioms\\cell_bases.json	/^      ["B",["8x8,1"]],$/;"	a	array:Pyramid.cnv_tmplts
+2	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Crown.cnv_tmplts
+2	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Granule.cnv_tmplts
+2	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:InvCrown.cnv_tmplts
+2	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Rose.cnv_tmplts
+2	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	a	array:Basket.cnv_tmplts
+2	data\\axioms\\cell_bases.json	/^      ["S",["4x4","8x8,1","12x12,2"]]$/;"	s	array:Basket.cnv_tmplts.2.1
+2	data\\axioms\\cell_bases.json	/^      ["S",["4x4"],["8x8,1"]]$/;"	a	array:Bipolar.cnv_tmplts.0
 3	archive\\v_-1\\js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
-3	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
-3	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
-3	data\\constants\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Pyramid.cnv_tmplts
+3	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
+3	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
+3	data\\axioms\\cell_bases.json	/^      ["S",["3x3"]]$/;"	a	array:Pyramid.cnv_tmplts
 4	archive\\v_-1\\js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
-4	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
-4	data\\constants\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
+4	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Granule.cnv_tmplts.0.1
+4	data\\axioms\\cell_bases.json	/^      ["A",["1x1","1x1","1x1","4x4","8x8"]],$/;"	s	array:Pyramid.cnv_tmplts.0.1
 5	archive\\v_-1\\js-things\\objectives.json	/^	"tertiary": ["art", "logic", "math", "philosophy", "physics", "self improvement"]$/;"	s	array:tertiary
-Activant	data\\constants\\matrix.json	/^    "Activant": "proxies acetylcholine, and is used to control baseline firing % chance",$/;"	s	object:resource_types
+Activant	data\\axioms\\matrix.json	/^    "Activant": "proxies acetylcholine, and is used to control baseline firing % chance",$/;"	s	object:resource_types
 Analysis	archive\\v_-1\\js-things\\areas.json	/^	"Analysis": {$/;"	o
 Associate	archive\\v_-1\\js-things\\areas.json	/^		"Associate" : {$/;"	o	object:Postprocess
 Attention	archive\\v_-1\\js-things\\areas.json	/^		"Attention": {$/;"	o	object:Filter
 Axon	archive\\v_-1\\cell\\axon.py	/^class Axon():$/;"	c
 Axon	archive\\v_-1\\tests\\tests_cell\\test_axon.py	/^class Axon():$/;"	c
 BCLLPlus	configs\\LayerSets\\BCLLPlus.py	/^def BCLLPlus(input_shapes, assoc_shape, context_shape, meta_shapes):$/;"	f
-Basket	data\\constants\\cell_bases.json	/^  "Basket": {$/;"	o
-Bipolar	data\\constants\\cell_bases.json	/^  "Bipolar": {$/;"	o
-Catalyst	data\\constants\\matrix.json	/^    "Catalyst": "proxies serotonin, and is used to indicate a reduction of activation threshold /;"	s	object:resource_types
+Basket	data\\axioms\\cell_bases.json	/^  "Basket": {$/;"	o
+Bipolar	data\\axioms\\cell_bases.json	/^  "Bipolar": {$/;"	o
+Catalyst	data\\axioms\\matrix.json	/^    "Catalyst": "proxies serotonin, and is used to indicate a reduction of activation threshold /;"	s	object:resource_types
 Categorize	archive\\v_-1\\js-things\\areas.json	/^		"Categorize": {$/;"	o	object:Classify
 Cell	archive\\v_-1\\cell\\cell.py	/^class Cell:$/;"	c
 Cell	archive\\v_-1\\tests\\tests_cell\\test_cell.py	/^class Cell:$/;"	c
@@ -184,7 +184,7 @@ ComposeHelper	archive\\v_-1\\js-things\\areas.json	/^		"ComposeHelper" : {$/;"	o
 ConfigTests	tests\\components\\architecture_validator_tests.py	/^class ConfigTests(unittest.TestCase):$/;"	c
 ConfigValidator	validators\\architecture_validator.py	/^class ConfigValidator():$/;"	c
 Core	archive\\v_-1\\golem_core.py	/^class Core:$/;"	c
-Crown	data\\constants\\cell_bases.json	/^  "Crown": {$/;"	o
+Crown	data\\axioms\\cell_bases.json	/^  "Crown": {$/;"	o
 DUCKDUCKGO_API	features\\steps\\service.py	/^DUCKDUCKGO_API = 'https:\/\/api.duckduckgo.com\/'$/;"	v
 DUCKDUCKGO_HOME	features\\steps\\web.py	/^DUCKDUCKGO_HOME = 'https:\/\/duckduckgo.com\/'$/;"	v
 Declare	archive\\v_-1\\js-things\\areas.json	/^		"Declare" : {$/;"	o	object:Postprocess
@@ -193,9 +193,9 @@ Decoder	archive\\v_-1\\decoders\\decoder.py	/^class Decoder:$/;"	c
 Decoder	archive\\v_-1\\tests\\tests_decoders\\test_decoder.py	/^class Decoder:$/;"	c
 Dendrite	archive\\v_-1\\cell\\dendrite.py	/^class Dendrite():$/;"	c
 Dendrite	archive\\v_-1\\tests\\tests_cell\\test_dendrite.py	/^class Dendrite():$/;"	c
-DensePoolSame	data\\constants\\cell_bases.json	/^  "DensePoolSame": {$/;"	o
+DensePoolSame	data\\axioms\\cell_bases.json	/^  "DensePoolSame": {$/;"	o
 Describe	archive\\v_-1\\js-things\\areas.json	/^		"Describe" : {$/;"	o	object:Model
-ElasticActivation	data\\constants\\matrix.json	/^    "ElasticActivation":"proxies glutamate, and is used to increase the chance of activation",$/;"	s	object:resource_types
+ElasticActivation	data\\axioms\\matrix.json	/^    "ElasticActivation":"proxies glutamate, and is used to increase the chance of activation",$/;"	s	object:resource_types
 Encoder	archive\\v_-1\\encoders\\encoder.py	/^class Encoder:$/;"	c
 Encoder	archive\\v_-1\\tests\\tests_encoders\\test_encoder.py	/^class Encoder:$/;"	c
 EnvState	archive\\v_-1\\helpers\\env_state.py	/^class EnvState():$/;"	c
@@ -206,17 +206,17 @@ Golem	archive\\v_-1\\tests\\test_golem.py	/^class Golem:$/;"	c
 Golem	golem.py	/^class Golem():$/;"	c
 GolemFactory	archive\\v_-1\\tests\\test_golem.py	/^class GolemFactory:$/;"	c
 GolemFactory	golem.py	/^class GolemFactory:$/;"	c
-Granule	data\\constants\\cell_bases.json	/^  "Granule": {$/;"	o
+Granule	data\\axioms\\cell_bases.json	/^  "Granule": {$/;"	o
 Guess	archive\\v_-1\\js-things\\areas.json	/^	"Guess" : {$/;"	o
 IOrganism	archive\\v_-1\\js-things\\thoughts.js	/^var IOrganism = {$/;"	c
 Identify	archive\\v_-1\\js-things\\areas.json	/^		"Identify": {$/;"	o	object:Classify
 Imagine	archive\\v_-1\\js-things\\areas.json	/^		"Imagine": {$/;"	o	object:Preprocess
 Imagine	archive\\v_-1\\js-things\\def.json	/^		"Imagine": {$/;"	o	object:Preprocess
-Inhbition	data\\constants\\matrix.json	/^    "Inhbition":"proxies gaba, and is used to reduce the %chance of activation",$/;"	s	object:resource_types
+Inhbition	data\\axioms\\matrix.json	/^    "Inhbition":"proxies gaba, and is used to reduce the %chance of activation",$/;"	s	object:resource_types
 Inputs	archive\\v_-1\\js-things\\olog.js	/^	"Inputs" : [],$/;"	p	class:olog
 Internalize	archive\\v_-1\\js-things\\areas.json	/^		"Internalize" : {$/;"	o	object:Output
 Interpret	archive\\v_-1\\js-things\\areas.json	/^		"Interpret": {$/;"	o	object:Model
-InvCrown	data\\constants\\cell_bases.json	/^  "InvCrown": {$/;"	o
+InvCrown	data\\axioms\\cell_bases.json	/^  "InvCrown": {$/;"	o
 L1TAWhtShp	configs\\LayerSets\\BCLLPlus.py	/^            L1TAWhtShp = ?$/;"	v
 L1TBWhtShp	configs\\LayerSets\\BCLLPlus.py	/^            L1TBWhtShp = ?$/;"	v
 L2TAWhtShp	configs\\LayerSets\\BCLLPlus.py	/^            L2TAWhtShp = ?$/;"	v
@@ -232,7 +232,7 @@ Layer	archive\\v_-1\\matrix\\layer.py	/^class Layer:$/;"	c
 Layer	archive\\v_-1\\tests\\tests_graph\\test_layer.py	/^class Layer:$/;"	c
 Location	archive\\v_-1\\helpers\\location.py	/^class Location:$/;"	c
 Location	archive\\v_-1\\tests\\tests_helpers\\test_location.py	/^class Location:$/;"	c
-MaxPoolAll	data\\constants\\cell_bases.json	/^  "MaxPoolAll": {$/;"	o
+MaxPoolAll	data\\axioms\\cell_bases.json	/^  "MaxPoolAll": {$/;"	o
 ModeControl	archive\\v_-1\\js-things\\areas.json	/^		"ModeControl": {$/;"	o	object:Preprocess
 ModeControl	archive\\v_-1\\js-things\\def.json	/^		"ModeControl": {$/;"	o	object:Preprocess
 Model	archive\\v_-1\\js-things\\areas.json	/^	"Model": {$/;"	o
@@ -249,10 +249,10 @@ Parent	archive\\v_-1\\js-things\\cell.js	/^		"Parent": "",$/;"	p	class:cell.Chai
 Parent	archive\\v_-1\\js-things\\olog.js	/^		"Parent": "",$/;"	p	class:olog.ChainCell
 Perceive	archive\\v_-1\\js-things\\areas.json	/^		"Perceive": {$/;"	o	object:Preprocess
 Perceive	archive\\v_-1\\js-things\\def.json	/^		"Perceive": {$/;"	o	object:Preprocess
-Plate	data\\constants\\cell_bases.json	/^  "Plate": {$/;"	o
+Plate	data\\axioms\\cell_bases.json	/^  "Plate": {$/;"	o
 Pod	archive\\v_-1\\matrix\\pod.py	/^class Pod:$/;"	c
 Pod	archive\\v_-1\\tests\\tests_graph\\test_destination.py	/^class Pod:$/;"	c
-Point	data\\constants\\cell_bases.json	/^  "Point": {$/;"	o
+Point	data\\axioms\\cell_bases.json	/^  "Point": {$/;"	o
 Postdict	archive\\v_-1\\js-things\\areas.json	/^		"Postdict": {$/;"	o	object:Guess
 Postprocess	archive\\v_-1\\js-things\\areas.json	/^	"Postprocess" : {$/;"	o
 Precompose	archive\\v_-1\\js-things\\areas.json	/^		"Precompose" : {$/;"	o	object:Respond
@@ -261,12 +261,12 @@ Preprocess	archive\\v_-1\\js-things\\areas.json	/^	"Preprocess": {$/;"	o
 Preprocess	archive\\v_-1\\js-things\\def.json	/^	"Preprocess": {$/;"	o
 ProblemDomain	archive\\v_-1\\matrix\\problem_domain.py	/^class ProblemDomain:$/;"	c
 ProblemDomain	archive\\v_-1\\tests\\tests_graph\\test_problem_domain.py	/^class ProblemDomain:$/;"	c
-Pyramid	data\\constants\\cell_bases.json	/^  "Pyramid": {$/;"	o
+Pyramid	data\\axioms\\cell_bases.json	/^  "Pyramid": {$/;"	o
 Region	archive\\v_-1\\matrix\\region.py	/^class Region:$/;"	c
 Respond	archive\\v_-1\\js-things\\areas.json	/^	"Respond": {$/;"	o
-Reward||PlasticActivation	data\\constants\\matrix.json	/^    "Reward||PlasticActivation":"proxies dopamine, and is used to increase the chance of activat/;"	s	object:resource_types
-Rose	data\\constants\\cell_bases.json	/^  "Rose": {$/;"	o
-Star	data\\constants\\cell_bases.json	/^  "Star": {$/;"	o
+Reward||PlasticActivation	data\\axioms\\matrix.json	/^    "Reward||PlasticActivation":"proxies dopamine, and is used to increase the chance of activat/;"	s	object:resource_types
+Rose	data\\axioms\\cell_bases.json	/^  "Rose": {$/;"	o
+Star	data\\axioms\\cell_bases.json	/^  "Star": {$/;"	o
 String2SpikeEncoder	archive\\v_-1\\tests\\test_golem_test.py	/^def String2SpikeEncoder(cur_str):$/;"	f
 String2SpikeEncoder	tests\\tests_golem.py	/^def String2SpikeEncoder(cur_str):$/;"	f
 Type	archive\\v_-1\\js-things\\cell.js	/^		"Type": "",$/;"	p	class:cell.ChainCell
@@ -331,18 +331,18 @@ activate	archive\\v_-1\\tests\\tests_graph\\test_layer.py	/^    def activate(sel
 activate	archive\\v_-1\\tests\\tests_graph\\test_problem_domain.py	/^    def activate(self):$/;"	m	class:ProblemDomain
 activate	golem.py	/^    def activate(self, ts, ext_data):$/;"	m	class:Golem
 activateModule	archive\\v_-1\\golem_core.py	/^def activateModule(inputShapes, assocShape, contextShape):$/;"	f
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Basket
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Bipolar
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Crown
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:DensePoolSame
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Granule
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:InvCrown
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:MaxPoolAll
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Plate
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Point
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Pyramid
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Rose
-activation_function	data\\constants\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Star
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Basket
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Bipolar
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Crown
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:DensePoolSame
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Granule
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:InvCrown
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:MaxPoolAll
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Plate
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Point
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Pyramid
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Rose
+activation_function	data\\axioms\\cell_bases.json	/^    "activation_function":"tanh"$/;"	s	object:Star
 after_scenario	features\\environment.py	/^def after_scenario(context, scenario):$/;"	f
 arith_brain	archive\\v_-1\\tests\\test_golem_test.py	/^def arith_brain():$/;"	f
 arith_brain	tests\\tests_golem.py	/^def arith_brain():$/;"	f
@@ -362,19 +362,19 @@ build_full_config	golem.py	/^    def build_full_config(core_type_fname):$/;"	m	c
 build_full_config	tests\\tests_golem.py	/^def build_full_config(brain_fname):$/;"	f
 calc_mem_use	archive\\v_-1\\tests\\tests_graph\\test_region.py	/^def calc_mem_use(num_cells, edges_per_cell, cell_size):$/;"	f
 cell	archive\\v_-1\\js-things\\cell.js	/^var cell = {$/;"	c
-cell	data\\constants\\matrix.json	/^    "cell":"",$/;"	s	object:node_types
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts": [$/;"	a	object:Crown
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Basket
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Bipolar
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:DensePoolSame
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Granule
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:InvCrown
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:MaxPoolAll
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Plate
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Point
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Pyramid
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Rose
-cnv_tmplts	data\\constants\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Star
+cell	data\\axioms\\matrix.json	/^    "cell":"",$/;"	s	object:node_types
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts": [$/;"	a	object:Crown
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Basket
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Bipolar
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:DensePoolSame
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Granule
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:InvCrown
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:MaxPoolAll
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Plate
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Point
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Pyramid
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Rose
+cnv_tmplts	data\\axioms\\cell_bases.json	/^    "cnv_tmplts":[$/;"	a	object:Star
 col_sz	archive\\v_-1\\encoders\\img-filter.py	/^col_sz = int(math.sqrt(mat_sz))$/;"	v
 col_sz	archive\\v_-1\\encoders\\img-filter.py	/^row_sz, col_sz, num_ch = imdat.shape$/;"	v
 compose_function	components\\module.py	/^    def compose_function(self,inputMelds,funcType,procStageGroupsDict,procStageShape,procGroupIn/;"	m	class:Module
@@ -408,20 +408,20 @@ end_row	archive\\v_-1\\encoders\\img-filter.py	/^  end_row = start_row+inr_hght$
 evaluate_melds	components\\architecture_reader.py	/^def evaluate_melds():$/;"	f
 extend	archive\\v_-1\\helpers\\location.py	/^    def extend(self, key):$/;"	m	class:Location
 extend	archive\\v_-1\\tests\\tests_helpers\\test_location.py	/^    def extend(self, key):$/;"	m	class:Location
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Basket
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Bipolar
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Crown
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:DensePoolSame
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Granule
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:InvCrown
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:MaxPoolAll
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Plate
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Point
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Pyramid
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Rose
-freq_range	data\\constants\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Star
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Basket
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Bipolar
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Crown
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:DensePoolSame
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Granule
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:InvCrown
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:MaxPoolAll
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Plate
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Point
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Pyramid
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Rose
+freq_range	data\\axioms\\cell_bases.json	/^    "freq_range": [5,256],$/;"	a	object:Star
 func_type_validation	validators\\module_validator.py	/^    def func_type_validation(self):$/;"	m	class:ModuleValidator
-function	data\\constants\\matrix.json	/^    "function":""$/;"	s	object:node_types
+function	data\\axioms\\matrix.json	/^    "function":""$/;"	s	object:node_types
 gendShpDscrps	components\\architecture_reader.py	/^gendShpDscrps = {}$/;"	v
 generate_golem_id	archive\\v_-1\\tests\\test_golem.py	/^    def generate_golem_id(golem_type):$/;"	m	class:Golem
 generate_golem_id	components\\architecture_reader.py	/^def generate_golem_id(golem_type):$/;"	f
@@ -438,30 +438,30 @@ get_input_counts	golem.py	/^    def get_input_counts(self, nodes, desired_dests)
 get_value	archive\\v_-1\\cell\\axon.py	/^    def get_value(resource_type, chemical_type):$/;"	m	class:Axon
 get_value	archive\\v_-1\\tests\\tests_cell\\test_axon.py	/^    def get_value(resource_type, chemical_type):$/;"	m	class:Axon
 inMlds	components\\architecture_reader.py	/^inMlds = {}$/;"	v
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Basket
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Bipolar
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Crown
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:DensePoolSame
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Granule
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:InvCrown
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:MaxPoolAll
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Plate
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Point
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Pyramid
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Rose
-init_freq	data\\constants\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Star
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Basket
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Bipolar
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Crown
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:DensePoolSame
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Granule
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:InvCrown
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:MaxPoolAll
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Plate
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Point
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Pyramid
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Rose
-init_threshhold	data\\constants\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Star
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Basket
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Bipolar
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Crown
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:DensePoolSame
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Granule
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:InvCrown
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:MaxPoolAll
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Plate
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Point
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Pyramid
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Rose
+init_freq	data\\axioms\\cell_bases.json	/^    "init_freq": 5,$/;"	n	object:Star
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Basket
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Bipolar
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Crown
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:DensePoolSame
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Granule
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:InvCrown
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:MaxPoolAll
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Plate
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Point
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Pyramid
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Rose
+init_threshhold	data\\axioms\\cell_bases.json	/^    "init_threshhold":0.98,$/;"	n	object:Star
 init_ts	archive\\v_-1\\tests\\test_golem.py	/^    def init_ts(ts_data):$/;"	m	class:Golem
 init_ts	components\\architecture_reader.py	/^def init_ts(ts_data):$/;"	f
 init_ts	golem.py	/^    def init_ts(ts_data):$/;"	m	class:Golem
@@ -485,7 +485,7 @@ mat_sz	archive\\v_-1\\encoders\\img-filter.py	/^mat_sz = 64$/;"	v
 misc_stats	archive\\v_-1\\helpers\\usage_limits.py	/^    def misc_stats(self):$/;"	m	class:UsageLimits
 misc_stats	archive\\v_-1\\tests\\tests_helpers\\test_usage_limits.py	/^    def misc_stats(self):$/;"	m	class:UsageLimits
 newFunction	archive\\v_-1\\js-things\\stuff.js	/^function newFunction() {$/;"	f
-node_types	data\\constants\\matrix.json	/^  "node_types": {$/;"	o
+node_types	data\\axioms\\matrix.json	/^  "node_types": {$/;"	o
 np	archive\\v_-1\\matrix\\layer.py	/^import numpy as np$/;"	I
 np	archive\\v_-1\\tests\\test_imports.py	/^import PIL, os, numpy as np, math, collections, threading, json, bcolz, random, scipy#, cv2$/;"	I
 np	archive\\v_-1\\tests\\tests_graph\\test_layer.py	/^import numpy as np$/;"	I
@@ -508,18 +508,18 @@ parse_module_config	components\\architecture_reader.py	/^def parse_module_config
 parse_modules	archive\\v_-1\\tests\\test_golem.py	/^    def parse_modules(self):$/;"	m	class:Golem
 parse_modules	components\\architecture_reader.py	/^def parse_modules(self):$/;"	f
 parse_modules	golem.py	/^    def parse_modules(self):$/;"	m	class:Golem
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Basket
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Bipolar
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Crown
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:DensePoolSame
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Granule
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:InvCrown
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:MaxPoolAll
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Plate
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Point
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Pyramid
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Rose
-pct_of_pod	data\\constants\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Star
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Basket
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Bipolar
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Crown
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:DensePoolSame
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Granule
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:InvCrown
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:MaxPoolAll
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Plate
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Point
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Pyramid
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Rose
+pct_of_pod	data\\axioms\\cell_bases.json	/^    "pct_of_pod": 0,$/;"	n	object:Star
 pd	archive\\v_-1\\tests\\test_imports.py	/^import pandas as pd, pickle, sys, itertools, string, sys, re, datetime, time, shutil, copy$/;"	I
 pd	imports.py	/^import pandas as pd, pickle, sys, itertools, string, sys, re, datetime, time, shutil, copy$/;"	I
 plasticityRules	configs\\LayerSets\\BCLLPlus.py	/^plasticityRules=f(resourceT, past_n_input_sets_of_type)$/;"	v
@@ -546,7 +546,7 @@ reset	archive\\v_-1\\tests\\tests_cell\\test_dendrite.py	/^    def reset():$/;"	
 reset	archive\\v_-1\\tests\\tests_helpers\\test_usage_limits.py	/^    def reset(self):$/;"	m	class:UsageLimits
 reset_state	archive\\v_-1\\helpers\\env_state.py	/^    def reset_state(self):$/;"	m	class:EnvState
 reset_state	archive\\v_-1\\tests\\tests_helpers\\test_chemical_state.py	/^    def reset_state(self):$/;"	m	class:ChemicalState
-resource_types	data\\constants\\matrix.json	/^  "resource_types": {$/;"	o
+resource_types	data\\axioms\\matrix.json	/^  "resource_types": {$/;"	o
 row_sz	archive\\v_-1\\encoders\\img-filter.py	/^row_sz = int(math.sqrt(mat_sz))$/;"	v
 row_sz	archive\\v_-1\\encoders\\img-filter.py	/^row_sz, col_sz, num_ch = imdat.shape$/;"	v
 run	archive\\v_-1\\tests\\test_golem.py	/^    def run(self):$/;"	m	class:Golem

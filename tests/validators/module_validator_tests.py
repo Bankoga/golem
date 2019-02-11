@@ -3,7 +3,7 @@ from hypothesis import given
 import hypothesis.strategies as st
 from string import ascii_lowercase
 from validators.module_validator import ModuleValidator
-from data.constants.matrix import proc_types
+from data.axioms.matrix import proc_types
 # from config_tests_data.py import *
 
 class ModuleValidatorTests(unittest.TestCase):

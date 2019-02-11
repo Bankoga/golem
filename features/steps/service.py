@@ -9,7 +9,7 @@ import requests
 from behave import *
 
 
-# "Constants"
+# "axioms"
 
 DUCKDUCKGO_API = 'https://api.duckduckgo.com/'
 

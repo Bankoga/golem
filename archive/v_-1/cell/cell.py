@@ -10,7 +10,7 @@ from location import *
 # should the cell accept a potential plasticity parameters object so that we can alter plasticity in other areas of the brain_network? Probably
 class Cell:
     TODO: Consider renaming cell to node
-    TODO: Optim: move the cell constants to another file so that each cell does not duplicate unnecessary data
+    TODO: Optim: move the cell axioms to another file so that each cell does not duplicate unnecessary data
     def __init__(self, resource_type, cell_morphology, key, ploc, use_limits):
         """
         Creates a new cell given the necessary parameters from the higher levels
