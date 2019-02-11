@@ -12,4 +12,4 @@ node_types = {
 proc_types = [
   ""
 ]
-dest_key_pattern = "[/w|/d](_[/w|/d|].*)_?(-[/w|/d].*)?"
+dest_key_pattern = "[/w|/d].*"

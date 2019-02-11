@@ -1,0 +1,63 @@
+---
+Id: DCLEG
+Name: Decision Controlled Logos Encapsulator Group
+StageGroupsDicts:
+  NoiseCtrl: [NoiseDwnInhib,NoiseAdjInhib]
+  CycleRelay: [CycleGateCtrl,CycleStgAdv]
+  CntxtRelay: [CntxtStgAdv,CntxtUpInhib]
+  Relay: [StgAdv]
+StageShapes:
+  NoiseDwnInhib: G_i
+  NoiseAdjInhib: G_i
+  CycleGateCtrl: G_i
+  CycleStgAdv: G_i
+  CntxtStgAdv: G_i
+  CntxtUpInhib: G_i
+  Relay: Gate_i
+InputMelds:
+  NoiseDwnInhib:
+    Melds: [NoiseAdjInhib-Inhibitor,NoiseCtrl-Energy]
+    Hooks: [NoiseOut]
+  NoiseAdjInhib:
+    Melds: [NoiseCtrl-Energy]
+    Hooks: [NoiseOut]
+  CycleGateCtrl:
+    Melds: [CycleRelay-Energy, NoiseDwnInhib-Inhibitor]
+    Hooks: [CycleOut]
+  CycleStgAdv:
+    Melds: [CycleRelay-Energy]
+    Hooks: [CycleOut]
+  CntxtStgAdv:
+    Melds: [CntxtRelay-Energy]
+    Hooks: [CntxtOut]
+  CntxtUpInhib:
+    Melds: [CntxtRelay-Energy]
+    Hooks: [CntxtOut]
+  Relay:
+    Melds: []
+    Hooks: [RelayIn]
+OutputMelds:
+  NoiseDwnInhib:
+    Melds: [CntxtUpInhib-Inhbitor,CycleRelay-Inhibitor,CntxtRelay-Inhibitor]
+    Hooks: null
+  NoiseAdjInhib:
+    Melds: [NoiseDwnInhib-Inhibitor]
+    Hooks: null
+  CycleGateCtrl:
+    Melds: [CycleRelay-Inhibitor]
+    Hooks: null
+  CycleStgAdv:
+    Melds: [CycleRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
+    Hooks: [CycleIn]
+  CntxtStgAdv:
+    Melds: [CntxtRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
+    Hooks: null
+  CntxtUpInhib:
+    Melds: [CntxtRelay-Inhibitor]
+    Hooks: [CntxtIn]
+  Relay:
+    Melds: []
+    Hooks: [RelayOut]
+LinksDefined: null
+LinksUsed: G_i
+...

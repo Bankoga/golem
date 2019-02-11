@@ -30,14 +30,13 @@ class MelderTests(unittest.TestCase):
     self.assertTrue(datp.resource==parts[1])
     self.assertTrue(datp.shape==parts[2])
 
-  @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
+  @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})'))
   def test_eval_proto_meld(self, meld):
     datp = self.melder.eval_meld(meld)
     self.assertIsInstance(datp,Datapack)
     parts=meld.split(",")
-    self.assertTrue(datp.address==parts[0])
-    self.assertTrue(datp.resource==parts[1])
-    self.assertTrue(datp.shape==parts[2])
+    self.assertTrue(datp.address!=parts[0])
+    self.assertTrue(datp.resource!=parts[1])
 
   @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
   def test_eval_proto_melds(self, meld):

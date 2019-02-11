@@ -1,3 +1,4 @@
+// Hypothetically, each cell base could always implement its own function instead of specifiying convolutions
 {
   "Basket": {
     "cnv_tmplts":[
