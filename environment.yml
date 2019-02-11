@@ -16,3 +16,4 @@ dependencies:
 - pip
 - cython
 - pylint
+- yaml

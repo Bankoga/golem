@@ -3,8 +3,8 @@ dirs = {
   'proc': 'configs\\proctypes\\tests\\'
 }
 
-files = {
-  'test.golem': 'configs\\types\\tests\\Test.golem',
-  'testgate.proc': 'proctypes\\types\\tests\\TestGate.proc',
-  'testdcleg.proc': 'proctypes\\types\\tests\\TestDCLEG.proc'
+filenames = {
+  'test.golem': 'Test.golem',
+  'testgate.proc': 'TestGate.proc',
+  'testdcleg.proc': 'TestDCLEG.proc'
 }
