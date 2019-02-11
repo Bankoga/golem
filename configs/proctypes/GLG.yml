@@ -1,63 +1,39 @@
 ---
 Id: GLG
 Name: Gateway Layer Groups
-StageGroupsDicts:
+StageToGroupsDicts:
   NoiseCtrl: [NoiseDwnInhib,NoiseAdjInhib]
   CycleRelay: [CycleGateCtrl,CycleStgAdv]
   CntxtRelay: [CntxtStgAdv,CntxtUpInhib]
   Relay: [StgAdv]
-StageShapes:
-  NoiseDwnInhib: G_i
-  NoiseAdjInhib: G_i
-  CycleGateCtrl: G_i
-  CycleStgAdv: G_i
-  CntxtStgAdv: G_i
-  CntxtUpInhib: G_i
-  Relay: Gate_i
+ShapeToGroupsDicts:
+  G_i: [NoiseDwnInhib,NoiseAdjInhib,CycleGateCtrl,CycleStgAdv,CntxtStgAdv,CntxtUpInhib]
+  Gate_i: [Relay]
 InputMelds:
-  NoiseDwnInhib:
-    Melds: [NoiseAdjInhib-Inhibitor,NoiseCtrl-Energy]
-    Hooks: [NoiseOut]
-  NoiseAdjInhib:
-    Melds: [NoiseCtrl-Energy]
-    Hooks: [NoiseOut]
-  CycleGateCtrl:
-    Melds: [CycleRelay-Energy, NoiseDwnInhib-Inhibitor]
-    Hooks: [CycleOut]
-  CycleStgAdv:
-    Melds: [CycleRelay-Energy]
-    Hooks: [CycleOut]
-  CntxtStgAdv:
-    Melds: [CntxtRelay-Energy]
-    Hooks: [CntxtOut]
-  CntxtUpInhib:
-    Melds: [CntxtRelay-Energy]
-    Hooks: [CntxtOut]
-  Relay:
-    Melds: []
-    Hooks: [RelayIn]
+  NoiseDwnInhib: [NoiseAdjInhib-Inhibitor,NoiseCtrl-Energy]
+  NoiseAdjInhib: [NoiseCtrl-Energy]
+  CycleGateCtrl: [CycleRelay-Energy,NoiseDwnInhib-Inhibitor]
+  CycleStgAdv: [CycleRelay-Energy]
+  CntxtStgAdv: [CntxtRelay-Energy]
+  CntxtUpInhib: [CntxtRelay-Energy]
+  Relay: null
 OutputMelds:
-  NoiseDwnInhib:
-    Melds: [CntxtUpInhib-Inhbitor,CycleRelay-Inhibitor,CntxtRelay-Inhibitor]
-    Hooks: null
-  NoiseAdjInhib:
-    Melds: [NoiseDwnInhib-Inhibitor]
-    Hooks: null
-  CycleGateCtrl:
-    Melds: [CycleRelay-Inhibitor]
-    Hooks: null
-  CycleStgAdv:
-    Melds: [CycleRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
-    Hooks: [CycleIn]
-  CntxtStgAdv:
-    Melds: [CntxtRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
-    Hooks: null
-  CntxtUpInhib:
-    Melds: [CntxtRelay-Inhibitor]
-    Hooks: [CntxtIn]
-  Relay:
-    Melds: []
-    Hooks: [RelayOut]
+  NoiseDwnInhib: [CntxtUpInhib-Inhbitor,CycleRelay-Inhibitor,CntxtRelay-Inhibitor]
+  NoiseAdjInhib: [NoiseDwnInhib-Inhibitor]
+  CycleGateCtrl: [CycleRelay-Inhibitor]
+  CycleStgAdv: [CycleRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
+  CntxtStgAdv: [CntxtRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
+  CntxtUpInhib: [CntxtRelay-Inhibitor]
+  Relay: null
+HooksIn:
+  NoiseIn: [NoiseDwnInhib,NoiseAdjInhib]
+  CycleIn: [CycleGateCtrl,CycleStgAdv]
+  CntxtIn: [CntxtStgAdv,CntxtUpInhib]
+  RelayIn: [Relay]
+HooksOut:
+    CycleOut: [CycleStgAdv]
+    CntxtOut: [CntxtStgAdv]
+    RelayOut: [Relay]
 LinksDefined:
   - LinkId: G_i
     HooksRequired:

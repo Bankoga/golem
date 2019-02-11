@@ -1,63 +1,56 @@
 ---
 Id: DCLEG
 Name: Decision Controlled Logos Encapsulator Group
-StageGroupsDicts:
-  NoiseCtrl: [NoiseDwnInhib,NoiseAdjInhib]
-  CycleRelay: [CycleGateCtrl,CycleStgAdv]
-  CntxtRelay: [CntxtStgAdv,CntxtUpInhib]
-  Relay: [StgAdv]
-StageShapes:
-  NoiseDwnInhib: G_i
-  NoiseAdjInhib: G_i
-  CycleGateCtrl: G_i
-  CycleStgAdv: G_i
-  CntxtStgAdv: G_i
-  CntxtUpInhib: G_i
-  Relay: Gate_i
+StageToGroupsDicts:
+  CntxtCtrl: [CntxtDwnInhib]
+  InitProc: [IPBiInhibCtrl,IPDownInhib,IPStgAdv]
+  AddtProc: [APBiInhibCtrl,APDownInhib,APStgAdv]
+  ProcCtrl: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
+  OutProc: [OPBiInhibCtrl,OPDownInhib,OPStgAdv]
+  CntxtProc: [COBiInhibCtrl,COUpInhib,COStgAdv]
+ShapeToGroupsDicts:
+  ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+InputHooks:
+  - CntxtIn: []
+OutputHooks:
+  - CntxtOut: [COStgAdv]
 InputMelds:
-  NoiseDwnInhib:
-    Melds: [NoiseAdjInhib-Inhibitor,NoiseCtrl-Energy]
-    Hooks: [NoiseOut]
-  NoiseAdjInhib:
-    Melds: [NoiseCtrl-Energy]
-    Hooks: [NoiseOut]
-  CycleGateCtrl:
-    Melds: [CycleRelay-Energy, NoiseDwnInhib-Inhibitor]
-    Hooks: [CycleOut]
-  CycleStgAdv:
-    Melds: [CycleRelay-Energy]
-    Hooks: [CycleOut]
-  CntxtStgAdv:
-    Melds: [CntxtRelay-Energy]
-    Hooks: [CntxtOut]
-  CntxtUpInhib:
-    Melds: [CntxtRelay-Energy]
-    Hooks: [CntxtOut]
-  Relay:
-    Melds: []
-    Hooks: [RelayIn]
+  CntxtDwnInhib: null
+  IPBiInhibCtrl: null
+  IPDownInhib: null
+  IPStgAdv: null
+  APBiInhibCtrl: null
+  APDownInhib: null
+  APStgAdv: null
+  CBiInhibCtrl: null
+  CDownInhib: null
+  CUpInhib: null
+  CStgAdv: null
+  OPBiInhibCtrl: null
+  OPDownInhib: null
+  OPStgAdv: null
+  COBiInhibCtrl: null
+  COUpInhib: null
+  COStgAdv: null
 OutputMelds:
-  NoiseDwnInhib:
-    Melds: [CntxtUpInhib-Inhbitor,CycleRelay-Inhibitor,CntxtRelay-Inhibitor]
-    Hooks: null
-  NoiseAdjInhib:
-    Melds: [NoiseDwnInhib-Inhibitor]
-    Hooks: null
-  CycleGateCtrl:
-    Melds: [CycleRelay-Inhibitor]
-    Hooks: null
-  CycleStgAdv:
-    Melds: [CycleRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
-    Hooks: [CycleIn]
-  CntxtStgAdv:
-    Melds: [CntxtRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
-    Hooks: null
-  CntxtUpInhib:
-    Melds: [CntxtRelay-Inhibitor]
-    Hooks: [CntxtIn]
-  Relay:
-    Melds: []
-    Hooks: [RelayOut]
+  CntxtDwnInhib: []
+  IPBiInhibCtrl: []
+  IPDownInhib: []
+  IPStgAdv: []
+  APBiInhibCtrl: []
+  APDownInhib: []
+  APStgAdv: []
+  CBiInhibCtrl: []
+  CDownInhib: []
+  CUpInhib: []
+  CStgAdv: []
+  OPBiInhibCtrl: []
+  OPDownInhib: []
+  OPStgAdv: []
+  COBiInhibCtrl: []
+  COUpInhib: []
+  COStgAdv: []
 LinksDefined: null
-LinksUsed: G_i
+LinksUsed:
+  - G_i
 ...

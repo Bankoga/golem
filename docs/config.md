@@ -36,7 +36,10 @@ A meld is a pattern for describing one or more data_packs which have a static ad
 A link is a pattern for describing changes to the shape_composition function that corresponds to a group or meld based on hooks. Links can introduce new datapacks into the inputs, and outputs of a module as well as affect the number of regions in the module. They only show up in ProcGroup I/O melds.
 
 - Full: Module_key-subdest,Resource_type,Field_shape
-- Link: Link_key
+- Link: Linkkey || Linkkey_i
+
+Each non-itemized (bucket defining) link key can help set a statically determined number of regions for the defining module, and the number of shapes to break the output of connected modules into.
+Each itemized link helps to dynamically determine the number of regions for the defining module.
 
 Each link type can have it's own field shape that needs to be accounted for, and each link must be counted separately so we have to dynamically generate all link input and output melds
 
@@ -44,7 +47,7 @@ Each link type can have it's own field shape that needs to be accounted for, and
 
 Links are golem specific changes to the inputs and outputs of specifically interconnected processing groups. Essentially, they are templated connections for outputting to or from the module to other connected modules. Some can be used to determine the number of channels in this module during initialization?
 
-Links require hooks to use, which are applied to proc group melds. Hooks are paired -In/-Out, and somewhere with a -Out builds a datapack to be used everywhere the corresponding -In exists.
+Links require hooks to use, which are applied to proc group melds. Hooks are paired -In/-Out, and somewhere with a -Out builds a datapack to be used EVERYWHERE the corresponding -In exists.
 
 ## Proc Func
 
