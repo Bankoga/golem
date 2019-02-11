@@ -22,7 +22,9 @@ Each Module config has the following properties:
 - Pipeline: The processing container that runs through the module, and holds it's definition.
 - ProcType: Each module goes through a templated processing cycle or function which is composed of stages, and groups. Though could conceivably be reduced to a stagegroupsdict placeholder because all of the other details appear to be specific to each module. Stages are mostly for useage by the nodes to identify shapes by key, and groups are the different factors of the function or process.
 - ProcGroupDetails: Used to store population level details for modules that represent large groups of nodes. Example = GroupId: {[NodeDetails],total_node_count,[hooks]}
+- ShapeToGroupsDicts: Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
 - ProcGroupComposition: Used to determine how the different members of the group work together to produce the output!
+- ProcOutputMelds | Module | --- | --- |
 - InputMelds: A list of all melds that serve as input to the module. Eventually, we could get rid of input melds with just the module shape coupled to an automatic linking and rebase system, for some parts maybe. For others, it's definitely necessary to distinguish. Forcing the cognitive architects to hard code the correspondence between all inputs, and outputs seems useful though when it can be applied. This can only be applied to input-output meld pairs of the same level in the same module. The two levels are Proc-Proc or Module-Module. Defines the total sets of shapes used by each processing group as inputs.
 - OutputMelds: The primary output key value tuples. Defines the total sets of shapes used by each processing group as outputs.
 - Links: The list of link rules to use for modifying the inputs, outputs, and shape composition by hook. In essence, the list of interconnections that modify processing within this module which it may reciprocally affect.
@@ -59,11 +61,9 @@ A proc func (or cycle) is the series of transformations that are performed inter
 | --- | --- | --- | --- |
 | ProcType | Both | --- | --- |
 | ProcComposition | ProcType | --- | --- |
-| StageToGroupsDict | ProcType | Used to determine the number of proc groups, and their positions relative to each other | --- |
-| ShapeToGroupsDicts | Module | Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
-| ProcGroupInputMelds | Module | --- | GroupId: {[FullMelds],[LinkMelds]} |
-| ProcGroupOutputMelds | Module | --- | GroupId: {[FullMelds],[LinkMelds]} |
-| ProcOutputMelds | Module | --- | --- |
+| StageToGroupsDict | ProcType | Used to determine the number of proc groups, and their positions relative to each other. Must use valid link or field ids as keys. All valid fields are defined WHERE? | --- |
+| ProcGroupInputMelds | ProcType | --- | GroupId: {[FullMelds],[LinkMelds]} |
+| ProcGroupOutputMelds | ProcType | --- | GroupId: {[FullMelds],[LinkMelds]} |
 
 - Coders (CDR): The type of matrix modules used for bringing data into or out of the matrix
 - DecisionControlledLogosEncapsulatorsGroup (DCLEG): The type of matrix modules used for performing operations that can be interferred with by the decision making system.

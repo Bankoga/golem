@@ -2,10 +2,10 @@
 Id: GLG
 Name: Gateway Layer Groups
 StageToGroupsDicts:
-  NoiseCtrl: [NoiseDwnInhib,NoiseAdjInhib]
-  CycleRelay: [CycleGateCtrl,CycleStgAdv]
-  CntxtRelay: [CntxtStgAdv,CntxtUpInhib]
-  Relay: [StgAdv]
+  - NoiseCtrl: [NoiseDwnInhib,NoiseAdjInhib]
+  - CycleRelay: [CycleGateCtrl,CycleStgAdv]
+  - CntxtRelay: [CntxtStgAdv,CntxtUpInhib]
+  - Relay: [StgAdv]
 ShapeToGroupsDicts:
   G_i: [NoiseDwnInhib,NoiseAdjInhib,CycleGateCtrl,CycleStgAdv,CntxtStgAdv,CntxtUpInhib]
   Gate_i: [Relay]
@@ -25,12 +25,12 @@ OutputMelds:
   CntxtStgAdv: [CntxtRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
   CntxtUpInhib: [CntxtRelay-Inhibitor]
   Relay: null
-HooksIn:
+HooksInTo:
   NoiseIn: [NoiseDwnInhib,NoiseAdjInhib]
   CycleIn: [CycleGateCtrl,CycleStgAdv]
   CntxtIn: [CntxtStgAdv,CntxtUpInhib]
   RelayIn: [Relay]
-HooksOut:
+HooksOutOf:
     CycleOut: [CycleStgAdv]
     CntxtOut: [CntxtStgAdv]
     RelayOut: [Relay]
@@ -42,6 +42,7 @@ LinksDefined:
       - CycleIn
       - CycleOut
       - NoiseIn
+      - NoiseOut
   - LinkId: Gate_i
     HooksRequired:
       - RelayIn

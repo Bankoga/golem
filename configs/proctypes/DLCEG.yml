@@ -2,18 +2,21 @@
 Id: DCLEG
 Name: Decision Controlled Logos Encapsulator Group
 StageToGroupsDicts:
-  CntxtCtrl: [CntxtDwnInhib]
-  InitProc: [IPBiInhibCtrl,IPDownInhib,IPStgAdv]
-  AddtProc: [APBiInhibCtrl,APDownInhib,APStgAdv]
-  ProcCtrl: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
-  OutProc: [OPBiInhibCtrl,OPDownInhib,OPStgAdv]
-  CntxtProc: [COBiInhibCtrl,COUpInhib,COStgAdv]
+  - CntxtCtrl: [CntxtDwnInhib]
+  - InitProc: [IPBiInhibCtrl,IPDownInhib,IPStgAdv]
+  - AddtProc: [APBiInhibCtrl,APDownInhib,APStgAdv]
+  - ProcCtrl: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
+  - OutProc: [OPBiInhibCtrl,OPDownInhib,OPStgAdv]
+  - CntxtProc: [COBiInhibCtrl,COUpInhib,COStgAdv]
 ShapeToGroupsDicts:
   ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
-InputHooks:
-  - CntxtIn: []
-OutputHooks:
-  - CntxtOut: [COStgAdv]
+HooksInto:
+  CntxtIn: [CntxtDwnInhib]
+  CycleIn: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
+HooksOutOf:
+  CntxtOut: [COStgAdv]
+  NoiseOut: [OPStgAdv,COStgAdv]
+  CycleOut: [OPStgAdv]
 InputMelds:
   CntxtDwnInhib: null
   IPBiInhibCtrl: null
