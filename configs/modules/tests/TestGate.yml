@@ -10,4 +10,11 @@ ProcGroupDetails:
   CntxtUpInhib: [["Plate,1"],1]
   Relay: [["Point,1"],1]
 InputMelds: null
-OutputMelds: null
+OutputMelds: 
+  - ProcCtrl-Energy
+  - CntxtCtrl-Energy
+  - NoiseCtrl-Energy
+  - ProcCtrl-Inhibitor
+  - CntxtCtrl-Inhibitor
+  - NoiseCtrl-Inhibitor
+...
