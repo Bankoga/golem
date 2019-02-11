@@ -14,12 +14,6 @@ class MelderTests(unittest.TestCase):
   def setUp(self):
     self.melder = Melder()
 
-  # def test_eval_melds(self, meld):
-  #   """given a list of meld templates, and WHAT DATA IS REQ?
-  #   When the full list of melds is evaluated
-  #   Then <count> results should be in the <format>"""
-  #   self.assertTrue(False)
-
   # FOR EACH SET OF MELDTYPES/PATTERNS/FORMATS THAT ARE HANDLED IN THEIR OWN FUNCTION HAVE UNIQUE TEST METHOD
   @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
   def test_eval_full_meld(self, meld):
@@ -48,6 +42,13 @@ class MelderTests(unittest.TestCase):
     self.assertTrue(datp.shape==parts[2])
 
 """
+
+  def test_eval_melds(self, meld):
+    given a list of meld templates, and WHAT DATA IS REQ?
+    When the full list of melds is evaluated
+    Then <count> results should be in the <format>
+    self.assertTrue(False)
+
 4/5 Sources of Melds from a Module Config
   InputMeld
   ProcGroupInputMeld
