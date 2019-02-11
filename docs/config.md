@@ -25,8 +25,8 @@ Each Module config has the following properties:
 - ShapeToGroupsDicts: Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
 - ProcGroupComposition: Used to determine how the different members of the group work together to produce the output!
 - ProcOutputMelds | Module | --- | --- |
-- InputMelds: A list of all melds that serve as input to the module. Eventually, we could get rid of input melds with just the module shape coupled to an automatic linking and rebase system, for some parts maybe. For others, it's definitely necessary to distinguish. Forcing the cognitive architects to hard code the correspondence between all inputs, and outputs seems useful though when it can be applied. This can only be applied to input-output meld pairs of the same level in the same module. The two levels are Proc-Proc or Module-Module. Defines the total sets of shapes used by each processing group as inputs.
-- OutputMelds: The primary output key value tuples. Defines the total sets of shapes used by each processing group as outputs.
+- InputMelds: A list of all Golem type specific melds that serve as input to the module. These use specific group ids in order to be distributed.
+- OutputMelds: The primary output key value tuples. Defines the total sets of shapes used by each processing group as outputs. These use specific group ids in order to be distributed.
 - Links: The list of link rules to use for modifying the inputs, outputs, and shape composition by hook. In essence, the list of interconnections that modify processing within this module which it may reciprocally affect.
 - LinksRooted: The list of links that are are defined by this module or rooted to this module.
 - Channels: Each layer template function initialized within a module is a distinct channel?
@@ -39,7 +39,7 @@ One of the most important distinctions between a link and a full meld, is that a
 A meld is a pattern for describing one or more data_packs which have a static address, resource type, and shape. They show up in all properties that use melds.
 A link is a pattern for describing changes to the shape_composition function that corresponds to a group or meld based on hooks. Links can introduce new datapacks into the inputs, and outputs of a module as well as affect the number of regions in the module. They only show up in ProcGroup I/O melds.
 
-- Full: Module_key-subdest,Resource_type,Field_shape
+- Full: Modulekey-subdestkey,Resource_type,Field_shape,hooks
 - Link: Linkkey || Linkkey_i
 
 Each non-itemized (bucket defining) link key can help set a statically determined number of regions for the defining module, and the number of shapes to break the output of connected modules into.
