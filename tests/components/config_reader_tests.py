@@ -6,8 +6,6 @@ from string import ascii_lowercase
 # from config_tests_data.py import *
 from data.axioms.matrix import dest_key_pattern
 from components.config_reader import ConfigReader
-reader = ConfigReader()
-cfg = reader.read('Test','golem')
 
 class ConfigReaderTests(unittest.TestCase):
 
