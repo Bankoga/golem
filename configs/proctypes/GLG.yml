@@ -6,9 +6,6 @@ StageToGroupsDicts:
   - CycleRelay: [CycleGateCtrl,CycleStgAdv]
   - CntxtRelay: [CntxtStgAdv,CntxtUpInhib]
   - Relay: [StgAdv]
-ShapeToGroupsDicts:
-  G_i: [NoiseDwnInhib,NoiseAdjInhib,CycleGateCtrl,CycleStgAdv,CntxtStgAdv,CntxtUpInhib]
-  Gate_i: [Relay]
 InputMelds:
   NoiseDwnInhib: [NoiseAdjInhib-Inhibitor,NoiseCtrl-Energy]
   NoiseAdjInhib: [NoiseCtrl-Energy]

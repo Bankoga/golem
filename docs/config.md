@@ -13,20 +13,19 @@ Each Golem config has the following properties:
 - Name: The primary id, and semantic label for the module
 - Purpose: A description of what the module does at a high level within the cognitive matrix
 - Modules: The list of processing containers that define the skeletion of the cognitive matrix of the golem
+  - ShapeToGroupsDicts: Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
+  - ProcGroupComposition: Used to determine how the different members of the group work together to produce the output!
+  - ProcOutputMelds | Module | --- | --- |
+  - InputMelds: A list of all Golem type specific melds that serve as input to the module. These use specific group ids in order to be distributed.
+  - OutputMelds: The primary output key value tuples. Defines the total sets of shapes used by each processing group as outputs. These use specific group ids in order to be distributed.
 - Parameters: A dictionary of matrix settings that are golem type specific
 
 Each Module config has the following properties:
 
 - Name: The primary id, and semantic label for the module
 - Purpose: A description of what the module does at a high level within the cognitive matrix
-- Pipeline: The processing container that runs through the module, and holds it's definition.
 - ProcType: Each module goes through a templated processing cycle or function which is composed of stages, and groups. Though could conceivably be reduced to a stagegroupsdict placeholder because all of the other details appear to be specific to each module. Stages are mostly for useage by the nodes to identify shapes by key, and groups are the different factors of the function or process.
 - ProcGroupDetails: Used to store population level details for modules that represent large groups of nodes. Example = GroupId: {[NodeDetails],total_node_count,[hooks]}
-- ShapeToGroupsDicts: Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
-- ProcGroupComposition: Used to determine how the different members of the group work together to produce the output!
-- ProcOutputMelds | Module | --- | --- |
-- InputMelds: A list of all Golem type specific melds that serve as input to the module. These use specific group ids in order to be distributed.
-- OutputMelds: The primary output key value tuples. Defines the total sets of shapes used by each processing group as outputs. These use specific group ids in order to be distributed.
 - Links: The list of link rules to use for modifying the inputs, outputs, and shape composition by hook. In essence, the list of interconnections that modify processing within this module which it may reciprocally affect.
 - LinksRooted: The list of links that are are defined by this module or rooted to this module.
 - Channels: Each layer template function initialized within a module is a distinct channel?

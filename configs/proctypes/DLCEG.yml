@@ -8,8 +8,6 @@ StageToGroupsDicts:
   - ProcCtrl: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
   - OutProc: [OPBiInhibCtrl,OPDownInhib,OPStgAdv]
   - CntxtProc: [COBiInhibCtrl,COUpInhib,COStgAdv]
-ShapeToGroupsDicts:
-  ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
 HooksInto:
   CntxtIn: [CntxtDwnInhib]
   CycleIn: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
