@@ -1,0 +1,31 @@
+---
+Id: GLG
+Name: Gateway Layer Groups
+StageGroupsDicts:
+StageShapes:
+  NoiseDwnInhib: G_i
+  NoiseAdjInhib: G_i
+  CycleGateCtrl: G_i
+  CycleStgAdv: G_i
+  CntxtStgAdv: G_i
+  CntxtUpInhib: G_i
+  Relay: Gate_i
+InputMelds:
+  NoiseDwnInhib: [["NoiseDwnInhibPrev,Bool","NoiseAdjInhib,Inhibitor","NoiseCtrl,Energy"],[NoiseOut]]
+  NoiseAdjInhib: [["NoiseAdjInhibPrev,Bool","NoiseCtrl,Energy"],[NoiseOut]]
+  CycleGateCtrl: [["CycleStgAdvPrev,Bool","CycleRelay,Energy", "NoiseDwnInhib,Inhibitor"],[CycleOut]]
+  CycleStgAdv: [["CycleStgAdvPrev,Bool","CycleRelay,Energy"],[CycleOut]]
+  CntxtStgAdv: [["CntxtStgAdvPrev,Bool","CntxtRelay,Energy"],[CntxtOut]]
+  CntxtUpInhib: [["CntxtUpInhibPrev,Bool","CntxtRelay,Energy"],[CntxtOut]]
+  Relay: [["RelayPrev,Bool"],[RelayIn]]
+OutputMelds:
+  NoiseDwnInhib: [["CntxtUpInhib,Inhbitor","CycleRelay,Inhibitor","CntxtRelay,Inhibitor"]]
+  NoiseAdjInhib: [["NoiseDwnInhib,Inhibitor"]]
+  CycleGateCtrl: [["CycleRelay,Inhibitor"]]
+  CycleStgAdv: [["CycleRelay,Energy","CntxtCtrl,Energy","ProcCtrl,Energy"],[CycleIn]]
+  CntxtStgAdv: [["CntxtRelay,Energy","CntxtCtrl,Energy","ProcCtrl,Energy"]]
+  CntxtUpInhib: [["CntxtRelay,Inhibitor"],[CntxtIn]]
+  Relay: [[""],[RelayOut]]
+DefaultDetails:
+  GroupId: []
+...
