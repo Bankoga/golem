@@ -2,12 +2,110 @@
 Id: DCLEG
 Name: Decision Controlled Logos Encapsulator Group
 StageToGroupsDicts:
-  - CntxtCtrl: [CntxtDwnInhib]
-  - InitProc: [IPBiInhibCtrl,IPDownInhib,IPStgAdv]
-  - AddtProc: [APBiInhibCtrl,APDownInhib,APStgAdv]
-  - ProcCtrl: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
-  - OutProc: [OPBiInhibCtrl,OPDownInhib,OPStgAdv]
-  - CntxtProc: [COBiInhibCtrl,COUpInhib,COStgAdv]
+  - Stage: CntxtCtrl
+    Groups: [CntxtDwnInhib]
+    TotalCount: 20
+  - Stage: InitProc
+    Groups: [IPBiInhibCtrl,IPDownInhib,IPStgAdv]
+    TotalCount: 20
+  - Stage: AddtProc
+    Groups: [APBiInhibCtrl,APDownInhib,APStgAdv]
+    TotalCount: 20
+  - Stage: ProcCtrl
+    Groups: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
+    TotalCount: 20
+  - Stage: OutProc
+    Groups: [OPBiInhibCtrl,OPDownInhib,OPStgAdv]
+    TotalCount: 20
+  - Stage: CntxtProc
+    Groups: [COBiInhibCtrl,COUpInhib,COStgAdv]
+    TotalCount: 20
+GroupDetails:
+  CntxtDwnInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  IPBiInhibCtrl:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  IPDownInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  IPStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  APBiInhibCtrl:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  APDownInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  APStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  CBiInhibCtrl:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  CDownInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  CUpInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  CStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  OPBiInhibCtrl:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  OPDownInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  OPStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  COBiInhibCtrl:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  COUpInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
+  COStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 0
+    PctOfStage: 1
 HooksInto:
   CntxtIn: [CntxtDwnInhib]
   CycleIn: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
@@ -34,23 +132,23 @@ InputMelds:
   COUpInhib: null
   COStgAdv: null
 OutputMelds:
-  CntxtDwnInhib: []
-  IPBiInhibCtrl: []
-  IPDownInhib: []
-  IPStgAdv: []
-  APBiInhibCtrl: []
-  APDownInhib: []
-  APStgAdv: []
-  CBiInhibCtrl: []
-  CDownInhib: []
-  CUpInhib: []
-  CStgAdv: []
-  OPBiInhibCtrl: []
-  OPDownInhib: []
-  OPStgAdv: []
-  COBiInhibCtrl: []
-  COUpInhib: []
-  COStgAdv: []
+  CntxtDwnInhib: null
+  IPBiInhibCtrl: null
+  IPDownInhib: null
+  IPStgAdv: null
+  APBiInhibCtrl: null
+  APDownInhib: null
+  APStgAdv: null
+  CBiInhibCtrl: null
+  CDownInhib: null
+  CUpInhib: null
+  CStgAdv: null
+  OPBiInhibCtrl: null
+  OPDownInhib: null
+  OPStgAdv: null
+  COBiInhibCtrl: null
+  COUpInhib: null
+  COStgAdv: null
 LinksDefined: null
 LinksUsed:
   - G_i

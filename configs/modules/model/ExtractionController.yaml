@@ -1,30 +1,9 @@
 ---
-Name: eEtraction Controller (in gateway)
-LayerRules: BCLL+
-LayersDetails: Typical BCLL+ Node Distributions
-Purpose: Takes a statement, decomposes and recomposes it, and then relays it to the Concept Eval. Oftentimes, a good way to understand something is by ripping it apart and putting it back together again
-Pipeline: Extraction
-InputMelds:
-  Links: 1 Energy shape per Extraction link to the extractor
-  DirectInput: Energy,AWhl
-  RewardAvailabilityDetector: RESOURCE,SynchId_ExtractionController
-Generated Shapes:
-  OutFunWhl: Energy,"".Join(InAAtms) + "".Join(InATkns) + "".Join(InAPrts) + "".InAWhl + "".PrevAWhl
-  OutFunAtms: Energy,np.array_split(16, InAWhl)
-  OutFunTkns: Energy,np.array_split(8, InAWhl)
-  OutFunPrts: Energy,np.array_split(4, InAWhl)
-OutputMelds:
-  ConceptEvalController: OutFunWhl
-Links:
-  ResponseOutputController: OutFunWhl
-  DM: OutFunWhl
-  Gate: OutFunWhl
-  Synch: OutFunWhl
-Function: ?????
-Links it defines: Extraction
-Channels:
-  - 1 per Input Meld to it
-  - Just D2CSIB for now
+Name: CellDistributionPlusProcType
+Purpose: Represents a particular kind of shape
+ProcType: Each module goes through a templated processing cycle or function which is composed of stages, and groups. Though could conceivably be reduced to a stagegroupsdict placeholder because all of the other details appear to be specific to each module. Stages are mostly for useage by the nodes to identify shapes by key, and groups are the different factors of the function or process.
+ProcGroupDetails:
+  GroupId:
+    NodeDetails: []
+    Total_Count: 20
 ...
-
-generated shapes currently represents a dictionary of OutputFunctionKey to Input Melds used along input preprocessing

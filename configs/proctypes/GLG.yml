@@ -2,10 +2,54 @@
 Id: GLG
 Name: Gateway Layer Groups
 StageToGroupsDicts:
-  - NoiseCtrl: [NoiseDwnInhib,NoiseAdjInhib]
-  - CycleRelay: [CycleGateCtrl,CycleStgAdv]
-  - CntxtRelay: [CntxtStgAdv,CntxtUpInhib]
-  - Relay: [StgAdv]
+  - Stage: NoiseCtrl
+    Groups: [NoiseDwnInhib,NoiseAdjInhib]
+    TotalCount: 2
+  - Stage: CycleRelay
+    Groups: [CycleGateCtrl,CycleStgAdv]
+    TotalCount: 2
+  - Stage: CntxtRelay
+    Groups: [CntxtStgAdv,CntxtUpInhib]
+    TotalCount: 2
+  - Stage: Relay
+    Groups: [StgAdv]
+    TotalCount: 1
+GroupDetails:
+  NoiseDwnInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  NoiseAdjInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  CycleGateCtrl:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  CycleStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  CntxtStgAdv:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  CntxtUpInhib:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 0.5
+  Relay:
+    NodeDetails:
+      - NodeType: Plate
+        PctOfGroup: 1
+    PctOfStage: 1
 InputMelds:
   NoiseDwnInhib: [NoiseAdjInhib-Inhibitor,NoiseCtrl-Energy]
   NoiseAdjInhib: [NoiseCtrl-Energy]
