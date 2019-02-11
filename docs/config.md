@@ -14,7 +14,7 @@ Each Golem config has the following properties:
 - Name: The semantic label of the type of golem. THIS IS NOT THE CONTAINER OR INSTANCE NAME.
 - Purpose: A description of what the module does at a high level within the cognitive matrix
 - Modules: The list of processing containers that define the skeletion of the cognitive matrix of the golem
-  - ShapeToGroupsDicts: Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
+  - ShapeToGroupsDict: Used to indicate the shape of the groups in the stage. | N || *:InputShapeId || ? |
   - ProcGroupComposition: Used to determine how the different members of the group work together to produce the output!
   - ProcOutputMelds | Module | --- | --- |
   - InputMelds: A list of all Golem type specific melds that serve as input to the module. These use specific group ids in order to be distributed.

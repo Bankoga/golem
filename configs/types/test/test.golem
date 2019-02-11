@@ -7,12 +7,12 @@ Modules:
   TestA:
     InputMelds: []
     OuputMelds: []
-    ShapeToGroupsDicts:
+    ShapeToGroupsDict:
       ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
   TestGate:
     InputMelds: null
     OutputMelds: null
-  ShapeToGroupsDicts:
-    G_i: [NoiseDwnInhib,NoiseAdjInhib,CycleGateCtrl,CycleStgAdv,CntxtStgAdv,CntxtUpInhib]
-    Gate_i: [Relay]
+    ShapeToGroupsDict:
+      G_i: [NoiseDwnInhib,NoiseAdjInhib,CycleGateCtrl,CycleStgAdv,CntxtStgAdv,CntxtUpInhib]
+      Gate_i: [Relay]
 ...
