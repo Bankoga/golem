@@ -4,7 +4,7 @@ Golems configs are based on a composable field component grouping system where e
 
 - Module Configs: Golem processing matrix components (groups) and their interconnections are defined via module function configs. A module config determines the internal properties of object, sans Links
 - Golem Configs: Each type of golem corresponds to a specific set of interconnected functions. Each function is defined via a key that corresponds to some module config, with the connections between modules largely being defined here.
-- ProcCycle Configs: Each functional part of a module corresponds to some specific group within a processing cycle. Each proc cycle consists of a number of groups which are the subdestinations of datapack addressess.
+- ProcType Configs: Each functional part of a module corresponds to some specific group within a processing cycle. Each proc cycle consists of a number of groups which are the subdestinations of datapack addressess.
 
 ## Properties
 
