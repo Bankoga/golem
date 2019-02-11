@@ -44,7 +44,7 @@ Each link type can have it's own field shape that needs to be accounted for, and
 
 Links are golem specific changes to the inputs and outputs of specifically interconnected processing groups. Essentially, they are templated connections for outputting to or from the module to other connected modules. Some can be used to determine the number of channels in this module during initialization?
 
-LinksProduced
+Links require hooks to use, which are applied to proc group melds. Hooks are paired -In/-Out, and somewhere with a -Out builds a datapack to be used everywhere the corresponding -In exists.
 
 ## Proc Func
 
@@ -62,5 +62,5 @@ A proc func (or cycle) is the series of transformations that are performed inter
 | ProcOutputMelds | Module | --- | --- |
 
 - Coders (CDR): The type of matrix modules used for bringing data into or out of the matrix
-- DecisionControlledLogosEncapsulators (DCLE): The type of matrix modules used for performing operations that can be interferred with by the decision making system.
-- AgnosticLogosEncapsulators (ALE): Corresponds to the type of matrix modules used for bringing data into or out of the matrix.
+- DecisionControlledLogosEncapsulatorsGroup (DCLEG): The type of matrix modules used for performing operations that can be interferred with by the decision making system.
+- AgnosticLogosEncapsulators (ALEG): Corresponds to the type of matrix modules used for bringing data into or out of the matrix.
