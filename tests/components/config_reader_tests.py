@@ -13,5 +13,9 @@ class ConfigReaderTests(unittest.TestCase):
     self.assertTrue(config['TypeData']['Id']=='Test')
 
   def test_read_from_proc(self):
-    config =  read('TestGate','proc')
-    self.assertTrue(config['Id']=='TestGate')
+    config =  read('GLG','proc')
+    self.assertTrue(config['Id']=='GLG')
+
+  @given(st.text())
+  def test_invalid_proc_attempt(self, proctype):
+    self.assertWarns(FileNotFoundError, read, proctype, 'proc')

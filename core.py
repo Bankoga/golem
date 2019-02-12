@@ -4,7 +4,7 @@
 # top level goals live here
 # from imports import *
 from yaml import load, dump
-from layer import *
+# from layer import *
 from problem_domain import *
 from decoder import *
 from encoder import *
@@ -43,18 +43,18 @@ class Golem:
 
     def construct_auxillary_core(self, core_type_fname, num_dests):
         # for use by some golem types to eventually dynamically enhance their own capabilities
-        TODO: Convert to use cell factory to reduce cell object size
+        # TODO: Convert to use cell factory to reduce cell object size
         egg = self.assemble_egg(core_type_fname, num_dests)
-        TODO: find way to integrate brains? Modular sub-brain creation for golems to give dynamic capability enhancements? Sounds pretty nifty
+        # TODO: find way to integrate brains? Modular sub-brain creation for golems to give dynamic capability enhancements? Sounds pretty nifty
         egg.mode = 'new-construct'
         return egg
     
     def init_ts(ts_data):
-        TODO: Pull ts level global data into config for use in other files for num ts calcs. MWAHAHAHAAAA
+        # TODO: Pull ts level global data into config for use in other files for num ts calcs. MWAHAHAHAAAA
         # plan is to have simulated sec defined, and num ts per sec evald to see how fast it compares to analagous physically implemented systems. Does it have more time than us?
         self.ts_per_sim_second = ts_data['ts_per_sec']#1000
         self.session_length = self.ts_per_sim_second * ts_data['session_length'] #60 * 60 * 12
-        TODO: determine timestep vs update cycle ontology
+        # TODO: determine timestep vs update cycle ontology
 
     def generate_golem_id(golem_type):
         rh = 0#calc random 1024-hex hash
@@ -68,31 +68,31 @@ class Golem:
             'ts': init_ts(config['ts_data'])
         }
         graph = dict()
-        TODO: parse each node, grab the config details, and build the nodes contents/destinations
+        # TODO: parse each node, grab the config details, and build the nodes contents/destinations
         graph.extend(self.parse_decoders(egg))
         graph.extend(self.parse_encoders(egg))
         graph.extend(self.parse_modules(egg))
-        TODO: determine size of each region, and layer so that cells can be stitched together
+        # TODO: determine size of each region, and layer so that cells can be stitched together
         i_counts = self.get_input_counts(graph, num_dests)
         for node in graph:
-            TODO: ensure that all nodes have a stitch method which fully populates cells with axons
+            # TODO: ensure that all nodes have a stitch method which fully populates cells with axons
             node.stitch(graph)
-        TODO: Optim: pull all dests from all pds into a single adjacency list
-        TODO: Build relay problem domain out of region
+        # TODO: Optim: pull all dests from all pds into a single adjacency list
+        # TODO: Build relay problem domain out of region
         return egg.extend({'graph': graph, 'id': self.generate_golem_id(self.golem_type)})
 
     def build_full_config(core_type_fname):
-        TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...
-        TODO: raise an exception and exit if the yaml does not exist
+        # TODO: Larger architectures are going to have a huge config so maybe we should load and parse as needed...
+        # TODO: raise an exception and exit if the yaml does not exist
         config_fname = 'core\\configs\\golem_core_types\\{0}.yaml'.format(core_type_fname)
         config = load(open(config_fname))
-        TODO: rename problem domains to modules?
+        # TODO: rename problem domains to modules?
         for i, pd in enumerate(config['modules']):
-            TODO: raise an exception and exit if the yaml does not exist
+            # TODO: raise an exception and exit if the yaml does not exist
             pd_conf_fname = 'core\\configs\\domain_types\\{0}.yaml'.format(pd['type'])
             pd_conf = load(open(pd_conf_fname))
             for j, region in enumerate(pd_conf['regions']):
-                TODO: raise an exception and exit if the yaml does not exist
+                # TODO: raise an exception and exit if the yaml does not exist
                 rconf_fname = 'core\\configs\\regions\\{0}.yaml'.format(region)
                 rconf = load(open(rconf_fname))
                 pd_conf['regions'][j] = rconf
@@ -101,7 +101,7 @@ class Golem:
         return config
 
     def parse_decoders(self):
-        TODO: raise an exception if there are no decoders
+        # TODO: raise an exception if there are no decoders
         graph = dict()
         for pd in self.config['decoders']:
             key = pd['name']
@@ -110,7 +110,7 @@ class Golem:
         return graph
 
     def parse_encoders(self):
-        TODO: raise an exception if there are no encoders
+        # TODO: raise an exception if there are no encoders
         graph = dict()
         for pd in self.config['encoders']:
             key = pd['name']
@@ -119,7 +119,7 @@ class Golem:
         return graph
 
     def parse_modules(self):
-        TODO: raise an exception if there are no problem domains
+        # TODO: raise an exception if there are no problem domains
         graph = dict()
         for pd in self.config['modules']:
             key = pd['name']
@@ -128,12 +128,12 @@ class Golem:
         return graph
 
     def get_input_counts(self, nodes, desired_dests):
-        TODO: Calculate minimum number of destinations supported by the provided architecture. This does require that the top level have a fully expanded copy of the brain config.
-        TODO: Determine method for calculating number of dests consumed by each problem domain
+        # TODO: Calculate minimum number of destinations supported by the provided architecture. This does require that the top level have a fully expanded copy of the brain config.
+        # TODO: Determine method for calculating number of dests consumed by each problem domain
         # use desired_dests and pd config info to determine how many dests are available to the problem domain during initialization
-        TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
+        # TODO: use the edge count, and the size of the domain to determine the number of primary cells in the problem domain
         # though each level cumulatively effects the size of the golem, they have different impacts and consumption requirements
-        TODO: determine how to handle non standard problem domains like the decoder, encoder, & subcortex
+        # TODO: determine how to handle non standard problem domains like the decoder, encoder, & subcortex
         # Build adjacency matrix, and count number of inputs to each node?
         cells_dict = dict()
         for node in graph:
@@ -149,9 +149,9 @@ class Golem:
             cells_dict[key] = count, inps, num_dests
         return cells_dict
     def batch_inputs(self, outputs):
-        TODO: batch inputs based on their module. The batched inputs will be passed by reference to modules for consumption.
-        TODO: Guarantee consistent order of sources in each bucket
-        TODO: Ensure that the aggregated sources are useable in a matrix mult
+        # TODO: batch inputs based on their module. The batched inputs will be passed by reference to modules for consumption.
+        # TODO: Guarantee consistent order of sources in each bucket
+        # TODO: Ensure that the aggregated sources are useable in a matrix mult
         # this seems like a very problematic step
         """
         # buckets is a dictionary of dictionaries where list length is equal to the number of problem domains
@@ -205,7 +205,7 @@ class Golem:
                 - clear the old inputs
                 inputs = []
                 - activate each problem domain
-                TODO: simply clearing the old inputs creates an inputs disconnect here that needs to be solved.
+                # TODO: simply clearing the old inputs creates an inputs disconnect here that needs to be solved.
                     Implement clear so as to not affect sensory input collection
                 - ts_count = 0
             - else:
@@ -229,7 +229,7 @@ class Golem:
             # activate each problem domain (each PD activates it's region which in turn activate layers which activate cells)
             # collect the ouputs from each problem domain
             outputs.extend(pd.activate(mode, ts_count, inputs[pd.name]))
-        TODO: where do the external outputs get sent at the end of a timestep?
+        # TODO: where do the external outputs get sent at the end of a timestep?
         """
 
     def save(fn, a): 
@@ -271,19 +271,18 @@ class Golem:
 
     def remap(self):
         # map a pre-existing network to a new network architecture.
-        TODO: What degree of similarity between networks is required for this to work?
-
+        # TODO: What degree of similarity between networks is required for this to work?
+        """
 class GolemFactory:
-    TODO: Have golemfactory extend the golem class
+    # TODO: Have golemfactory extend the golem class
     def __init__():
 
     def construct_golem(self, golem_type, num_dests=0, is_pair=False):
-        TODO: this should really leverage the Golem class. Make golem factory a type of golem!
+        # TODO: this should really leverage the Golem class. Make golem factory a type of golem!
         # merged build brain into construct golem
         # builds, validates, and returns a new golem
         golem = Golem(golem_type, num_dests, is_pair)
         golem.construct_self()
-        """
         stngs = parse_gt_config(golem_type, num_dests, is_pair)
         egg = self.assemble_egg(stngs['core_type_fname'], num_dests)
         stngs['core_config'] = egg['core_type_config']
@@ -295,6 +294,5 @@ class GolemFactory:
             'brain': egg['graph'],
             'mode': 'new-construct'
             }
-        """
         return golem
-
+"""

@@ -15,10 +15,16 @@ def get_reader(ftype):
 
 def _read_from_golem(conf):
     conf_fname = f'{dirs["golem"]}{conf}.golem'
-    with open(conf_fname) as f:
-        return load(f)
+    try:
+        with open(conf_fname) as f:
+            return load(f)
+    except FileNotFoundError as fnf_error:
+        print(fnf_error)
 
 def _read_from_proc(conf):
     conf_fname = f'{dirs["proc"]}{conf}.proc'
-    with open(conf_fname) as f:
-        return load(f)
+    try:
+        with open(conf_fname) as f:
+            return load(f)
+    except FileNotFoundError as fnf_error:
+        print(fnf_error)
