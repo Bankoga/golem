@@ -4,70 +4,64 @@ type_data:
   name: Config Behavior Test Architecture
   Purpose: Should be a short explanation or links to documentation about the purpose of this type of golem
 fields:
-  field_key: field_shape
+  TestInputA: field_shape
+  TestOutputA: field_shape
 modules:
   - type_data:
       id: TestInput
       proc: CCG
-    melds:
-      inputs: null
-      outputs: null
+    inputs: null
+    outputs: null
     shape_of_groups_dict:
       module_field: null
     channels: 1
   - type_data:
       id: TestOutput
       proc: CCG
-    melds:
-      inputs: null
-      outputs: null
+    inputs: null
+    outputs: null
     shape_of_groups_dict:
       module_field: null
     channels: 1
   - type_data:
       id: TestA
       proc: DCLEG
-    melds:
-      inputs: null
-      outputs: null
+    inputs: null
+    outputs: null
     shape_of_groups_dict:
       module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPstg_adv,APBiInhibCtrl,APDownInhib,APstg_adv,CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv,OPBiInhibCtrl,OPDownInhib,OPstg_adv,COBiInhibCtrl,COUpInhib,COstg_adv]
     channels: 1
   - type_data:
       id: TestB
       proc: DCLEG
-    melds:
-      inputs: null
-      outputs: null
+    inputs: null
+    outputs: null
     shape_of_groups_dict:
       module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPstg_adv,APBiInhibCtrl,APDownInhib,APstg_adv,CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv,OPBiInhibCtrl,OPDownInhib,OPstg_adv,COBiInhibCtrl,COUpInhib,COstg_adv]
     channels: 1
   - type_data:
       id: TestC
       proc: DFLEG
-    melds:
-      inputs: null
-      outputs: null
+    inputs: null
+    outputs: null
     shape_of_groups_dict:
       module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPstg_adv,APBiInhibCtrl,APDownInhib,APstg_adv,CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv,OPBiInhibCtrl,OPDownInhib,OPstg_adv,COBiInhibCtrl,COUpInhib,COstg_adv]
     channels: 1
   - type_data:
       id: TestDM
       proc: DFLEG
-    melds:
-      inputs: null
-      outputs: null
+    inputs: null
+    outputs: null
     shape_of_groups_dict:
       module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPstg_adv,APBiInhibCtrl,APDownInhib,APstg_adv,CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv,OPBiInhibCtrl,OPDownInhib,OPstg_adv,COBiInhibCtrl,COUpInhib,COstg_adv]
     channels: 1
   - type_data:
       id: TestGate
       proc: GLG
-    melds:
-      inputs: null
-      outputs: null
+    inputs: null
+    outputs: null
     shape_of_groups_dict:
       module_field: [noise_dwn_inhib,noise_adj_inhib,cycle_gate_ctrl,cycle_stg_adv,cntxt_stg_adv,cntxt_up_inhib]
-      Gate_i: [Relay]
+      gate_i: [Relay]
     channels: 1
 ...

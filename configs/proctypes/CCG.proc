@@ -7,13 +7,10 @@ stage_to_groups_dict:
     groups: [inputs, function, outputs]
     total_count: 2
 group_details: null
-melds:
-  inputs: null
-  outputs: null
-Hooks:
-  InTo: null
-  OutOf: null
-links:
-  defined: null
-  used: null
+inputs: null
+outputs: null
+hooks_into: null
+hooks_out_of: null
+links_defined: null
+links_used: null
 ...

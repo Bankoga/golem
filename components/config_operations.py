@@ -7,9 +7,21 @@ def build_full_config(config):
     return module
 
 def build_module_entry(module):
-    conf = read(module['type_data']['proc'],'proc')
-    build_module_groups(module)
-    return conf
-
-def build_module_groups(module):
-    return {"":""}
+    proc = read(module['type_data']['proc'],'proc')
+    result = module
+    result['type_data'] = proc['type_data']
+    for group in proc['group_details']:
+        add group to proc_groups dict in results
+    for stagegrouppair in stage_to_groups_dict:
+        convert stage to group location,position data
+    for input in inputs:
+        add to the corresponding module level melds type dict
+    for output in outputs:
+        add to the corresponding module level melds type dict
+    for hook_type in hooks:
+        add this data somewhere
+    for link in links_defined:
+        add this data somewhere
+    for link in links used:
+        add this data somewhere
+    return result
