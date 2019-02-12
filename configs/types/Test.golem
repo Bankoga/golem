@@ -4,15 +4,29 @@ TypeData:
   Name: Config Behavior Test Architecture
   Purpose: Should be a short explanation or links to documentation about the purpose of this type of golem
 Modules:
-  TestA:
-    ModuleType: Cortical
+  - Id: TestA
+    Type: DLCEG
     InputMelds: []
     OuputMelds: []
     ShapeToGroupsDict:
       ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
     Channels: 1
-  TestGate:
-    ModuleType: Gateway
+  - Id: TestB
+    Type: DLCEG
+    InputMelds: []
+    OuputMelds: []
+    ShapeToGroupsDict:
+      ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+    Channels: 1
+  - Id: TestC
+    Type: BLCEG
+    InputMelds: []
+    OuputMelds: []
+    ShapeToGroupsDict:
+      ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+    Channels: 1
+  - Id: TestGate
+    Type: GLG
     InputMelds: null
     OutputMelds: null
     ShapeToGroupsDict:

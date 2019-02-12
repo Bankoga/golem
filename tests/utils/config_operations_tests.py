@@ -8,4 +8,5 @@ from components.config_reader import read
 class DataPackTests(unittest.TestCase):
 
   def test_build_full_config(self):
-    golem_config = read('Test','golem')
+    config = read('Test','golem')
+    self.assertIs

@@ -1,6 +1,6 @@
 ---
-Id: TestDCLEG
-Name: Test Decision Controlled Logos Encapsulator Group
+Id: DFLEG
+Name: Decision Free Logos Encapsulator Group
 StageToGroupsDicts:
   - Stage: CntxtCtrl
     Groups: [CntxtDwnInhib]
