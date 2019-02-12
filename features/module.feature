@@ -1,6 +1,6 @@
 @config @initialization @testarchitectures
 Feature: Module
-  As a cognitive matrix architect,
+  As a golem,
   I want each module to be internally independent once given the appropriate inputs
   So that the modules can be run effectively in parallel or serial
 

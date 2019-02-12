@@ -1,6 +1,6 @@
 @initialization @melds
 Feature: Melder
-  As a cognitive matrix architect,
+  As a golem,
   I want each meld to have the same sets of properties
   So that they can be used to dynamically generate lists of shapes dictionaries
 

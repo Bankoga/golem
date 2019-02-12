@@ -1,6 +1,6 @@
 @config @initialization @testarchitecture
 Feature: Configs
-  As a cognitive matrix architect,
+  As a golem,
   I want to build modular matrices using configs that can be automatically generated directly from the research data,
   So I can quickly test out altered module properties
 
