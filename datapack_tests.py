@@ -15,6 +15,3 @@ class DataPackTests(unittest.TestCase):
     self.assertTrue(datp.resource==meld_tuple[1])
     self.assertTrue(datp.shape==meld_tuple[2])
     self.assertTrue(datp.type==f'{meld_tuple[0]}:{meld_tuple[1]}')
-
-if __name__ == '__main__':
-    unittest.main()
