@@ -2,153 +2,153 @@
 Id: DFLEG
 Name: Decision Free Logos Encapsulator Group
 StageToGroupsDicts:
-  - Stage: CntxtCtrl
+  - Stage: cntxt_ctrl
     Groups: [CntxtDwnInhib]
     TotalCount: 20
   - Stage: InitProc
-    Groups: [IPBiInhibCtrl,IPDownInhib,IPStgAdv]
+    Groups: [IPBiInhibCtrl,IPDownInhib,IPstg_adv]
     TotalCount: 20
   - Stage: AddtProc
-    Groups: [APBiInhibCtrl,APDownInhib,APStgAdv]
+    Groups: [APBiInhibCtrl,APDownInhib,APstg_adv]
     TotalCount: 20
-  - Stage: ProcCtrl
-    Groups: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
+  - Stage: proc_ctrl
+    Groups: [CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv]
     TotalCount: 20
   - Stage: OutProc
-    Groups: [OPBiInhibCtrl,OPDownInhib,OPStgAdv]
+    Groups: [OPBiInhibCtrl,OPDownInhib,OPstg_adv]
     TotalCount: 20
   - Stage: CntxtProc
-    Groups: [COBiInhibCtrl,COUpInhib,COStgAdv]
+    Groups: [COBiInhibCtrl,COUpInhib,COstg_adv]
     TotalCount: 20
 GroupDetails:
   CntxtDwnInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   IPBiInhibCtrl:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   IPDownInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
-  IPStgAdv:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
+  IPstg_adv:
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   APBiInhibCtrl:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   APDownInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
-  APStgAdv:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
+  APstg_adv:
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   CBiInhibCtrl:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   CDownInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   CUpInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
-  CStgAdv:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
+  Cstg_adv:
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   OPBiInhibCtrl:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   OPDownInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
-  OPStgAdv:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
+  OPstg_adv:
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   COBiInhibCtrl:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
   COUpInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
-  COStgAdv:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 0
-    PctOfStage: 1
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
+  COstg_adv:
+    node_details:
+      - node_type: Plate
+        pct_of_group: 0
+    pct_of_stage: 1
 HooksInto:
   CntxtIn: [CntxtDwnInhib]
-  CycleIn: [CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv]
+  CycleIn: [CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv]
 HooksOutOf:
-  CntxtOut: [COStgAdv]
-  NoiseOut: [OPStgAdv,COStgAdv]
-  CycleOut: [OPStgAdv]
+  CntxtOut: [COstg_adv]
+  NoiseOut: [OPstg_adv,COstg_adv]
+  CycleOut: [OPstg_adv]
 InputMelds:
   CntxtDwnInhib: null
   IPBiInhibCtrl: null
   IPDownInhib: null
-  IPStgAdv: null
+  IPstg_adv: null
   APBiInhibCtrl: null
   APDownInhib: null
-  APStgAdv: null
+  APstg_adv: null
   CBiInhibCtrl: null
   CDownInhib: null
   CUpInhib: null
-  CStgAdv: null
+  Cstg_adv: null
   OPBiInhibCtrl: null
   OPDownInhib: null
-  OPStgAdv: null
+  OPstg_adv: null
   COBiInhibCtrl: null
   COUpInhib: null
-  COStgAdv: null
+  COstg_adv: null
 OutputMelds:
   CntxtDwnInhib: null
   IPBiInhibCtrl: null
   IPDownInhib: null
-  IPStgAdv: null
+  IPstg_adv: null
   APBiInhibCtrl: null
   APDownInhib: null
-  APStgAdv: null
+  APstg_adv: null
   CBiInhibCtrl: null
   CDownInhib: null
   CUpInhib: null
-  CStgAdv: null
+  Cstg_adv: null
   OPBiInhibCtrl: null
   OPDownInhib: null
-  OPStgAdv: null
+  OPstg_adv: null
   COBiInhibCtrl: null
   COUpInhib: null
-  COStgAdv: null
+  COstg_adv: null
 LinksDefined: null
 LinksUsed:
   - G_i

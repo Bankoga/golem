@@ -38,7 +38,7 @@ Each ProcType config has the following properties:
 | StageToGroupsDict | ProcType | Used to determine the number of proc groups, and their positions relative to each other. Must use valid link or field ids as keys. All valid fields are defined WHERE? | --- |
 | GroupInputMelds | ProcType | --- | GroupId: {[FullMelds],[LinkMelds]} |
 | GroupOutputMelds | ProcType | --- | GroupId: {[FullMelds],[LinkMelds]} |
-- GroupDetails: Used to store population level details for modules that represent large groups of nodes. Example = GroupId: {[NodeDetails],total_node_count,[hooks]}
+- GroupDetails: Used to store population level details for modules that represent large groups of nodes. Example = GroupId: {[node_details],total_node_count,[hooks]}
 - Links: The list of link rules to use for modifying the inputs, outputs, and shape composition by hook. In essence, the list of interconnections that modify processing within this module which it may reciprocally affect.
 - LinksRooted: The list of links that are are defined by this module or rooted to this module.
 

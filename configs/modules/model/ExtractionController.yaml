@@ -4,6 +4,6 @@ Purpose: Represents a particular kind of shape
 ProcType: Each module goes through a templated processing cycle or function which is composed of stages, and groups. Though could conceivably be reduced to a stagegroupsdict placeholder because all of the other details appear to be specific to each module. Stages are mostly for useage by the nodes to identify shapes by key, and groups are the different factors of the function or process.
 ProcGroupDetails:
   GroupId:
-    NodeDetails: []
+    node_details: []
     Total_Count: 20
 ...

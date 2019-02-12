@@ -65,7 +65,7 @@ Link related melds show up in all 4 of the other Sources
 LinkMelds is curr only being used for outputs to links, and links a thing is part of
 Both property formats use the same meld formats
 
-LinkId + '_i' indicates that each link is a new instance (to the extent that it is basically pseudo-module)
+id + '_i' indicates that each link is a new instance (to the extent that it is basically pseudo-module)
 
 
 It seems like each type of pattern, is its own test case

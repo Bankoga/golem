@@ -2,25 +2,25 @@
 Name: TestGate
 ProcType: GLG
 ProcGroupDetails:
-  NoiseDwnInhib: [["Plate,1"],1]
-  NoiseAdjInhib: [["Plate,1"],1]
-  CycleGateCtrl: [["Point,1"],1]
-  CycleStgAdv: [["Point,1"],1]
-  CntxtStgAdv: [["Plate,1"],1]
-  CntxtUpInhib: [["Plate,1"],1]
+  noise_dwn_inhib: [["Plate,1"],1]
+  noise_adj_inhib: [["Plate,1"],1]
+  cycle_gate_ctrl: [["Point,1"],1]
+  cycle_stg_adv: [["Point,1"],1]
+  cntxt_stg_adv: [["Plate,1"],1]
+  cntxt_up_inhib: [["Plate,1"],1]
   Relay: [["Point,1"],1]
 InputMelds:
-  - ProcCtrl-Energy
-  - CntxtCtrl-Energy
-  - NoiseCtrl-Energy
-  - ProcCtrl-Inhibitor
-  - CntxtCtrl-Inhibitor
-  - NoiseCtrl-Inhibitor
+  - proc_ctrl-energy
+  - cntxt_ctrl-energy
+  - noise_ctrl-energy
+  - proc_ctrl-inhibitor
+  - cntxt_ctrl-inhibitor
+  - noise_ctrl-inhibitor
 OutputMelds: 
-  - ProcCtrl-Energy
-  - CntxtCtrl-Energy
-  - NoiseCtrl-Energy
-  - ProcCtrl-Inhibitor
-  - CntxtCtrl-Inhibitor
-  - NoiseCtrl-Inhibitor
+  - proc_ctrl-energy
+  - cntxt_ctrl-energy
+  - noise_ctrl-energy
+  - proc_ctrl-inhibitor
+  - cntxt_ctrl-inhibitor
+  - noise_ctrl-inhibitor
 ...

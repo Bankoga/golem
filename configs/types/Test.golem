@@ -31,7 +31,7 @@ modules:
       inputs: null
       outputs: null
     shape_of_groups_dict:
-      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPstg_adv,APBiInhibCtrl,APDownInhib,APstg_adv,CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv,OPBiInhibCtrl,OPDownInhib,OPstg_adv,COBiInhibCtrl,COUpInhib,COstg_adv]
     channels: 1
   - type_data:
       id: TestB
@@ -40,7 +40,7 @@ modules:
       inputs: null
       outputs: null
     shape_of_groups_dict:
-      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPstg_adv,APBiInhibCtrl,APDownInhib,APstg_adv,CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv,OPBiInhibCtrl,OPDownInhib,OPstg_adv,COBiInhibCtrl,COUpInhib,COstg_adv]
     channels: 1
   - type_data:
       id: TestC
@@ -49,7 +49,7 @@ modules:
       inputs: null
       outputs: null
     shape_of_groups_dict:
-      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPstg_adv,APBiInhibCtrl,APDownInhib,APstg_adv,CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv,OPBiInhibCtrl,OPDownInhib,OPstg_adv,COBiInhibCtrl,COUpInhib,COstg_adv]
     channels: 1
   - type_data:
       id: TestDM
@@ -58,7 +58,7 @@ modules:
       inputs: null
       outputs: null
     shape_of_groups_dict:
-      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPstg_adv,APBiInhibCtrl,APDownInhib,APstg_adv,CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv,OPBiInhibCtrl,OPDownInhib,OPstg_adv,COBiInhibCtrl,COUpInhib,COstg_adv]
     channels: 1
   - type_data:
       id: TestGate
@@ -67,7 +67,7 @@ modules:
       inputs: null
       outputs: null
     shape_of_groups_dict:
-      module_field: [NoiseDwnInhib,NoiseAdjInhib,CycleGateCtrl,CycleStgAdv,CntxtStgAdv,CntxtUpInhib]
+      module_field: [noise_dwn_inhib,noise_adj_inhib,cycle_gate_ctrl,cycle_stg_adv,cntxt_stg_adv,cntxt_up_inhib]
       Gate_i: [Relay]
     channels: 1
 ...

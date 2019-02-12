@@ -2,17 +2,17 @@
 Name: TestA
 ProcType: DCLEG
 ProcGroupDetails:
-  NoiseDwnInhib: [["Plate,1"],1]
-  NoiseAdjInhib: [["Plate,1"],1]
-  CycleGateCtrl: [["Point,1"],1]
-  CycleStgAdv: [["Point,1"],1]
-  CntxtStgAdv: [["Plate,1"],1]
-  CntxtUpInhib: [["Plate,1"],1]
+  noise_dwn_inhib: [["Plate,1"],1]
+  noise_adj_inhib: [["Plate,1"],1]
+  cycle_gate_ctrl: [["Point,1"],1]
+  cycle_stg_adv: [["Point,1"],1]
+  cntxt_stg_adv: [["Plate,1"],1]
+  cntxt_up_inhib: [["Plate,1"],1]
   Relay: [["Point,1"],1]
 InputMelds:
-  - B1-Energy
-  - TestInput-Energy,TestInputWhl
-  - G_TestA-ProcCtrl-Energy,TestInputWhl
-  - G_TestA-CntxtCtrl-Energy,TestInputWhl
+  - B1-energy
+  - TestInput-energy,TestInputWhl
+  - G_TestA-proc_ctrl-energy,TestInputWhl
+  - G_TestA-cntxt_ctrl-energy,TestInputWhl
 OutputMelds: null
 ...

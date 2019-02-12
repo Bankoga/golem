@@ -1,46 +1,46 @@
 [G_i],Energy
-[G_i-CycleRelay],Energy
-[G_i-NoiseCtrl],Energy
-[G_i-CntxtRelay],Energy
+[G_i-cycle_relay],Energy
+[G_i-noise_ctrl],Energy
+[G_i-cntxt_relay],Energy
 [Gate_i],Energy
-NoiseCtrl:NoiseDwnInhib,NoiseAdjInhib
-CycleRelay:CycleGateCtrl,CycleStgAdv
-CntxtRelay:CntxtStgAdv,CntxtUpInhib
-Relay:StgAdv
+noise_ctrl:noise_dwn_inhib,noise_adj_inhib
+cycle_relay:cycle_gate_ctrl,cycle_stg_adv
+cntxt_relay:cntxt_stg_adv,cntxt_up_inhib
+Relay:stg_adv
 
-G_i-NoiseCtrl:G_i
-G_i-CycleRelay:G_i
-G_i-CntxtRelay:G_i
+G_i-noise_ctrl:G_i
+G_i-cycle_relay:G_i
+G_i-cntxt_relay:G_i
 Gate_i-Relay:Gate_i
 
 *: [G_i,Energy]
-NoiseDwnInhib: [G_i-NoiseDwnInhibPrev,Bool,NoiseAdjInhib,Energy,G_i-NoiseCtrl,Energy]
-NoiseAdjInhib: [G_i-NoiseAdjInhibPrev,Bool,G_i-NoiseCtrl,Energy]
-CycleGateCtrl: [G_i-CycleStgAdvPrev,Bool,G_i-CycleRelay,Energy]
-CycleStgAdv: [G_i-CycleStgAdvPrev,Bool,G_i-CycleRelay,Energy]
-CntxtStgAdv: [G_i-CntxtStgAdvPrev,Bool,G_i-CntxtRelay,Energy]
-CntxtUpInhib: [G_i-CntxtUpInhibPrev,Bool,G_i-CntxtRelay,Energy]
+noise_dwn_inhib: [G_i-noise_dwn_inhibPrev,Bool,noise_adj_inhib,Energy,G_i-noise_ctrl,Energy]
+noise_adj_inhib: [G_i-noise_adj_inhibPrev,Bool,G_i-noise_ctrl,Energy]
+cycle_gate_ctrl: [G_i-cycle_stg_advPrev,Bool,G_i-cycle_relay,Energy]
+cycle_stg_adv: [G_i-cycle_stg_advPrev,Bool,G_i-cycle_relay,Energy]
+cntxt_stg_adv: [G_i-cntxt_stg_advPrev,Bool,G_i-cntxt_relay,Energy]
+cntxt_up_inhib: [G_i-cntxt_up_inhibPrev,Bool,G_i-cntxt_relay,Energy]
 Relay: [Gate_i,Energy, Gate_i-Prev,Bool]
 
-NoiseDwnInhib: [Plate,1],1
-NoiseAdjInhib: [Plate,1],1
-CycleGateCtrl: [Point,1],1
-CycleStgAdv: [Point,1],1
-CntxtStgAdv: [Plate,1],1
-CntxtUpInhib: [Plate,1],1
+noise_dwn_inhib: [Plate,1],1
+noise_adj_inhib: [Plate,1],1
+cycle_gate_ctrl: [Point,1],1
+cycle_stg_adv: [Point,1],1
+cntxt_stg_adv: [Plate,1],1
+cntxt_up_inhib: [Plate,1],1
 Relay:[Point,1],1
 
-NoiseDwnInhib: [G_i-CntxtUpInhib,Inhbitor,G-CycleRelay,Inhibitor,G-CntxtRelay,Inhibitor]
-NoiseAdjInhib: [G_i-NoiseDwnInhib,Inhibitor]
-CycleGateCtrl: [G_i-CycleRelay,Inhibitor]
-CycleStgAdv: [G_i-CycleRelay,Energy,G_i-CntxtCtrl,Energy,G_i-ProcCtrl,Energy]
-CntxtStgAdv: [G_i-CntxtRelay,Energy,G_i-CntxtCtrl,Energy,G_i-ProcCtrl,Energy]
-CntxtUpInhib: [G_i-CntxtRelay,Inhibitor]
+noise_dwn_inhib: [G_i-cntxt_up_inhib,Inhbitor,G-cycle_relay,Inhibitor,G-cntxt_relay,Inhibitor]
+noise_adj_inhib: [G_i-noise_dwn_inhib,Inhibitor]
+cycle_gate_ctrl: [G_i-cycle_relay,Inhibitor]
+cycle_stg_adv: [G_i-cycle_relay,Energy,G_i-cntxt_ctrl,Energy,G_i-proc_ctrl,Energy]
+cntxt_stg_adv: [G_i-cntxt_relay,Energy,G_i-cntxt_ctrl,Energy,G_i-proc_ctrl,Energy]
+cntxt_up_inhib: [G_i-cntxt_relay,Inhibitor]
 Relay:[Gate_i-]
 
-G_i-ProcCtrl,Energy
-G_i-CntxtCtrl,Energy
-G_i-NoiseCtrl,Energy
+G_i-proc_ctrl,Energy
+G_i-cntxt_ctrl,Energy
+G_i-noise_ctrl,Energy
 OutputCtrl-G_i,Energy
 
 If every link has subdest keys, then we can define them separately from the InputMelds,&ProcGroupInputMelds
@@ -48,27 +48,27 @@ ProcGroups produce ouput however. If links only use the processed versions of th
 ShapeComposition is the key here
 G_i
 G_i,Energy
-G_i-CycleRelay
-G_i-CycleRelay,Energy
-G_i-NoiseCtrl
-G_i-NoiseCtrl,Energy
-G_i-CntxtRelay
-G_i-CntxtRelay,Energy
-G_i-NoiseDwnInhibPrev,Bool
-G_i-NoiseAdjInhib,Energy
-G_i-NoiseAdjInhibPrev,Bool
-G_i-CycleStgAdvPrev,Bool
-G_i-CntxtStgAdvPrev,Bool
-G_i-CntxtUpInhibPrev,Bool
-G_i-CntxtUpInhib,Inhbitor
-G-CycleRelay,Inhibitor
-G-CntxtRelay,Inhibitor
-G_i-NoiseDwnInhib,Inhibitor
-G_i-CycleRelay,Inhibitor
-G_i-CntxtRelay,Inhibitor
-G_i-ProcCtrl,Energy
-G_i-CntxtCtrl,Energy
+G_i-cycle_relay
+G_i-cycle_relay,Energy
+G_i-noise_ctrl
+G_i-noise_ctrl,Energy
+G_i-cntxt_relay
+G_i-cntxt_relay,Energy
+G_i-noise_dwn_inhibPrev,Bool
+G_i-noise_adj_inhib,Energy
+G_i-noise_adj_inhibPrev,Bool
+G_i-cycle_stg_advPrev,Bool
+G_i-cntxt_stg_advPrev,Bool
+G_i-cntxt_up_inhibPrev,Bool
+G_i-cntxt_up_inhib,Inhbitor
+G-cycle_relay,Inhibitor
+G-cntxt_relay,Inhibitor
+G_i-noise_dwn_inhib,Inhibitor
+G_i-cycle_relay,Inhibitor
+G_i-cntxt_relay,Inhibitor
+G_i-proc_ctrl,Energy
+G_i-cntxt_ctrl,Energy
 B1,Energy
 TestInput,Energy,TestInputWhl
-G_TestA-ProcCtrl,Energy,TestInputWhl
-G_TestA-CntxtCtrl,Energy,TestInputWhl
+G_TestA-proc_ctrl,Energy,TestInputWhl
+G_TestA-cntxt_ctrl,Energy,TestInputWhl

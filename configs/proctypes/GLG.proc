@@ -2,92 +2,95 @@
 type_data:
   id: GLG
   name: Gateway Layer Groups
-StageToGroupsDicts:
-  - Stage: NoiseCtrl
-    Groups: [NoiseDwnInhib,NoiseAdjInhib]
-    TotalCount: 2
-  - Stage: CycleRelay
-    Groups: [CycleGateCtrl,CycleStgAdv]
-    TotalCount: 2
-  - Stage: CntxtRelay
-    Groups: [CntxtStgAdv,CntxtUpInhib]
-    TotalCount: 2
-  - Stage: Relay
-    Groups: [StgAdv]
-    TotalCount: 1
-GroupDetails:
-  NoiseDwnInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 1
-    PctOfStage: 0.5
-  NoiseAdjInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 1
-    PctOfStage: 0.5
-  CycleGateCtrl:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 1
-    PctOfStage: 0.5
-  CycleStgAdv:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 1
-    PctOfStage: 0.5
-  CntxtStgAdv:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 1
-    PctOfStage: 0.5
-  CntxtUpInhib:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 1
-    PctOfStage: 0.5
+stage_to_groups_dict:
+  - stage: noise_ctrl
+    groups: [noise_dwn_inhib,noise_adj_inhib]
+    total_count: 2
+  - stage: cycle_relay
+    groups: [cycle_gate_ctrl,cycle_stg_adv]
+    total_count: 2
+  - stage: cntxt_relay
+    groups: [cntxt_stg_adv,cntxt_up_inhib]
+    total_count: 2
+  - stage: Relay
+    groups: [stg_adv]
+    total_count: 1
+group_details:
+  noise_dwn_inhib:
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: 0.5
+  noise_adj_inhib:
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: 0.5
+  cycle_gate_ctrl:
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: 0.5
+  cycle_stg_adv:
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: 0.5
+  cntxt_stg_adv:
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: 0.5
+  cntxt_up_inhib:
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: 0.5
   Relay:
-    NodeDetails:
-      - NodeType: Plate
-        PctOfGroup: 1
-    PctOfStage: 1
-InputMelds:
-  NoiseDwnInhib: [NoiseAdjInhib-Inhibitor,NoiseCtrl-Energy]
-  NoiseAdjInhib: [NoiseCtrl-Energy]
-  CycleGateCtrl: [CycleRelay-Energy,NoiseDwnInhib-Inhibitor]
-  CycleStgAdv: [CycleRelay-Energy]
-  CntxtStgAdv: [CntxtRelay-Energy]
-  CntxtUpInhib: [CntxtRelay-Energy]
-  Relay: null
-OutputMelds:
-  NoiseDwnInhib: [CntxtUpInhib-Inhbitor,CycleRelay-Inhibitor,CntxtRelay-Inhibitor]
-  NoiseAdjInhib: [NoiseDwnInhib-Inhibitor]
-  CycleGateCtrl: [CycleRelay-Inhibitor]
-  CycleStgAdv: [CycleRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
-  CntxtStgAdv: [CntxtRelay-Energy,CntxtCtrl-Energy,ProcCtrl-Energy]
-  CntxtUpInhib: [CntxtRelay-Inhibitor]
-  Relay: null
-HooksInTo:
-  NoiseIn: [NoiseDwnInhib,NoiseAdjInhib]
-  CycleIn: [CycleGateCtrl,CycleStgAdv]
-  CntxtIn: [CntxtStgAdv,CntxtUpInhib]
-  RelayIn: [Relay]
-HooksOutOf:
-    CycleOut: [CycleStgAdv]
-    CntxtOut: [CntxtStgAdv]
-    RelayOut: [Relay]
-LinksDefined:
-  - LinkId: G_i
-    HooksRequired:
-      - CntxtIn
-      - CntxtOut
-      - CycleIn
-      - CycleOut
-      - NoiseIn
-      - NoiseOut
-  - LinkId: Gate_i
-    HooksRequired:
-      - RelayIn
-      - RelayOut
-LinksUsed: null
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: 1
+melds:
+  inputs:
+    noise_dwn_inhib: [noise_adj_inhib-inhibitor,noise_ctrl-energy]
+    noise_adj_inhib: [noise_ctrl-energy]
+    cycle_gate_ctrl: [cycle_relay-energy,noise_dwn_inhib-inhibitor]
+    cycle_stg_adv: [cycle_relay-energy]
+    cntxt_stg_adv: [cntxt_relay-energy]
+    cntxt_up_inhib: [cntxt_relay-energy]
+    Relay: null
+  outputs:
+    noise_dwn_inhib: [cntxt_up_inhib-Inhbitor,cycle_relay-inhibitor,cntxt_relay-inhibitor]
+    noise_adj_inhib: [noise_dwn_inhib-inhibitor]
+    cycle_gate_ctrl: [cycle_relay-inhibitor]
+    cycle_stg_adv: [cycle_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
+    cntxt_stg_adv: [cntxt_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
+    cntxt_up_inhib: [cntxt_relay-inhibitor]
+    Relay: null
+Hooks:
+  InTo:
+    noise_in: [noise_dwn_inhib,noise_adj_inhib]
+    cycle_in: [cycle_gate_ctrl,cycle_stg_adv]
+    cntxt_in: [cntxt_stg_adv,cntxt_up_inhib]
+    relay_in: [relay]
+  OutOf:
+      cycle_out: [cycle_stg_adv]
+      cntxt_out: [cntxt_stg_adv]
+      relay_out: [relay]
+links:
+  defined:
+    - id: g_i
+      hooks_required:
+        - cntxt_in
+        - cntxt_out
+        - cycle_in
+        - cycle_out
+        - noise_in
+        - noise_out
+    - id: gate_i
+      hooks_required:
+        - relay_in
+        - relay_out
+  used: null
 ...
