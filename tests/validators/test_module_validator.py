@@ -6,7 +6,7 @@ from validators.module_validator import ModuleValidator
 from data.axioms.matrix import proc_types
 # from config_tests_data.py import *
 
-class ModuleValidatorTests(unittest.TestCase):
+class TestModuleValidator(unittest.TestCase):
     def setUp(self):
         self.validator = ModuleValidator()
 
@@ -70,3 +70,8 @@ class ModuleValidatorTests(unittest.TestCase):
     def test_links_defined_validation(self):
         isValid = self.validator.links_defined_validation()
         self.assertTrue(isValid)
+
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -181,7 +181,7 @@ Classify	archive\\v_-1\\js-things\\areas.json	/^	"Classify": {$/;"	o
 Classify	archive\\v_-1\\js-things\\def.json	/^	"Classify": {$/;"	o
 Compose	archive\\v_-1\\js-things\\areas.json	/^		"Compose" : {$/;"	o	object:Respond
 ComposeHelper	archive\\v_-1\\js-things\\areas.json	/^		"ComposeHelper" : {$/;"	o	object:Respond
-ConfigTests	tests\\components\\architecture_validator_tests.py	/^class ConfigTests(unittest.TestCase):$/;"	c
+ConfigTests	tests\\components\\architecture_validator_tests.py	/^class TestConfig(unittest.TestCase):$/;"	c
 ConfigValidator	validators\\architecture_validator.py	/^class ConfigValidator():$/;"	c
 Core	archive\\v_-1\\golem_core.py	/^class Core:$/;"	c
 Crown	data\\axioms\\cell_bases.json	/^  "Crown": {$/;"	o
@@ -237,9 +237,9 @@ ModeControl	archive\\v_-1\\js-things\\areas.json	/^		"ModeControl": {$/;"	o	obje
 ModeControl	archive\\v_-1\\js-things\\def.json	/^		"ModeControl": {$/;"	o	object:Preprocess
 Model	archive\\v_-1\\js-things\\areas.json	/^	"Model": {$/;"	o
 Module	components\\module.py	/^class Module():$/;"	c
-ModuleTests	tests\\module_tests.py	/^class ModuleTests(unittest.TestCase):$/;"	c
+ModuleTests	tests\\module_tests.py	/^class TestModule(unittest.TestCase):$/;"	c
 ModuleValidator	validators\\module_validator.py	/^class ModuleValidator():$/;"	c
-ModuleValidatorTests	tests\\module_validator_tests.py	/^class ModuleValidatorTests(unittest.TestCase):$/;"	c
+ModuleValidatorTests	tests\\module_validator_tests.py	/^class TestModuleValidator(unittest.TestCase):$/;"	c
 Notify	archive\\v_-1\\js-things\\areas.json	/^		"Notify": {$/;"	o	object:Preprocess
 Notify	archive\\v_-1\\js-things\\def.json	/^		"Notify": {$/;"	o	object:Preprocess
 Objects	archive\\v_-1\\js-things\\olog.js	/^	"Objects": [],$/;"	p	class:olog

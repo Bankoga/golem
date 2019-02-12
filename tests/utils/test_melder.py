@@ -10,7 +10,7 @@ from data.axioms.matrix import dest_key_pattern
 
 # It is an open question as to whether or not links need to be defined as part of the proc group
 
-class MelderTests(unittest.TestCase):
+class TestMelder(unittest.TestCase):
   def setUp(self):
     self.melder = Melder()
 
@@ -40,6 +40,10 @@ class MelderTests(unittest.TestCase):
     self.assertTrue(datp.address==parts[0])
     self.assertTrue(datp.resource==parts[1])
     self.assertTrue(datp.shape==parts[2])
+
+
+if __name__ == '__main__':
+    unittest.main()
 
 """
 

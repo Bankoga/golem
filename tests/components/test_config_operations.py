@@ -7,7 +7,7 @@ from components.config_reader import read
 from components.config_operations import build_full_config
 from components.config_operations import build_module_entry
 
-class ConfigOperationsTests(unittest.TestCase):
+class TestConfigOperations(unittest.TestCase):
   def setUp(self):
     self.config = read('Test','golem')
 
@@ -20,3 +20,7 @@ class ConfigOperationsTests(unittest.TestCase):
     # thus building a module config is composed of several steps
     # first we must collect the missing proc type information from the corresponding config
     self.assertTrue(False)
+
+
+if __name__ == '__main__':
+    unittest.main()

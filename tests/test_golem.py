@@ -8,7 +8,10 @@ from data.axioms.matrix import dest_key_pattern
 from components.config_reader import read
 from golem.core import Golem
 
-class GolemTests(unittest.TestCase):
+class TestGolem(unittest.TestCase):
 
   def setUp(self):
     self.golem = Golem()
+
+if __name__ == '__main__':
+    unittest.main()

@@ -4,7 +4,7 @@ from module.py import *
 from string import ascii_lowercase
 # from config_tests_data.py import *
 
-class ModuleTests(unittest.TestCase):
+class TestModule(unittest.TestCase):
     # TODO: Move the GOLEM conda env from conda envs in AppData local to the package...
     VALID_inputMelds=
     VALID_funcType=
@@ -57,3 +57,8 @@ class ModuleTests(unittest.TestCase):
             linksDefined)
         self.assertIsNot(funcStr,NULL)
         self.assertIs(funcStr,VALID_funcStr)
+
+
+
+if __name__ == '__main__':
+    unittest.main()

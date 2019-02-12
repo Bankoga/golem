@@ -6,7 +6,7 @@ from string import ascii_lowercase
 from data.axioms.matrix import dest_key_pattern
 from components.config_reader import read
 
-class ConfigReaderTests(unittest.TestCase):
+class TestConfigReader(unittest.TestCase):
 
   def test_read_from_golem(self):
     config = read('Test','golem')
@@ -19,3 +19,7 @@ class ConfigReaderTests(unittest.TestCase):
   @given(st.text())
   def test_invalid_proc_attempt(self, proctype):
     self.assertWarns(FileNotFoundError, read, proctype, 'proc')
+
+
+if __name__ == '__main__':
+    unittest.main()
