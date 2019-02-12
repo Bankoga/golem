@@ -1,6 +1,7 @@
 from utils.datapack import *
 
 class Melder:
+  # DIS BE A FACTORY YO!
   def __init__(self):
     pass
 

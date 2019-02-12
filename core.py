@@ -8,9 +8,10 @@ from layer import *
 from problem_domain import *
 from decoder import *
 from encoder import *
+from utils.config_operations import build_full_config
 
-class Golem():
-    # Goal oriented, logos encapsulating modeler
+class Golem:
+    # Goal oriented, logos encapsulating matrix
     def __init__(self, golem_type, num_dests=0, is_pair=False):
         # move num_dests, and is_pair to golem type config
         self.golem_type == golem_type
@@ -18,17 +19,6 @@ class Golem():
         self.mode = 'pre-construction'
 
     def parse_gt_config(golem_type, num_dests, is_pair):
-        """
-        validate inputs
-        check for a valid golem type file in the golem type database (lol. it's a directory for the MVP)
-        throw an error for existance of validation operational violations
-        ctags --options=C:\Users\sturmy\.vscode\extensions\ms-python.python-2018.12.1\resources\ctagOptions --languages=Python --exclude=**/site-packages/** -o d:\Projects\golem-factory\.vscode\tags .
-Install Universal Ctags Win32 to enable support for Workspace Symbols
-Download the CTags binary from the Universal CTags site.
-Option 1: Extract ctags.exe from the downloaded zip to any folder within your PATH so that Visual Studio Code can run it.
-Option 2: Extract to any folder and add the path to this folder to the command setting.
-Option 3: Extract to any folder and define that path in the python.workspaceSymbols.ctagsPath setting of your user settings file (settings.json).
-        """
         config_fname = 'core\\configs\\golem_types\\{0}.yaml'.format(golem_type)
         golem_type_config = load(open(config_fname))
         # core_config = self.build_full_config(golem_type_config['core_type_fname'])
