@@ -1,36 +1,73 @@
 ---
-TypeData:
-  Id: Test
-  Name: Config Behavior Test Architecture
+type_data:
+  id: Test
+  name: Config Behavior Test Architecture
   Purpose: Should be a short explanation or links to documentation about the purpose of this type of golem
-Modules:
-  - Id: TestA
-    Type: DLCEG
-    InputMelds: []
-    OuputMelds: []
-    ShapeToGroupsDict:
-      ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
-    Channels: 1
-  - Id: TestB
-    Type: DLCEG
-    InputMelds: []
-    OuputMelds: []
-    ShapeToGroupsDict:
-      ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
-    Channels: 1
-  - Id: TestC
-    Type: BLCEG
-    InputMelds: []
-    OuputMelds: []
-    ShapeToGroupsDict:
-      ModuleField: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
-    Channels: 1
-  - Id: TestGate
-    Type: GLG
-    InputMelds: null
-    OutputMelds: null
-    ShapeToGroupsDict:
-      G_i: [NoiseDwnInhib,NoiseAdjInhib,CycleGateCtrl,CycleStgAdv,CntxtStgAdv,CntxtUpInhib]
+fields:
+  field_key: field_shape
+modules:
+  - type_data:
+      id: TestInput
+      proc: CDR
+    melds:
+      inputs: null
+      outputs: null
+    shape_of_groups_dict:
+      module_field: null
+    channels: 1
+  - type_data:
+      id: TestOutput
+      proc: CDR
+    melds:
+      inputs: null
+      outputs: null
+    shape_of_groups_dict:
+      module_field: null
+    channels: 1
+  - type_data:
+      id: TestA
+      proc: DCLEG
+    melds:
+      inputs: null
+      outputs: null
+    shape_of_groups_dict:
+      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+    channels: 1
+  - type_data:
+      id: TestB
+      proc: DCLEG
+    melds:
+      inputs: null
+      outputs: null
+    shape_of_groups_dict:
+      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+    channels: 1
+  - type_data:
+      id: TestC
+      proc: DFLEG
+    melds:
+      inputs: null
+      outputs: null
+    shape_of_groups_dict:
+      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+    channels: 1
+  - type_data:
+      id: TestDM
+      proc: DFLEG
+    melds:
+      inputs: null
+      outputs: null
+    shape_of_groups_dict:
+      module_field: [CntxtDwnInhib,IPBiInhibCtrl,IPDownInhib,IPStgAdv,APBiInhibCtrl,APDownInhib,APStgAdv,CBiInhibCtrl,CDownInhib,CUpInhib,CStgAdv,OPBiInhibCtrl,OPDownInhib,OPStgAdv,COBiInhibCtrl,COUpInhib,COStgAdv]
+    channels: 1
+  - type_data:
+      id: TestGate
+      proc: GLG
+    melds:
+      inputs: null
+      outputs: null
+    shape_of_groups_dict:
+      module_field: [NoiseDwnInhib,NoiseAdjInhib,CycleGateCtrl,CycleStgAdv,CntxtStgAdv,CntxtUpInhib]
       Gate_i: [Relay]
-    Channels: 1
+    channels: 1
 ...

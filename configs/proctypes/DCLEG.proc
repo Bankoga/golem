@@ -1,6 +1,8 @@
 ---
-Id: DCLEG
-Name: Decision Controlled Logos Encapsulator Group
+TypeData:
+  Id: DCLEG
+  Name: Decision Controlled Logos Encapsulator Group
+  Purpose: Represents one arbitrary cortical like shape that is affected by DM system outputs
 StageToGroupsDicts:
   - Stage: CntxtCtrl
     Groups: [CntxtDwnInhib]
