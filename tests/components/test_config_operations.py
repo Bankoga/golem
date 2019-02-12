@@ -22,7 +22,7 @@ class TestConfigOperations(unittest.TestCase):
     # thus building a module config is composed of several steps. In essence, we extend the module object using the proc object
     # first we must collect the missing proc type information from the corresponding config
     proc = read(module['type_data']['proc'],'proc')
-    results = build_module_entry(module)
+    results = build_module_entry(module,0)
     self.assertTrue(results['type_data']['id']=='CCG')
     # once we have the proc type config data, it must by converted into unified proc groups
     self.assertTrue(len(results['proc_groups'])==3)

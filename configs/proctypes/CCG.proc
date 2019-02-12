@@ -3,7 +3,7 @@ type_data:
   id: CCG
   name: Coder Component Group
 stage_to_groups_dict:
-  - stage: fw_method
+  - id: fw_method
     groups: [inputs, function, outputs]
     total_count: 2
 group_details: null
