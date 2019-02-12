@@ -8,7 +8,7 @@ fields:
 modules:
   - type_data:
       id: TestInput
-      proc: CDR
+      proc: CCG
     melds:
       inputs: null
       outputs: null
@@ -17,7 +17,7 @@ modules:
     channels: 1
   - type_data:
       id: TestOutput
-      proc: CDR
+      proc: CCG
     melds:
       inputs: null
       outputs: null
