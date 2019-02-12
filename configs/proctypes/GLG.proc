@@ -1,6 +1,7 @@
 ---
-Id: GLG
-Name: Gateway Layer Groups
+type_data:
+  id: GLG
+  name: Gateway Layer Groups
 StageToGroupsDicts:
   - Stage: NoiseCtrl
     Groups: [NoiseDwnInhib,NoiseAdjInhib]

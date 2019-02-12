@@ -7,5 +7,6 @@ def build_full_config(config):
     return module
 
 def build_module_entry(module):
-    read(module['Type'],'proc')
+    conf = read(module['Type'],'proc')
+    conf
     return {"":""}
