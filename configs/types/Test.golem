@@ -9,7 +9,7 @@ fields:
 modules:
   - type_data:
       id: TestInput
-      proc: CCG
+      proc: PICG
     inputs:
       - 
     outputs: null
@@ -18,7 +18,7 @@ modules:
     channels: 1
   - type_data:
       id: TestOutput
-      proc: CCG
+      proc: POCG
     inputs: null
     outputs: null
     shape_of_groups_dict:
