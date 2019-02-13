@@ -1,155 +1,158 @@
 ---
-Id: DFLEG
-Name: Decision Free Logos Encapsulator Group
-StageToGroupsDicts:
-  - Stage: cntxt_ctrl
-    Groups: [CntxtDwnInhib]
-    TotalCount: 20
-  - Stage: InitProc
-    Groups: [IPBiInhibCtrl,IPDownInhib,IPstg_adv]
-    TotalCount: 20
-  - Stage: AddtProc
-    Groups: [APBiInhibCtrl,APDownInhib,APstg_adv]
-    TotalCount: 20
-  - Stage: proc_ctrl
-    Groups: [CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv]
-    TotalCount: 20
-  - Stage: OutProc
-    Groups: [OPBiInhibCtrl,OPDownInhib,OPstg_adv]
-    TotalCount: 20
-  - Stage: CntxtProc
-    Groups: [COBiInhibCtrl,COUpInhib,COstg_adv]
-    TotalCount: 20
-GroupDetails:
-  CntxtDwnInhib:
+type_data:
+  id: DFLEG
+  name: Decision Free Logos Encapsulator Group
+  purpose: Represents an arbitrary cortical section that is free of L4 decision influence and outputs through a gate
+stage_to_groups_dict:
+  - stage: cntxt_ctrl
+    groups: [cntxt_dwn_inhib]
+    total_count: 20
+  - stage: init_proc
+    groups: [ip_biinhib_ctrl,ip_down_inhib,ip_stg_adv]
+    total_count: 20
+  - stage: addt_proc
+    groups: [ap_biinhib_ctrl,ap_down_inhib,ap_stg_adv]
+    total_count: 20
+  - stage: proc_ctrl
+    groups: [c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv]
+    total_count: 20
+  - stage: out_proc
+    groups: [op_biinhib_ctrl,op_down_inhib,op_stg_adv]
+    total_count: 20
+  - stage: cntxt_proc
+    groups: [co_biinhib_ctrl,co_up_inhib,co_stg_adv]
+    total_count: 20
+group_details:
+  - id: cntxt_dwn_inhib
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  IPBiInhibCtrl:
+  - id: ip_biinhib_ctrl
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  IPDownInhib:
+  - id: ip_down_inhib
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  IPstg_adv:
+  - id: ip_stg_adv
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  APBiInhibCtrl:
+  - id: ap_biinhib_ctrl
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  APDownInhib:
+  - id: ap_down_inhib
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  APstg_adv:
+  - id: ap_stg_adv
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  CBiInhibCtrl:
+  - id: c_biinhib_ctrl
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  CDownInhib:
+  - id: c_down_inhib
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  CUpInhib:
+  - id: c_up_inhib
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  Cstg_adv:
+  - id: c_stg_adv
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  OPBiInhibCtrl:
+  - id: op_biinhib_ctrl
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  OPDownInhib:
+  - id: op_down_inhib
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  OPstg_adv:
+  - id: op_stg_adv
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  COBiInhibCtrl:
+  - id: co_biinhib_ctrl
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  COUpInhib:
+  - id: co_up_inhib
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-  COstg_adv:
+  - id: co_stg_adv
     node_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-HooksInto:
-  CntxtIn: [CntxtDwnInhib]
-  CycleIn: [CBiInhibCtrl,CDownInhib,CUpInhib,Cstg_adv]
-HooksOutOf:
-  CntxtOut: [COstg_adv]
-  NoiseOut: [OPstg_adv,COstg_adv]
-  CycleOut: [OPstg_adv]
-InputMelds:
-  CntxtDwnInhib: null
-  IPBiInhibCtrl: null
-  IPDownInhib: null
-  IPstg_adv: null
-  APBiInhibCtrl: null
-  APDownInhib: null
-  APstg_adv: null
-  CBiInhibCtrl: null
-  CDownInhib: null
-  CUpInhib: null
-  Cstg_adv: null
-  OPBiInhibCtrl: null
-  OPDownInhib: null
-  OPstg_adv: null
-  COBiInhibCtrl: null
-  COUpInhib: null
-  COstg_adv: null
-OutputMelds:
-  CntxtDwnInhib: null
-  IPBiInhibCtrl: null
-  IPDownInhib: null
-  IPstg_adv: null
-  APBiInhibCtrl: null
-  APDownInhib: null
-  APstg_adv: null
-  CBiInhibCtrl: null
-  CDownInhib: null
-  CUpInhib: null
-  Cstg_adv: null
-  OPBiInhibCtrl: null
-  OPDownInhib: null
-  OPstg_adv: null
-  COBiInhibCtrl: null
-  COUpInhib: null
-  COstg_adv: null
-LinksDefined: null
-LinksUsed:
-  - G_i
+hooks_into:
+  cntxt_in: [cntxt_dwn_inhib]
+  cycle_in: [c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv]
+hooks_outof:
+  cntxt_out: [co_stg_adv]
+  noise_out: [op_stg_adv,co_stg_adv]
+  cycle_out: [op_stg_adv]
+inputs:
+  cntxt_dwn_inhib: null
+  ip_biinhib_ctrl: null
+  ip_down_inhib: null
+  ip_stg_adv: null
+  ap_biinhib_ctrl: null
+  ap_down_inhib: null
+  ap_stg_adv: null
+  c_biinhib_ctrl: null
+  c_down_inhib: null
+  c_up_inhib: null
+  c_stg_adv: null
+  op_biinhib_ctrl: null
+  op_down_inhib: null
+  op_stg_adv: null
+  co_biinhib_ctrl: null
+  co_up_inhib: null
+  co_stg_adv: null
+outputs:
+  cntxt_dwn_inhib: null
+  ip_biinhib_ctrl: null
+  ip_down_inhib: null
+  ip_stg_adv: null
+  ap_biinhib_ctrl: null
+  ap_down_inhib: null
+  ap_stg_adv: null
+  c_biinhib_ctrl: null
+  c_down_inhib: null
+  c_up_inhib: null
+  c_stg_adv: null
+  op_biinhib_ctrl: null
+  op_down_inhib: null
+  op_stg_adv: null
+  co_biinhib_ctrl: null
+  co_up_inhib: null
+  co_stg_adv: null
+links_defined: null
+links_used:
+  - g_i
+  - gate_i
 ...
