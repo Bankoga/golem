@@ -8,7 +8,7 @@ ProcGroupDetails:
   cycle_stg_adv: [["Point,1"],1]
   cntxt_stg_adv: [["Plate,1"],1]
   cntxt_up_inhib: [["Plate,1"],1]
-  Relay: [["Point,1"],1]
+  relay: [["Point,1"],1]
 InputMelds:
   - proc_ctrl-energy
   - cntxt_ctrl-energy

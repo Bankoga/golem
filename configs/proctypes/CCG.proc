@@ -3,10 +3,16 @@ type_data:
   id: CCG
   name: Coder Component Group
 stage_to_groups_dict:
-  - id: fw_method
-    groups: [inputs, function, outputs]
-    total_count: 2
-group_details: null
+  - type_data:
+      id: fw_method
+      purpose: represents the function used to move data into or out of the matrix
+    groups: [function]
+    total_count: 1
+group_details:
+  - id: function
+    node_details:
+      - node_type: function
+    pct_of_stage: 1
 inputs: null
 outputs: null
 hooks_into: null

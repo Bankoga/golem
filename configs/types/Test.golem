@@ -10,7 +10,8 @@ modules:
   - type_data:
       id: TestInput
       proc: CCG
-    inputs: null
+    inputs:
+      - 
     outputs: null
     shape_of_groups_dict:
       module_field: null
@@ -62,6 +63,6 @@ modules:
     outputs: null
     shape_of_groups_dict:
       module_field: [noise_dwn_inhib,noise_adj_inhib,cycle_gate_ctrl,cycle_stg_adv,cntxt_stg_adv,cntxt_up_inhib]
-      gate_i: [Relay]
+      gate_i: [relay]
     channels: 1
 ...

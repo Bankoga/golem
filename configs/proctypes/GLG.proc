@@ -12,7 +12,7 @@ stage_to_groups_dict:
   - id: cntxt_relay
     groups: [cntxt_stg_adv,cntxt_up_inhib]
     total_count: 2
-  - id: Relay
+  - id: relay
     groups: [stg_adv]
     total_count: 1
 group_details:
@@ -46,7 +46,7 @@ group_details:
       - node_type: plate
         pct_of_group: 1
     pct_of_stage: 0.5
-  - id: Relay
+  - id: relay
     node_details:
       - node_type: plate
         pct_of_group: 1
@@ -58,7 +58,7 @@ inputs:
   cycle_stg_adv: [cycle_relay-energy]
   cntxt_stg_adv: [cntxt_relay-energy]
   cntxt_up_inhib: [cntxt_relay-energy]
-  Relay: null
+  relay: null
 outputs:
   noise_dwn_inhib: [cntxt_up_inhib-Inhbitor,cycle_relay-inhibitor,cntxt_relay-inhibitor]
   noise_adj_inhib: [noise_dwn_inhib-inhibitor]
@@ -66,7 +66,7 @@ outputs:
   cycle_stg_adv: [cycle_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
   cntxt_stg_adv: [cntxt_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
   cntxt_up_inhib: [cntxt_relay-inhibitor]
-  Relay: null
+  relay: null
 hooks_into:
   noise_in: [noise_dwn_inhib,noise_adj_inhib]
   cycle_in: [cycle_gate_ctrl,cycle_stg_adv]

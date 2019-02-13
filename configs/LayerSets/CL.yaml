@@ -1,7 +1,7 @@
 ---
 - ID: Gateway, Coder Loop Layers	Type	The set of layers for the Gateway regions that group with coder modules	n	Intramodule Output Source	Edges sans Circuits
-    n	RR	Resource Relay that directly passes on the input it receives	Circuits	I->GLR,GII
-    n	RI	Relay Inhib that negates all relay output	Circuits, Module	None
+    n	RR	Resource relay that directly passes on the input it receives	Circuits	I->GLR,GII
+    n	RI	relay Inhib that negates all relay output	Circuits, Module	None
 - ID: Coder Layers	Type	The set of layers, in this case parts, of the Coder type Layers Set	n	
     n	LI	The input to the function. Shape is determined by function parameters	Input, Primary	
     n	LF	The function used to transform the input into the output	Function	

@@ -39,7 +39,7 @@ Regions are basically rectangles, and so are akin to 3D Matrices. The length, an
 Known types of regions are currently limited to:
 
 - Cortex
-- Relay
+- relay
 - Cerebellum (this is a WIP that needs to be revisited)
 
 The cortex and relay regions within the cortical problem domain type have the same dimensions, and thus can be unified into a single region. If we want the thalamus to exist as a separate region inside a subcortical problem domain, then they will have to be stitched together according to some rules.
