@@ -4,7 +4,7 @@ import hypothesis.strategies as st
 from string import ascii_lowercase
 # from config_tests_data.py import *
 from data.axioms.matrix import dest_key_pattern
-from components.config_reader import read
+from utils.config_reader import read
 
 class TestConfigReader(unittest.TestCase):
 

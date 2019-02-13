@@ -2,9 +2,9 @@ import unittest
 from hypothesis import given
 import hypothesis.strategies as st
 from string import ascii_lowercase
-from components.config_reader import read
-from components.config_operations import build_full_config
-from components.config_operations import build_module_entry
+from utils.config_reader import read
+from utils.config_operations import build_full_config
+from utils.config_operations import build_module_entry
 
 class TestConfigOperations(unittest.TestCase):
 
