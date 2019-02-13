@@ -22,7 +22,7 @@ group_details:
 inputs: null
 outputs: null
 hooks_into: null
-hooks_out_of: null
+hooks_outof: null
 links_defined: null
 links_used: gate_i
 ...

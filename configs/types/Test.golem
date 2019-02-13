@@ -2,16 +2,15 @@
 type_data:
   id: Test
   name: Config Behavior Test Architecture
-  Purpose: Should be a short explanation or links to documentation about the purpose of this type of golem
+  purpose: Should be a short explanation or links to documentation about the purpose of this type of golem
 fields:
-  TestInputA: field_shape
-  TestOutputA: field_shape
+  test_input_a: field_shape
+  test_output_a: field_shape
 modules:
   - type_data:
       id: TestInput
       proc: PICG
-    inputs:
-      - 
+    inputs: null
     outputs: null
     shape_of_groups_dict:
       module_field: null
