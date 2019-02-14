@@ -68,26 +68,26 @@ outputs:
   cntxt_up_inhib: [cntxt_relay-inhibitor]
   relay_stg_adv: null
 hooks_into:
-  noise_in: [noise_dwn_inhib,noise_adj_inhib]
-  cycle_in: [cycle_gate_ctrl,cycle_stg_adv]
-  cntxt_in: [cntxt_stg_adv,cntxt_up_inhib]
-  relay_in: [relay_stg_adv]
+  noise_from: [noise_dwn_inhib,noise_adj_inhib]
+  cycle_from: [cycle_gate_ctrl,cycle_stg_adv]
+  cntxt_from: [cntxt_stg_adv,cntxt_up_inhib]
+  relay_from: [relay_stg_adv]
 hooks_outof:
-    cycle_out: [cycle_stg_adv]
-    cntxt_out: [cntxt_stg_adv]
-    relay_out: [relay_stg_adv]
+    cycle_to: [cycle_stg_adv]
+    cntxt_to: [cntxt_stg_adv]
+    relay_to: [relay_stg_adv]
 links_defined:
   - id: loop_i
     hooks_required:
-      - cntxt_in
-      - cntxt_out
-      - cycle_in
-      - cycle_out
-      - noise_in
-      - noise_out
+      - cntxt_from
+      - cntxt_to
+      - cycle_from
+      - cycle_to
+      - noise_from
+      - noise_to
   - id: gate_i
     hooks_required:
-      - relay_in
-      - relay_out
+      - relay_from
+      - relay_to
 links_used: null
 ...
