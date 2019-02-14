@@ -57,16 +57,6 @@ class TestConfigOperations(unittest.TestCase):
         if proc['outputs'][out_key] is not None:
           self.assertTrue(all(elem in module['outputs'] for elem in proc['outputs'][out_key]))
 
-      # # we must check that the hooks have been added
-      # if ('hooks_into' in proc and group_key in proc['hooks_into']):
-      #   self.assertTrue(module['proc_groups'][group_key]['hooks_into'] is None)
-      # else:
-      #   self.assertTrue(module['proc_groups'][group_key]['hooks_into'].contains(proc['hooks_into'][group_key]))
-      # if ('hooks_outof' in proc and group_key in proc['hooks_outof']):
-      #   self.assertTrue(module['proc_groups'][group_key]['hooks_outof'] is None)
-      # else:
-      #   self.assertTrue(module['proc_groups'][group_key]['hooks_outof']==proc['hooks_outof'][group_key])
-      
     # we must check that the hooks have been added
     if ('hooks_into' in proc):
       self.assertTrue(module['hooks_into']==proc['hooks_into'])

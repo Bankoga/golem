@@ -1,6 +1,12 @@
 from yaml import load, dump
 from data.axioms.configs import dirs
 
+"""
+Plans:
+This can be refactored into a slew of factories for reading,
+    and validating different pieces using the same interface.
+"""
+
 def read(conf, ftype):
     reader = get_reader(ftype)
     return reader(conf)
