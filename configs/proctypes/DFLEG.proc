@@ -153,6 +153,6 @@ outputs:
   co_stg_adv: null
 links_defined: null
 links_used:
-  - g_i
+  - loop_i
   - gate_i
 ...

@@ -77,7 +77,7 @@ hooks_outof:
     cntxt_out: [cntxt_stg_adv]
     relay_out: [relay_stg_adv]
 links_defined:
-  - id: g_i
+  - id: loop_i
     hooks_required:
       - cntxt_in
       - cntxt_out
