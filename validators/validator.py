@@ -8,6 +8,12 @@ class Validator:
     What are the properties of each type of config item
     Things like, are all ids kept in a type data object, or can they be stored wihout said object
     Are null inputs and outputs lists valid? When are the valid? When are they invalid?
+
+    Different types of things that require validation
+    - Full Golem Type Config
+    - Module Full Entry
+    - Link usage
+    - Link composition
   """
 # Omitting other implementation classes shown above
 
