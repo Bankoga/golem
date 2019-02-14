@@ -1,10 +1,11 @@
 from utils.config_reader import read
+from data.axioms.pos_maps import package_map, pipeline_map
 
 def build_full_config(config):
     for i,module in enumerate(config['modules']):
         build_module_entry(module,i)
         config['modules'][i]=module
-    return config
+    # return config
 
 def build_module_entry(module,m):
     proc = read(module['type_data']['proc'],'proc')
@@ -17,7 +18,9 @@ def build_module_entry(module,m):
         for group in stage['groups']:
             module['proc_groups'][group]={
                     'id':group,
-                    'pos_data':{'x':0,'y':m,'z':i}
+                    'pos_data':{'x':f'{package_map[module["package"]]}.{pipeline_map[module["pipeline"]]}',
+                                'y':m,
+                                'z':i}
                 }
     if proc['group_details'] is not None:
         for i,group in enumerate(proc['group_details']):

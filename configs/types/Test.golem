@@ -12,17 +12,19 @@ modules:
       proc: PICG
     inputs: []
     outputs: []
-    shape_of_groups_dict:
-      module_field: null
+    shape_of_groups_dict: null
     channels: 1
+    package: shell
+    pipeline: input
   - type_data:
       id: TestOutput
       proc: POCG
     inputs: []
     outputs: []
-    shape_of_groups_dict:
-      module_field: null
+    shape_of_groups_dict: null
     channels: 1
+    package: shell
+    pipeline: output
   - type_data:
       id: TestA
       proc: DCLEG
@@ -31,6 +33,8 @@ modules:
     shape_of_groups_dict:
       module_field: [cntxt_dwn_inhib,ip_biinhib_ctrl,ip_down_inhib,ip_stg_adv,ap_biinhib_ctrl,ap_down_inhib,ap_stg_adv,c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv,op_biinhib_ctrl,op_down_inhib,op_stg_adv,co_biinhib_ctrl,co_up_inhib,co_stg_adv]
     channels: 1
+    package: core
+    pipeline: extraction
   - type_data:
       id: TestB
       proc: DCLEG
@@ -39,6 +43,8 @@ modules:
     shape_of_groups_dict:
       module_field: [cntxt_dwn_inhib,ip_biinhib_ctrl,ip_down_inhib,ip_stg_adv,ap_biinhib_ctrl,ap_down_inhib,ap_stg_adv,c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv,op_biinhib_ctrl,op_down_inhib,op_stg_adv,co_biinhib_ctrl,co_up_inhib,co_stg_adv]
     channels: 1
+    package: core
+    pipeline: evaluation
   - type_data:
       id: TestC
       proc: DFLEG
@@ -47,6 +53,18 @@ modules:
     shape_of_groups_dict:
       module_field: [cntxt_dwn_inhib,ip_biinhib_ctrl,ip_down_inhib,ip_stg_adv,ap_biinhib_ctrl,ap_down_inhib,ap_stg_adv,c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv,op_biinhib_ctrl,op_down_inhib,op_stg_adv,co_biinhib_ctrl,co_up_inhib,co_stg_adv]
     channels: 1
+    package: core
+    pipeline: compression
+  - type_data:
+      id: TestD
+      proc: DFLEG
+    inputs: []
+    outputs: []
+    shape_of_groups_dict:
+      module_field: [cntxt_dwn_inhib,ip_biinhib_ctrl,ip_down_inhib,ip_stg_adv,ap_biinhib_ctrl,ap_down_inhib,ap_stg_adv,c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv,op_biinhib_ctrl,op_down_inhib,op_stg_adv,co_biinhib_ctrl,co_up_inhib,co_stg_adv]
+    channels: 1
+    package: core
+    pipeline: execution
   - type_data:
       id: TestDM
       proc: DFLEG
@@ -55,6 +73,8 @@ modules:
     shape_of_groups_dict:
       module_field: [cntxt_dwn_inhib,ip_biinhib_ctrl,ip_down_inhib,ip_stg_adv,ap_biinhib_ctrl,ap_down_inhib,ap_stg_adv,c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv,op_biinhib_ctrl,op_down_inhib,op_stg_adv,co_biinhib_ctrl,co_up_inhib,co_stg_adv]
     channels: 1
+    package: core
+    pipeline: dm
   - type_data:
       id: TestGate
       proc: GLG
@@ -64,4 +84,6 @@ modules:
       module_field: [noise_dwn_inhib,noise_adj_inhib,cycle_gate_ctrl,cycle_stg_adv,cntxt_stg_adv,cntxt_up_inhib]
       gate_i: [relay]
     channels: 1
+    package: framework
+    pipeline: operations_ctrl
 ...

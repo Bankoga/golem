@@ -5,6 +5,7 @@ from string import ascii_lowercase
 from utils.config_reader import read
 from utils.config_operations import build_full_config
 from utils.config_operations import build_module_entry
+from data.axioms.pos_maps import package_map, pipeline_map
 
 def _check_results_contains_property_from_parts_(self, result, prop, part):
   if (part[prop] is None):
@@ -25,7 +26,7 @@ class TestConfigOperations(unittest.TestCase):
 
   # @given(st.integers(max_value=6))
   def test_build_module_entry(self):
-    module_num = 6
+    module_num = 7
     module = self.config['modules'][module_num]
     # building a module config means turning all of the properties into a single list of processing group properties ready for melding
     # thus building a module config is composed of several steps. In essence, we extend the module object using the proc object
@@ -41,7 +42,8 @@ class TestConfigOperations(unittest.TestCase):
     # we must check that each group is created, and populated with the correct details
     for i,group_key in enumerate(module['proc_groups']):
       # we must check that the group has the correct location,positions data
-      self.assertEqual(module['proc_groups'][group_key]['pos_data']['x'],0)
+      self.assertEqual(module['proc_groups'][group_key]['pos_data']['x'],f'{package_map[module["package"]]}.{pipeline_map[module["pipeline"]]}')
+      self.assertEqual(module['proc_groups'][group_key]['pos_data']['y'],module_num)
 
       # we must check that the inputs have been added
       if module['inputs'] is not None:
@@ -78,6 +80,8 @@ class TestConfigOperations(unittest.TestCase):
     else:
       self.assertTrue(module['links_used'] == proc['links_used'])
 
+    self.assertTrue(module['package'] in package_map)
+    self.assertTrue(module['pipeline'] in pipeline_map)
 
 if __name__ == '__main__':
     unittest.main()

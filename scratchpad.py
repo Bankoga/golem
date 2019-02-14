@@ -1,3 +1,10 @@
+from utils.config_reader import read
+from utils.config_operations import *
+
+config = read('Test','golem')
+build_full_config(config)
+
+"""
 [G_i],Energy
 [G_i-cycle_relay],Energy
 [G_i-noise_ctrl],Energy
@@ -72,3 +79,4 @@ B1,Energy
 TestInput,Energy,TestInputWhl
 G_TestA-proc_ctrl,Energy,TestInputWhl
 G_TestA-cntxt_ctrl,Energy,TestInputWhl
+"""
