@@ -5,8 +5,8 @@ from hypothesis import given
 from hypothesis import strategies as st
 from  data.axioms.configs import links
 
-class TestLinkerProvider(unittest.TestCase):
-  @given(st.sampled_from(links))
-  def test_get(self, link_id):
+class TestDM(unittest.TestCase):
+  def test_DmLinker(self):
+    link_id = 'dm'
     linker = services.get(link_id, **{})
     self.assertTrue(linker.get_id(), link_id)
