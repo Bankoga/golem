@@ -1,4 +1,4 @@
 dirs = {
   'golem': 'configs\\types\\',
-  'proc': 'configs\\proctypes\\'
+  'proc': 'configs\\procs\\'
 }

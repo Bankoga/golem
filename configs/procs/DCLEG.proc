@@ -1,8 +1,9 @@
 ---
 type_data:
-  id: DFLEG
-  name: Decision Free Logos Encapsulator Group
-  purpose: Represents an arbitrary cortical section that is free of L4 decision influence and outputs through a gate
+  id: DCLEG
+  name: Decision Controlled Logos Encapsulator Group
+  purpose: Represents one arbitrary cortical like shape that is affected by DM system outputs
+  type: cortical
 stage_to_groups_dict:
   - stage: cntxt_ctrl
     groups: [cntxt_dwn_inhib]
@@ -154,5 +155,4 @@ outputs:
 links_defined: null
 links_used:
   - loop_i
-  - gate_i
 ...
