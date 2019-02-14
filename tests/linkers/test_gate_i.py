@@ -10,3 +10,7 @@ class TestGateI(unittest.TestCase):
     link_id = 'gate_i'
     linker = services.get(link_id, **{})
     self.assertTrue(linker.get_id(), link_id)
+    self.assertTrue(False)
+    
+if __name__ == '__main__':
+    unittest.main()

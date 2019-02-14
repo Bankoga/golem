@@ -6,7 +6,12 @@ from hypothesis import strategies as st
 from  data.axioms.configs import links
 
 class TestDM(unittest.TestCase):
+  
   def test_DmLinker(self):
     link_id = 'dm'
     linker = services.get(link_id, **{})
     self.assertTrue(linker.get_id(), link_id)
+    self.assertTrue(False)
+    
+if __name__ == '__main__':
+    unittest.main()

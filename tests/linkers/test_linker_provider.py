@@ -10,3 +10,6 @@ class TestLinkerProvider(unittest.TestCase):
   def test_get(self, link_id):
     linker = services.get(link_id, **{})
     self.assertTrue(linker.get_id(), link_id)
+    
+if __name__ == '__main__':
+    unittest.main()
