@@ -21,37 +21,37 @@ group_details:
     node_details:
       - node_type: plate
         pct_of_group: 1
-    pct_of_stage: 0.5
+    pct_of_stage: -1
   - id: noise_adj_inhib
     node_details:
       - node_type: plate
         pct_of_group: 1
-    pct_of_stage: 0.5
+    pct_of_stage: -1
   - id: cycle_gate_ctrl
     node_details:
       - node_type: plate
         pct_of_group: 1
-    pct_of_stage: 0.5
+    pct_of_stage: -1
   - id: cycle_stg_adv
     node_details:
       - node_type: plate
         pct_of_group: 1
-    pct_of_stage: 0.5
+    pct_of_stage: -1
   - id: cntxt_stg_adv
     node_details:
       - node_type: plate
         pct_of_group: 1
-    pct_of_stage: 0.5
+    pct_of_stage: -1
   - id: cntxt_up_inhib
     node_details:
       - node_type: plate
         pct_of_group: 1
-    pct_of_stage: 0.5
+    pct_of_stage: -1
   - id: relay_stg_adv
     node_details:
       - node_type: plate
         pct_of_group: 1
-    pct_of_stage: 1
+    pct_of_stage: -1
 inputs:
   noise_dwn_inhib: [noise_adj_inhib-inhibitor,noise_ctrl-energy]
   noise_adj_inhib: [noise_ctrl-energy]

@@ -1,0 +1,35 @@
+---
+type_data:
+  id: ASLG
+  name: Audio Stream Layer Groups
+  type: coder
+stage_to_groups_dict:
+  - type_data:
+      id: fw_method
+      purpose: reads current keyboard state, updates keyboard state
+    groups: [kb_reader,kb_motor]
+    total_count: 2
+group_details:
+  - id: kb_reader
+    node_details:
+      - node_type: function
+        func_name: keyboard_to_spikes
+    pct_of_stage: -1
+  - id: kb_motor
+    node_details:
+      - node_type: function
+        func_name: update_reader_pos
+        func_parameters:
+          reader: kb_reader
+          curr_num_parts: 1
+          reader_state: null
+    pct_of_stage: -1
+inputs: null
+outputs: null
+hooks_into:
+  - kb_motor: 
+  - ms_motor: 
+hooks_outof: null
+links_defined: null
+links_used: gate_i
+...

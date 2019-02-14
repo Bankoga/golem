@@ -1,0 +1,37 @@
+---
+type_data:
+  id: MLG
+  name: Mouse Layer Groups
+  type: coder
+stage_to_groups_dict:
+  - type_data:
+      id: fw_method
+      purpose: reads current keyboard state, updates keyboard state, 
+    groups: [ms_reader, ms_motor]
+    total_count: 2
+group_details:
+  - id: ms_reader
+    node_details:
+      - node_type: function
+        func_name: mouse_to_spikes
+    pct_of_stage: -1
+  - id: ms_motor
+    node_details:
+      - node_type: function
+        func_name: update_reader_pos
+        func_parameters:
+          reader: ms_reader
+          curr_num_parts: 1
+          reader_state:
+            row: 0
+            col: 0
+    pct_of_stage: -1
+inputs: null
+outputs: null
+hooks_into:
+  - kb_motor: 
+  - ms_motor: 
+hooks_outof: null
+links_defined: null
+links_used: gate_i
+...
