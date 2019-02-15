@@ -24,10 +24,10 @@ class TestProcProvider(unittest.TestCase):
   def setUp(self):
     self.proc =  proc_services.get(proc_ids['glg'], **{})
 
-  @given(st.sampled_from(procs))
-  def test_get(self, proc_id):
-    proc = proc_services.get(proc_id, **{})
-    self.assertTrue(proc.get_id(), proc_id)
+  # @given(st.sampled_from(procs))
+  # def test_get(self, proc_id):
+  #   proc = proc_services.get(proc_id, **{})
+  #   self.assertTrue(proc.get_id(), proc_id)
     
   def _set_inputs_(self):
     self.assertTrue(False)
