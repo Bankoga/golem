@@ -10,8 +10,8 @@ modules:
   - type_data:
       id: TestInput
       proc: PICG
-    inputs: []
-    outputs: []
+    inputs: [tbd]
+    outputs: [tbd]
     shape_of_groups_dict: null
     channels: 1
     package: shell
@@ -19,8 +19,8 @@ modules:
   - type_data:
       id: TestOutput
       proc: POCG
-    inputs: []
-    outputs: []
+    inputs: [tbd]
+    outputs: [tbd]
     shape_of_groups_dict: null
     channels: 1
     package: shell

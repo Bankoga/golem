@@ -26,9 +26,11 @@ services = ValidatorProvider()
 # 'MLG'
 # 'KBLG'
 
-# proc type validators - 1 per proc type
+# proc type validators - 1 per proc type?
 
-# golem validator - 1
+# golem validator - 2
+# services.register_builder('golem_config', POCGBuilder())
+# services.register_builder('golem_full', TICGBuilder())
 
 # link validators - 1 per link or link type?
 
