@@ -1,7 +1,7 @@
 from data.axioms.configs import file_type
 from utils.config_reader import read
 
-class Proc:
+class Matrix:
   def __init__(self, proc_id):
     self.config = read(proc_id,file_type['proc'])
     self.id = self.config['type_data']['id']
@@ -50,12 +50,12 @@ class Proc:
     pass
 
 
-class ProcBuilder():
+class MatrixBuilder():
   def __init__(self):
     self._instance = None
 
   def __call__(self,proc_id,**_ignored):
-    return Proc(proc_id)
+    return Matrix(proc_id)
     # if not self._instance:
     #   self._instance = GLG()
     # return self._instance

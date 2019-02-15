@@ -14,7 +14,7 @@ class ProcProvider(ObjectFactory):
     return self.create(proc_id, **kwargs)
 
 proc_services = ProcProvider()
-proc_services.register_builder(proc_ids['GLG'], GLGBuilder())
+proc_services.register_builder(proc_ids['glg'], GLGBuilder())
 # proc_services.register_builder(proc_ids['?'], ?Builder())
 # proc_services.register_builder(proc_ids['?'], ?Builder())
 # proc_services.register_builder(proc_ids['?'], ?Builder())
