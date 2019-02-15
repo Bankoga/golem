@@ -1,10 +1,10 @@
 from utils.object_factory import *
 from data.axioms.configs import proc_ids
-from procs.glg import GLGBuilder
-# from procs.dm import DmLinkerBuilder
-# from procs.gate_i import GateILinkerBuilder
-# from procs.synch_i import SynchILinkerBuilder
-# from procs.synch_all import SynchAllLinkerBuilder
+from components.procs.glg import GLGBuilder
+# from components.procs.dm import DmLinkerBuilder
+# from components.procs.gate_i import GateILinkerBuilder
+# from components.procs.synch_i import SynchILinkerBuilder
+# from components.procs.synch_all import SynchAllLinkerBuilder
 
 class ProcProvider(ObjectFactory):
   """

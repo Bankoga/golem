@@ -1,4 +1,4 @@
-from linkers.linker import Linker
+from components.linkers.linker import Linker
 
 class DmLinker(Linker):
   def __init__(self):

@@ -1,4 +1,4 @@
-from linkers.linker import Linker
+from components.linkers.linker import Linker
 
 class LoopILinker(Linker):
   def __init__(self):

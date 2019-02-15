@@ -1,4 +1,4 @@
-from procs.proc import Proc
+from components.procs.proc import Proc
 from data.axioms.configs import proc_ids
 
 class GLG(Proc):
