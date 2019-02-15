@@ -39,61 +39,63 @@ class TestProcProvider(unittest.TestCase):
   #   # building a module config means turning all of the properties into a single list of processing group properties ready for melding
   #   # thus building a module config is composed of several steps. In essence, we extend the module object using the proc object
   #   # first we must collect the missing proc type information from the corresponding config
-  #   proc = read(module['type_data']['proc'],'proc')
+  #   proc = read(self.proc['type_data']['proc'],'proc')
   #   build_module_entry(module,module_num)
-  #   self.assertTrue(module['proc_type_data']['id']=='GLG')
+  #   self.assertTrue(self.proc['proc_type_data']['id']=='GLG')
   #   # once we have the proc type config data, it must by converted into unified proc groups
-  #   self.assertTrue(len(module['proc_groups'])==7)#17)
+  #   self.assertTrue(len(self.proc['proc_groups'])==7)#17)
   #   # once we have the proc type config
 
+  WHAT ARE THE PROPERTIES OF A PROC OBJECT THAT REFLECT THE SUCCESS OF THE METHOD BEING TESTED!
+
   def test_set_inputs(self):
-    for i,group_key in enumerate(module['proc_groups']):
+    for i,group_key in enumerate(self.proc['proc_groups']):
       # we must check that the inputs have been added
-      if module['inputs'] is not None:
-         self.assertTrue(all(elem in module['inputs'] for elem in module['inputs']))
-      for i,inp_key in enumerate(self.proc.inputs):
-        if self.proc.inputs[inp_key] is not None:
-          self.assertTrue(all(elem in module['inputs'] for elem in self.proc.inputs[inp_key]))
+      if self.proc['inputs'] is not None:
+         self.assertTrue(all(elem in self.proc['inputs'] for elem in self.proc['inputs']))
+      for i,inp_key in enumerate(self.proc_conf['inputs']):
+        if self.proc_conf['inputs'][inp_key] is not None:
+          self.assertTrue(all(elem in self.proc['inputs'] for elem in self.proc_conf['inputs'][inp_key]))
   
   def test_set_outputs(self):
-    for i,group_key in enumerate(module['proc_groups']):
+    for i,group_key in enumerate(self.proc['proc_groups']):
       # we must check that the outputs have been added
-      if module['outputs'] is not None:
-        self.assertTrue(all(elem in module['outputs'] for elem in module['outputs']))
-      for i,out_key in enumerate(self.proc.outputs):
-        if self.proc.outputs[out_key] is not None:
-          self.assertTrue(all(elem in module['outputs'] for elem in self.proc.outputs[out_key]))
+      if self.proc['outputs'] is not None:
+        self.assertTrue(all(elem in self.proc['outputs'] for elem in self.proc['outputs']))
+      for i,out_key in enumerate(self.proc_conf['outputs']):
+        if self.proc_conf['outputs'][out_key] is not None:
+          self.assertTrue(all(elem in self.proc['outputs'] for elem in self.proc_conf['outputs'][out_key]))
   
   def test_set_hooks_from(self):
-    if ('hooks_outof' in proc):
-      self.assertTrue(module['hooks_outof']==self.proc.hooks_outof)
+    if ('hooks_outof' in self.proc_conf):
+      self.assertTrue(self.proc['hooks_outof']==self.proc_conf['hooks_outof'])
     else:
-      self.assertTrue(module['hooks_outof'] is None)
+      self.assertTrue(self.proc['hooks_outof'] is None)
   
   def test_set_hooks_to(self):
     # we must check that the hooks have been added
-    if ('hooks_into' in proc):
-      self.assertTrue(module['hooks_into']==self.proc.hooks_into)
+    if ('hooks_into' in self.proc_conf):
+      self.assertTrue(self.proc['hooks_into']==self.proc_conf['hooks_into'])
     else:
-      self.assertTrue(module['hooks_into'] is None)
+      self.assertTrue(self.proc['hooks_into'] is None)
   
   def test_set_links_defined(self):
     # we must check that the links defined have been added
-    if (self.proc.links_defined is None):
-      self.assertTrue(module['links_defined'] is None)
+    if (self.proc_conf['links_defined'] is None):
+      self.assertTrue(self.proc['links_defined'] is None)
     else:
-      self.assertTrue(module['links_defined']== self.proc.links_defined)
+      self.assertTrue(self.proc['links_defined']== self.proc_conf['links_defined'])
     # we must check that the links used have been added
   
   def test_set_links_used(self):
-    if (self.proc.links_used is None):
-      self.assertTrue(module['links_used'] is None)
+    if (self.proc_conf['links_used'] is None):
+      self.assertTrue(self.proc['links_used'] is None)
     else:
-      self.assertTrue(module['links_used'] == self.proc.links_used)
+      self.assertTrue(self.proc['links_used'] == self.proc_conf['links_used'])
   
   def test_set_stage_groups(self):
-    for i,stage in enumerate(module['stages']):
-      self.assertTrue(stage == (self.proc.stage_to_groups_dict[i]))
+    for i,stage in enumerate(self.proc['stages']):
+      self.assertTrue(stage == (self.proc_conf['stage_to_groups_dict'][i]))
     # we must check that each group is created, and populated with the correct details
 
 if __name__ == '__main__':
