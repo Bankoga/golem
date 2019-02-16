@@ -26,6 +26,24 @@ This document serves as an overview of all primary terms, and mappings ordered b
   - ?: ?
   - ?: ?
 
+Modes:
+These are all hybrid matrix-command functions
+
+- Maintenance: reset, cleanup, initialization, transience and crystallization mechanics, and session memory is consolidated
+  - purpose: during this mode, some modules are totally reset, and others are plastically reset
+  - Interrupts lead to a loss of maintenance changes and restore to pre-maintenance
+  - Completion leads to the mode that triggered it
+- Sleep_low: most external input, and output actions are suspended for a number of cycles based on a fraction of the time chosen to sleep.
+  - Interrupts lead to operation
+  - Cycles determine the number of rounds of low-high-low-maintenance-low before returning to Operation. Cycle pattern TBD!
+- Sleep_deep: an internal compositional session replay system is active for a set duration unless interupted.
+  - Interrupts lead to operation
+  - Duration completion leads to sleep_low
+- Operation: the system receives continuous input, and can trigger external output freely
+- Suspend: upon triggering, the system halts timestep evaluation, and waits for further comman lind input
+- Save: upon triggering, it first suspends operation, then writes the instance to disk
+- Load: reads an instance from disk, and upon completion enters the suspend state
+
 #### A note on Module Inputs and Config Revamp
 
 Every word is a function

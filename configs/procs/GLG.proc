@@ -1,6 +1,6 @@
 ---
+id: GLG
 type_data:
-  id: GLG
   name: Gateway Layer Groups
   type: gateway
 stage_to_groups_dict:
