@@ -9,11 +9,12 @@ from components.procs.proc import Proc
 from components.procs.proc_provider import proc_services
 from utils.config_reader import read
 
-def _check_results_contains_property_from_parts_(self, result, prop, part):
-  if (part[prop] is None):
-    self.assertTrue(result[prop] is None)
-  else:
-    self.assertTrue(result[prop].contains(part[prop]))
+# def _check_results_contains_property_from_parts_(self, result, prop, part):
+#   if (part[prop] is None):
+#     self.assertTrue(result[prop] is None)
+#   else:
+#     self.assertTrue(result[prop].contains(part[prop]))
+
 
 class TestProc(unittest.TestCase):
   def __init__(self,proc_id='glg'):
@@ -24,12 +25,7 @@ class TestProc(unittest.TestCase):
     self.proc =  proc_services.get(self.proc_id, **{})
     self.proc_conf = read(self.proc_id,file_type['proc'])
 
-  """
-   WHAT ARE THE PROPERTIES OF THE CONF TO PROC OBJECT MAP THAT REFLECT THE SUCCESS OF THE METHOD BEING TESTED!
-  """
-  def test_inputs_were_inserted_correctly(self):
-    conf_prop = 'inputs'
-    proc_prop = 'proc_groups'
+  def _check_group_conf_prop_(self, conf_prop, proc_prop):
     if self.proc_conf[conf_prop] is None:
       for group in self.proc[proc_prop]:
         self.assertIsNone(group[conf_prop])
@@ -39,6 +35,14 @@ class TestProc(unittest.TestCase):
           conf_group[conf_prop],
           self.proc[proc_prop][conf_group['id']]
         )
+
+  """
+   WHAT ARE THE PROPERTIES OF THE CONF TO PROC OBJECT MAP THAT REFLECT THE SUCCESS OF THE METHOD BEING TESTED!
+  """
+  def test_inputs_were_inserted_correctly(self):
+    conf_prop = 'inputs'
+    proc_prop = 'proc_groups'
+    self._check_group_conf_prop_(conf_prop,proc_prop)
   
   # def test_outputs_were_inserted_correctly(self):
   #   for i,group_key in enumerate(self.proc['proc_groups']):

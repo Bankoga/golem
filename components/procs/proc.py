@@ -7,7 +7,7 @@ class Proc:
   """
   def __init__(self, proc_id):
     self.config = read(proc_id,file_type['proc'])
-    self.id = self.config['type_data']['id']
+    self.id = self.config['id']
     self.name = self.config['type_data']['name']
     self.type = self.config['type_data']['type']
     self.purpose = self.config['type_data']['purpose']

@@ -1,6 +1,6 @@
 ---
 type_data:
-  id: Test
+  golem: Test
   name: Config Behavior Test Architecture
   purpose: Should be a short explanation or links to documentation about the purpose of this type of golem
 fields:

@@ -10,7 +10,7 @@ class TestConfigReader(unittest.TestCase):
 
   def test_read_from_golem(self):
     config = read('Test','golem')
-    self.assertTrue(config['id']=='Test')
+    self.assertTrue(config['type_data']['golem']=='Test')
 
   def test_read_from_proc(self):
     config =  read('GLG','proc')
