@@ -12,7 +12,7 @@ class Proc:
     self.groups = dict()
     self._set_proc_groups_()
     self._set_inputs_()
-    # self._set_outputs_()
+    self._set_outputs_()
     # self._set_hooks_from_()
     # self._set_hooks_to_()
     # self._set_links_defined_()
@@ -32,15 +32,19 @@ class Proc:
       self.groups[group['id']] = group
       # Are there processing group level types?
   
+  def _set_group_prop_(self,conf_prop):
+    for group in self.config[conf_prop]:
+      self.groups[group][conf_prop] = self.config[conf_prop][group]
+
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_inputs_(self):
     conf_prop = 'inputs'
-    for group in self.config[conf_prop]:
-      self.groups[group][conf_prop] = self.config[conf_prop][group]
+    self._set_group_prop_(conf_prop)
   
   # @abstractmethod # pylint: disable=undefined-variable
-  # def _set_outputs_(self):
-  #   pass
+  def _set_outputs_(self):
+    conf_prop = 'outputs'
+    self._set_group_prop_(conf_prop)
   
   # @abstractmethod # pylint: disable=undefined-variable
   # def _set_hooks_from_(self):

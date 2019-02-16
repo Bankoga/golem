@@ -21,10 +21,13 @@ class TestGLG(unittest.TestCase):
           self.assertIsNone(group[conf_prop])
       else:
         for conf_group in self.proc_conf[conf_prop]:
-          self.assertEqual(
-            self.proc_conf[conf_prop][conf_group],
-            self.proc.groups[conf_group][conf_prop]
-          )
+          if self.proc_conf[conf_prop][conf_group] is None:
+              self.assertIsNone(self.proc.groups[conf_group][conf_prop])
+          else:
+            self.assertEqual(
+              self.proc_conf[conf_prop][conf_group],
+              self.proc.groups[conf_group][conf_prop]
+            )
 
   def test_type_data_were_inserted_correctly(self):
     # self.assertTrue(False)
@@ -55,14 +58,9 @@ class TestGLG(unittest.TestCase):
     conf_prop = 'inputs'
     self.check_groups_for_property(conf_prop)
   
-  # # def test_outputs_were_inserted_correctly(self):
-  # #   for i,group_key in enumerate(self.proc['proc_groups']):
-  # #     # we must check that the outputs have been added
-  # #     if self.proc['outputs'] is not None:
-  # #       self.assertTrue(all(elem in self.proc['outputs'] for elem in self.proc['outputs']))
-  # #     for i,out_key in enumerate(self.proc_conf['outputs']):
-  # #       if self.proc_conf['outputs'][out_key] is not None:
-  # #         self.assertTrue(all(elem in self.proc['outputs'] for elem in self.proc_conf['outputs'][out_key]))
+  def test_outputs_were_inserted_correctly(self):
+    conf_prop = 'outputs'
+    self.check_groups_for_property(conf_prop)
   
   # # def test_hooks_from_were_inserted_correctly(self):
   # #   if ('hooks_outof' in self.proc_conf):
