@@ -10,8 +10,8 @@ class Proc:
     self.id = self.config['id']
     self._set_type_data_()
     self.groups = dict()
-    # self._set_proc_groups_()
-    # self._set_inputs_()
+    self._set_proc_groups_()
+    self._set_inputs_()
     # self._set_outputs_()
     # self._set_hooks_from_()
     # self._set_hooks_to_()
@@ -27,8 +27,16 @@ class Proc:
     self.purpose = self.config['type_data']['purpose']
   
   # @abstractmethod # pylint: disable=undefined-variable
-  # def _set_inputs_(self):
-  #   pass
+  def _set_proc_groups_(self):
+    for i,group in enumerate(self.config['group_details']):
+      self.groups[group['id']] = group
+      # Are there processing group level types?
+  
+  # @abstractmethod # pylint: disable=undefined-variable
+  def _set_inputs_(self):
+    conf_prop = 'inputs'
+    for group in self.config[conf_prop]:
+      self.groups[group][conf_prop] = self.config[conf_prop][group]
   
   # @abstractmethod # pylint: disable=undefined-variable
   # def _set_outputs_(self):
@@ -53,9 +61,3 @@ class Proc:
   # @abstractmethod # pylint: disable=undefined-variable
   # def _set_stage_groups_(self):
   #   pass
-  
-  # @abstractmethod # pylint: disable=undefined-variable
-  def _set_proc_groups_(self):
-    for i,group in enumerate(self.config['group_details']):
-      self.groups[group['id']] = group
-      # Are there processing group level types?

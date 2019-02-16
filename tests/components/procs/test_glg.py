@@ -14,17 +14,18 @@ class TestGLG(unittest.TestCase):
     self.proc_conf = read(self.proc_id,file_type['proc'])
   
   # WHAT ARE THE PROPERTIES OF THE CONF TO PROC OBJECT MAP THAT REFLECT THE SUCCESS OF THE METHOD BEING TESTED!
-  #   def _check_group_conf_prop_(self, conf_prop, proc_prop):
-  #     if self.proc_conf[conf_prop] is None:
-  #       for group in self.proc[proc_prop]:
-  #         self.assertIsNone(group[conf_prop])
-  #     else:
-  #       for conf_group in self.proc_conf[conf_prop]:
-  #         self.assertEqual(
-  #           conf_group[conf_prop],
-  #           self.proc[proc_prop][conf_group['id']]
-  #         )
-        
+  def check_groups_for_property(self, conf_prop):
+    if conf_prop in self.proc_conf:
+      if self.proc_conf[conf_prop] is None:
+        for group in self.proc.groups:
+          self.assertIsNone(group[conf_prop])
+      else:
+        for conf_group in self.proc_conf[conf_prop]:
+          self.assertEqual(
+            self.proc_conf[conf_prop][conf_group],
+            self.proc.groups[conf_group][conf_prop]
+          )
+
   def test_type_data_were_inserted_correctly(self):
     # self.assertTrue(False)
     if (self.proc_conf['type_data']['name'] is None):
@@ -42,15 +43,17 @@ class TestGLG(unittest.TestCase):
     else:
       self.assertEqual(self.proc_conf['type_data']['purpose'],self.proc.purpose)
 
-  # def test_proc_groups_were_inserted_correctly(self):
-  #   conf_prop = 'group_details'
-  #   proc_prop = 'groups'
-  #   # self._check_group_conf_prop_(conf_prop,proc_prop)
+  def test_proc_groups_were_inserted_correctly(self):
+    conf_prop = 'group_details'
+    for conf_group in self.proc_conf[conf_prop]:
+      self.assertEqual(
+        conf_group,
+        self.proc.groups[conf_group['id']]
+      )
 
-  # def test_inputs_were_inserted_correctly(self):
-  #   conf_prop = 'inputs'
-  #   proc_prop = 'groups'
-  #   # self._check_group_conf_prop_(conf_prop,proc_prop)
+  def test_inputs_were_inserted_correctly(self):
+    conf_prop = 'inputs'
+    self.check_groups_for_property(conf_prop)
   
   # # def test_outputs_were_inserted_correctly(self):
   # #   for i,group_key in enumerate(self.proc['proc_groups']):
