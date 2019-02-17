@@ -47,9 +47,8 @@ class TestGLG(unittest.TestCase):
       self.assertEqual(self.proc_conf['type_data']['purpose'],self.proc.purpose)
 
   def test_proc_groups_were_inserted_correctly(self):
-    conf_prop = 'group_details'
-    for conf_group in self.proc_conf[conf_prop]:
-      self.assertEqual(
+    for conf_group in self.proc_conf['group_details']:
+      self.assertDictContainsSubset(
         conf_group,
         self.proc.groups[conf_group['id']]
       )
