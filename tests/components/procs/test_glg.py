@@ -15,36 +15,37 @@ class TestGLG(unittest.TestCase):
   
   # WHAT ARE THE PROPERTIES OF THE CONF TO PROC OBJECT MAP THAT REFLECT THE SUCCESS OF THE METHOD BEING TESTED!
   def check_groups_for_property(self, conf_prop):
+    prop_obj = self.proc_conf[conf_prop]
     if conf_prop in self.proc_conf:
-      if self.proc_conf[conf_prop] is None:
+      if prop_obj is None:
         for group in self.proc.groups:
           self.assertIsNone(group[conf_prop])
       else:
-        for conf_group in self.proc_conf[conf_prop]:
-          if self.proc_conf[conf_prop][conf_group] is None:
+        for conf_group in prop_obj:
+          if prop_obj[conf_group] is None:
               self.assertIsNone(self.proc.groups[conf_group][conf_prop])
           else:
             self.assertEqual(
-              self.proc_conf[conf_prop][conf_group],
+              prop_obj[conf_group],
               self.proc.groups[conf_group][conf_prop]
             )
 
   def test_type_data_were_inserted_correctly(self):
-    # self.assertTrue(False)
-    if (self.proc_conf['type_data']['name'] is None):
+    type_obj = self.proc_conf['type_data']
+    if (type_obj['name'] is None):
       self.assertIsNone(self.proc.name)
     else:
-      self.assertEqual(self.proc_conf['type_data']['name'],self.proc.name)
+      self.assertEqual(type_obj['name'],self.proc.name)
     
-    if (self.proc_conf['type_data']['type'] is None):
+    if (type_obj['type'] is None):
       self.assertIsNone(self.proc.type)
     else:
-      self.assertEqual(self.proc_conf['type_data']['type'],self.proc.type)
+      self.assertEqual(type_obj['type'],self.proc.type)
     
-    if (self.proc_conf['type_data']['purpose'] is None):
+    if (type_obj['purpose'] is None):
       self.assertIsNone(self.proc.purpose)
     else:
-      self.assertEqual(self.proc_conf['type_data']['purpose'],self.proc.purpose)
+      self.assertEqual(type_obj['purpose'],self.proc.purpose)
 
   def test_proc_groups_were_inserted_correctly(self):
     for conf_group in self.proc_conf['group_details']:
@@ -64,12 +65,13 @@ class TestGLG(unittest.TestCase):
   def test_hooks_were_inserted_correctly(self):
     hook_prop = 'hooks'
     if hook_prop in self.proc_conf:
-      if self.proc_conf[hook_prop] is None:
+      hooks = self.proc_conf[hook_prop]
+      if hooks is None:
         for group in self.proc.groups:
           self.assertIsNone(group[hook_prop])
       else:
-        for hook_type in self.proc_conf[hook_prop]:
-          for proc_group in self.proc_conf[hook_prop][hook_type]:
+        for hook_type in hooks:
+          for proc_group in hooks[hook_type]:
             self.assertIn(
               hook_type,
               self.proc.groups[proc_group][hook_prop]
