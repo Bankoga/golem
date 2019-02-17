@@ -13,8 +13,7 @@ class Proc:
     self._set_proc_groups_()
     self._set_inputs_()
     self._set_outputs_()
-    # self._set_hooks_from_()
-    # self._set_hooks_to_()
+    self._set_hooks_()
     # self._set_links_defined_()
     # self._set_links_used_()
 
@@ -36,10 +35,6 @@ class Proc:
     for group in self.config[conf_prop]:
       self.groups[group][conf_prop] = self.config[conf_prop][group]
 
-  def _set_group_hook_(self,hook_type):
-    for group in self.config[hook_type]:
-      self.groups[group][hook_type] = self.config[hook_type][group]
-
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_inputs_(self):
     conf_prop = 'inputs'
@@ -51,13 +46,15 @@ class Proc:
     self._set_group_prop_(conf_prop)
   
   # @abstractmethod # pylint: disable=undefined-variable
-  def _set_hooks_from_(self):
-    self._set_group_hook_('hooks_outof')
-  
-  # @abstractmethod # pylint: disable=undefined-variable
-  def _set_hooks_to_(self):
-    self._set_group_hook_('hooks_to')
-  
+  def _set_hooks_(self):
+    hook_prop = 'hooks'
+    for hook_type in self.config[hook_prop]:
+      for group in self.groups:
+        if hook_prop not in self.groups[group]:
+          self.groups[group][hook_prop] = [hook_type]
+        else:
+          self.groups[group][hook_prop].append(hook_type)
+
   # @abstractmethod # pylint: disable=undefined-variable
   # def _set_links_defined_(self):
   #   pass

@@ -28,21 +28,6 @@ class TestGLG(unittest.TestCase):
               self.proc_conf[conf_prop][conf_group],
               self.proc.groups[conf_group][conf_prop]
             )
-  
-  def check_groups_for_hook_type(self, hook_type):
-    if hook_type in self.proc_conf:
-      if self.proc_conf[hook_type] is None:
-        for group in self.proc.groups:
-          self.assertIsNone(group[hook_type])
-      else:
-        for conf_group in self.proc_conf[hook_type]:
-          if self.proc_conf[hook_type][conf_group] is None:
-              self.assertIsNone(self.proc.groups[conf_group][hook_type])
-          else:
-            self.assertEqual(
-              self.proc_conf[hook_type][conf_group],
-              self.proc.groups[conf_group][hook_type]
-            )
 
   def test_type_data_were_inserted_correctly(self):
     # self.assertTrue(False)
@@ -76,11 +61,19 @@ class TestGLG(unittest.TestCase):
     conf_prop = 'outputs'
     self.check_groups_for_property(conf_prop)
   
-  def test_hooks_from_were_inserted_correctly(self):
-    self.check_groups_for_hook_type('hooks_outof')
-  
-  def test_hooks_to_were_inserted_correctly(self):
-    self.check_groups_for_hook_type('hooks_to')
+  def test_hooks_were_inserted_correctly(self):
+    hook_prop = 'hooks'
+    if hook_prop in self.proc_conf:
+      if self.proc_conf[hook_prop] is None:
+        for group in self.proc.groups:
+          self.assertIsNone(group[hook_prop])
+      else:
+        for hook_type in self.proc_conf[hook_prop]:
+          for proc_group in self.proc_conf[hook_prop][hook_type]:
+            self.assertIn(
+              hook_type,
+              self.proc.groups[proc_group][hook_prop]
+            )
   
   # def test_links_defined_were_inserted_correctly(self):
   #   # we must check that the links defined have been added
