@@ -99,8 +99,17 @@ class TestGLG(unittest.TestCase):
         self.assertTrue(self.proc.links_used[link['id']] == link)
   
   def test_init_stage_data_were_inserted_correctly(self):
-    for i,stage in enumerate(self.proc_conf['stages_to_groups_dict']):
-      self.assertTrue(stage == (self.proc_conf['stages_to_groups_dict'][i]))
+    conf_obj = self.proc_conf['stages_to_groups_dict']
+    sz = len(conf_obj)
+    for i,stage in enumerate(conf_obj):
+      for group in conf_obj[stage]:
+        ord_to_index = ordinator(self.proc.ordinal_direction).get_ord_index(i,sz)
+        self.assertEqual(self.proc.groups[group].pos.x, 0)
+        self.assertEqual(self.proc.groups[group].pos.y, 0)
+        self.assertEqual(self.proc.groups[group].pos.z, 0)
+      # self.assertTrue(stage == (self.proc_conf['stages_to_groups_dict'][i]))
+
+  # def test_set_stage_data(self, package_id, pipeline_id, module_id):
 
 if __name__ == '__main__':
   unittest.main()

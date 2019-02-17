@@ -13,3 +13,4 @@ proc_types = [
   ""
 ]
 dest_key_pattern = "[/w|/d].*(-[/w|/d].*)?"
+ordinators = ['asc','dsc'] # eventually will need a pairing ordinator

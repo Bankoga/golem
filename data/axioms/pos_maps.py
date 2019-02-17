@@ -1,10 +1,11 @@
 package_map = {
-  'core': 0,
-  'framework': 1,
-  'regulator': 2,
-  'shell': 3
+  'core': 'main',
+  'framework': 'basement',
+  'regulator': 'basement',
+  'shell': 'cellar',
+  'memory': 'archive',
+  'dm': 'attic'
 }
-
 pipeline_map = {
   'input': 0,
   'extraction': 1,
@@ -17,4 +18,11 @@ pipeline_map = {
   'output': 8,
   'dm': 9,
   'operations_ctrl': 10
+}
+direction_keys = {
+  "A": {
+    "id": "",
+    "pattern": "^[A|a](bove)",
+    "position_key": ""
+  }
 }
