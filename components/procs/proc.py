@@ -36,6 +36,10 @@ class Proc:
     for group in self.config[conf_prop]:
       self.groups[group][conf_prop] = self.config[conf_prop][group]
 
+  def _set_group_hook_(self,hook_type):
+    for group in self.config[hook_type]:
+      self.groups[group][hook_type] = self.config[hook_type][group]
+
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_inputs_(self):
     conf_prop = 'inputs'
@@ -47,12 +51,12 @@ class Proc:
     self._set_group_prop_(conf_prop)
   
   # @abstractmethod # pylint: disable=undefined-variable
-  # def _set_hooks_from_(self):
-  #   pass
+  def _set_hooks_from_(self):
+    self._set_group_hook_('hooks_outof')
   
   # @abstractmethod # pylint: disable=undefined-variable
-  # def _set_hooks_to_(self):
-  #   pass
+  def _set_hooks_to_(self):
+    self._set_group_hook_('hooks_to')
   
   # @abstractmethod # pylint: disable=undefined-variable
   # def _set_links_defined_(self):
