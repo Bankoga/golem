@@ -24,6 +24,7 @@ class Proc:
     self.name = self.config['type_data']['name']
     self.type = self.config['type_data']['type']
     self.purpose = self.config['type_data']['purpose']
+    self.ordinal_direction = self.config['type_data']['ordinal_direction']
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_proc_groups_(self):

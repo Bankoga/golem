@@ -46,6 +46,11 @@ class TestGLG(unittest.TestCase):
       self.assertIsNone(self.proc.purpose)
     else:
       self.assertEqual(type_obj['purpose'],self.proc.purpose)
+    
+    if (type_obj['ordinal_direction'] is None):
+      self.assertIsNone(self.proc.ordinal_direction is None)
+    else:
+      self.assertEqual(type_obj['ordinal_direction',self.proc.ordinal_direction])
 
   def test_proc_groups_were_inserted_correctly(self):
     for conf_group in self.proc_conf['group_details']:
