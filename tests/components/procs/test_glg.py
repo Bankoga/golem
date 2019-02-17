@@ -5,6 +5,7 @@ from data.axioms.configs import proc_ids,file_type
 from components.procs.proc import Proc
 from components.procs.proc_provider import proc_services
 from utils.config_reader import read
+from components.ordinators.ordinator_provider import ordinator_services
 
 class TestGLG(unittest.TestCase):
 
@@ -103,10 +104,11 @@ class TestGLG(unittest.TestCase):
     sz = len(conf_obj)
     for i,stage in enumerate(conf_obj):
       for group in conf_obj[stage]:
-        ord_to_index = ordinator(self.proc.ordinal_direction).get_ord_index(i,sz)
-        self.assertEqual(self.proc.groups[group].pos.x, 0)
-        self.assertEqual(self.proc.groups[group].pos.y, 0)
-        self.assertEqual(self.proc.groups[group].pos.z, 0)
+        ord_to_index = ordinator_services.get(self.proc.ordinal_direction).get_ord_index(i,sz)
+        self.assertEqual(self.proc.groups[group].pos.s, -1)
+        self.assertEqual(self.proc.groups[group].pos.x, -1)
+        self.assertEqual(self.proc.groups[group].pos.y, -1)
+        self.assertEqual(self.proc.groups[group].pos.z, ord_to_index)
       # self.assertTrue(stage == (self.proc_conf['stages_to_groups_dict'][i]))
 
   # def test_set_stage_data(self, package_id, pipeline_id, module_id):

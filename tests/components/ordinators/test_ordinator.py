@@ -3,7 +3,7 @@ from components.ordinators.ordinator import Ordinator
 import unittest
 from hypothesis import given
 from hypothesis import strategies as st
-from data.axioms.matrix import direction_keys
+from data.axioms.pos_maps import direction_keys
 
 class TestOrdinator(unittest.TestCase):
   

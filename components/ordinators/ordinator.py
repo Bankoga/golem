@@ -1,3 +1,4 @@
+from data.axioms.pos_maps import floor_order
 class Ordinator:
 
   """
@@ -10,6 +11,12 @@ class Ordinator:
     return self.ordinal_direction
   
   @abstractmethod # pylint: disable=undefined-variable
+  def get_direction(self):
+    pass
+  
+  @abstractmethod # pylint: disable=undefined-variable
   def get_ord_index(self, index, size):
     pass
 
+  # def get_floor_index(self, floor_id):
+  #   return floor_order.index(floor_id)

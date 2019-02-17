@@ -26,3 +26,10 @@ direction_keys = {
     "position_key": ""
   }
 }
+floor_order = [
+  'cellar',
+  'basement',
+  'archive',
+  'main',
+  'attic'
+]

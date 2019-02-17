@@ -20,7 +20,7 @@ Paired items are simply sign flipped in terms of position or use a paired dictio
 | --- | --- | --- | --- | --- |
 | Section||S | [cellar=0,basement=1,archive=2,main=3,attic=4] | f'{package_map[package_id]}.{indexof(pipeline_id,pipeline_map)}' | cellar,basement,archive,main,attic | allows us to have overlapping package modules which is really useful for some mappings |
 | Room||X | 0-len of all packages on floor | package_modules[module_id].index | int | To represent the length of the package in terms of num modules |
-| Room||Y | 0-max num groups across all packages on floor | package_modules[module_id].group | int | To represent the width of each module in terms of number of groups |
+| Room||Y | 0-max num groups in a module across all packages on floor | package_modules[module_id].group | int | To represent the width of each module in terms of number of groups |
 | Floor||Z | 0-N | group order | int | To represent how groups are locally distributed in terms of stage height/ordinality |
 
 ## Directions
