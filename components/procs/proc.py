@@ -15,7 +15,7 @@ class Proc:
     self._set_outputs_()
     self._set_hooks_()
     self._set_links_defined_()
-    # self._set_links_used_()
+    self._set_links_used_()
 
   def get_id(self):
     return self.id
@@ -56,6 +56,13 @@ class Proc:
           self.groups[group][hook_prop].append(hook_type)
 
   # @abstractmethod # pylint: disable=undefined-variable
+  def _build_links_(self, link_protos, link_results=dict()):
+    if link_protos is not None:
+      for link in link_protos:
+        link_results[link['id']] = link
+    return link_results
+
+  # @abstractmethod # pylint: disable=undefined-variable
   def _set_links_defined_(self):
     links_defined = self.config['links_defined']
     link_defs = dict()
@@ -65,9 +72,10 @@ class Proc:
     self.link_definitions = link_defs
   
   # @abstractmethod # pylint: disable=undefined-variable
-  # def _set_links_used_(self):
-  #   pass
+  def _set_links_used_(self):
+    links_used = self.config['links_used']
+    self.links_used = self._build_links_(links_used)
   
   # @abstractmethod # pylint: disable=undefined-variable
-  # def _set_stage_groups_(self):
+  # def _set_stage_data_(self):
   #   pass

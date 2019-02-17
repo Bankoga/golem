@@ -87,13 +87,13 @@ class TestGLG(unittest.TestCase):
 
   def test_links_used_were_inserted_correctly(self):
     conf_prop='links_used'
-    if (self.proc_conf[conf_prop] is None):
-      self.assertTrue(self.proc.links_used is None)
+    if not self.proc_conf[conf_prop]:
+      self.assertFalse(self.proc.links_used)
     else:
       for link in self.proc_conf[conf_prop]:
         self.assertTrue(self.proc.links_used[link['id']] == link)
   
-  # def test_stage_groups_were_inserted_correctly(self):
+  # def test_stage_data_were_inserted_correctly(self):
   #   for i,stage in enumerate(self.proc['stages']):
   #     self.assertTrue(stage == (self.proc_conf['stage_to_groups_dict'][i]))
   #   # we must check that each group is created, and populated with the correct details
