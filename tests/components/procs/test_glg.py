@@ -74,15 +74,15 @@ class TestGLG(unittest.TestCase):
               hook_type,
               self.proc.groups[proc_group][hook_prop]
             )
-  
-  # def test_links_defined_were_inserted_correctly(self):
-  #   # we must check that the links defined have been added
-  #   if (self.proc_conf['links_defined'] is None):
-  #     self.assertTrue(self.proc['links_defined'] is None)
-  #   else:
-  #     self.assertTrue(self.proc['links_defined']== self.proc_conf['links_defined'])
-  #   # we must check that the links used have been added
-  
+
+  def test_links_defined_were_inserted_correctly(self):
+    conf_prop='links_defined'
+    if (self.proc_conf[conf_prop] is None):
+      self.assertTrue(self.proc.link_definitions is None)
+    else:
+      for link in self.proc_conf[conf_prop]:
+        self.assertTrue(self.proc.link_definitions[link['id']] == link)
+
   # def test_links_used_were_inserted_correctly(self):
   #   if (self.proc_conf['links_used'] is None):
   #     self.assertTrue(self.proc['links_used'] is None)
