@@ -92,7 +92,7 @@
   
 #   def test_set_stage_groups(self):
 #     for i,stage in enumerate(module['stages']):
-#       self.assertTrue(stage == (proc['stage_to_groups_dict'][i]))
+#       self.assertTrue(stage == (proc['stages_to_groups_dict'][i]))
 #     # we must check that each group is created, and populated with the correct details
   
 #   def test_set_proc_groups(self):

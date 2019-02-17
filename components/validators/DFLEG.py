@@ -4,7 +4,7 @@ type_data:
   name: Decision Free Logos Encapsulator Group
   purpose: Represents an arbitrary cortical section that is free of L4 decision influence and outputs through a gate
   type: cortical
-stage_to_groups_dict:
+stages_to_groups_dict:
   - stage: cntxt_ctrl
     groups: [cntxt_dwn_inhib]
     total_count: 20

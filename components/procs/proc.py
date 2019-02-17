@@ -77,5 +77,5 @@ class Proc:
     self.links_used = self._build_links_(links_used)
   
   # @abstractmethod # pylint: disable=undefined-variable
-  # def _set_stage_data_(self):
-  #   pass
+  def _init_stage_data_(self):
+    pass

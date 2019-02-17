@@ -4,7 +4,7 @@ type_data:
   name: Decision Controlled Logos Encapsulator Group
   purpose: Represents one arbitrary cortical like shape that is affected by DM system outputs
   type: cortical
-stage_to_groups_dict:
+stages_to_groups_dict:
   - stage: cntxt_ctrl
     groups: [cntxt_dwn_inhib]
     total_count: 20

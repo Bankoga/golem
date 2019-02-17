@@ -3,7 +3,7 @@ type_data:
   id: POCG
   name: Parts Output Coder Group
   type: coder
-stage_to_groups_dict:
+stages_to_groups_dict:
   - type_data:
       id: fw_method
       purpose: represents the function used to move data into or out of the matrix

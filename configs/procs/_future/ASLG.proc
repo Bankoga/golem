@@ -3,7 +3,7 @@ type_data:
   id: ASLG
   name: Audio Stream Layer Groups
   type: coder
-stage_to_groups_dict:
+stages_to_groups_dict:
   - type_data:
       id: fw_method
       purpose: reads current keyboard state, updates keyboard state

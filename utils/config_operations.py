@@ -12,7 +12,7 @@ def build_module_entry(module,m):
     module['proc_type_data'] = proc['type_data']
     module['stages'] = []
     module['proc_groups'] = dict()
-    for i,stage in enumerate(proc['stage_to_groups_dict']):
+    for i,stage in enumerate(proc['stages_to_groups_dict']):
         # module['stages'][[stage['id']] = stage
         module['stages'].append(stage)
         for group in stage['groups']:

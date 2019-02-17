@@ -22,7 +22,7 @@ class GLGBuilder():
 # #   id: GLG
 # #   name: Gateway Layer Groups
 # #   type: gateway
-# # stage_to_groups_dict:
+# # stages_to_groups_dict:
 # #   - id: noise_ctrl
 # #     groups: [noise_dwn_inhib,noise_adj_inhib]
 # #     total_count: 2

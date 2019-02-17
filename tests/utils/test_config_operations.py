@@ -38,7 +38,7 @@
 #     self.assertTrue(len(module['proc_groups'])==7)#17)
 #     # once we have the proc type config
 #     for i,stage in enumerate(module['stages']):
-#       self.assertTrue(stage == (proc['stage_to_groups_dict'][i]))
+#       self.assertTrue(stage == (proc['stages_to_groups_dict'][i]))
 #     # we must check that each group is created, and populated with the correct details
 #     for i,group_key in enumerate(module['proc_groups']):
 #       # we must check that the group has the correct location,positions data
