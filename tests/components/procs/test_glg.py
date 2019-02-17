@@ -85,11 +85,13 @@ class TestGLG(unittest.TestCase):
       for link in self.proc_conf[conf_prop]:
         self.assertTrue(self.proc.link_definitions[link['id']] == link)
 
-  # def test_links_used_were_inserted_correctly(self):
-  #   if (self.proc_conf['links_used'] is None):
-  #     self.assertTrue(self.proc['links_used'] is None)
-  #   else:
-  #     self.assertTrue(self.proc['links_used'] == self.proc_conf['links_used'])
+  def test_links_used_were_inserted_correctly(self):
+    conf_prop='links_used'
+    if (self.proc_conf[conf_prop] is None):
+      self.assertTrue(self.proc.links_used is None)
+    else:
+      for link in self.proc_conf[conf_prop]:
+        self.assertTrue(self.proc.links_used[link['id']] == link)
   
   # def test_stage_groups_were_inserted_correctly(self):
   #   for i,stage in enumerate(self.proc['stages']):
