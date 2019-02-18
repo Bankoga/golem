@@ -31,11 +31,5 @@ proc_ids = {
 procs = proc_ids.values()#['DCLEG','DFLEG','GLG','PICG','POCG','TICG','ASLG','SLG','MLG','KBLG']
 # I do not know why I wrote this groups object. The intent eludes me
 groups = {
-  '': {},
-  '': {},
-  '': {},
-  '': {},
-  '': {},
-  '': {},
-  '': {},
+  '': {}
 }

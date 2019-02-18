@@ -22,7 +22,7 @@ group_details:
     pct_of_stage: 1
 inputs: null
 outputs: null
-hooks:null
+hooks: null
 hooks_outof: null
 links_defined: null
 links_used: gate_i
