@@ -84,7 +84,7 @@ class GLGValidatorBuilder(ProcValidatorBuilder):
 #   cntxt_stg_adv: [cntxt_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
 #   cntxt_up_inhib: [cntxt_relay-inhibitor]
 #   relay_stg_adv: null
-# hooks_into:
+# hooks:
 #   noise_from: [noise_dwn_inhib,noise_adj_inhib]
 #   cycle_from: [cycle_gate_ctrl,cycle_stg_adv]
 #   cntxt_from: [cntxt_stg_adv,cntxt_up_inhib]

@@ -109,7 +109,7 @@ group_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-hooks_into:
+hooks:
   cntxt_from: [cntxt_dwn_inhib]
   cycle_from: [c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv]
 hooks_outof:
@@ -154,5 +154,5 @@ outputs:
   co_stg_adv: null
 links_defined: null
 links_used:
-  - loop_i
+  - id: loop_i
 ...

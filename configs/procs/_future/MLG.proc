@@ -28,7 +28,7 @@ group_details:
     pct_of_stage: -1
 inputs: null
 outputs: null
-hooks_into:
+hooks:
   - kb_motor: 
   - ms_motor: 
 hooks_outof: null
