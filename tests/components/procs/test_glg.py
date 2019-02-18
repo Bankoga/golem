@@ -103,13 +103,13 @@ class TestGLG(unittest.TestCase):
     conf_obj = self.proc_conf['stages_to_groups_dict']
     sz = len(conf_obj)
     for i,stage in enumerate(conf_obj):
-      for group in conf_obj[stage]:
+      for group in conf_obj[i]['groups']:
         ord_to_index = ordinator_services.get(self.proc.ordinal_direction).get_ord_index(i,sz)
         self.assertEqual(self.proc.groups[group].pos.s, -1)
         self.assertEqual(self.proc.groups[group].pos.x, -1)
         self.assertEqual(self.proc.groups[group].pos.y, -1)
         self.assertEqual(self.proc.groups[group].pos.z, ord_to_index)
-      # self.assertTrue(stage == (self.proc_conf['stages_to_groups_dict'][i]))
+      self.assertTrue(stage == (self.proc_conf['stages_to_groups_dict'][i]))
 
   # def test_set_stage_data(self, package_id, pipeline_id, module_id):
 
