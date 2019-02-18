@@ -8,7 +8,10 @@ class AscOrdinator(Ordinator):
     super().__init__("asc")
   
   def get_ord_index(self, index, size):
-    self.ordinal_direction
+    if index < size:
+      return index
+    else:
+      raise ValueError("The ord index is larger than the ord size")
   
 
 class AscOrdinatorBuilder:
