@@ -60,7 +60,7 @@ class Proc:
           self.groups[group][hook_prop].append(hook_type)
 
   # @abstractmethod # pylint: disable=undefined-variable
-  def _build_links_(self, link_protos, link_results=dict()):
+  def _build_links_(self, link_protos, link_results):
     if link_protos is not None:
       for link in link_protos:
         link_results[link['id']] = link
@@ -78,7 +78,8 @@ class Proc:
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_links_used_(self):
     links_used = self.config['links_used']
-    self.links_used = self._build_links_(links_used)
+    prcd_lu = {}
+    self.links_used = self._build_links_(links_used, prcd_lu)
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _init_stage_data_(self):
