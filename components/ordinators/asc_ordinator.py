@@ -8,10 +8,10 @@ class AscOrdinator(Ordinator):
     super().__init__("asc")
   
   def get_ord_index(self, index, size):
-    if index < size:
+    if index >= 0 and index < size:
       return index
     else:
-      raise ValueError("The ord index is larger than the ord size")
+      raise ValueError("The ord index is invalid")
   
 
 class AscOrdinatorBuilder:

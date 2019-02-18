@@ -13,11 +13,12 @@ class Ordinator():
   def get_direction(self):
     return self.ordinal_direction
   
-  def get_ord_index(self, ind, sz):
-    if ind < sz:
-      return ind
+  def get_ord_index(self, index, size):
+    if index >= 0 and index < size:
+      return index
     else:
-      return 0
+      raise ValueError("The ord index is invalid")
+  
 
   # def get_floor_index(self, floor_id):
   #   return floor_order.index(floor_id)

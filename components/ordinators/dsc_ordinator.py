@@ -8,8 +8,10 @@ class DscOrdinator(Ordinator):
     super().__init__("dsc")
   
   def get_ord_index(self, index, size):
-    self.ordinal_direction
-  
+    if index >= 0 and index < size:
+      return size - index - 1
+    else:
+      raise ValueError("The ord index is invalid")
 
 class DscOrdinatorBuilder:
   def __init__(self):
