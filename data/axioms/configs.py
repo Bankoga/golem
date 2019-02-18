@@ -1,10 +1,12 @@
 dirs = {
   'golem': 'configs\\types\\',
-  'proc': 'configs\\procs\\'
+  'proc': 'configs\\procs\\',
+  'sensor': 'configs\\sensors\\'
 }
 file_type = {
   'golem': 'golem',
-  'proc': 'proc'
+  'proc': 'proc',
+  'sensor': 'snsr'
 }
 links = [
   'dm',
@@ -17,13 +19,13 @@ proc_types = ['coder','cortical','gateway']
 proc_ids = {
   'dcgc': 'DCGC',
   'glg': 'GLG',
+  'dcagc': 'DCAGC',
+  'dfagc': 'DFAGC',
+  'dfgc': 'DFGC'
+}
+sensor_ids = {
   'ps': 'PS'
 }
-  # 'dcagc': 'DCAGC',
-  # 'dfagc': 'DFAGC',
-  # 'dfgc': 'DFGC',
-  # 'picg': 'PICG',
-  # 'pocg': 'POCG'
 # 'ticg': 'TICG'
 # 'aslg': 'ASLG',
 # 'slg': 'SLG',
