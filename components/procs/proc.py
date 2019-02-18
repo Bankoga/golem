@@ -70,10 +70,7 @@ class Proc:
   def _set_links_defined_(self):
     links_defined = self.config['links_defined']
     link_defs = dict()
-    if links_defined is not None:
-      for link in links_defined:
-        link_defs[link['id']] = link
-    self.link_definitions = link_defs
+    self.link_definitions = self._build_links_(links_defined,link_defs)
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_links_used_(self):
