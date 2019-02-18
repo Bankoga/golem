@@ -17,6 +17,7 @@ proc_types = ['coder','cortical','gateway']
 proc_ids = {
   'dcgc': 'DCGC',
   'glg': 'GLG',
+  'ps': 'PS'
 }
   # 'dcagc': 'DCAGC',
   # 'dfagc': 'DFAGC',
