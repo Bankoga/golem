@@ -7,10 +7,10 @@ from components.procs.proc_provider import proc_services
 from utils.config_reader import read
 from components.ordinators.ordinator_provider import ordinator_services
 
-class TestGLG(unittest.TestCase):
+class TestDCGranularCort(unittest.TestCase):
 
   def setUp(self):
-    self.proc_id = proc_ids['glg']
+    self.proc_id = proc_ids['dcgc']
     self.proc =  proc_services.get(self.proc_id, **{})
     self.proc_conf = read(self.proc_id,file_type['proc'])
   

@@ -15,14 +15,14 @@ links = [
 ]
 proc_types = ['coder','cortical','gateway']
 proc_ids = {
-  'dcagc': 'DCAGC',
-  'dfagc': 'DFAGC',
   'dcgc': 'DCGC',
-  'dfgc': 'DFGC',
   'glg': 'GLG',
-  'picg': 'PICG',
-  'pocg': 'POCG'
 }
+  # 'dcagc': 'DCAGC',
+  # 'dfagc': 'DFAGC',
+  # 'dfgc': 'DFGC',
+  # 'picg': 'PICG',
+  # 'pocg': 'POCG'
 # 'ticg': 'TICG'
 # 'aslg': 'ASLG',
 # 'slg': 'SLG',

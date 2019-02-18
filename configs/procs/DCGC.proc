@@ -1,9 +1,10 @@
 ---
+id: DCGC
 type_data:
-  id: DCGC
   name: Decision Controlled Granular Cort
   purpose: Represents one arbitrary cortical like shape that is affected by DM system outputs
   type: cortical
+  ordinal_direction: dsc
 stages_to_groups_dict:
   - stage: cntxt_ctrl
     groups: [cntxt_dwn_inhib]
@@ -109,10 +110,9 @@ group_details:
       - node_type: Plate
         pct_of_group: 0
     pct_of_stage: 1
-hooks_into:
+hooks:
   cntxt_from: [cntxt_dwn_inhib]
   cycle_from: [c_biinhib_ctrl,c_down_inhib,c_up_inhib,c_stg_adv]
-hooks_outof:
   cntxt_to: [co_stg_adv]
   noise_to: [op_stg_adv,co_stg_adv]
   cycle_to: [op_stg_adv]
@@ -154,5 +154,5 @@ outputs:
   co_stg_adv: null
 links_defined: null
 links_used:
-  - loop_i
+  - id: loop_i
 ...
