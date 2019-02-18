@@ -3,7 +3,7 @@ from data.axioms.configs import proc_ids
 
 class PartsSensor(Proc):
   def __init__(self):
-    super().__init__(proc_ids['glg'])
+    super().__init__(proc_ids['ps'])
 
 class PartsSensorBuilder():
   def __init__(self):
