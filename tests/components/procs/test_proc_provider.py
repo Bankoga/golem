@@ -6,7 +6,7 @@ from components.procs.proc_provider import proc_services
 
 class TestProcProvider(unittest.TestCase):
 
-  @given(st.sampled_from(proc_ids.keys()))
+  @given(st.sampled_from(sorted(proc_ids.keys())))
   def test_get(self, proc_id):
     proc = proc_services.get(proc_ids[proc_id], **{})
     self.assertTrue(proc.get_id(), proc_ids[proc_id])
