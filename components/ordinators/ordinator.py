@@ -1,5 +1,5 @@
 from data.axioms.pos_maps import floor_order
-class Ordinator:
+class Ordinator():
 
   """
   Responsible for handling inter/intra matrix direction interpretation
@@ -10,11 +10,9 @@ class Ordinator:
   def get_id(self):
     return self.ordinal_direction
   
-  @abstractmethod # pylint: disable=undefined-variable
   def get_direction(self):
-    pass
+    return self.ordinal_direction
   
-  @abstractmethod # pylint: disable=undefined-variable
   def get_ord_index(self, index, size):
     pass
 

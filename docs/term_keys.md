@@ -117,14 +117,13 @@ Each cells activation change set could be stored in a tensor of some sort?
 
 ### Matrix
 
-
 Maximum Rate of Reward : Perfect Reward
 Curr Rate of Reward : Current Reward Activity Level
 Minimum Rate of Reward : Zero Reward
 
 The diff between max and current is the objective loss.
 Intrinsic Max is predefined
-System derived max rate of reward 
+System derived max rate of reward ?
 
 > Matrix: A flow-based operational/cognitive data network/graph of nodes, and edges.The hierarchy follows the compositional levels of matrix component description.
 

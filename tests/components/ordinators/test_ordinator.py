@@ -1,8 +1,8 @@
-import utils.object_factory
-from components.ordinators.ordinator import Ordinator
 import unittest
 from hypothesis import given
 from hypothesis import strategies as st
+import utils.object_factory
+from components.ordinators.ordinator import Ordinator
 from data.axioms.pos_maps import direction_keys
 
 class TestOrdinator(unittest.TestCase):
