@@ -1,5 +1,7 @@
 from data.axioms.configs import file_type
 from utils.config_reader import read
+from components.ordinators.ordinator_provider import ordinator_services
+from utils.pos import Pos
 
 class Proc:
   """
@@ -16,6 +18,7 @@ class Proc:
     self._set_hooks_()
     self._set_links_defined_()
     self._set_links_used_()
+    self._init_stage_data_()
 
   def get_id(self):
     return self.id
@@ -79,4 +82,9 @@ class Proc:
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _init_stage_data_(self):
-    pass
+    conf_obj = self.config['stages_to_groups_dict']
+    sz = len(conf_obj)
+    for i,stage in enumerate(conf_obj):
+      for group in conf_obj[i]['groups']:
+        ord_to_index = ordinator_services.get(self.ordinal_direction).get_ord_index(i,sz)
+        self.groups[group]['pos'] = Pos(z=ord_to_index)
