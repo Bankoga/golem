@@ -5,7 +5,11 @@ class AscOrdinator(Ordinator):
   Responsible for handling inter/intra matrix direction interpretation
   """
   def __init__(self):
-    super().__init__()
+    super().__init__("asc")
+  
+  def get_ord_index(self, index, size):
+    self.ordinal_direction
+  
 
 class AscOrdinatorBuilder:
   def __init__(self):
