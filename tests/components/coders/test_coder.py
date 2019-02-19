@@ -20,7 +20,7 @@ class TestCoder(unittest.TestCase):
     if conf_prop in self.coder_conf:
       if prop_obj is None:
         for group in self.coder.groups:
-          self.assertIsNone(group[conf_prop])
+          self.assertFalse(self.coder.groups[group][conf_prop])
       else:
         for conf_group in prop_obj:
           if prop_obj[conf_group] is None:
@@ -71,7 +71,7 @@ class TestCoder(unittest.TestCase):
       hooks = self.coder_conf[hook_prop]
       if hooks is None:
         for group in self.coder.groups:
-          self.assertIsNone(group[hook_prop])
+          self.assertFalse(self.coder.groups[group][hook_prop])
       else:
         for hook_type in hooks:
           for coder_group in hooks[hook_type]:
