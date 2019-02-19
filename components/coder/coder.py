@@ -3,7 +3,7 @@ from utils.config_reader import read
 from components.ordinators.ordinator_provider import ordinator_services
 from utils.pos import Pos
 
-class Sensor:
+class Coder:
   """
   A sensor is used to create the stubs of the functional groups within a matrix
   """
