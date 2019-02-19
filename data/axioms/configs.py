@@ -15,6 +15,7 @@ links = [
   'synch_i',
   'synch_all'
 ]
+coder_types = ['sensor']
 proc_types = ['coder','cortical','gateway']
 proc_ids = {
   'dcgc': 'DCGC',
@@ -33,7 +34,4 @@ coder_ids = {
 # 'kblg': 'KBLG'
 procs = proc_ids.values()#['DCLEG','DFLEG','GLG','PICG','POCG','TICG','ASLG','SLG','MLG','KBLG']
 # I do not know why I wrote this groups object. The intent eludes me
-group_types = {
-  'cell':'',
-  'function':''
-}
+group_types = proc_types.extend(coder_types)
