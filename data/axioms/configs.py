@@ -1,12 +1,12 @@
 dirs = {
   'golem': 'configs\\types\\',
   'proc': 'configs\\procs\\',
-  'sensor': 'configs\\sensors\\'
+  'cdr': 'configs\\coders\\'
 }
 file_type = {
   'golem': 'golem',
   'proc': 'proc',
-  'sensor': 'snsr'
+  'coder': 'cdr'
 }
 links = [
   'dm',
@@ -23,7 +23,7 @@ proc_ids = {
   'dfagc': 'DFAGC',
   'dfgc': 'DFGC'
 }
-sensor_ids = {
+coder_ids = {
   'ps': 'PS'
 }
 # 'ticg': 'TICG'

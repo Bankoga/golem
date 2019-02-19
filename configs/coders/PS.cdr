@@ -2,7 +2,7 @@
 id: PS
 type_data:
   name: Parts Sensor
-  type: coder
+  type: sensor
   ordinal_direction: null
   purpose: Serves as a mechanism for coupling a simple input with an expected output
 stages_to_groups_dict:
@@ -32,7 +32,6 @@ group_details:
           max_num_parts: 3
           max_part_size: 8
     pct_of_stage: -1
-inputs: null
 outputs: null
 hooks: null
 links_defined: null
