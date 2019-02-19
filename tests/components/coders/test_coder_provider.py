@@ -1,15 +1,15 @@
-# import unittest
-# from hypothesis import given
-# import hypothesis.strategies as st
-# from data.axioms.configs import sensor_ids
-# from components.sensors.sensor_provider import sensor_services
+import unittest
+from hypothesis import given
+import hypothesis.strategies as st
+from data.axioms.configs import coder_ids
+from components.coders.coder_provider import coder_services
 
-# class TestSensorProvider(unittest.TestCase):
+class TestCoderProvider(unittest.TestCase):
 
-#   @given(st.sampled_from(sorted(sensor_ids.keys())))
-#   def test_get(self, sensor_id):
-#     sensor = sensor_services.get(sensor_ids[sensor_id], **{})
-#     self.assertTrue(sensor.get_id(), sensor_ids[sensor_id])
+  @given(st.sampled_from(sorted(coder_ids.keys())))
+  def test_get(self, coder_id):
+    coder = coder_services.get(coder_ids[coder_id], **{})
+    self.assertTrue(coder.get_id(), coder_ids[coder_id])
 
-# if __name__ == '__main__':
-#     unittest.main()
+if __name__ == '__main__':
+    unittest.main()

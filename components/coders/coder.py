@@ -7,13 +7,12 @@ class Coder:
   """
   A sensor is used to create the stubs of the functional groups within a matrix
   """
-  def __init__(self, sensor_id):
-    self.config = read(sensor_id,file_type['sensor'])
+  def __init__(self, coder_id):
+    self.config = read(coder_id,file_type['coder'])
     self.id = self.config['id']
     self._set_type_data_()
     self.groups = dict()
     self._set_sensor_groups_()
-    self._set_inputs_()
     self._set_outputs_()
     self._set_hooks_()
     self._set_links_defined_()
@@ -38,11 +37,6 @@ class Coder:
   def _set_group_prop_(self,conf_prop):
     for group in self.config[conf_prop]:
       self.groups[group][conf_prop] = self.config[conf_prop][group]
-
-  # @abstractmethod # pylint: disable=undefined-variable
-  def _set_inputs_(self):
-    conf_prop = 'inputs'
-    self._set_group_prop_(conf_prop)
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_outputs_(self):

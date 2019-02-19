@@ -11,6 +11,6 @@ class CoderProvider(ObjectFactory):
     return self.create(coder_id, **kwargs)
 
 coder_services = CoderProvider()
-coder_services.register_builder(coder_ids['glg'], GLGBuilder())
+coder_services.register_builder(coder_ids['ps'], PartsSensorBuilder())
 # coder_services.register_builder(coder_ids['?'], ?Builder())
 # coder_services.register_builder(coder_ids['?'], ?Builder())

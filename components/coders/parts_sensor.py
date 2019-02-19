@@ -22,11 +22,6 @@ class PartsSensor(Coder):
       self.groups[group][conf_prop] = self.config[conf_prop][group]
 
   # @abstractmethod # pylint: disable=undefined-variable
-  def _set_inputs_(self):
-    conf_prop = 'inputs'
-    self._set_group_prop_(conf_prop)
-  
-  # @abstractmethod # pylint: disable=undefined-variable
   def _set_outputs_(self):
     conf_prop = 'outputs'
     self._set_group_prop_(conf_prop)
