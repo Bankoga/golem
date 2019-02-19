@@ -9,10 +9,10 @@ from tests.components.procs.test_proc import TestProc
 from utils.config_reader import read
 
 
-class TestGLG(TestProc):
+class TestDCAgranularCort(TestProc):
 
   def setUp(self):
-    self.proc_id = proc_ids['glg']
+    self.proc_id = proc_ids['dcagc']
     self.proc =  proc_services.get(self.proc_id, **{})
     self.proc_conf = read(self.proc_id,file_type['proc'])
   
