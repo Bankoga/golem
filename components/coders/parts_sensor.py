@@ -1,9 +1,9 @@
-from components.procs.proc import Proc
-from data.axioms.configs import proc_ids
+from components.coders.coder import Coder
+from data.axioms.configs import coder_ids
 
-class PartsSensor(Proc):
+class PartsSensor(Coder):
   def __init__(self):
-    super().__init__(proc_ids['ps'])
+    super().__init__(coder_ids['ps'])
     
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
