@@ -47,19 +47,20 @@ class TestCoder(unittest.TestCase):
       self.assertIsNone(self.coder.purpose)
     else:
       self.assertEqual(type_obj['purpose'],self.coder.purpose)
-    
-    if (type_obj['ordinal_direction'] is None):
-      self.assertIsNone(self.coder.ordinal_direction is None)
-    else:
-      self.assertEqual(type_obj['ordinal_direction'],self.coder.ordinal_direction)
 
   def test_coder_groups_were_inserted_correctly(self):
-    for conf_group in self.coder_conf['group_details']:
+    conf_obj = self.coder_conf['groups']
+    for i,group in enumerate(conf_obj):
+    # for group in self.coder_conf['group_details']:
       self.assertDictContainsSubset(
-        conf_group,
-        self.coder.groups[conf_group['id']]
+        group,
+        self.coder.groups[group['id']]
       )
-      
+      self.assertEqual(self.coder.groups[group['id']]['pos'].s, -1)
+      self.assertEqual(self.coder.groups[group['id']]['pos'].x, -1)
+      self.assertEqual(self.coder.groups[group['id']]['pos'].y, -1)
+      self.assertEqual(self.coder.groups[group['id']]['pos'].z, 0)
+
   def test_outputs_were_inserted_correctly(self):
     conf_prop = 'outputs'
     self.check_groups_for_property(conf_prop)
@@ -94,17 +95,6 @@ class TestCoder(unittest.TestCase):
     else:
       for link in self.coder_conf[conf_prop]:
         self.assertTrue(self.coder.links_used[link['id']] == link)
-  
-  def test_init_stage_data_were_inserted_correctly(self):
-    conf_obj = self.coder_conf['stages_to_groups_dict']
-    sz = len(conf_obj)
-    for i,stage in enumerate(conf_obj):
-      for group in conf_obj[i]['groups']:
-        ord_to_index = ordinator_services.get(self.coder.ordinal_direction).get_ord_index(i,sz)
-        self.assertEqual(self.coder.groups[group]['pos'].s, -1)
-        self.assertEqual(self.coder.groups[group]['pos'].x, -1)
-        self.assertEqual(self.coder.groups[group]['pos'].y, -1)
-        self.assertEqual(self.coder.groups[group]['pos'].z, ord_to_index)
 
 if __name__ == '__main__':
   unittest.main()

@@ -17,7 +17,6 @@ class Coder:
     self._set_hooks_()
     self._set_links_defined_()
     self._set_links_used_()
-    self._init_stage_data_()
 
   def get_id(self):
     return self.id
@@ -26,17 +25,21 @@ class Coder:
     self.name = self.config['type_data']['name']
     self.type = self.config['type_data']['type']
     self.purpose = self.config['type_data']['purpose']
-    self.ordinal_direction = self.config['type_data']['ordinal_direction']
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_sensor_groups_(self):
-    for i,group in enumerate(self.config['group_details']):
+    for i,group in enumerate(self.config['groups']):
       self.groups[group['id']] = group
+      self.groups[group['id']]['pos'] = Pos(z=0)
       # Are there sensoressing group level types?
   
   def _set_group_prop_(self,conf_prop):
-    for group in self.config[conf_prop]:
-      self.groups[group][conf_prop] = self.config[conf_prop][group]
+    if not self.config[conf_prop]:
+      for group in self.groups:
+        self.groups[group][conf_prop] = dict()
+    else:
+      for group in self.config[conf_prop]:
+        self.groups[group][conf_prop] = self.config[conf_prop][group]
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_outputs_(self):
@@ -46,12 +49,16 @@ class Coder:
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_hooks_(self):
     hook_prop = 'hooks'
-    for hook_type in self.config[hook_prop]:
+    if not self.config[hook_prop]:
       for group in self.groups:
-        if hook_prop not in self.groups[group]:
-          self.groups[group][hook_prop] = [hook_type]
-        else:
-          self.groups[group][hook_prop].append(hook_type)
+        self.groups[group][hook_prop] = []
+    else:
+      for hook_type in self.config[hook_prop]:
+        for group in self.groups:
+          if hook_prop not in self.groups[group]:
+            self.groups[group][hook_prop] = [hook_type]
+          else:
+            self.groups[group][hook_prop].append(hook_type)
 
   # @abstractmethod # pylint: disable=undefined-variable
   def _build_links_(self, link_protos, link_results):
@@ -71,12 +78,3 @@ class Coder:
     links_used = self.config['links_used']
     prcd_lu = {}
     self.links_used = self._build_links_(links_used, prcd_lu)
-  
-  # @abstractmethod # pylint: disable=undefined-variable
-  def _init_stage_data_(self):
-    conf_obj = self.config['stages_to_groups_dict']
-    sz = len(conf_obj)
-    for i,stage in enumerate(conf_obj):
-      for group in conf_obj[i]['groups']:
-        ord_to_index = ordinator_services.get(self.ordinal_direction).get_ord_index(i,sz)
-        self.groups[group]['pos'] = Pos(z=ord_to_index)
