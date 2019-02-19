@@ -6,8 +6,9 @@ class FuncGroup:
     each functional group in a matrix defines N things
       - an unique address
       - the datapacks it produces
-      - the rules for consuming the two types of datapacks
-      overlayed and aggregated 
+      - the rules for consuming the two types of datapacks: overlayed and aggregated
+      - the types of datapacks it consumes that are module level
+      - the links for extra output and/or output routing
     """
     
   def _build_func_(self):
