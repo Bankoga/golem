@@ -5,12 +5,5 @@ resource_types = {
   "Activant": "proxies acetylcholine, and is used to control baseline firing % chance",
   "Catalyst": "proxies serotonin, and is used to indicate a reduction of activation threshold in impacted functions"
 }
-node_types = {
-  "cell":"",
-  "function":""
-}
-proc_types = [
-  ""
-]
 dest_key_pattern = "[/w|/d].*(-[/w|/d].*)?"
 ordinators = ['asc','dsc'] # eventually will need a pairing ordinator

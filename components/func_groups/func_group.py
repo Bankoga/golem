@@ -1,5 +1,5 @@
 class FuncGroup:
-  def __init__(self, proc_group):
+  def __init__(self, group, group_type):
     pass
     """
     A functional group is an addressable processing region within a matrix

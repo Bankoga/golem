@@ -3,14 +3,24 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
+
+from components.procs.proc_provider import proc_services
+from data.axioms.configs import proc_ids, group_types
+from components.func_groups.func_group import FuncGroup
+
 class TestFuncGroup(unittest.TestCase):
+
+  def setUp(self):
+    self.factory = proc_services.get(proc_ids['glg'])
+    self.base_group = self.factory.groups[0]
+    self.base_type = self.factory.groups[0].type
+    self.group = FuncGroup(self.factory.groups[0], )
   
   def test_base_properties(self):
-    pass
+    self.assertTrue(self.group.input_rules)
+    self.assertTrue(self.group.transform_rules)
+    self.assertTrue(self.group.output_rules)
 
-  def test_process_proc_group(self):
-    pass
-  
   def test_func(self):
     pass
 
