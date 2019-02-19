@@ -1,0 +1,133 @@
+---
+group_details:
+  - &id018
+    hooks: [noise_from, cycle_from, cntxt_from, relay_from, cycle_to, cntxt_to, relay_to]
+    id: noise_dwn_inhib
+    inputs: &id006 [noise_adj_inhib-inhibitor, noise_ctrl-energy]
+    node_details:
+    - {node_type: plate, pct_of_group: 1}
+    outputs: &id012 [cntxt_up_inhib-Inhbitor, cycle_relay-inhibitor, cntxt_relay-inhibitor]
+    pct_of_stage: -1
+    pos: !!python/object:utils.pos.Pos {s: -1, x: -1, y: -1, z: 3}
+  - &id017
+    hooks: [noise_from, cycle_from, cntxt_from, relay_from, cycle_to, cntxt_to, relay_to]
+    id: noise_adj_inhib
+    inputs: &id005 [noise_ctrl-energy]
+    node_details:
+    - {node_type: plate, pct_of_group: 1}
+    outputs: &id011 [noise_dwn_inhib-inhibitor]
+    pct_of_stage: -1
+    pos: !!python/object:utils.pos.Pos {s: -1, x: -1, y: -1, z: 3}
+  - &id015
+    hooks: [noise_from, cycle_from, cntxt_from, relay_from, cycle_to, cntxt_to, relay_to]
+    id: cycle_gate_ctrl
+    inputs: &id003 [cycle_relay-energy, noise_dwn_inhib-inhibitor]
+    node_details:
+    - {node_type: plate, pct_of_group: 1}
+    outputs: &id009 [cycle_relay-inhibitor]
+    pct_of_stage: -1
+    pos: !!python/object:utils.pos.Pos {s: -1, x: -1, y: -1, z: 2}
+  - &id016
+    hooks: [noise_from, cycle_from, cntxt_from, relay_from, cycle_to, cntxt_to, relay_to]
+    id: cycle_stg_adv
+    inputs: &id004 [cycle_relay-energy]
+    node_details:
+    - {node_type: plate, pct_of_group: 1}
+    outputs: &id010 [cycle_relay-energy, cntxt_ctrl-energy, proc_ctrl-energy]
+    pct_of_stage: -1
+    pos: !!python/object:utils.pos.Pos {s: -1, x: -1, y: -1, z: 2}
+  - &id013
+    hooks: [noise_from, cycle_from, cntxt_from, relay_from, cycle_to, cntxt_to, relay_to]
+    id: cntxt_stg_adv
+    inputs: &id001 [cntxt_relay-energy]
+    node_details:
+    - {node_type: plate, pct_of_group: 1}
+    outputs: &id007 [cntxt_relay-energy, cntxt_ctrl-energy, proc_ctrl-energy]
+    pct_of_stage: -1
+    pos: !!python/object:utils.pos.Pos {s: -1, x: -1, y: -1, z: 1}
+  - &id014
+    hooks: [noise_from, cycle_from, cntxt_from, relay_from, cycle_to, cntxt_to, relay_to]
+    id: cntxt_up_inhib
+    inputs: &id002 [cntxt_relay-energy]
+    node_details:
+    - {node_type: plate, pct_of_group: 1}
+    outputs: &id008 [cntxt_relay-inhibitor]
+    pct_of_stage: -1
+    pos: !!python/object:utils.pos.Pos {s: -1, x: -1, y: -1, z: 1}
+  - &id019
+    hooks: [noise_from, cycle_from, cntxt_from, relay_from, cycle_to, cntxt_to, relay_to]
+    id: relay_stg_adv
+    inputs: null
+    node_details:
+    - {node_type: plate, pct_of_group: 1}
+    outputs: null
+    pct_of_stage: -1
+    pos: !!python/object:utils.pos.Pos {s: -1, x: -1, y: -1, z: 0}
+  hooks:
+    cntxt_from: [cntxt_stg_adv, cntxt_up_inhib]
+    cntxt_to: [cntxt_stg_adv]
+    cycle_from: [cycle_gate_ctrl, cycle_stg_adv]
+    cycle_to: [cycle_stg_adv]
+    noise_from: [noise_dwn_inhib, noise_adj_inhib]
+    relay_from: [relay_stg_adv]
+    relay_to: [relay_stg_adv]
+  id: GLG
+  inputs:
+    cntxt_stg_adv: *id001
+    cntxt_up_inhib: *id002
+    cycle_gate_ctrl: *id003
+    cycle_stg_adv: *id004
+    noise_adj_inhib: *id005
+    noise_dwn_inhib: *id006
+    relay_stg_adv: null
+  links_defined:
+  - &id021
+    hooks_required: [cntxt_from, cntxt_to, cycle_from, cycle_to, noise_from, noise_to]
+    id: loop_i
+  - &id020
+    hooks_required: [relay_from, relay_to]
+    id: gate_i
+  links_used: null
+  outputs:
+    cntxt_stg_adv: *id007
+    cntxt_up_inhib: *id008
+    cycle_gate_ctrl: *id009
+    cycle_stg_adv: *id010
+    noise_adj_inhib: *id011
+    noise_dwn_inhib: *id012
+    relay_stg_adv: null
+  stages_to_groups_dict:
+  - groups: [noise_dwn_inhib, noise_adj_inhib]
+    id: noise_ctrl
+    total_count: 2
+  - groups: [cycle_gate_ctrl, cycle_stg_adv]
+    id: cycle_relay
+    total_count: 2
+  - groups: [cntxt_stg_adv, cntxt_up_inhib]
+    id: cntxt_relay
+    total_count: 2
+  - groups: [relay_stg_adv]
+    id: relay
+    total_count: 1
+  type_data: {name: Gateway Layer Groups, ordinal_direction: dsc, purpose: 'serves
+      as a global I/O center, & local plus global context matrix (and global map center
+      as STN?)', type: gateway}
+groups:
+  cntxt_stg_adv: *id013
+  cntxt_up_inhib: *id014
+  cycle_gate_ctrl: *id015
+  cycle_stg_adv: *id016
+  noise_adj_inhib: *id017
+  noise_dwn_inhib: *id018
+  relay_stg_adv: *id019
+id: GLG
+link_definitions:
+  gate_i: *id020
+  loop_i: *id021
+links_used: {}
+name: Gateway Layer Groups
+ordinal_direction: dsc
+purpose: serves as a global I/O center, & local plus global context matrix (and global
+  map center as STN?)
+type: gateway
+...

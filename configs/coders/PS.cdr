@@ -3,7 +3,8 @@ id: PS
 type_data:
   name: Parts Sensor
   type: sensor
-  purpose: Serves as a mechanism for coupling a simple input with an expected output
+  purpose: Serves as a mechanism for coupling a simple input with an expected output. Counts down time until it expects an answers for returning reward signal
+  rsp_freq: 6
 groups:
   - id: parts_reader
     func_name: parts_to_spikes
