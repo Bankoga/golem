@@ -2,14 +2,14 @@
 # from hypothesis import given
 # from hypothesis import strategies as st
 # import utils.object_factory
-# from components.ordinators.ordinator import Ordinator
-# from data.axioms.pos_maps import direction_keys
+# from components.func_groups.group import Group
+# from data.axioms.configs import group_types
 
-# class TestOrdinator(unittest.TestCase):
+# class TestGroup(unittest.TestCase):
   
-#   @given(st.sampled_from(sorted(direction_keys)))
+#   @given(st.sampled_from(sorted(group_types)))
 #   def test_init(self, arbitrary_direction):
-#     ordinator = Ordinator(arbitrary_direction)
+#     group = Group(arbitrary_direction)
 #     self.assertTrue(ordinator.get_id(), arbitrary_direction)
 #     self.assertTrue(ordinator.get_direction(), arbitrary_direction)
     

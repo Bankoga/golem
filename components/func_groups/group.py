@@ -1,6 +1,6 @@
 class Group:
-  def __init__(self):
-    pass
+  def __init__(self, group_type):
+    self.type=group_type
 
 """
 We currently have 
