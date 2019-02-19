@@ -14,7 +14,7 @@ class TestFuncGroup(unittest.TestCase):
     self.factory = proc_services.get(proc_ids['glg'])
     self.base_group = self.factory.groups[0]
     self.base_type = self.factory.groups[0].type
-    self.group = FuncGroup(self.factory.groups[0], )
+    self.group = FuncGroup(self.base_group, self.base_type)
   
   def test_base_properties(self):
     self.assertTrue(self.group.input_rules)

@@ -10,4 +10,7 @@ We currently have
 - coder groups which breakdown into different coder types
   - sensors
   - motors
+
+Reward distribution rule types are not currently being worked upon
+That comes after we understand how the current pieces are turned into function groups
 """
