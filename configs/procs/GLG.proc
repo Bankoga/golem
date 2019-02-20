@@ -54,30 +54,22 @@ group_details:
       - node_type: plate
         pct_of_group: 1
     pct_of_stage: -1
-inputs:
-  noise_dwn_inhib: [noise_adj_inhib-inhibitor,noise_ctrl-energy]
-  noise_adj_inhib: [noise_ctrl-energy]
-  cycle_gate_ctrl: [cycle_relay-energy,noise_dwn_inhib-inhibitor]
-  cycle_stg_adv: [cycle_relay-energy]
-  cntxt_stg_adv: [cntxt_relay-energy]
-  cntxt_up_inhib: [cntxt_relay-energy]
-  relay_stg_adv: null
 outputs:
-  noise_dwn_inhib: [cntxt_up_inhib-Inhbitor,cycle_relay-inhibitor,cntxt_relay-inhibitor]
-  noise_adj_inhib: [noise_dwn_inhib-inhibitor]
-  cycle_gate_ctrl: [cycle_relay-inhibitor]
-  cycle_stg_adv: [cycle_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
-  cntxt_stg_adv: [cntxt_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
-  cntxt_up_inhib: [cntxt_relay-inhibitor]
+  noise_dwn_inhib: [self-cntxt_up_inhib-inhibitor,cycle_relay-inhibitor,cntxt_relay-inhibitor]
+  noise_adj_inhib: [self-noise_dwn_inhib-inhibitor]
+  cycle_gate_ctrl: [self-cycle_relay-inhibitor]
+  cycle_stg_adv: [self-cycle_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
+  cntxt_stg_adv: [self-cntxt_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
+  cntxt_up_inhib: [self-cntxt_relay-inhibitor]
   relay_stg_adv: null
 hooks:
-  noise_from: [noise_dwn_inhib,noise_adj_inhib]
-  cycle_from: [cycle_gate_ctrl,cycle_stg_adv]
-  cntxt_from: [cntxt_stg_adv,cntxt_up_inhib]
-  relay_from: [relay_stg_adv]
-  cycle_to: [cycle_stg_adv]
-  cntxt_to: [cntxt_stg_adv]
-  relay_to: [relay_stg_adv]
+  noise_from: [self-noise_dwn_inhib,noise_adj_inhib]
+  cycle_from: [self-cycle_gate_ctrl,cycle_stg_adv]
+  cntxt_from: [self-cntxt_stg_adv,cntxt_up_inhib]
+  relay_from: [self-relay_stg_adv]
+  cycle_to: [self-cycle_stg_adv]
+  cntxt_to: [self-cntxt_stg_adv]
+  relay_to: [self-relay_stg_adv]
 links_defined:
   - id: loop_i
     hooks_required:

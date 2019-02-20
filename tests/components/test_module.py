@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from data.tests.dummy_configs import module_all_groups
-from string import ascii_lowercase
+
 from components.module import Module
 
 class TestModule(unittest.TestCase):

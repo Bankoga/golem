@@ -14,8 +14,15 @@ class Datapack:
   - aggregated
     - gets joined with others using a guaranteed ordering to produce a full shape to be processed
   """
-  def __init__(self, meld_tuple, pack_type):
+  def __init__(self, meld_tuple,module_id=''):
+    self._read_data_(meld_tuple)
+    self._format_address_(module_id)
+  
+  def _read_data_(self,meld_tuple):
     self.address=meld_tuple[0]
     self.resource=meld_tuple[1]
     self.shape=meld_tuple[2]
-    self.type = PackTypes[pack_type]
+    self.type = PackTypes[meld_tuple[3]]
+
+  def _format_address_(self,module_id):
+    pass

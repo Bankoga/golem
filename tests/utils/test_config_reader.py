@@ -1,7 +1,7 @@
 import unittest
 from hypothesis import given
 import hypothesis.strategies as st
-from string import ascii_lowercase
+
 # from config_tests_data.py import *
 from data.axioms.configs import dest_key_pattern
 from utils.config_reader import read

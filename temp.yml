@@ -6,7 +6,7 @@ group_details:
     inputs: &id006 [noise_adj_inhib-inhibitor, noise_ctrl-energy]
     node_details:
     - {node_type: plate, pct_of_group: 1}
-    outputs: &id012 [cntxt_up_inhib-Inhbitor, cycle_relay-inhibitor, cntxt_relay-inhibitor]
+    outputs: &id012 [cntxt_up_inhib-inhibitor, cycle_relay-inhibitor, cntxt_relay-inhibitor]
     pct_of_stage: -1
     pos: !!python/object:utils.pos.Pos {s: -1, x: -1, y: -1, z: 3}
   - &id017
