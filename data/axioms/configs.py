@@ -35,7 +35,6 @@ coder_ids = {
 # 'mlg': 'MLG',
 # 'kblg': 'KBLG'
 procs = proc_ids.values()#['DCLEG','DFLEG','GLG','PICG','POCG','TICG','ASLG','SLG','MLG','KBLG']
-# I do not know why I wrote this groups object. The intent eludes me
 group_types = proc_types.extend(coder_types)
 resource_types = {
   "ElasticActivation":"proxies glutamate, and is used to increase the chance of activation",
