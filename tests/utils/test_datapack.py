@@ -56,7 +56,8 @@ class TestDataPack(unittest.TestCase):
       self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
 
   """
-  There are N cases of addressing for a single datapack
+  There are N cases of address description for datapacks
+  These descriptions come from the outputs and hooks properties of the configs
   we send a msg to a set of groups (affects whatever reads module context for data)
   we send a msg to an individual group (which forces it to read the data according to packtype)
   we send a msg to our own module
