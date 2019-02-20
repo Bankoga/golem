@@ -1,8 +1,19 @@
 from enum import Enum
 
-class PackTypes(Enum):
-  AGGREGATE = 0
+class PackType(Enum):
+  UNSET = 1
+  AGGREGATE = 2
   OVERLAY = 9
+
+class RsrcType(Enum):
+  UNSET = 1
+  ENERGY = 2
+  INHIBITOR = 3
+
+class FieldType(Enum):
+  UNSET = 1
+  TEST_INPUT = 2
+  TEST_OUTPUT = 3
 
 # file_type = {
 #   'golem': 'golem',

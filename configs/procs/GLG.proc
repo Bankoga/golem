@@ -55,21 +55,21 @@ group_details:
         pct_of_group: 1
     pct_of_stage: -1
 outputs:
-  noise_dwn_inhib: [self-cntxt_up_inhib-inhibitor,cycle_relay-inhibitor,cntxt_relay-inhibitor]
-  noise_adj_inhib: [self-noise_dwn_inhib-inhibitor]
-  cycle_gate_ctrl: [self-cycle_relay-inhibitor]
-  cycle_stg_adv: [self-cycle_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
-  cntxt_stg_adv: [self-cntxt_relay-energy,cntxt_ctrl-energy,proc_ctrl-energy]
-  cntxt_up_inhib: [self-cntxt_relay-inhibitor]
+  noise_dwn_inhib: [self-cntxt_up_inhib:inhibitor:OVERLAY,cycle_relay:inhibitor:OVERLAY,cntxt_relay:inhibitor:OVERLAY]
+  noise_adj_inhib: [self-noise_dwn_inhib:inhibitor:OVERLAY]
+  cycle_gate_ctrl: [self-cycle_relay:inhibitor:OVERLAY]
+  cycle_stg_adv: [self-cycle_relay:energy:OVERLAY,cntxt_ctrl:energy:OVERLAY,proc_ctrl:energy:OVERLAY]
+  cntxt_stg_adv: [self-cntxt_relay:energy:OVERLAY,cntxt_ctrl:energy:OVERLAY,proc_ctrl:energy:OVERLAY]
+  cntxt_up_inhib: [self-cntxt_relay:inhibitor:OVERLAY]
   relay_stg_adv: null
 hooks:
-  noise_from: [self-noise_dwn_inhib,noise_adj_inhib]
-  cycle_from: [self-cycle_gate_ctrl,cycle_stg_adv]
-  cntxt_from: [self-cntxt_stg_adv,cntxt_up_inhib]
-  relay_from: [self-relay_stg_adv]
-  cycle_to: [self-cycle_stg_adv]
-  cntxt_to: [self-cntxt_stg_adv]
-  relay_to: [self-relay_stg_adv]
+  noise_from: [self-noise_dwn_inhib:OVERLAY,noise_adj_inhib:OVERLAY]
+  cycle_from: [self-cycle_gate_ctrl:OVERLAY,cycle_stg_adv:OVERLAY]
+  cntxt_from: [self-cntxt_stg_adv:OVERLAY,cntxt_up_inhib:OVERLAY]
+  relay_from: [self-relay_stg_adv:OVERLAY]
+  cycle_to: [self-cycle_stg_adv:OVERLAY]
+  cntxt_to: [self-cntxt_stg_adv:OVERLAY]
+  relay_to: [self-relay_stg_adv:OVERLAY]
 links_defined:
   - id: loop_i
     hooks_required:

@@ -1,10 +1,11 @@
 @initialization @melds
-Feature: Melder
+Feature: Datapack
   As a golem,
-  I want each meld to have the same sets of properties
-  So that they can be used to dynamically generate lists of shapes dictionaries
+  I need the data for produced set of resources to be self contained
+  As well as uniformly consumable and produceable
+  So that they can be described in a variety of formats
 
-  Scenario Outline: Eval Meld
+  Scenario Outline: Eval Meld Format
     Given a <meld> string of <type>
     When it is evaluated
     Then <count> results should be in the <format>

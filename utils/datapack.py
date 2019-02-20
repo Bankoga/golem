@@ -1,4 +1,4 @@
-from data.axioms.enums import PackTypes
+from data.axioms.enums import PackType,RsrcType,FieldType
 
 class Datapack:
   """
@@ -14,15 +14,25 @@ class Datapack:
   - aggregated
     - gets joined with others using a guaranteed ordering to produce a full shape to be processed
   """
-  def __init__(self, meld_tuple,module_id=''):
-    self._read_data_(meld_tuple)
-    self._format_address_(module_id)
+  def __init__(self, meld,sender_address):
+    self.meld_tuple = meld.split(':')
+    self.sender = sender_address
+    self.read_data()
+    self._format_address_()
   
-  def _read_data_(self,meld_tuple):
-    self.address=meld_tuple[0]
-    self.resource=meld_tuple[1]
-    self.shape=meld_tuple[2]
-    self.type = PackTypes[meld_tuple[3]]
+  def read_data(self):
+    self.address=self.meld_tuple[0]
+    self.resource=RsrcType.UNSET
+    if self.meld_tuple[1] in RsrcType:
+      self.resource = self.meld_tuple[1]
+    shp = FieldType.UNSET
+    typ = PackType.UNSET
+    if self.meld_tuple[2] != 0 and self.meld_tuple[2] in PackType:
+      typ = PackType(self.meld_tuple[2])
+      if len(self.meld_tuple) >3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:
+        shp=FieldType(self.meld_tuple[3])
+    self.type = typ
+    self.shape=shp
 
-  def _format_address_(self,module_id):
+  def _format_address_(self):
     pass
