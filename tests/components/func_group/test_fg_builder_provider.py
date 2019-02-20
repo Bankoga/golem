@@ -3,7 +3,7 @@
 # import unittest
 # from hypothesis import given
 # from hypothesis import strategies as st
-# from  data.axioms.matrix import ordinators
+# from  data.axioms.configs import ordinators
 
 # class TestOrdinatorProvider(unittest.TestCase):
 #   @given(st.sampled_from(sorted(ordinators)))

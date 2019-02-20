@@ -23,7 +23,7 @@ class TestFuncGroup(unittest.TestCase):
     # self.assertTrue(self.group.address)
     pass
 
-  def test_output_packs(self):
+  def test_valid_output_packs(self):
     # given the list of proc outputs
     # and the list of link-dest pairing
     # when the output packs are built
@@ -31,7 +31,16 @@ class TestFuncGroup(unittest.TestCase):
     # and each pack should contain the correct recipient, sender, resource type, shape
     # self.assertTrue(self.group.output_packs)
     pass
-    
+
+  def test_invalid_output_packs(self):
+    # given the list of proc outputs
+    # and the list of link-dest pairing
+    # when the output packs are built
+    # then there should be N=#links_to+#group_outputs
+    # and each pack should contain the correct recipient, sender, resource type, shape
+    # self.assertTrue(self.group.output_packs)
+    pass
+  
   def test_resource_types(self):
     # which resource types it accepts from Module level datapacks
     # given the proc group data

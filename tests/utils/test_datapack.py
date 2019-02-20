@@ -4,7 +4,7 @@ import hypothesis.strategies as st
 from utils.datapack import *
 from string import ascii_lowercase
 # from config_tests_data.py import *
-from data.axioms.matrix import dest_key_pattern
+from data.axioms.configs import dest_key_pattern
 
 class TestDataPack(unittest.TestCase):
 
