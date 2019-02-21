@@ -21,6 +21,16 @@ class GroupType(Enum):
   CORTICAL = 201
   GATEWAY = 202
 
+class HookType(Enum):
+  UNSET = 1
+  UNI = 101
+  BI = 102
+  RECIP = 103
+
+
+ # Consider turning each distinct set of proc groups into enums
+# TODO: turn all relevant pos data into enums
+
 # file_type = {
 #   'golem': 'golem',
 #   'proc': 'proc',

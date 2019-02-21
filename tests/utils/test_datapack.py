@@ -1,8 +1,9 @@
 import unittest
+
 from hypothesis import given
 import hypothesis.strategies as st
-from utils.datapack import Datapack
 
+from utils.datapack import Datapack
 
 from utils.helpers.address_help import build_address, build_meld
 from data.axioms.configs import dest_key_pattern
@@ -40,7 +41,7 @@ class TestDataPack(unittest.TestCase):
 
   @given(st.tuples(st.from_regex(dest_key_pattern),st.text(),st.text()), st.from_regex(dest_key_pattern))
   def test_read_data(self,meld_tuple,sender_address):
-    meld = ":".join(meld_tuple)
+    meld = ";".join(meld_tuple)
     datp=Datapack(meld,sender_address)
     datp.read_data()
     meld_tuple = meld.split(';')

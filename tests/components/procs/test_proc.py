@@ -72,23 +72,25 @@ class TestProc(unittest.TestCase):
         for group in self.proc.groups:
           self.assertIsNone(group[hook_prop])
       else:
-        for i,hook in hooks:
-          for hook_group in hooks[i]:
-            self._check_hook_group_(hook,hook_group)
+        for i,hook_id in hooks:
+          self._check_hook_group_(hook_id,hooks[i])
   
-  def _check_hook_group_(self,hook,hook_group):
-    if hook_group['direction'] == 'to':
+  def _check_hook_group_(self,hook_id,hook_group):
+    # if hook_group['direction'] == 'to':
+    #   self.assertIn(
+    #     hook,
+    #     self.proc.groups[hook_group]['outputs']
+    #   )
+    if hook_group['direction'] == 'from':
+      for targ in hook_group['targets']:
       self.assertIn(
-        hook,
+        targ,
         self.proc.groups[hook_group]['outputs']
       )
-    elif hook_group['direction'] == 'from':
-      self.assertIn(
-        hook,
-        self.proc.groups[hook_group]['outputs']
-      )
-    else:
+    # else:
       # self.assertRaises()
+  
+  #  TODO: READ HOOK DEFINITIONS METHOD CHECK. Its not going to be done during init though
 
   def test_init_stage_data_were_inserted_correctly(self):
     conf_obj = self.proc_conf['stages_to_groups_dict']
