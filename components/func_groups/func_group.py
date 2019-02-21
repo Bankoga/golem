@@ -4,6 +4,7 @@ from components.func_groups.fg_builder_provider import fg_services
 class FuncGroup:
   def __init__(self, group_type):
     self.type=group_type
+    self.id = 'NOTYETIMPLEMENTED'
     """
     A functional group is an addressable processing region within a matrix
     each functional group in a matrix defines N things
@@ -23,6 +24,11 @@ class FuncGroup:
     Reward distribution rule types are not currently being worked upon
     That comes after we understand how the current pieces are turned into function groups
     """
+
+  def get_id(self):
+    pass
+  def get_type(self):
+    pass
 
   def _build_func_(self):
     pass
