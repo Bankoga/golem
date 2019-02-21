@@ -17,8 +17,6 @@ links = [
   'synch_i',
   'synch_all'
 ]
-coder_types = ['sensor']
-proc_types = ['coder','cortical','gateway']
 proc_ids = {
   'dcgc': 'DCGC',
   'glg': 'GLG',
@@ -35,6 +33,8 @@ coder_ids = {
 # 'mlg': 'MLG',
 # 'kblg': 'KBLG'
 procs = proc_ids.values()#['DCLEG','DFLEG','GLG','PICG','POCG','TICG','ASLG','SLG','MLG','KBLG']
+coder_types = ['sensor']
+proc_types = ['coder','cortical','gateway']
 group_types = proc_types.extend(coder_types)
 resource_types = {
   "ElasticActivation":"proxies glutamate, and is used to increase the chance of activation",
