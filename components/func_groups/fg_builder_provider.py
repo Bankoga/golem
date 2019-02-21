@@ -1,9 +1,9 @@
 from utils.object_factory import *
 # from components.func_groups.asc_ordinator import AscOrdinatorBuilder
 # from components.func_groups.dsc_ordinator import DscOrdinatorBuilder
-# from components.linkers.gate_i import GateILinkerBuilder
-# from components.linkers.synch_i import SynchILinkerBuilder
-# from components.linkers.synch_all import SynchAllLinkerBuilder
+# from components.hooks.gate_i import GateILinkerBuilder
+# from components.hooks.synch_i import SynchILinkerBuilder
+# from components.hooks.synch_all import SynchAllLinkerBuilder
 
 class FGBuilderProvider(ObjectFactory):
   """

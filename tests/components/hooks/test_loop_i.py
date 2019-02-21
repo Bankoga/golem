@@ -1,5 +1,5 @@
 # import utils.object_factory
-# from components.linkers.linker_provider import services
+# from components.hooks.linker_provider import services
 # import unittest
 # from hypothesis import given
 # from hypothesis import strategies as st
