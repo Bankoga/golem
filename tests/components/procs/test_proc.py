@@ -72,29 +72,24 @@ class TestProc(unittest.TestCase):
         for group in self.proc.groups:
           self.assertIsNone(group[hook_prop])
       else:
-        for hook_type in hooks:
-          for proc_group in hooks[hook_type]:
-            self.assertIn(
-              hook_type,
-              self.proc.groups[proc_group][hook_prop]
-            )
-
-  def test_links_defined_were_inserted_correctly(self):
-    conf_prop='links_defined'
-    if (self.proc_conf[conf_prop] is None):
-      self.assertFalse(self.proc.link_definitions)
-    else:
-      for link in self.proc_conf[conf_prop]:
-        self.assertTrue(self.proc.link_definitions[link['id']] == link)
-
-  def test_links_used_were_inserted_correctly(self):
-    conf_prop='links_used'
-    if not self.proc_conf[conf_prop]:
-      self.assertFalse(self.proc.links_used)
-    else:
-      for link in self.proc_conf[conf_prop]:
-        self.assertTrue(self.proc.links_used[link['id']] == link)
+        for i,hook in hooks:
+          for hook_group in hooks[i]:
+            self._check_hook_group_(hook,hook_group)
   
+  def _check_hook_group_(self,hook,hook_group):
+    if hook_group['direction'] == 'to':
+      self.assertIn(
+        hook,
+        self.proc.groups[hook_group]['outputs']
+      )
+    elif hook_group['direction'] == 'from':
+      self.assertIn(
+        hook,
+        self.proc.groups[hook_group]['outputs']
+      )
+    else:
+      # self.assertRaises()
+
   def test_init_stage_data_were_inserted_correctly(self):
     conf_obj = self.proc_conf['stages_to_groups_dict']
     sz = len(conf_obj)
