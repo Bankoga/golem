@@ -1,10 +1,10 @@
 from utils.object_factory import *
 from data.axioms.configs import links
-from components.linkers.loop_i import LoopILinkerBuilder
-from components.linkers.dm import DmLinkerBuilder
-from components.linkers.gate_i import GateILinkerBuilder
-from components.linkers.synch_i import SynchILinkerBuilder
-from components.linkers.synch_all import SynchAllLinkerBuilder
+from components.links.loop_i import LoopILinkerBuilder
+from components.links.dm import DmLinkerBuilder
+from components.links.gate_i import GateILinkerBuilder
+from components.links.synch_i import SynchILinkerBuilder
+from components.links.synch_all import SynchAllLinkerBuilder
 
 class LinkerProvider(ObjectFactory):
   """

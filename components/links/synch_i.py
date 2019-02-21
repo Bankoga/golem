@@ -1,17 +1,16 @@
-from components.linkers.linker import Linker
+from components.links.linker import Linker
 
-class DmLinker(Linker):
+class SynchILinker(Linker):
   def __init__(self):
-    super().__init__('dm')
+    super().__init__('synch_i')
   
   def build_links(self):
     pass
-
-class DmLinkerBuilder():
+class SynchILinkerBuilder():
   def __init__(self):
     self._instance = None
 
   def __call__(self,**_ignored):
     if not self._instance:
-      self._instance = DmLinker()
+      self._instance = SynchILinker()
     return self._instance

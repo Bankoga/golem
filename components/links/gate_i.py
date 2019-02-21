@@ -1,17 +1,17 @@
-from components.linkers.linker import Linker
+from components.links.linker import Linker
 
-class LoopILinker(Linker):
+class GateILinker(Linker):
   def __init__(self):
-    super().__init__('loop_i')
+    super().__init__('gate_i')
   
   def build_links(self):
     pass
-
-class LoopILinkerBuilder():
+    
+class GateILinkerBuilder():
   def __init__(self):
     self._instance = None
 
   def __call__(self,**_ignored):
     if not self._instance:
-      self._instance = LoopILinker()
+      self._instance = GateILinker()
     return self._instance

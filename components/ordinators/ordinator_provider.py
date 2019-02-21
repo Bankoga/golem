@@ -1,9 +1,9 @@
 from utils.object_factory import *
 from components.ordinators.asc_ordinator import AscOrdinatorBuilder
 from components.ordinators.dsc_ordinator import DscOrdinatorBuilder
-# from components.linkers.gate_i import GateILinkerBuilder
-# from components.linkers.synch_i import SynchILinkerBuilder
-# from components.linkers.synch_all import SynchAllLinkerBuilder
+# from components.links.gate_i import GateILinkerBuilder
+# from components.links.synch_i import SynchILinkerBuilder
+# from components.links.synch_all import SynchAllLinkerBuilder
 
 class OrdinatorProvider(ObjectFactory):
   """

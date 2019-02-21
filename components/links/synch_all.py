@@ -1,4 +1,4 @@
-from components.linkers.linker import Linker
+from components.links.linker import Linker
 
 class SynchAllLinker(Linker):
   def __init__(self):
