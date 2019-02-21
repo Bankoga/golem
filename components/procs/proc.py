@@ -1,9 +1,11 @@
-from data.axioms.configs import file_type
-from utils.config_reader import read
+from components.func_groups.func_group import FuncGroup
 from components.ordinators.ordinator_provider import ordinator_services
+from data.axioms.configs import file_type
+
+from utils.config_reader import read
 from utils.pos import Pos
 
-class Proc:
+class Proc(FuncGroup):
   """
   A proc is used to create the stubs of some of the functional groups within a matrix
   PROC stands for primary repository of cells
@@ -15,15 +17,11 @@ class Proc:
     self._set_type_data_()
     self.groups = dict()
     self._set_proc_groups_()
-    self._set_inputs_()
     self._set_outputs_()
     self._set_hooks_()
     self._set_links_defined_()
     self._set_links_used_()
     self._init_stage_data_()
-
-  def get_id(self):
-    return self.id
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
@@ -40,11 +38,6 @@ class Proc:
   def _set_group_prop_(self,conf_prop):
     for group in self.config[conf_prop]:
       self.groups[group][conf_prop] = self.config[conf_prop][group]
-
-  # @abstractmethod # pylint: disable=undefined-variable
-  def _set_inputs_(self):
-    conf_prop = 'inputs'
-    self._set_group_prop_(conf_prop)
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_outputs_(self):
