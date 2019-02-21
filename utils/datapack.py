@@ -18,7 +18,6 @@ class Datapack:
     self.meld_tuple = meld.split(':')
     self.sender = sender_address
     self.read_data()
-    self._format_address_()
   
   def read_data(self):
     self.address=self.meld_tuple[0]
@@ -34,5 +33,5 @@ class Datapack:
     self.type = typ
     self.shape=shp
 
-  def _format_address_(self):
+  def process_address(self):
     pass
