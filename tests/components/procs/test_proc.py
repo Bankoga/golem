@@ -64,17 +64,6 @@ class TestProc(unittest.TestCase):
     conf_prop = 'outputs'
     self.check_groups_for_property(conf_prop)
   
-  def test_init_stage_data_were_inserted_correctly(self):
-    conf_obj = self.proc_conf['stages_to_groups_dict']
-    sz = len(conf_obj)
-    for i,stage in enumerate(conf_obj):
-      for group in conf_obj[i]['groups']:
-        ord_to_index = ordinator_services.get(self.proc.ordinal_direction).get_ord_index(i,sz)
-        self.assertEqual(self.proc.groups[group]['pos'].s, -1)
-        self.assertEqual(self.proc.groups[group]['pos'].x, -1)
-        self.assertEqual(self.proc.groups[group]['pos'].y, -1)
-        self.assertEqual(self.proc.groups[group]['pos'].z, ord_to_index)
-  
   def test_hooks_were_inserted_correctly(self):
     hook_prop = 'hooks'
     if hook_prop in self.proc_conf:
@@ -105,6 +94,17 @@ class TestProc(unittest.TestCase):
     else:
       for link in self.proc_conf[conf_prop]:
         self.assertTrue(self.proc.links_used[link['id']] == link)
+  
+  def test_init_stage_data_were_inserted_correctly(self):
+    conf_obj = self.proc_conf['stages_to_groups_dict']
+    sz = len(conf_obj)
+    for i,stage in enumerate(conf_obj):
+      for group in conf_obj[i]['groups']:
+        ord_to_index = ordinator_services.get(self.proc.ordinal_direction).get_ord_index(i,sz)
+        self.assertEqual(self.proc.groups[group]['pos'].s, -1)
+        self.assertEqual(self.proc.groups[group]['pos'].x, -1)
+        self.assertEqual(self.proc.groups[group]['pos'].y, -1)
+        self.assertEqual(self.proc.groups[group]['pos'].z, ord_to_index)
 
 if __name__ == '__main__':
   unittest.main()

@@ -1,17 +1,17 @@
-from components.links.linker import Linker
+from components.linkers.linker import Linker
 
-class DmLinker(Linker):
+class GateILinker(Linker):
   def __init__(self):
-    super().__init__('dm')
+    super().__init__('gate_i')
   
   def build_links(self):
     pass
-
-class DmLinkerBuilder():
+    
+class GateILinkerBuilder():
   def __init__(self):
     self._instance = None
 
   def __call__(self,**_ignored):
     if not self._instance:
-      self._instance = DmLinker()
+      self._instance = GateILinker()
     return self._instance
