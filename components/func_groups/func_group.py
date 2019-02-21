@@ -2,8 +2,8 @@ from utils.helpers.address_help import build_address
 from components.func_groups.fg_builder_provider import fg_services
 
 class FuncGroup:
-  def __init__(self, group, group_type):
-    pass
+  def __init__(self, group_type):
+    self.type=group_type
     """
     A functional group is an addressable processing region within a matrix
     each functional group in a matrix defines N things
@@ -12,8 +12,18 @@ class FuncGroup:
       - the rules for consuming the two types of datapacks: overlayed and aggregated
       - the types of datapacks it consumes that are module level
       - the links for extra output and/or output routing
+    We currently have 
+    - proc groups which breakdown into different proc types
+      - cort cell distribution rule types
+      - sub-cort cell distribution rule types
+    - coder groups which breakdown into different coder types
+      - sensors
+      - motors
+
+    Reward distribution rule types are not currently being worked upon
+    That comes after we understand how the current pieces are turned into function groups
     """
-    
+
   def _build_func_(self):
     pass
   
