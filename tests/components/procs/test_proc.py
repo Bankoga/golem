@@ -60,10 +60,6 @@ class TestProc(unittest.TestCase):
         self.proc.groups[conf_group['id']]
       )
 
-  def test_inputs_were_inserted_correctly(self):
-    conf_prop = 'inputs'
-    self.check_groups_for_property(conf_prop)
-  
   def test_outputs_were_inserted_correctly(self):
     conf_prop = 'outputs'
     self.check_groups_for_property(conf_prop)

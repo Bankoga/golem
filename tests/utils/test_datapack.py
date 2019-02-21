@@ -18,13 +18,20 @@ class TestDataPack(unittest.TestCase):
   def _read_data_(self, meld,sender_address):
     datp=Datapack(meld,sender_address)
     datp.read_data()
-    meld_tuple = meld.split(':')
+    meld_tuple = meld.split(';')
     self.assertTrue(datp.address==meld_tuple[0])
-    self.assertTrue(datp.resource ==RsrcType.UNSET or datp.resource==RsrcType(meld_tuple[1]))
+    if len(meld_tuple)>1 and meld_tuple[1]:
+      self.assertTrue(datp.resource == RsrcType.UNSET or datp.resource==RsrcType(meld_tuple[1]))
+    else:
+      self.assertTrue(datp.resource == RsrcType.UNSET)
     if len(meld_tuple)>2 and meld_tuple[2]:
       self.assertTrue(datp.type == PackType.UNSET or datp.type==PackType(meld_tuple[2]))
+    else:
+      self.assertTrue(datp.type == PackType.UNSET)
     if len(meld_tuple)>3 and meld_tuple[3]:
       self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
+    else:
+      self.assertTrue(datp.shape == FieldType.UNSET)
 
   def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
@@ -36,13 +43,21 @@ class TestDataPack(unittest.TestCase):
     meld = ":".join(meld_tuple)
     datp=Datapack(meld,sender_address)
     datp.read_data()
-    meld_tuple = meld.split(':')
+    meld_tuple = meld.split(';')
     self.assertTrue(datp.address==meld_tuple[0])
-    self.assertTrue(datp.resource == RsrcType.UNSET or datp.resource==RsrcType(meld_tuple[1]))
+    
+    if len(meld_tuple)>1 and meld_tuple[1]:
+      self.assertTrue(datp.resource == RsrcType.UNSET or datp.resource==RsrcType(meld_tuple[1]))
+    else:
+      self.assertTrue(datp.resource == RsrcType.UNSET)
     if len(meld_tuple)>2 and meld_tuple[2]:
       self.assertTrue(datp.type == PackType.UNSET or datp.type==PackType(meld_tuple[2]))
+    else:
+      self.assertTrue(datp.type == PackType.UNSET)
     if len(meld_tuple)>3 and meld_tuple[3]:
       self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
+    else:
+      self.assertTrue(datp.shape == FieldType.UNSET)
 
   """
   There are N cases of address description for datapacks
@@ -73,7 +88,7 @@ class TestDataPack(unittest.TestCase):
   st.sampled_from(FieldType),
   st.sampled_from(['SenderModuleId','self','Self']),
   st.sampled_from(['sender_group_id','self','Self','']))
-  def test_frozen_msg_read(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+  def test_sampled_msg_read(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
     inputs = self._build_inputs_(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
     self._read_data_(inputs[0],inputs[1])
 

@@ -19,6 +19,6 @@ class TestAddressHelp(unittest.TestCase):
     addr = build_address(rm_id,rg_id)
     meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
     if dp_shape is None:
-      self.assertEqual(meld, f'{addr}:{dp_resource}:{dp_type}')
+      self.assertEqual(meld, f'{addr};{dp_resource};{dp_type}')
     else:
-      self.assertEqual(meld, f'{addr}:{dp_resource}:{dp_type}:{dp_shape}')
+      self.assertEqual(meld, f'{addr};{dp_resource};{dp_type};{dp_shape}')
