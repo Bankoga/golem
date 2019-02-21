@@ -5,7 +5,9 @@ from utils.pos import Pos
 
 class Proc:
   """
-  A proc is used to create the stubs of the functional groups within a matrix
+  A proc is used to create the stubs of some of the functional groups within a matrix
+  PROC stands for primary repository of cells
+  Groups of this type emulate or simulate (depending on degree of granularity) regions with only cells
   """
   def __init__(self, proc_id):
     self.config = read(proc_id,file_type['proc'])
