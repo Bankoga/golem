@@ -3,27 +3,16 @@ from hypothesis import given
 import hypothesis.strategies as st
 from utils.datapack import Datapack
 
+
+from utils.helpers.address_help import build_address, build_meld
 from data.axioms.configs import dest_key_pattern
 from data.axioms.enums import PackType,RsrcType,FieldType
 
 class TestDataPack(unittest.TestCase):
 
-  def _build_address(self, module_id, group_id):
-    if group_id is None:
-      return f'{module_id}'
-    else:
-      return f'{module_id}-{group_id}'
-
-  def _build_meld_(self,rm_id,rg_id,dp_resource,dp_type,dp_shape):
-    addr = self._build_address(rm_id,rg_id)
-    if dp_shape is None:
-      return f'{addr}:{dp_resource}:{dp_type}'
-    else:
-      return f'{addr}:{dp_resource}:{dp_type}:{dp_shape}'
-
   def _build_inputs_(self, rm_id,rg_id,dp_resource,dp_type,dp_shape, sm_id, sg_id):
-    sender_address = self._build_address(sm_id,sg_id)
-    meld = self._build_meld_(rm_id,rg_id,dp_resource,dp_type,dp_shape)
+    sender_address = build_address(sm_id,sg_id)
+    meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
     return tuple([meld,sender_address])
 
   def _read_data_(self, meld,sender_address):
@@ -39,7 +28,7 @@ class TestDataPack(unittest.TestCase):
 
   def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
-    addr = self._build_address('GLG','noise_from')
+    addr = build_address('GLG','noise_from')
     # self._read_data_(inputs[0],inputs[1])
 
   @given(st.tuples(st.from_regex(dest_key_pattern),st.text(),st.text()), st.from_regex(dest_key_pattern))
