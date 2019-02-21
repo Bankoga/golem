@@ -15,6 +15,11 @@ class FieldType(Enum):
   TEST_INPUT = 2
   TEST_OUTPUT = 3
 
+class FuncGroup(Enum):
+  UNSET = 1
+  #    ['sensor']
+  # proc_types = ['coder','cortical','gateway']
+
 # file_type = {
 #   'golem': 'golem',
 #   'proc': 'proc',
