@@ -4,7 +4,7 @@ from hypothesis import given
 import hypothesis.strategies as st
 
 from components.hooks.hook import Hook
-from data.axioms.configs import dest_key_pattern
+from data.axioms.configs import dest_key_pattern, id_pattern
 from data.axioms.enums import FieldType,HookType,RsrcType,PackType
 from utils.helpers.address_help import build_address, build_meld
 from tests.utils.test_datapack import TestDataPack
@@ -72,8 +72,10 @@ class TestHook(TestDataPack):
 
   def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
-    addr = build_address('GLG','noise_from')
-    # self._read_data_(inputs[0],inputs[1])
+    self.meld = build_meld('m_id','g_id',RsrcType.ENERGY,PackType.AGGREGATE,FieldType.TEST_INPUT)
+    self.hook_id = 'cycle'
+    self.hook_type = HookType.UNI
+    self.hook=Hook(self.meld,self.hook_id,self.hook_type)
 
   @given(st.tuples(st.text(),st.text(),st.from_regex(dest_key_pattern),st.text(),st.text(), st.text()))
   def test_read_data(self,meld_tuple):
@@ -93,5 +95,26 @@ class TestHook(TestDataPack):
     meld = build_meld(m_id,g_id,dp_resource,dp_type,dp_shape)
     self._read_data_alt_(hook_id,hook_type,meld)
 
+  def _check_hook_(self,container_id):
+    if '\n' in container_id or not container_id:
+      self.assertEqual(self.hook.hook_id, self.hook_id)
+    else:
+      self.assertEqual(self.hook.hook_id,f'{container_id}-{self.hook_id}')
+
+  @given(st.from_regex(id_pattern))
+  def test_update_valid_once(self,container_id):
+    self.hook=Hook(self.meld,self.hook_id,self.hook_type)
+    self.hook.update_id(container_id)
+    self._check_hook_(container_id)
+  
+  @given(st.from_regex(id_pattern))
+  def test_update_invalidly(self,container_id):
+    self.hook=Hook(self.meld,self.hook_id,self.hook_type)
+    self.hook.update_id(container_id)
+    if container_id:
+      for i in range(5):
+        self.hook.update_id(f'{container_id}-{i}')
+    self._check_hook_(container_id)
+  
 if __name__ == '__main__':
     unittest.main()

@@ -43,5 +43,6 @@ resource_types = {
   "Activant": "proxies acetylcholine, and is used to control baseline firing % chance",
   "Catalyst": "proxies serotonin, and is used to indicate a reduction of activation threshold in impacted functions"
 }
-dest_key_pattern = "[/w|/d].*(-[/w|/d].*)?"
+id_pattern = "[a-zA-Z0-9_]*$"
+dest_key_pattern = "[a-zA-Z0-9_].*(-[a-zA-Z0-9_].*)?"
 ordinators = ['asc','dsc'] # eventually will need a pairing ordinator

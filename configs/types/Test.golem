@@ -28,7 +28,6 @@ modules:
   - type_data:
       id: TestA
       proc: DCLEG
-    inputs: []
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -38,7 +37,6 @@ modules:
   - type_data:
       id: TestB
       proc: DCLEG
-    inputs: []
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -48,7 +46,6 @@ modules:
   - type_data:
       id: TestC
       proc: DFLEG
-    inputs: []
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -58,7 +55,6 @@ modules:
   - type_data:
       id: TestD
       proc: DFLEG
-    inputs: []
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -68,7 +64,6 @@ modules:
   - type_data:
       id: TestFocus
       proc: DFLEG
-    inputs: []
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -78,7 +73,6 @@ modules:
   - type_data:
       id: TestGate
       proc: GLG
-    inputs: []
     outputs: []
     shape_of_groups_dict:
       module_field: [noise_dwn_inhib,noise_adj_inhib,cycle_gate_ctrl,cycle_stg_adv,cntxt_stg_adv,cntxt_up_inhib]
