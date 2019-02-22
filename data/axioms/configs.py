@@ -3,12 +3,14 @@
 dirs = {
   'golem': 'configs\\types\\',
   'proc': 'configs\\procs\\',
-  'cdr': 'configs\\coders\\'
+  'cdr': 'configs\\coders\\',
+  'hks': 'configs\\hook_sets\\'
 }
 file_type = {
   'golem': 'golem',
   'proc': 'proc',
-  'coder': 'cdr'
+  'coder': 'cdr',
+  'hook_set': 'hks'
 }
 links = [
   'dm',

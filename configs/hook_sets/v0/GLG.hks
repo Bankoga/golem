@@ -1,0 +1,35 @@
+hooks:
+  - id: noise
+    from:
+      - self-noise_dwn_inhib;UNSET;OVERLAY
+      - self-noise_adj_inhib;UNSET;OVERLAY
+  - id: cycle
+    from: 
+      - self-cycle_gate_ctrl;UNSET;OVERLAY
+      - self-cycle_stg_adv;UNSET;OVERLAY
+    to:
+      - cycle;to;self-cycle_stg_adv;UNSET;OVERLAY
+  - id: cntxt
+    from:
+      - self-cntxt_stg_adv;UNSET;OVERLAY
+      - self-cntxt_up_inhib;UNSET;OVERLAY
+    to:
+      - self-cntxt_stg_adv;UNSET;OVERLAY
+  - id: relay
+    from:
+      - self-relay_stg_adv;UNSET;OVERLAY
+    to:
+      - self-relay_stg_adv;UNSET;OVERLAY
+hooks_defined:
+  - id: loop_i
+    hooks_required:
+      - id: cntxt
+        type: BI
+      - id: cycle
+        type: BI
+      - id: noise
+        type: BI
+  - id: gate_i
+    hooks_required:
+      - relay_from
+      - relay_to
