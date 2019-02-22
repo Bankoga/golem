@@ -85,7 +85,7 @@ class TestProc(unittest.TestCase):
     if hook_group['direction'] == 'from':
       for targ in hook_group['targets']:
       self.assertIn(
-        targ,
+        ';'.split(targ)[2:],
         self.proc.groups[hook_group]['outputs']
       )
     # else:

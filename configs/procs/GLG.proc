@@ -63,16 +63,27 @@ outputs:
   cntxt_up_inhib: [self-cntxt_relay;INHIBITOR;OVERLAY]
   relay_stg_adv: null
 hooks:
-  - noise;from;noise_dwn_inhib;UNSET;OVERLAY
-  - noise;from;noise_adj_inhib;UNSET;OVERLAY
-  - cycle;from;self-cycle_gate_ctrl;UNSET;OVERLAY
-  - cycle;from;cycle_stg_adv;UNSET;OVERLAY
-  - cntxt;from;self-cntxt_stg_adv;UNSET;OVERLAY
-  - cntxt;from;cntxt_up_inhib;UNSET;OVERLAY
-  - relay;from;self-relay_stg_adv;UNSET;OVERLAY
-  - cycle;to;self-cycle_stg_adv;UNSET;OVERLAY
-  - cntxt;to;self-cntxt_stg_adv;UNSET;OVERLAY
-  - relay;to;self-relay_stg_adv;UNSET;OVERLAY
+  - id: noise
+    from:
+      - self-noise_dwn_inhib;UNSET;OVERLAY
+      - self-noise_adj_inhib;UNSET;OVERLAY
+  - id: cycle
+    from: 
+      - self-cycle_gate_ctrl;UNSET;OVERLAY
+      - self-cycle_stg_adv;UNSET;OVERLAY
+    to:
+      - cycle;to;self-cycle_stg_adv;UNSET;OVERLAY
+  - id: cntxt
+    from:
+      - self-cntxt_stg_adv;UNSET;OVERLAY
+      - self-cntxt_up_inhib;UNSET;OVERLAY
+    to:
+      - self-cntxt_stg_adv;UNSET;OVERLAY
+  - id: relay
+    from:
+      - self-relay_stg_adv;UNSET;OVERLAY
+    to:
+      - self-relay_stg_adv;UNSET;OVERLAY
 hooks_defined:
   - id: loop_i
     hooks_required:

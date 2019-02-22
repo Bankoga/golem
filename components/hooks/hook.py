@@ -9,37 +9,33 @@ class Hook(Datapack):
     - direction: to/from
     - target: the module to use in the blank spots in the datapack production rule
   """
-  def __init__(self, meld):
-    self.meld_tuple = meld.split(';')
+  def __init__(self, meld, hook_id="", hook_type=""):
+    if not hook_id and not hook_type:
+      mt = meld.split(';')
+      self._set_hook_type_(mt[0],mt[1])
+      self.meld_tuple = mt[2:]
+    else:
+      self._set_hook_type_(hook_id,hook_type)
+      self.meld_tuple = meld.split(';')
     self.read_data()
   
-  def read_data(self):
-    # self.hook_id=self.meld_tuple[0]
-    # self.hook_type
-    # self.resource=RsrcType.UNSET
-    # self.shape = FieldType.UNSET
-    # self.type = PackType.UNSET
-    # if len(self.meld_tuple) > 1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
-    #   self.resource = self.meld_tuple[1]
-    #   if self.meld_tuple[2] != 0 and self.meld_tuple[2] in PackType:
-    #     self.type=PackType(self.meld_tuple[2])
-    #     if len(self.meld_tuple) >3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:
-    #       self.shape=FieldType(self.meld_tuple[3])
-  
-    self.hook_id = self.meld_tuple[0]
+  def _set_hook_type_(self, hook_id, hook_type):
+    self.hook_id = hook_id
     self.hook_type = HookType.UNSET
+    if hook_type and hook_type in HookType:
+      self.hook_type=HookType(hook_type)
+
+  def read_data(self):
     self.resource = RsrcType.UNSET
     self.type = PackType.UNSET
     self.shape = FieldType.UNSET
-    if self.meld_tuple[1] and self.meld_tuple[1] in HookType:
-      self.hook_type=HookType(self.meld_tuple[1])
-    self.address=self.meld_tuple[2]
-    if len(self.meld_tuple)>3 and self.meld_tuple[3] and self.meld_tuple[3] in RsrcType:
-      self.resource=RsrcType(self.meld_tuple[3])
-    if len(self.meld_tuple)>4 and self.meld_tuple[4] and self.meld_tuple[4] in PackType:
-      self.type=PackType(self.meld_tuple[4])
-    if len(self.meld_tuple)>5 and self.meld_tuple[5] and self.meld_tuple[5] in FieldType:
-      self.shape=self.meld_tuple[5]
+    self.address=self.meld_tuple[0]
+    if len(self.meld_tuple)>1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
+      self.resource=RsrcType(self.meld_tuple[1])
+    if len(self.meld_tuple)>2 and self.meld_tuple[2] and self.meld_tuple[2] in PackType:
+      self.type=PackType(self.meld_tuple[2])
+    if len(self.meld_tuple)>3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:
+      self.shape=self.meld_tuple[3]
 
 
   def process_hook(self):

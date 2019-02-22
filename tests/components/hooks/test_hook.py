@@ -20,7 +20,7 @@ class TestHook(TestDataPack):
   #   self.assertEqual(hook.direction, direction)
   #   self.assertEqual(hook.target, target)
 
-  def _build_inputs_(self,hook_id,hook_type, m_id,g_id,dp_resource,dp_type,dp_shape):
+  def _build_inputs_meld_(self,hook_id,hook_type, m_id,g_id,dp_resource,dp_type,dp_shape):
     meld = build_meld(m_id,g_id,dp_resource,dp_type,dp_shape)
     return f'{hook_id};{hook_type};{meld}'
 
@@ -47,6 +47,29 @@ class TestHook(TestDataPack):
     else:
       self.assertTrue(hook.shape == FieldType.UNSET)
 
+  def _read_data_alt_(self,hook_id,hook_type,meld):
+    hook=Hook(meld,hook_id,hook_type)
+    hook.read_data()
+    meld_tuple = meld.split(';')
+    self.assertTrue(hook.hook_id == hook_id)
+    if hook_type:
+      self.assertTrue(hook.hook_type == HookType.UNSET or hook.hook_type==HookType(hook_type))
+    else:
+      self.assertTrue(hook.hook_type == HookType.UNSET)
+    self.assertTrue(hook.address==meld_tuple[0])
+    if len(meld_tuple)>1 and meld_tuple[1]:
+      self.assertTrue(hook.resource == RsrcType.UNSET or hook.resource==RsrcType(meld_tuple[1]))
+    else:
+      self.assertTrue(hook.resource == RsrcType.UNSET)
+    if len(meld_tuple)>2 and meld_tuple[2]:
+      self.assertTrue(hook.type == PackType.UNSET or hook.type==PackType(meld_tuple[2]))
+    else:
+      self.assertTrue(hook.type == PackType.UNSET)
+    if len(meld_tuple)>3 and meld_tuple[3]:
+      self.assertTrue(hook.shape == FieldType.UNSET or hook.shape==meld_tuple[3])
+    else:
+      self.assertTrue(hook.shape == FieldType.UNSET)
+
   def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
     addr = build_address('GLG','noise_from')
@@ -65,8 +88,10 @@ class TestHook(TestDataPack):
   st.sampled_from(PackType),
   st.sampled_from(FieldType))
   def test_sampled_msg_read(self,hook_id,hook_type,m_id,g_id,dp_resource,dp_type,dp_shape):
-    inputs = self._build_inputs_(hook_id,hook_type,m_id,g_id,dp_resource,dp_type,dp_shape)
+    inputs = self._build_inputs_meld_(hook_id,hook_type,m_id,g_id,dp_resource,dp_type,dp_shape)
     self._read_data_(inputs)
+    meld = build_meld(m_id,g_id,dp_resource,dp_type,dp_shape)
+    self._read_data_alt_(hook_id,hook_type,meld)
 
 if __name__ == '__main__':
     unittest.main()
