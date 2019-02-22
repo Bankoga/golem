@@ -27,6 +27,20 @@ class HookType(Enum):
   BI = 102
   RECIP = 103
 
+class DimS(Enum):
+  UNSET = 1
+class DimX(Enum):
+  UNSET = 1
+class DimY(Enum):
+  UNSET = 1
+class DimZ(Enum):
+  UNSET = 1
+  BELOW = 100
+  BETWEEN = 200
+  CENTER = 201
+  MIDDLE = 202
+  ABOVE = 300
+
 
  # Consider turning each distinct set of proc groups into enums
 # TODO: turn all relevant pos data into enums
