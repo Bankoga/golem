@@ -44,6 +44,29 @@ These are all hybrid matrix-command functions
 - Save: upon triggering, it first suspends operation, then writes the instance to disk
 - Load: reads an instance from disk, and upon completion enters the suspend state
 
+#### A note on Training
+
+- Data:
+  - Per type paired with question answer pairs
+  - Per permutation of types paired with question answer pairs
+- Types:
+  - Screen (interpreted, reads files via screen sensor into matrix)
+  - File (injected, reads file directly into matrix)
+    - Image
+    - Audio
+    - Video
+    - Text
+
+During training each duration of sensory input should be overlapped with input to the question response sensor for some specific question:answer pair
+Each question:answer pair can have a flag used to determine which output channels we expect to have output, and what we expect those outputs to be because output channels go through hard coded or preconfigured languages that it doesn't need to learn.
+The difference in actual outputs vs expected outputs, is the loss.
+Which is used by the modulation groups to determine how much to change the system.
+
+Degree of Reward Loss - Impact on Behaviour - Impact on Weights - Direction of change
+High - Repeat the behaviour less - greater impact - inverse
+Low - Repeat behaviour more - less impact - linear
+None - Always repeat behaviour - none - none
+
 #### A note on Module Inputs and Config Revamp
 
 Every word is a function
