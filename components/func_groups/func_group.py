@@ -5,6 +5,7 @@ class FuncGroup:
 
   """
   A functional group is an addressable processing region within a matrix
+  It is a datapack production group
   each functional group in a matrix defines N things
     - an unique address
     - the datapacks it produces
