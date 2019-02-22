@@ -10,6 +10,7 @@ modules:
   - type_data:
       id: TestInput
       proc: PICG
+      hook_set: v0
     inputs: [tbd]
     outputs: [tbd]
     shape_of_groups_dict: null
@@ -19,6 +20,7 @@ modules:
   - type_data:
       id: TestOutput
       proc: POCG
+      hook_set: v0
     inputs: [tbd]
     outputs: [tbd]
     shape_of_groups_dict: null
@@ -28,6 +30,7 @@ modules:
   - type_data:
       id: TestA
       proc: DCLEG
+      hook_set: v0
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -37,6 +40,7 @@ modules:
   - type_data:
       id: TestB
       proc: DCLEG
+      hook_set: v0
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -46,6 +50,7 @@ modules:
   - type_data:
       id: TestC
       proc: DFLEG
+      hook_set: v0
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -55,6 +60,7 @@ modules:
   - type_data:
       id: TestD
       proc: DFLEG
+      hook_set: v0
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -64,6 +70,7 @@ modules:
   - type_data:
       id: TestFocus
       proc: DFLEG
+      hook_set: v0
     outputs: []
     shape_of_groups_dict:
       module_field: '*'
@@ -73,6 +80,7 @@ modules:
   - type_data:
       id: TestGate
       proc: GLG
+      hook_set: v0
     outputs: []
     shape_of_groups_dict:
       module_field: [noise_dwn_inhib,noise_adj_inhib,cycle_gate_ctrl,cycle_stg_adv,cntxt_stg_adv,cntxt_up_inhib]
