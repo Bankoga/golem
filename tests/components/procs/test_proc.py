@@ -64,37 +64,6 @@ class TestProc(unittest.TestCase):
     conf_prop = 'outputs'
     self.check_groups_for_property(conf_prop)
   
-  def test_hooks_were_inserted_correctly(self):
-    hook_prop = 'hooks'
-    if hook_prop in self.proc_conf:
-      hooks = self.proc_conf[hook_prop]
-      if hooks is None:
-        for group in self.proc.groups:
-          self.assertIsNone(group[hook_prop])
-      else:
-        for i,hook_id in hooks:
-          self._check_hook_group_(hook_id,hooks[i])
-  
-  def _check_hook_group_(self,hook_id,hook_group):
-    # if hook_group['direction'] == 'to':
-    #   self.assertIn(
-    #     hook,
-    #     self.proc.groups[hook_group]['outputs']
-    #   )
-    TODO: Specify behavior of the hook types that get added to a groups outputs
-    if hook_group['direction'] == 'from':
-      for targ in hook_group['targets']:
-      self.assertIn(
-        ';'.split(targ)[2:],
-        self.proc.groups[hook_group]['outputs']
-      )
-    # else:
-      # self.assertRaises()
-  
-  #  TODO: READ HOOK DEFINITIONS METHOD CHECK. Its not going to be done during init though
-  # hook definitions will be called during golem building in order to finish off hook packages
-  # i don't think it will be needed before then though
-
   def test_init_stage_data_were_inserted_correctly(self):
     conf_obj = self.proc_conf['stages_to_groups_dict']
     sz = len(conf_obj)

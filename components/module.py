@@ -29,3 +29,36 @@ class Module():
   #             outputShapes[outputShape.key]+=outputShape.value
   #             # If this is the last group, after adding the value, throw each point through a ReLU
   #     return outputShapes
+
+    # self._set_hooks_()
+    # self._set_links_defined_()
+    # self._set_links_used_()
+
+  # # @abstractmethod # pylint: disable=undefined-variable
+  # def _set_hooks_(self):
+  #   hook_prop = 'hooks'
+  #   for hook_type in self.config[hook_prop]:
+  #     for group in self.groups:
+  #       if hook_prop not in self.groups[group]:
+  #         self.groups[group][hook_prop] = [hook_type]
+  #       else:
+  #         self.groups[group][hook_prop].append(hook_type)
+
+  # # @abstractmethod # pylint: disable=undefined-variable
+  # def _build_links_(self, link_protos, link_results):
+  #   if link_protos is not None:
+  #     for link in link_protos:
+  #       link_results[link['id']] = link
+  #   return link_results
+
+  # # @abstractmethod # pylint: disable=undefined-variable
+  # def _set_links_defined_(self):
+  #   links_defined = self.config['links_defined']
+  #   link_defs = dict()
+  #   self.link_definitions = self._build_links_(links_defined,link_defs)
+  
+  # # @abstractmethod # pylint: disable=undefined-variable
+  # def _set_links_used_(self):
+  #   links_used = self.config['links_used']
+  #   prcd_lu = {}
+  #   self.links_used = self._build_links_(links_used, prcd_lu)
