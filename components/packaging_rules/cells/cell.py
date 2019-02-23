@@ -19,4 +19,6 @@ class Cell(packaging_rule.PackagingRule):
     self.pct_of_pod = type_data['pct_of_pod']
     self.init_threshhold = type_data['init_threshhold']
     self.activation_function = type_data['activation_function']
-    
+  
+  def pack(self,inputs):
+    pass
