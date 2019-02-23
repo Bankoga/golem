@@ -11,8 +11,9 @@ class PackagingRule:
   We are going to need another metaprovider here.
   """
 
-  def __init__(self, rule_type):
+  def __init__(self, rule_type, arb_id):
     self.type = rule_type
+    self.id = arb_id
 
   @abstractmethod
   def pack(self, inputs):
