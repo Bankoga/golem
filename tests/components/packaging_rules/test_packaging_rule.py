@@ -11,7 +11,7 @@ class TestPackagingRule(unittest.TestCase):
     self.rule = PackagingRule(RuleType.CELL)
   
   @given(st.sampled_from(RuleType))
-  def test_base_rule(self, arb_type, arb_otherinps):
+  def test_base_rule(self, arb_type):
     rule = PackagingRule(arb_type)
     self.assertEqual(rule.type, arb_type)
     
