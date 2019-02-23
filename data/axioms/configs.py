@@ -48,3 +48,12 @@ resource_types = {
 id_pattern = "[a-zA-Z0-9_]*$"
 dest_key_pattern = "[a-zA-Z0-9_].*(-[a-zA-Z0-9_].*)?"
 ordinators = ['asc','dsc'] # eventually will need a pairing ordinator
+
+packaging_rule_defaults = {
+  'cnv_tmplts': [],
+  'freq_range': [5,256],
+  'init_freq': 5,
+  'pct_of_pod': 0,
+  'init_threshhold': 0.98,
+  'activation_function': 'tanh',
+}

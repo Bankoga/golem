@@ -45,7 +45,7 @@ class RuleType(Enum):
   UNSET = 1
   CELL = 100
   FW_FUNC = 500
-  
+
 
  # Consider turning each distinct set of proc groups into enums
 # TODO: turn all relevant pos data into enums
