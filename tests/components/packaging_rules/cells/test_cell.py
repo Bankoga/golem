@@ -19,6 +19,9 @@ class TestCell(unittest.TestCase):
   
   @given(st.sampled_from(CellType))
   def test_cell_data(self,inp_id):
+    """
+    here we test that every cell type we have defined, has all of its properties
+    """
     cell = Cell(inp_id)
     if (not inp_id in CellType) or inp_id == CellType.UNSET:
       type_data = cell_data[str(CellType.PYRAMID)]
