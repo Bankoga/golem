@@ -11,7 +11,7 @@ class PackagingRule:
   """
 
   def __init__(self, rule_type):
-    pass
+    self.type = rule_type
 
   def pack(self, inputs):
     pass
