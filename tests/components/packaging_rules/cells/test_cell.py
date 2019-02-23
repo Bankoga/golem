@@ -7,7 +7,7 @@ from components.packaging_rules.cells.cell import Cell
 from data.axioms.cell_types import CellType,cell_data
 from data.axioms.enums import RuleType, RsrcType, PackType, FieldType
 
-from utils.helpers.address_help import build_address, build_meld, build_datapack
+from utils.helpers.packer import build_address, build_meld, build_datapack
 
 class TestCell(unittest.TestCase):
   # def setUp(self):

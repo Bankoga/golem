@@ -1,4 +1,4 @@
-from utils.helpers.address_help import build_address
+from utils.helpers.packer import build_address
 from components.func_groups.fg_builder_provider import fg_services
 
 class FuncGroup:

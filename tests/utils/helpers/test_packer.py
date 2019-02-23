@@ -6,9 +6,9 @@ from hypothesis import strategies as st
 from data.axioms.enums import FieldType,PackType,RsrcType
 
 from utils.datapack import Datapack
-from utils.helpers.address_help import build_address, build_meld, build_datapack_inputs, build_datapack
+from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 
-class TestAddressHelp(unittest.TestCase):
+class TestPacker(unittest.TestCase):
   @given(st.text(),st.text())
   def test_build_address(self, m_id, g_id):
     addr = build_address(m_id, g_id)
