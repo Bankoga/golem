@@ -5,7 +5,7 @@ import hypothesis.strategies as st
 
 from utils.datapack import Datapack
 
-from utils.helpers.address_help import build_address, build_meld, build_datapack_inputs
+from utils.helpers.address_help import build_address, build_meld, build_datapack_inputs, build_datapack
 from data.axioms.configs import dest_key_pattern
 from data.axioms.enums import PackType,RsrcType,FieldType
 
@@ -29,7 +29,7 @@ class TestDataPack(unittest.TestCase):
     else:
       self.assertTrue(datp.shape == FieldType.UNSET)
 
-  def setUp(self):
+  # def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
     addr = build_address('GLG','noise_from')
     # self._read_data_(inputs[0],inputs[1])
@@ -76,7 +76,6 @@ class TestDataPack(unittest.TestCase):
     ['SenderModuleId','','RecipientModuleId','recipient_group_id'],
     ['SenderModuleId','sender_group_id','RecipientModuleId','recipient_group_id']
   """
-
   @given(st.sampled_from(['SenderModuleId','self','Self']),
   st.sampled_from(['sender_group_id','self','Self', '']),
   st.sampled_from(RsrcType),
@@ -87,6 +86,18 @@ class TestDataPack(unittest.TestCase):
   def test_sampled_msg_read(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
     inputs = build_datapack_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
     self._read_data_(inputs[0],inputs[1])
+
+  @given(st.sampled_from(['SenderModuleId','self','Self']),
+  st.sampled_from(['sender_group_id','self','Self', '']),
+  st.sampled_from(RsrcType),
+  st.sampled_from(PackType),
+  st.sampled_from(FieldType),
+  st.sampled_from(['SenderModuleId','self','Self']),
+  st.sampled_from(['sender_group_id','self','Self','']))
+  def test_compare_equal_datapacks(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+    datp1 = build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+    datp2 = build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+    self.assertEqual(datp1,datp2)
 
   # def test_format_address_on_valid_data(self):
   #   # self.assertTrue(self.datp.address, 'glg-destination_id-subdestination_id')

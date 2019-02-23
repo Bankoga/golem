@@ -1,3 +1,4 @@
+from utils.datapack import Datapack
 
 def build_address(module_id, group_id):
   if group_id is None:
@@ -16,3 +17,8 @@ def build_datapack_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape, sm_id, sg_id
   sender_address = build_address(sm_id,sg_id)
   meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
   return tuple([meld,sender_address])
+
+def build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape, sm_id, sg_id):
+  sender_address = build_address(sm_id,sg_id)
+  meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
+  return Datapack(meld,sender_address)

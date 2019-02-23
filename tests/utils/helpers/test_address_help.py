@@ -2,8 +2,11 @@ import unittest
 
 from hypothesis import given
 from hypothesis import strategies as st
+
 from data.axioms.enums import FieldType,PackType,RsrcType
-from utils.helpers.address_help import build_address, build_meld, build_datapack_inputs
+
+from utils.datapack import Datapack
+from utils.helpers.address_help import build_address, build_meld, build_datapack_inputs, build_datapack
 
 class TestAddressHelp(unittest.TestCase):
   @given(st.text(),st.text())
@@ -35,4 +38,18 @@ class TestAddressHelp(unittest.TestCase):
     sender_address = build_address(sm_id,sg_id)
     meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
     res = tuple([meld,sender_address])
+    self.assertEqual(inputs, res)
+
+  @given(st.sampled_from(['SenderModuleId','self','Self']),
+  st.sampled_from(['sender_group_id','self','Self', '']),
+  st.sampled_from(RsrcType),
+  st.sampled_from(PackType),
+  st.sampled_from(FieldType),
+  st.sampled_from(['SenderModuleId','self','Self']),
+  st.sampled_from(['sender_group_id','self','Self','']))
+  def test_build_datapack(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+    inputs = build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+    sender_address = build_address(sm_id,sg_id)
+    meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
+    res = Datapack(meld,sender_address)
     self.assertEqual(inputs, res)
