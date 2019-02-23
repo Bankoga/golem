@@ -1,4 +1,5 @@
 from data.axioms.enums import RuleType
+from abc import abstractmethod
 
 class PackagingRule:
   """
@@ -13,5 +14,6 @@ class PackagingRule:
   def __init__(self, rule_type):
     self.type = rule_type
 
+  @abstractmethod
   def pack(self, inputs):
     pass

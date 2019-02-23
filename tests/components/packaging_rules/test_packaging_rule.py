@@ -14,8 +14,3 @@ class TestPackagingRule(unittest.TestCase):
   def test_base_rule(self, arb_type):
     rule = PackagingRule(arb_type)
     self.assertEqual(rule.type, arb_type)
-    
-  
-  def test_pack_valid(self, inputs):
-    self.rule.pack(inputs)
-    pass
