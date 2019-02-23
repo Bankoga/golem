@@ -12,7 +12,7 @@
 #     # As well as check items listed in the function dict and used in the output melds and link melds
 #   return "lol"
 
-
+# TODO: replace golem_type with matrix_type
 # def parse_gt_config(golem_type, num_dests, is_pair):
 #     """
 #     validate inputs
