@@ -22,3 +22,11 @@ def build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape, sm_id, sg_id):
   sender_address = build_address(sm_id,sg_id)
   meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
   return Datapack(meld,sender_address)
+
+def sort_data_packs(self, datapacks):
+  """
+  given a list of datapacks
+    sorts into N=PackType lists
+    said list use a guaranteed insertion sort using sender pos
+  """
+  pass
