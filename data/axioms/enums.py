@@ -1,4 +1,9 @@
-from enum import Enum
+from enum import Enum, auto
+
+
+class AutoName(Enum):
+  def _generate_next_value_(self,name,start,count,last_values):
+    return name
 
 class PackType(Enum):
   UNSET = 1
@@ -45,7 +50,6 @@ class RuleType(Enum):
   UNSET = 1
   CELL = 100
   FW_FUNC = 500
-
 
  # Consider turning each distinct set of proc groups into enums
 # TODO: turn all relevant pos data into enums
