@@ -64,6 +64,13 @@ def datapack_resource(draw):
   return res
 
 @composite
+def datapack_group(draw):
+  res = st.sampled_from(GroupType)
+  st.assume(res)
+  st.assume(res != GroupType.UNSET)
+  return res
+
+@composite
 def datapack_type(draw):
   res = st.sampled_from(PackType)
   st.assume(res)
