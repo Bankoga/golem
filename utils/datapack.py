@@ -13,6 +13,8 @@ class Datapack:
     - is to be processed by itself as a full shape
   - aggregated
     - gets joined with others using a guaranteed ordering to produce a full shape to be processed
+  
+  eventually, are datapack shapes going to be chainer variables?
   """
   def __init__(self, meld,sender_address):
     self.meld_tuple = meld.split(';')
