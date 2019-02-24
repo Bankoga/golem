@@ -6,7 +6,7 @@ def build_address(module_id, group_id):
   else:
     return f'{module_id}-{group_id}'
 
-def build_meld(recip_addr,dp_resource,dp_type,dp_shape):
+def build_meld(recip_addr,dp_resource,dp_type,dp_shape=None):
   if dp_shape is None:
     return f'{recip_addr};{dp_resource};{dp_type}'
   else:

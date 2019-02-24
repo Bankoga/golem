@@ -3,8 +3,9 @@ import unittest
 from hypothesis import given
 import hypothesis.strategies as st
 
-from utils.datapack import Datapack
+from tests.strategies.packing_strats import datapack_inputs
 
+from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 from data.axioms.configs import dest_key_pattern
 from data.axioms.enums import PackType,RsrcType,FieldType
@@ -34,9 +35,12 @@ class TestDataPack(unittest.TestCase):
     addr = build_address('GLG','noise_from')
     # self._read_data_(inputs[0],inputs[1])
 
-  @given(st.tuples(st.from_regex(dest_key_pattern),st.text(),st.text()), st.from_regex(dest_key_pattern))
-  def test_read_data(self,meld_tuple,sender_address):
-    meld = ";".join(meld_tuple)
+  @given(datapack_inputs())
+  def test_read_data(self,inputs):#meld_tuple,sender_address):
+    # st.tuples(st.from_regex(dest_key_pattern),st.text(),st.text()), st.from_regex(dest_key_pattern)
+    meld = inputs[0]
+    sender_address = inputs[1]
+    # meld = ";".join(meld_tuple)
     datp=Datapack(meld,sender_address)
     datp.read_data()
     meld_tuple = meld.split(';')
@@ -76,27 +80,14 @@ class TestDataPack(unittest.TestCase):
     ['SenderModuleId','','RecipientModuleId','recipient_group_id'],
     ['SenderModuleId','sender_group_id','RecipientModuleId','recipient_group_id']
   """
-  @given(st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self', '']),
-  st.sampled_from(RsrcType),
-  st.sampled_from(PackType),
-  st.sampled_from(FieldType),
-  st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self','']))
-  def test_sampled_msg_read(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-    inputs = build_datapack_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+  @given(datapack_inputs())
+  def test_sampled_msg_read(self, inputs):
     self._read_data_(inputs[0],inputs[1])
 
-  @given(st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self', '']),
-  st.sampled_from(RsrcType),
-  st.sampled_from(PackType),
-  st.sampled_from(FieldType),
-  st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self','']))
-  def test_compare_equal_datapacks(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-    datp1 = build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
-    datp2 = build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+  @given(datapack_inputs())
+  def test_compare_equal_datapacks(self, inputs):
+    datp1 = Datapack(inputs[0],inputs[1])
+    datp2 = Datapack(inputs[0],inputs[1])
     self.assertEqual(datp1,datp2)
 
   # def test_format_address_on_valid_data(self):

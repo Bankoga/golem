@@ -16,6 +16,8 @@ What are the pools of object examples we need to draw from?
 - Datapacks
 - Input Sets
 - Output Sets
+
+TODO: Figure out how to fix pylint errors for hypothesis composite decorator methods
 """
 
 @composite
@@ -67,7 +69,7 @@ def datapack_shape(draw):
 
 @composite
 def proto_meld(draw):
-  addrs = draw(st.one_of(full_address(),partial_address()))
+  addr = draw(st.one_of(full_address(),partial_address()))
   dp_resource = draw(datapack_resource())
   dp_type = draw(datapack_type())
   meld = build_meld(addr,dp_resource,dp_type)
@@ -75,7 +77,7 @@ def proto_meld(draw):
 
 @composite
 def full_meld(draw):
-  addrs = draw(st.one_of(full_address(),partial_address()))
+  addr = draw(st.one_of(full_address(),partial_address()))
   dp_resource = draw(datapack_resource())
   dp_type = draw(datapack_type())
   dp_shape = draw(datapack_shape())
@@ -84,8 +86,9 @@ def full_meld(draw):
 
 @composite
 def datapack_inputs(draw):
-  meld = draw(st.one_of(proto_meld,full_meld))
-  
+  meld = draw(st.one_of(proto_meld(),full_meld()))
+  sender_addr = draw(st.one_of(full_address(),partial_address()))
+  return (meld, sender_addr)
 
 
 
