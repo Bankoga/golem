@@ -10,6 +10,11 @@ class Cell(packaging_rule.PackagingRule):
     else:
       super().__init__(RuleType.CELL, cell_id)
   
+  # WHERE ARE THE LOCALIZED_CONV WEIGHTS?
+  # WHERE ARE SAID WEIGHTS PLASTICALLY UPDATED?
+  # WHERE ARE SAID WEIGHTS USED?
+  # WERE ARE SAID WEIGHTS INITIALIZED?
+
   def read_data(self):
     s = str(self.id)
     type_data = cell_data[s]
@@ -22,3 +27,29 @@ class Cell(packaging_rule.PackagingRule):
   
   def pack(self,inputs):
     pass
+  
+  def localized_conv(self, shape):
+    pass
+  
+  def process(self):
+    pass
+  """
+  A function group consists of multiple cells
+  A cell consists of multiple convolutions with potentially different types of inputs
+  """
+
+  TODO: Define where CellType resource data is stored in the configs, and in object creation
+
+  # 'CellType.PYRAMID': {
+  #   "cnv_tmplts":[
+  #     ["A",["1x1","1x1","1x1","4x4","8x8"]],
+  #     ["B",["4x4"]],
+  #     ["B",["8x8,1"]],
+  #     ["S",["3x3"]]
+  #   ],
+  #   "freq_range": [5,256],
+  #   "init_freq": 5,
+  #   "pct_of_pod": 0,
+  #   "init_threshhold":0.98,
+  #   "activation_function":"tanh"
+  # },
