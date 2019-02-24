@@ -8,7 +8,7 @@ from data.axioms.configs import dest_key_pattern, id_pattern
 from data.axioms.enums import FieldType,HookType,RsrcType,PackType
 from utils.helpers.packer import build_address, build_meld
 from tests.utils.test_datapack import TestDataPack
-from tests.strategies.packing_strats import full_address,partial_address,arbitrary_id,hook_type,datapack_resource,datapack_type,datapack_shape
+from tests.strategies.packing_strats import datapack_address,full_address,partial_address,arbitrary_id,hook_type,datapack_resource,datapack_type,datapack_shape
 
 class TestHook(TestDataPack):
   # def setUp(self):
@@ -85,7 +85,7 @@ class TestHook(TestDataPack):
 
   @given(arbitrary_id(),
   hook_type(),
-  st.one_of(full_address(),partial_address()),
+  datapack_address(),
   datapack_resource(),
   datapack_type(),
   datapack_shape())

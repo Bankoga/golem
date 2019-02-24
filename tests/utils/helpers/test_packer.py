@@ -29,7 +29,7 @@ class TestPacker(unittest.TestCase):
     else:
       self.assertEqual(meld, f'{recip_addr};{dp_resource};{dp_type};{dp_shape}')
   
-  @given(st.one_of(full_address(),partial_address()),
+  @given(datapack_address(),
   st.sampled_from(RsrcType),
   st.sampled_from(PackType),
   st.sampled_from(FieldType),
@@ -44,7 +44,7 @@ class TestPacker(unittest.TestCase):
     res = tuple([meld,sender_address])
     self.assertEqual(inputs, res)
 
-  @given(st.one_of(full_address(),partial_address()),
+  @given(datapack_address(),
   st.sampled_from(RsrcType),
   st.sampled_from(PackType),
   st.sampled_from(FieldType),

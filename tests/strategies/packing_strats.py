@@ -38,12 +38,20 @@ def full_address(draw):
 
 @composite
 def partial_address(draw):
-  return draw(arbitrary_id())
+  m_id = draw(arbitrary_id())
+  st.assume(m_id)
+  return m_id
+
+@composite
+def datapack_address(draw):
+  addr = st.one_of(full_address(),partial_address())
+  st.assume(addr)
+  return addr
 
 @composite
 def sender_and_recipient_pair(draw):
-  recip_addr = st.one_of(full_address(),partial_address())
-  sender_addr = st.one_of(full_address(),partial_address())
+  recip_addr = datapack_address()
+  sender_addr = datapack_address()
   st.assume(recip_addr != sender_addr)
   st.assume(recip_addr)
   st.assume(sender_addr)
@@ -86,7 +94,7 @@ def datapack_shape(draw):
 
 @composite
 def proto_meld(draw):
-  addr = draw(st.one_of(full_address(),partial_address()))
+  addr = draw(datapack_address())
   dp_resource = draw(datapack_resource())
   dp_type = draw(datapack_type())
   meld = build_meld(addr,dp_resource,dp_type)
@@ -94,7 +102,7 @@ def proto_meld(draw):
 
 @composite
 def full_meld(draw):
-  addr = draw(st.one_of(full_address(),partial_address()))
+  addr = draw(datapack_address())
   dp_resource = draw(datapack_resource())
   dp_type = draw(datapack_type())
   dp_shape = draw(datapack_shape())
@@ -104,7 +112,7 @@ def full_meld(draw):
 @composite
 def datapack_inputs(draw):
   meld = draw(st.one_of(proto_meld(),full_meld()))
-  sender_addr = draw(st.one_of(full_address(),partial_address()))
+  sender_addr = draw(datapack_address())
   return (meld, sender_addr)
 
 
