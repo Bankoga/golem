@@ -4,7 +4,8 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.enums import FieldType,PackType,RsrcType
+from data.axioms.configs import id_pattern
+from data.axioms.enums import FieldType,PackType,RsrcType,HookType
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
@@ -22,7 +23,9 @@ TODO: Figure out how to fix pylint errors for hypothesis composite decorator met
 
 @composite
 def arbitrary_id(draw):
-  st.text()
+  res = st.text()#from_regex(id_pattern)
+  st.assume(res)
+  return res
 
 @composite
 def full_address(draw):
@@ -45,6 +48,13 @@ def sender_and_recipient_pair(draw):
   st.assume(recip_addr)
   st.assume(sender_addr)
   return (recip_addr, sender_addr)
+
+@composite
+def hook_type(draw):
+  res = st.sampled_from(HookType)
+  st.assume(res)
+  st.assume(res != HookType.UNSET)
+  return res
 
 @composite
 def datapack_resource(draw):

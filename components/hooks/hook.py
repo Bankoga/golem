@@ -45,7 +45,7 @@ class Hook(Datapack):
       self.shape=self.meld_tuple[3]
 
   def update_id(self,container_id):
-    if (not self._id_updated_ and (not '\n' in container_id) and container_id and re.search(id_pattern, container_id)):
+    if (not self._id_updated_ and container_id):# and re.search(id_pattern, container_id)):
       new_id = f'{container_id}-{self.hook_id}'
       self.hook_id = new_id
       self._id_updated_ = True

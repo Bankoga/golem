@@ -8,6 +8,7 @@ from data.axioms.configs import dest_key_pattern, id_pattern
 from data.axioms.enums import FieldType,HookType,RsrcType,PackType
 from utils.helpers.packer import build_address, build_meld
 from tests.utils.test_datapack import TestDataPack
+from tests.strategies.packing_strats import full_address,partial_address,arbitrary_id,hook_type,datapack_resource,datapack_type,datapack_shape
 
 class TestHook(TestDataPack):
   # def setUp(self):
@@ -20,8 +21,8 @@ class TestHook(TestDataPack):
   #   self.assertEqual(hook.direction, direction)
   #   self.assertEqual(hook.target, target)
 
-  def _build_inputs_meld_(self,hook_id,hook_type, m_id,g_id,dp_resource,dp_type,dp_shape):
-    meld = build_meld(m_id,g_id,dp_resource,dp_type,dp_shape)
+  def _build_inputs_meld_(self,hook_id,hook_type, addr,dp_resource,dp_type,dp_shape):
+    meld = build_meld(addr,dp_resource,dp_type,dp_shape)
     return f'{hook_id};{hook_type};{meld}'
 
   def _read_data_(self, meld):
@@ -72,7 +73,7 @@ class TestHook(TestDataPack):
 
   def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
-    self.meld = build_meld('m_id','g_id',RsrcType.ENERGY,PackType.AGGREGATE,FieldType.TEST_INPUT)
+    self.meld = build_meld('m_id-g_id',RsrcType.ENERGY,PackType.AGGREGATE,FieldType.TEST_INPUT)
     self.hook_id = 'cycle'
     self.hook_type = HookType.UNI
     self.hook=Hook(self.meld,self.hook_id,self.hook_type)
@@ -82,32 +83,31 @@ class TestHook(TestDataPack):
     meld = ";".join(meld_tuple)
     self._read_data_(meld)
 
-  @given(st.text(),
-  st.sampled_from(HookType),
-  st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self', '']),
-  st.sampled_from(RsrcType),
-  st.sampled_from(PackType),
-  st.sampled_from(FieldType))
-  def test_sampled_msg_read(self,hook_id,hook_type,m_id,g_id,dp_resource,dp_type,dp_shape):
-    inputs = self._build_inputs_meld_(hook_id,hook_type,m_id,g_id,dp_resource,dp_type,dp_shape)
+  @given(arbitrary_id(),
+  hook_type(),
+  st.one_of(full_address(),partial_address()),
+  datapack_resource(),
+  datapack_type(),
+  datapack_shape())
+  def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
+    inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
     self._read_data_(inputs)
-    meld = build_meld(m_id,g_id,dp_resource,dp_type,dp_shape)
+    meld = build_meld(addr,dp_resource,dp_type,dp_shape)
     self._read_data_alt_(hook_id,hook_type,meld)
 
   def _check_hook_(self,container_id):
-    if '\n' in container_id or not container_id:
+    if not container_id:#'\n' in container_id or 
       self.assertEqual(self.hook.hook_id, self.hook_id)
     else:
       self.assertEqual(self.hook.hook_id,f'{container_id}-{self.hook_id}')
 
-  @given(st.from_regex(id_pattern))
+  @given(arbitrary_id())
   def test_update_valid_once(self,container_id):
     self.hook=Hook(self.meld,self.hook_id,self.hook_type)
     self.hook.update_id(container_id)
     self._check_hook_(container_id)
   
-  @given(st.from_regex(id_pattern))
+  @given(arbitrary_id())
   def test_update_invalidly(self,container_id):
     self.hook=Hook(self.meld,self.hook_id,self.hook_type)
     self.hook.update_id(container_id)
