@@ -5,14 +5,15 @@ from hypothesis import strategies as st
 
 from data.axioms.enums import FieldType,PackType,RsrcType
 
-from tests.strategies.packing_strats import *
+from tests.strategies.packing_strats import arbitrary_id,full_address,partial_address,datapack_address
+from tests.strategies.enum_strats import datapack_shape,datapack_resource,datapack_type
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 
 class TestPacker(unittest.TestCase):
   # @given(st.text(),st.text())
-  @given(arbitrary_id(), arbitrary_id())
+  @given(arbitrary_id(), arbitrary_id()) # pylint: disable=no-value-for-parameter
   def test_build_address(self, m_id, g_id):
     addr = build_address(m_id, g_id)
     if g_id is None:
@@ -20,7 +21,7 @@ class TestPacker(unittest.TestCase):
     else:
       self.assertEqual(addr, f'{m_id}-{g_id}')
 
-  @given(st.one_of(full_address(), partial_address()),datapack_resource(),datapack_type(),datapack_shape())
+  @given(datapack_address(),datapack_resource(),datapack_type(),datapack_shape()) # pylint: disable=no-value-for-parameter
   def test_build_meld(self, recip_addr,dp_resource,dp_type,dp_shape):
     # addr = build_address(rm_id,rg_id)
     meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
@@ -29,7 +30,7 @@ class TestPacker(unittest.TestCase):
     else:
       self.assertEqual(meld, f'{recip_addr};{dp_resource};{dp_type};{dp_shape}')
   
-  @given(datapack_address(),
+  @given(datapack_address(), # pylint: disable=no-value-for-parameter
   st.sampled_from(RsrcType),
   st.sampled_from(PackType),
   st.sampled_from(FieldType),
@@ -44,7 +45,7 @@ class TestPacker(unittest.TestCase):
     res = tuple([meld,sender_address])
     self.assertEqual(inputs, res)
 
-  @given(datapack_address(),
+  @given(datapack_address(), # pylint: disable=no-value-for-parameter
   st.sampled_from(RsrcType),
   st.sampled_from(PackType),
   st.sampled_from(FieldType),

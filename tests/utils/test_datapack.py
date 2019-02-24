@@ -32,10 +32,10 @@ class TestDataPack(unittest.TestCase):
 
   # def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
-    addr = build_address('GLG','noise_from')
+    # addr = build_address('GLG','noise_from')
     # self._read_data_(inputs[0],inputs[1])
 
-  @given(datapack_inputs())
+  @given(datapack_inputs()) # pylint: disable=no-value-for-parameter
   def test_read_data(self,inputs):#meld_tuple,sender_address):
     # st.tuples(st.from_regex(dest_key_pattern),st.text(),st.text()), st.from_regex(dest_key_pattern)
     meld = inputs[0]
@@ -80,11 +80,11 @@ class TestDataPack(unittest.TestCase):
     ['SenderModuleId','','RecipientModuleId','recipient_group_id'],
     ['SenderModuleId','sender_group_id','RecipientModuleId','recipient_group_id']
   """
-  @given(datapack_inputs())
+  @given(datapack_inputs()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self, inputs):
     self._read_data_(inputs[0],inputs[1])
 
-  @given(datapack_inputs())
+  @given(datapack_inputs()) # pylint: disable=no-value-for-parameter
   def test_compare_equal_datapacks(self, inputs):
     datp1 = Datapack(inputs[0],inputs[1])
     datp2 = Datapack(inputs[0],inputs[1])

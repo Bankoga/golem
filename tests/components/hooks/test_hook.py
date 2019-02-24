@@ -8,7 +8,8 @@ from data.axioms.configs import dest_key_pattern, id_pattern
 from data.axioms.enums import FieldType,HookType,RsrcType,PackType
 from utils.helpers.packer import build_address, build_meld
 from tests.utils.test_datapack import TestDataPack
-from tests.strategies.packing_strats import datapack_address,full_address,partial_address,arbitrary_id,hook_type,datapack_resource,datapack_type,datapack_shape
+from tests.strategies.packing_strats import datapack_address,full_address,partial_address,arbitrary_id
+from tests.strategies.enum_strats import datapack_shape,datapack_group,datapack_resource,hook_type,datapack_type
 
 class TestHook(TestDataPack):
   # def setUp(self):
@@ -83,12 +84,7 @@ class TestHook(TestDataPack):
     meld = ";".join(meld_tuple)
     self._read_data_(meld)
 
-  @given(arbitrary_id(),
-  hook_type(),
-  datapack_address(),
-  datapack_resource(),
-  datapack_type(),
-  datapack_shape())
+  @given(arbitrary_id(), hook_type(), datapack_address(), datapack_resource(), datapack_type(), datapack_shape()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
     inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
     self._read_data_(inputs)
@@ -101,13 +97,13 @@ class TestHook(TestDataPack):
     else:
       self.assertEqual(self.hook.hook_id,f'{container_id}-{self.hook_id}')
 
-  @given(arbitrary_id())
+  @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
   def test_update_valid_once(self,container_id):
     self.hook=Hook(self.meld,self.hook_id,self.hook_type)
     self.hook.update_id(container_id)
     self._check_hook_(container_id)
   
-  @given(arbitrary_id())
+  @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
   def test_update_invalidly(self,container_id):
     self.hook=Hook(self.meld,self.hook_id,self.hook_type)
     self.hook.update_id(container_id)
@@ -115,6 +111,6 @@ class TestHook(TestDataPack):
       for i in range(5):
         self.hook.update_id(f'{container_id}-{i}')
     self._check_hook_(container_id)
-  
+
 if __name__ == '__main__':
     unittest.main()
