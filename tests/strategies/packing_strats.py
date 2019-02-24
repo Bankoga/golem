@@ -37,38 +37,57 @@ def partial_address(draw):
 
 @composite
 def sender_and_recipient_pair(draw):
-  x = draw(st.text(), min_size=1)
-  y = draw(st.text(alphabet=x))
-  st.assume(x != y)
+  recip_addr = st.one_of(full_address(),partial_address())
+  sender_addr = st.one_of(full_address(),partial_address())
+  st.assume(recip_addr != sender_addr)
+  st.assume(recip_addr)
+  st.assume(sender_addr)
+  return (recip_addr, sender_addr)
 
 @composite
 def datapack_resource(draw):
-  return st.sampled_from(RsrcType)
+  res = st.sampled_from(RsrcType)
+  st.assume(res)
+  st.assume(res != RsrcType.UNSET)
+  return res
 
 @composite
 def datapack_type(draw):
-  return st.sampled_from(PackType)
+  res = st.sampled_from(PackType)
+  st.assume(res)
+  st.assume(res != PackType.UNSET)
+  return res
 
 @composite
 def datapack_shape(draw):
-  return st.sampled_from(FieldType)
+  res = st.sampled_from(FieldType)
+  st.assume(res)
+  st.assume(res != FieldType.UNSET)
+  return res
 
 @composite
-def protopack(draw):
-  rm_id = st.text()
-  rg_id = st.text()
-  dp_resource = st.sampled_from(RsrcType)
-  dp_type = st.sampled_from(PackType)
-  return build_meld(rm_id,rg_id,dp_resource,dp_type,'')
+def proto_meld(draw):
+  addrs = draw(st.one_of(full_address(),partial_address()))
+  dp_resource = draw(datapack_resource())
+  dp_type = draw(datapack_type())
+  meld = build_meld(addr,dp_resource,dp_type)
+  return meld
 
 @composite
-def datapack(draw):
-  rm_id = st.text()
-  rg_id = st.text()
-  dp_resource = st.sampled_from(RsrcType)
-  dp_type = st.sampled_from(PackType)
-  dp_shape = st.sampled_from(FieldType)
-  return build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
+def full_meld(draw):
+  addrs = draw(st.one_of(full_address(),partial_address()))
+  dp_resource = draw(datapack_resource())
+  dp_type = draw(datapack_type())
+  dp_shape = draw(datapack_shape())
+  meld = build_meld(addr,dp_resource,dp_type,dp_shape)
+  return meld
+
+@composite
+def datapack_inputs(draw):
+  meld = draw(st.one_of(proto_meld,full_meld))
+  
+
+
 
 # @composite
 # def matrix_type(draw):

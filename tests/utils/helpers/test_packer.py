@@ -20,40 +20,40 @@ class TestPacker(unittest.TestCase):
     else:
       self.assertEqual(addr, f'{m_id}-{g_id}')
 
-  @given(st.text(),st.text(),st.sampled_from(RsrcType),st.sampled_from(PackType),st.sampled_from(FieldType))
-  def test_build_meld(self, rm_id,rg_id,dp_resource,dp_type,dp_shape):
-    addr = build_address(rm_id,rg_id)
-    meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
+  @given(st.one_of(full_address(), partial_address()),datapack_resource(),datapack_type(),datapack_shape())
+  def test_build_meld(self, recip_addr,dp_resource,dp_type,dp_shape):
+    # addr = build_address(rm_id,rg_id)
+    meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
     if dp_shape is None:
-      self.assertEqual(meld, f'{addr};{dp_resource};{dp_type}')
+      self.assertEqual(meld, f'{recip_addr};{dp_resource};{dp_type}')
     else:
-      self.assertEqual(meld, f'{addr};{dp_resource};{dp_type};{dp_shape}')
+      self.assertEqual(meld, f'{recip_addr};{dp_resource};{dp_type};{dp_shape}')
   
-  @given(st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self', '']),
+  @given(st.one_of(full_address(),partial_address()),
   st.sampled_from(RsrcType),
   st.sampled_from(PackType),
   st.sampled_from(FieldType),
   st.sampled_from(['SenderModuleId','self','Self']),
   st.sampled_from(['sender_group_id','self','Self','']))
   # st.one_of(full_address,partial_address),
-  def test_build_datapack_inputs(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-    inputs = build_datapack_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+  # HERE, I only need to test building the inputs for datapacks with great verbage
+  def test_build_datapack_inputs(self,recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+    inputs = build_datapack_inputs(recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id)
     sender_address = build_address(sm_id,sg_id)
-    meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
+    meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
     res = tuple([meld,sender_address])
     self.assertEqual(inputs, res)
 
-  @given(st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self', '']),
+  @given(st.one_of(full_address(),partial_address()),
   st.sampled_from(RsrcType),
   st.sampled_from(PackType),
   st.sampled_from(FieldType),
   st.sampled_from(['SenderModuleId','self','Self']),
   st.sampled_from(['sender_group_id','self','Self','']))
-  def test_build_datapack(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-    inputs = build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+  # HERE, I only need to test building datapacks with great verbage using data already supplied
+  def test_build_datapack(self,recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+    inputs = build_datapack(recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id)
     sender_address = build_address(sm_id,sg_id)
-    meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
+    meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
     res = Datapack(meld,sender_address)
     self.assertEqual(inputs, res)
