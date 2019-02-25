@@ -1,4 +1,4 @@
-from utils.shape import Shape
+from chainer import Variable
 
 """
 A repository of helpers for the atypical convs used here
