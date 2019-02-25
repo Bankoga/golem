@@ -1,4 +1,5 @@
 from data.axioms.enums import PackType,RsrcType,FieldType
+from chainer import Variable
 
 class Datapack:
   """
@@ -7,7 +8,8 @@ class Datapack:
     - sender
     - recipient
     - type
-    - shape
+    - shape : valid field type TODO: revisit shape
+    - var : chainer variable
   there are two types of data packs planned currently
   - overlayed
     - is to be processed by itself as a full shape
@@ -32,6 +34,7 @@ class Datapack:
         self.type=PackType(self.meld_tuple[2])
         if len(self.meld_tuple) >3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:
           self.shape=FieldType(self.meld_tuple[3])
+    self.var = None
 
   def process_address(self):
     pass

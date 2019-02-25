@@ -29,6 +29,7 @@ class TestDataPack(unittest.TestCase):
       self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
     else:
       self.assertTrue(datp.shape == FieldType.UNSET)
+    self.var = None
 
   # def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
