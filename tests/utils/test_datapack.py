@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 import hypothesis.strategies as st
 
-from tests.strategies.packing_strats import datapack_inputs
+from tests.strategies.packing_strats import datapack_inputs, valid_datapack_arbitrary
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
@@ -90,6 +90,20 @@ class TestDataPack(unittest.TestCase):
     datp1 = Datapack(inputs[0],inputs[1])
     datp2 = Datapack(inputs[0],inputs[1])
     self.assertEqual(datp1,datp2)
+
+  
+  @given(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  def test_unbuilt(self, input_pack):
+    self.assertFalse(input_pack.is_built())
+    with self.assertRaises(RuntimeError):
+      input_pack.process()
+
+  @given(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  def test_build(self, input_pack):
+    self.assertFalse(input_pack.is_built())
+    input_pack.build()
+    self.assertTrue(input_pack.is_built())
+    input_pack.process()
 
   # def test_format_address_on_valid_data(self):
   #   # self.assertTrue(self.datp.address, 'glg-destination_id-subdestination_id')

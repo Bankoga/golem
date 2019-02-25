@@ -21,6 +21,7 @@ class Datapack:
   def __init__(self, meld,sender_address):
     self.meld_tuple = meld.split(';')
     self.sender = sender_address
+    self._built_ = False
     self.read_data()
   
   def read_data(self):
@@ -36,8 +37,17 @@ class Datapack:
           self.shape=FieldType(self.meld_tuple[3])
     self.var = None
 
-  def process_address(self):
-    pass
+  def process(self):
+    if (not self._built_):
+      raise RuntimeError("The datapack has not yet been built")
+    else:
+      pass
+
+  def build(self):
+    self._built_ = True
+
+  def is_built(self):
+    return self._built_
 
   def __eq__(self, other):
     return self.__dict__ == other.__dict__

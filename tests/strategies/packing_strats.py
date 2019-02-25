@@ -84,7 +84,14 @@ def datapack_inputs(draw):
 
 @composite
 def valid_datapack_arbitrary(draw):
-  pass
+  inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
+  pack = Datapack(inputs[0], inputs[1])
+  """
+  given that we have a datapack
+  when we want check the conv sign
+  then we need it to have been built
+  """
+  return pack
 
 @composite
 def valid_datapack_from_context(draw):
