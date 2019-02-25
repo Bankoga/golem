@@ -86,6 +86,10 @@ class TestCell(unittest.TestCase):
         each resource index, has an independent % chance of being activated though
         thus, we must calc the inputs to be used this timestep before doing anything
     - 
+    total_compute_per_simulated_ts = avg_latency_per_simulated_ts + avg_compute_per_simulated_ts
+    simulated_fps = num_ts_per_simulated_sec + total_compute_per_simulated_ts
+    there is going to be a slew of timestep logic that spans many components
+    Not sure as to what needs to be abstracted though
     """
     pass
   
@@ -99,6 +103,9 @@ class TestCell(unittest.TestCase):
   def test_process(self):
     pass
   # def test_get_random_fill_from(self):
+
+  def test_setup_convs(self):
+    pass
 
 if __name__ == '__main__':
   unittest.main()

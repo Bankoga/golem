@@ -63,9 +63,44 @@ The difference in actual outputs vs expected outputs, is the loss.
 Which is used by the modulation groups to determine how much to change the system.
 
 Degree of Reward Loss - Impact on Behaviour - Impact on Weights - Direction of change
-High - Repeat the behaviour less - greater impact - inverse
+QuantChange.High - Repeat the behaviour less - greater impact - inverse
 Low - Repeat behaviour more - less impact - linear
 None - Always repeat behaviour - none - none
+
+| Degree of Activity from Source | Duration | Impact on Weights | Direction of change
+| --- | --- | --- | --- |
+| QuantChange.HIGH | QuantDuration.CONTINUOUS | grow less responsive to the changing parts | negative |
+| QuantChange.HIGH | QuantDuration.PROLONGED | inc | ? |
+| QuantChange.HIGH | QuantDuration.EXTENDED | inc | ? |
+| QuantChange.HIGH | QuantDuration.PERSISTENT | inc | ? |
+| QuantChange.HIGH | QuantDuration.BRIEF | add  | ? |
+| QuantChange.HIGH | QuantDuration.INSTANT | increase current transient strength | ? |
+| QuantChange.MEDIUM | QuantDuration.CONTINUOUS | ? | ? |
+| QuantChange.MEDIUM | QuantDuration.PROLONGED | ? | ? |
+| QuantChange.MEDIUM | QuantDuration.EXTENDED | ? | ? |
+| QuantChange.MEDIUM | QuantDuration.PERSISTENT | ? | ? |
+| QuantChange.MEDIUM | QuantDuration.BRIEF | ? | ? |
+| QuantChange.MEDIUM | QuantDuration.INSTANT | ? | ? |
+| QuantChange.LOW | QuantDuration.CONTINUOUS | ? | ? |
+| QuantChange.LOW | QuantDuration.PROLONGED | ? | ? |
+| QuantChange.LOW | QuantDuration.EXTENDED | ? | ? |
+| QuantChange.LOW | QuantDuration.PERSISTENT | ? | ? |
+| QuantChange.LOW | QuantDuration.BRIEF | ? | ? |
+| QuantChange.LOW | QuantDuration.INSTANT | ? | ? |
+| QuantChange.NONE | QuantDuration.CONTINUOUS | QuantChange.BASE | QuantChange.BASE |
+| QuantChange.NONE | QuantDuration.PROLONGED | QuantChange.BASE | QuantChange.BASE |
+| QuantChange.NONE | QuantDuration.EXTENDED | QuantChange.BASE | QuantChange.BASE |
+| QuantChange.NONE | QuantDuration.PERSISTENT | QuantChange.BASE | QuantChange.BASE |
+| QuantChange.NONE | QuantDuration.BRIEF | QuantChange.BASE | QuantChange.BASE |
+| QuantChange.NONE | QuantDuration.INSTANT | QuantChange.BASE | QuantChange.BASE |
+| QuantChange.BASE | any | Reduces weights homeostatically | exponentiated (1/n^2) |
+
+WHERE ARE PLASTICITY PROPS STORED
+something that never stops receiving different data, will either
+
+- never stop changing
+- grows less responsive all change
+- grows less responsive to the changing parts
 
 #### A note on Module Inputs and Config Revamp
 
