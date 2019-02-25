@@ -5,10 +5,12 @@ A repository of helpers for the atypical convs used here
 """
 
 
-def get_conv_sign(inp_pack, out_pack):
-  conv_sign = 0
-  if inp_pack.var > out_pack.var:
-    conv_sign = -1
-  elif inp_pack.var < out_pack.var:
-    conv_sign = 1
-  return conv_sign
+def get_conv_sign(a, b):
+  diff = 0
+  if not (a.var is Variable and b.var is Variable):
+    raise RuntimeError("One of the inputs is not a Variable!")
+  elif a.shape < b.shape:
+    diff = -1
+  elif a.shape > b.shape:
+    diff = 1
+  return diff
