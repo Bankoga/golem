@@ -81,3 +81,11 @@ def datapack_inputs(draw):
   meld = draw(st.one_of(proto_meld(),full_meld())) # pylint: disable=no-value-for-parameter
   sender_addr = draw(datapack_address()) # pylint: disable=no-value-for-parameter
   return (meld, sender_addr)
+
+@composite
+def valid_datapack_arbitrary(draw):
+  pass
+
+@composite
+def valid_datapack_from_context(draw):
+  pass

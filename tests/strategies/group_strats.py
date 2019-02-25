@@ -7,25 +7,19 @@ from hypothesis.strategies import composite
 from data.axioms.configs import id_pattern
 from data.axioms.enums import GroupType
 
+from tests.strategies.packing_strats import valid_datapack_arbitrary
+
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 
 @composite
-def arbitrary_id(draw):
-  res = st.text()#from_regex(id_pattern)
-  st.assume(res)
-  return res
-
-
-# @composite
-# def matrix_type(draw):
-#   pass
-
-@composite
 def list_of_inputs_and_input_set(draw):
+  # pylint: disable=no-value-for-parameter
   pass
 
-# def 
+@composite
+def valid_input_output_pair(draw):
+  pass
 
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_group_id','self','Self', '']),
