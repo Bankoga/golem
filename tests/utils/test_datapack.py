@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 import hypothesis.strategies as st
 
-from tests.strategies.packing_strats import datapack_inputs, valid_datapack_arbitrary
+from tests.strategies.packing_strats import datapack_inputs, datapack_arbitrary
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
@@ -92,13 +92,13 @@ class TestDataPack(unittest.TestCase):
     self.assertEqual(datp1,datp2)
 
   
-  @given(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_unbuilt(self, input_pack):
     self.assertFalse(input_pack.is_built())
     with self.assertRaises(RuntimeError):
       input_pack.process()
 
-  @given(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_build(self, input_pack):
     self.assertFalse(input_pack.is_built())
     input_pack.build()

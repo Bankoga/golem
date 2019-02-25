@@ -7,7 +7,7 @@ from hypothesis.strategies import composite
 from data.axioms.configs import id_pattern
 from data.axioms.enums import GroupType
 
-from tests.strategies.packing_strats import valid_datapack_arbitrary
+from tests.strategies.packing_strats import datapack_arbitrary
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack

@@ -83,15 +83,22 @@ def datapack_inputs(draw):
   return (meld, sender_addr)
 
 @composite
-def valid_datapack_arbitrary(draw):
+def datapack_arbitrary(draw):
   inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
   pack = Datapack(inputs[0], inputs[1])
-  """
-  given that we have a datapack
-  when we want check the conv sign
-  then we need it to have been built
-  """
   return pack
+
+@composite
+def valid_datapack_arbitrary(draw):
+  # inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
+  # pack = Datapack(inputs[0], inputs[1])
+  # """
+  # given that we have a datapack
+  # when we want check the conv sign
+  # then we need it to have been built
+  # """
+  # return pack
+  pass
 
 @composite
 def valid_datapack_from_context(draw):
