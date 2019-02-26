@@ -26,6 +26,12 @@ class TestConvInstruction(unittest.TestCase):
     self.assertEqual(inst.direction,direction)
     self.assertEqual(inst.shapes,shapes)
     self.assertEqual(inst.pos,pos)
+  
+  @given(st.lists(valid_shapes())) # pylint: disable=no-value-for-parameter
+  def test_set_up_weights(self,shapes):
+    weights = self.inst.set_up_weights(shapes)
+    for shape in shapes:
+      self.assertEqual(weights[shape].shape, shape)
 
   def test_perform(self):
     """
@@ -50,13 +56,6 @@ class TestConvInstruction(unittest.TestCase):
     # we only return the step_res from a perform, so as to handle plasticity at the function group level
     # res
     pass
-  
-  @given(st.lists(valid_shapes())) # pylint: disable=no-value-for-parameter
-  def test_set_up_weights(self,shapes):
-    # inst = ConvInstruction(direction,shapes,pos)
-    weights = self.inst.set_up_weights(shapes)
-    for shape in shapes:
-      self.assertEqual(weights[shape].shape, shape)
 
   # def test_update_weight(self,updates):
   #   """

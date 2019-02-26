@@ -17,9 +17,9 @@ class ConvInstruction(Instruction):
       weights[shape] = identity(shape)
     return weights
 
-  def update_weight(self):
-    pass
-
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def perform(self,package):
+    pass
+
+  def update_weight(self):
     pass
