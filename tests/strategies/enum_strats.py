@@ -6,7 +6,7 @@ from hypothesis.strategies import composite
 
 from data.axioms.configs import id_pattern
 from data.axioms.enums import (FieldType, GroupType, HookType, PackType,
-                               RsrcType)
+                               RsrcType, RuleType)
 from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
@@ -43,6 +43,13 @@ def datapack_type(draw):
 @composite
 def datapack_shape(draw):
   res = st.sampled_from(FieldType)
+  st.assume(res)
+  st.assume(res != FieldType.UNSET)
+  return res
+
+@composite
+def ruletype(draw):
+  res = st.sampled_from(RuleType)
   st.assume(res)
   st.assume(res != FieldType.UNSET)
   return res

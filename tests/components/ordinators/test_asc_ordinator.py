@@ -3,7 +3,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 import utils.object_factory
 from components.ordinators.asc_ordinator import AscOrdinator
-from data.axioms.pos_maps import direction_keys, floor_order
+from data.axioms.pos_maps import ordinal_keys, floor_order
 
 class TestAscOrdinator(unittest.TestCase):
   
