@@ -10,7 +10,7 @@ from tests.strategies.packing_strats import valid_directions, valid_shapes
 from utils.pos import Pos
 from utils.conv_instruction import ConvInstruction
 
-class TestInstruction(unittest.TestCase):
+class TestConvInstruction(unittest.TestCase):
   def setUp(self):
     # self.inst = ConvInstruction(RuleType.CELL)
     pass
