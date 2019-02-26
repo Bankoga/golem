@@ -7,6 +7,8 @@ from components.packaging_rules.cells.cell import Cell
 from data.axioms.cell_types import CellType,cell_data
 from data.axioms.enums import RuleType, RsrcType, PackType, FieldType
 
+from tests.strategies.packing_strats import valid_cell_instruction
+
 from utils.helpers.packer import build_address, build_meld, build_datapack
 
 class TestCell(unittest.TestCase):
@@ -77,6 +79,7 @@ class TestCell(unittest.TestCase):
    patch = we extract a part of the shape
     - How do we select which part of the shape to process?
   """
+  @given(st.text())
   def test_localized_conv(self, patch):
     """
     What happens during a localized convolution?
@@ -93,6 +96,7 @@ class TestCell(unittest.TestCase):
     """
     pass
   
+  @given(st.text(),st.text())
   def test_get_activity_data(self, inputs, timestep):
     """
     each nearby cell, has a % chance of raising the current cells activation probability
@@ -100,11 +104,24 @@ class TestCell(unittest.TestCase):
     """
     pass
 
-  def test_process(self):
+  @given(st.text())
+  def test_process(self, inputs):
+    """
+    given the properties
+      - conv_instructions
+      - module_inputs_dict
+      - module_outputs_dict
+    when it is time to process inputs
+    then each instruction should be executed
+    """
     pass
   # def test_get_random_fill_from(self):
-
-  def test_setup_convs(self):
+  
+  @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter
+  def test_exec_instruction(self, instruction):
+    directions = instruction[0]
+    conv_shapes = instruction[1]
+    
     pass
 
 if __name__ == '__main__':

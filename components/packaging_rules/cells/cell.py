@@ -9,6 +9,8 @@ class Cell(packaging_rule.PackagingRule):
       super().__init__(RuleType.CELL, CellType.PYRAMID)
     else:
       super().__init__(RuleType.CELL, cell_id)
+    # self.setup_convs()
+    # self.?
   
   # WHERE ARE THE LOCALIZED_CONV WEIGHTS?
   # WHERE ARE SAID WEIGHTS PLASTICALLY UPDATED?
@@ -38,7 +40,10 @@ class Cell(packaging_rule.PackagingRule):
   A cell consists of multiple convolutions with potentially different types of inputs
   """
 
-  TODO: Define where CellType resource data is stored in the configs, and in object creation
+  def exec_instruction(self, instruction):
+    pass
+
+  # TODO: Define where CellType resource data is stored in the configs, and in object creation
 
   # 'CellType.PYRAMID': {
   #   "cnv_tmplts":[

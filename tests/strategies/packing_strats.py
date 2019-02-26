@@ -90,16 +90,22 @@ def datapack_arbitrary(draw):
 
 @composite
 def valid_datapack_arbitrary(draw):
-  # inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
-  # pack = Datapack(inputs[0], inputs[1])
-  # """
-  # given that we have a datapack
-  # when we want check the conv sign
-  # then we need it to have been built
-  # """
-  # return pack
-  pass
+  inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
+  pack = Datapack(inputs[0], inputs[1])
+  """
+  given that we have a datapack
+  when we want check the conv sign
+  then we need it to have been built
+  """
+  return pack
 
 @composite
 def valid_datapack_from_context(draw):
   pass
+
+@composite
+def valid_cell_instruction(draw):
+  directions = "S"
+  conv_shapes = ["4x4","8x8,1"]
+  instruction = [directions, conv_shapes]
+  return instruction

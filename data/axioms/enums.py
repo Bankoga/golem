@@ -32,24 +32,27 @@ class HookType(Enum):
   BI = 102
   RECIP = 103
 
-class DimS(Enum):
-  UNSET = 1
-class DimX(Enum):
-  UNSET = 1
-class DimY(Enum):
-  UNSET = 1
-class DimZ(Enum):
-  UNSET = 1
-  BELOW = 100
-  BETWEEN = 200
-  CENTER = 201
-  MIDDLE = 202
-  ABOVE = 300
-
 class RuleType(Enum):
   UNSET = 1
   CELL = 100
   FW_FUNC = 500
+
+class QuantChange(AutoName):
+  NONE = auto()
+  BASE = auto()
+  LOW = auto()
+  MEDIUM = auto()
+  HIGH = auto()
+
+class QuantDuration(AutoName):
+  INSTANT = auto()
+  BRIEF = auto()
+  MODERATE = auto()
+  PERSISTENT = auto()
+  EXTENDED = auto()
+  PROLONGED = auto()
+  CONTINUOUS = auto()
+
 
  # Consider turning each distinct set of proc groups into enums
 # TODO: turn all relevant pos data into enums
