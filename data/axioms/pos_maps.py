@@ -33,38 +33,44 @@ ordinal_keys = {
     "pattern": "^[B|b](elow)",
     'dimension': 'z',
     "value_change": '-1'
+  },
+  "S": {
+    "id": "",
+    "pattern": "^[S|s](ame|elf)",
+    'dimension': 'z',
+    "value_change": '0'
   }
 }
-cardinal_keys={
-  'N': {
-    'id': '',
-    "pattern": '^[B|b](elow)',
-    'dimension': 'z',
-    'value_change': 0,
-    'operation': 'rotate_reader_head_to'
-  },
-  'E': {
-    'id': '',
-    "pattern": '^[B|b](elow)',
-    'dimension': 'z',
-    'value_change': 90,
-    'operation': 'rotate_reader_head_to'
-  },
-  'S': {
-    'id': '',
-    "pattern": '^[B|b](elow)',
-    'dimension': 'z',
-    'value_change': 180,
-    'operation': 'rotate_reader_head_to'
-  },
-  'W': {
-    'id': '',
-    "pattern": '^[B|b](elow)',
-    'dimension': 'z',
-    'value_change': 270,
-    'operation': 'rotate_reader_head_to'
-  },
-}
+# cardinal_keys={
+#   'N': {
+#     'id': '',
+#     "pattern": '^[B|b](elow)',
+#     'dimension': 'z',
+#     'value_change': 0,
+#     'operation': 'rotate_reader_head_to'
+#   },
+#   'E': {
+#     'id': '',
+#     "pattern": '^[B|b](elow)',
+#     'dimension': 'z',
+#     'value_change': 90,
+#     'operation': 'rotate_reader_head_to'
+#   },
+#   'S': {
+#     'id': '',
+#     "pattern": '^[B|b](elow)',
+#     'dimension': 'z',
+#     'value_change': 180,
+#     'operation': 'rotate_reader_head_to'
+#   },
+#   'W': {
+#     'id': '',
+#     "pattern": '^[B|b](elow)',
+#     'dimension': 'z',
+#     'value_change': 270,
+#     'operation': 'rotate_reader_head_to'
+#   },
+# }
 floor_order = [
   'cellar',
   'basement',
