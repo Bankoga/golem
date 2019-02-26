@@ -9,7 +9,7 @@ from tests.strategies.packing_strats import valid_shapes
 from tests.strategies.pos_strats import valid_directions, valid_pos
 
 from utils.pos import Pos
-from utils.conv_instruction import ConvInstruction
+from components.instructions.conv_instruction import ConvInstruction
 
 class TestConvInstruction(unittest.TestCase):
   def setUp(self):
