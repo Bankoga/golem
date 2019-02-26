@@ -23,15 +23,15 @@ class TestConvoluter(unittest.TestCase):
       result = get_conv_sign(inp_pack, out_pack)
       self.assertEqual(result, expectation)
 
-  @given(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
-  def test_get_conv_sign_from_valid(self, inp_pack, out_pack):
-    expectation = 0
-    if inp_pack.var.shape > out_pack.var.shape:
-      expectation = -1
-    elif inp_pack.var.shape < out_pack.var.shape:
-      expectation = 1
-    result = get_conv_sign(inp_pack, out_pack)
-    self.assertEqual(result, expectation)
+  # @given(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  # def test_get_conv_sign_from_valid(self, inp_pack, out_pack):
+  #   expectation = 0
+  #   if inp_pack.var.shape > out_pack.var.shape:
+  #     expectation = -1
+  #   elif inp_pack.var.shape < out_pack.var.shape:
+  #     expectation = 1
+  #   result = get_conv_sign(inp_pack, out_pack)
+  #   self.assertEqual(result, expectation)
 
 
 if __name__ == '__main__':
