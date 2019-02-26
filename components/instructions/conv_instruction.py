@@ -2,7 +2,7 @@ from data.axioms.enums import RuleType
 
 from components.instructions.instruction import Instruction
 
-from numpy import zeros
+from numpy import identity
 
 class ConvInstruction(Instruction):
   def __init__(self,direction,shapes, pos):
@@ -14,7 +14,7 @@ class ConvInstruction(Instruction):
   def set_up_weights(self, shapes):
     weights = {}
     for shape in shapes:
-      weights[shape] = zeros(shape)
+      weights[shape] = identity(shape)
     return weights
 
   def update_weight(self):
