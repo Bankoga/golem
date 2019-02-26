@@ -12,3 +12,7 @@ class Instruction:
   @abstractmethod
   def perform(self,package):
     pass
+  
+  @abstractmethod
+  def set_up_weights(self, shapes):
+    pass

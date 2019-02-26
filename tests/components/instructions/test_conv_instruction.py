@@ -52,7 +52,6 @@ class TestConvInstruction(unittest.TestCase):
     pass
   
   @given(st.lists(valid_shapes())) # pylint: disable=no-value-for-parameter
-  # @given(valid_direction(), st.lists(valid_shapes()),valid_pos()) # pylint: disable=no-value-for-parameter
   def test_set_up_weights(self,shapes):
     # inst = ConvInstruction(direction,shapes,pos)
     weights = self.inst.set_up_weights(shapes)
