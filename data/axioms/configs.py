@@ -47,7 +47,7 @@ resource_types = {
 }
 id_pattern = "[a-zA-Z0-9_]*$"
 dest_key_pattern = "[a-zA-Z0-9_].*(-[a-zA-Z0-9_].*)?"
-ordinators = ['asc','dsc'] # eventually will need a pairing ordinator
+cardinators = ['asc','dsc'] # eventually will need a pairing cardinator
 
 packaging_rule_defaults = {
   'cnv_tmplts': [],

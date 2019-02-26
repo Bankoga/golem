@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
 from data.axioms.configs import id_pattern
-from data.axioms.pos_maps import Floors, ordinal_keys
+from data.axioms.pos_maps import Floors, cardinal_keys
 from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
@@ -20,7 +20,7 @@ def valid_floor(draw):
 
 @composite
 def valid_directions(draw):
-  res = draw(st.sampled_from(ordinal_keys.keys()))
+  res = draw(st.sampled_from(cardinal_keys.keys()))
   st.assume(res)
   return res
 

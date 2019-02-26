@@ -109,7 +109,7 @@ group_details:
   - groups: [relay_stg_adv]
     id: relay
     total_count: 1
-  type_data: {name: Gateway Layer Groups, ordinal_direction: dsc, purpose: 'serves
+  type_data: {name: Gateway Layer Groups, cardinal_direction: dsc, purpose: 'serves
       as a global I/O center, & local plus global context matrix (and global map center
       as STN?)', type: gateway}
 groups:
@@ -126,7 +126,7 @@ link_definitions:
   loop_i: *id021
 links_used: {}
 name: Gateway Layer Groups
-ordinal_direction: dsc
+cardinal_direction: dsc
 purpose: serves as a global I/O center, & local plus global context matrix (and global
   map center as STN?)
 type: gateway

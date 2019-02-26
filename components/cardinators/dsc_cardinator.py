@@ -1,24 +1,23 @@
-from components.ordinators.ordinator import Ordinator
+from components.cardinators.cardinator import Cardinator
 
-class AscOrdinator(Ordinator):
+class DscCardinator(Cardinator):
   """
   Responsible for handling inter/intra matrix direction interpretation
   """
   def __init__(self):
-    super().__init__("asc")
+    super().__init__("dsc")
   
   def get_ord_index(self, index, size):
     if index >= 0 and index < size:
-      return index
+      return size - index - 1
     else:
       raise ValueError("The ord index is invalid")
-  
 
-class AscOrdinatorBuilder:
+class DscCardinatorBuilder:
   def __init__(self):
     self._instance = None
 
   def __call__(self,**_ignored):
     if not self._instance:
-      self._instance = AscOrdinator()
+      self._instance = DscCardinator()
     return self._instance

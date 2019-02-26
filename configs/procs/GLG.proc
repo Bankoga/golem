@@ -4,7 +4,7 @@ type_data:
   name: Gateway Layer Groups
   type: gateway
   purpose: serves as a global I/O center, & local plus global context matrix (and global map center as STN?)
-  ordinal_direction: dsc
+  cardinal_direction: dsc
 stages_to_groups_dict:
   - id: noise_ctrl
     groups: [noise_dwn_inhib,noise_adj_inhib]

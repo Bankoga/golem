@@ -4,7 +4,7 @@ type_data:
   name: Decision Free Granular Cort
   purpose: Represents an arbitrary cortical section that is free of L4 decision influence and outputs through a gate
   type: cortical
-  ordinal_direction: dsc
+  cardinal_direction: dsc
 stages_to_groups_dict:
   - stage: cntxt_ctrl
     groups: [cntxt_dwn_inhib]

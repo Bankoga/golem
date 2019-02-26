@@ -4,7 +4,7 @@ type_data:
   name: Decision Controlled Granular Cort
   purpose: Represents one arbitrary cortical like shape that is affected by DM system outputs
   type: cortical
-  ordinal_direction: dsc
+  cardinal_direction: dsc
 stages_to_groups_dict:
   - stage: cntxt_ctrl
     groups: [cntxt_dwn_inhib]

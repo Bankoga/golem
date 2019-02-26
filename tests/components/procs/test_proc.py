@@ -5,7 +5,7 @@ from data.axioms.configs import proc_ids,file_type
 from components.procs.proc import Proc
 from components.procs.proc_provider import proc_services
 from utils.config_reader import read
-from components.ordinators.ordinator_provider import ordinator_services
+from components.cardinators.cardinator_provider import cardinator_services
 
 class TestProc(unittest.TestCase):
 
@@ -48,10 +48,10 @@ class TestProc(unittest.TestCase):
     else:
       self.assertEqual(type_obj['purpose'],self.proc.purpose)
     
-    if (type_obj['ordinal_direction'] is None):
-      self.assertIsNone(self.proc.ordinal_direction is None)
+    if (type_obj['cardinal_direction'] is None):
+      self.assertIsNone(self.proc.cardinal_direction is None)
     else:
-      self.assertEqual(type_obj['ordinal_direction'],self.proc.ordinal_direction)
+      self.assertEqual(type_obj['cardinal_direction'],self.proc.cardinal_direction)
 
   def test_proc_groups_were_inserted_correctly(self):
     for conf_group in self.proc_conf['group_details']:
@@ -69,7 +69,7 @@ class TestProc(unittest.TestCase):
     sz = len(conf_obj)
     for i,stage in enumerate(conf_obj):
       for group in conf_obj[i]['groups']:
-        ord_to_index = ordinator_services.get(self.proc.ordinal_direction).get_ord_index(i,sz)
+        ord_to_index = cardinator_services.get(self.proc.cardinal_direction).get_ord_index(i,sz)
         self.assertEqual(self.proc.groups[group]['pos'].s, -1)
         self.assertEqual(self.proc.groups[group]['pos'].x, -1)
         self.assertEqual(self.proc.groups[group]['pos'].y, -1)

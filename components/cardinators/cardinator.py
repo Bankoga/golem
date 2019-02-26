@@ -1,17 +1,17 @@
 from data.axioms.pos_maps import floor_order
-class Ordinator():
+class Cardinator():
 
   """
   Responsible for handling inter/intra matrix direction interpretation
   """
   def __init__(self, direction):
-    self.ordinal_direction = direction
+    self.cardinal_direction = direction
     
   def get_id(self):
-    return self.ordinal_direction
+    return self.cardinal_direction
   
   def get_direction(self):
-    return self.ordinal_direction
+    return self.cardinal_direction
   
   def get_ord_index(self, index, size):
     if index >= 0 and index < size:

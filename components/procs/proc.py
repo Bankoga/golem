@@ -1,5 +1,5 @@
 from components.func_groups.func_group import FuncGroup
-from components.ordinators.ordinator_provider import ordinator_services
+from components.cardinators.cardinator_provider import cardinator_services
 from data.axioms.configs import file_type
 
 from utils.config_reader import read
@@ -24,7 +24,7 @@ class Proc(FuncGroup):
     self.name = self.config['type_data']['name']
     self.type = self.config['type_data']['type']
     self.purpose = self.config['type_data']['purpose']
-    self.ordinal_direction = self.config['type_data']['ordinal_direction']
+    self.cardinal_direction = self.config['type_data']['cardinal_direction']
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_proc_groups_(self):
@@ -47,5 +47,5 @@ class Proc(FuncGroup):
     sz = len(conf_obj)
     for i,stage in enumerate(conf_obj):
       for group in conf_obj[i]['groups']:
-        ord_to_index = ordinator_services.get(self.ordinal_direction).get_ord_index(i,sz)
+        ord_to_index = cardinator_services.get(self.cardinal_direction).get_ord_index(i,sz)
         self.groups[group]['pos'] = Pos(z=ord_to_index)

@@ -72,4 +72,4 @@ class QuantDuration(AutoName):
 #   "Activant": "proxies acetylcholine, and is used to control baseline firing % chance",
 #   "Catalyst": "proxies serotonin, and is used to indicate a reduction of activation threshold in impacted functions"
 # }
-# ordinator_types = ['asc','dsc'] # eventually will need a pairing ordinator
+# cardinator_types = ['asc','dsc'] # eventually will need a pairing cardinator

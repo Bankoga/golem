@@ -21,7 +21,7 @@ pipeline_map = {
   'dm': 9,
   'operations_ctrl': 10
 }
-ordinal_keys = {
+cardinal_keys = {
   "A": {
     "id": "",
     "pattern": "^[A|a](bove)",
@@ -90,11 +90,11 @@ class Floors(Enum):
   def describe(self):
     return 'Matrix section', self.name
 
-# class OrdinalX(Enum):
+# class CardinalX(Enum):
 #   UNSET = 1
-# class OrdinalY(Enum):
+# class CardinalY(Enum):
 #   UNSET = 1
-# class OrdinalZ(Enum):
+# class CardinalZ(Enum):
 #   UNSET = 1
 #   BELOW = 100
 #   BETWEEN = 200
