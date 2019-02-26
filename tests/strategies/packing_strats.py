@@ -104,10 +104,6 @@ def valid_datapack_from_context(draw):
   pass
 
 @composite
-def valid_directions(draw):
-  pass
-
-@composite
 def valid_shapes(draw):
   pass # pylint: disable=no-value-for-parameter
 
