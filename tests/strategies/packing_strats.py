@@ -105,7 +105,13 @@ def valid_datapack_from_context(draw):
 
 @composite
 def valid_shapes(draw):
-  pass # pylint: disable=no-value-for-parameter
+  # l = draw(st.integers(min_value=0, max_value=3))
+  # shape = []
+  # for i in range(l):
+  #   x = draw(st.integers(min_value=0))
+  #   st.assume(x)
+  #   shape.append(x)
+  return tuple([4,4,4])
 
 @composite
 def valid_cell_instruction(draw):

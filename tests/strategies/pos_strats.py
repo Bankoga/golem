@@ -19,8 +19,8 @@ def valid_floor(draw):
   return res
 
 @composite
-def valid_directions(draw):
-  res = draw(st.sampled_from(cardinal_keys.keys()))
+def valid_direction(draw):
+  res = draw(st.sampled_from(sorted(cardinal_keys.keys())))
   st.assume(res)
   return res
 
