@@ -28,10 +28,14 @@ class TestConvInstruction(unittest.TestCase):
     self.assertEqual(inst.shapes,shapes)
     self.assertEqual(inst.pos,pos)
 
-  def test_perform(self, package):
+  def test_perform(self, context):
+    context.inputs
+    context.ordinator
     """
+    At a conv level, we execute all of our instructions within our module context
+    At an instruction level, we execute on the inputs within context in the direction specified using the contextual ordinator
     for each direction
-      take a sample of the package for each shape
+      take a sample of the package shape for each shape
       record activity information while sampling
     combine all samples into a single result using distance attenuation
     """
