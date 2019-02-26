@@ -16,17 +16,17 @@ class TestDscCardinator(unittest.TestCase):
 
   @given(st.integers(min_value=0,max_value=len(floor_order)-1), st.just(len(floor_order)))
   def test_get_valid_ord_index(self, ind, sz):
-    self.assertEqual(self.cardinator.get_ord_index(ind,sz), (sz - ind - 1))
+    self.assertEqual(self.cardinator.get_card_index(ind,sz), (sz - ind - 1))
   
   @given(st.integers(min_value=len(floor_order)), st.just(len(floor_order)))
   def test_get_invalid_large_ord_index(self, ind, sz):
     with self.assertRaises(ValueError):
-      self.cardinator.get_ord_index(ind,sz)
+      self.cardinator.get_card_index(ind,sz)
 
   @given(st.integers(max_value=-1), st.just(len(floor_order)))
   def test_get_invalid_neg_ord_index(self, ind, sz):
     with self.assertRaises(ValueError):
-      self.cardinator.get_ord_index(ind,sz)
+      self.cardinator.get_card_index(ind,sz)
 
 if __name__ == '__main__':
     unittest.main()

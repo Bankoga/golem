@@ -7,7 +7,7 @@ class AscCardinator(Cardinator):
   def __init__(self):
     super().__init__("asc")
   
-  def get_ord_index(self, index, size):
+  def get_card_index(self, index, size):
     if index >= 0 and index < size:
       return index
     else:

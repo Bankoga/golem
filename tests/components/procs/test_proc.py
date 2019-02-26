@@ -69,7 +69,7 @@ class TestProc(unittest.TestCase):
     sz = len(conf_obj)
     for i,stage in enumerate(conf_obj):
       for group in conf_obj[i]['groups']:
-        ord_to_index = cardinator_services.get(self.proc.cardinal_direction).get_ord_index(i,sz)
+        ord_to_index = cardinator_services.get(self.proc.cardinal_direction).get_card_index(i,sz)
         self.assertEqual(self.proc.groups[group]['pos'].s, -1)
         self.assertEqual(self.proc.groups[group]['pos'].x, -1)
         self.assertEqual(self.proc.groups[group]['pos'].y, -1)

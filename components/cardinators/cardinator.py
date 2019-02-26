@@ -13,7 +13,7 @@ class Cardinator():
   def get_direction(self):
     return self.cardinal_direction
   
-  def get_ord_index(self, index, size):
+  def get_card_index(self, index, size):
     if index >= 0 and index < size:
       return index
     else:

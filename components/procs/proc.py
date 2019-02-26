@@ -47,5 +47,5 @@ class Proc(FuncGroup):
     sz = len(conf_obj)
     for i,stage in enumerate(conf_obj):
       for group in conf_obj[i]['groups']:
-        ord_to_index = cardinator_services.get(self.cardinal_direction).get_ord_index(i,sz)
+        ord_to_index = cardinator_services.get(self.cardinal_direction).get_card_index(i,sz)
         self.groups[group]['pos'] = Pos(z=ord_to_index)
