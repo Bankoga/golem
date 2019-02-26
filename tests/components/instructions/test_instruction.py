@@ -8,7 +8,7 @@ from tests.strategies.enum_strats import ruletype
 from tests.strategies.pos_strats import valid_pos
 
 from utils.pos import Pos
-from utils.instruction import Instruction
+from components.instructions.instruction import Instruction
 
 class TestInstruction(unittest.TestCase):
   def setUp(self):

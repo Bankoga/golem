@@ -1,6 +1,6 @@
 from data.axioms.enums import RuleType
 
-from utils.instruction import Instruction
+from components.instructions.instruction import Instruction
 
 class ConvInstruction(Instruction):
   def __init__(self,directions,shapes, pos):
