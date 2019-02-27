@@ -12,7 +12,7 @@ from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
 from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_field_shape,datapack_type
 
-from numpy import ones, full_like
+from numpy import ones, full
 
 """
 What are the pools of object examples we need to draw from?
@@ -110,7 +110,7 @@ def valid_cell_instruction(draw):
 def valid_resource_data(draw):
   # resource = draw(datapack_resource)
   # shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter
-  data = draw(st.builds(full_like,valid_shape(),st.decimals(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
+  data = draw(st.builds(full,valid_shape(),st.decimals(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
   st.assume(data.any())
   return data
 
