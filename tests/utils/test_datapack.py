@@ -105,6 +105,11 @@ class TestDataPack(unittest.TestCase):
     self.assertTrue(input_pack.is_built())
     input_pack.process()
 
+  @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  def test_get_meld(self,input_pack):
+    meld = f'{input_pack.sender}:{input_pack.address}:{input_pack.resource}:{input_pack.type}'
+    self.assertEqual(input_pack.get_meld(),meld)
+
   # def test_format_address_on_valid_data(self):
   #   # self.assertTrue(self.datp.address, 'glg-destination_id-subdestination_id')
 

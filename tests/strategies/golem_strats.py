@@ -21,6 +21,16 @@ def list_of_inputs_and_input_set(draw):
 def valid_input_output_pair(draw):
   pass
 
+@composite
+def module_input_set(draw):
+  the inputs to a module, consist of a bunch of inputs to it and its proc groups
+  thus we need to generate two sets of inputs that get merged into one
+  inputs = {}
+  # inputs to the module
+  # inputs to the hooks
+  # inputs to the specific groups
+  pass
+
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_group_id','self','Self', '']),
 # st.sampled_from(RsrcType),

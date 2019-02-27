@@ -37,6 +37,9 @@ class Datapack:
           self.shape=FieldType(self.meld_tuple[3])
     self.var = None
 
+  def get_meld(self):
+    return f'{self.sender}:{self.address}:{self.resource}:{self.type}'
+
   def process(self):
     if (not self._built_):
       raise RuntimeError("The datapack has not yet been built")
