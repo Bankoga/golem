@@ -5,7 +5,7 @@
 # from hypothesis import strategies as st
 
 # from tests.strategies.group_strats import datapack_group
-
+# TODO: EVENTUALLY HAVE A COMPONENT PROVIDER THAT HITS ALL OTHER SUB PROVIDERS
 # class TestFGBuilderProvider(unittest.TestCase):
 #   @given(datapack_group())
 #   def test_get(self, fg_type_id):
