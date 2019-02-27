@@ -7,7 +7,7 @@ from hypothesis.strategies import composite
 from data.axioms.configs import id_pattern
 from data.axioms.enums import GroupType
 
-from tests.strategies.packing_strats import datapack_arbitrary,valid_datapack_arbitrary, datapack_address, partial_address
+from tests.strategies.packing_strats import valid_datapack_arbitrary, datapack_address, partial_address
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
@@ -37,7 +37,7 @@ def module_input_set(draw):
   # thus we need to generate two or more sets of inputs that get merged into one
   # inputs to the module
   address = draw(partial_address()) # pylint: disable=no-value-for-parameter
-  packs = draw(st.lists(datapack_arbitrary())) # pylint: disable=no-value-for-parameter
+  packs = draw(st.lists(valid_datapack_arbitrary())) # pylint: disable=no-value-for-parameter
   st.assume(address and packs)
   inputs = {}
   for pack in packs:
@@ -50,7 +50,7 @@ def module_input_set(draw):
   group_inputs = {}
   funcgroup = draw(proc_group()) # pylint: disable=no-value-for-parameter
   for group in funcgroup.groups:
-    inp = draw(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+    inp = draw(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
     groups.append(funcgroup.groups[group]['id'])
     inp.update(f'{address}-{funcgroup.groups[group]["id"]}')
     inp.build()
@@ -63,11 +63,10 @@ def module_input_set(draw):
 @composite
 def processed_module_input_set(draw):
   base_set = draw(module_input_set()) # pylint: disable=no-value-for-parameter
-  processing a module input set consists of a few parts
-    - removing aggregate datapacks from the inputs
-    - combining them in a guaranteed order
-    - then readding a single entry per aggregated key
-    
+  # processing a module input set consists of a few parts
+  #   - removing aggregate datapacks from the inputs
+  #   - combining them in a guaranteed order
+  #   - then readding a single entry per aggregated key
 
   return base_set
 

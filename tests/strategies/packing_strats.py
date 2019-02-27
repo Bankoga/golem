@@ -6,12 +6,13 @@ from hypothesis.strategies import composite
 
 from data.axioms.configs import id_pattern
 from data.axioms.enums import FieldType, HookType, PackType, RsrcType
+from data.axioms.matrix import max_resource_value, min_resource_value
 from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
 from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_field_shape,datapack_type
 
-from numpy import ones
+from numpy import ones, full_like
 
 """
 What are the pools of object examples we need to draw from?
@@ -85,42 +86,7 @@ def datapack_inputs(draw):
   return (meld, sender_addr)
 
 @composite
-def datapack_arbitrary(draw):
-  inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
-  pack = Datapack(inputs[0], inputs[1])
-  return pack
-
-@composite
-def valid_datapack_arbitrary(draw):
-  inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
-  pack = Datapack(inputs[0], inputs[1])
-  """
-  given that we have a datapack
-  when we want check the conv sign
-  then we need it to have been built
-  """
-  pack.build()
-  return pack
-
-@composite
-def valid_resource_data_pair(draw):
-  resource = draw(datapack_resource)
-  shape = draw(valid_shapes)
-  # data = 
-  # return (resource, data)
-
-# @composite
-# def input_pack_arbitrary(draw):
-#   pack = draw(datapack_arbitrary()): # pylint: disable=no-value-for-parameter
-#   pack.build()
-#   return pack
-
-@composite
-def valid_datapack_from_context(draw):
-  pass
-
-@composite
-def valid_shapes(draw):
+def valid_shape(draw):
   # l = draw(st.integers(min_value=0, max_value=3))
   # shape = []
   # for i in range(l):
@@ -139,3 +105,42 @@ def valid_cell_instruction(draw):
   conv_shapes = ["4x4","8x8,1"]
   instruction = [directions, conv_shapes]
   return instruction
+
+@composite
+def valid_resource_data(draw):
+  # resource = draw(datapack_resource)
+  # shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter
+  data = draw(st.builds(full_like,valid_shape(),st.decimals(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
+  st.assume(data.any())
+  return data
+
+@composite
+def datapack_arbitrary(draw):
+  inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
+  pack = Datapack(inputs[0], inputs[1])
+  return pack
+
+@composite
+def valid_datapack_arbitrary(draw):
+  inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
+  pack = Datapack(inputs[0], inputs[1])
+  """
+  given that we have a datapack
+  when we want check the conv sign
+  then we need it to have been built
+  """
+  resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  pack.build(resc_data)
+  st.assume(pack and resc_data.any())
+  return pack
+
+
+# @composite
+# def input_pack_arbitrary(draw):
+#   pack = draw(datapack_arbitrary()): # pylint: disable=no-value-for-parameter
+#   pack.build()
+#   return pack
+
+@composite
+def valid_datapack_from_context(draw):
+  pass

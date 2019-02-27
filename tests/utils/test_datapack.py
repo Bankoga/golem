@@ -3,12 +3,14 @@ import unittest
 from hypothesis import given
 import hypothesis.strategies as st
 
-from tests.strategies.packing_strats import datapack_inputs, datapack_arbitrary,datapack_address
+from tests.strategies.packing_strats import datapack_inputs, datapack_arbitrary,datapack_address,valid_resource_data,valid_datapack_arbitrary
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 from data.axioms.configs import dest_key_pattern
 from data.axioms.enums import PackType,RsrcType,FieldType
+
+from numpy import array_equal
 
 class TestDataPack(unittest.TestCase):
 
@@ -98,11 +100,12 @@ class TestDataPack(unittest.TestCase):
     with self.assertRaises(RuntimeError):
       input_pack.process()
 
-  @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
-  def test_build(self, input_pack):
+  @given(datapack_arbitrary(), valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_build(self, input_pack, data):
     self.assertFalse(input_pack.is_built())
-    input_pack.build()
+    input_pack.build(data)
     self.assertTrue(input_pack.is_built())
+    self.assertTrue(array_equal(input_pack.var, data))
     input_pack.process()
 
   @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
@@ -110,12 +113,12 @@ class TestDataPack(unittest.TestCase):
     meld = f'{input_pack.sender};{input_pack.address};{input_pack.resource};{input_pack.type};{input_pack.shape}'
     self.assertEqual(input_pack.get_meld(),meld)
 
-  @given(datapack_arbitrary(), datapack_address()) # pylint: disable=no-value-for-parameter
+  @given(valid_datapack_arbitrary(), datapack_address()) # pylint: disable=no-value-for-parameter
   def test_update_address(self,input_pack, new_addr):
-    input_pack.build()
     input_pack.update(new_addr)
     self.assertEqual(input_pack.address, new_addr)
     self.assertFalse(input_pack.is_built())
+    self.assertIsNone(input_pack.var)
 
   # def test_format_address_on_valid_data(self):
   #   # self.assertTrue(self.datp.address, 'glg-destination_id-subdestination_id')

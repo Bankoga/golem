@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 
 from data.axioms.enums import RuleType
 from tests.strategies.enum_strats import ruletype
-from tests.strategies.packing_strats import valid_shapes
+from tests.strategies.packing_strats import valid_shape
 from tests.strategies.golem_strats import module_input_set
 from tests.strategies.pos_strats import valid_direction, valid_pos
 
@@ -17,7 +17,7 @@ class TestConvInstruction(unittest.TestCase):
   def setUp(self):
     self.inst = ConvInstruction([], [], Pos())
 
-  @given(valid_direction(), valid_shapes(),valid_pos()) # pylint: disable=no-value-for-parameter
+  @given(valid_direction(), valid_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
   def test_default(self, direction, shapes, pos):
         # for efficiency reasons, eventually instructions will need to be built before processing
     inst = ConvInstruction(direction, shapes, pos)
@@ -29,7 +29,7 @@ class TestConvInstruction(unittest.TestCase):
     self.assertEqual(inst.shapes,shapes)
     self.assertEqual(inst.pos,pos)
   
-  @given(st.lists(valid_shapes())) # pylint: disable=no-value-for-parameter
+  @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
   def test_set_up_weights(self,shapes):
     weights = self.inst.set_up_weights(shapes)
     for shape in shapes:

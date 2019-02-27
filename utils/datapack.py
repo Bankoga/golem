@@ -46,7 +46,8 @@ class Datapack:
     else:
       pass
 
-  def build(self):
+  def build(self, data):
+    self.var = data
     self._built_ = True
 
   def is_built(self):
@@ -55,6 +56,7 @@ class Datapack:
   def update(self, new_addr):
     self.address = new_addr
     self._built_ = False
+    self.var = None
 
   def __eq__(self, other):
     return self.__dict__ == other.__dict__
