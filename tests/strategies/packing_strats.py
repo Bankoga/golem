@@ -97,6 +97,7 @@ def valid_datapack_arbitrary(draw):
   when we want check the conv sign
   then we need it to have been built
   """
+  pack.build()
   return pack
 
 @composite

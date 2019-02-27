@@ -7,7 +7,7 @@ from hypothesis.strategies import composite
 from data.axioms.configs import id_pattern
 from data.axioms.enums import GroupType
 
-from tests.strategies.packing_strats import datapack_arbitrary
+from tests.strategies.packing_strats import datapack_arbitrary,valid_datapack_arbitrary, datapack_address
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
@@ -23,12 +23,24 @@ def valid_input_output_pair(draw):
 
 @composite
 def module_input_set(draw):
-  the inputs to a module, consist of a bunch of inputs to it and its proc groups
-  thus we need to generate two sets of inputs that get merged into one
-  inputs = {}
+  # the inputs to a module, consist of a bunch of inputs to it and its proc groups
+  # thus we need to generate two or more sets of inputs that get merged into one
   # inputs to the module
+  address = draw(datapack_address()) # pylint: disable=no-value-for-parameter
+  packs = draw(st.lists(datapack_arbitrary)) # pylint: disable=no-value-for-parameter
+  st.assume(address and packs)
+  inputs = {}
+  for pack in packs:
+    pack.update(address)
+    meld = pack.get_meld()
+    inputs[meld] = pack
   # inputs to the hooks
   # inputs to the specific groups
+  st.assume(inputs)
+  return inputs
+
+@composite
+def valid_module_input_set(draw):
   pass
 
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
