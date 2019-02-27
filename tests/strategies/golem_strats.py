@@ -7,10 +7,13 @@ from hypothesis.strategies import composite
 from data.axioms.configs import id_pattern
 from data.axioms.enums import GroupType
 
-from tests.strategies.packing_strats import datapack_arbitrary,valid_datapack_arbitrary, datapack_address
+from tests.strategies.packing_strats import datapack_arbitrary,valid_datapack_arbitrary, datapack_address, partial_address
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
+
+from data.axioms.configs import proc_ids
+from components.procs.proc_provider import proc_services
 
 @composite
 def list_of_inputs_and_input_set(draw):
@@ -26,8 +29,8 @@ def module_input_set(draw):
   # the inputs to a module, consist of a bunch of inputs to it and its proc groups
   # thus we need to generate two or more sets of inputs that get merged into one
   # inputs to the module
-  address = draw(datapack_address()) # pylint: disable=no-value-for-parameter
-  packs = draw(st.lists(datapack_arbitrary)) # pylint: disable=no-value-for-parameter
+  address = draw(partial_address()) # pylint: disable=no-value-for-parameter
+  packs = draw(st.lists(datapack_arbitrary())) # pylint: disable=no-value-for-parameter
   st.assume(address and packs)
   inputs = {}
   for pack in packs:
@@ -35,9 +38,24 @@ def module_input_set(draw):
     meld = pack.get_meld()
     inputs[meld] = pack
   # inputs to the hooks
+  groups = []
+  group_inputs = {}
+  funcgroup = draw(proc_group()) # pylint: disable=no-value-for-parameter
+  for group in funcgroup.groups:
+    inp = draw(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+    groups.append(funcgroup.groups[group]['id'])
+    inp.address = f'{address}-{funcgroup.groups[group]["id"]}'
+    meld = inp.get_meld()
+    group_inputs[meld] = inp
   # inputs to the specific groups
   st.assume(inputs)
   return inputs
+
+@composite
+def proc_group(draw):
+  proc_id = draw(st.sampled_from(sorted(proc_ids.keys())))
+  proc = proc_services.get(proc_ids[proc_id], **{})
+  return proc
 
 @composite
 def valid_module_input_set(draw):

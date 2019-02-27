@@ -2,7 +2,7 @@ from data.axioms.enums import RuleType
 
 from components.instructions.instruction import Instruction
 
-from numpy import identity
+from numpy import ones,diag
 
 class ConvInstruction(Instruction):
   def __init__(self,direction,shapes,pos):
@@ -14,7 +14,7 @@ class ConvInstruction(Instruction):
   def set_up_weights(self, shapes):
     weights = {}
     for shape in shapes:
-      weights[shape] = identity(shape)
+      weights[shape] = ones(shape)
     return weights
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations

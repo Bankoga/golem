@@ -11,6 +11,8 @@ from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
 from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_shape,datapack_type
 
+from numpy import ones
+
 """
 What are the pools of object examples we need to draw from?
 - Addresses
@@ -112,7 +114,11 @@ def valid_shapes(draw):
   #   x = draw(st.integers(min_value=0))
   #   st.assume(x)
   #   shape.append(x)
-  return tuple([4,4,4])
+  x = draw(st.just(ones((2,2))))
+  st.assume(x.any())
+  return x.shape
+  # shape = draw(st.tuples(st.integers(),st.integers()))
+  # return shape
 
 @composite
 def valid_cell_instruction(draw):
