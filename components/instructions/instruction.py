@@ -10,7 +10,7 @@ class Instruction:
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   @abstractmethod
-  def perform(self,package):
+  def perform(self,inputs):
     pass
   
   @abstractmethod

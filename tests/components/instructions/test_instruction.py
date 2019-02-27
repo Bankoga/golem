@@ -25,7 +25,7 @@ class TestInstruction(unittest.TestCase):
     self.assertIsNone(inst.curr_pos)
     self.assertEqual(inst.pos,pos)
 
-  # def test_perform(self, package):
+  # def test_perform(self, inputs):
   #   pass
 
 if __name__ == '__main__':
