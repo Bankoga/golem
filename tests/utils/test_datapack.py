@@ -107,7 +107,7 @@ class TestDataPack(unittest.TestCase):
 
   @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_get_meld(self,input_pack):
-    meld = f'{input_pack.sender}:{input_pack.address}:{input_pack.resource}:{input_pack.type}'
+    meld = f'{input_pack.sender};{input_pack.address};{input_pack.resource};{input_pack.type};{input_pack.shape}'
     self.assertEqual(input_pack.get_meld(),meld)
 
   @given(datapack_arbitrary(), datapack_address()) # pylint: disable=no-value-for-parameter

@@ -10,7 +10,8 @@ from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
 from utils.pos import Pos
-from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_shape,datapack_type
+from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_type
+from tests.strategies.packing_strats import valid_shapes
 
 @composite
 def valid_floor(draw):

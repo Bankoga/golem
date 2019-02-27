@@ -24,6 +24,13 @@ def list_of_inputs_and_input_set(draw):
 def valid_input_output_pair(draw):
   pass
 
+
+@composite
+def proc_group(draw):
+  proc_id = draw(st.sampled_from(sorted(proc_ids.keys())))
+  proc = proc_services.get(proc_ids[proc_id], **{})
+  return proc
+
 @composite
 def module_input_set(draw):
   # the inputs to a module, consist of a bunch of inputs to it and its proc groups
@@ -35,6 +42,7 @@ def module_input_set(draw):
   inputs = {}
   for pack in packs:
     pack.update(address)
+    pack.build()
     meld = pack.get_meld()
     inputs[meld] = pack
   # inputs to the hooks
@@ -44,7 +52,8 @@ def module_input_set(draw):
   for group in funcgroup.groups:
     inp = draw(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
     groups.append(funcgroup.groups[group]['id'])
-    inp.address = f'{address}-{funcgroup.groups[group]["id"]}'
+    inp.update(f'{address}-{funcgroup.groups[group]["id"]}')
+    inp.build()
     meld = inp.get_meld()
     group_inputs[meld] = inp
   # inputs to the specific groups
@@ -52,10 +61,15 @@ def module_input_set(draw):
   return inputs
 
 @composite
-def proc_group(draw):
-  proc_id = draw(st.sampled_from(sorted(proc_ids.keys())))
-  proc = proc_services.get(proc_ids[proc_id], **{})
-  return proc
+def processed_module_input_set(draw):
+  base_set = draw(module_input_set()) # pylint: disable=no-value-for-parameter
+  processing a module input set consists of a few parts
+    - removing aggregate datapacks from the inputs
+    - combining them in a guaranteed order
+    - then readding a single entry per aggregated key
+    
+
+  return base_set
 
 @composite
 def valid_module_input_set(draw):

@@ -9,7 +9,7 @@ from data.axioms.enums import FieldType,HookType,RsrcType,PackType
 from utils.helpers.packer import build_address, build_meld
 from tests.utils.test_datapack import TestDataPack
 from tests.strategies.packing_strats import datapack_address,full_address,partial_address,arbitrary_id
-from tests.strategies.enum_strats import datapack_shape,datapack_group,datapack_resource,hook_type,datapack_type
+from tests.strategies.enum_strats import datapack_field_shape,datapack_group,datapack_resource,hook_type,datapack_type
 
 class TestHook(TestDataPack):
   # def setUp(self):
@@ -84,7 +84,7 @@ class TestHook(TestDataPack):
     meld = ";".join(meld_tuple)
     self._read_data_(meld)
 
-  @given(arbitrary_id(), hook_type(), datapack_address(), datapack_resource(), datapack_type(), datapack_shape()) # pylint: disable=no-value-for-parameter
+  @given(arbitrary_id(), hook_type(), datapack_address(), datapack_resource(), datapack_type(), datapack_field_shape()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
     inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
     self._read_data_(inputs)

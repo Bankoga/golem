@@ -38,7 +38,7 @@ class Datapack:
     self.var = None
 
   def get_meld(self):
-    return f'{self.sender}:{self.address}:{self.resource}:{self.type}'
+    return f'{self.sender};{self.address};{self.resource};{self.type};{self.shape}'
 
   def process(self):
     if (not self._built_):

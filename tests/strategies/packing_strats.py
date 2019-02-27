@@ -9,7 +9,7 @@ from data.axioms.enums import FieldType, HookType, PackType, RsrcType
 from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
-from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_shape,datapack_type
+from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_field_shape,datapack_type
 
 from numpy import ones
 
@@ -74,7 +74,7 @@ def full_meld(draw):
   addr = draw(datapack_address()) # pylint: disable=no-value-for-parameter
   dp_resource = draw(datapack_resource()) # pylint: disable=no-value-for-parameter
   dp_type = draw(datapack_type()) # pylint: disable=no-value-for-parameter
-  dp_shape = draw(datapack_shape()) # pylint: disable=no-value-for-parameter
+  dp_shape = draw(datapack_field_shape()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type,dp_shape)
   return meld
 
@@ -101,6 +101,19 @@ def valid_datapack_arbitrary(draw):
   """
   pack.build()
   return pack
+
+@composite
+def valid_resource_data_pair(draw):
+  resource = draw(datapack_resource)
+  shape = draw(valid_shapes)
+  # data = 
+  # return (resource, data)
+
+# @composite
+# def input_pack_arbitrary(draw):
+#   pack = draw(datapack_arbitrary()): # pylint: disable=no-value-for-parameter
+#   pack.build()
+#   return pack
 
 @composite
 def valid_datapack_from_context(draw):

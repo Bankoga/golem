@@ -6,7 +6,7 @@ from hypothesis import strategies as st
 from data.axioms.enums import FieldType,PackType,RsrcType
 
 from tests.strategies.packing_strats import arbitrary_id,full_address,partial_address,datapack_address
-from tests.strategies.enum_strats import datapack_shape,datapack_resource,datapack_type
+from tests.strategies.enum_strats import datapack_field_shape,datapack_resource,datapack_type
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
@@ -21,7 +21,7 @@ class TestPacker(unittest.TestCase):
     else:
       self.assertEqual(addr, f'{m_id}-{g_id}')
 
-  @given(datapack_address(),datapack_resource(),datapack_type(),datapack_shape()) # pylint: disable=no-value-for-parameter
+  @given(datapack_address(),datapack_resource(),datapack_type(),datapack_field_shape()) # pylint: disable=no-value-for-parameter
   def test_build_meld(self, recip_addr,dp_resource,dp_type,dp_shape):
     # addr = build_address(rm_id,rg_id)
     meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)

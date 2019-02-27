@@ -41,7 +41,7 @@ def datapack_type(draw):
   return res
 
 @composite
-def datapack_shape(draw):
+def datapack_field_shape(draw):
   res = st.sampled_from(FieldType)
   st.assume(res)
   st.assume(res != FieldType.UNSET)
