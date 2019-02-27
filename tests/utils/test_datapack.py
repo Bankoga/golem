@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 import hypothesis.strategies as st
 
-from tests.strategies.packing_strats import datapack_inputs, datapack_arbitrary
+from tests.strategies.packing_strats import datapack_inputs, datapack_arbitrary,datapack_address
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
@@ -109,6 +109,13 @@ class TestDataPack(unittest.TestCase):
   def test_get_meld(self,input_pack):
     meld = f'{input_pack.sender}:{input_pack.address}:{input_pack.resource}:{input_pack.type}'
     self.assertEqual(input_pack.get_meld(),meld)
+
+  @given(datapack_arbitrary(), datapack_address()) # pylint: disable=no-value-for-parameter
+  def test_update_address(self,input_pack, new_addr):
+    input_pack.build()
+    input_pack.update(new_addr)
+    self.assertEqual(input_pack.address, new_addr)
+    self.assertFalse(input_pack.is_built())
 
   # def test_format_address_on_valid_data(self):
   #   # self.assertTrue(self.datp.address, 'glg-destination_id-subdestination_id')

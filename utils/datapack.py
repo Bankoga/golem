@@ -52,5 +52,9 @@ class Datapack:
   def is_built(self):
     return self._built_
 
+  def update(self, new_addr):
+    self.address = new_addr
+    self._built_ = False
+
   def __eq__(self, other):
     return self.__dict__ == other.__dict__
