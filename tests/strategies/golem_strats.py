@@ -14,13 +14,13 @@ from utils.helpers.packer import build_address, build_meld, build_datapack_input
 
 from components.procs.proc_provider import proc_services
 
-@composite
-def fg_provider_id(draw):
-    fg_id = group_ids['glg']
-    fg_type = GroupType.SENSOR
-  draw(st.sampled_from())
-  draw(st.sampled_from())
-  pass
+# @composite
+# def fg_provider_id(draw):
+#     fg_id = group_ids['glg']
+#     fg_type = GroupType.SENSOR
+#   draw(st.sampled_from())
+#   draw(st.sampled_from())
+#   pass
 
 
 @composite
