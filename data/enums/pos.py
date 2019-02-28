@@ -1,4 +1,18 @@
-from enum import Enum
+from enum import Enum, auto
+from data.enums.misc_enum import AutoName
+
+def Dimensions(AutoName):
+  P = auto()
+  O = auto()
+  S = auto()
+  X = auto()
+  Y = auto()
+  Z = auto()
+
+class DimensionallyOrdered(Enum):
+  def __init__(self,pos,dimension):
+    self.pos = pos
+    self.dimension = dimension
 
 class ComponentType(Enum):
   MATRIX = 1

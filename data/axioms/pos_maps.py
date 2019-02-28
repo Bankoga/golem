@@ -1,5 +1,7 @@
 from enum import Enum
 
+from data.enums.pos import Floor
+
 package_map = {
   'core': 'main',
   'framework': 'basement',
@@ -73,13 +75,7 @@ cardinal_keys = {
 # }
 
 # TODO: replace floor order with the Floor enum
-floor_order = [
-  'cellar',
-  'basement',
-  'archive',
-  'main',
-  'attic'
-]
+floor_order = list(Floor)
 
 
 # class CardinalX(Enum):
