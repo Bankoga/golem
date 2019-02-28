@@ -5,5 +5,6 @@ class Component:
     component_id : the semantic key used as reference for the component object
     component_type : the semantic key used as reference for the component functionality within the matrix
     """
-    self.id = component_id
-    self.type = component_type
+    self.id = None
+    self.c_id = component_id
+    self.c_type = component_type
