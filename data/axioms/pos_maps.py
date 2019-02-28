@@ -74,18 +74,5 @@ cardinal_keys = {
 #   },
 # }
 
-# TODO: replace floor order with the Floor enum
 floor_order = list(Floor)
 
-
-# class CardinalX(Enum):
-#   UNSET = 1
-# class CardinalY(Enum):
-#   UNSET = 1
-# class CardinalZ(Enum):
-#   UNSET = 1
-#   BELOW = 100
-#   BETWEEN = 200
-#   CENTER = 201
-#   MIDDLE = 202
-#   ABOVE = 300

@@ -30,3 +30,16 @@ class Floor(Enum):
 
   def describe(self):
     return 'Matrix section', self.name
+
+
+# class CardinalX(Enum):
+#   UNSET = 1
+# class CardinalY(Enum):
+#   UNSET = 1
+# class CardinalZ(Enum):
+#   UNSET = 1
+#   BELOW = 100
+#   BETWEEN = 200
+#   CENTER = 201
+#   MIDDLE = 202
+#   ABOVE = 300
