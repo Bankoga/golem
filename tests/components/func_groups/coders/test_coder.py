@@ -2,8 +2,8 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from data.axioms.configs import coder_ids,file_type
-from components.coders.coder import Coder
-from components.coders.coder_provider import coder_services
+from components.func_groups.coders.coder import Coder
+from components.func_groups.coders.coder_provider import coder_services
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 

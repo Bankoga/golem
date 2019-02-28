@@ -1,4 +1,4 @@
-from components.coders.coder import Coder
+from components.func_groups.coders.coder import Coder
 from data.axioms.configs import coder_ids
 
 class PartsSensor(Coder):
