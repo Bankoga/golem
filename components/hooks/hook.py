@@ -1,4 +1,4 @@
-from data.axioms.configs import id_pattern
+from data.axioms.props import id_pattern 
 from data.enums.prop_types import HookType,PackType,RsrcType,FieldType
 from utils.datapack import Datapack
 import re

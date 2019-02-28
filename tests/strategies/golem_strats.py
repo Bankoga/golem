@@ -4,7 +4,8 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.configs import proc_ids, id_pattern,group_ids
+from data.axioms.configs import proc_ids, group_ids
+from data.axioms.props import id_pattern
 from data.enums.prop_types import GroupType,PackType
 
 from tests.strategies.packing_strats import datapack_arbitrary, datapack_address, partial_address,valid_resource_data

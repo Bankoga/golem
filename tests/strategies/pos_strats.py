@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.configs import id_pattern
+from data.axioms.props import id_pattern 
 from data.axioms.pos_maps import Floors, cardinal_keys
 from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,

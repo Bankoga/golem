@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.packagers.packager import Packager
-from data.axioms.configs import id_pattern
+from data.axioms.props import id_pattern 
 from data.axioms.packager import defaults as prd
 from data.enums.prop_types import RuleType
 

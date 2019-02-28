@@ -4,7 +4,7 @@ from hypothesis import given
 import hypothesis.strategies as st
 
 from components.hooks.hook import Hook
-from data.axioms.configs import dest_key_pattern, id_pattern
+from data.axioms.props import dest_key_pattern, id_pattern 
 from data.enums.prop_types import FieldType,HookType,RsrcType,PackType
 from utils.helpers.packer import build_address, build_meld
 from tests.utils.test_datapack import TestDataPack
