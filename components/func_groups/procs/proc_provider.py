@@ -1,12 +1,12 @@
 from utils.object_factory import *
 from data.axioms.configs import proc_ids
-from components.procs.glg import GLGBuilder
-from components.procs.dc_granular_cort import DCGranularCortBuilder
-from components.procs.df_granular_cort import DFGranularCortBuilder
-from components.procs.dc_agranular_cort import DCAgranularCortBuilder
-from components.procs.df_agranular_cort import DFAgranularCortBuilder
-# from components.procs.synch_i import SynchILinkerBuilder
-# from components.procs.synch_all import SynchAllLinkerBuilder
+from components.func_groups.procs.glg import GLGBuilder
+from components.func_groups.procs.dc_granular_cort import DCGranularCortBuilder
+from components.func_groups.procs.df_granular_cort import DFGranularCortBuilder
+from components.func_groups.procs.dc_agranular_cort import DCAgranularCortBuilder
+from components.func_groups.procs.df_agranular_cort import DFAgranularCortBuilder
+# from components.func_groups.procs.synch_i import SynchILinkerBuilder
+# from components.func_groups.procs.synch_all import SynchAllLinkerBuilder
 
 class ProcProvider(ObjectFactory):
   """

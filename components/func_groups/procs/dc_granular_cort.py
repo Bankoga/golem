@@ -1,4 +1,4 @@
-from components.procs.proc import Proc
+from components.func_groups.procs.proc import Proc
 from data.axioms.configs import proc_ids
 
 class DCGranularCort(Proc):

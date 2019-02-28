@@ -2,8 +2,8 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from data.axioms.configs import proc_ids,file_type
-from components.procs.proc import Proc
-from components.procs.proc_provider import proc_services
+from components.func_groups.procs.proc import Proc
+from components.func_groups.procs.proc_provider import proc_services
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 

@@ -3,7 +3,7 @@ import unittest
 import hypothesis.strategies as st
 from hypothesis import given
 
-from components.procs.proc_provider import proc_services
+from components.func_groups.procs.proc_provider import proc_services
 from data.axioms.configs import proc_ids
 
 

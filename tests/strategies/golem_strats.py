@@ -12,7 +12,7 @@ from tests.strategies.packing_strats import datapack_arbitrary, datapack_address
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 
-from components.procs.proc_provider import proc_services
+from components.func_groups.procs.proc_provider import proc_services
 
 # @composite
 # def fg_provider_id(draw):
