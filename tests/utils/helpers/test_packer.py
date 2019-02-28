@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.axioms.enums import FieldType,PackType,RsrcType
+from data.enums.prop_types import FieldType,PackType,RsrcType
 
 from tests.strategies.packing_strats import arbitrary_id,full_address,partial_address,datapack_address
 from tests.strategies.enum_strats import datapack_field_shape,datapack_resource,datapack_type

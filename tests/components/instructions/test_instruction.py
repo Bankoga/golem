@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.axioms.enums import RuleType
+from data.enums.prop_types import RuleType
 from tests.strategies.enum_strats import ruletype
 from tests.strategies.pos_strats import valid_pos
 

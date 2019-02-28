@@ -8,7 +8,7 @@ from tests.strategies.packing_strats import datapack_inputs, datapack_arbitrary,
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 from data.axioms.configs import dest_key_pattern
-from data.axioms.enums import PackType,RsrcType,FieldType
+from data.enums.prop_types import PackType,RsrcType,FieldType
 
 from numpy import array_equal
 

@@ -1,4 +1,4 @@
-from data.axioms.enums import PackType,RsrcType,FieldType
+from data.enums.prop_types import PackType,RsrcType,FieldType
 from chainer import Variable
 
 class Datapack:

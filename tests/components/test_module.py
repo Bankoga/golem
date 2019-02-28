@@ -9,7 +9,7 @@
 # from components.module import Module
 
 # from data.axioms.configs import group_ids
-# from data.axioms.enums import GroupType
+# from data.enums.prop_types import GroupType
 
 # from tests.strategies.golem_strats import module_input_set
 

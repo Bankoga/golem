@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
 from data.axioms.configs import id_pattern
-from data.axioms.enums import FieldType, HookType, PackType, RsrcType
+from data.enums.prop_types import FieldType, HookType, PackType, RsrcType
 from data.axioms.matrix import max_resource_value, min_resource_value
 from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,
