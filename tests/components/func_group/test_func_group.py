@@ -3,10 +3,6 @@
 # from hypothesis import given
 # from hypothesis import strategies as st
 
-# from components.procs.proc_provider import proc_services
-# from components.func_groups.func_group import FuncGroup
-# from data.axioms.configs import proc_ids, group_types
-# from data.axioms.enums import GroupType
 
 # class TestFuncGroup(unittest.TestCase):
 

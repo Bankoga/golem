@@ -6,7 +6,7 @@ from hypothesis import strategies as st
 from data.axioms.enums import RuleType
 from tests.strategies.enum_strats import ruletype
 from tests.strategies.packing_strats import valid_shape
-from tests.strategies.golem_strats import module_input_set
+from tests.strategies.golem_strats import module_input_set,processed_module_input_set
 from tests.strategies.pos_strats import valid_direction, valid_pos
 
 from utils.pos import Pos
@@ -55,7 +55,7 @@ class TestConvInstruction(unittest.TestCase):
       are we assuming that the packs have been aggregated at this point in time? yes
     pass
 
-  @given(module_input_set()) # pylint: disable=no-value-for-parameter
+  @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   def test_(self, inputs):
 
   # def test_update_weight(self,updates):

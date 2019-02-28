@@ -4,15 +4,14 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.configs import id_pattern
-from data.axioms.enums import GroupType
+from data.axioms.configs import proc_ids, id_pattern
+from data.axioms.enums import GroupType,PackType
 
-from tests.strategies.packing_strats import valid_datapack_arbitrary, datapack_address, partial_address
+from tests.strategies.packing_strats import datapack_arbitrary, datapack_address, partial_address,valid_resource_data
 
 from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 
-from data.axioms.configs import proc_ids
 from components.procs.proc_provider import proc_services
 
 @composite
@@ -32,42 +31,69 @@ def proc_group(draw):
   return proc
 
 @composite
-def module_input_set(draw):
+def module_input_set(draw, elements=partial_address()): # pylint: disable=no-value-for-parameter
   # the inputs to a module, consist of a bunch of inputs to it and its proc groups
   # thus we need to generate two or more sets of inputs that get merged into one
   # inputs to the module
-  address = draw(partial_address()) # pylint: disable=no-value-for-parameter
-  packs = draw(st.lists(valid_datapack_arbitrary())) # pylint: disable=no-value-for-parameter
+  address = draw(elements)#partial_address()) # pylint: disable=no-value-for-parameter
+  packs = draw(st.lists(datapack_arbitrary())) # pylint: disable=no-value-for-parameter
   st.assume(address and packs)
-  inputs = {}
+  inputs = []
   for pack in packs:
     pack.update(address)
-    pack.build()
+    resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
+    pack.build(resc_data)
     meld = pack.get_meld()
-    inputs[meld] = pack
+    # inputs[meld] = pack
+    inputs.append(pack)
   # inputs to the hooks
   groups = []
-  group_inputs = {}
+  group_inputs = []
   funcgroup = draw(proc_group()) # pylint: disable=no-value-for-parameter
   for group in funcgroup.groups:
-    inp = draw(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+    inp = draw(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
     groups.append(funcgroup.groups[group]['id'])
     inp.update(f'{address}-{funcgroup.groups[group]["id"]}')
-    inp.build()
+    resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
+    inp.build(resc_data)
     meld = inp.get_meld()
-    group_inputs[meld] = inp
+    group_inputs.append(inp)
   # inputs to the specific groups
   st.assume(inputs)
+  st.assume(group_inputs)
+  inputs.extend(group_inputs)
   return inputs
 
 @composite
 def processed_module_input_set(draw):
+  # TODO: processing turns a list of inputs into WHAT????
+  # a thing which has the following properties
+  # - all of the specific target inputs can be accessed via relative positioning
+  # - all general inputs are stored together
+  # - all aggregate inputs have been combined into one large input for each destination (specific or general) with aggregate inputs
   base_set = draw(module_input_set()) # pylint: disable=no-value-for-parameter
+  proc_packs = {}
+  agg_packs = {
+    'ordered': {},
+    'general': {}
+  }
+  ordered_packs = {}
+  general_packs = {}
+  # guaranteed order sort all non-aggregated type packs into the appropriate destination bucket
   # processing a module input set consists of a few parts
   #   - removing aggregate datapacks from the inputs
   #   - combining them in a guaranteed order
   #   - then readding a single entry per aggregated key
-
+  for pack in base_set.items():
+    if pack[1].type is PackType.OVERLAY:
+      proc_packs[pack[0]] = pack[1]
+    elif pack[0] in agg_pack:
+      agg_pack[pack[0]].append(pack[1])
+    else:
+      agg_pack[pack[0]] = pack[1]
+  proc_packs.update(agg_packs)
+  # guaranteed order sort result aggregated packs into appropriate bucket
+  # return results dict
   return base_set
 
 @composite
