@@ -9,4 +9,5 @@ class Component:
     """
     self.id = None
     self.c_id = component_id
-    self.op_lvl = ComponentType(component_type)
+    self.c_type = ComponentType(component_type)
+    self.op_lvl = self.c_type.value
