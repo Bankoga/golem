@@ -37,10 +37,3 @@ class RuleType(Enum):
   FW_FUNC = 500
 
 # (PackType|RsrcType|FieldType|GroupType|HookType|RuleType)
-
-class ComponentType(Enum):
-  MATRIX = 1
-  HOOK = 2
-  GROUP = 3
-  PACKAGER = 4
-  INSTRUCTION = 5

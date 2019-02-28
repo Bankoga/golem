@@ -1,4 +1,4 @@
-from data.enums.prop_types import ComponentType
+from data.enums.pos import ComponentType
 
 class Component:
   # TODO: implement a base class that is shared across all components

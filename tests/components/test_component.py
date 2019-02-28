@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.component import Component
-from data.enums.prop_types import ComponentType
+from data.enums.pos import ComponentType
 
 class TestComponent(unittest.TestCase):
 

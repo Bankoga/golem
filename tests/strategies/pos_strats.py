@@ -5,7 +5,8 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
 from data.axioms.props import id_pattern 
-from data.axioms.pos_maps import Floors, cardinal_keys
+from data.axioms.pos_maps import cardinal_keys
+from data.enums.pos import Floor
 from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
@@ -15,7 +16,7 @@ from tests.strategies.packing_strats import valid_shape
 
 @composite
 def valid_floor(draw):
-  res = draw(st.sampled_from(Floors))
+  res = draw(st.sampled_from(Floor))
   st.assume(res)
   return res
 

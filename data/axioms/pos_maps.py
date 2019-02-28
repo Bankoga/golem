@@ -71,6 +71,8 @@ cardinal_keys = {
 #     'operation': 'rotate_reader_head_to'
 #   },
 # }
+
+# TODO: replace floor order with the Floor enum
 floor_order = [
   'cellar',
   'basement',
@@ -79,16 +81,6 @@ floor_order = [
   'attic'
 ]
 
-
-class Floors(Enum):
-  CELLAR = 1
-  BASEMENT = 2
-  ARCHIVE = 3
-  MAIN = 4
-  ATTIC = 5
-
-  def describe(self):
-    return 'Matrix section', self.name
 
 # class CardinalX(Enum):
 #   UNSET = 1
