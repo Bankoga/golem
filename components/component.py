@@ -1,3 +1,5 @@
+from data.enums.prop_types import ComponentType
+
 class Component:
   # TODO: implement a base class that is shared across all components
   def __init__(self, component_id,component_type):
@@ -7,4 +9,4 @@ class Component:
     """
     self.id = None
     self.c_id = component_id
-    self.c_type = component_type
+    self.op_lvl = ComponentType(component_type)
