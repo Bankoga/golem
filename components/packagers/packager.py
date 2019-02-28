@@ -1,5 +1,5 @@
 from data.enums.prop_types import RuleType
-from data.axioms.configs import packager_defaults as prd
+from data.axioms.packager import defaults as prd
 from abc import abstractmethod
 
 class Packager:

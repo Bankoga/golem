@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 
 from components.packagers.packager import Packager
 from data.axioms.configs import id_pattern
-from data.axioms.configs import packager_defaults as prd
+from data.axioms.packager import defaults as prd
 from data.enums.prop_types import RuleType
 
 class TestPackager(unittest.TestCase):
