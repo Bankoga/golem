@@ -1,4 +1,4 @@
-from components.cardinators.cardinator import Cardinator
+from utils.cardinators.cardinator import Cardinator
 
 class DscCardinator(Cardinator):
   """

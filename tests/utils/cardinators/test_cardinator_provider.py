@@ -1,5 +1,5 @@
 import utils.object_factory
-from components.cardinators.cardinator_provider import cardinator_services
+from utils.cardinators.cardinator_provider import cardinator_services
 import unittest
 from hypothesis import given
 from hypothesis import strategies as st

@@ -2,24 +2,24 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 import utils.object_factory
-from components.cardinators.asc_cardinator import AscCardinator
+from utils.cardinators.dsc_cardinator import DscCardinator
 from data.axioms.pos_maps import cardinal_keys, floor_order
 
-class TestAscCardinator(unittest.TestCase):
+class TestDscCardinator(unittest.TestCase):
   
   def setUp(self):
-    self.cardinator = AscCardinator()
+    self.cardinator = DscCardinator()
 
   def test_init(self):
-    self.assertTrue(self.cardinator.get_id(), 'asc')
-    self.assertTrue(self.cardinator.get_direction(), 'asc')
+    self.assertTrue(self.cardinator.get_id(), 'dsc')
+    self.assertTrue(self.cardinator.get_direction(), 'dsc')
 
   @given(st.integers(min_value=0,max_value=len(floor_order)-1), st.just(len(floor_order)))
   def test_get_valid_ord_index(self, ind, sz):
-    self.assertEqual(self.cardinator.get_card_index(ind,sz), ind)
+    self.assertEqual(self.cardinator.get_card_index(ind,sz), (sz - ind - 1))
   
   @given(st.integers(min_value=len(floor_order)), st.just(len(floor_order)))
-  def test_get_invalid_ord_index(self, ind, sz):
+  def test_get_invalid_large_ord_index(self, ind, sz):
     with self.assertRaises(ValueError):
       self.cardinator.get_card_index(ind,sz)
 

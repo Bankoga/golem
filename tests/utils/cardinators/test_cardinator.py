@@ -2,7 +2,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 import utils.object_factory
-from components.cardinators.cardinator import Cardinator
+from utils.cardinators.cardinator import Cardinator
 from data.axioms.pos_maps import cardinal_keys
 
 class TestCardinator(unittest.TestCase):

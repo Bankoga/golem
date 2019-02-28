@@ -5,7 +5,7 @@ from data.axioms.configs import proc_ids,file_type
 from components.procs.proc import Proc
 from components.procs.proc_provider import proc_services
 from utils.config_reader import read
-from components.cardinators.cardinator_provider import cardinator_services
+from utils.cardinators.cardinator_provider import cardinator_services
 
 class TestProc(unittest.TestCase):
 

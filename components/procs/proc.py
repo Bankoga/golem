@@ -1,5 +1,5 @@
 from components.func_groups.func_group import FuncGroup
-from components.cardinators.cardinator_provider import cardinator_services
+from utils.cardinators.cardinator_provider import cardinator_services
 from data.axioms.configs import file_type
 
 from utils.config_reader import read

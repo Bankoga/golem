@@ -1,6 +1,6 @@
 from data.axioms.configs import file_type
 from utils.config_reader import read
-from components.cardinators.cardinator_provider import cardinator_services
+from utils.cardinators.cardinator_provider import cardinator_services
 from utils.pos import Pos
 
 class Coder:

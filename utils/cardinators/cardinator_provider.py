@@ -1,6 +1,6 @@
 from utils.object_factory import *
-from components.cardinators.asc_cardinator import AscCardinatorBuilder
-from components.cardinators.dsc_cardinator import DscCardinatorBuilder
+from utils.cardinators.asc_cardinator import AscCardinatorBuilder
+from utils.cardinators.dsc_cardinator import DscCardinatorBuilder
 # from components.hooks.gate_i import GateILinkerBuilder
 # from components.hooks.synch_i import SynchILinkerBuilder
 # from components.hooks.synch_all import SynchAllLinkerBuilder
