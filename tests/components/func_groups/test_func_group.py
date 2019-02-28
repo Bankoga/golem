@@ -7,17 +7,20 @@
 # class TestFuncGroup(unittest.TestCase):
 
 #   def setUp(self):
-#     self.id = proc_ids['glg']
-#     self.factory = proc_services.get(self.id)
-#     self.base_group = self.factory.groups[0]
-#     self.type = self.factory.groups[0].type
-#     self.fg = FuncGroup(self.id, self.type)
+#     pass
+#     # self.id = proc_ids['glg']
+#     # self.factory = proc_services.get(self.id)
+#     # self.base_group = self.factory.groups[0]
+#     # self.type = self.factory.groups[0].type
+#     # self.fg = FuncGroup(self.id, self.type)
   
 #   def test_get_type(self):
-#     self.assertEqual(self.fg.get_type(), self.type, "type was set incorrectly")
+#     # self.assertEqual(self.fg.get_type(), self.type, "type was set incorrectly")
+#     pass
 
-#   def test_get_id(self, typ):
-#     self.assertEqual(self.fg.get_id(), self.type, "id was set incorrectly")
+#   def test_get_id(self):
+#     # self.assertEqual(self.fg.get_id(), self.type, "id was set incorrectly")
+#     pass
 
 #   def test_address(self):
 #     # given the rest of the environmental context
@@ -130,3 +133,6 @@
 #   #     self.assertIs(funcStr,VALID_funcStr)
 
 
+
+# if __name__ == '__main__':
+#   unittest.main()

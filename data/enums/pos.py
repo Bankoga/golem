@@ -14,12 +14,14 @@ class DimensionallyOrdered(Enum):
     self.pos = pos
     self.dimension = dimension
 
-class ComponentType(Enum):
+class ComponentLevel(Enum):
   MATRIX = 1
   HOOK = 2
   GROUP = 3
   PACKAGER = 4
   INSTRUCTION = 5
+  PACKAGE = 6
+  DATA = 7
 
 class Floor(Enum):
   CELLAR = 1

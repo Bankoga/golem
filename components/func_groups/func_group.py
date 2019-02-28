@@ -1,8 +1,10 @@
-from utils.helpers.packer import build_address
+from components.component import Component
 from components.func_groups.fg_builder_provider import fg_services
 
-class FuncGroup:
+from data.enums.pos import ComponentLevel
 
+from utils.helpers.packer import build_address
+class FuncGroup(Component):
   """
   A functional group is an addressable processing region within a matrix
   It is a datapack production group
@@ -25,14 +27,13 @@ class FuncGroup:
   """
   
   def __init__(self, group_id, group_type):
-    self.type = group_type
-    self.id = group_id
+    super().__init__(group_id, group_type.get_component_type(), ctg_cat=group_type)
 
   def get_id(self):
-    return self.id
+    return self.itm_id
 
   def get_type(self):
-    return self.type
+    return self.ctg_type
 
   def _build_func_(self):
     pass

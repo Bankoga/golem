@@ -4,17 +4,16 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.component import Component
-from data.enums.pos import ComponentType
+from data.enums.pos import ComponentLevel
 
 class TestComponent(unittest.TestCase):
 
-  @given(st.text(),st.sampled_from(ComponentType))
+  @given(st.text(),st.sampled_from(ComponentLevel))
   def test_base_component(self, component_id, component_type):
     comp = Component(component_id, component_type)
-    self.assertIsNone(comp.id)
-    self.assertEqual(comp.c_id, component_id)
-    self.assertEqual(comp.c_type, ComponentType(component_type))
-    self.assertEqual(comp.op_lvl, ComponentType(component_type).value)
+    self.assertIsNone(comp.ctg_type)
+    self.assertEqual(comp.itm_id, component_id)
+    self.assertEqual(comp.op_lvl, ComponentLevel(component_type))
 
 
 if __name__ == '__main__':
