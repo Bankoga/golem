@@ -1,8 +1,11 @@
 import unittest
-from hypothesis import given
+
 import hypothesis.strategies as st
-from data.axioms.configs import proc_ids
+from hypothesis import given
+
 from components.procs.proc_provider import proc_services
+from data.axioms.configs import proc_ids
+
 
 class TestProcProvider(unittest.TestCase):
 

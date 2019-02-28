@@ -9,6 +9,7 @@ from components.func_groups.fg_builder_provider import fg_services
 from components.module import Module
 
 from data.axioms.configs import group_ids
+from data.axioms.enums import GroupType
 
 from tests.strategies.golem_strats import module_input_set
 
@@ -16,7 +17,7 @@ class TestModule(unittest.TestCase):
   def setUp(self):
     fg_id = group_ids['glg']
     fg_type = GroupType.SENSOR
-    group = fg_service.get(f'{fg_type}-{fg_id}'')
+    group = fg_services.get(f'{fg_type}-{fg_id}')
     self.module = Module(group)
     # self.module = Module(module_all_groups)
 

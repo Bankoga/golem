@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.configs import proc_ids, id_pattern
+from data.axioms.configs import proc_ids, id_pattern,group_ids
 from data.axioms.enums import GroupType,PackType
 
 from tests.strategies.packing_strats import datapack_arbitrary, datapack_address, partial_address,valid_resource_data
@@ -13,6 +13,15 @@ from utils.datapack import Datapack
 from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
 
 from components.procs.proc_provider import proc_services
+
+@composite
+def fg_provider_id(draw):
+    fg_id = group_ids['glg']
+    fg_type = GroupType.SENSOR
+  draw(st.sampled_from())
+  draw(st.sampled_from())
+  pass
+
 
 @composite
 def list_of_inputs_and_input_set(draw):
