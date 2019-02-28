@@ -3,18 +3,18 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.packaging_rules.packaging_rule import PackagingRule
+from components.packagers.packager import Packager
 from data.axioms.configs import id_pattern
-from data.axioms.configs import packaging_rule_defaults as prd
+from data.axioms.configs import packager_defaults as prd
 from data.axioms.enums import RuleType
 
-class TestPackagingRule(unittest.TestCase):
+class TestPackager(unittest.TestCase):
   def setUp(self):
-    self.rule = PackagingRule(RuleType.CELL, 'A')
+    self.rule = Packager(RuleType.CELL, 'A')
   
   @given(st.sampled_from(RuleType),st.from_regex(id_pattern))
   def test_base_rule(self, arb_type, arb_id):
-    rule = PackagingRule(arb_type, arb_id)
+    rule = Packager(arb_type, arb_id)
     self.assertEqual(rule.type, arb_type)
     self.assertEqual(rule.id, arb_id)
     self.assertEqual(self.rule.freq_range, prd['freq_range'])

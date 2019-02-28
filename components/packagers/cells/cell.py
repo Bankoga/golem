@@ -1,8 +1,8 @@
-from components.packaging_rules import packaging_rule
+from components.packagers import packager
 from data.axioms.cell_types import CellType, cell_data
 from data.axioms.enums import RuleType
 
-class Cell(packaging_rule.PackagingRule):
+class Cell(packager.Packager):
   
   def __init__(self, cell_id):
     if (not cell_id in CellType) or cell_id == CellType.UNSET:

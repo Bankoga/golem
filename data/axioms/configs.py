@@ -50,7 +50,7 @@ id_pattern = "[a-zA-Z0-9_]*$"
 dest_key_pattern = "[a-zA-Z0-9_].*(-[a-zA-Z0-9_].*)?"
 cardinators = ['asc','dsc'] # eventually will need a pairing cardinator
 
-packaging_rule_defaults = {
+packager_defaults = {
   'cnv_tmplts': [],
   'freq_range': [5,256],
   'init_freq': 5,

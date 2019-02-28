@@ -1,8 +1,8 @@
 from data.axioms.enums import RuleType
-from data.axioms.configs import packaging_rule_defaults as prd
+from data.axioms.configs import packager_defaults as prd
 from abc import abstractmethod
 
-class PackagingRule:
+class Packager:
   """
   The actual functions that power the matrix
   Not the groups, or the meta-containers, or regions, but the functions themselves

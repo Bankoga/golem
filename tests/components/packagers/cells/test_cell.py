@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.packaging_rules.cells.cell import Cell
+from components.packagers.cells.cell import Cell
 from data.axioms.cell_types import CellType,cell_data
 from data.axioms.enums import RuleType, RsrcType, PackType, FieldType
 
