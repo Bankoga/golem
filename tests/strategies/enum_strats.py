@@ -14,42 +14,42 @@ from utils.helpers.packer import (build_address, build_datapack,
 
 @composite
 def hook_type(draw):
-  res = st.sampled_from(HookType)
+  res = draw(st.sampled_from(HookType))
   st.assume(res)
   st.assume(res != HookType.UNSET)
   return res
 
 @composite
 def datapack_resource(draw):
-  res = st.sampled_from(RsrcType)
+  res = draw(st.sampled_from(RsrcType))
   st.assume(res)
   st.assume(res != RsrcType.UNSET)
   return res
 
 @composite
 def datapack_group(draw):
-  res = st.sampled_from(GroupType)
+  res = draw(st.sampled_from(GroupType))
   st.assume(res)
   st.assume(res != GroupType.UNSET)
   return res
 
 @composite
 def datapack_type(draw):
-  res = st.sampled_from(PackType)
+  res = draw(st.sampled_from(PackType))
   st.assume(res)
   st.assume(res != PackType.UNSET)
   return res
 
 @composite
 def datapack_field_shape(draw):
-  res = st.sampled_from(FieldType)
+  res = draw(st.sampled_from(FieldType))
   st.assume(res)
   st.assume(res != FieldType.UNSET)
   return res
 
 @composite
 def ruletype(draw):
-  res = st.sampled_from(RuleType)
+  res = draw(st.sampled_from(RuleType))
   st.assume(res)
-  st.assume(res != FieldType.UNSET)
+  st.assume(res != RuleType.UNSET)
   return res

@@ -4,3 +4,9 @@ class Pos:
     self.x = x
     self.y = y
     self.z = z
+    self._pos_tup = None
+  
+  def get_hash(self):
+    if self._pos_tup is None:
+      self._pos_tup = (self.s,self.x,self.y,self.z)
+    return hash(self._pos_tup)

@@ -21,7 +21,7 @@ class TestConvInstruction(unittest.TestCase):
   def test_default(self, direction, shapes, pos):
         # for efficiency reasons, eventually instructions will need to be built before processing
     inst = ConvInstruction(direction, shapes, pos)
-    self.assertEqual(inst.type, RuleType.CELL)
+    self.assertEqual(inst.ctg_type, RuleType.CELL)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)
     self.assertIsNone(inst.curr_pos)
