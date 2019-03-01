@@ -10,3 +10,6 @@ class Component:
     self.ctg_type = ctg_type
     self.itm_id = component_id
     self.op_lvl = ComponentLevel(component_type)
+
+  def get_id(self):
+    return self.itm_id

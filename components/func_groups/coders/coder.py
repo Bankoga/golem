@@ -2,24 +2,23 @@ from data.axioms.configs import file_type
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.pos import Pos
+from components.func_groups.func_group import FuncGroup
 
-class Coder:
+
+class Coder(FuncGroup):
   """
   A sensor is used to create the stubs of the functional groups within a matrix
   """
   def __init__(self, coder_id):
     self.config = read(coder_id,file_type['coder'])
-    self.id = self.config['id']
     self._set_type_data_()
+    super().__init__(self.config['id'], self.type)
     self.groups = dict()
     self._set_sensor_groups_()
     self._set_outputs_()
     self._set_hooks_()
     self._set_links_defined_()
     self._set_links_used_()
-
-  def get_id(self):
-    return self.id
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']

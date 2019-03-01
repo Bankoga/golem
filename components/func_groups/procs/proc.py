@@ -13,8 +13,8 @@ class Proc(FuncGroup):
   """
   def __init__(self, proc_id):
     self.config = read(proc_id,file_type['proc'])
-    self.id = self.config['id']
     self._set_type_data_()
+    super().__init__(self.config['id'], self.type)
     self.groups = dict()
     self._set_proc_groups_()
     self._set_outputs_()
