@@ -2,7 +2,7 @@
 id: PS
 type_data:
   name: Parts Sensor
-  type: sensor
+  type: GroupType.SENSOR
   purpose: Serves as a mechanism for coupling a simple input with an expected output. Counts down time until it expects an answers for returning reward signal
   rsp_freq: 6
 groups:

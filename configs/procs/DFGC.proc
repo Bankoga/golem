@@ -2,8 +2,8 @@
 id: DFGC
 type_data:
   name: Decision Free Granular Cort
-  purpose: Represents an arbitrary cortical section that is free of L4 decision influence and outputs through a gate
-  type: cortical
+  purpose: Represents an arbitrary GroupType.CORTICAL section that is free of L4 decision influence and outputs through a gate
+  type: GroupType.CORTICAL
   cardinal_direction: dsc
 stages_to_groups_dict:
   - stage: cntxt_ctrl
