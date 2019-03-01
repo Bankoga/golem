@@ -9,11 +9,11 @@ from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import id_pattern
 from data.enums.prop_types import FieldType, HookType, PackType, RsrcType, NodeType
 from data.axioms.cell_types import CellType
-from tests.strategies.enum_strats import (datapack_field_shape, datapack_group,
-                                          datapack_resource, datapack_type)
-from utils.datapack import Datapack
-from utils.helpers.packer import (build_address, build_datapack,
-                                  build_datapack_inputs, build_meld)
+from tests.strategies.enum_strats import (package_field_shape, package_group,
+                                          package_resource, package_type)
+from components.packages.package import Package
+from utils.helpers.packer import (build_address, build_package,
+                                  build_package_inputs, build_meld)
 
 @composite
 def cell_type_prop(draw):

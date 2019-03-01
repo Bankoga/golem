@@ -8,10 +8,10 @@ from data.axioms.configs import proc_ids, group_ids
 from data.axioms.props import id_pattern
 from data.enums.prop_types import GroupType,PackType
 
-from tests.strategies.packing_strats import datapack_arbitrary, datapack_address, partial_address,valid_resource_data
+from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address,valid_resource_data
 
-from utils.datapack import Datapack
-from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
+from components.packages.package import Package
+from utils.helpers.packer import build_address, build_meld, build_package_inputs, build_package
 
 from components.func_groups.procs.proc_provider import proc_services
 
@@ -46,7 +46,7 @@ def module_input_set(draw, elements=partial_address()): # pylint: disable=no-val
   # thus we need to generate two or more sets of inputs that get merged into one
   # inputs to the module
   address = draw(elements)#partial_address()) # pylint: disable=no-value-for-parameter
-  packs = draw(st.lists(datapack_arbitrary())) # pylint: disable=no-value-for-parameter
+  packs = draw(st.lists(package_arbitrary())) # pylint: disable=no-value-for-parameter
   st.assume(address and packs)
   inputs = []
   for pack in packs:
@@ -61,7 +61,7 @@ def module_input_set(draw, elements=partial_address()): # pylint: disable=no-val
   group_inputs = []
   funcgroup = draw(proc_group()) # pylint: disable=no-value-for-parameter
   for group in funcgroup.groups:
-    inp = draw(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+    inp = draw(package_arbitrary()) # pylint: disable=no-value-for-parameter
     groups.append(funcgroup.groups[group]['id'])
     inp.update(f'{address}-{funcgroup.groups[group]["id"]}')
     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
@@ -91,7 +91,7 @@ def processed_module_input_set(draw):
   general_packs = {}
   # guaranteed order sort all non-aggregated type packs into the appropriate destination bucket
   # processing a module input set consists of a few parts
-  #   - removing aggregate datapacks from the inputs
+  #   - removing aggregate packages from the inputs
   #   - combining them in a guaranteed order
   #   - then readding a single entry per aggregated key
   # for pack in base_set.items():
@@ -117,8 +117,8 @@ def valid_module_input_set(draw):
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_group_id','self','Self','']))
-# def test_build_datapack_inputs(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-#   inputs = build_datapack_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+# def test_build_package_inputs(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+#   inputs = build_package_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
 #   sender_address = build_address(sm_id,sg_id)
 #   meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
 #   res = tuple([meld,sender_address])
@@ -131,35 +131,35 @@ def valid_module_input_set(draw):
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_group_id','self','Self','']))
-# def test_build_datapack(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-#   inputs = build_datapack(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+# def test_build_package(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+#   inputs = build_package(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
 #   sender_address = build_address(sm_id,sg_id)
 #   meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
-#   res = Datapack(meld,sender_address)
+#   res = Package(meld,sender_address)
 #   self.assertEqual(inputs, res)
 
 # @composite
 # def test_pack(draw,inputs):
 #   """
 #   but I need a guaranteed order to some of the inputs don't I?
-#   Why? Bc agg type datapacks get combined in a spatially oriented way
+#   Why? Bc agg type packages get combined in a spatially oriented way
 #   Actually, bc of position data that is embedded in each sender we have a way to guarantee order of processing
-#   Given that each sender has a position, this can be added to the datapack along with sender address (or in place of?)
+#   Given that each sender has a position, this can be added to the package along with sender address (or in place of?)
 #   Given that we are sent inputs
 #   When we prepare to evaluate them
 #   Then we sort them using a guaranteed sort by pos first!
 
 #   Where does this sort live? In utils.helpers.pos_help?
 
-#   Specifiying inputs for testing datapacks, and things that rely on them is growing more complex
-#   At this point, I think it makes the most sense to begin work on a datapack series of custom hypothesis strategies
+#   Specifiying inputs for testing packages, and things that rely on them is growing more complex
+#   At this point, I think it makes the most sense to begin work on a package series of custom hypothesis strategies
 
-#   aggregate datapacks can't exist or not exist as they please
+#   aggregate packages can't exist or not exist as they please
 #   they must always exist in the correct order to be processed
 #   Thus we assume that an order id list or dict has been generated which we can compare against
 #   """
 #   # build a
-#   st.lists(st.builds(build_datapack, st.sampled_from(['SenderModuleId','self','Self']),
+#   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
 #       st.sampled_from(['sender_group_id','self','Self', '']),
 #       st.sampled_from(RsrcType),
 #       st.sampled_from(PackType),

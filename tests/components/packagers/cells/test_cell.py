@@ -10,7 +10,7 @@ from data.enums.prop_types import RuleType, RsrcType, PackType,FieldType, NodeTy
 from tests.strategies.packing_strats import valid_cell_instruction
 from tests.strategies.prop_strats import cell_type_prop
 
-from utils.helpers.packer import build_address, build_meld, build_datapack
+from utils.helpers.packer import build_address, build_meld, build_package
 
 class TestCell(unittest.TestCase):
   # def setUp(self):
@@ -48,24 +48,24 @@ class TestCell(unittest.TestCase):
   #   """
   #  packing may be done in func groups
   #   but I need a guaranteed order to some of the inputs don't I?
-  #   Why? Bc agg type datapacks get combined in a spatially oriented way
+  #   Why? Bc agg type packages get combined in a spatially oriented way
   #   Actually, bc of position data that is embedded in each sender we have a way to guarantee order of processing
-  #   Given that each sender has a position, this can be added to the datapack along with sender address (or in place of?)
+  #   Given that each sender has a position, this can be added to the package along with sender address (or in place of?)
   #   Given that we are sent inputs
   #   When we prepare to evaluate them
   #   Then we sort them using a guaranteed sort by pos first!
 
   #   Where does this sort live? In utils.helpers.pos_help?
 
-  #   Specifiying inputs for testing datapacks, and things that rely on them is growing more complex
-  #   At this point, I think it makes the most sense to begin work on a datapack series of custom hypothesis strategies
+  #   Specifiying inputs for testing packages, and things that rely on them is growing more complex
+  #   At this point, I think it makes the most sense to begin work on a package series of custom hypothesis strategies
 
-  #   aggregate datapacks can't exist or not exist as they please
+  #   aggregate packages can't exist or not exist as they please
   #   they must always exist in the correct order to be processed
   #   Thus we assume that an order id list or dict has been generated which we can compare against
   #   """
   #   # build a
-  #   st.lists(st.builds(build_datapack, st.sampled_from(['SenderModuleId','self','Self']),
+  #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
   #       st.sampled_from(['sender_group_id','self','Self', '']),
   #       st.sampled_from(RsrcType),
   #       st.sampled_from(PackType),

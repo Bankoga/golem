@@ -7,11 +7,11 @@ from hypothesis.strategies import composite
 from data.axioms.props import id_pattern 
 from data.axioms.pos_maps import cardinal_keys
 from data.enums.pos import Floor
-from utils.datapack import Datapack
-from utils.helpers.packer import (build_address, build_datapack,
-                                  build_datapack_inputs, build_meld)
+from components.packages.package import Package
+from utils.helpers.packer import (build_address, build_package,
+                                  build_package_inputs, build_meld)
 from utils.pos import Pos
-from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_type
+from tests.strategies.enum_strats import package_group,package_resource,package_type
 from tests.strategies.packing_strats import valid_shape
 
 @composite

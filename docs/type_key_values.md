@@ -37,7 +37,7 @@ Paired items are simply sign flipped in terms of position or use a paired dictio
 
 ## Hook Types
 
-Currently used to indicate which datapack rule is used and which direction the datapack is going.
+Currently used to indicate which package rule is used and which direction the package is going.
 
-*_to: id for the datapack aggregation rule used when consuming the datapack associated with the prefix
-*_from: id for the datapack generation rule used to when building the datapack associated with the prefix
+*_to: id for the package aggregation rule used when consuming the package associated with the prefix
+*_from: id for the package generation rule used to when building the package associated with the prefix

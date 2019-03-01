@@ -3,19 +3,19 @@ import unittest
 from hypothesis import given
 import hypothesis.strategies as st
 
-from tests.strategies.packing_strats import datapack_inputs, datapack_arbitrary,datapack_address,valid_resource_data,valid_datapack_arbitrary
+from tests.strategies.packing_strats import package_inputs, package_arbitrary,package_address,valid_resource_data,valid_package_arbitrary
 
-from utils.datapack import Datapack
-from utils.helpers.packer import build_address, build_meld, build_datapack_inputs, build_datapack
+from components.packages.package import Package
+from utils.helpers.packer import build_address, build_meld, build_package_inputs, build_package
 from data.axioms.props import dest_key_pattern 
 from data.enums.prop_types import PackType,RsrcType,FieldType
 
 from numpy import array_equal
 
-class TestDataPack(unittest.TestCase):
+class TestPackage(unittest.TestCase):
 
   def _read_data_(self, meld,sender_address):
-    datp=Datapack(meld,sender_address)
+    datp=Package(meld,sender_address)
     datp.read_data()
     meld_tuple = meld.split(';')
     self.assertTrue(datp.address==meld_tuple[0])
@@ -38,13 +38,13 @@ class TestDataPack(unittest.TestCase):
     # addr = build_address('GLG','noise_from')
     # self._read_data_(inputs[0],inputs[1])
 
-  @given(datapack_inputs()) # pylint: disable=no-value-for-parameter
+  @given(package_inputs()) # pylint: disable=no-value-for-parameter
   def test_read_data(self,inputs):#meld_tuple,sender_address):
     # st.tuples(st.from_regex(dest_key_pattern),st.text(),st.text()), st.from_regex(dest_key_pattern)
     meld = inputs[0]
     sender_address = inputs[1]
     # meld = ";".join(meld_tuple)
-    datp=Datapack(meld,sender_address)
+    datp=Package(meld,sender_address)
     datp.read_data()
     meld_tuple = meld.split(';')
     self.assertTrue(datp.address==meld_tuple[0])
@@ -63,7 +63,7 @@ class TestDataPack(unittest.TestCase):
       self.assertTrue(datp.shape == FieldType.UNSET)
 
   """
-  There are N cases of address description for datapacks
+  There are N cases of address description for packages
   These descriptions come from the outputs and hooks properties of the configs
   we send a msg to a set of groups (affects whatever reads module context for data)
   we send a msg to an individual group (which forces it to read the data according to packtype)
@@ -83,24 +83,24 @@ class TestDataPack(unittest.TestCase):
     ['SenderModuleId','','RecipientModuleId','recipient_group_id'],
     ['SenderModuleId','sender_group_id','RecipientModuleId','recipient_group_id']
   """
-  @given(datapack_inputs()) # pylint: disable=no-value-for-parameter
+  @given(package_inputs()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self, inputs):
     self._read_data_(inputs[0],inputs[1])
 
-  @given(datapack_inputs()) # pylint: disable=no-value-for-parameter
-  def test_compare_equal_datapacks(self, inputs):
-    datp1 = Datapack(inputs[0],inputs[1])
-    datp2 = Datapack(inputs[0],inputs[1])
+  @given(package_inputs()) # pylint: disable=no-value-for-parameter
+  def test_compare_equal_packages(self, inputs):
+    datp1 = Package(inputs[0],inputs[1])
+    datp2 = Package(inputs[0],inputs[1])
     self.assertEqual(datp1,datp2)
 
   
-  @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  @given(package_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_unbuilt(self, input_pack):
     self.assertFalse(input_pack.is_built())
     with self.assertRaises(RuntimeError):
       input_pack.process()
 
-  @given(datapack_arbitrary(), valid_resource_data()) # pylint: disable=no-value-for-parameter
+  @given(package_arbitrary(), valid_resource_data()) # pylint: disable=no-value-for-parameter
   def test_build(self, input_pack, data):
     self.assertFalse(input_pack.is_built())
     input_pack.build(data)
@@ -108,12 +108,12 @@ class TestDataPack(unittest.TestCase):
     self.assertTrue(array_equal(input_pack.var, data))
     input_pack.process()
 
-  @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  @given(package_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_get_meld(self,input_pack):
     meld = f'{input_pack.sender};{input_pack.address};{input_pack.resource};{input_pack.ctg_type};{input_pack.shape}'
     self.assertEqual(input_pack.get_meld(),meld)
 
-  @given(valid_datapack_arbitrary(), datapack_address()) # pylint: disable=no-value-for-parameter
+  @given(valid_package_arbitrary(), package_address()) # pylint: disable=no-value-for-parameter
   def test_update_address(self,input_pack, new_addr):
     input_pack.update(new_addr)
     self.assertEqual(input_pack.address, new_addr)

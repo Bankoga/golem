@@ -1,15 +1,15 @@
 from data.axioms.props import id_pattern 
 from data.enums.prop_types import HookType,PackType,RsrcType,FieldType
-from utils.datapack import Datapack
+from components.packages.package import Package
 import re
 
-class Hook(Datapack):
+class Hook(Package):
   """
-  For all intents and purposes, a hook is a trigger for building datapacks
-  Hooks have these additional properties to datapack properties in the proc configs
+  For all intents and purposes, a hook is a trigger for building packages
+  Hooks have these additional properties to package properties in the proc configs
     - hook_id
     - direction: to/from
-    - target: the module to use in the blank spots in the datapack production rule
+    - target: the module to use in the blank spots in the package production rule
     - type simple dict of all hook ids to hook_types used in the golem type matrix
   hook_bases are currently defined at the lowest level, in proc groups
   A hook base is the mdl whch srvs as the anchor for cnnctng mdls usng HookType of HookId

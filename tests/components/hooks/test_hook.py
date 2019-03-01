@@ -7,11 +7,11 @@ from components.hooks.hook import Hook
 from data.axioms.props import dest_key_pattern, id_pattern 
 from data.enums.prop_types import FieldType,HookType,RsrcType,PackType
 from utils.helpers.packer import build_address, build_meld
-from tests.utils.test_datapack import TestDataPack
-from tests.strategies.packing_strats import datapack_address,full_address,partial_address,arbitrary_id
-from tests.strategies.enum_strats import datapack_field_shape,datapack_group,datapack_resource,hook_type,datapack_type
+from tests.components.packages.test_package import TestPackage
+from tests.strategies.packing_strats import package_address,full_address,partial_address,arbitrary_id
+from tests.strategies.enum_strats import package_field_shape,package_group,package_resource,hook_type,package_type
 
-class TestHook(TestDataPack):
+class TestHook(TestPackage):
   # def setUp(self):
     # self.hook = Hook()
   # NO TOUCHY OUTPUTS UNTIL DONE WITH HOOKS!!!!!!
@@ -84,7 +84,7 @@ class TestHook(TestDataPack):
     meld = ";".join(meld_tuple)
     self._read_data_(meld)
 
-  @given(arbitrary_id(), hook_type(), datapack_address(), datapack_resource(), datapack_type(), datapack_field_shape()) # pylint: disable=no-value-for-parameter
+  @given(arbitrary_id(), hook_type(), package_address(), package_resource(), package_type(), package_field_shape()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
     inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
     self._read_data_(inputs)

@@ -1,9 +1,9 @@
 from data.enums.prop_types import PackType,RsrcType,FieldType
 from chainer import Variable
 
-class Datapack:
+class Package:
   """
-  For all intents and purposes, a datapack is a mail package
+  For all intents and purposes, a package is a mail package
   It has the following properties
     - sender
     - recipient
@@ -16,7 +16,7 @@ class Datapack:
   - aggregated
     - gets joined with others using a guaranteed ordering to produce a full shape to be processed
   
-  eventually, are datapack shapes going to be chainer variables?
+  eventually, are package shapes going to be chainer variables?
   """
   def __init__(self, meld,sender_address):
     self.meld_tuple = meld.split(';')
@@ -42,7 +42,7 @@ class Datapack:
 
   def process(self):
     if (not self._built_):
-      raise RuntimeError("The datapack has not yet been built")
+      raise RuntimeError("The package has not yet been built")
     else:
       pass
 

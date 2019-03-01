@@ -7,12 +7,12 @@ from utils.helpers.packer import build_address
 class FuncGroup(Component):
   """
   A functional group is an addressable processing region within a matrix
-  It is a datapack production group
+  It is a package production group
   each functional group in a matrix defines N things
     - an unique address
-    - the datapacks it produces
-    - the rules for consuming the two types of datapacks: overlayed and aggregated
-    - the types of datapacks it consumes that are module level
+    - the packages it produces
+    - the rules for consuming the two types of packages: overlayed and aggregated
+    - the types of packages it consumes that are module level
     - the links for extra output and/or output routing
   We currently have 
   - proc groups which breakdown into different proc types

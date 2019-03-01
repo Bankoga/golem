@@ -48,7 +48,7 @@
 #     pass
   
 #   def test_resource_types(self):
-#     # which resource types it accepts from Module level datapacks
+#     # which resource types it accepts from Module level packages
 #     # given the proc group data
 #     # when the func group is initialized
 #     # then the accepted_resources list should match resource types
@@ -57,7 +57,7 @@
     
 #   def test_aggrg_func(self):
 #      # the function used to aggregate the aggregated type inputs
-#     # takes list of datapacks, and aggregates them according to some rule
+#     # takes list of packages, and aggregates them according to some rule
 #     # what would different rules mechanically do?
 #     # self.assertTrue(self.group.aggrg_func)
 #     pass

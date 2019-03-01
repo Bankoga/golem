@@ -1,4 +1,4 @@
-from utils.datapack import Datapack
+from components.packages.package import Package
 
 def build_address(module_id, group_id):
   if group_id is None:
@@ -12,19 +12,19 @@ def build_meld(recip_addr,dp_resource,dp_type,dp_shape=None):
   else:
     return f'{recip_addr};{dp_resource};{dp_type};{dp_shape}'
 
-def build_datapack_inputs(recip_addr,dp_resource,dp_type,dp_shape, sm_id, sg_id):
+def build_package_inputs(recip_addr,dp_resource,dp_type,dp_shape, sm_id, sg_id):
   sender_address = build_address(sm_id,sg_id)
   meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
   return tuple([meld,sender_address])
 
-def build_datapack(recip_addr,dp_resource,dp_type,dp_shape, sm_id, sg_id):
+def build_package(recip_addr,dp_resource,dp_type,dp_shape, sm_id, sg_id):
   sender_address = build_address(sm_id,sg_id)
   meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
-  return Datapack(meld,sender_address)
+  return Package(meld,sender_address)
 
-def sort_data_packs(self, datapacks):
+def sort_data_packs(self, packages):
   """
-  given a list of datapacks
+  given a list of packages
     sorts into N=PackType lists
     said list use a guaranteed insertion sort using sender pos
   """

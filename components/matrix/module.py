@@ -3,8 +3,8 @@ from components.func_groups.func_group import FuncGroup
 class Module():
 
   """
-  Each module serves as a discrete env, and datapack repository for a set of func groups
-  Responsible for aggregating datapacks with the same keys into single datapacks for routing
+  Each module serves as a discrete env, and package repository for a set of func groups
+  Responsible for aggregating packages with the same keys into single packages for routing
   """
   def __init__(self, proc):
     # once fully initialized, a module has very few aggregate properties to consider during operation
