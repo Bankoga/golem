@@ -1,7 +1,8 @@
+from components.component import Component
 from data.enums.prop_types import PackType,RsrcType,FieldType
 from chainer import Variable
 
-class Package:
+class Package(Component):
   """
   For all intents and purposes, a package is a mail package
   It has the following properties
@@ -23,6 +24,7 @@ class Package:
     self.sender = sender_address
     self._built_ = False
     self.read_data()
+    super().__init__(self.get_meld(),self.ctg_type.get_component_type(),self.ctg_type)
   
   def read_data(self):
     self.address=self.meld_tuple[0]
