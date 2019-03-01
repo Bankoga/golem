@@ -17,7 +17,7 @@ class Module():
   def _build_func_groups_(self):
     for group_id in self.proc.groups:
       group = self.proc.groups[group_id]
-      self.groups[group_id] = FuncGroup(group, group.type)
+      self.groups[group_id] = FuncGroup(group, group.ctg_type)
       pass
 
   # def operate(self,inputShapes):

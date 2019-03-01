@@ -13,7 +13,7 @@ class Coder(FuncGroup):
   def __init__(self, coder_id):
     self.config = read(coder_id,file_type['coder'])
     self._set_type_data_()
-    super().__init__(self.config['id'], self.type)
+    super().__init__(self.config['id'], self.ctg_type)
     self.groups = dict()
     self._set_sensor_groups_()
     self._set_outputs_()
@@ -23,7 +23,7 @@ class Coder(FuncGroup):
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
-    self.type = GroupType[self.config['type_data']['type']]
+    self.ctg_type = GroupType[self.config['type_data']['type']]
     self.purpose = self.config['type_data']['purpose']
   
   # @abstractmethod # pylint: disable=undefined-variable

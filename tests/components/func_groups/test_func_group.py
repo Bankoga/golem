@@ -11,15 +11,15 @@
 #     # self.id = proc_ids['glg']
 #     # self.factory = proc_services.get(self.id)
 #     # self.base_group = self.factory.groups[0]
-#     # self.type = self.factory.groups[0].type
-#     # self.fg = FuncGroup(self.id, self.type)
+#     # self.ctg_type = self.factory.groups[0].ctg_type
+#     # self.fg = FuncGroup(self.id, self.ctg_type)
   
 #   def test_get_type(self):
-#     # self.assertEqual(self.fg.get_type(), self.type, "type was set incorrectly")
+#     # self.assertEqual(self.fg.get_type(), self.ctg_type, "type was set incorrectly")
 #     pass
 
 #   def test_get_id(self):
-#     # self.assertEqual(self.fg.get_id(), self.type, "id was set incorrectly")
+#     # self.assertEqual(self.fg.get_id(), self.ctg_type, "id was set incorrectly")
 #     pass
 
 #   def test_address(self):

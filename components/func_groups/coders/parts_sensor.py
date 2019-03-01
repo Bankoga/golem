@@ -8,7 +8,7 @@ class PartsSensor(Coder):
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
-    self.type = GroupType[self.config['type_data']['type']]
+    self.ctg_type = GroupType[self.config['type_data']['type']]
     self.purpose = self.config['type_data']['purpose']
     self.rsp_freq = self.config['type_data']['rsp_freq']
 

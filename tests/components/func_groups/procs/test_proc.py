@@ -40,9 +40,9 @@ class TestProc(unittest.TestCase):
       self.assertEqual(type_obj['name'],self.proc.name)
     
     if (type_obj['type'] is None):
-      self.assertIsNone(self.proc.type)
+      self.assertIsNone(self.proc.ctg_type)
     else:
-      self.assertEqual(GroupType[type_obj['type']],self.proc.type)
+      self.assertEqual(GroupType[type_obj['type']],self.proc.ctg_type)
     
     if (type_obj['purpose'] is None):
       self.assertIsNone(self.proc.purpose)

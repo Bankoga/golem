@@ -24,9 +24,9 @@ class TestPartsSensor(TestCoder):
       self.assertEqual(type_obj['name'],self.coder.name)
     
     if (type_obj['type'] is None):
-      self.assertIsNone(self.coder.type)
+      self.assertIsNone(self.coder.ctg_type)
     else:
-      self.assertEqual(GroupType[type_obj['type']],self.coder.type)
+      self.assertEqual(GroupType[type_obj['type']],self.coder.ctg_type)
     
     if (type_obj['purpose'] is None):
       self.assertIsNone(self.coder.purpose)

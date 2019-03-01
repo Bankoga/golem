@@ -41,9 +41,9 @@ class TestHook(TestDataPack):
     else:
       self.assertTrue(hook.resource == RsrcType.UNSET)
     if len(meld_tuple)>4 and meld_tuple[4]:
-      self.assertTrue(hook.type == PackType.UNSET or hook.type==PackType(meld_tuple[4]))
+      self.assertTrue(hook.ctg_type == PackType.UNSET or hook.ctg_type==PackType(meld_tuple[4]))
     else:
-      self.assertTrue(hook.type == PackType.UNSET)
+      self.assertTrue(hook.ctg_type == PackType.UNSET)
     if len(meld_tuple)>5 and meld_tuple[5]:
       self.assertTrue(hook.shape == FieldType.UNSET or hook.shape==meld_tuple[5])
     else:
@@ -64,9 +64,9 @@ class TestHook(TestDataPack):
     else:
       self.assertTrue(hook.resource == RsrcType.UNSET)
     if len(meld_tuple)>2 and meld_tuple[2]:
-      self.assertTrue(hook.type == PackType.UNSET or hook.type==PackType(meld_tuple[2]))
+      self.assertTrue(hook.ctg_type == PackType.UNSET or hook.ctg_type==PackType(meld_tuple[2]))
     else:
-      self.assertTrue(hook.type == PackType.UNSET)
+      self.assertTrue(hook.ctg_type == PackType.UNSET)
     if len(meld_tuple)>3 and meld_tuple[3]:
       self.assertTrue(hook.shape == FieldType.UNSET or hook.shape==meld_tuple[3])
     else:

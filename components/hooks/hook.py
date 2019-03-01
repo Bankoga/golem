@@ -34,13 +34,13 @@ class Hook(Datapack):
 
   def read_data(self):
     self.resource = RsrcType.UNSET
-    self.type = PackType.UNSET
+    self.ctg_type = PackType.UNSET
     self.shape = FieldType.UNSET
     self.address=self.meld_tuple[0]
     if len(self.meld_tuple)>1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
       self.resource=RsrcType(self.meld_tuple[1])
     if len(self.meld_tuple)>2 and self.meld_tuple[2] and self.meld_tuple[2] in PackType:
-      self.type=PackType(self.meld_tuple[2])
+      self.ctg_type=PackType(self.meld_tuple[2])
     if len(self.meld_tuple)>3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:
       self.shape=self.meld_tuple[3]
 

@@ -28,17 +28,17 @@ class Datapack:
     self.address=self.meld_tuple[0]
     self.resource=RsrcType.UNSET
     self.shape = FieldType.UNSET
-    self.type = PackType.UNSET
+    self.ctg_type = PackType.UNSET
     if len(self.meld_tuple) > 1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
       self.resource = self.meld_tuple[1]
       if self.meld_tuple[2] != 0 and self.meld_tuple[2] in PackType:
-        self.type=PackType(self.meld_tuple[2])
+        self.ctg_type=PackType(self.meld_tuple[2])
         if len(self.meld_tuple) >3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:
           self.shape=FieldType(self.meld_tuple[3])
     self.var = None
 
   def get_meld(self):
-    return f'{self.sender};{self.address};{self.resource};{self.type};{self.shape}'
+    return f'{self.sender};{self.address};{self.resource};{self.ctg_type};{self.shape}'
 
   def process(self):
     if (not self._built_):

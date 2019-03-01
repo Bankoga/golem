@@ -94,14 +94,14 @@ def processed_module_input_set(draw):
   #   - removing aggregate datapacks from the inputs
   #   - combining them in a guaranteed order
   #   - then readding a single entry per aggregated key
-  for pack in base_set.items():
-    if pack[1].type is PackType.OVERLAY:
-      proc_packs[pack[0]] = pack[1]
-    elif pack[0] in agg_pack:
-      agg_pack[pack[0]].append(pack[1])
-    else:
-      agg_pack[pack[0]] = pack[1]
-  proc_packs.update(agg_packs)
+  # for pack in base_set.items():
+  #   if pack[1].ctg_type is PackType.OVERLAY:
+  #     proc_packs[pack[0]] = pack[1]
+  #   elif pack[0] in agg_pack:
+  #     agg_pack[pack[0]].append(pack[1])
+  #   else:
+  #     agg_pack[pack[0]] = pack[1]
+  # proc_packs.update(agg_packs)
   # guaranteed order sort result aggregated packs into appropriate bucket
   # return results dict
   return base_set

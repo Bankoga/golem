@@ -15,7 +15,7 @@ class Proc(FuncGroup):
   def __init__(self, proc_id):
     self.config = read(proc_id,file_type['proc'])
     self._set_type_data_()
-    super().__init__(self.config['id'], self.type)
+    super().__init__(self.config['id'], self.ctg_type)
     self.groups = dict()
     self._set_proc_groups_()
     self._set_outputs_()
@@ -23,7 +23,7 @@ class Proc(FuncGroup):
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
-    self.type = GroupType[self.config['type_data']['type']]
+    self.ctg_type = GroupType[self.config['type_data']['type']]
     self.purpose = self.config['type_data']['purpose']
     self.cardinal_direction = self.config['type_data']['cardinal_direction']
   

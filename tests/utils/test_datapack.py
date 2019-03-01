@@ -24,9 +24,9 @@ class TestDataPack(unittest.TestCase):
     else:
       self.assertTrue(datp.resource == RsrcType.UNSET)
     if len(meld_tuple)>2 and meld_tuple[2]:
-      self.assertTrue(datp.type == PackType.UNSET or datp.type==PackType(meld_tuple[2]))
+      self.assertTrue(datp.ctg_type == PackType.UNSET or datp.ctg_type==PackType(meld_tuple[2]))
     else:
-      self.assertTrue(datp.type == PackType.UNSET)
+      self.assertTrue(datp.ctg_type == PackType.UNSET)
     if len(meld_tuple)>3 and meld_tuple[3]:
       self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
     else:
@@ -54,9 +54,9 @@ class TestDataPack(unittest.TestCase):
     else:
       self.assertTrue(datp.resource == RsrcType.UNSET)
     if len(meld_tuple)>2 and meld_tuple[2]:
-      self.assertTrue(datp.type == PackType.UNSET or datp.type==PackType(meld_tuple[2]))
+      self.assertTrue(datp.ctg_type == PackType.UNSET or datp.ctg_type==PackType(meld_tuple[2]))
     else:
-      self.assertTrue(datp.type == PackType.UNSET)
+      self.assertTrue(datp.ctg_type == PackType.UNSET)
     if len(meld_tuple)>3 and meld_tuple[3]:
       self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
     else:
@@ -110,7 +110,7 @@ class TestDataPack(unittest.TestCase):
 
   @given(datapack_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_get_meld(self,input_pack):
-    meld = f'{input_pack.sender};{input_pack.address};{input_pack.resource};{input_pack.type};{input_pack.shape}'
+    meld = f'{input_pack.sender};{input_pack.address};{input_pack.resource};{input_pack.ctg_type};{input_pack.shape}'
     self.assertEqual(input_pack.get_meld(),meld)
 
   @given(valid_datapack_arbitrary(), datapack_address()) # pylint: disable=no-value-for-parameter
