@@ -2,8 +2,8 @@
 id: DFLEG
 type_data:
   name: Decision Free Logos Encapsulator Group
-  purpose: Represents an arbitrary GroupType.CORTICAL section that is free of L4 decision influence and outputs through a gate
-  type: GroupType.CORTICAL
+  purpose: Represents an arbitrary CORTICAL section that is free of L4 decision influence and outputs through a gate
+  type: CORTICAL
   cardinal_direction: dsc
 stages_to_groups_dict:
   - stage: cntxt_ctrl

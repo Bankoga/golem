@@ -3,7 +3,7 @@ from enum import Enum, auto
 from data.enums.pos import ComponentLevel
 
 class AutoName(Enum):
-  def _generate_next_value_(name,start,count,last_values):
+  def _generate_next_value_(name,start,count,last_values): # pylint: disable=no-self-argument
     return name
 
 class PackType(Enum):

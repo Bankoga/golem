@@ -2,6 +2,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from data.axioms.configs import proc_ids,file_type
+from data.enums.prop_types import GroupType
 from components.func_groups.procs.proc import Proc
 from components.func_groups.procs.proc_provider import proc_services
 from utils.config_reader import read
@@ -41,7 +42,7 @@ class TestProc(unittest.TestCase):
     if (type_obj['type'] is None):
       self.assertIsNone(self.proc.type)
     else:
-      self.assertEqual(type_obj['type'],self.proc.type)
+      self.assertEqual(GroupType[type_obj['type']],self.proc.type)
     
     if (type_obj['purpose'] is None):
       self.assertIsNone(self.proc.purpose)

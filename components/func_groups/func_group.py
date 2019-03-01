@@ -27,7 +27,7 @@ class FuncGroup(Component):
   """
   
   def __init__(self, group_id, group_type):
-    super().__init__(group_id, group_type.get_component_type(), ctg_cat=group_type)
+    super().__init__(group_id, group_type.get_component_type(), ctg_type=group_type)
 
   def get_id(self):
     return self.itm_id

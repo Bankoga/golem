@@ -2,6 +2,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from data.axioms.configs import coder_ids,file_type
+from data.enums.prop_types import GroupType
 from components.func_groups.coders.coder import Coder
 from components.func_groups.coders.coder_provider import coder_services
 from utils.config_reader import read
@@ -41,7 +42,7 @@ class TestCoder(unittest.TestCase):
     if (type_obj['type'] is None):
       self.assertIsNone(self.coder.type)
     else:
-      self.assertEqual(type_obj['type'],self.coder.type)
+      self.assertEqual(GroupType[type_obj['type']],self.coder.type)
     
     if (type_obj['purpose'] is None):
       self.assertIsNone(self.coder.purpose)

@@ -3,6 +3,7 @@ from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.pos import Pos
 from components.func_groups.func_group import FuncGroup
+from data.enums.prop_types import GroupType
 
 
 class Coder(FuncGroup):
@@ -22,7 +23,7 @@ class Coder(FuncGroup):
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
-    self.type = self.config['type_data']['type']
+    self.type = GroupType[self.config['type_data']['type']]
     self.purpose = self.config['type_data']['purpose']
   
   # @abstractmethod # pylint: disable=undefined-variable

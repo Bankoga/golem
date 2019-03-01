@@ -2,7 +2,7 @@
 id: GLG
 type_data:
   name: Gateway Layer Groups
-  type: GroupType.GATEWAY
+  type: GATEWAY
   purpose: serves as a global I/O center, & local plus global context matrix (and global map center as STN?)
   cardinal_direction: dsc
 stages_to_groups_dict:
