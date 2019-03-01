@@ -21,6 +21,6 @@ class TestPos(unittest.TestCase):
     self.assertEqual(pos.y,-1)
     self.assertEqual(pos.z,-1)
 
-  @given(valid_pos())
+  @given(valid_pos()) # pylint: disable=no-value-for-parameter
   def test_hash(self, pos):
     self.assertEqual(pos.get_hash(), hash((pos.s,pos.x,pos.y,pos.z)))
