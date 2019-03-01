@@ -6,7 +6,7 @@ from hypothesis import strategies as st
 from data.enums.prop_types import FieldType,PackType,RsrcType
 
 from tests.strategies.packing_strats import arbitrary_id,full_address,partial_address,package_address
-from tests.strategies.enum_strats import package_field_shape,package_resource,package_type
+from tests.strategies.prop_strats import package_field_shape,package_resource,package_type
 
 from components.packages.package import Package
 from utils.helpers.packer import build_address, build_meld, build_package_inputs, build_package

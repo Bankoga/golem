@@ -8,7 +8,7 @@ from numpy import full, ones
 from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import id_pattern
 from data.enums.prop_types import FieldType, HookType, PackType, RsrcType
-from tests.strategies.enum_strats import (package_field_shape, package_group,
+from tests.strategies.prop_strats import (package_field_shape, package_group,
                                           package_resource, package_type)
 from components.packages.package import Package
 from utils.helpers.packer import (build_address, build_package,

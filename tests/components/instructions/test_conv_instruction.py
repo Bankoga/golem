@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from data.enums.prop_types import RuleType
-from tests.strategies.enum_strats import ruletype
+from tests.strategies.prop_strats import rule_type_prop
 from tests.strategies.packing_strats import valid_shape
 from tests.strategies.golem_strats import module_input_set,processed_module_input_set
 from tests.strategies.pos_strats import valid_direction, valid_pos

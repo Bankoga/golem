@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 
 from data.enums.prop_types import RuleType
 from data.enums.pos import ComponentType
-from tests.strategies.enum_strats import ruletype
+from tests.strategies.prop_strats import rule_type_prop
 from tests.strategies.pos_strats import valid_pos
 
 from utils.pos import Pos
@@ -16,7 +16,7 @@ class TestInstruction(unittest.TestCase):
     # self.instruction = Instruction(RuleType.CONV, )
     pass
 
-  @given(ruletype(), valid_pos()) # pylint: disable=no-value-for-parameter
+  @given(rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
   def test_default(self, rtype, pos):
     # for efficiency reasons, eventually instructions will need to be built before processing
     itm_id = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?
