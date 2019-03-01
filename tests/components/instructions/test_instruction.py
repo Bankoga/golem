@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from data.enums.prop_types import RuleType
-from data.enums.pos import ComponentLevel
+from data.enums.pos import ComponentType
 from tests.strategies.enum_strats import ruletype
 from tests.strategies.pos_strats import valid_pos
 
@@ -23,7 +23,7 @@ class TestInstruction(unittest.TestCase):
     inst = Instruction(rtype, pos)
     c_lvl = rtype.get_component_type()
     self.assertEqual(inst.get_id(), itm_id)
-    self.assertEqual(inst.op_lvl, ComponentLevel(c_lvl))
+    self.assertEqual(inst.op_lvl, ComponentType(c_lvl))
     self.assertEqual(inst.ctg_type, rtype)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)

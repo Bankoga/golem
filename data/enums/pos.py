@@ -14,7 +14,7 @@ class DimensionallyOrdered(Enum):
     self.pos = pos
     self.dimension = dimension
 
-class ComponentLevel(Enum):
+class ComponentType(Enum):
   MATRIX = 1
   HOOK = 2
   GROUP = 3

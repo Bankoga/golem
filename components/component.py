@@ -1,4 +1,4 @@
-from data.enums.pos import ComponentLevel
+from data.enums.pos import ComponentType
 
 class Component:
   # TODO: implement a base class that is shared across all components
@@ -9,7 +9,7 @@ class Component:
     """
     self.ctg_type = ctg_type
     self.itm_id = component_id
-    self.op_lvl = ComponentLevel(component_type)
+    self.op_lvl = ComponentType(component_type)
 
   def get_id(self):
     return self.itm_id
