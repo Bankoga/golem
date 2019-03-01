@@ -1,8 +1,10 @@
-from data.enums.prop_types import RuleType
-from data.axioms.packager import defaults as prd
 from abc import abstractmethod
+from components.component import Component
 
-class Packager:
+from data.axioms.packager import defaults as prd
+from data.enums.prop_types import NodeType
+
+class Packager(Component):
   """
   The actual functions that power the matrix
   Not the groups, or the meta-containers, or regions, but the functions themselves
@@ -13,8 +15,7 @@ class Packager:
   """
 
   def __init__(self, rule_type, arb_id):
-    self.type = rule_type
-    self.id = arb_id
+    super().__init__(arb_id, rule_type.get_component_type(),rule_type)
     self.read_data()
 
   @abstractmethod

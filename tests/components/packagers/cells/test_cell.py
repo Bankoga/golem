@@ -5,23 +5,24 @@ from hypothesis import strategies as st
 
 from components.packagers.cells.cell import Cell
 from data.axioms.cell_types import CellType,cell_data
-from data.enums.prop_types import RuleType, RsrcType, PackType,FieldType
+from data.enums.prop_types import RuleType, RsrcType, PackType,FieldType, NodeType
 
 from tests.strategies.packing_strats import valid_cell_instruction
+from tests.strategies.prop_strats import cell_type_prop
 
 from utils.helpers.packer import build_address, build_meld, build_datapack
 
 class TestCell(unittest.TestCase):
   # def setUp(self):
-  #   self.id = CellType.PYRAMID
-  #   self.cell = Cell(self.id)
-  #   # self.type_data = cell_data[str(self.id)]
+  #   self.get_id() = CellType.PYRAMID
+  #   self.cell = Cell(self.get_id())
+  #   # self.ctg_type_data = cell_data[str(self.get_id())]
   
   # def test_base(self):
-  #   self.assertEqual(self.cell.type, RuleType.CELL)
-  #   self.assertEqual(self.cell.id, self.id)
+  #   self.assertEqual(self.cell.ctg_type, NodeType.CELL)
+  #   self.assertEqual(self.cell.get_id(), self.get_id())
   
-  @given(st.sampled_from(CellType))
+  @given(cell_type_prop()) # pylint: disable=no-value-for-parameter
   def test_cell_data(self,inp_id):
     """
     here we test that every cell type we have defined, has all of its properties
@@ -29,12 +30,12 @@ class TestCell(unittest.TestCase):
     cell = Cell(inp_id)
     if (not inp_id in CellType) or inp_id == CellType.UNSET:
       type_data = cell_data[str(CellType.PYRAMID)]
-      self.assertEqual(cell.id, CellType.PYRAMID)
+      self.assertEqual(cell.get_id(), CellType.PYRAMID)
     else:
       type_data = cell_data[str(inp_id)]
-      self.assertEqual(cell.id, inp_id)
+      self.assertEqual(cell.get_id(), inp_id)
 
-    self.assertEqual(cell.type, RuleType.CELL)
+    self.assertEqual(cell.ctg_type, NodeType.CELL)
     self.assertEqual(cell.cnv_tmplts, type_data['cnv_tmplts'])
     self.assertEqual(cell.freq_range, type_data['freq_range'])
     self.assertEqual(cell.init_freq, type_data['init_freq'])

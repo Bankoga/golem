@@ -6,7 +6,7 @@ from numpy import ones,diag
 
 class ConvInstruction(Instruction):
   def __init__(self,direction,shapes,pos):
-    super().__init__(RuleType.CELL, pos)
+    super().__init__(RuleType.CONV, pos)
     self.direction = direction
     self.shapes = shapes
     self.set_up_weights(shapes)

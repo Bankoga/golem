@@ -1,14 +1,14 @@
 from components.packagers import packager
 from data.axioms.cell_types import CellType, cell_data
-from data.enums.prop_types import RuleType
+from data.enums.prop_types import NodeType
 
 class Cell(packager.Packager):
   
   def __init__(self, cell_id):
     if (not cell_id in CellType) or cell_id == CellType.UNSET:
-      super().__init__(RuleType.CELL, CellType.PYRAMID)
+      super().__init__(NodeType.CELL, CellType.PYRAMID)
     else:
-      super().__init__(RuleType.CELL, cell_id)
+      super().__init__(NodeType.CELL, cell_id)
     # self.setup_convs()
     # self.?
   
@@ -18,7 +18,7 @@ class Cell(packager.Packager):
   # WERE ARE SAID WEIGHTS INITIALIZED?
 
   def read_data(self):
-    s = str(self.id)
+    s = str(self.get_id())
     type_data = cell_data[s]
     self.cnv_tmplts = type_data['cnv_tmplts']
     self.freq_range = type_data['freq_range']

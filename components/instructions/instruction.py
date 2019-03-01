@@ -10,7 +10,7 @@ class Instruction(Component):
     self.curr_bearing = None
     self.curr_pos = None
     self.pos = pos
-
+    
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   @abstractmethod
   def perform(self,inputs):

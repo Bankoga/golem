@@ -3,16 +3,17 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
+from numpy import full, ones
 
-from data.axioms.props import id_pattern 
-from data.enums.prop_types import FieldType, HookType, PackType, RsrcType
 from data.axioms.matrix import max_resource_value, min_resource_value
+from data.axioms.props import id_pattern
+from data.enums.prop_types import FieldType, HookType, PackType, RsrcType
+from tests.strategies.enum_strats import (datapack_field_shape, datapack_group,
+                                          datapack_resource, datapack_type)
 from utils.datapack import Datapack
 from utils.helpers.packer import (build_address, build_datapack,
                                   build_datapack_inputs, build_meld)
-from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_field_shape,datapack_type
 
-from numpy import ones, full
 
 """
 What are the pools of object examples we need to draw from?
@@ -21,8 +22,6 @@ What are the pools of object examples we need to draw from?
 - Datapacks
 - Input Sets
 - Output Sets
-
-TODO: Figure out how to fix pylint errors for hypothesis composite decorator methods
 """
 
 @composite

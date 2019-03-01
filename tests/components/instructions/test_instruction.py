@@ -13,7 +13,7 @@ from components.instructions.instruction import Instruction
 
 class TestInstruction(unittest.TestCase):
   def setUp(self):
-    # self.instruction = Instruction(RuleType.CELL, )
+    # self.instruction = Instruction(RuleType.CONV, )
     pass
 
   @given(ruletype(), valid_pos()) # pylint: disable=no-value-for-parameter
