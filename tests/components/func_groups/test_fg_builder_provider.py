@@ -9,12 +9,10 @@
 # import utils.object_factory
 
 # class TestFGBuilderProvider(unittest.TestCase):
-#   @given(fg_provider_id())
+#   @given(fg_provider_id()) # pylint: disable=no-value-for-parameter
 #   def test_get(self, fg_type_id):
-#     fg_id = group_ids['glg']
-#     fg_type = GroupType.SENSOR
 #     fg = fg_services.get(fg_type_id, **{})
 #     self.assertTrue(fg.get_id(), fg_type_id)
-    
+
 # if __name__ == '__main__':
 #     unittest.main()

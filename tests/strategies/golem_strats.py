@@ -7,6 +7,7 @@ from hypothesis.strategies import composite
 from data.axioms.configs import proc_ids, group_ids
 from data.axioms.props import id_pattern
 from data.enums.prop_types import GroupType,PackType
+from data.maps.group import get_ids
 
 from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address,valid_resource_data
 
@@ -15,13 +16,17 @@ from components.packages.misc_funcs import build_address, build_meld, build_pack
 
 from components.func_groups.procs.proc_provider import proc_services
 
-# @composite
-# def fg_provider_id(draw):
-#     fg_id = group_ids['glg']
-#     fg_type = GroupType.SENSOR
-#   draw(st.sampled_from())
-#   draw(st.sampled_from())
-#   pass
+@composite
+def fg_provider_id(draw):
+    # fg_id = group_ids['glg']
+    # fg_type = GroupType.SENSOR
+    # mismatch between arb actual id and arb actual group type
+    # group types need to know if an ID is part of their domain
+  g_id = draw(st.sampled_from(group_ids))
+  g_type = draw(st.sampled_from(GroupType))
+  st.assume(g_id and g_type)
+  st.assume(g_id in get_ids(g_type))
+  return f'{g_type}-{g_id}'
 
 
 @composite
@@ -77,6 +82,7 @@ def module_input_set(draw, elements=partial_address()): # pylint: disable=no-val
 @composite
 def processed_module_input_set(draw):
   # TODO: processing turns a list of inputs into WHAT????
+  # the easiest way I think to do this, would be to use an arbitrary module, and create inputs using it as a base
   # a thing which has the following properties
   # - all of the specific target inputs can be accessed via relative positioning
   # - all general inputs are stored together
