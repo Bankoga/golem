@@ -2,10 +2,10 @@
 # from hypothesis import given
 # import hypothesis.strategies as st
 # from utils.melder import *
-# from utils.datapack import *
+# from components.packages.package import *
 # 
 # from data.axioms.configs import resource_types
-# from data.axioms.configs import dest_key_pattern
+# from data.axioms.props import dest_key_pattern 
 # # from config_tests_data.py import *
 
 # # It is an open question as to whether or not links need to be defined as part of the proc group
@@ -18,7 +18,7 @@
 #   @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
 #   def test_eval_full_meld(self, meld):
 #     datp = self.melder.eval_meld(meld)
-#     self.assertIsInstance(datp,Datapack)
+#     self.assertIsInstance(datp,Package)
 #     parts=meld.split(",")
 #     self.assertTrue(datp.address==parts[0])
 #     self.assertTrue(datp.resource==parts[1])
@@ -27,7 +27,7 @@
 #   @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})'))
 #   def test_eval_proto_meld(self, meld):
 #     datp = self.melder.eval_meld(meld)
-#     self.assertIsInstance(datp,Datapack)
+#     self.assertIsInstance(datp,Package)
 #     parts=meld.split(",")
 #     self.assertTrue(datp.address!=parts[0])
 #     self.assertTrue(datp.resource!=parts[1])
@@ -35,7 +35,7 @@
 #   @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
 #   def test_eval_proto_melds(self, meld):
 #     datp = self.melder.eval_meld(meld)
-#     self.assertIsInstance(datp,list(Datapack))
+#     self.assertIsInstance(datp,list(Package))
 #     parts=meld.split(",")
 #     self.assertTrue(datp.address==parts[0])
 #     self.assertTrue(datp.resource==parts[1])

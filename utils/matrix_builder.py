@@ -6,7 +6,7 @@ class Matrix:
     self.config = read(proc_id,file_type['proc'])
     self.id = self.config['type_data'']['golem']
     self.name = self.config['type_data']['name']
-    self.type = self.config['type_data']['type']
+    self.ctg_type = self.config['type_data']['type']
     self.purpose = self.config['type_data']['purpose']
     self.groups = dict()
   
@@ -14,7 +14,7 @@ class Matrix:
 Each matrix module consists of several functional groups
 These groups handle all the processing
 The proc built from the config, is used to build the list of funcgroups in the module
-A funcgoup, is a list of Nodes that all process the same input datapacks and contribute to different output datapacks
+A funcgoup, is a list of Nodes that all process the same input packages and contribute to different output packages
 ""
   def get_id(self):
     return self.id

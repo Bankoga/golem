@@ -1,4 +1,4 @@
-from data.axioms.enums import GroupType
+from data.enums.prop_types import GroupType
 from utils.object_factory import *
 # from components.func_groups.asc_cardinator import AscCardinatorBuilder
 # from components.func_groups.dsc_cardinator import DscCardinatorBuilder

@@ -1,5 +1,7 @@
 from enum import Enum
 
+from data.enums.pos import Floor
+
 package_map = {
   'core': 'main',
   'framework': 'basement',
@@ -71,33 +73,6 @@ cardinal_keys = {
 #     'operation': 'rotate_reader_head_to'
 #   },
 # }
-floor_order = [
-  'cellar',
-  'basement',
-  'archive',
-  'main',
-  'attic'
-]
 
+floor_order = list(Floor)
 
-class Floors(Enum):
-  CELLAR = 1
-  BASEMENT = 2
-  ARCHIVE = 3
-  MAIN = 4
-  ATTIC = 5
-
-  def describe(self):
-    return 'Matrix section', self.name
-
-# class CardinalX(Enum):
-#   UNSET = 1
-# class CardinalY(Enum):
-#   UNSET = 1
-# class CardinalZ(Enum):
-#   UNSET = 1
-#   BELOW = 100
-#   BETWEEN = 200
-#   CENTER = 201
-#   MIDDLE = 202
-#   ABOVE = 300

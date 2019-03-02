@@ -3,26 +3,25 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
+from numpy import full, ones
 
-from data.axioms.configs import id_pattern
-from data.axioms.enums import FieldType, HookType, PackType, RsrcType
 from data.axioms.matrix import max_resource_value, min_resource_value
-from utils.datapack import Datapack
-from utils.helpers.packer import (build_address, build_datapack,
-                                  build_datapack_inputs, build_meld)
-from tests.strategies.enum_strats import datapack_group,datapack_resource,datapack_field_shape,datapack_type
+from data.axioms.props import id_pattern
+from data.enums.prop_types import FieldType, HookType, PackType, RsrcType
+from tests.strategies.prop_strats import (package_field_shape, package_group,
+                                          package_resource, package_type)
+from components.packages.package import Package
+from components.packages.misc_funcs import (build_address, build_package,
+                                  build_package_inputs, build_meld)
 
-from numpy import ones, full
 
 """
 What are the pools of object examples we need to draw from?
 - Addresses
 - Melds
-- Datapacks
+- Packages
 - Input Sets
 - Output Sets
-
-TODO: Figure out how to fix pylint errors for hypothesis composite decorator methods
 """
 
 @composite
@@ -47,15 +46,15 @@ def partial_address(draw):
   return m_id
 
 @composite
-def datapack_address(draw):
+def package_address(draw):
   addr = st.one_of(full_address(),partial_address()) # pylint: disable=no-value-for-parameter
   st.assume(addr)
   return addr
 
 @composite
 def sender_and_recipient_pair(draw):
-  recip_addr = datapack_address() # pylint: disable=no-value-for-parameter
-  sender_addr = datapack_address() # pylint: disable=no-value-for-parameter
+  recip_addr = package_address() # pylint: disable=no-value-for-parameter
+  sender_addr = package_address() # pylint: disable=no-value-for-parameter
   st.assume(recip_addr != sender_addr)
   st.assume(recip_addr)
   st.assume(sender_addr)
@@ -64,25 +63,25 @@ def sender_and_recipient_pair(draw):
 
 @composite
 def proto_meld(draw):
-  addr = draw(datapack_address()) # pylint: disable=no-value-for-parameter
-  dp_resource = draw(datapack_resource()) # pylint: disable=no-value-for-parameter
-  dp_type = draw(datapack_type()) # pylint: disable=no-value-for-parameter
+  addr = draw(package_address()) # pylint: disable=no-value-for-parameter
+  dp_resource = draw(package_resource()) # pylint: disable=no-value-for-parameter
+  dp_type = draw(package_type()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type)
   return meld
 
 @composite
 def full_meld(draw):
-  addr = draw(datapack_address()) # pylint: disable=no-value-for-parameter
-  dp_resource = draw(datapack_resource()) # pylint: disable=no-value-for-parameter
-  dp_type = draw(datapack_type()) # pylint: disable=no-value-for-parameter
-  dp_shape = draw(datapack_field_shape()) # pylint: disable=no-value-for-parameter
+  addr = draw(package_address()) # pylint: disable=no-value-for-parameter
+  dp_resource = draw(package_resource()) # pylint: disable=no-value-for-parameter
+  dp_type = draw(package_type()) # pylint: disable=no-value-for-parameter
+  dp_shape = draw(package_field_shape()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type,dp_shape)
   return meld
 
 @composite
-def datapack_inputs(draw):
+def package_inputs(draw):
   meld = draw(st.one_of(proto_meld(),full_meld())) # pylint: disable=no-value-for-parameter
-  sender_addr = draw(datapack_address()) # pylint: disable=no-value-for-parameter
+  sender_addr = draw(package_address()) # pylint: disable=no-value-for-parameter
   return (meld, sender_addr)
 
 @composite
@@ -108,24 +107,24 @@ def valid_cell_instruction(draw):
 
 @composite
 def valid_resource_data(draw):
-  # resource = draw(datapack_resource)
+  # resource = draw(package_resource)
   # shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter
   data = draw(st.builds(full,valid_shape(),st.decimals(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
   st.assume(data.any())
   return data
 
 @composite
-def datapack_arbitrary(draw):
-  inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
-  pack = Datapack(inputs[0], inputs[1])
+def package_arbitrary(draw):
+  inputs = draw(package_inputs()) # pylint: disable=no-value-for-parameter
+  pack = Package(inputs[0], inputs[1])
   return pack
 
 @composite
-def valid_datapack_arbitrary(draw):
-  inputs = draw(datapack_inputs()) # pylint: disable=no-value-for-parameter
-  pack = Datapack(inputs[0], inputs[1])
+def valid_package_arbitrary(draw):
+  inputs = draw(package_inputs()) # pylint: disable=no-value-for-parameter
+  pack = Package(inputs[0], inputs[1])
   """
-  given that we have a datapack
+  given that we have a package
   when we want check the conv sign
   then we need it to have been built
   """
@@ -137,10 +136,10 @@ def valid_datapack_arbitrary(draw):
 
 # @composite
 # def input_pack_arbitrary(draw):
-#   pack = draw(datapack_arbitrary()): # pylint: disable=no-value-for-parameter
+#   pack = draw(package_arbitrary()): # pylint: disable=no-value-for-parameter
 #   pack.build()
 #   return pack
 
 @composite
-def valid_datapack_from_context(draw):
+def valid_package_from_context(draw):
   pass

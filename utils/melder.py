@@ -1,4 +1,4 @@
-from utils.datapack import *
+from components.packages.package import *
 
 class Melder:
   # DIS BE A FACTORY YO!
@@ -7,14 +7,14 @@ class Melder:
 
   def eval_meld(self, meld):
     """
-      Produces one or more datapacks based on the meld format
+      Produces one or more packages based on the meld format
       There are ? formats:
       - ?
       How do we identify each format?
     """
     # case 
     parts=meld.split(",")
-    return Datapack(tuple(parts))
+    return Package(tuple(parts))
 
   def eval_melds(self):
     pass

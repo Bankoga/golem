@@ -3,13 +3,13 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from tests.strategies.packing_strats import datapack_arbitrary,valid_datapack_arbitrary
+from tests.strategies.packing_strats import package_arbitrary,valid_package_arbitrary
 
 from utils.helpers.convoluter import get_conv_sign
 
 class TestConvoluter(unittest.TestCase):
 
-  @given(datapack_arbitrary(),datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  @given(package_arbitrary(),package_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_get_conv_sign_from_arbitrary(self, inp_pack, out_pack):
     if inp_pack.var is None or out_pack.var is None:
       with self.assertRaises(RuntimeError):
@@ -23,7 +23,7 @@ class TestConvoluter(unittest.TestCase):
       result = get_conv_sign(inp_pack, out_pack)
       self.assertEqual(result, expectation)
 
-  # @given(valid_datapack_arbitrary()) # pylint: disable=no-value-for-parameter
+  # @given(valid_package_arbitrary()) # pylint: disable=no-value-for-parameter
   # def test_get_conv_sign_from_valid(self, inp_pack, out_pack):
   #   expectation = 0
   #   if inp_pack.var.shape > out_pack.var.shape:

@@ -2,6 +2,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from utils.pos import Pos
+from tests.strategies.pos_strats import valid_pos
 
 class TestPos(unittest.TestCase):
   
@@ -19,3 +20,7 @@ class TestPos(unittest.TestCase):
     self.assertEqual(pos.x,-1)
     self.assertEqual(pos.y,-1)
     self.assertEqual(pos.z,-1)
+
+  @given(valid_pos()) # pylint: disable=no-value-for-parameter
+  def test_hash(self, pos):
+    self.assertEqual(pos.get_hash(), hash((pos.s,pos.x,pos.y,pos.z)))

@@ -1,16 +1,18 @@
-from utils.helpers.packer import build_address
+from components.component import Component
 from components.func_groups.fg_builder_provider import fg_services
 
-class FuncGroup:
+from data.enums.pos import ComponentType
 
+from components.packages.misc_funcs import build_address
+class FuncGroup(Component):
   """
   A functional group is an addressable processing region within a matrix
-  It is a datapack production group
+  It is a package production group
   each functional group in a matrix defines N things
     - an unique address
-    - the datapacks it produces
-    - the rules for consuming the two types of datapacks: overlayed and aggregated
-    - the types of datapacks it consumes that are module level
+    - the packages it produces
+    - the rules for consuming the two types of packages: overlayed and aggregated
+    - the types of packages it consumes that are module level
     - the links for extra output and/or output routing
   We currently have 
   - proc groups which breakdown into different proc types
@@ -25,14 +27,13 @@ class FuncGroup:
   """
   
   def __init__(self, group_id, group_type):
-    self.type = group_type
-    self.id = group_id
+    super().__init__(group_id, group_type.get_component_type(), ctg_type=group_type)
 
   def get_id(self):
-    return self.id
+    return self.itm_id
 
   def get_type(self):
-    return self.type
+    return self.ctg_type
 
   def _build_func_(self):
     pass

@@ -2,8 +2,8 @@
 id: DCLEG
 type_data:
   name: Decision Controlled Logos Encapsulator Group
-  purpose: Represents one arbitrary cortical like shape that is affected by DM system outputs
-  type: cortical
+  purpose: Represents one arbitrary CORTICAL like shape that is affected by DM system outputs
+  type: CORTICAL
   cardinal_direction: dsc
 stages_to_groups_dict:
   - stage: cntxt_ctrl

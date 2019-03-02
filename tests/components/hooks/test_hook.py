@@ -4,14 +4,14 @@ from hypothesis import given
 import hypothesis.strategies as st
 
 from components.hooks.hook import Hook
-from data.axioms.configs import dest_key_pattern, id_pattern
-from data.axioms.enums import FieldType,HookType,RsrcType,PackType
-from utils.helpers.packer import build_address, build_meld
-from tests.utils.test_datapack import TestDataPack
-from tests.strategies.packing_strats import datapack_address,full_address,partial_address,arbitrary_id
-from tests.strategies.enum_strats import datapack_field_shape,datapack_group,datapack_resource,hook_type,datapack_type
+from data.axioms.props import dest_key_pattern, id_pattern 
+from data.enums.prop_types import FieldType,HookType,RsrcType,PackType
+from components.packages.misc_funcs import build_address, build_meld
+from tests.components.packages.test_package import TestPackage
+from tests.strategies.packing_strats import package_address,full_address,partial_address,arbitrary_id
+from tests.strategies.prop_strats import package_field_shape,package_group,package_resource,hook_type,package_type
 
-class TestHook(TestDataPack):
+class TestHook(TestPackage):
   # def setUp(self):
     # self.hook = Hook()
   # NO TOUCHY OUTPUTS UNTIL DONE WITH HOOKS!!!!!!
@@ -41,9 +41,9 @@ class TestHook(TestDataPack):
     else:
       self.assertTrue(hook.resource == RsrcType.UNSET)
     if len(meld_tuple)>4 and meld_tuple[4]:
-      self.assertTrue(hook.type == PackType.UNSET or hook.type==PackType(meld_tuple[4]))
+      self.assertTrue(hook.ctg_type == PackType.UNSET or hook.ctg_type==PackType(meld_tuple[4]))
     else:
-      self.assertTrue(hook.type == PackType.UNSET)
+      self.assertTrue(hook.ctg_type == PackType.UNSET)
     if len(meld_tuple)>5 and meld_tuple[5]:
       self.assertTrue(hook.shape == FieldType.UNSET or hook.shape==meld_tuple[5])
     else:
@@ -64,9 +64,9 @@ class TestHook(TestDataPack):
     else:
       self.assertTrue(hook.resource == RsrcType.UNSET)
     if len(meld_tuple)>2 and meld_tuple[2]:
-      self.assertTrue(hook.type == PackType.UNSET or hook.type==PackType(meld_tuple[2]))
+      self.assertTrue(hook.ctg_type == PackType.UNSET or hook.ctg_type==PackType(meld_tuple[2]))
     else:
-      self.assertTrue(hook.type == PackType.UNSET)
+      self.assertTrue(hook.ctg_type == PackType.UNSET)
     if len(meld_tuple)>3 and meld_tuple[3]:
       self.assertTrue(hook.shape == FieldType.UNSET or hook.shape==meld_tuple[3])
     else:
@@ -84,7 +84,7 @@ class TestHook(TestDataPack):
     meld = ";".join(meld_tuple)
     self._read_data_(meld)
 
-  @given(arbitrary_id(), hook_type(), datapack_address(), datapack_resource(), datapack_type(), datapack_field_shape()) # pylint: disable=no-value-for-parameter
+  @given(arbitrary_id(), hook_type(), package_address(), package_resource(), package_type(), package_field_shape()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
     inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
     self._read_data_(inputs)
