@@ -2,7 +2,7 @@ from data.axioms.configs import file_type
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.pos import Pos
-from components.func_groups.func_group import FuncGroup
+from components.func_sets.func_set import FuncGroup
 from data.enums.prop_types import GroupType
 
 

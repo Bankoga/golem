@@ -1,4 +1,4 @@
-from components.func_groups.coders.coder import Coder
+from components.func_sets.coders.coder import Coder
 from data.axioms.configs import coder_ids
 from data.enums.prop_types import GroupType
 

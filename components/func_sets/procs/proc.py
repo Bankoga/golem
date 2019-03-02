@@ -1,4 +1,4 @@
-from components.func_groups.func_group import FuncGroup
+from components.func_sets.func_set import FuncGroup
 from utils.cardinators.cardinator_provider import cardinator_services
 from data.axioms.configs import file_type
 from data.enums.prop_types import GroupType

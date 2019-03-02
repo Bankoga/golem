@@ -3,8 +3,8 @@ from hypothesis import given
 from hypothesis import strategies as st
 from data.axioms.configs import proc_ids,file_type
 from data.enums.prop_types import GroupType
-from components.func_groups.procs.proc import Proc
-from components.func_groups.procs.proc_provider import proc_services
+from components.func_sets.procs.proc import Proc
+from components.func_sets.procs.proc_provider import proc_services
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 

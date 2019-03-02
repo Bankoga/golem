@@ -3,10 +3,10 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.func_groups.coders.coder_provider import coder_services
+from components.func_sets.coders.coder_provider import coder_services
 from data.axioms.configs import file_type, coder_ids
 from data.enums.prop_types import GroupType
-from tests.components.func_groups.coders.test_coder import TestCoder
+from tests.components.func_sets.coders.test_coder import TestCoder
 from utils.config_reader import read
 
 class TestPartsSensor(TestCoder):

@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.func_groups.fg_builder_provider import fg_services
+from components.func_sets.fg_builder_provider import fg_services
 from data.enums.prop_types import GroupType
 
 from data.axioms.configs import proc_ids
@@ -37,7 +37,7 @@ class TestFGBuilderProvider(unittest.TestCase):
         fg = fg_services.get(fg_type_id, **{})
     else:
       parts = fg_type_id.split('-')
-      g_type = parts[0]
+      g_type = GroupType[parts[0].split('.')[1]]
       if g_type is None:
         with self.assertRaises(ValueError):
           fg = fg_services.get(fg_type_id, **{})

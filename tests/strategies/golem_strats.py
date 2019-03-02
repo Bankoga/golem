@@ -15,7 +15,7 @@ from tests.strategies.packing_strats import package_arbitrary, package_address, 
 from components.packages.package import Package
 from components.packages.misc_funcs import build_address, build_meld, build_package_inputs, build_package
 
-from components.func_groups.procs.proc_provider import proc_services
+from components.func_sets.procs.proc_provider import proc_services
 
 @composite
 def fg_provider_id(draw):

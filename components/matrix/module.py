@@ -1,4 +1,4 @@
-from components.func_groups.func_group import FuncGroup
+from components.func_sets.func_set import FuncGroup
 from components.component import Component
 
 class Module(Component):
@@ -8,15 +8,15 @@ class Module(Component):
   Responsible for aggregating packages with the same keys into single packages for routing
   """
   def __init__(self, proc):
-    # TODO: proc needs to be replaced with an arbitrary func_group
+    # TODO: proc needs to be replaced with an arbitrary func_set
     # once fully initialized, a module has very few aggregate properties to consider during operation
     self.proc = proc
     self.prev_activations=dict()
     self.groups=dict()
     self.input_shapes=dict()
-    self._build_func_groups_()
+    self._build_func_sets_()
 
-  def _build_func_groups_(self):
+  def _build_func_sets_(self):
     for group_id in self.proc.groups:
       group = self.proc.groups[group_id]
       self.groups[group_id] = FuncGroup(group, group['type'])
