@@ -10,7 +10,7 @@ from data.axioms.props import id_pattern
 from data.enums.prop_types import GroupType, FieldType, HookType, PackType, RsrcType, NodeType, RuleType
 from data.axioms.cell_types import CellType
 from components.packages.package import Package
-from utils.helpers.packer import (build_address, build_package,
+from components.packages.misc_funcs import (build_address, build_package,
                                   build_package_inputs, build_meld)
 
 @composite

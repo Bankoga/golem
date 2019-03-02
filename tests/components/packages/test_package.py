@@ -6,7 +6,7 @@ import hypothesis.strategies as st
 from tests.strategies.packing_strats import package_inputs, package_arbitrary,package_address,valid_resource_data,valid_package_arbitrary
 
 from components.packages.package import Package
-from utils.helpers.packer import build_address, build_meld, build_package_inputs, build_package
+from components.packages.misc_funcs import build_address, build_meld, build_package_inputs, build_package
 from data.axioms.props import dest_key_pattern 
 from data.enums.prop_types import PackType,RsrcType,FieldType
 

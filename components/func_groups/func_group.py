@@ -3,7 +3,7 @@ from components.func_groups.fg_builder_provider import fg_services
 
 from data.enums.pos import ComponentType
 
-from utils.helpers.packer import build_address
+from components.packages.misc_funcs import build_address
 class FuncGroup(Component):
   """
   A functional group is an addressable processing region within a matrix

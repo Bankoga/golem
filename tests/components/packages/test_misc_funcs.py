@@ -9,9 +9,9 @@ from tests.strategies.packing_strats import arbitrary_id,full_address,partial_ad
 from tests.strategies.prop_strats import package_field_shape,package_resource,package_type
 
 from components.packages.package import Package
-from utils.helpers.packer import build_address, build_meld, build_package_inputs, build_package
+from components.packages.misc_funcs import build_address, build_meld, build_package_inputs, build_package
 
-class TestPacker(unittest.TestCase):
+class TestMiscFuncs(unittest.TestCase):
   # @given(st.text(),st.text())
   @given(arbitrary_id(), arbitrary_id()) # pylint: disable=no-value-for-parameter
   def test_build_address(self, m_id, g_id):

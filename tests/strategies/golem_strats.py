@@ -11,7 +11,7 @@ from data.enums.prop_types import GroupType,PackType
 from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address,valid_resource_data
 
 from components.packages.package import Package
-from utils.helpers.packer import build_address, build_meld, build_package_inputs, build_package
+from components.packages.misc_funcs import build_address, build_meld, build_package_inputs, build_package
 
 from components.func_groups.procs.proc_provider import proc_services
 

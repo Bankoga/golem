@@ -8,7 +8,7 @@ from data.axioms.props import id_pattern
 from data.axioms.pos_maps import cardinal_keys
 from data.enums.pos import Floor
 from components.packages.package import Package
-from utils.helpers.packer import (build_address, build_package,
+from components.packages.misc_funcs import (build_address, build_package,
                                   build_package_inputs, build_meld)
 from utils.pos import Pos
 from tests.strategies.prop_strats import package_group,package_resource,package_type

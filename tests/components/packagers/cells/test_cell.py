@@ -10,7 +10,7 @@ from data.enums.prop_types import RuleType, RsrcType, PackType,FieldType, NodeTy
 from tests.strategies.packing_strats import valid_cell_instruction
 from tests.strategies.prop_strats import cell_type_prop
 
-from utils.helpers.packer import build_address, build_meld, build_package
+from components.packages.misc_funcs import build_address, build_meld, build_package
 
 class TestCell(unittest.TestCase):
   # def setUp(self):
