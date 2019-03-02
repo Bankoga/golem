@@ -24,10 +24,9 @@ def fg_provider_id(draw):
     # mismatch between arb actual id and arb actual group type
     # group types need to know if an ID is part of their domain
   # vs = group_ids.values()
-  g_id = draw(st.sampled_from(sorted(group_ids)))
-  g_id = group_ids[g_id]
   g_type = draw(package_group()) # pylint: disable=no-value-for-parameter
-  g_id = draw(st.sampled_from(get_ids(g_type)))
+  g_id = draw(st.sampled_from(sorted(get_ids(g_type))))
+  st.assume(g_type and g_id)
   return f'{g_type}-{g_id}'
 
 

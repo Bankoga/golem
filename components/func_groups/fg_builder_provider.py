@@ -30,7 +30,7 @@ from utils.object_factory import *
 # # fg_services.register_builder('', Builder())
 # # fg_services.register_builder('', Builder())
 
-from data.enums.prop_types import GroupType
+from data.enums.prop_types import GroupType, SubGroup
 from utils.object_factory import *
 from components.func_groups.coders.coder_provider import coder_services
 from components.func_groups.procs.proc_provider import proc_services
@@ -47,14 +47,14 @@ class FGBuilderProvider(ObjectFactory):
     if fg_type_id is None:
       raise ValueError('Invalid paramater value')
     parts = fg_type_id.split('-')
-    g_type = parts[0]
+    g_type = GroupType[parts[0].split('.')[1]]
     # if 100 < parts[0].value and parts[0].value < 200:
     if g_type is None:
       raise ValueError('Invalid group type')
-    if g_type is GroupType.SENSOR:
+    if g_type.sub_group() == SubGroup.CODER:
       return coder_services.get(parts[1])
     # elif 200 < g_type.value and g_type.value < 300:
-    elif g_type is GroupType.CORTICAL or g_type is GroupType.GATEWAY:
+    elif g_type.sub_group() == SubGroup.PROC:
       return proc_services.get(parts[1])
     # elif g_type.value > 1:
     #   return self.create(fg_type_id, **kwargs)

@@ -6,9 +6,9 @@ def get_ids(group_type):
     raise ValueError('Supplied Invalid Group Type')
   else:
     if 100 < group_type.value and group_type.value > 200:
-      result = coder_ids
+      result = coder_ids.values()
     elif 100 < group_type.value and group_type.value > 200:
-      result = proc_ids
+      result = proc_ids.values
     else:
       result = []
     return result

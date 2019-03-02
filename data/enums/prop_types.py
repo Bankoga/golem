@@ -21,6 +21,19 @@ class GroupType(Enum):
   GATEWAY = 202
   def get_component_type(self):
     return ComponentType.GROUP
+  def sub_group(self):
+    if 100 < self.value and self.value < 200:
+      return SubGroup.CODER
+    elif 200 < self.value and self.value < 300:
+      return SubGroup.PROC
+    else:
+      return SubGroup.UNSET
+
+class SubGroup(Enum):
+  UNSET = 1
+  CODER = 2
+  PROC = 3
+
 
 class NodeType(Enum):
   UNSET = 1
