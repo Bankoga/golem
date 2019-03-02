@@ -5,7 +5,8 @@ class Component:
   def __init__(self, component_id,component_type, ctg_type=None):
     """
     component_id : the semantic key used as reference for the component object
-    component_type : the semantic key used as reference for the component functionality within the matrix
+    component_type : the semantic key used as reference for the components operational level within the matrix
+    ctg__type : the semantic key used as reference for the components operational level specific group type
     """
     self.ctg_type = ctg_type
     self.itm_id = component_id
