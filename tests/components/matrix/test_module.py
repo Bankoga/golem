@@ -5,11 +5,11 @@
 
 # # from data.tests.dummy_configs import module_all_groups
 
-# from components.func_sets.fg_builder_provider import fg_services
+# from components.func_sets.fs_builder_provider import fs_services
 # from components.matrix.module import Module
 
-# from data.axioms.configs import group_ids
-# from data.enums.prop_types import GroupType
+# from data.axioms.configs import set_ids
+# from data.enums.prop_types import SetType
 
 # from tests.strategies.golem_strats import module_input_set
 
@@ -17,16 +17,16 @@
 # class TestModule(unittest.TestCase):
 
 #   def setUp(self):
-#     fg_id = group_ids['glg']
-#     fg_type = GroupType.GATEWAY
-#     group = fg_services.get(f'{fg_type}-{fg_id}')
+#     fg_id = set_ids['glg']
+#     fg_type = SetType.GATEWAY
+#     group = fs_services.get(f'{fg_type}-{fg_id}')
 #     self.module = Module(group)
 #     # self.module = Module(module_all_groups)
 
 #   def test_build_function_groups(self):
 #     pass
   
-#   @given(module_input_set(st.just(group_ids['glg']))) # pylint: disable=no-value-for-parameter
+#   @given(module_input_set(st.just(set_ids['glg']))) # pylint: disable=no-value-for-parameter
 #   def test_process_inputs(self):
 #     # in the beginning, we have a list of unordered, and unaggregated inputs
 #     pass

@@ -14,22 +14,22 @@ class HookType(Enum):
   def get_component_type(self):
     return ComponentType.HOOK
 
-class GroupType(Enum):
+class SetType(Enum):
   UNSET = 1
   SENSOR = 101
   CORTICAL = 201
   GATEWAY = 202
   def get_component_type(self):
-    return ComponentType.GROUP
+    return ComponentType.SET
   def sub_group(self):
     if 100 < self.value and self.value < 200:
-      return SubGroup.CODER
+      return SuperSet.CODER
     elif 200 < self.value and self.value < 300:
-      return SubGroup.PROC
+      return SuperSet.PROC
     else:
-      return SubGroup.UNSET
+      return SuperSet.UNSET
 
-class SubGroup(Enum):
+class SuperSet(Enum):
   UNSET = 1
   CODER = 2
   PROC = 3
@@ -49,7 +49,7 @@ class RuleType(Enum):
   def get_component_type(self):
     return ComponentType.INSTRUCTION
 
-# (PackType|RsrcType|FieldType|GroupType|HookType|RuleType)
+# (PackType|RsrcType|FieldType|SetType|HookType|RuleType)
 
 class PackType(Enum):
   UNSET = 1

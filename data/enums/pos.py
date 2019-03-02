@@ -15,13 +15,14 @@ class DimensionallyOrdered(Enum):
     self.dimension = dimension
 
 class ComponentType(Enum):
-  MATRIX = 1
-  HOOK = 2
-  GROUP = 3
-  PACKAGER = 4
-  INSTRUCTION = 5
-  PACKAGE = 6
-  DATA = 7
+  MATRIX = auto()
+  HOOK = auto()
+  SET = auto()
+  GROUP = auto()
+  PACKAGER = auto()
+  INSTRUCTION = auto()
+  PACKAGE = auto()
+  DATA = auto()
 
 class Floor(Enum):
   CELLAR = 1

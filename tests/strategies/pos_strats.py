@@ -11,7 +11,7 @@ from components.packages.package import Package
 from components.packages.misc_funcs import (build_address, build_package,
                                   build_package_inputs, build_meld)
 from utils.pos import Pos
-from tests.strategies.prop_strats import package_group,package_resource,package_type
+from tests.strategies.prop_strats import set_type_prop,package_resource,package_type
 from tests.strategies.packing_strats import valid_shape
 
 @composite

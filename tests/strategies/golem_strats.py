@@ -4,12 +4,12 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.configs import proc_ids, group_ids, coder_ids
+from data.axioms.configs import proc_ids, set_ids, coder_ids
 from data.axioms.props import id_pattern
-from data.enums.prop_types import GroupType,PackType
-from data.maps.group import get_ids
+from data.enums.prop_types import SetType,PackType
+from data.maps.set import get_ids
 
-from tests.strategies.prop_strats import package_group
+from tests.strategies.prop_strats import set_type_prop
 from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address,valid_resource_data
 
 from components.packages.package import Package
@@ -19,12 +19,12 @@ from components.func_sets.procs.proc_provider import proc_services
 
 @composite
 def fg_provider_id(draw):
-    # fg_id = group_ids['glg']
-    # fg_type = GroupType.SENSOR
+    # fg_id = set_ids['glg']
+    # fg_type = SetType.SENSOR
     # mismatch between arb actual id and arb actual group type
     # group types need to know if an ID is part of their domain
-  # vs = group_ids.values()
-  g_type = draw(package_group()) # pylint: disable=no-value-for-parameter
+  # vs = set_ids.values()
+  g_type = draw(set_type_prop()) # pylint: disable=no-value-for-parameter
   g_id = draw(st.sampled_from(sorted(get_ids(g_type))))
   st.assume(g_type and g_id)
   return f'{g_type}-{g_id}'

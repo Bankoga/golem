@@ -7,7 +7,7 @@ from numpy import full, ones
 
 from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import id_pattern
-from data.enums.prop_types import GroupType, FieldType, HookType, PackType, RsrcType, NodeType, RuleType
+from data.enums.prop_types import SetType, FieldType, HookType, PackType, RsrcType, NodeType, RuleType
 from data.axioms.cell_types import CellType
 from components.packages.package import Package
 from components.packages.misc_funcs import (build_address, build_package,
@@ -43,10 +43,10 @@ def package_resource(draw):
   return res
 
 @composite
-def package_group(draw):
-  res = draw(st.sampled_from(GroupType))
+def set_type_prop(draw):
+  res = draw(st.sampled_from(SetType))
   st.assume(res)
-  st.assume(res != GroupType.UNSET)
+  st.assume(res != SetType.UNSET)
   return res
 
 @composite
