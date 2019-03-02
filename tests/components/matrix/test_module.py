@@ -6,14 +6,16 @@
 # # from data.tests.dummy_configs import module_all_groups
 
 # from components.func_groups.fg_builder_provider import fg_services
-# from components.module import Module
+# from components.matrix.module import Module
 
 # from data.axioms.configs import group_ids
 # from data.enums.prop_types import GroupType
 
 # from tests.strategies.golem_strats import module_input_set
 
+
 # class TestModule(unittest.TestCase):
+
 #   def setUp(self):
 #     fg_id = group_ids['glg']
 #     fg_type = GroupType.SENSOR
@@ -22,6 +24,11 @@
 #     # self.module = Module(module_all_groups)
 
 #   def test_build_function_groups(self):
+#     pass
+  
+#   @given(module_input_set(st.just(group_ids['glg']))) # pylint: disable=no-value-for-parameter
+#   def test_process_inputs(self):
+#     # in the beginning, we have a list of unordered, and unaggregated inputs
 #     pass
 
 #   def test_operate(self):
@@ -33,7 +40,7 @@
 #     pass
 
 # if __name__ == '__main__':
-#     unittest.main()
+#   unittest.main()
 
 
 #   # def test_hooks_were_inserted_correctly(self):
