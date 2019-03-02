@@ -1,5 +1,4 @@
 from components.component import Component
-from components.func_groups.fg_builder_provider import fg_services
 
 from data.enums.pos import ComponentType
 
