@@ -8,6 +8,7 @@ class Module(Component):
   Responsible for aggregating packages with the same keys into single packages for routing
   """
   def __init__(self, proc):
+    # TODO: proc needs to be replaced with an arbitrary func_group
     # once fully initialized, a module has very few aggregate properties to consider during operation
     self.proc = proc
     self.prev_activations=dict()
@@ -18,7 +19,7 @@ class Module(Component):
   def _build_func_groups_(self):
     for group_id in self.proc.groups:
       group = self.proc.groups[group_id]
-      self.groups[group_id] = FuncGroup(group, group.ctg_type)
+      self.groups[group_id] = FuncGroup(group, group['type'])
       pass
     
   def process_inputs(self):
