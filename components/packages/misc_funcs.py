@@ -1,10 +1,10 @@
 from components.packages.package import Package
 
-def build_address(module_id, group_id):
-  if group_id is None:
+def build_address(module_id, set_id):
+  if set_id is None:
     return f'{module_id}'
   else:
-    return f'{module_id}-{group_id}'
+    return f'{module_id}-{set_id}'
 
 def build_meld(recip_addr,dp_resource,dp_type,dp_shape=None):
   if dp_shape is None:

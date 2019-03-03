@@ -8,45 +8,45 @@ from data.enums.prop_types import SetType
 
 from data.axioms.configs import proc_ids
 
-from tests.strategies.golem_strats import fg_provider_id
+from tests.strategies.golem_strats import fs_provider_id
 import utils.object_factory
 
 class TestFSBuilderProvider(unittest.TestCase):
   def test_get_specific(self):
-    fg_type_id = f'{SetType.GATEWAY}-{proc_ids["glg"]}'
-    if (fg_type_id is None):
+    fs_type_id = f'{SetType.GATEWAY}-{proc_ids["glg"]}'
+    if (fs_type_id is None):
       with self.assertRaises(ValueError):
-        fg = fs_services.get(fg_type_id, **{})
+        fg = fs_services.get(fs_type_id, **{})
     else:
-      parts = fg_type_id.split('-')
+      parts = fs_type_id.split('-')
       g_type = SetType[parts[0].split('.')[1]]
       if g_type is None:
         with self.assertRaises(ValueError):
-          fg = fs_services.get(fg_type_id, **{})
+          fg = fs_services.get(fs_type_id, **{})
       elif g_type in SetType:
-        fg = fs_services.get(fg_type_id, **{})
-        self.assertTrue(fg.get_id(), fg_type_id)
+        fg = fs_services.get(fs_type_id, **{})
+        self.assertTrue(fg.get_id(), fs_type_id)
       else:
         with self.assertRaises(ValueError):
-          fg = fs_services.get(fg_type_id, **{})
+          fg = fs_services.get(fs_type_id, **{})
   
-  @given(fg_provider_id()) # pylint: disable=no-value-for-parameter
-  def test_get_arb(self, fg_type_id):
-    if (fg_type_id is None):
+  @given(fs_provider_id()) # pylint: disable=no-value-for-parameter
+  def test_get_arb(self, fs_type_id):
+    if (fs_type_id is None):
       with self.assertRaises(ValueError):
-        fg = fs_services.get(fg_type_id, **{})
+        fg = fs_services.get(fs_type_id, **{})
     else:
-      parts = fg_type_id.split('-')
+      parts = fs_type_id.split('-')
       g_type = SetType[parts[0].split('.')[1]]
       if g_type is None:
         with self.assertRaises(ValueError):
-          fg = fs_services.get(fg_type_id, **{})
+          fg = fs_services.get(fs_type_id, **{})
       elif g_type in SetType:
-        fg = fs_services.get(fg_type_id, **{})
-        self.assertTrue(fg.get_id(), fg_type_id)
+        fg = fs_services.get(fs_type_id, **{})
+        self.assertTrue(fg.get_id(), fs_type_id)
       else:
         with self.assertRaises(ValueError):
-          fg = fs_services.get(fg_type_id, **{})
+          fg = fs_services.get(fs_type_id, **{})
 
 if __name__ == '__main__':
   unittest.main()

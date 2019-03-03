@@ -18,9 +18,9 @@ from components.packages.misc_funcs import build_address, build_meld, build_pack
 from components.func_sets.procs.proc_provider import proc_services
 
 @composite
-def fg_provider_id(draw):
-    # fg_id = set_ids['glg']
-    # fg_type = SetType.SENSOR
+def fs_provider_id(draw):
+    # fs_id = set_ids['glg']
+    # fs_type = SetType.SENSOR
     # mismatch between arb actual id and arb actual group type
     # group types need to know if an ID is part of their domain
   # vs = set_ids.values()
@@ -118,12 +118,12 @@ def valid_module_input_set(draw):
   pass
 
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
-# st.sampled_from(['sender_group_id','self','Self', '']),
+# st.sampled_from(['sender_set_id','self','Self', '']),
 # st.sampled_from(RsrcType),
 # st.sampled_from(PackType),
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
-# st.sampled_from(['sender_group_id','self','Self','']))
+# st.sampled_from(['sender_set_id','self','Self','']))
 # def test_build_package_inputs(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
 #   inputs = build_package_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
 #   sender_address = build_address(sm_id,sg_id)
@@ -132,12 +132,12 @@ def valid_module_input_set(draw):
 #   self.assertEqual(inputs, res)
 
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
-# st.sampled_from(['sender_group_id','self','Self', '']),
+# st.sampled_from(['sender_set_id','self','Self', '']),
 # st.sampled_from(RsrcType),
 # st.sampled_from(PackType),
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
-# st.sampled_from(['sender_group_id','self','Self','']))
+# st.sampled_from(['sender_set_id','self','Self','']))
 # def test_build_package(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
 #   inputs = build_package(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
 #   sender_address = build_address(sm_id,sg_id)
@@ -167,10 +167,10 @@ def valid_module_input_set(draw):
 #   """
 #   # build a
 #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
-#       st.sampled_from(['sender_group_id','self','Self', '']),
+#       st.sampled_from(['sender_set_id','self','Self', '']),
 #       st.sampled_from(RsrcType),
 #       st.sampled_from(PackType),
 #       st.sampled_from(FieldType),
 #       st.sampled_from(['SenderModuleId','self','Self']),
-#       st.sampled_from(['sender_group_id','self','Self',''])))
+#       st.sampled_from(['sender_set_id','self','Self',''])))
 #   pass

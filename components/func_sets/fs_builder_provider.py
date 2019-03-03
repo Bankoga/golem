@@ -10,8 +10,8 @@ from utils.object_factory import *
 #   """
 #   The factory responsible for handling each type of supported link between modules
 #   """
-#   def get(self, fg_type_id, **kwargs):
-#     parts = fg_type_id.split('-')
+#   def get(self, fs_type_id, **kwargs):
+#     parts = fs_type_id.split('-')
 #     if parts[0] is SetType.SENSOR:
 #       # then use the prexisting sensor Builder
 #       pass
@@ -21,7 +21,7 @@ from utils.object_factory import *
 #     else:
 #       raise ValueError('The id does not indicate a valid thing!')
 
-#     return self.create(fg_type_id, **kwargs)
+#     return self.create(fs_type_id, **kwargs)
 
 # # fs_services.register_builder('', Builder())
 # # fs_services.register_builder('', Builder())
@@ -43,10 +43,10 @@ class FSBuilderProvider(ObjectFactory):
   """
   The factory responsible for handling each type of supported link between modules
   """
-  def get(self, fg_type_id, **kwargs):
-    if fg_type_id is None:
+  def get(self, fs_type_id, **kwargs):
+    if fs_type_id is None:
       raise ValueError('Invalid paramater value')
-    parts = fg_type_id.split('-')
+    parts = fs_type_id.split('-')
     g_type = SetType[parts[0].split('.')[1]]
     # if 100 < parts[0].value and parts[0].value < 200:
     if g_type is None:
@@ -57,7 +57,7 @@ class FSBuilderProvider(ObjectFactory):
     elif g_type.sub_group() == SuperSet.PROC:
       return proc_services.get(parts[1])
     # elif g_type.value > 1:
-    #   return self.create(fg_type_id, **kwargs)
+    #   return self.create(fs_type_id, **kwargs)
     else:
       raise ValueError('The id does not indicate a valid thing!')
 

@@ -66,12 +66,12 @@ class TestCell(unittest.TestCase):
   #   """
   #   # build a
   #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
-  #       st.sampled_from(['sender_group_id','self','Self', '']),
+  #       st.sampled_from(['sender_set_id','self','Self', '']),
   #       st.sampled_from(RsrcType),
   #       st.sampled_from(PackType),
   #       st.sampled_from(FieldType),
   #       st.sampled_from(['SenderModuleId','self','Self']),
-  #       st.sampled_from(['sender_group_id','self','Self',''])))
+  #       st.sampled_from(['sender_set_id','self','Self',''])))
   #   pass
 
 

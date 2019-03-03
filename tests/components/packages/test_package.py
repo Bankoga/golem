@@ -76,14 +76,14 @@ class TestPackage(unittest.TestCase):
   CURRENTLY NO LINK CASES ARE TESTED!
   ['SenderModuleId','','RecipientModuleId',''],
     ['SenderModuleId','noise_from','RecipientModuleId',''],
-    ['SenderModuleId','sender_group_id','RecipientModuleId',''],
-    ['SenderModuleId','','RecipientModuleId','recipient_group_id'],
-    ['SenderModuleId','sender_group_id','RecipientModuleId','recipient_group_id'],
+    ['SenderModuleId','sender_set_id','RecipientModuleId',''],
+    ['SenderModuleId','','RecipientModuleId','recipient_set_id'],
+    ['SenderModuleId','sender_set_id','RecipientModuleId','recipient_set_id'],
     ['self','','self',''],
     ['SenderModuleId','noise_from','RecipientModuleId',''],
-    ['SenderModuleId','sender_group_id','RecipientModuleId',''],
-    ['SenderModuleId','','RecipientModuleId','recipient_group_id'],
-    ['SenderModuleId','sender_group_id','RecipientModuleId','recipient_group_id']
+    ['SenderModuleId','sender_set_id','RecipientModuleId',''],
+    ['SenderModuleId','','RecipientModuleId','recipient_set_id'],
+    ['SenderModuleId','sender_set_id','RecipientModuleId','recipient_set_id']
   """
   @given(package_inputs()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self, inputs):

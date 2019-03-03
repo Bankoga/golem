@@ -25,8 +25,8 @@ class FuncSet(Component):
   That comes after we understand how the current pieces are turned into function groups
   """
   
-  def __init__(self, group_id, group_type):
-    super().__init__(group_id, group_type.get_component_type(), ctg_type=group_type)
+  def __init__(self, set_id, set_type):
+    super().__init__(set_id, set_type.get_component_type(), ctg_type=set_type)
 
   def get_id(self):
     return self.itm_id
