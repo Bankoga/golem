@@ -3,7 +3,7 @@ from components.component import Component
 from data.enums.pos import ComponentType
 
 from components.packages.misc_funcs import build_address
-class FuncGroup(Component):
+class FuncSet(Component):
   """
   A functional group is an addressable processing region within a matrix
   It is a package production group

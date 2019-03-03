@@ -36,7 +36,7 @@ from components.func_sets.coders.coder_provider import coder_services
 from components.func_sets.procs.proc_provider import proc_services
 from components.func_sets.coders.coder import Coder
 from components.func_sets.procs.proc import Proc
-from components.func_sets.func_set import FuncGroup
+from components.func_sets.func_set import FuncSet
 from components.component import Component
 
 class FSBuilderProvider(ObjectFactory):

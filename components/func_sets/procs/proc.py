@@ -1,4 +1,4 @@
-from components.func_sets.func_set import FuncGroup
+from components.func_sets.func_set import FuncSet
 from utils.cardinators.cardinator_provider import cardinator_services
 from data.axioms.configs import file_type
 from data.enums.prop_types import SetType
@@ -6,7 +6,7 @@ from data.enums.prop_types import SetType
 from utils.config_reader import read
 from utils.pos import Pos
 
-class Proc(FuncGroup):
+class Proc(FuncSet):
   """
   A proc is used to create the stubs of some of the functional groups within a matrix
   PROC stands for primary repository of cells

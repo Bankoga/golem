@@ -65,11 +65,11 @@ def module_input_set(draw, elements=partial_address()): # pylint: disable=no-val
   # inputs to the hooks
   groups = []
   group_inputs = []
-  funcgroup = draw(proc_group()) # pylint: disable=no-value-for-parameter
-  for group in funcgroup.groups:
+  funcset = draw(proc_group()) # pylint: disable=no-value-for-parameter
+  for group in funcset.groups:
     inp = draw(package_arbitrary()) # pylint: disable=no-value-for-parameter
-    groups.append(funcgroup.groups[group]['id'])
-    inp.update(f'{address}-{funcgroup.groups[group]["id"]}')
+    groups.append(funcset.groups[group]['id'])
+    inp.update(f'{address}-{funcset.groups[group]["id"]}')
     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
     inp.build(resc_data)
     meld = inp.get_meld()

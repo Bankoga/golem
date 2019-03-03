@@ -4,7 +4,7 @@
 # from hypothesis import strategies as st
 
 
-# class TestFuncGroup(unittest.TestCase):
+# class TestFuncSet(unittest.TestCase):
 
 #   def setUp(self):
 #     pass
@@ -12,7 +12,7 @@
 #     # self.factory = proc_services.get(self.id)
 #     # self.base_group = self.factory.groups[0]
 #     # self.ctg_type = self.factory.groups[0].ctg_type
-#     # self.fg = FuncGroup(self.id, self.ctg_type)
+#     # self.fg = FuncSet(self.id, self.ctg_type)
   
 #   def test_get_type(self):
 #     # self.assertEqual(self.fg.get_type(), self.ctg_type, "type was set incorrectly")
@@ -50,7 +50,7 @@
 #   def test_resource_types(self):
 #     # which resource types it accepts from Module level packages
 #     # given the proc group data
-#     # when the func group is initialized
+#     # when the func set is initialized
 #     # then the accepted_resources list should match resource types
 #     # self.assertTrue(self.group.resource_types)
 #     pass

@@ -2,11 +2,11 @@ from data.axioms.configs import file_type
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.pos import Pos
-from components.func_sets.func_set import FuncGroup
+from components.func_sets.func_set import FuncSet
 from data.enums.prop_types import SetType
 
 
-class Coder(FuncGroup):
+class Coder(FuncSet):
   """
   A sensor is used to create the stubs of the functional groups within a matrix
   """

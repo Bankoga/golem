@@ -46,7 +46,7 @@ class TestCell(unittest.TestCase):
   # @given()
   # def test_pack(self,inputs):
   #   """
-  #  packing may be done in func groups
+  #  packing may be done in func sets
   #   but I need a guaranteed order to some of the inputs don't I?
   #   Why? Bc agg type packages get combined in a spatially oriented way
   #   Actually, bc of position data that is embedded in each sender we have a way to guarantee order of processing

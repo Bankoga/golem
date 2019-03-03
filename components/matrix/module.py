@@ -1,10 +1,10 @@
-from components.func_sets.func_set import FuncGroup
+from components.func_sets.func_set import FuncSet
 from components.component import Component
 
 class Module(Component):
 
   """
-  Each module serves as a discrete env, and package repository for a set of func groups
+  Each module serves as a discrete env, and package repository for a set of func sets
   Responsible for aggregating packages with the same keys into single packages for routing
   """
   def __init__(self, proc):
@@ -19,7 +19,7 @@ class Module(Component):
   def _build_func_sets_(self):
     for group_id in self.proc.groups:
       group = self.proc.groups[group_id]
-      self.groups[group_id] = FuncGroup(group, group['type'])
+      self.groups[group_id] = FuncSet(group, group['type'])
       pass
     
   def process_inputs(self):
