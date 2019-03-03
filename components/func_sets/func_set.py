@@ -1,11 +1,12 @@
 from components.component import Component
 
 from data.enums.pos import ComponentType
+from data.enums.prop_types import GroupType
 
 from components.packages.misc_funcs import build_address
 class FuncSet(Component):
   """
-  A functional group is an addressable processing region within a matrix
+  A functional set is an addressable processing region within a matrix
   It is a package production group
   each functional group in a matrix defines N things
     - an unique address
@@ -23,10 +24,22 @@ class FuncSet(Component):
 
   Reward distribution rule types are not currently being worked upon
   That comes after we understand how the current pieces are turned into function groups
+  Each module serves as a discrete env, and package repository for a set of func sets
+  Responsible for aggregating packages with the same keys into single packages for routing
   """
   
   def __init__(self, set_id, set_type):
     super().__init__(set_id, set_type.get_component_type(), ctg_type=set_type)
+    # once fully initialized, a module has very few aggregate properties to consider during operation.
+    self.prev_activations=dict()
+    self.groups=dict()
+    self.input_shapes=dict()
+    self._build_funcs_()
+
+  def _build_funcs_(self):
+    for set_id in self.groups:
+      group = self.groups[set_id]
+      self.groups[set_id] = FuncSet(group, GroupType[group['group_type']])
 
   def get_id(self):
     return self.itm_id
@@ -65,3 +78,45 @@ class FuncSet(Component):
 # //Converting all the input,output,and link melds into a dictionary that the processing groups can leverage for 
 # """
 # # return "lol"
+  # def operate(self,inputShapes):
+  #     outputShapes = prepareBlankOutputShapes()
+  #     for group in self.processingGroups:
+  #         # group.transform  needs to handle calculating its own activation shape which it adds to the outputShape to be processed by the primary dispatcher
+  #         outputs = group.transform(inputShapes)
+  #         for outputShape in outputs:
+  #             outputShapes[outputShape.key]+=outputShape.value
+  #             # If this is the last group, after adding the value, throw each point through a ReLU
+  #     return outputShapes
+
+    # self._set_hooks_()
+    # self._set_links_defined_()
+    # self._set_links_used_()
+
+  # # @abstractmethod # pylint: disable=undefined-variable
+  # def _set_hooks_(self):
+  #   hook_prop = 'hooks'
+  #   for hook_type in self.config[hook_prop]:
+  #     for group in self.groups:
+  #       if hook_prop not in self.groups[group]:
+  #         self.groups[group][hook_prop] = [hook_type]
+  #       else:
+  #         self.groups[group][hook_prop].append(hook_type)
+
+  # # @abstractmethod # pylint: disable=undefined-variable
+  # def _build_links_(self, link_protos, link_results):
+  #   if link_protos is not None:
+  #     for link in link_protos:
+  #       link_results[link['id']] = link
+  #   return link_results
+
+  # # @abstractmethod # pylint: disable=undefined-variable
+  # def _set_links_defined_(self):
+  #   links_defined = self.config['links_defined']
+  #   link_defs = dict()
+  #   self.link_definitions = self._build_links_(links_defined,link_defs)
+  
+  # # @abstractmethod # pylint: disable=undefined-variable
+  # def _set_links_used_(self):
+  #   links_used = self.config['links_used']
+  #   prcd_lu = {}
+  #   self.links_used = self._build_links_(links_used, prcd_lu)

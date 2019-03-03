@@ -14,3 +14,6 @@ class Component:
 
   def get_id(self):
     return self.itm_id
+
+  # TODO: Refactor build core out of packages into component
+  # TODO: Refactor operate/process/eval/exec/etc (whichever is ts func stuff) into component
