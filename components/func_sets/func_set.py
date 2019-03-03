@@ -1,3 +1,4 @@
+from abc import abstractmethod
 from components.component import Component
 
 from data.enums.pos import ComponentType
@@ -34,12 +35,6 @@ class FuncSet(Component):
     self.prev_activations=dict()
     self.groups=dict()
     self.input_shapes=dict()
-    self._build_funcs_()
-
-  def _build_funcs_(self):
-    for set_id in self.groups:
-      group = self.groups[set_id]
-      self.groups[set_id] = FuncSet(group, GroupType[group['group_type']])
 
   def get_id(self):
     return self.itm_id
@@ -47,11 +42,21 @@ class FuncSet(Component):
   def get_type(self):
     return self.ctg_type
 
-  def _build_func_(self):
+  @abstractmethod
+  def process_inputs(self, inputs):
     pass
-  
-  def func(self, inputs):
-    pass
+
+  # @abstractmethod
+  # def _build_func_(self):
+  # def _build_funcs_(self):
+  #   for set_id in self.groups:
+  #     group = self.groups[set_id]
+  #     self.groups[set_id] = (group, GroupType[group['group_type']])
+
+
+  # @abstractmethod
+  # def func(self, inputs):
+  #   pass
 # def compose_functions(self,inputMelds,funcType,procStageGroupsDict,procStageShape,procGroupInputMelds,procGroupDetails,procGroupOutputMelds,procOutputMelds,shapeComposition,outputMelds,linkMelds,linksDefined):
 # pass
 # # just preparing a nice battery of for loops for all the looping that's gunna be done

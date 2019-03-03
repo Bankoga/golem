@@ -16,7 +16,6 @@ class Proc(FuncSet):
     self.config = read(proc_id,file_type['proc'])
     self._set_type_data_()
     super().__init__(self.config['id'], self.ctg_type)
-    self.groups = dict()
     self._set_proc_groups_()
     self._set_outputs_()
     self._init_stage_data_()
@@ -50,3 +49,7 @@ class Proc(FuncSet):
       for group in conf_obj[i]['groups']:
         ord_to_index = cardinator_services.get(self.cardinal_direction).get_card_index(i,sz)
         self.groups[group]['pos'] = Pos(z=ord_to_index)
+
+  def process_inputs(self,inputs):
+    results = []
+    return results

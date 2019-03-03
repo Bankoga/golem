@@ -1,3 +1,4 @@
+from abc import abstractmethod
 from data.enums.pos import ComponentType
 
 class Component:
@@ -16,4 +17,9 @@ class Component:
     return self.itm_id
 
   # TODO: Refactor build core out of packages into component
+  def build(self):
+    pass
+
   # TODO: Refactor operate/process/eval/exec/etc (whichever is ts func stuff) into component
+  def operate(self, inputs=None):
+    pass

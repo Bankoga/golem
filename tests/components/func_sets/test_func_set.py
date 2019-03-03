@@ -4,10 +4,12 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from data.axioms.configs import set_ids
-from data.enums.prop_types import SetType
+from data.enums.prop_types import SetType, GroupType
 
 from components.func_sets.fs_builder_provider import fs_services
 from components.func_sets.func_set import FuncSet
+
+from tests.strategies.golem_strats import module_input_set
 
 class TestFuncSet(unittest.TestCase):
 
@@ -31,16 +33,26 @@ class TestFuncSet(unittest.TestCase):
     result = self.fset.get_id()
     self.assertEqual(result, expectation, "id was set incorrectly")
 
-  def test_build_funcs(self):
-    for set_id in self.fset.groups:
-      g_dat = self.fset.groups[set_id]
-      g_type = GroupType[g_dat['group_type']]
-      expectation = FuncSet(g_dat,g_type)
-      result = self.module.groups[set_id]
-      self.assertEqual(result, expectation)
+  # def test_build_funcs(self):
+  #   alt_fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
+  #   base_groups = alt_fset.groups
+  #   for set_id in base_groups:
+  #     g_dat = base_groups[set_id]
+  #     g_type = GroupType[g_dat['group_type']]
+  #     expectation = FuncSet(g_dat,g_type)
+  #     result = self.fset.groups[set_id]
+  #     self.assertEqual(result, expectation)
   
-  def test_get_component_type(self):
-    pass
+
+  # def test_operate(self):
+  #   pass
+  # # # TODO: Move the GOLEM conda env from conda envs in AppData local to the package...
+  # @given(module_input_set(st.just('TestC'))) # pylint: disable=no-value-for-parameter
+  # def test_process(self, inputs):
+  #   pass
+
+  # def test_get_component_type(self):
+  #   pass
 
   # def test_address(self):
   #   # given the rest of the environmental context

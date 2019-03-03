@@ -76,5 +76,16 @@ class TestProc(unittest.TestCase):
         self.assertEqual(self.proc.groups[group]['pos'].y, -1)
         self.assertEqual(self.proc.groups[group]['pos'].z, ord_to_index)
 
+  def test_process_inputs(self, input_set):
+    """
+    what are the assumptions we make as part of testing inputs to a proc group?
+    What happens if these assumptions are violated?
+    """
+
+  # @given(module_input_set(st.just(set_ids['glg']))) # pylint: disable=no-value-for-parameter
+  # def test_process_inputs(self):
+  #   # in the beginning, we have a list of unordered, and unaggregated inputs
+  #   pass
+
 if __name__ == '__main__':
   unittest.main()
