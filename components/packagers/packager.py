@@ -7,11 +7,12 @@ from data.enums.prop_types import NodeType
 class Packager(Component):
   """
   The actual functions that power the matrix
-  Not the groups, or the meta-containers, or regions, but the functions themselves
-  Examples of Packaging Rule Types:
-    - Cell Type
+  Not the function sets, or the meta-containers, or regions, but a unified algorithm or method
+  Examples of Packager Types:
+    - Cell
     - Framework Function
   We are going to need another metaprovider here.
+  All packagers use multiple instructions to transform input into output
   """
 
   def __init__(self, rule_type, arb_id):
