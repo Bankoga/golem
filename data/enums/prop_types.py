@@ -2,6 +2,8 @@ from enum import Enum, auto
 
 from data.enums.pos import ComponentType
 
+# TODO: eventually this will need to be refactored to ensure that most of these dicts only have one instance
+
 class AutoName(Enum):
   def _generate_next_value_(name,start,count,last_values): # pylint: disable=no-self-argument
     return name
@@ -34,8 +36,14 @@ class SuperSet(Enum):
   CODER = 2
   PROC = 3
 
+class GroupType(Enum):
+  ORGANO = auto()
+  METALLO = auto()
+  HYBRID = auto()
+  def get_component_type(self):
+    return ComponentType.GROUP
 
-class NodeType(Enum):
+class PackagerType(Enum):
   UNSET = 1
   CELL = 100
   FW_FUNC = 500

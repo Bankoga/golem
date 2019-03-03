@@ -6,13 +6,13 @@ from hypothesis import strategies as st
 from components.packagers.packager import Packager
 from data.axioms.props import id_pattern 
 from data.axioms.packager import defaults as prd
-from data.enums.prop_types import NodeType
+from data.enums.prop_types import PackagerType
 
 from tests.strategies.prop_strats import node_type_prop
 
 class TestPackager(unittest.TestCase):
   def setUp(self):
-    self.rule = Packager(NodeType.CELL, 'A')
+    self.rule = Packager(PackagerType.CELL, 'A')
   
   @given(node_type_prop(),st.from_regex(id_pattern)) # pylint: disable=no-value-for-parameter
   def test_base_rule(self, arb_type, arb_id):

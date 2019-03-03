@@ -7,7 +7,7 @@ from numpy import full, ones
 
 from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import id_pattern
-from data.enums.prop_types import SetType, FieldType, HookType, PackType, RsrcType, NodeType, RuleType
+from data.enums.prop_types import SetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType
 from data.axioms.cell_types import CellType
 from components.packages.package import Package
 from components.packages.misc_funcs import (build_address, build_package,
@@ -22,9 +22,9 @@ def cell_type_prop(draw):
 
 @composite
 def node_type_prop(draw):
-  res = draw(st.sampled_from(NodeType))
+  res = draw(st.sampled_from(PackagerType))
   st.assume(res)
-  st.assume(res != NodeType.UNSET)
+  st.assume(res != PackagerType.UNSET)
   return res
 
 

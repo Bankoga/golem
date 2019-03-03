@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 
 from components.packagers.cells.cell import Cell
 from data.axioms.cell_types import CellType,cell_data
-from data.enums.prop_types import RuleType, RsrcType, PackType,FieldType, NodeType
+from data.enums.prop_types import RuleType, RsrcType, PackType,FieldType, PackagerType
 
 from tests.strategies.packing_strats import valid_cell_instruction
 from tests.strategies.prop_strats import cell_type_prop
@@ -19,7 +19,7 @@ class TestCell(unittest.TestCase):
   #   # self.ctg_type_data = cell_data[str(self.get_id())]
   
   # def test_base(self):
-  #   self.assertEqual(self.cell.ctg_type, NodeType.CELL)
+  #   self.assertEqual(self.cell.ctg_type, PackagerType.CELL)
   #   self.assertEqual(self.cell.get_id(), self.get_id())
   
   @given(cell_type_prop()) # pylint: disable=no-value-for-parameter
@@ -35,7 +35,7 @@ class TestCell(unittest.TestCase):
       type_data = cell_data[str(inp_id)]
       self.assertEqual(cell.get_id(), inp_id)
 
-    self.assertEqual(cell.ctg_type, NodeType.CELL)
+    self.assertEqual(cell.ctg_type, PackagerType.CELL)
     self.assertEqual(cell.cnv_tmplts, type_data['cnv_tmplts'])
     self.assertEqual(cell.freq_range, type_data['freq_range'])
     self.assertEqual(cell.init_freq, type_data['init_freq'])

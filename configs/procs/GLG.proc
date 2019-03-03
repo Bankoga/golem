@@ -20,36 +20,43 @@ stages_to_groups_dict:
     total_count: 1
 group_details:
   - id: noise_dwn_inhib
+    group_type: ORGANO
     node_details:
       - node_type: plate
         pct_of_group: 1
     pct_of_stage: -1
   - id: noise_adj_inhib
+    group_type: ORGANO
     node_details:
       - node_type: plate
         pct_of_group: 1
     pct_of_stage: -1
   - id: cycle_gate_ctrl
+    group_type: ORGANO
     node_details:
       - node_type: plate
         pct_of_group: 1
     pct_of_stage: -1
   - id: cycle_stg_adv
+    group_type: ORGANO
     node_details:
       - node_type: plate
         pct_of_group: 1
     pct_of_stage: -1
   - id: cntxt_stg_adv
+    group_type: ORGANO
     node_details:
       - node_type: plate
         pct_of_group: 1
     pct_of_stage: -1
   - id: cntxt_up_inhib
+    group_type: ORGANO
     node_details:
       - node_type: plate
         pct_of_group: 1
     pct_of_stage: -1
   - id: relay_stg_adv
+    group_type: ORGANO
     node_details:
       - node_type: plate
         pct_of_group: 1
