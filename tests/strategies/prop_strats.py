@@ -5,10 +5,12 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 from numpy import full, ones
 
+from data.axioms.cell_types import CellType
 from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import id_pattern
 from data.enums.prop_types import SetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType
-from data.axioms.cell_types import CellType
+from data.maps.set import get_ids
+
 from components.packages.package import Package
 from components.packages.misc_funcs import (build_address, build_package,
                                   build_package_inputs, build_meld)
@@ -69,3 +71,16 @@ def rule_type_prop(draw):
   st.assume(res)
   st.assume(res != RuleType.UNSET)
   return res
+
+
+@composite
+def fs_provider_id(draw):
+    # fs_id = set_ids['glg']
+    # fs_type = SetType.SENSOR
+    # mismatch between arb actual id and arb actual group type
+    # group types need to know if an ID is part of their domain
+  # vs = set_ids.values()
+  g_type = draw(set_type_prop()) # pylint: disable=no-value-for-parameter
+  g_id = draw(st.sampled_from(sorted(get_ids(g_type))))
+  st.assume(g_type and g_id)
+  return f'{g_type}-{g_id}'

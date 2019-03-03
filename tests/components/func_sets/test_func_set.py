@@ -9,7 +9,7 @@ from data.enums.prop_types import SetType, GroupType
 from components.func_sets.fs_builder_provider import fs_services
 from components.func_sets.func_set import FuncSet
 
-from tests.strategies.golem_strats import module_input_set
+from tests.strategies.func_set_strats import module_input_set
 
 class TestFuncSet(unittest.TestCase):
 
@@ -33,6 +33,25 @@ class TestFuncSet(unittest.TestCase):
     result = self.fset.get_id()
     self.assertEqual(result, expectation, "id was set incorrectly")
 
+  # def test_process_inputs(self):
+  #   with self.assertRaises(NotImplementedError):
+  #     self.fset.process_inputs()
+
+  def test_reset_weights(self):
+    with self.assertRaises(NotImplementedError):
+      self.fset.reset_weights()
+
+  def test_get_weights(self):
+    with self.assertRaises(NotImplementedError):
+      self.fset.get_weights()
+
+  def test_operate(self):
+    with self.assertRaises(NotImplementedError):
+      self.fset.operate()
+
+  # def test_?(self):
+  #   with self.assertRaises(NotImplementedError):
+  #     self.fset.?()
   # def test_build_funcs(self):
   #   alt_fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
   #   base_groups = alt_fset.groups

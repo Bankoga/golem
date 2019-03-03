@@ -43,8 +43,21 @@ class FuncSet(Component):
     return self.ctg_type
 
   @abstractmethod
-  def process_inputs(self, inputs):
-    pass
+  def process_inputs(self, inputs=None):
+    raise NotImplementedError
+
+  @abstractmethod
+  def reset_weights(self):
+    raise NotImplementedError
+
+  @abstractmethod
+  def get_weights(self):
+    raise NotImplementedError
+
+  @abstractmethod
+  def operate(self, inputs=None):
+    proc_inputs = self.process_inputs(inputs)
+    raise NotImplementedError
 
   # @abstractmethod
   # def _build_func_(self):

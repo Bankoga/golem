@@ -1,10 +1,12 @@
 import unittest
 from hypothesis import given
 from hypothesis import strategies as st
-from data.axioms.configs import proc_ids,file_type
+from data.axioms.configs import proc_ids,file_type,set_ids
 from data.enums.prop_types import SetType
 from components.func_sets.procs.proc import Proc
 from components.func_sets.procs.proc_provider import proc_services
+
+from tests.strategies.func_set_strats import unbuilt_module_input_set, module_input_set
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 
@@ -76,16 +78,44 @@ class TestProc(unittest.TestCase):
         self.assertEqual(self.proc.groups[group]['pos'].y, -1)
         self.assertEqual(self.proc.groups[group]['pos'].z, ord_to_index)
 
+  def test_reset_weights(self):
+    self.proc.reset_weights()
+    # iterate through all weights in the proc
+    # TODO: HOW do we iterate through all weights in the proc
+
+  @given(unbuilt_module_input_set())  # pylint: disable=no-value-for-parameter
+  def test_process_unbuilt_inputs(self, inputs):
+    # this should raise a runtime error
+    with self.assertRaises(RuntimeError):
+      self.proc.process_inputs(inputs)
+
+  @given(st.text())
+  def test_process_when_unbuilt(self,input):
+    # this should raise a runtime error
+      # it doesn't matter if we have inputs or not
+    proc_id = proc_ids['glg']
+    proc =  proc_services.get(proc_id, **{})
+    pass
+
+  def test_process_no_inputs(self):
+    #  this seems like it should be a valid case
+    # given an arbitrary proc group, we may not get data to process this time step
+    pass
+
+  @given(module_input_set(st.just(set_ids['glg']))) # pylint: disable=no-value-for-parameter
   def test_process_inputs(self, input_set):
     """
     what are the assumptions we make as part of testing inputs to a proc group?
-    What happens if these assumptions are violated?
+    - every item in the input set has already been built
+    - the proc has been built
+    - inputs exist?
+    - the inputs arrive unsorted, and unaggregated
+    The first three are test cases, The fourth relates to input validity
+    What are the properties of valid inputs to a func set?
+    - The func set or one of its groups is listed as the recipient
+    - Do we assume that we get new data? Do we assume that all groups in the func set have at least one dedicated input?
     """
-
-  # @given(module_input_set(st.just(set_ids['glg']))) # pylint: disable=no-value-for-parameter
-  # def test_process_inputs(self):
-  #   # in the beginning, we have a list of unordered, and unaggregated inputs
-  #   pass
+    pass
 
 if __name__ == '__main__':
   unittest.main()

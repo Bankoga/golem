@@ -8,7 +8,7 @@ from data.enums.prop_types import SetType
 
 from data.axioms.configs import proc_ids
 
-from tests.strategies.golem_strats import fs_provider_id
+from tests.strategies.prop_strats import fs_provider_id
 import utils.object_factory
 
 class TestFSBuilderProvider(unittest.TestCase):
