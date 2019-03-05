@@ -2,7 +2,6 @@ from abc import abstractmethod
 from data.enums.pos import ComponentType
 
 class Component:
-  # TODO: implement a base class that is shared across all components
   def __init__(self, component_id,component_type, ctg_type=None):
     """
     component_id : the semantic key used as reference for the component object
@@ -17,7 +16,6 @@ class Component:
   def get_id(self):
     return self.itm_id
 
-  # TODO: Refactor build core out of packages into component
   @abstractmethod
   def build(self, data):
     if not self._built_:
@@ -29,7 +27,6 @@ class Component:
   def is_built(self):
     return self._built_
 
-  # TODO: Refactor operate/process/eval/exec/etc (whichever is ts func stuff) into component
   @abstractmethod
   def operate(self):
     if not self._built_:
