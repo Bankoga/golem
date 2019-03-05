@@ -12,14 +12,35 @@ class Component:
     self.ctg_type = ctg_type
     self.itm_id = component_id
     self.op_lvl = ComponentType(component_type)
+    self._built_ = False
 
   def get_id(self):
     return self.itm_id
 
   # TODO: Refactor build core out of packages into component
-  def build(self):
-    pass
+  @abstractmethod
+  def build(self, data):
+    if not self._built_:
+      self.var = data
+      self._built_ = True
+    else:
+      self.reset()
+  
+  def is_built(self):
+    return self._built_
 
   # TODO: Refactor operate/process/eval/exec/etc (whichever is ts func stuff) into component
-  def operate(self, inputs=None):
-    pass
+  @abstractmethod
+  def operate(self):
+    if not self._built_:
+      raise RuntimeError('The component is not ready for operation!')
+  
+  @abstractmethod
+  def update(self, new_data=None):
+    self._built_ = False
+    self.var = new_data
+
+  @abstractmethod
+  def reset(self):
+    self._built_ = False
+    self.var = None

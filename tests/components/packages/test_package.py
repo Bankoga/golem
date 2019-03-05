@@ -100,7 +100,7 @@ class TestPackage(unittest.TestCase):
   def test_unbuilt(self, input_pack):
     self.assertFalse(input_pack.is_built())
     with self.assertRaises(RuntimeError):
-      input_pack.process()
+      input_pack.operate()
 
   @given(package_arbitrary(), valid_resource_data()) # pylint: disable=no-value-for-parameter
   def test_build(self, input_pack, data):
@@ -108,7 +108,7 @@ class TestPackage(unittest.TestCase):
     input_pack.build(data)
     self.assertTrue(input_pack.is_built())
     self.assertTrue(array_equal(input_pack.var, data))
-    input_pack.process()
+    input_pack.operate()
 
   @given(package_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_get_meld(self,input_pack):
@@ -119,6 +119,13 @@ class TestPackage(unittest.TestCase):
   def test_update_address(self,input_pack, new_addr):
     input_pack.update(new_addr)
     self.assertEqual(input_pack.address, new_addr)
+    self.assertFalse(input_pack.is_built())
+    self.assertIsNone(input_pack.var)
+
+  @given(valid_package_arbitrary(), package_address()) # pylint: disable=no-value-for-parameter
+  def test_reset(self,input_pack, new_addr):
+    input_pack.update(new_addr)
+    input_pack.reset()
     self.assertFalse(input_pack.is_built())
     self.assertIsNone(input_pack.var)
 

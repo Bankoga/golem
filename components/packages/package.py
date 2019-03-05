@@ -22,7 +22,6 @@ class Package(Component):
   def __init__(self, meld,sender_address):
     self.meld_tuple = meld.split(';')
     self.sender = sender_address
-    self._built_ = False
     self.read_data()
     super().__init__(self.get_meld(),self.ctg_type.get_component_type(),self.ctg_type)
   
@@ -42,23 +41,19 @@ class Package(Component):
   def get_meld(self):
     return f'{self.sender};{self.address};{self.resource};{self.ctg_type};{self.shape}'
 
-  def process(self):
-    if (not self._built_):
-      raise RuntimeError("The package has not yet been built")
-    else:
-      pass
+  def operate(self):
+    super().operate()
 
   def build(self, data):
-    self.var = data
-    self._built_ = True
-
-  def is_built(self):
-    return self._built_
+    super().build(data)
 
   def update(self, new_addr):
     self.address = new_addr
     self._built_ = False
     self.var = None
+
+  def reset(self):
+    super().reset()
 
   def __eq__(self, other):
     return self.__dict__ == other.__dict__
