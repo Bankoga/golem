@@ -22,6 +22,7 @@ class TestFuncSet(unittest.TestCase):
     self.fs_id = set_ids['glg']
     self.fs_type = SetType.GATEWAY
     self.fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
+    self.fset.build()
   
   def test_get_type(self):
     expectation = self.fs_type
@@ -46,8 +47,7 @@ class TestFuncSet(unittest.TestCase):
       self.fset.get_weights()
 
   def test_operate(self):
-    with self.assertRaises(NotImplementedError):
-      self.fset.operate()
+    self.fset.operate()
 
   # def test_?(self):
   #   with self.assertRaises(NotImplementedError):

@@ -54,10 +54,12 @@ class FuncSet(Component):
   def get_weights(self):
     raise NotImplementedError
 
-  @abstractmethod
   def operate(self, inputs=None):
+    super().operate()
     proc_inputs = self.process_inputs(inputs)
-    raise NotImplementedError
+
+  def build(self):
+    super().build(None)
 
   # @abstractmethod
   # def _build_func_(self):
