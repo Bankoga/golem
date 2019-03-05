@@ -54,6 +54,10 @@ class Proc(FuncSet):
         self.groups[group]['pos'] = Pos(z=ord_to_index)
 
   def process_inputs(self,inputs):
+    """
+    TODO: PERFORMANCE REFACTOR POINT
+    This is run every timestep, and thus eats into the available processing resources quite extensively
+    """
     results = {}
     for pack in inputs:
       p_type = pack.get_ctg()
