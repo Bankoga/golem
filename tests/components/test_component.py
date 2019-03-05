@@ -28,6 +28,16 @@ class TestComponent(unittest.TestCase):
     comp = Component(component_id, component_type)
     self.assertEqual(comp.get_id(), component_id)
 
+  @given(st.text(),st.sampled_from(ComponentType))
+  def test_get_ctg(self, component_id, component_type):
+    comp = Component(component_id, component_type)
+    self.assertIsNone(comp.get_ctg())
+
+  @given(st.text(),st.sampled_from(ComponentType))
+  def test_get_level(self, component_id, component_type):
+    comp = Component(component_id, component_type)
+    self.assertEqual(comp.get_level(), ComponentType(component_type))
+
   def test_unbuilt(self):
     self.assertFalse(self.comp.is_built())
     with self.assertRaises(RuntimeError):

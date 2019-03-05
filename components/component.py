@@ -16,6 +16,12 @@ class Component:
   def get_id(self):
     return self.itm_id
 
+  def get_ctg(self):
+    return self.ctg_type
+
+  def get_level(self):
+    return self.op_lvl
+
   @abstractmethod
   def build(self, data):
     if not self._built_:
