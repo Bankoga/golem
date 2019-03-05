@@ -6,7 +6,7 @@ from data.enums.prop_types import SetType
 from components.func_sets.procs.proc import Proc
 from components.func_sets.procs.proc_provider import proc_services
 
-from tests.strategies.func_set_strats import unbuilt_module_input_set, module_input_set
+from tests.strategies.func_set_strats import unbuilt_module_input_set, module_input_set,group_input_set
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 
@@ -96,8 +96,9 @@ class TestProc(unittest.TestCase):
   #   # given an arbitrary proc group, we may not get data to process this time step
   #   pass
 
-  @given(module_input_set()) # pylint: disable=no-value-for-parameter
-  def test_process_inputs(self, input_set):
+  # @given(module_input_set(st.just(set_ids['glg'])),group_input_set(st.just(set_ids['glg']))) # pylint: disable=no-value-for-parameter
+  @given(module_input_set(st.just(set_ids['glg'])))# pylint: disable=no-value-for-parameter
+  def test_process_inputs(self, module_inputs):
     """
     what are the assumptions we make as part of testing inputs to a proc group?
     - every item in the input set has already been built
@@ -109,7 +110,10 @@ class TestProc(unittest.TestCase):
     - The func set or one of its groups is listed as the recipient
     - Do we assume that we get new data? Do we assume that all groups in the func set have at least one dedicated input?
     """
-    pass
+    
+    input_set = module_inputs
+    self.proc.process_inputs(input_set)
+
 
 if __name__ == '__main__':
   unittest.main()
