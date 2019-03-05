@@ -1,14 +1,19 @@
 import unittest
-from hypothesis import given
+from hypothesis import given, reproduce_failure
 from hypothesis import strategies as st
+
+from numpy import array, append
+
 from data.axioms.configs import proc_ids,file_type,set_ids
-from data.enums.prop_types import SetType
+from data.enums.prop_types import SetType, PackType
 from components.func_sets.procs.proc import Proc
 from components.func_sets.procs.proc_provider import proc_services
 
 from tests.strategies.func_set_strats import unbuilt_module_input_set, module_input_set,group_input_set
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
+
+from utils.misc import heapsort
 
 class TestProc(unittest.TestCase):
 
@@ -112,7 +117,25 @@ class TestProc(unittest.TestCase):
     """
     
     input_set = module_inputs
-    self.proc.process_inputs(input_set)
+    expectation = []
+    results = self.proc.process_inputs(input_set)
+    expectation = {}
+    for pack in input_set:
+      p_type = pack.get_ctg()
+      if p_type in expectation:
+        expectation[p_type].append(pack)
+      else:
+        expectation[p_type] = [pack]
+    if PackType.AGGREGATE in expectation:
+      expectation[PackType.AGGREGATE] = heapsort(expectation[PackType.AGGREGATE])
+      agg = None
+      for pack in expectation[PackType.AGGREGATE]:
+        if agg is None:
+          agg = pack.var
+        else:
+          append(agg, pack.var)
+      expectation[PackType.AGGREGATE] = agg
+    self.assertEqual(results, expectation)
 
 
 if __name__ == '__main__':

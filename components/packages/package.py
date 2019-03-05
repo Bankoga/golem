@@ -39,12 +39,12 @@ class Package(Component):
     self.var = None
 
   def get_meld(self):
-    return f'{self.sender};{self.address};{self.resource};{self.ctg_type};{self.shape}'
+      return f'{self.sender};{self.address};{self.resource};{self.ctg_type};{self.shape}'
 
   def operate(self):
     super().operate()
 
-  def build(self, data):
+  def build(self, data=None):
     super().build(data)
 
   def update(self, new_addr):
@@ -57,3 +57,15 @@ class Package(Component):
 
   def __eq__(self, other):
     return self.__dict__ == other.__dict__
+  
+  def __lt__(self,other):
+    return self.get_meld() < other.get_meld()
+  
+  def __le__(self,other):
+    return self.get_meld() <= other.get_meld()
+  
+  def __gt__(self,other):
+    return self.get_meld() > other.get_meld()
+  
+  def __ge__(self,other):
+    return self.get_meld() >= other.get_meld()

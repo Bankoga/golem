@@ -95,7 +95,10 @@ class TestPackage(unittest.TestCase):
     datp2 = Package(inputs[0],inputs[1])
     self.assertEqual(datp1,datp2)
 
-  
+  @given(package_arbitrary(),package_arbitrary()) # pylint: disable=no-value-for-parameter
+  def test_compare_arbitrary_packages(self, pack_a,pack_b):
+    self.assertTrue(pack_a < pack_b or pack_b > pack_a or pack_a == pack_b or pack_a >= pack_b or pack_a <= pack_b)
+
   @given(package_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_unbuilt(self, input_pack):
     self.assertFalse(input_pack.is_built())

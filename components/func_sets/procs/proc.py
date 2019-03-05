@@ -1,9 +1,12 @@
+from numpy import array, append
+
 from components.func_sets.func_set import FuncSet
 from utils.cardinators.cardinator_provider import cardinator_services
 from data.axioms.configs import file_type
-from data.enums.prop_types import SetType
+from data.enums.prop_types import SetType, PackType
 
 from utils.config_reader import read
+from utils.misc import heapsort
 from utils.pos import Pos
 
 class Proc(FuncSet):
@@ -51,5 +54,20 @@ class Proc(FuncSet):
         self.groups[group]['pos'] = Pos(z=ord_to_index)
 
   def process_inputs(self,inputs):
-    results = []
+    results = {}
+    for pack in inputs:
+      p_type = pack.get_ctg()
+      if p_type in results:
+        results[p_type].append(pack)
+      else:
+        results[p_type] = [pack]
+    if PackType.AGGREGATE in results:
+      results[PackType.AGGREGATE] = heapsort(results[PackType.AGGREGATE])
+      agg = None
+      for pack in results[PackType.AGGREGATE]:
+        if agg is None:
+          agg = pack.var
+        else:
+          append(agg, pack.var)
+      results[PackType.AGGREGATE] = agg
     return results
