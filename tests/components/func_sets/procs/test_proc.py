@@ -16,6 +16,7 @@ class TestProc(unittest.TestCase):
     self.proc_id = proc_ids['glg']
     self.proc =  proc_services.get(self.proc_id, **{})
     self.proc_conf = read(self.proc_id,file_type['proc'])
+    self.proc.build()
   
   # WHAT ARE THE PROPERTIES OF THE CONF TO PROC OBJECT MAP THAT REFLECT THE SUCCESS OF THE METHOD BEING TESTED!
   def check_groups_for_property(self, conf_prop):
@@ -84,39 +85,31 @@ class TestProc(unittest.TestCase):
   #   # iterate through all weights in the proc
   #   # TODO: HOW do we iterate through all weights in the proc
 
-  # @given(unbuilt_module_input_set())  # pylint: disable=no-value-for-parameter
+  # @given(glg_input_set())  # pylint: disable=no-value-for-parameter
   # def test_process_unbuilt_inputs(self, inputs):
   #   # this should raise a runtime error
   #   with self.assertRaises(RuntimeError):
   #     self.proc.process_inputs(inputs)
-
-  # @given(st.text())
-  # def test_process_when_unbuilt(self,input):
-  #   # this should raise a runtime error
-  #     # it doesn't matter if we have inputs or not
-  #   proc_id = proc_ids['glg']
-  #   proc =  proc_services.get(proc_id, **{})
-  #   pass
 
   # def test_process_no_inputs(self):
   #   #  this seems like it should be a valid case
   #   # given an arbitrary proc group, we may not get data to process this time step
   #   pass
 
-  # @given(module_input_set(st.just(set_ids['glg']))) # pylint: disable=no-value-for-parameter
-  # def test_process_inputs(self, input_set):
-  #   """
-  #   what are the assumptions we make as part of testing inputs to a proc group?
-  #   - every item in the input set has already been built
-  #   - the proc has been built
-  #   - inputs exist?
-  #   - the inputs arrive unsorted, and unaggregated
-  #   The first three are test cases, The fourth relates to input validity
-  #   What are the properties of valid inputs to a func set?
-  #   - The func set or one of its groups is listed as the recipient
-  #   - Do we assume that we get new data? Do we assume that all groups in the func set have at least one dedicated input?
-  #   """
-  #   pass
+  @given(module_input_set()) # pylint: disable=no-value-for-parameter
+  def test_process_inputs(self, input_set):
+    """
+    what are the assumptions we make as part of testing inputs to a proc group?
+    - every item in the input set has already been built
+    - the proc has been built
+    - inputs exist?
+    - the inputs arrive unsorted, and unaggregated
+    The first three are test cases, The fourth relates to input validity
+    What are the properties of valid inputs to a func set?
+    - The func set or one of its groups is listed as the recipient
+    - Do we assume that we get new data? Do we assume that all groups in the func set have at least one dedicated input?
+    """
+    pass
 
 if __name__ == '__main__':
   unittest.main()

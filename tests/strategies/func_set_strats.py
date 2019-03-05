@@ -1,7 +1,9 @@
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
+from hypothesis import settings
+from hypothesis import HealthCheck
 
-from data.axioms.configs import proc_ids
+from data.axioms.configs import proc_ids,set_ids
 
 from tests.strategies.prop_strats import set_type_prop
 from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address,valid_resource_data
@@ -30,7 +32,7 @@ def proc_group(draw):
 @composite
 def unbuilt_module_input_set(draw):
   return []
-  
+
 @composite
 def module_input_set(draw, elements=partial_address()): # pylint: disable=no-value-for-parameter
   # the inputs to a module, consist of a bunch of inputs to it and its proc groups
@@ -44,25 +46,22 @@ def module_input_set(draw, elements=partial_address()): # pylint: disable=no-val
     pack.update(address)
     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
     pack.build(resc_data)
-    meld = pack.get_meld()
-    # inputs[meld] = pack
     inputs.append(pack)
-  # inputs to the hooks
-  groups = []
-  group_inputs = []
-  funcset = draw(proc_group()) # pylint: disable=no-value-for-parameter
-  for group in funcset.groups:
-    inp = draw(package_arbitrary()) # pylint: disable=no-value-for-parameter
-    groups.append(funcset.groups[group]['id'])
-    inp.update(f'{address}-{funcset.groups[group]["id"]}')
-    resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
-    inp.build(resc_data)
-    meld = inp.get_meld()
-    group_inputs.append(inp)
+  # groups = []
+  # group_inputs = []
+  # funcset = draw(proc_group()) # pylint: disable=no-value-for-parameter
+  # for group in funcset.groups:
+  #   inp = draw(package_arbitrary()) # pylint: disable=no-value-for-parameter
+  #   groups.append(funcset.groups[group]['id'])
+  #   inp.update(f'{address}-{funcset.groups[group]["id"]}')
+  #   resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  #   inp.build(resc_data)
+  #   meld = inp.get_meld()
+  #   group_inputs.append(inp)
   # inputs to the specific groups
   st.assume(inputs)
-  st.assume(group_inputs)
-  inputs.extend(group_inputs)
+  # st.assume(group_inputs)
+  # inputs.extend(group_inputs)
   return inputs
 
 @composite
