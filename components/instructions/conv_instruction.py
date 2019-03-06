@@ -16,14 +16,15 @@ class ConvInstruction(Instruction):
       weights[shape] = ones(shape)
     return weights
 
-  def build(self):
-    super().build(self.set_up_weights(self.shapes))
+  def build(self, data=None):
+    weights = self.set_up_weights(self.shapes)
+    super().build(weights)
   
   def reset(self):
     pass
 
   def update(self, new_data):
-    pass
+    super().update(new_data)
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def operate(self,inputs=None,context=None):

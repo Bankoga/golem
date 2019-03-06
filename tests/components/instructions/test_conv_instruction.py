@@ -55,6 +55,7 @@ class TestConvInstruction(TestInstruction):
     """
     packages = inputs[0]
     fs = inputs[1]
+    self.comp.build()
     result = self.comp.operate(packages,fs)
     parts = []
     # for pack in inputs:
