@@ -38,22 +38,22 @@ class TestConvInstruction(unittest.TestCase):
       self.assertEqual(result.shape, shape)
       self.assertTrue(array_equal(result, expectation))
 
-  # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
-  # def test_perform(self, inputs):
-  #   """
-  #   At a cell level, we execute all of our instructions using a method provided by the context
-  #   At an instruction level, we execute on the inputs within context in the direction specified using the contextual cardinator
-  #   for each direction
-  #     take a sample of the package shape for each shape
-  #     record activity information while sampling
-  #   combine all samples into a single result using distance attenuation
-  #   """
-  #   result = self.inst.perform(inputs)
-  #   parts = []
-  #   for pack in inputs:
-  #     are we assuming that pack have been sorted at this point in time? yes
-  #     are we assuming that the packs have been aggregated at this point in time? yes
-  #   pass
+  @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
+  def test_perform(self, inputs):
+    """
+    At a cell level, we execute all of our instructions using a method provided by the context
+    At an instruction level, we execute on the inputs within context in the direction specified using the contextual cardinator
+    for each direction
+      take a sample of the package shape for each shape
+      record activity information while sampling
+    combine all samples into a single result using distance attenuation
+    """
+    result = self.inst.perform(inputs)
+    parts = []
+    # for pack in inputs:
+    #   are we assuming that pack have been sorted at this point in time? yes
+    #   are we assuming that the packs have been aggregated at this point in time? yes
+    # pass
 
   # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   # def test_(self, inputs):

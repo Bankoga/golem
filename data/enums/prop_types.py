@@ -32,9 +32,16 @@ class SetType(Enum):
       return SuperSet.UNSET
 
 class SuperSet(Enum):
-  UNSET = 1
-  CODER = 2
-  PROC = 3
+  UNSET = auto()
+  CODER = auto()
+  PROC = auto()
+  def has_sub_type(self,set_type):
+    if self is SuperSet.CODER:
+      return 100 < set_type.value and set_type.value < 200
+    elif self is SuperSet.PROC:
+      return 200 < set_type.value and set_type.value < 300
+    else:
+      return False
 
 class GroupType(Enum):
   ORGANO = auto()

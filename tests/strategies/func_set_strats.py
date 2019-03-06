@@ -3,8 +3,8 @@ from hypothesis.strategies import composite
 from hypothesis import settings
 from hypothesis import HealthCheck
 
-from data.axioms.configs import proc_ids,set_ids
-from data.enums.prop_types import PackType
+from data.axioms.configs import proc_ids,set_ids,set_ids
+from data.enums.prop_types import PackType,SuperSet
 
 from tests.strategies.prop_strats import set_type_prop
 from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address,valid_resource_data
@@ -12,7 +12,7 @@ from tests.strategies.packing_strats import package_arbitrary, package_address, 
 from components.packages.package import Package
 from components.packages.misc_funcs import build_address, build_meld, build_package_inputs, build_package
 
-from components.func_sets.procs.proc_provider import proc_services
+from components.func_sets.fs_builder_provider import fs_services
 
 @composite
 def list_of_inputs_and_input_set(draw):
@@ -27,7 +27,7 @@ def valid_input_output_pair(draw):
 @composite
 def proc_group(draw):
   proc_id = draw(st.sampled_from(sorted(proc_ids.keys())))
-  proc = proc_services.get(proc_ids[proc_id], **{})
+  proc = fs_services.get(proc_ids[proc_id], **{})
   return proc
 
 @composite
@@ -82,37 +82,20 @@ def module_input_set(draw, elements=partial_address()): # pylint: disable=no-val
   return inputs
 
 @composite
-def processed_module_input_set(draw):
-  # TODO: processing turns a list of inputs into WHAT????
-  # the easiest way I think to do this, would be to use an arbitrary module, and create inputs using it as a base
-  # a thing which has the following properties
-  # - all of the specific target inputs can be accessed via relative positioning
-  # - all general inputs are stored together
-  # - all aggregate inputs have been combined into one large input for each destination (specific or general) with aggregate inputs
-  base_set = draw(module_input_set()) # pylint: disable=no-value-for-parameter
-  proc_packs = {}
-  agg_packs = {
-    'ordered': {},
-    'general': {}
-  }
-  ordered_packs = {}
-  general_packs = {}
-  # guaranteed order sort all non-aggregated type packs into the appropriate destination bucket
-  # processing a module input set consists of a few parts
-  #   - removing aggregate packages from the inputs
-  #   - combining them in a guaranteed order
-  #   - then readding a single entry per aggregated key
-  # for pack in base_set.items():
-  #   if pack[1].ctg_type is PackType.OVERLAY:
-  #     proc_packs[pack[0]] = pack[1]
-  #   elif pack[0] in agg_pack:
-  #     agg_pack[pack[0]].append(pack[1])
-  #   else:
-  #     agg_pack[pack[0]] = pack[1]
-  # proc_packs.update(agg_packs)
-  # guaranteed order sort result aggregated packs into appropriate bucket
-  # return results dict
-  return base_set
+def processed_module_input_set(draw, elements=st.sampled_from(sorted(proc_ids.values()))):
+  # Draw a proc id (until all listed func set ids have this implemented)
+  fs_id = draw(elements)
+  st.assume(fs_id)
+  # Draw an input set for the drawn proc id
+  inputs = draw(module_input_set(st.just(fs_id))) # pylint: disable=no-value-for-parameter
+  # Draw a copy of the proc from proc_service
+  fs = fs_services.get(f'{SuperSet.PROC}-{fs_id}')
+  st.assume(fs)
+  # build the proc
+  fs.build()
+  # use the proc to process the inputs
+  proc_inputs = fs.process_inputs(inputs)
+  return proc_inputs
 
 @composite
 def valid_module_input_set(draw):

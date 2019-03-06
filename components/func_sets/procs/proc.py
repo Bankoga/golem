@@ -53,12 +53,14 @@ class Proc(FuncSet):
         ord_to_index = cardinator_services.get(self.cardinal_direction).get_card_index(i,sz)
         self.groups[group]['pos'] = Pos(z=ord_to_index)
 
-  def process_inputs(self,inputs):
+  def process_inputs(self,inputs=None):
     """
     TODO: PERFORMANCE REFACTOR POINT
     This is run every timestep, and thus eats into the available processing resources quite extensively
     """
     results = {}
+    if inputs is None:
+      return results
     for pack in inputs:
       p_type = pack.get_ctg()
       if p_type in results:

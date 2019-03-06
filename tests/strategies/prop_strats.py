@@ -8,7 +8,7 @@ from numpy import full, ones
 from data.axioms.cell_types import CellType
 from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import id_pattern
-from data.enums.prop_types import SetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType
+from data.enums.prop_types import SetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType, SuperSet
 from data.maps.set import get_ids
 
 from components.packages.package import Package
@@ -42,6 +42,13 @@ def package_resource(draw):
   res = draw(st.sampled_from(RsrcType))
   st.assume(res)
   st.assume(res != RsrcType.UNSET)
+  return res
+
+@composite
+def superset_prop(draw):
+  res = draw(st.sampled_from(SuperSet))
+  st.assume(res)
+  st.assume(res != SuperSet.UNSET)
   return res
 
 @composite
@@ -80,7 +87,8 @@ def fs_provider_id(draw):
     # mismatch between arb actual id and arb actual group type
     # group types need to know if an ID is part of their domain
   # vs = set_ids.values()
-  g_type = draw(set_type_prop()) # pylint: disable=no-value-for-parameter
-  g_id = draw(st.sampled_from(sorted(get_ids(g_type))))
-  st.assume(g_type and g_id)
-  return f'{g_type}-{g_id}'
+  fs_type = draw(superset_prop()) # pylint: disable=no-value-for-parameter
+  ids = sorted(get_ids(fs_type))
+  g_id = draw(st.sampled_from(ids))
+  st.assume(fs_type and g_id)
+  return f'{fs_type}-{g_id}'

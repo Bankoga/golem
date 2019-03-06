@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from data.axioms.configs import set_ids
-from data.enums.prop_types import SetType, GroupType
+from data.enums.prop_types import SuperSet, GroupType
 
 from components.func_sets.fs_builder_provider import fs_services
 from components.func_sets.func_set import FuncSet
@@ -20,14 +20,14 @@ class TestFuncSet(unittest.TestCase):
     # self.ctg_type = self.factory.groups[0].ctg_type
     # self.fg = FuncSet(self.id, self.ctg_type)
     self.fs_id = set_ids['glg']
-    self.fs_type = SetType.GATEWAY
+    self.fs_type = SuperSet.PROC
     self.fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
     self.fset.build()
   
   def test_get_type(self):
     expectation = self.fs_type
     result = self.fset.get_type()
-    self.assertEqual(result, expectation, "type was set incorrectly")
+    self.assertTrue(SuperSet(expectation).has_sub_type(result), "type was set incorrectly")
 
   def test_get_id(self):
     expectation = self.fs_id

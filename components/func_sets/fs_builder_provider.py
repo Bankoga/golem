@@ -47,16 +47,16 @@ class FSBuilderProvider(ObjectFactory):
     if fs_type_id is None:
       raise ValueError('Invalid paramater value')
     parts = fs_type_id.split('-')
-    g_type = SetType[parts[0].split('.')[1]]
+    fs_type = SuperSet[parts[0].split('.')[1]]
     # if 100 < parts[0].value and parts[0].value < 200:
-    if g_type is None:
+    if fs_type is None:
       raise ValueError('Invalid group type')
-    if g_type.sub_group() == SuperSet.CODER:
+    if fs_type is SuperSet.CODER:
       return coder_services.get(parts[1])
-    # elif 200 < g_type.value and g_type.value < 300:
-    elif g_type.sub_group() == SuperSet.PROC:
+    # elif 200 < fs_type.value and fs_type.value < 300:
+    elif fs_type is SuperSet.PROC:
       return proc_services.get(parts[1])
-    # elif g_type.value > 1:
+    # elif fs_type.value > 1:
     #   return self.create(fs_type_id, **kwargs)
     else:
       raise ValueError('The id does not indicate a valid thing!')
