@@ -39,7 +39,7 @@ class TestConvInstruction(unittest.TestCase):
       self.assertTrue(array_equal(result, expectation))
 
   @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
-  def test_perform(self, inputs):
+  def test_operate(self, inputs):
     """
     At a cell level, we execute all of our instructions using a method provided by the context
     At an instruction level, we execute on the inputs within context in the direction specified using the contextual cardinator
@@ -48,7 +48,9 @@ class TestConvInstruction(unittest.TestCase):
       record activity information while sampling
     combine all samples into a single result using distance attenuation
     """
-    result = self.inst.perform(inputs)
+    packages = inputs[0]
+    fs = inputs[1]
+    result = self.inst.operate(packages,fs)
     parts = []
     # for pack in inputs:
     #   are we assuming that pack have been sorted at this point in time? yes

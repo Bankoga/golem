@@ -94,8 +94,8 @@ def processed_module_input_set(draw, elements=st.sampled_from(sorted(proc_ids.va
   # build the proc
   fs.build()
   # use the proc to process the inputs
-  proc_inputs = fs.process_inputs(inputs)
-  return proc_inputs
+  fs_inputs = fs.process_inputs(inputs)
+  return (fs_inputs, fs)
 
 @composite
 def valid_module_input_set(draw):

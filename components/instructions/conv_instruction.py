@@ -18,7 +18,8 @@ class ConvInstruction(Instruction):
     return weights
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
-  def perform(self,inputs):
+  def operate(self,inputs,context):
+    super().operate()
     res = 0
     # for each read, we change the Z in the direction supplied using the PROPER cardinator
     #   this means we either have to be given the cardinator
