@@ -12,6 +12,7 @@ class Component:
     self.itm_id = component_id
     self.op_lvl = ComponentType(component_type)
     self._built_ = False
+    self.var = None
 
   def get_id(self):
     return self.itm_id
@@ -27,8 +28,8 @@ class Component:
     if not self._built_:
       self.var = data
       self._built_ = True
-    else:
-      self.reset()
+    # else:
+    #   self.reset()
   
   def is_built(self):
     return self._built_
@@ -40,10 +41,12 @@ class Component:
   
   @abstractmethod
   def update(self, new_data=None):
-    self._built_ = False
-    self.var = new_data
+    if self._built_:
+      self._built_ = False
+      self.var = new_data
 
   @abstractmethod
   def reset(self):
-    self._built_ = False
-    self.var = None
+    if self._built_:
+      self._built_ = False
+      self.var = None

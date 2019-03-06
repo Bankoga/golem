@@ -15,6 +15,13 @@ from components.packages.package import Package
 from components.packages.misc_funcs import (build_address, build_package,
                                   build_package_inputs, build_meld)
 
+
+@composite
+def arbitrary_id(draw):
+  res = st.text()#from_regex(id_pattern)
+  st.assume(res)
+  return res
+
 @composite
 def cell_type_prop(draw):
   res = draw(st.sampled_from(CellType))

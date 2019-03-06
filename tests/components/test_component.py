@@ -53,7 +53,14 @@ class TestComponent(unittest.TestCase):
     comp.operate()
 
   @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
-  def test_update_data(self,new_data):
+  def test_update_data_unbuilt(self,new_data):
+    self.comp.update(new_data)
+    self.assertIsNone(self.comp.var)
+    self.assertFalse(self.comp.is_built())
+
+  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_update_data_built(self,new_data):
+    self.comp.build(new_data)
     self.comp.update(new_data)
     self.assertTrue(array_equal(self.comp.var, new_data))
     self.assertFalse(self.comp.is_built())
@@ -61,6 +68,7 @@ class TestComponent(unittest.TestCase):
   @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
   def reset(self, new_data):
     self.comp.update(new_data)
+    self.assertTrue(array_equal(self.comp.var, new_data))
     self.comp.reset()
     self.assertIsNone(self.comp.var)
     self.assertFalse(self.comp.is_built())

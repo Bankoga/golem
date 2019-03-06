@@ -5,11 +5,10 @@ from components.instructions.instruction import Instruction
 from numpy import ones,diag
 
 class ConvInstruction(Instruction):
-  def __init__(self,direction,shapes,pos):
-    super().__init__(RuleType.CONV, pos)
+  def __init__(self,itm_id,direction,shapes,pos):
+    super().__init__(itm_id,RuleType.CONV, pos)
     self.direction = direction
     self.shapes = shapes
-    self.set_up_weights(shapes)
     
   def set_up_weights(self, shapes):
     weights = {}
@@ -17,8 +16,17 @@ class ConvInstruction(Instruction):
       weights[shape] = ones(shape)
     return weights
 
+  def build(self):
+    super().build(self.set_up_weights(self.shapes))
+  
+  def reset(self):
+    pass
+
+  def update(self, new_data):
+    pass
+
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
-  def operate(self,inputs,context):
+  def operate(self,inputs=None,context=None):
     super().operate()
     res = 0
     # for each read, we change the Z in the direction supplied using the PROPER cardinator

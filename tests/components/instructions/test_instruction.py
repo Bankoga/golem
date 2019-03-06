@@ -5,22 +5,29 @@ from hypothesis import strategies as st
 
 from data.enums.prop_types import RuleType
 from data.enums.pos import ComponentType
-from tests.strategies.prop_strats import rule_type_prop
+from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
 from tests.strategies.pos_strats import valid_pos
+from tests.strategies.packing_strats import valid_resource_data
 
 from utils.pos import Pos
 from components.instructions.instruction import Instruction
 
-class TestInstruction(unittest.TestCase):
-  def setUp(self):
-    # self.instruction = Instruction(RuleType.CONV, )
-    pass
+from tests.components.test_component import TestComponent
 
-  @given(rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, rtype, pos):
+from numpy import array_equal
+
+class TestInstruction(TestComponent):
+  def setUp(self):
+    self.valid_c_id = 'TotallyValidId'
+    self.valid_c_type = RuleType.CONV
+    self.pos = Pos()
+    self.comp = Instruction(self.valid_c_id,self.valid_c_type,self.pos)
+
+  @given(arbitrary_id(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
+  def test_default(self, itm_id, rtype, pos):
     # for efficiency reasons, eventually instructions will need to be built before processing
-    itm_id = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?
-    inst = Instruction(rtype, pos)
+    # itm_id = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?
+    inst = Instruction(itm_id, rtype, pos)
     c_lvl = rtype.get_component_type()
     self.assertEqual(inst.get_id(), itm_id)
     self.assertEqual(inst.op_lvl, ComponentType(c_lvl))
@@ -30,8 +37,12 @@ class TestInstruction(unittest.TestCase):
     self.assertIsNone(inst.curr_pos)
     self.assertEqual(inst.pos,pos)
 
-  # def test_perform(self, inputs):
-  #   pass
+  def test_build(self):
+    comp = Instruction(self.valid_c_id, self.valid_c_type,self.pos)
+    self.assertFalse(comp.is_built())
+    comp.build()
+    self.assertTrue(comp.is_built())
+    comp.operate()
 
 if __name__ == '__main__':
   unittest.main()

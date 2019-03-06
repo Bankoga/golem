@@ -4,7 +4,9 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from data.enums.prop_types import RuleType
-from tests.strategies.prop_strats import rule_type_prop
+
+from tests.components.instructions.test_instruction import TestInstruction
+from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
 from tests.strategies.packing_strats import valid_shape
 from tests.strategies.func_set_strats import module_input_set,processed_module_input_set
 from tests.strategies.pos_strats import valid_direction, valid_pos
@@ -13,15 +15,18 @@ from utils.pos import Pos
 from components.instructions.conv_instruction import ConvInstruction
 from numpy import ones, array_equal
 
-class TestConvInstruction(unittest.TestCase):
+class TestConvInstruction(TestInstruction):
   def setUp(self):
-    self.inst = ConvInstruction([], [], Pos())
+    self.valid_c_id = 'TotallyValidId'
+    self.valid_c_type = RuleType.CONV
+    self.pos = Pos()
+    self.comp = ConvInstruction(self.valid_c_id,[], [], self.pos)
 
-  @given(valid_direction(), valid_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, direction, shapes, pos):
+  @given(arbitrary_id(), valid_direction(), valid_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
+  def test_default(self, itm_id,direction, shapes, pos):
         # for efficiency reasons, eventually instructions will need to be built before processing
-    inst = ConvInstruction(direction, shapes, pos)
-    self.assertEqual(inst.ctg_type, RuleType.CONV)
+    inst = ConvInstruction(itm_id,direction, shapes, pos)
+    self.assertEqual(inst.get_ctg(), RuleType.CONV)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)
     self.assertIsNone(inst.curr_pos)
@@ -31,7 +36,7 @@ class TestConvInstruction(unittest.TestCase):
   
   @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
   def test_set_up_weights(self,shapes):
-    weights = self.inst.set_up_weights(shapes)
+    weights = self.comp.set_up_weights(shapes)
     for shape in shapes:
       expectation = ones(shape)
       result = weights[shape]
@@ -50,13 +55,20 @@ class TestConvInstruction(unittest.TestCase):
     """
     packages = inputs[0]
     fs = inputs[1]
-    result = self.inst.operate(packages,fs)
+    result = self.comp.operate(packages,fs)
     parts = []
     # for pack in inputs:
     #   are we assuming that pack have been sorted at this point in time? yes
     #   are we assuming that the packs have been aggregated at this point in time? yes
     # pass
 
+  def test_build(self):
+    comp = ConvInstruction(self.valid_c_id, [],[],self.pos)
+    self.assertFalse(comp.is_built())
+    comp.build()
+    self.assertTrue(comp.is_built())
+    comp.operate()
+  
   # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   # def test_(self, inputs):
 
