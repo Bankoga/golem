@@ -38,7 +38,7 @@ class TestComponent(unittest.TestCase):
     comp = Component(component_id, component_type)
     self.assertEqual(comp.get_level(), ComponentType(component_type))
 
-  def test_unbuilt(self):
+  def test_post_init_build_status(self):
     self.assertFalse(self.comp.is_built())
     with self.assertRaises(RuntimeError):
       self.comp.operate()

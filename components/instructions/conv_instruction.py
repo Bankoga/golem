@@ -2,35 +2,29 @@ from data.enums.prop_types import RuleType
 
 from components.instructions.instruction import Instruction
 
-from numpy import ones,diag
-
 class ConvInstruction(Instruction):
   def __init__(self,itm_id,direction,conv_shapes,source_ind,source_shape,pos):
     super().__init__(itm_id,RuleType.CONV, pos)
     self.shape = source_shape
     self.direction = direction
-    self.conv_shapes = conv_shapes
     self.ind = source_ind
+    self.build(conv_shapes)
   
   def conv(self, npmatrix):
     return 0
 
-
-  def set_up_weights(self, conv_shapes):
-    weights = {}
-    for shape in conv_shapes:
-      weights[shape] = ones(shape.f_shape)
-    return weights
-
   def build(self, data=None):
-    weights = self.set_up_weights(self.conv_shapes)
-    super().build(weights)
+    # weights = self.set_up_weights(self.conv_shapes)
+    if (self._built_):
+      raise RuntimeError('This is not yet implemented')
+    else:
+      super().build(data)
   
   def reset(self):
-    pass
+    raise RuntimeError('This is not yet implemented')
 
   def update(self, new_data):
-    super().update(new_data)
+    raise RuntimeError('This is not yet implemented')
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def operate(self,inputs=None,context=None):

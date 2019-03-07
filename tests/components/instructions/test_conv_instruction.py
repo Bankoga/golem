@@ -13,7 +13,7 @@ from tests.strategies.pos_strats import valid_direction, valid_pos
 
 from utils.pos import Pos
 from components.instructions.conv_instruction import ConvInstruction
-from numpy import ones, array_equal
+from numpy import array_equal
 from utils.conv_shape import ConvShape as cs
 
 class TestConvInstruction(TestInstruction):
@@ -41,19 +41,10 @@ class TestConvInstruction(TestInstruction):
     self.assertIsNone(inst.curr_bearing)
     self.assertIsNone(inst.curr_pos)
     self.assertEqual(inst.direction,direction)
-    self.assertEqual(inst.conv_shapes,conv_shapes)
+    self.assertEqual(inst.var,conv_shapes)
     self.assertEqual(inst.ind,self.source_ind)
     self.assertEqual(inst.shape,self.source_shape)
     self.assertEqual(inst.pos,pos)
-  
-  @given(st.lists(valid_conv_shape())) # pylint: disable=no-value-for-parameter
-  def test_set_up_weights(self,conv_shapes):
-    weights = self.comp.set_up_weights(conv_shapes)
-    for shape in conv_shapes:
-      expectation = ones(shape.f_shape)
-      result = weights[shape]
-      self.assertEqual(result.shape, expectation.shape)
-      self.assertTrue(array_equal(result, expectation))
 
   @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   def test_operate(self, inputs):
@@ -67,7 +58,6 @@ class TestConvInstruction(TestInstruction):
     """
     packages = inputs[0]
     fs = inputs[1]
-    self.comp.build()
     result = self.comp.operate(packages,fs)
     parts = []
     # for pack in inputs:
@@ -82,32 +72,29 @@ class TestConvInstruction(TestInstruction):
     """ what needs to be considered when applying a conv to an arbitrary matrix?
         these are all part of the conv considerations
         what about size mismatches between regions?
-        which index do we center on?
-        Where do the weights reside?
+        which index do we center on? the source index
+        Where do the weights reside? 
         How is activity tracked for plasticity?
     """
     result = self.comp.conv(npmatrix)
     expectation = 0
     self.assertEqual(result,expectation)
 
+  def test_post_init_build_status(self):
+    self.assertTrue(self.comp.is_built())
+  
   def test_build(self):
-    comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes,self.source_ind,self.source_shape,self.pos)
-    self.assertFalse(comp.is_built())
-    comp.build()
-    self.assertTrue(comp.is_built())
-    expected_weights = self.comp.set_up_weights(self.comp.conv_shapes)
-    result_weights = comp.var
-    for weight_key in result_weights:
-      self.assertTrue(array_equal(result_weights[weight_key],expected_weights[weight_key]))
-    comp.operate()
+    self.assertTrue(self.comp.is_built())
   
   @given(st.lists(valid_conv_shape())) # pylint: disable=no-value-for-parameter
   def test_update_data_built(self,new_data):
-    self.comp.build()
-    self.comp.update(new_data)
-    self.assertTrue(array_equal(self.comp.var, new_data))
-    self.assertFalse(self.comp.is_built())
+    with self.assertRaises(RuntimeError):
+      self.comp.build()
 
+  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_update_data_unbuilt(self,new_data):
+    with self.assertRaises(RuntimeError):
+      self.comp.update(new_data)
 
   # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   # def test_(self, inputs):
@@ -118,6 +105,12 @@ class TestConvInstruction(TestInstruction):
   #   we need to ensure that each instruction can have it's weights updated properly
   #   """
   #   pass
+
+  
+  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def reset(self, new_data):
+    with self.assertRaises(RuntimeError):
+      self.comp.reset(new_data)
 
 if __name__ == '__main__':
   unittest.main()
