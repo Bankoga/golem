@@ -19,32 +19,35 @@ class TestConvInstruction(TestInstruction):
   def setUp(self):
     self.valid_c_id = 'TotallyValidId'
     self.valid_c_type = RuleType.CONV
-    self.shapes = []
+    self.conv_shapes = [(4,4),
+                   (1),
+                   (9,9),
+                   (4,2)]
     self.source_shape = (256,256)
-    self.direction = ''
+    self.direction = 'A' # TODO: Use correct ENUM
     self.pos = Pos()
-    self.comp = ConvInstruction(self.valid_c_id,self.direction,self.shapes, self.source_shape,self.pos)
+    self.comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes, self.source_shape,self.pos)
 
-  @given(arbitrary_id(), valid_direction(), valid_shape(),valid_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, itm_id,direction, shapes, source_shape,pos):
+  @given(arbitrary_id(), valid_direction(), st.lists(valid_shape()),valid_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
+  def test_default(self, itm_id,direction, conv_shapes, source_shape,pos):
         # for efficiency reasons, eventually instructions will need to be built before processing
-    inst = ConvInstruction(itm_id,direction, shapes, source_shape,pos)
+    inst = ConvInstruction(itm_id,direction, conv_shapes, source_shape,pos)
     self.assertEqual(inst.get_ctg(), RuleType.CONV)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)
     self.assertIsNone(inst.curr_pos)
     self.assertEqual(inst.direction,direction)
-    self.assertEqual(inst.shapes,shapes)
+    self.assertEqual(inst.conv_shapes,conv_shapes)
     self.assertEqual(inst.shape,source_shape)
     self.assertEqual(inst.pos,pos)
   
   @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
-  def test_set_up_weights(self,shapes):
-    weights = self.comp.set_up_weights(shapes)
-    for shape in shapes:
+  def test_set_up_weights(self,conv_shapes):
+    weights = self.comp.set_up_weights(conv_shapes)
+    for shape in conv_shapes:
       expectation = ones(shape)
       result = weights[shape]
-      self.assertEqual(result.shape, shape)
+      self.assertEqual(result.shape, expectation.shape)
       self.assertTrue(array_equal(result, expectation))
 
   @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
@@ -79,15 +82,23 @@ class TestConvInstruction(TestInstruction):
     """
 
   def test_build(self):
-    comp = ConvInstruction(self.valid_c_id,self.direction,self.shapes,self.source_shape,self.pos)
+    comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes,self.source_shape,self.pos)
     self.assertFalse(comp.is_built())
     comp.build()
     self.assertTrue(comp.is_built())
-    expected_weights = self.comp.set_up_weights(self.comp.shapes)
+    expected_weights = self.comp.set_up_weights(self.comp.conv_shapes)
     result_weights = comp.var
     self.assertTrue(array_equal(result_weights,expected_weights))
     comp.operate()
   
+  @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
+  def test_update_data_built(self,new_data):
+    self.comp.build()
+    self.comp.update(new_data)
+    self.assertTrue(array_equal(self.comp.var, new_data))
+    self.assertFalse(self.comp.is_built())
+
+
   # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   # def test_(self, inputs):
 

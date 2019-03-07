@@ -5,20 +5,20 @@ from components.instructions.instruction import Instruction
 from numpy import ones,diag
 
 class ConvInstruction(Instruction):
-  def __init__(self,itm_id,direction,shapes,source_shape,pos):
+  def __init__(self,itm_id,direction,conv_shapes,source_shape,pos):
     super().__init__(itm_id,RuleType.CONV, pos)
     self.shape = source_shape
     self.direction = direction
-    self.shapes = shapes
+    self.conv_shapes = conv_shapes
     
-  def set_up_weights(self, shapes):
+  def set_up_weights(self, conv_shapes):
     weights = {}
-    for shape in shapes:
+    for shape in conv_shapes:
       weights[shape] = ones(shape)
     return weights
 
   def build(self, data=None):
-    weights = self.set_up_weights(self.shapes)
+    weights = self.set_up_weights(self.conv_shapes)
     super().build(weights)
   
   def reset(self):
