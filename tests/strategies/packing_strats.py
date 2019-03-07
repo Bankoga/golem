@@ -11,6 +11,7 @@ from tests.strategies.prop_strats import (package_field_shape, package_resource,
 from components.packages.package import Package
 from components.packages.misc_funcs import (build_meld)
 
+from utils.conv_shape import ConvShape
 
 """
 What are the pools of object examples we need to draw from?
@@ -82,18 +83,17 @@ def package_inputs(draw):
   return (meld, sender_addr)
 
 @composite
-def valid_shape(draw):
-  # l = draw(st.integers(min_value=0, max_value=3))
-  # shape = []
-  # for i in range(l):
-  #   x = draw(st.integers(min_value=0))
-  #   st.assume(x)
-  #   shape.append(x)
+def valid_conv_shape(draw):
   x = draw(st.just(ones((256,256))))
   st.assume(x.any())
-  return x.shape
-  # shape = draw(st.tuples(st.integers(),st.integers()))
-  # return shape
+  y = ConvShape(x.shape, (1,1))
+  st.assume(y)
+  return y
+
+@composite
+def valid_shape(draw):
+  x = draw(valid_conv_shape()) # pylint: disable=no-value-for-parameter
+  return x.f_shape
 
 @composite
 def valid_cell_instruction(draw):
@@ -104,8 +104,6 @@ def valid_cell_instruction(draw):
 
 @composite
 def valid_resource_data(draw):
-  # resource = draw(package_resource)
-  # shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter
   data = draw(st.builds(full,valid_shape(),st.decimals(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
   st.assume(data.any())
   return data

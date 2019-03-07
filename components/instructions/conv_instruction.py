@@ -18,7 +18,7 @@ class ConvInstruction(Instruction):
   def set_up_weights(self, conv_shapes):
     weights = {}
     for shape in conv_shapes:
-      weights[shape] = ones(shape)
+      weights[shape] = ones(shape.f_shape)
     return weights
 
   def build(self, data=None):
