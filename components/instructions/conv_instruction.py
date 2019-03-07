@@ -5,8 +5,9 @@ from components.instructions.instruction import Instruction
 from numpy import ones,diag
 
 class ConvInstruction(Instruction):
-  def __init__(self,itm_id,direction,shapes,pos):
+  def __init__(self,itm_id,direction,shapes,source_shape,pos):
     super().__init__(itm_id,RuleType.CONV, pos)
+    self.shape = source_shape
     self.direction = direction
     self.shapes = shapes
     

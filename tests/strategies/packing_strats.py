@@ -89,7 +89,7 @@ def valid_shape(draw):
   #   x = draw(st.integers(min_value=0))
   #   st.assume(x)
   #   shape.append(x)
-  x = draw(st.just(ones((2,2))))
+  x = draw(st.just(ones((256,256))))
   st.assume(x.any())
   return x.shape
   # shape = draw(st.tuples(st.integers(),st.integers()))

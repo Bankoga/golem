@@ -20,20 +20,22 @@ class TestConvInstruction(TestInstruction):
     self.valid_c_id = 'TotallyValidId'
     self.valid_c_type = RuleType.CONV
     self.shapes = []
+    self.source_shape = (256,256)
     self.direction = ''
     self.pos = Pos()
-    self.comp = ConvInstruction(self.valid_c_id,self.direction,self.shapes, self.pos)
+    self.comp = ConvInstruction(self.valid_c_id,self.direction,self.shapes, self.source_shape,self.pos)
 
-  @given(arbitrary_id(), valid_direction(), valid_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, itm_id,direction, shapes, pos):
+  @given(arbitrary_id(), valid_direction(), valid_shape(),valid_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
+  def test_default(self, itm_id,direction, shapes, source_shape,pos):
         # for efficiency reasons, eventually instructions will need to be built before processing
-    inst = ConvInstruction(itm_id,direction, shapes, pos)
+    inst = ConvInstruction(itm_id,direction, shapes, source_shape,pos)
     self.assertEqual(inst.get_ctg(), RuleType.CONV)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)
     self.assertIsNone(inst.curr_pos)
     self.assertEqual(inst.direction,direction)
     self.assertEqual(inst.shapes,shapes)
+    self.assertEqual(inst.shape,source_shape)
     self.assertEqual(inst.pos,pos)
   
   @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
@@ -77,7 +79,7 @@ class TestConvInstruction(TestInstruction):
     """
 
   def test_build(self):
-    comp = ConvInstruction(self.valid_c_id, [],[],self.pos)
+    comp = ConvInstruction(self.valid_c_id,self.direction,self.shapes,self.source_shape,self.pos)
     self.assertFalse(comp.is_built())
     comp.build()
     self.assertTrue(comp.is_built())
