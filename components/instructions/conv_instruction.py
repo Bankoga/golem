@@ -10,7 +10,11 @@ class ConvInstruction(Instruction):
     self.shape = source_shape
     self.direction = direction
     self.conv_shapes = conv_shapes
-    
+  
+  def conv(self, npmatrix):
+    return 0
+
+
   def set_up_weights(self, conv_shapes):
     weights = {}
     for shape in conv_shapes:

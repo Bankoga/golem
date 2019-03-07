@@ -72,7 +72,8 @@ class TestConvInstruction(TestInstruction):
     #   we do what with the result?
 
   @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
-  def test_conv(self, matrix):
+  def test_conv(self, npmatrix):
+    # TODO: Build a valid package for a specific id strategy
     """ what needs to be considered when applying a conv to an arbitrary matrix?
         these are all part of the conv considerations
         what about size mismatches between regions?
@@ -80,6 +81,9 @@ class TestConvInstruction(TestInstruction):
         Where do the weights reside?
         How is activity tracked for plasticity?
     """
+    result = self.comp.conv(npmatrix)
+    expectation = 0
+    self.assertEqual(result,expectation)
 
   def test_build(self):
     comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes,self.source_shape,self.pos)
