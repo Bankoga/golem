@@ -7,7 +7,7 @@ from data.enums.prop_types import RuleType
 
 from tests.components.instructions.test_instruction import TestInstruction
 from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
-from tests.strategies.packing_strats import valid_shape
+from tests.strategies.packing_strats import valid_shape,valid_resource_data
 from tests.strategies.func_set_strats import module_input_set,processed_module_input_set
 from tests.strategies.pos_strats import valid_direction, valid_pos
 
@@ -19,8 +19,10 @@ class TestConvInstruction(TestInstruction):
   def setUp(self):
     self.valid_c_id = 'TotallyValidId'
     self.valid_c_type = RuleType.CONV
+    self.shapes = []
+    self.direction = ''
     self.pos = Pos()
-    self.comp = ConvInstruction(self.valid_c_id,[], [], self.pos)
+    self.comp = ConvInstruction(self.valid_c_id,self.direction,self.shapes, self.pos)
 
   @given(arbitrary_id(), valid_direction(), valid_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
   def test_default(self, itm_id,direction, shapes, pos):
@@ -59,15 +61,29 @@ class TestConvInstruction(TestInstruction):
     result = self.comp.operate(packages,fs)
     parts = []
     # for pack in inputs:
-    #   are we assuming that pack have been sorted at this point in time? yes
-    #   are we assuming that the packs have been aggregated at this point in time? yes
-    # pass
+    # for each instruction
+    #   we grab specifed_input from the inputs
+    #   we apply a 2d convolution with the specified shape
+    #   we do what with the result?
+
+  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_conv(self, matrix):
+    """ what needs to be considered when applying a conv to an arbitrary matrix?
+        these are all part of the conv considerations
+        what about size mismatches between regions?
+        which index do we center on?
+        Where do the weights reside?
+        How is activity tracked for plasticity?
+    """
 
   def test_build(self):
     comp = ConvInstruction(self.valid_c_id, [],[],self.pos)
     self.assertFalse(comp.is_built())
     comp.build()
     self.assertTrue(comp.is_built())
+    expected_weights = self.comp.set_up_weights(self.comp.shapes)
+    result_weights = comp.var
+    self.assertTrue(array_equal(result_weights,expected_weights))
     comp.operate()
   
   # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter

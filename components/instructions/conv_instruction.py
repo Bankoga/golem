@@ -31,6 +31,7 @@ class ConvInstruction(Instruction):
     super().operate()
     res = 0
     # for each read, we change the Z in the direction supplied using the PROPER cardinator
+    #  we also change the size of the sample
     #   this means we either have to be given the cardinator
     #   OR
     #   we have to be able to select the cardinator
