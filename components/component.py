@@ -7,6 +7,10 @@ class Component:
     component_id : the semantic key used as reference for the component object
     component_type : the semantic key used as reference for the components operational level within the matrix
     ctg__type : the semantic key used as reference for the components operational level specific group type
+
+  Wwe need to break up the component base class into two or more types
+  Why one asks? Because some components require building, and others don't
+  Some require updates, but no builds, some require both, some are static
     """
     self.ctg_type = ctg_type
     self.itm_id = component_id

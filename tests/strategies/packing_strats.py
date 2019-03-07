@@ -11,7 +11,7 @@ from tests.strategies.prop_strats import (package_field_shape, package_resource,
 from components.packages.package import Package
 from components.packages.misc_funcs import (build_meld)
 
-from utils.conv_shape import ConvShape
+from components.data.conv_shape import ConvShape
 
 """
 What are the pools of object examples we need to draw from?

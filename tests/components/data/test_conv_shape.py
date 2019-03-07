@@ -5,12 +5,12 @@ from hypothesis import strategies as st
 
 from tests.strategies.packing_strats import valid_conv_shape
 
-from utils.conv_shape import ConvShape
+from components.data.conv_shape import ConvShape
 
 from numpy import ones, array_equal
 
-
 class TestConvShape(unittest.TestCase):
+
   def setUp(self):
     self.f_shape = (4,4)
     self.s_shape = (1,1)

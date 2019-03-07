@@ -14,7 +14,7 @@ from tests.strategies.pos_strats import valid_direction, valid_pos
 from utils.pos import Pos
 from components.instructions.conv_instruction import ConvInstruction
 from numpy import array_equal
-from utils.conv_shape import ConvShape as cs
+from components.data.conv_shape import ConvShape as cs
 
 class TestConvInstruction(TestInstruction):
   def setUp(self):
