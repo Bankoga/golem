@@ -5,11 +5,12 @@ from components.instructions.instruction import Instruction
 from numpy import ones,diag
 
 class ConvInstruction(Instruction):
-  def __init__(self,itm_id,direction,conv_shapes,source_shape,pos):
+  def __init__(self,itm_id,direction,conv_shapes,source_ind,source_shape,pos):
     super().__init__(itm_id,RuleType.CONV, pos)
     self.shape = source_shape
     self.direction = direction
     self.conv_shapes = conv_shapes
+    self.ind = source_ind
   
   def conv(self, npmatrix):
     return 0

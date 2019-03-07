@@ -27,21 +27,23 @@ class TestConvInstruction(TestInstruction):
                    cs((4,2),(1)),
                    cs((12,12))]
     self.source_shape = (256,256)
+    self.source_ind = (45,25)
     self.direction = 'A' # TODO: Use correct ENUM
     self.pos = Pos()
-    self.comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes, self.source_shape,self.pos)
+    self.comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes, self.source_ind,self.source_shape,self.pos)
 
-  @given(arbitrary_id(), valid_direction(), st.lists(valid_conv_shape()),valid_conv_shape(),valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, itm_id,direction, conv_shapes, source_shape,pos):
+  @given(arbitrary_id(), valid_direction(), st.lists(valid_conv_shape()),valid_pos()) # pylint: disable=no-value-for-parameter
+  def test_default(self, itm_id,direction, conv_shapes,pos):
         # for efficiency reasons, eventually instructions will need to be built before processing
-    inst = ConvInstruction(itm_id,direction, conv_shapes, source_shape,pos)
+    inst = ConvInstruction(itm_id,direction, conv_shapes, self.source_ind, self.source_shape,pos)
     self.assertEqual(inst.get_ctg(), RuleType.CONV)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)
     self.assertIsNone(inst.curr_pos)
     self.assertEqual(inst.direction,direction)
     self.assertEqual(inst.conv_shapes,conv_shapes)
-    self.assertEqual(inst.shape,source_shape)
+    self.assertEqual(inst.ind,self.source_ind)
+    self.assertEqual(inst.shape,self.source_shape)
     self.assertEqual(inst.pos,pos)
   
   @given(st.lists(valid_conv_shape())) # pylint: disable=no-value-for-parameter
@@ -89,7 +91,7 @@ class TestConvInstruction(TestInstruction):
     self.assertEqual(result,expectation)
 
   def test_build(self):
-    comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes,self.source_shape,self.pos)
+    comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes,self.source_ind,self.source_shape,self.pos)
     self.assertFalse(comp.is_built())
     comp.build()
     self.assertTrue(comp.is_built())
