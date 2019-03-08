@@ -12,8 +12,6 @@ from data.enums.prop_types import SetType, FieldType, HookType, PackType, RsrcTy
 from data.maps.set import get_ids
 
 from components.packages.package import Package
-from components.packages.misc_funcs import (build_address, build_package,
-                                  build_package_inputs, build_meld)
 
 
 @composite

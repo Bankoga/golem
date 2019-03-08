@@ -14,7 +14,7 @@ class Component:
     """
     self.ctg_type = ctg_type
     self.itm_id = component_id
-    self.op_lvl = ComponentType(component_type)
+    self.op_lvl = ComponentType(component_type) # TODO: offload this into the pos object
     self._built_ = False
     self.var = None
 
