@@ -66,20 +66,6 @@ class TestConvInstruction(TestInstruction):
     #   we apply a 2d convolution with the specified shape
     #   we do what with the result?
 
-  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
-  def test_conv(self, npmatrix):
-    # TODO: Build a valid package for a specific id strategy
-    """ what needs to be considered when applying a conv to an arbitrary matrix?
-        these are all part of the conv considerations
-        what about size mismatches between regions?
-        which index do we center on? the source index
-        Where do the weights reside? 
-        How is activity tracked for plasticity?
-    """
-    result = self.comp.conv(npmatrix)
-    expectation = 0
-    self.assertEqual(result,expectation)
-
   def test_post_init_build_status(self):
     self.assertTrue(self.comp.is_built())
   

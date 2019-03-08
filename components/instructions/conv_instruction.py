@@ -8,11 +8,9 @@ class ConvInstruction(Instruction):
     self.shape = source_shape
     self.direction = direction
     self.ind = source_ind
+    # each conv shape represents a step to take in a direction during the sampling process
     self.build(conv_shapes)
-  
-  def conv(self, npmatrix):
-    return 0
-
+    
   def build(self, data=None):
     # weights = self.set_up_weights(self.conv_shapes)
     if (self._built_):

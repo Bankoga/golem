@@ -13,6 +13,10 @@ class ConvShape:
     self.s_shape = s_shape
     self.weights = ones(f_shape)
     
+
+  def conv(self, npmatrix):
+    return 0
+
   # def set_up_weight(self, conv_shapes):
     # weights = {}
     # for shape in conv_shapes:
