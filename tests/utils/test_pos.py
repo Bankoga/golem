@@ -14,7 +14,7 @@ class TestPos(unittest.TestCase):
   def test_invalid_init(self,comp_type):
     with self.assertRaises(ValueError):
       Pos(comp_type)
-
+      
   @given(comp_type_prop(),st.integers(),st.integers(),st.integers(),st.integers(),st.integers(),st.integers()) # pylint: disable=no-value-for-parameter
   def test_init_with_data(self,comp_type,floor,x,y,z,r,c):
     pos = Pos(comp_type,floor,x,y,z,r,c)

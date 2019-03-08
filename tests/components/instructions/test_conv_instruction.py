@@ -46,6 +46,32 @@ class TestConvInstruction(TestInstruction):
     self.assertEqual(inst.shape,self.source_shape)
     self.assertEqual(inst.pos,pos)
 
+  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_conv(self, npmatrix):
+    # TODO: Build a valid package for a specific id strategy
+    """ what needs to be considered when applying a conv to an arbitrary matrix?
+        these are all part of the conv considerations
+        The matrix has already been grabbed at this point!
+        what about size mismatches between regions? We care about those
+        Where is activity tracked for plasticity? inside the instruction
+    """
+    result = self.comp.conv(npmatrix)
+    expectation = 0
+    # extract the slice of the matrix we wish to use for the convolution with empty space fill
+    # self.comp.extract(npmatrix)
+    self.assertEqual(result,expectation)
+
+
+  @given(valid_conv_shape(), valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_extract(self,conv_shape,npmatrix):
+    # if the input matrix is smaller than the output matrix or the conv, what do we do?
+    # slice the marix using the conv shape
+    pass
+  
+  @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
+  def test_get_input(self,inputs):
+    pass
+
   @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   def test_operate(self, inputs):
     """

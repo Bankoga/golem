@@ -11,6 +11,12 @@ class ConvInstruction(Instruction):
     # each conv shape represents a step to take in a direction during the sampling process
     self.build(conv_shapes)
     
+  def conv(self, npmatrix):
+    return 0
+
+  def get_input(self):
+    pass
+
   def build(self, data=None):
     # weights = self.set_up_weights(self.conv_shapes)
     if (self._built_):
