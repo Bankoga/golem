@@ -1,6 +1,7 @@
 from components.func_groups.func_group import FuncGroup
+from components.component import Component
 
-class Module():
+class Module(Component):
 
   """
   Each module serves as a discrete env, and package repository for a set of func groups
@@ -19,6 +20,9 @@ class Module():
       group = self.proc.groups[group_id]
       self.groups[group_id] = FuncGroup(group, group.ctg_type)
       pass
+    
+  def process_inputs(self):
+    pass
 
   # def operate(self,inputShapes):
   #     outputShapes = prepareBlankOutputShapes()
