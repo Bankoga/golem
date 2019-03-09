@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from data.enums.pos import ComponentType
+from data.enums.pos import CtgType
 
 class Component:
   def __init__(self, component_id,component_type, ctg_type=None):
@@ -13,7 +13,7 @@ class Component:
     """
     self.ctg_type = ctg_type
     self.itm_id = component_id
-    self.op_lvl = ComponentType(component_type) # TODO: offload this into the pos object
+    self.op_lvl = CtgType(component_type) # TODO: offload this into the pos object
     self._built_ = False
     self.var = None
 

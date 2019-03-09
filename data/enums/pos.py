@@ -16,7 +16,7 @@ class DimensionallyOrdered(Enum):
     self.pos = pos
     self.dimension = dimension
 
-class ComponentType(Enum):
+class CtgType(Enum):
   MATRIX = auto()
   HOOK = auto()
   FSET = auto()

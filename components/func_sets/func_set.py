@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from components.component import Component
 
-from data.enums.pos import ComponentType
+from data.enums.pos import CtgType
 from data.enums.prop_types import GroupType
 
 from components.packages.misc_funcs import build_address

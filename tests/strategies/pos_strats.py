@@ -3,7 +3,7 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
 from data.axioms.pos_maps import cardinal_keys
-from data.enums.pos import Floor, ComponentType, Dimension
+from data.enums.pos import Floor, CtgType, Dimension
 from components.packages.package import Package
 from utils.pos import Pos
 
@@ -27,7 +27,7 @@ def dimension_prop(draw):
 
 @composite
 def comp_type_prop(draw):
-  res = draw(st.sampled_from(ComponentType))
+  res = draw(st.sampled_from(CtgType))
   st.assume(res)
   return res
   

@@ -7,7 +7,7 @@ from tests.strategies.packing_strats import valid_conv_shape
 
 from components.data.conv_shape import ConvShape
 
-from data.enums.pos import ComponentType
+from data.enums.pos import CtgType
 
 from utils.pos import Pos
 
@@ -22,7 +22,7 @@ class TestConvShape(unittest.TestCase):
     self.s_shape = (1,1)
     self.r = 5
     self.c = 5
-    self.pos = Pos(ComponentType.DATA,r=self.r,c=self.c)
+    self.pos = Pos(CtgType.DATA,r=self.r,c=self.c)
     self.comp = ConvShape(self.pos,self.f_shape,self.s_shape)
 
   def test_init(self):

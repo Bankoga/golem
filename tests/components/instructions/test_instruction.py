@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from data.enums.prop_types import RuleType
-from data.enums.pos import ComponentType
+from data.enums.pos import CtgType
 from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
 from tests.strategies.pos_strats import valid_pos
 from tests.strategies.packing_strats import valid_resource_data
@@ -30,7 +30,7 @@ class TestInstruction(TestComponent):
     inst = Instruction(itm_id, rtype, pos)
     c_lvl = rtype.get_component_type()
     self.assertEqual(inst.get_id(), itm_id)
-    self.assertEqual(inst.op_lvl, ComponentType(c_lvl))
+    self.assertEqual(inst.op_lvl, CtgType(c_lvl))
     self.assertEqual(inst.ctg_type, rtype)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)

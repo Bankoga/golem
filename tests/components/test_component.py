@@ -6,37 +6,37 @@ from hypothesis import strategies as st
 from numpy import array_equal
 
 from components.component import Component
-from data.enums.pos import ComponentType
+from data.enums.pos import CtgType
 
 from tests.strategies.packing_strats import valid_resource_data
 
 class TestComponent(unittest.TestCase):
   def setUp(self):
     self.valid_c_id = 'TotallyValidId'
-    self.valid_c_type = ComponentType.FSET
+    self.valid_c_type = CtgType.FSET
     self.comp = Component(self.valid_c_id, self.valid_c_type)
 
-  @given(st.text(),st.sampled_from(ComponentType))
+  @given(st.text(),st.sampled_from(CtgType))
   def test_base_component(self, component_id, component_type):
     comp = Component(component_id, component_type)
     self.assertIsNone(comp.ctg_type)
     self.assertEqual(comp.itm_id, component_id)
-    self.assertEqual(comp.op_lvl, ComponentType(component_type))
+    self.assertEqual(comp.op_lvl, CtgType(component_type))
 
-  @given(st.text(),st.sampled_from(ComponentType))
+  @given(st.text(),st.sampled_from(CtgType))
   def test_get_id(self, component_id, component_type):
     comp = Component(component_id, component_type)
     self.assertEqual(comp.get_id(), component_id)
 
-  @given(st.text(),st.sampled_from(ComponentType))
+  @given(st.text(),st.sampled_from(CtgType))
   def test_get_ctg(self, component_id, component_type):
     comp = Component(component_id, component_type)
     self.assertIsNone(comp.get_ctg())
 
-  @given(st.text(),st.sampled_from(ComponentType))
+  @given(st.text(),st.sampled_from(CtgType))
   def test_get_level(self, component_id, component_type):
     comp = Component(component_id, component_type)
-    self.assertEqual(comp.get_level(), ComponentType(component_type))
+    self.assertEqual(comp.get_level(), CtgType(component_type))
 
   def test_post_init_build_status(self):
     self.assertFalse(self.comp.is_built())

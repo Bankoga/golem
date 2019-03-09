@@ -1,8 +1,8 @@
-from data.enums.pos import Floor, ComponentType, Dimension
+from data.enums.pos import Floor, CtgType, Dimension
 
 class Pos:
   def __init__(self,comp_type,floor=Floor.WAREHOUSE,x=-1,y=-1,z=-1,r=-1,c=-1):
-    if (comp_type not in ComponentType):
+    if (comp_type not in CtgType):
       raise ValueError('Pos requires a valid component type!')
 
     self.comp_type = comp_type

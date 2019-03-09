@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-from data.enums.pos import ComponentType
+from data.enums.pos import CtgType
 
 # TODO: eventually this will need to be refactored to ensure that most of these dicts only have one instance
 
@@ -14,7 +14,7 @@ class HookType(Enum):
   BI = 102
   RECIP = 103
   def get_component_type(self):
-    return ComponentType.HOOK
+    return CtgType.HOOK
 
 class FuncSetType(Enum):
   UNSET = 1
@@ -22,7 +22,7 @@ class FuncSetType(Enum):
   CORTICAL = 201
   GATEWAY = 202
   def get_component_type(self):
-    return ComponentType.FSET
+    return CtgType.FSET
   def sub_group(self):
     if 100 < self.value and self.value < 200:
       return SuperSet.CODER
@@ -48,21 +48,21 @@ class GroupType(Enum):
   METALLO = auto()
   HYBRID = auto()
   def get_component_type(self):
-    return ComponentType.GROUP
+    return CtgType.GROUP
 
 class PackagerType(Enum):
   UNSET = 1
   CELL = 100
   FW_FUNC = 500
   def get_component_type(self):
-    return ComponentType.PACKAGER
+    return CtgType.PACKAGER
 
 class RuleType(Enum):
   UNSET = 1
   CONV = 100
   METHOD = 500
   def get_component_type(self):
-    return ComponentType.INSTRUCTION
+    return CtgType.INSTRUCTION
 
 # (PackType|RsrcType|FieldType|FuncSetType|HookType|RuleType)
 
@@ -71,18 +71,18 @@ class PackType(Enum):
   AGGREGATE = 2
   OVERLAY = 9
   def get_component_type(self):
-    return ComponentType.PACKAGE
+    return CtgType.PACKAGE
 
 class RsrcType(Enum):
   UNSET = 1
   ENERGY = 2
   INHIBITOR = 3
   def get_component_type(self):
-    return ComponentType.DATA
+    return CtgType.DATA
 
 class FieldType(Enum):
   UNSET = 1
   TEST_INPUT = 2
   TEST_OUTPUT = 3
   def get_component_type(self):
-    return ComponentType.DATA
+    return CtgType.DATA
