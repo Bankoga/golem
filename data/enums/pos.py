@@ -19,7 +19,7 @@ class DimensionallyOrdered(Enum):
 class ComponentType(Enum):
   MATRIX = auto()
   HOOK = auto()
-  SET = auto()
+  FSET = auto()
   GROUP = auto()
   PACKAGER = auto()
   INSTRUCTION = auto()

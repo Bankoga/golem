@@ -13,7 +13,7 @@ from tests.strategies.packing_strats import valid_resource_data
 class TestComponent(unittest.TestCase):
   def setUp(self):
     self.valid_c_id = 'TotallyValidId'
-    self.valid_c_type = ComponentType.SET
+    self.valid_c_type = ComponentType.FSET
     self.comp = Component(self.valid_c_id, self.valid_c_type)
 
   @given(st.text(),st.sampled_from(ComponentType))

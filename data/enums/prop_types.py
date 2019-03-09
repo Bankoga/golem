@@ -22,7 +22,7 @@ class FuncSetType(Enum):
   CORTICAL = 201
   GATEWAY = 202
   def get_component_type(self):
-    return ComponentType.SET
+    return ComponentType.FSET
   def sub_group(self):
     if 100 < self.value and self.value < 200:
       return SuperSet.CODER
