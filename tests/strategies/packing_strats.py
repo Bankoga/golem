@@ -7,13 +7,11 @@ from numpy import full, ones
 
 from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import id_pattern
-from data.enums.prop_types import FieldType, HookType, PackType, RsrcType
-from tests.strategies.prop_strats import (package_field_shape, package_group,
-                                          package_resource, package_type)
+from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
 from components.packages.package import Package
-from components.packages.misc_funcs import (build_address, build_package,
-                                  build_package_inputs, build_meld)
+from components.packages.misc_funcs import (build_meld)
 
+from components.data.conv_shape import ConvShape
 
 """
 What are the pools of object examples we need to draw from?
@@ -85,18 +83,17 @@ def package_inputs(draw):
   return (meld, sender_addr)
 
 @composite
-def valid_shape(draw):
-  # l = draw(st.integers(min_value=0, max_value=3))
-  # shape = []
-  # for i in range(l):
-  #   x = draw(st.integers(min_value=0))
-  #   st.assume(x)
-  #   shape.append(x)
-  x = draw(st.just(ones((2,2))))
+def valid_conv_shape(draw):
+  x = draw(st.just(ones((256,256))))
   st.assume(x.any())
-  return x.shape
-  # shape = draw(st.tuples(st.integers(),st.integers()))
-  # return shape
+  y = ConvShape(x.shape, (1,1))
+  st.assume(y)
+  return y
+
+@composite
+def valid_shape(draw):
+  x = draw(valid_conv_shape()) # pylint: disable=no-value-for-parameter
+  return x.f_shape
 
 @composite
 def valid_cell_instruction(draw):
@@ -107,8 +104,6 @@ def valid_cell_instruction(draw):
 
 @composite
 def valid_resource_data(draw):
-  # resource = draw(package_resource)
-  # shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter
   data = draw(st.builds(full,valid_shape(),st.decimals(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
   st.assume(data.any())
   return data

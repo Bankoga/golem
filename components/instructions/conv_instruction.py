@@ -2,25 +2,40 @@ from data.enums.prop_types import RuleType
 
 from components.instructions.instruction import Instruction
 
-from numpy import ones,diag
-
 class ConvInstruction(Instruction):
-  def __init__(self,direction,shapes,pos):
-    super().__init__(RuleType.CONV, pos)
+  def __init__(self,itm_id,direction,conv_shapes,source_ind,source_shape,pos):
+    super().__init__(itm_id,RuleType.CONV, pos)
+    self.shape = source_shape
     self.direction = direction
-    self.shapes = shapes
-    self.set_up_weights(shapes)
+    self.ind = source_ind
+    # each conv shape represents a step to take in a direction during the sampling process
+    self.build(conv_shapes)
     
-  def set_up_weights(self, shapes):
-    weights = {}
-    for shape in shapes:
-      weights[shape] = ones(shape)
-    return weights
+  def conv(self, npmatrix):
+    return 0
+
+  def get_input(self):
+    pass
+
+  def build(self, data=None):
+    # weights = self.set_up_weights(self.conv_shapes)
+    if (self._built_):
+      raise RuntimeError('This is not yet implemented')
+    else:
+      super().build(data)
+  
+  def reset(self):
+    raise RuntimeError('This is not yet implemented')
+
+  def update(self, new_data):
+    raise RuntimeError('This is not yet implemented')
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
-  def perform(self,inputs):
+  def operate(self,inputs=None,context=None):
+    super().operate()
     res = 0
     # for each read, we change the Z in the direction supplied using the PROPER cardinator
+    #  we also change the size of the sample
     #   this means we either have to be given the cardinator
     #   OR
     #   we have to be able to select the cardinator

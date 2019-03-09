@@ -10,7 +10,7 @@
 - Golem Type:?
 - Matrix Type: ?
 - Directions: The list of reading, or projection directions available in node design.
-- Dimensions: The list of dimensions that are part of a processing groups location within the matrix. The dimensionality of a func group in a module is part of it's I/O shape.
+- Dimensions: The list of dimensions that are part of a processing groups location within the matrix. The dimensionality of a func set in a module is part of it's I/O shape.
 
 ## Dimensions
 

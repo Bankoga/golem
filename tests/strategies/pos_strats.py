@@ -1,18 +1,11 @@
-import unittest
-
 from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.props import id_pattern 
 from data.axioms.pos_maps import cardinal_keys
-from data.enums.pos import Floor
+from data.enums.pos import Floor, ComponentType, Dimension
 from components.packages.package import Package
-from components.packages.misc_funcs import (build_address, build_package,
-                                  build_package_inputs, build_meld)
 from utils.pos import Pos
-from tests.strategies.prop_strats import package_group,package_resource,package_type
-from tests.strategies.packing_strats import valid_shape
 
 @composite
 def valid_floor(draw):
@@ -27,11 +20,24 @@ def valid_direction(draw):
   return res
 
 @composite
-def valid_pos(draw):
+def dimension_prop(draw):
+  res = draw(st.sampled_from(Dimension))
+  st.assume(res)
+  return res
+
+@composite
+def comp_type_prop(draw):
+  res = draw(st.sampled_from(ComponentType))
+  st.assume(res)
+  return res
+  
+@composite
+def valid_pos(draw, elements=comp_type_prop()): # pylint: disable=no-value-for-parameter
+  comp_type = draw(elements)
   s = draw(valid_floor()) # pylint: disable=no-value-for-parameter
   x = draw(st.integers(min_value=0))
   y = draw(st.integers(min_value=0))
   z = draw(st.integers(min_value=0))
-  st.assume(s and x and y and z)
-  pos = Pos(s,x,y,z)
+  st.assume(comp_type and s and x and y and z)
+  pos = Pos(comp_type,s,x,y,z)
   return pos

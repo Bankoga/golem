@@ -111,7 +111,7 @@ group_details:
     total_count: 1
   type_data: {name: Gateway Layer Groups, cardinal_direction: dsc, purpose: 'serves
       as a global I/O center, & local plus global context matrix (and global map center
-      as STN?)', typeGroupType.CORTICAL}
+      as STN?)', typeFuncSetType.CORTICAL}
 groups:
   cntxt_stg_adv: *id013
   cntxt_up_inhib: *id014
@@ -129,5 +129,5 @@ name: Gateway Layer Groups
 cardinal_direction: dsc
 purpose: serves as a global I/O center, & local plus global context matrix (and global
   map center as STN?)
-typeGroupType.CORTICAL
+typeFuncSetType.CORTICAL
 ...

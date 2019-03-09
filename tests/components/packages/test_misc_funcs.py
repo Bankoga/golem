@@ -35,7 +35,7 @@ class TestMiscFuncs(unittest.TestCase):
   st.sampled_from(PackType),
   st.sampled_from(FieldType),
   st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self','']))
+  st.sampled_from(['sender_set_id','self','Self','']))
   # st.one_of(full_address,partial_address),
   # HERE, I only need to test building the inputs for packages with great verbage
   def test_build_package_inputs(self,recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id):
@@ -50,7 +50,7 @@ class TestMiscFuncs(unittest.TestCase):
   st.sampled_from(PackType),
   st.sampled_from(FieldType),
   st.sampled_from(['SenderModuleId','self','Self']),
-  st.sampled_from(['sender_group_id','self','Self','']))
+  st.sampled_from(['sender_set_id','self','Self','']))
   # HERE, I only need to test building packages with great verbage using data already supplied
   def test_build_package(self,recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id):
     inputs = build_package(recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id)

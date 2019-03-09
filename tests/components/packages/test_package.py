@@ -76,14 +76,14 @@ class TestPackage(unittest.TestCase):
   CURRENTLY NO LINK CASES ARE TESTED!
   ['SenderModuleId','','RecipientModuleId',''],
     ['SenderModuleId','noise_from','RecipientModuleId',''],
-    ['SenderModuleId','sender_group_id','RecipientModuleId',''],
-    ['SenderModuleId','','RecipientModuleId','recipient_group_id'],
-    ['SenderModuleId','sender_group_id','RecipientModuleId','recipient_group_id'],
+    ['SenderModuleId','sender_set_id','RecipientModuleId',''],
+    ['SenderModuleId','','RecipientModuleId','recipient_set_id'],
+    ['SenderModuleId','sender_set_id','RecipientModuleId','recipient_set_id'],
     ['self','','self',''],
     ['SenderModuleId','noise_from','RecipientModuleId',''],
-    ['SenderModuleId','sender_group_id','RecipientModuleId',''],
-    ['SenderModuleId','','RecipientModuleId','recipient_group_id'],
-    ['SenderModuleId','sender_group_id','RecipientModuleId','recipient_group_id']
+    ['SenderModuleId','sender_set_id','RecipientModuleId',''],
+    ['SenderModuleId','','RecipientModuleId','recipient_set_id'],
+    ['SenderModuleId','sender_set_id','RecipientModuleId','recipient_set_id']
   """
   @given(package_inputs()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self, inputs):
@@ -95,12 +95,15 @@ class TestPackage(unittest.TestCase):
     datp2 = Package(inputs[0],inputs[1])
     self.assertEqual(datp1,datp2)
 
-  
+  @given(package_arbitrary(),package_arbitrary()) # pylint: disable=no-value-for-parameter
+  def test_compare_arbitrary_packages(self, pack_a,pack_b):
+    self.assertTrue(pack_a < pack_b or pack_b > pack_a or pack_a == pack_b or pack_a >= pack_b or pack_a <= pack_b)
+
   @given(package_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_unbuilt(self, input_pack):
     self.assertFalse(input_pack.is_built())
     with self.assertRaises(RuntimeError):
-      input_pack.process()
+      input_pack.operate()
 
   @given(package_arbitrary(), valid_resource_data()) # pylint: disable=no-value-for-parameter
   def test_build(self, input_pack, data):
@@ -108,7 +111,7 @@ class TestPackage(unittest.TestCase):
     input_pack.build(data)
     self.assertTrue(input_pack.is_built())
     self.assertTrue(array_equal(input_pack.var, data))
-    input_pack.process()
+    input_pack.operate()
 
   @given(package_arbitrary()) # pylint: disable=no-value-for-parameter
   def test_get_meld(self,input_pack):
@@ -119,6 +122,13 @@ class TestPackage(unittest.TestCase):
   def test_update_address(self,input_pack, new_addr):
     input_pack.update(new_addr)
     self.assertEqual(input_pack.address, new_addr)
+    self.assertFalse(input_pack.is_built())
+    self.assertIsNone(input_pack.var)
+
+  @given(valid_package_arbitrary(), package_address()) # pylint: disable=no-value-for-parameter
+  def test_reset(self,input_pack, new_addr):
+    input_pack.update(new_addr)
+    input_pack.reset()
     self.assertFalse(input_pack.is_built())
     self.assertIsNone(input_pack.var)
 

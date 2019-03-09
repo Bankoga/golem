@@ -35,7 +35,8 @@ coder_ids = {
 # 'mlg': 'MLG',
 # 'kblg': 'KBLG'
 procs = proc_ids.values()#['DCLEG','DFLEG','GLG','PICG','POCG','TICG','ASLG','SLG','MLG','KBLG']
-group_ids = proc_ids.copy().update(coder_ids)
+set_ids = proc_ids.copy()
+set_ids.update(coder_ids)
 resource_types = {
   "ElasticActivation":"proxies glutamate, and is used to increase the chance of activation",
   "Inhibitor":"proxies gaba, and is used to reduce the %chance of activation",
