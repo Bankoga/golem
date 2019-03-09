@@ -8,7 +8,7 @@ from numpy import full, ones
 from data.axioms.cell_types import CellType
 from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import id_pattern
-from data.enums.prop_types import SetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType, SuperSet
+from data.enums.prop_types import FuncSetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType, SuperSet
 from data.maps.set import get_ids
 
 from components.packages.package import Package
@@ -58,9 +58,9 @@ def superset_prop(draw):
 
 @composite
 def set_type_prop(draw):
-  res = draw(st.sampled_from(SetType))
+  res = draw(st.sampled_from(FuncSetType))
   st.assume(res)
-  st.assume(res != SetType.UNSET)
+  st.assume(res != FuncSetType.UNSET)
   return res
 
 @composite
@@ -88,7 +88,7 @@ def rule_type_prop(draw):
 @composite
 def fs_provider_id(draw):
     # fs_id = set_ids['glg']
-    # fs_type = SetType.SENSOR
+    # fs_type = FuncSetType.SENSOR
     # mismatch between arb actual id and arb actual group type
     # group types need to know if an ID is part of their domain
   # vs = set_ids.values()

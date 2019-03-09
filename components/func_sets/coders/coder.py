@@ -3,7 +3,7 @@ from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.pos import Pos
 from components.func_sets.func_set import FuncSet
-from data.enums.prop_types import SetType
+from data.enums.prop_types import FuncSetType
 
 
 class Coder(FuncSet):
@@ -23,7 +23,7 @@ class Coder(FuncSet):
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
-    self.ctg_type = SetType[self.config['type_data']['type']]
+    self.ctg_type = FuncSetType[self.config['type_data']['type']]
     self.purpose = self.config['type_data']['purpose']
   
   # @abstractmethod # pylint: disable=undefined-variable

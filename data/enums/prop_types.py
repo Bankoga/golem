@@ -16,7 +16,7 @@ class HookType(Enum):
   def get_component_type(self):
     return ComponentType.HOOK
 
-class SetType(Enum):
+class FuncSetType(Enum):
   UNSET = 1
   SENSOR = 101
   CORTICAL = 201
@@ -64,7 +64,7 @@ class RuleType(Enum):
   def get_component_type(self):
     return ComponentType.INSTRUCTION
 
-# (PackType|RsrcType|FieldType|SetType|HookType|RuleType)
+# (PackType|RsrcType|FieldType|FuncSetType|HookType|RuleType)
 
 class PackType(Enum):
   UNSET = 1

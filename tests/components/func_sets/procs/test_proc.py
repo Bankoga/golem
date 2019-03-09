@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 from numpy import array, append
 
 from data.axioms.configs import proc_ids,file_type,set_ids
-from data.enums.prop_types import SetType, PackType
+from data.enums.prop_types import FuncSetType, PackType
 from components.func_sets.procs.proc import Proc
 from components.func_sets.procs.proc_provider import proc_services
 
@@ -50,7 +50,7 @@ class TestProc(unittest.TestCase):
     if (type_obj['type'] is None):
       self.assertIsNone(self.proc.ctg_type)
     else:
-      self.assertEqual(SetType[type_obj['type']],self.proc.ctg_type)
+      self.assertEqual(FuncSetType[type_obj['type']],self.proc.ctg_type)
     
     if (type_obj['purpose'] is None):
       self.assertIsNone(self.proc.purpose)

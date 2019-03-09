@@ -1,4 +1,4 @@
-from data.enums.prop_types import SetType
+from data.enums.prop_types import FuncSetType
 from utils.object_factory import *
 # # from components.func_sets.asc_cardinator import AscCardinatorBuilder
 # # from components.func_sets.dsc_cardinator import DscCardinatorBuilder
@@ -12,10 +12,10 @@ from utils.object_factory import *
 #   """
 #   def get(self, fs_type_id, **kwargs):
 #     parts = fs_type_id.split('-')
-#     if parts[0] is SetType.SENSOR:
+#     if parts[0] is FuncSetType.SENSOR:
 #       # then use the prexisting sensor Builder
 #       pass
-#     elif parts[0] is SetType.CORTICAL or parts[0] is SetType.GATEWAY:
+#     elif parts[0] is FuncSetType.CORTICAL or parts[0] is FuncSetType.GATEWAY:
 #       # then use the procs Builder
 #       pass
 #     else:
@@ -30,7 +30,7 @@ from utils.object_factory import *
 # # fs_services.register_builder('', Builder())
 # # fs_services.register_builder('', Builder())
 
-from data.enums.prop_types import SetType, SuperSet
+from data.enums.prop_types import FuncSetType, SuperSet
 from utils.object_factory import *
 from components.func_sets.coders.coder_provider import coder_services
 from components.func_sets.procs.proc_provider import proc_services

@@ -3,7 +3,7 @@ from numpy import array, append
 from components.func_sets.func_set import FuncSet
 from utils.cardinators.cardinator_provider import cardinator_services
 from data.axioms.configs import file_type
-from data.enums.prop_types import SetType, PackType
+from data.enums.prop_types import FuncSetType, PackType
 
 from utils.config_reader import read
 from utils.misc import heapsort
@@ -25,7 +25,7 @@ class Proc(FuncSet):
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
-    self.ctg_type = SetType[self.config['type_data']['type']]
+    self.ctg_type = FuncSetType[self.config['type_data']['type']]
     self.purpose = self.config['type_data']['purpose']
     self.cardinal_direction = self.config['type_data']['cardinal_direction']
   

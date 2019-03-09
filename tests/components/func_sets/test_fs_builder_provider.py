@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.func_sets.fs_builder_provider import fs_services
-from data.enums.prop_types import SetType,SuperSet
+from data.enums.prop_types import FuncSetType,SuperSet
 
 from data.axioms.configs import proc_ids
 
