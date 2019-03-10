@@ -35,6 +35,7 @@ class FuncSet(Component):
   def __init__(self, set_id, set_type):
     super().__init__(set_id, set_type.get_component_type(), ctg_type=set_type)
     # once fully initialized, a module has very few aggregate properties to consider during operation.
+    # TODO: every group is at most, a 4x4 matrix of packagers!
     self.prev_activations=dict()
     self.groups=dict()
     self.input_shapes=dict()
