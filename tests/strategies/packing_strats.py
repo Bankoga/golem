@@ -6,7 +6,7 @@ from hypothesis.strategies import composite
 from numpy import full, ones
 
 from data.axioms.matrix import max_resource_value, min_resource_value
-from data.axioms.props import id_pattern
+from data.axioms.props import old_id_pattern
 from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
 from components.packages.package import Package
 from components.packages.misc_funcs import (build_meld)
@@ -24,7 +24,7 @@ What are the pools of object examples we need to draw from?
 
 @composite
 def arbitrary_id(draw):
-  res = st.text()#from_regex(id_pattern)
+  res = st.text()#from_regex(old_id_pattern)
   st.assume(res)
   return res
 

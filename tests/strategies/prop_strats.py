@@ -7,7 +7,7 @@ from numpy import full, ones
 
 from data.axioms.cell_types import CellType
 from data.axioms.matrix import max_resource_value, min_resource_value
-from data.axioms.props import id_pattern
+from data.axioms.props import id_pattern, invalid_id_pattern
 from data.enums.prop_types import FuncSetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType, SuperSet
 from data.maps.set import get_ids
 
@@ -16,7 +16,13 @@ from components.packages.package import Package
 
 @composite
 def arbitrary_id(draw):
-  res = st.text()#from_regex(id_pattern)
+  res = draw(st.from_regex(id_pattern))
+  st.assume(res)
+  return res
+
+@composite
+def arbitrary_invalid_id(draw):
+  res = draw(st.from_regex(invalid_id_pattern))
   st.assume(res)
   return res
 

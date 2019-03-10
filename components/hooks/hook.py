@@ -1,4 +1,4 @@
-from data.axioms.props import id_pattern 
+from data.axioms.props import old_id_pattern 
 from data.enums.prop_types import HookType,PackType,RsrcType,FieldType
 from components.packages.package import Package
 import re
@@ -45,7 +45,7 @@ class Hook(Package):
       self.shape=self.meld_tuple[3]
 
   def update_id(self,container_id):
-    if (not self._id_updated_ and container_id):# and re.search(id_pattern, container_id)):
+    if (not self._id_updated_ and container_id):# and re.search(old_id_pattern, container_id)):
       new_id = f'{container_id}-{self.hook_id}'
       self.hook_id = new_id
       self._id_updated_ = True

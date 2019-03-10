@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.packagers.packager import Packager
-from data.axioms.props import id_pattern 
+from data.axioms.props import old_id_pattern 
 from data.axioms.packager import defaults as prd
 from data.enums.prop_types import PackagerType
 
@@ -14,7 +14,7 @@ class TestPackager(unittest.TestCase):
   def setUp(self):
     self.rule = Packager(PackagerType.CELL, 'A')
   
-  @given(node_type_prop(),st.from_regex(id_pattern)) # pylint: disable=no-value-for-parameter
+  @given(node_type_prop(),st.from_regex(old_id_pattern)) # pylint: disable=no-value-for-parameter
   def test_base_rule(self, arb_type, arb_id):
     rule = Packager(arb_type, arb_id)
     self.assertEqual(rule.ctg_type, arb_type)

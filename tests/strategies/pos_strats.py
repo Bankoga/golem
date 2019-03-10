@@ -14,6 +14,11 @@ def valid_floor(draw):
   return res
 
 @composite
+def valid_locale(draw):
+  res = {}
+  return res
+
+@composite
 def valid_direction(draw):
   res = draw(st.sampled_from(sorted(cardinal_keys.keys())))
   st.assume(res)
@@ -26,13 +31,13 @@ def dimension_prop(draw):
   return res
 
 @composite
-def comp_type_prop(draw):
+def ctg_prop(draw):
   res = draw(st.sampled_from(CtgType))
   st.assume(res)
   return res
   
 @composite
-def valid_pos(draw, elements=comp_type_prop()): # pylint: disable=no-value-for-parameter
+def valid_pos(draw, elements=ctg_prop()): # pylint: disable=no-value-for-parameter
   comp_type = draw(elements)
   s = draw(valid_floor()) # pylint: disable=no-value-for-parameter
   x = draw(st.integers(min_value=0))

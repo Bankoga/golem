@@ -6,7 +6,7 @@ from hypothesis import strategies as st
 from data.enums.pos import Floor, Dimension
 
 from utils.pos import Pos
-from tests.strategies.pos_strats import valid_pos, comp_type_prop,dimension_prop
+from tests.strategies.pos_strats import valid_pos, ctg_prop,dimension_prop
 
 class TestPos(unittest.TestCase):
   
@@ -15,7 +15,7 @@ class TestPos(unittest.TestCase):
     with self.assertRaises(ValueError):
       Pos(comp_type)
       
-  @given(comp_type_prop(),st.integers(),st.integers(),st.integers(),st.integers(),st.integers(),st.integers()) # pylint: disable=no-value-for-parameter
+  @given(ctg_prop(),st.integers(),st.integers(),st.integers(),st.integers(),st.integers(),st.integers()) # pylint: disable=no-value-for-parameter
   def test_init_with_data(self,comp_type,floor,x,y,z,r,c):
     pos = Pos(comp_type,floor,x,y,z,r,c)
     self.assertEqual(pos.comp_type, comp_type)
@@ -26,7 +26,7 @@ class TestPos(unittest.TestCase):
     self.assertEqual(pos.r,r)
     self.assertEqual(pos.c,c)
   
-  @given(comp_type_prop()) # pylint: disable=no-value-for-parameter
+  @given(ctg_prop()) # pylint: disable=no-value-for-parameter
   def test_init_without_data(self, comp_type):
     pos = Pos(comp_type)
     self.assertEqual(pos.floor,Floor.WAREHOUSE)
