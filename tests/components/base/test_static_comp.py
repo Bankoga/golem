@@ -7,7 +7,7 @@ from components.base.static_comp import StaticComp
 from data.enums.prop_types import CtgType
 
 from tests.strategies.pos_strats import valid_locale, ctg_prop
-from tests.strategies.prop_strats import arbitrary_id
+from tests.strategies.prop_strats import arbitrary_id,arbitrary_invalid_id
 
 class TestStaticComp(unittest.TestCase):
   def setUp(self):
@@ -15,13 +15,13 @@ class TestStaticComp(unittest.TestCase):
     self.valid_ctg = CtgType.FSET
     self.comp = StaticComp(self.valid_id, self.valid_ctg)
   
-  @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
+  @given(arbitrary_invalid_id()) # pylint: disable=no-value-for-parameter
   def test_set_invalid_id(self,itm_id):
     with self.assertRaises(ValueError):
       self.comp.set_id(itm_id)
 
   @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
-  def test_set_invalid_ctg(self,itm_id,ctg):
+  def test_set_invalid_ctg(self,ctg):
     with self.assertRaises(ValueError):
       self.comp.set_ctg(ctg)
 
