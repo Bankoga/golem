@@ -3,26 +3,21 @@ from utils.validators.prop_validators import is_valid_id
 
 class StaticComp:
 
-  def __init__(self, itm_id, ctg):
-    if not is_valid_ctg(ctg):
-      raise ValueError('INVALID CATEGORY!')
-    elif not is_valid_id(itm_id):
-      raise ValueError('INVALID ID!')
-    else:
-      self.itm_id = itm_id
-      self.ctg = ctg
+  def __init__(self, item_id, ctg):
+    self.set_id(item_id)
+    self.set_ctg(ctg)
 
   def get_id(self):
-    return self.itm_id
+    return self.item_id
 
   def get_ctg(self):
     return self.ctg
 
-  def set_id(self, itm_id):
-    if not is_valid_id(itm_id):
+  def set_id(self, item_id):
+    if not is_valid_id(item_id):
       raise ValueError('INVALID ID!')
     else:
-      self.itm_id = itm_id
+      self.item_id = item_id
 
   def set_ctg(self, ctg):
     if not is_valid_ctg(ctg):
