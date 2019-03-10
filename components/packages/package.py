@@ -1,4 +1,4 @@
-from components.component import Component
+from components.base.component import Component
 from data.enums.prop_types import PackType,RsrcType,FieldType
 from chainer import Variable
 

@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from components.component import Component
+from components.base.component import Component
 
 from data.enums.pos import CtgType
 from data.enums.prop_types import GroupType

@@ -12,7 +12,7 @@ from tests.strategies.packing_strats import valid_resource_data
 from utils.pos import Pos
 from components.instructions.instruction import Instruction
 
-from tests.components.test_component import TestComponent
+from tests.components.base.test_component import TestComponent
 
 from numpy import array_equal
 
@@ -20,7 +20,7 @@ class TestInstruction(TestComponent):
   def setUp(self):
     self.valid_c_id = 'TotallyValidId'
     self.valid_c_type = RuleType.CONV
-    self.pos = Pos()
+    self.pos = Pos(RuleType.CONV.get_component_type())
     self.comp = Instruction(self.valid_c_id,self.valid_c_type,self.pos)
 
   @given(arbitrary_id(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter

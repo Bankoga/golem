@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from components.component import Component
+from components.base.component import Component
 
 from data.axioms.packager import defaults as prd
 from data.enums.prop_types import PackagerType
