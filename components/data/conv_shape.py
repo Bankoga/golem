@@ -14,10 +14,13 @@ class ConvShape(PassiveComp):
   """
 
   def __init__(self,item_id,pos,f_shape,s_shape=None):
-    self.pos = pos
-    self.f_shape = f_shape
-    self.s_shape = s_shape
-    super().__init__(ones(f_shape), item_id=item_id,ctg=CtgType.DATA)
+    var = {
+      'pos': pos,
+      'f_shape': f_shape,
+      's_shape': s_shape,
+      'weights': ones(f_shape)
+    }
+    super().__init__(var, item_id=item_id,ctg=CtgType.DATA)
     
 
 
