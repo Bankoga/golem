@@ -1,11 +1,11 @@
 from abc import abstractmethod
-from components.base.component import Component
+from components.base.mediatorcomp import MediatorComp
 
 from data.enums.pos import CtgType
 from data.enums.prop_types import GroupType
 
 from components.packages.misc_funcs import build_address
-class FuncSet(Component):
+class FuncSet(MediatorComp):
   """
   A functional set is an addressable processing region within a matrix
   It is a package production group
