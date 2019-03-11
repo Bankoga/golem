@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from components.base.mediatorcomp import MediatorComp
+from components.base.mediator_comp import MediatorComp
 
 from components.enums.pos import CtgType
 from components.enums.prop_types import GroupType
