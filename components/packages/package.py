@@ -1,8 +1,8 @@
-from components.base.component import Component
+from components.base.dynamic_comp import DynamicComp
 from data.enums.prop_types import PackType,RsrcType,FieldType
 from chainer import Variable
 
-class Package(Component):
+class Package(DynamicComp):
   """
   For all intents and purposes, a package is a mail package
   It has the following properties

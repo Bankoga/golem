@@ -1,6 +1,8 @@
 from numpy import ones
 
-class ConvShape:
+from components.base.passive_comp import PassiveComp
+
+class ConvShape(PassiveComp):
 
   """
   While ConvShapes are components, we need to break up the component base class into two types
