@@ -1,12 +1,12 @@
 from abc import abstractmethod
-from components.base.component import Component
+from components.base.producer_comp import ProducerComp
 
 from data.axioms.packager import defaults as prd
 from data.enums.prop_types import PackagerType
 
-class Packager(Component):
+class Packager(ProducerComp):
   """
-  The actual functions that power the matrix
+  The actual algorithms that power the matrix
   Not the function sets, or the meta-containers, or regions, but a unified algorithm or method
   Examples of Packager Types:
     - Cell

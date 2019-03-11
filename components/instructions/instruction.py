@@ -1,8 +1,8 @@
 from abc import abstractmethod
-from components.base.component import Component
+from components.base.consumer_comp import ConsumerComp
 from data.enums.prop_types import RuleType
 
-class Instruction(Component):
+class Instruction(ConsumerComp):
   def __init__(self, itm_id, rtype, pos):
     self.item_label = f'{rtype.name}-{pos.get_hash()}'
     # hash(self.item_label)
