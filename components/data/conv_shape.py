@@ -2,7 +2,7 @@ from numpy import ones
 
 from components.base.passive_comp import PassiveComp
 
-from data.enums.pos import CtgType
+from components.enums.pos import CtgType
 
 class ConvShape(PassiveComp):
 

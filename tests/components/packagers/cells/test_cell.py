@@ -4,8 +4,8 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.packagers.cells.cell import Cell
-from data.axioms.cell_types import CellType,cell_data
-from data.enums.prop_types import RuleType, RsrcType, PackType,FieldType, PackagerType
+from components.axioms.cell_types import CellType,cell_data
+from components.enums.prop_types import RuleType, RsrcType, PackType,FieldType, PackagerType
 
 from tests.strategies.packing_strats import valid_cell_instruction
 from tests.strategies.prop_strats import cell_type_prop

@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.enums.pos import Floor, Dimension
+from components.enums.pos import Floor, Dimension
 
 from utils.pos import Pos
 from tests.strategies.pos_strats import valid_pos, ctg_prop,dimension_prop

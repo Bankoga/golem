@@ -1,4 +1,4 @@
-from data.enums.prop_types import RuleType
+from components.enums.prop_types import RuleType
 
 from components.instructions.instruction import Instruction
 

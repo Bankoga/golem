@@ -4,8 +4,8 @@ from hypothesis import strategies as st
 
 from numpy import array, append
 
-from data.axioms.configs import proc_ids,file_type,set_ids
-from data.enums.prop_types import FuncSetType, PackType
+from components.axioms.configs import proc_ids,file_type,set_ids
+from components.enums.prop_types import FuncSetType, PackType
 from components.func_sets.procs.proc import Proc
 from components.func_sets.procs.proc_provider import proc_services
 

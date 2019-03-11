@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from components.base.consumer_comp import ConsumerComp
-from data.enums.prop_types import RuleType
+from components.enums.prop_types import RuleType
 
 class Instruction(ConsumerComp):
   def __init__(self, itm_id, rtype, pos):

@@ -1,6 +1,6 @@
 from enum import Enum
 
-from data.enums.pos import Floor
+from components.enums.pos import Floor
 
 package_map = {
   'core': 'main',

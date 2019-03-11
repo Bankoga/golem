@@ -2,8 +2,8 @@ from numpy import array, append
 
 from components.func_sets.func_set import FuncSet
 from utils.cardinators.cardinator_provider import cardinator_services
-from data.axioms.configs import file_type
-from data.enums.prop_types import FuncSetType, PackType
+from components.axioms.configs import file_type
+from components.enums.prop_types import FuncSetType, PackType
 
 from utils.config_reader import read
 from utils.misc import heapsort

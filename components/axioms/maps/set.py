@@ -1,5 +1,5 @@
-from data.axioms.configs import coder_ids, proc_ids, set_ids
-from data.enums.prop_types import SuperSet
+from components.axioms.configs import coder_ids, proc_ids, set_ids
+from components.enums.prop_types import SuperSet
 
 def get_ids(set_type):
   if set_type is None or set_type is SuperSet.UNSET:

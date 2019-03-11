@@ -8,7 +8,7 @@ from tests.strategies.packing_strats import valid_conv_shape
 
 from components.data.conv_shape import ConvShape
 
-from data.enums.pos import CtgType
+from components.enums.pos import CtgType
 
 from utils.pos import Pos
 
@@ -19,13 +19,21 @@ from tests.strategies.packing_strats import valid_resource_data
 class TestConvShape(TestPassiveComp):
 
   def setUp(self):
+    
     self.f_shape = (4,4)
     self.s_shape = (1,1)
     self.r = 5
     self.c = 5
-    self.pos = Pos(CtgType.DATA,r=self.r,c=self.c)
-    self.item_id = 'TotallyValidId'
-    self.comp = ConvShape(self.item_id,self.pos,self.f_shape,self.s_shape)
+    self.valid_ctg = CtgType.DATA
+    self.pos = Pos(self.valid_ctg,r=self.r,c=self.c)
+    self.valid_id = 'TotallyValidId'
+    self.var = {
+      'pos': self.pos,
+      'f_shape': self.f_shape,
+      's_shape': self.s_shape,
+      'weights': ones(self.f_shape)
+    }
+    self.comp = ConvShape(self.valid_id,self.pos,self.f_shape,self.s_shape)
 
   # def test_init(self):
   #   self.assertEqual(self.comp.f_shape,self.f_shape)

@@ -3,8 +3,8 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.axioms.configs import set_ids
-from data.enums.prop_types import SuperSet, GroupType
+from components.axioms.configs import set_ids
+from components.enums.prop_types import SuperSet, GroupType
 
 from components.func_sets.fs_builder_provider import fs_services
 from components.func_sets.func_set import FuncSet

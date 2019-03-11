@@ -3,7 +3,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 import utils.object_factory
 from utils.cardinators.asc_cardinator import AscCardinator
-from data.axioms.pos_maps import cardinal_keys, floor_order
+from components.axioms.pos_maps import cardinal_keys, floor_order
 
 class TestAscCardinator(unittest.TestCase):
   

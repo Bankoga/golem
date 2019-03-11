@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from data.enums.pos import CtgType
+from components.enums.pos import CtgType
 
 class Component:
   def __init__(self, component_id,component_type, ctg_type=None):

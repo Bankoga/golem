@@ -1,4 +1,4 @@
-from data.axioms.pos_maps import floor_order
+from components.axioms.pos_maps import floor_order
 class Cardinator():
 
   """

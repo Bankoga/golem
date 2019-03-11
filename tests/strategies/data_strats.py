@@ -2,7 +2,7 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 from numpy import full, ones
 
-from data.axioms.data import var_types
+from components.axioms.data import var_types
 
 @composite
 def var_pair(draw,elements=st.one_of(st.sampled_from(sorted(var_types)))):

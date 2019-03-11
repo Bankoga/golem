@@ -1,4 +1,4 @@
-from data.enums.prop_types import FuncSetType
+from components.enums.prop_types import FuncSetType
 from utils.object_factory import *
 # # from components.func_sets.asc_cardinator import AscCardinatorBuilder
 # # from components.func_sets.dsc_cardinator import DscCardinatorBuilder
@@ -30,7 +30,7 @@ from utils.object_factory import *
 # # fs_services.register_builder('', Builder())
 # # fs_services.register_builder('', Builder())
 
-from data.enums.prop_types import FuncSetType, SuperSet
+from components.enums.prop_types import FuncSetType, SuperSet
 from utils.object_factory import *
 from components.func_sets.coders.coder_provider import coder_services
 from components.func_sets.procs.proc_provider import proc_services

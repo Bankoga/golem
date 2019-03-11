@@ -1,4 +1,4 @@
-from data.enums.pos import Floor, CtgType, Dimension
+from components.enums.pos import Floor, CtgType, Dimension
 
 class Pos:
   def __init__(self,comp_type,floor=Floor.WAREHOUSE,x=-1,y=-1,z=-1,r=-1,c=-1):

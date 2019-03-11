@@ -1,8 +1,8 @@
 import unittest
 from hypothesis import given
 from hypothesis import strategies as st
-from data.axioms.configs import coder_ids,file_type
-from data.enums.prop_types import FuncSetType
+from components.axioms.configs import coder_ids,file_type
+from components.enums.prop_types import FuncSetType
 from components.func_sets.coders.coder import Coder
 from components.func_sets.coders.coder_provider import coder_services
 from utils.config_reader import read

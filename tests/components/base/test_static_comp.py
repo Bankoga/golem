@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.base.static_comp import StaticComp
-from data.enums.prop_types import CtgType
+from components.enums.prop_types import CtgType
 from tests.strategies.pos_strats import valid_locale, ctg_prop
 from tests.strategies.prop_strats import arbitrary_id,arbitrary_invalid_id
 

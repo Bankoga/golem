@@ -3,8 +3,8 @@ from hypothesis.strategies import composite
 from hypothesis import settings
 from hypothesis import HealthCheck
 
-from data.axioms.configs import proc_ids,set_ids,set_ids
-from data.enums.prop_types import PackType,SuperSet
+from components.axioms.configs import proc_ids,set_ids,set_ids
+from components.enums.prop_types import PackType,SuperSet
 
 from tests.strategies.prop_strats import set_type_prop
 from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address,valid_resource_data

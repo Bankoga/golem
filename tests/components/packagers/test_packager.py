@@ -4,9 +4,9 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.packagers.packager import Packager
-from data.axioms.props import old_id_pattern 
-from data.axioms.packager import defaults as prd
-from data.enums.prop_types import PackagerType
+from components.axioms.props import old_id_pattern 
+from components.axioms.packager import defaults as prd
+from components.enums.prop_types import PackagerType
 
 from tests.strategies.prop_strats import node_type_prop
 

@@ -5,7 +5,7 @@ import re
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.enums.pos import CtgType
+from components.enums.pos import CtgType
 
 from tests.strategies.pos_strats import ctg_prop
 from tests.strategies.prop_strats import arbitrary_invalid_id

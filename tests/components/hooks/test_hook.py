@@ -4,8 +4,8 @@ from hypothesis import given
 import hypothesis.strategies as st
 
 from components.hooks.hook import Hook
-from data.axioms.props import dest_key_pattern, old_id_pattern 
-from data.enums.prop_types import FieldType,HookType,RsrcType,PackType
+from components.axioms.props import dest_key_pattern, old_id_pattern 
+from components.enums.prop_types import FieldType,HookType,RsrcType,PackType
 from components.packages.misc_funcs import build_address, build_meld
 from tests.components.packages.test_package import TestPackage
 from tests.strategies.packing_strats import package_address,full_address,partial_address,arbitrary_id

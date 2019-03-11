@@ -1,5 +1,5 @@
 from components.func_sets.procs.proc import Proc
-from data.axioms.configs import proc_ids
+from components.axioms.configs import proc_ids
 
 class DFGranularCort(Proc):
   def __init__(self):

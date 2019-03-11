@@ -4,7 +4,7 @@ import hypothesis.strategies as st
 from hypothesis import given
 
 from components.func_sets.procs.proc_provider import proc_services
-from data.axioms.configs import proc_ids
+from components.axioms.configs import proc_ids
 
 
 class TestProcProvider(unittest.TestCase):

@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-from data.enums.pos import CtgType
+from components.enums.pos import CtgType
 
 # TODO: eventually this will need to be refactored to ensure that most of these dicts only have one instance
 

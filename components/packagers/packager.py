@@ -1,8 +1,8 @@
 from abc import abstractmethod
 from components.base.producer_comp import ProducerComp
 
-from data.axioms.packager import defaults as prd
-from data.enums.prop_types import PackagerType
+from components.axioms.packager import defaults as prd
+from components.enums.prop_types import PackagerType
 
 class Packager(ProducerComp):
   """

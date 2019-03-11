@@ -1,7 +1,7 @@
 # from hypothesis import strategies as st
 # from hypothesis.strategies import composite
 
-# from data.axioms.configs import proc_ids
+# from components.axioms.configs import proc_ids
 
 # from tests.strategies.prop_strats import set_type_prop
 # from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address,valid_resource_data

@@ -1,6 +1,6 @@
 # from components.base.dynamic_comp import DynamicComp
 from components.base.component import Component
-from data.enums.prop_types import PackType,RsrcType,FieldType
+from components.enums.prop_types import PackType,RsrcType,FieldType
 from chainer import Variable
 
 class Package(Component):

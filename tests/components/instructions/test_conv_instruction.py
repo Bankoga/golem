@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.enums.prop_types import RuleType
+from components.enums.prop_types import RuleType
 
 from tests.components.instructions.test_instruction import TestInstruction
 from tests.strategies.prop_strats import rule_type_prop, arbitrary_id

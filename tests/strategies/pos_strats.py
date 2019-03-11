@@ -2,8 +2,8 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.pos_maps import cardinal_keys
-from data.enums.pos import Floor, CtgType, Dimension
+from components.axioms.pos_maps import cardinal_keys
+from components.enums.pos import Floor, CtgType, Dimension
 from components.packages.package import Package
 from utils.pos import Pos
 

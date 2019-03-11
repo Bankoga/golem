@@ -4,8 +4,8 @@
 # from utils.melder import *
 # from components.packages.package import *
 # 
-# from data.axioms.configs import resource_types
-# from data.axioms.props import dest_key_pattern 
+# from components.axioms.configs import resource_types
+# from components.axioms.props import dest_key_pattern 
 # # from config_tests_data.py import *
 
 # # It is an open question as to whether or not links need to be defined as part of the proc group

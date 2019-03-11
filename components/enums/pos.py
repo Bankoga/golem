@@ -1,5 +1,5 @@
 from enum import Enum, auto
-from data.enums.misc_enum import AutoName
+from components.enums.misc_enum import AutoName
 
 class Dimension(AutoName):
   OP_LVL = auto()

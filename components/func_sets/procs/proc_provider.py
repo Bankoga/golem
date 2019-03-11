@@ -1,5 +1,5 @@
 from utils.object_factory import *
-from data.axioms.configs import proc_ids
+from components.axioms.configs import proc_ids
 from components.func_sets.procs.glg import GLGBuilder
 from components.func_sets.procs.dc_granular_cort import DCGranularCortBuilder
 from components.func_sets.procs.df_granular_cort import DFGranularCortBuilder

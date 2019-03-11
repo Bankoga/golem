@@ -6,7 +6,7 @@ from hypothesis import strategies as st
 from numpy import array_equal
 
 from components.base.component import Component
-from data.enums.pos import CtgType
+from components.enums.pos import CtgType
 
 from tests.strategies.packing_strats import valid_resource_data
 

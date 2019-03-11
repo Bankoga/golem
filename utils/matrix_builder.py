@@ -1,4 +1,4 @@
-from data.axioms.configs import file_type
+from components.axioms.configs import file_type
 from utils.config_reader import read
 
 class Matrix:

@@ -3,8 +3,8 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.enums.prop_types import RuleType
-from data.enums.pos import CtgType
+from components.enums.prop_types import RuleType
+from components.enums.pos import CtgType
 from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
 from tests.strategies.pos_strats import valid_pos
 from tests.strategies.packing_strats import valid_resource_data

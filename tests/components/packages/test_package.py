@@ -7,8 +7,8 @@ from tests.strategies.packing_strats import package_inputs, package_arbitrary,pa
 
 from components.packages.package import Package
 from components.packages.misc_funcs import build_address, build_meld, build_package_inputs, build_package
-from data.axioms.props import dest_key_pattern 
-from data.enums.prop_types import PackType,RsrcType,FieldType
+from components.axioms.props import dest_key_pattern 
+from components.enums.prop_types import PackType,RsrcType,FieldType
 
 from numpy import array_equal
 

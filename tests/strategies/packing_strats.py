@@ -5,8 +5,8 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 from numpy import full, ones
 
-from data.axioms.matrix import max_resource_value, min_resource_value
-from data.axioms.props import old_id_pattern
+from components.axioms.matrix import max_resource_value, min_resource_value
+from components.axioms.props import old_id_pattern
 from tests.strategies.pos_strats import valid_pos
 from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
 from components.packages.package import Package

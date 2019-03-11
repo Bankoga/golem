@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.base.passive_comp import PassiveComp
-from data.enums.prop_types import CtgType
+from components.enums.prop_types import CtgType
 from tests.components.base.test_static_comp import TestStaticComp
 
 class TestPassiveComp(TestStaticComp):

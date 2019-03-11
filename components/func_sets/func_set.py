@@ -1,8 +1,8 @@
 from abc import abstractmethod
 from components.base.mediatorcomp import MediatorComp
 
-from data.enums.pos import CtgType
-from data.enums.prop_types import GroupType
+from components.enums.pos import CtgType
+from components.enums.prop_types import GroupType
 
 from components.packages.misc_funcs import build_address
 class FuncSet(MediatorComp):

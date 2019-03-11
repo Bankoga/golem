@@ -4,11 +4,11 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from data.axioms.cell_types import CellType
-from data.axioms.matrix import max_resource_value, min_resource_value
-from data.axioms.props import id_pattern, invalid_id_pattern
-from data.enums.prop_types import FuncSetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType, SuperSet
-from data.maps.set import get_ids
+from components.axioms.cell_types import CellType
+from components.axioms.matrix import max_resource_value, min_resource_value
+from components.axioms.props import id_pattern, invalid_id_pattern
+from components.enums.prop_types import FuncSetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType, SuperSet
+from components.axioms.maps.set import get_ids
 
 from components.packages.package import Package
 

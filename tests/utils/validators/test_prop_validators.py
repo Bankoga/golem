@@ -5,7 +5,7 @@ import re
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.axioms.props import id_pattern
+from components.axioms.props import id_pattern
 
 from tests.strategies.prop_strats import arbitrary_id, arbitrary_invalid_id
 
