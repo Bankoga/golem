@@ -2,6 +2,8 @@ from numpy import ones
 
 from components.base.passive_comp import PassiveComp
 
+from data.enums.pos import CtgType
+
 class ConvShape(PassiveComp):
 
   """
@@ -11,11 +13,11 @@ class ConvShape(PassiveComp):
   the position is relative to its parents X,Y (or row/column) index within stage Z
   """
 
-  def __init__(self,pos,f_shape,s_shape=None):
+  def __init__(self,item_id,pos,f_shape,s_shape=None):
     self.pos = pos
     self.f_shape = f_shape
     self.s_shape = s_shape
-    self.weights = ones(f_shape)
+    super().__init__(ones(f_shape), item_id=item_id,ctg=CtgType.DATA)
     
 
 

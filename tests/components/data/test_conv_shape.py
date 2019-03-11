@@ -23,13 +23,14 @@ class TestConvShape(unittest.TestCase):
     self.r = 5
     self.c = 5
     self.pos = Pos(CtgType.DATA,r=self.r,c=self.c)
-    self.comp = ConvShape(self.pos,self.f_shape,self.s_shape)
+    self.item_id = 'TotallyValidId'
+    self.comp = ConvShape(self.item_id,self.pos,self.f_shape,self.s_shape)
 
   def test_init(self):
     self.assertEqual(self.comp.f_shape,self.f_shape)
     self.assertEqual(self.comp.s_shape,self.s_shape)
     expectation = ones(self.f_shape)
-    result = self.comp.weights
+    result = self.comp.var
     self.assertTrue(array_equal(result, expectation))
 
 

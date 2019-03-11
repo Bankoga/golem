@@ -7,6 +7,7 @@ from numpy import full, ones
 
 from data.axioms.matrix import max_resource_value, min_resource_value
 from data.axioms.props import old_id_pattern
+from tests.strategies.pos_strats import valid_pos
 from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
 from components.packages.package import Package
 from components.packages.misc_funcs import (build_meld)
@@ -86,7 +87,9 @@ def package_inputs(draw):
 def valid_conv_shape(draw):
   x = draw(st.just(ones((256,256))))
   st.assume(x.any())
-  y = ConvShape(x.shape, (1,1))
+  arb_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
+  p = draw(valid_pos()) # pylint: disable=no-value-for-parameter
+  y = ConvShape(arb_id, p, x.shape, (1,1))
   st.assume(y)
   return y
 
