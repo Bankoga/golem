@@ -4,7 +4,7 @@ from utils.config_reader import read
 class Matrix:
   def __init__(self, proc_id):
     self.config = read(proc_id,file_type['proc'])
-    self.id = self.config['type_data'']['golem']
+    self.id = self.config['type_data']['golem']
     self.name = self.config['type_data']['name']
     self.ctg_type = self.config['type_data']['type']
     self.purpose = self.config['type_data']['purpose']
