@@ -7,7 +7,7 @@ from components.enums.prop_types import RuleType
 
 from tests.components.instructions.test_instruction import TestInstruction
 from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
-from tests.strategies.packing_strats import valid_conv_shape,valid_resource_data
+from tests.strategies.data_strats import valid_conv_shape, valid_resource_data
 from tests.strategies.func_set_strats import module_input_set,processed_module_input_set
 from tests.strategies.pos_strats import valid_direction, valid_pos
 

@@ -7,7 +7,7 @@ from components.enums.prop_types import RuleType
 from components.enums.pos import CtgType
 from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
 from tests.strategies.pos_strats import valid_pos
-from tests.strategies.packing_strats import valid_resource_data
+from tests.strategies.data_strats import valid_resource_data
 
 from utils.pos import Pos
 from components.instructions.instruction import Instruction

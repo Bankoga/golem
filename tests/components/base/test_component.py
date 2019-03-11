@@ -8,7 +8,7 @@ from numpy import array_equal
 from components.base.component import Component
 from components.enums.pos import CtgType
 
-from tests.strategies.packing_strats import valid_resource_data
+from tests.strategies.data_strats import valid_resource_data
 
 class TestComponent(unittest.TestCase):
   def setUp(self):
