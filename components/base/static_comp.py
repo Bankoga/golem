@@ -2,25 +2,28 @@ from utils.validators.pos_validators import is_valid_ctg
 from utils.validators.prop_validators import is_valid_id
 
 class StaticComp:
+  def __init__(self, label, ctg):
+    self.label = label
+    self.ctg = ctg
 
-  def __init__(self, item_id, ctg):
-    self.set_id(item_id)
-    self.set_ctg(ctg)
+  @property
+  def label(self):
+    return self.__label
 
-  def get_id(self):
-    return self.item_id
+  @property
+  def ctg(self):
+    return self.__ctg
 
-  def get_ctg(self):
-    return self.ctg
-
-  def set_id(self, item_id):
-    if not is_valid_id(item_id):
+  @label.setter
+  def label(self, value): # pylint: disable=function-redefined
+    if not is_valid_id(value):
       raise ValueError('INVALID ID!')
     else:
-      self.item_id = item_id
+      self.__label = value
 
-  def set_ctg(self, ctg):
-    if not is_valid_ctg(ctg):
+  @ctg.setter
+  def ctg(self, value): # pylint: disable=function-redefined
+    if not is_valid_ctg(value):
       raise ValueError('INVALID CATEGORY!')
     else:
-      self.ctg = ctg
+      self.__ctg = value

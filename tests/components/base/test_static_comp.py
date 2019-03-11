@@ -10,35 +10,35 @@ from tests.strategies.prop_strats import arbitrary_id,arbitrary_invalid_id
 
 class TestStaticComp(unittest.TestCase):
   def setUp(self):
-    self.valid_id = 'TotallyValidId'
-    self.valid_ctg = CtgType.FSET
-    self.comp = StaticComp(self.valid_id, self.valid_ctg)
-  
+    self.label = 'TotallyValidId'
+    self.ctg = CtgType.FSET
+    self.comp = StaticComp(self.label, self.ctg)
+
   @given(arbitrary_invalid_id()) # pylint: disable=no-value-for-parameter
-  def test_set_invalid_id(self,item_id):
+  def test_set_invalid_id(self,label):
     with self.assertRaises(ValueError):
-      self.comp.set_id(item_id)
+      self.comp.label = label
 
   @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
   def test_set_invalid_ctg(self,ctg):
     with self.assertRaises(ValueError):
-      self.comp.set_ctg(ctg)
+      self.comp.ctg = ctg
 
   @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
-  def test_set_id(self, item_id):
-    self.comp.set_id(item_id)
-    self.assertEqual(self.comp.get_id(), item_id)
+  def test_set_label(self, label):
+    self.comp.label = label
+    self.assertEqual(self.comp.label, label)
   
   @given(ctg_prop()) # pylint: disable=no-value-for-parameter
   def test_set_ctg(self, ctg):
-    self.comp.set_ctg(ctg)
-    self.assertEqual(self.comp.get_ctg(), ctg)
+    self.comp.ctg = ctg
+    self.assertEqual(self.comp.ctg, ctg)
 
-  def test_get_id(self):
-    self.assertEqual(self.comp.get_id(), self.valid_id)
+  def test_get_label(self):
+    self.assertEqual(self.comp.label, self.label)
 
   def test_get_ctg(self):
-    self.assertEqual(self.comp.get_ctg(), self.valid_ctg)
+    self.assertEqual(self.comp.ctg, self.ctg)
 
   # @given(valid_locale()) # pylint: disable=no-value-for-parameter
   # def test_get_pos_in(self, locale):
