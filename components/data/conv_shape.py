@@ -20,8 +20,13 @@ class ConvShape(PassiveComp):
     var = ones(f_shape)
     super().__init__(var, item_id=item_id,ctg=CtgType.DATA)
 
-  def set_var(self, new_weights):
-    self.var = new_weights
+  @property
+  def var(self):
+    return self.__var
+
+  @var.setter
+  def var(self, new_weights):
+    self.__var = new_weights
 
   # def set_up_weight(self, conv_shapes):
     # weights = {}

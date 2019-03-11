@@ -23,11 +23,11 @@ class TestConvShape(TestPassiveComp):
     self.s_shape = (1,1)
     self.r = 5
     self.c = 5
-    self.valid_ctg = CtgType.DATA
-    self.pos = Pos(self.valid_ctg,r=self.r,c=self.c)
-    self.valid_id = 'TotallyValidId'
+    self.ctg = CtgType.DATA
+    self.pos = Pos(self.ctg,r=self.r,c=self.c)
+    self.label = 'TotallyValidId'
     self.var = ones(self.f_shape)
-    self.comp = ConvShape(self.valid_id,self.pos,self.f_shape,self.s_shape)
+    self.comp = ConvShape(self.label,self.pos,self.f_shape,self.s_shape)
 
   # @given(st.one_of(st.text(),st.integers(),st.lists(st.integers())))
   # def test_set_var(self, new_var):
@@ -40,8 +40,8 @@ class TestConvShape(TestPassiveComp):
   #       self.comp.set_var(new_var)
 
   def test_get_var(self):
-    result = self.comp.get_var()
-    self.assertEqual(result, self.var)
+    result = self.comp.var
+    self.assertTrue(array_equal(result, self.var))
     self.assertEqual(self.comp.f_shape,self.f_shape)
     self.assertEqual(self.comp.s_shape,self.s_shape)
     
