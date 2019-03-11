@@ -3,7 +3,6 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
-from numpy import full, ones
 
 from data.axioms.cell_types import CellType
 from data.axioms.matrix import max_resource_value, min_resource_value
