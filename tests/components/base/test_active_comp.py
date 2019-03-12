@@ -23,13 +23,13 @@ class TestActiveComp(TestPassiveComp):
   def test_base_set(self):
     self.assertTrue(self.comp.base_set)
 
-  def test_base_var(self):
+  def test_init_var(self):
     self.assertTrue(self.comp.base_set)
-    self.assertEqual(self.comp.base_var, self.var)
+    self.assertEqual(self.comp.init_var, self.var)
   
-  def test_set_base_var(self):
+  def test_set_init_var(self):
     with self.assertRaises(RuntimeError):
-      self.comp.base_var = 'Does not matter'
+      self.comp.init_var = 'Does not matter'
 
   def test_set_base_set(self):
     with self.assertRaises(RuntimeError):

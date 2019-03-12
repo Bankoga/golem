@@ -22,19 +22,19 @@ class ActiveComp(PassiveComp):
   def var(self, var):
     self.__var = var
     if not self.base_set:
-      self.base_var = self.var
+      self.init_var = self.var
       self.__base_set = True
 
   @property
-  def base_var(self):
-    return self.__base_var
+  def init_var(self):
+    return self.__init_var
   
-  @base_var.setter
-  def base_var(self, value):
+  @init_var.setter
+  def init_var(self, value):
     if self.base_set:
       raise RuntimeError('Setting the base var is not allowed!')
     else:
-      self.__base_var = value
+      self.__init_var = value
 
   def update(self, args, **kwargs):
     if len(args) == 1:
@@ -42,6 +42,6 @@ class ActiveComp(PassiveComp):
   
   def reset(self):
     if self.base_set:
-      self.var = self.base_var
+      self.var = self.init_var
     else:
       raise RuntimeError('Attempted to reset an unset base')
