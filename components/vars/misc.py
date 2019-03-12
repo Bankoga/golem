@@ -1,0 +1,1 @@
+reg_keys = ['address', 'pos', 'reg_id']
