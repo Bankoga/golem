@@ -13,6 +13,13 @@ class TestWorkerComp(TestStaticComp):
     self.ctg = CtgType.FSET
     self.comp = WorkerComp(item_id=self.label, ctg=self.ctg)
 
+  def test_register(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.register()
+
+  def test_operate(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.operate()
 
 if __name__ == '__main__':
   unittest.main()
