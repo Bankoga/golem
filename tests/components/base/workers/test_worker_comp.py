@@ -14,6 +14,7 @@ class TestWorkerComp(TestStaticComp):
     self.comp = WorkerComp(item_id=self.label, ctg=self.ctg)
 
   def test_register(self):
+    # For every worker, what needs to be registered?
     with self.assertRaises(RuntimeError):
       self.comp.register()
 
