@@ -1,4 +1,8 @@
 from components.vars.misc import reg_keys
 
-def check_registry_item(reg_item):
-  return (reg_item.keys() in reg_keys)
+from numpy import array_equal
+
+def reg_item_check(reg_item):
+  item_keys = list(reg_item.keys())
+  v = array_equal(item_keys, reg_keys)
+  return v

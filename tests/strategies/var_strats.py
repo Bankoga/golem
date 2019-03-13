@@ -15,3 +15,16 @@ def reg_item_var(draw):
     'reg_id': reg_id
   }
   return reg_item
+
+@composite
+def reg_item_valid_var(draw):
+  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  pos = draw(valid_pos()) # pylint: disable=no-value-for-parameter
+  reg_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
+  reg_item = {
+    'address': addr,
+    'pos': pos,
+    'reg_id': reg_id
+  }
+  st.assume(reg_item)
+  return reg_item
