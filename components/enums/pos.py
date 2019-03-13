@@ -10,6 +10,7 @@ class Dimension(AutoName):
   ROW = auto()
   COLUMN = auto()
 
+floor_order = list(Floor)
 
 class DimensionallyOrdered(Enum):
   def __init__(self,pos,dimension):

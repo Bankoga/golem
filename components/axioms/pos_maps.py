@@ -1,7 +1,3 @@
-from enum import Enum
-
-from components.enums.pos import Floor
-
 package_map = {
   'core': 'main',
   'framework': 'basement',
@@ -74,5 +70,4 @@ cardinal_keys = {
 #   },
 # }
 
-floor_order = list(Floor)
 
