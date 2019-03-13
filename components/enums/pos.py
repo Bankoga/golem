@@ -10,8 +10,6 @@ class Dimension(AutoName):
   ROW = auto()
   COLUMN = auto()
 
-floor_order = list(Floor)
-
 class DimensionallyOrdered(Enum):
   def __init__(self,pos,dimension):
     self.pos = pos
@@ -38,6 +36,8 @@ class Floor(Enum):
   def describe(self):
     return 'Matrix section', self.name
 
+
+floor_order = list(Floor)
 
 # class CardinalX(Enum):
 #   UNSET = 1
