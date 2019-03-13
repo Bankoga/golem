@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 from numpy import full, ones
 
-from components.axioms.props import old_id_pattern
+from components.axioms.props import id_pattern
 from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
 from tests.strategies.data_strats import valid_resource_data
 from components.packages.package import Package
@@ -22,8 +22,7 @@ What are the pools of object examples we need to draw from?
 
 @composite
 def arbitrary_id(draw):
-  res = st.text()#from_regex(old_id_pattern)
-  st.assume(res)
+  res = draw(st.from_regex(id_pattern))
   return res
 
 @composite
