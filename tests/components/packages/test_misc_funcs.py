@@ -5,7 +5,8 @@ from hypothesis import strategies as st
 
 from components.enums.prop_types import FieldType,PackType,RsrcType
 
-from tests.strategies.packing_strats import arbitrary_id,full_address,partial_address,package_address
+from tests.strategies.packing_strats import arbitrary_id
+from tests.strategies.pos_strats import full_address,partial_address,arb_addr
 from tests.strategies.prop_strats import package_field_shape,package_resource,package_type
 
 from components.packages.package import Package
@@ -21,7 +22,7 @@ class TestMiscFuncs(unittest.TestCase):
     else:
       self.assertEqual(addr, f'{m_id}-{g_id}')
 
-  @given(package_address(),package_resource(),package_type(),package_field_shape()) # pylint: disable=no-value-for-parameter
+  @given(arb_addr(),package_resource(),package_type(),package_field_shape()) # pylint: disable=no-value-for-parameter
   def test_build_meld(self, recip_addr,dp_resource,dp_type,dp_shape):
     # addr = build_address(rm_id,rg_id)
     meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
@@ -30,7 +31,7 @@ class TestMiscFuncs(unittest.TestCase):
     else:
       self.assertEqual(meld, f'{recip_addr};{dp_resource};{dp_type};{dp_shape}')
   
-  @given(package_address(), # pylint: disable=no-value-for-parameter
+  @given(arb_addr(), # pylint: disable=no-value-for-parameter
   st.sampled_from(RsrcType),
   st.sampled_from(PackType),
   st.sampled_from(FieldType),
@@ -45,7 +46,7 @@ class TestMiscFuncs(unittest.TestCase):
     res = tuple([meld,sender_address])
     self.assertEqual(inputs, res)
 
-  @given(package_address(), # pylint: disable=no-value-for-parameter
+  @given(arb_addr(), # pylint: disable=no-value-for-parameter
   st.sampled_from(RsrcType),
   st.sampled_from(PackType),
   st.sampled_from(FieldType),

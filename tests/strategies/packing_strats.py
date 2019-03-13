@@ -6,14 +6,15 @@ from hypothesis.strategies import composite
 from numpy import full, ones
 
 from components.axioms.props import id_pattern
-from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
-from tests.strategies.data_strats import valid_resource_data
 from components.packages.package import Package
 from components.packages.misc_funcs import (build_meld)
 
+from tests.strategies.pos_strats import full_address, partial_address, arb_addr
+from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
+from tests.strategies.data_strats import valid_resource_data
+
 """
 What are the pools of object examples we need to draw from?
-- Addresses
 - Melds
 - Packages
 - Input Sets
@@ -21,35 +22,9 @@ What are the pools of object examples we need to draw from?
 """
 
 @composite
-def arbitrary_id(draw):
-  res = draw(st.from_regex(id_pattern))
-  return res
-
-@composite
-def full_address(draw):
-  m_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
-  g_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
-  st.assume(m_id != g_id)
-  st.assume(m_id)
-  st.assume(g_id)
-  return f'{m_id}-{g_id}'
-
-@composite
-def partial_address(draw):
-  m_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
-  st.assume(m_id)
-  return m_id
-
-@composite
-def package_address(draw):
-  addr = st.one_of(full_address(),partial_address()) # pylint: disable=no-value-for-parameter
-  st.assume(addr)
-  return addr
-
-@composite
 def sender_and_recipient_pair(draw):
-  recip_addr = package_address() # pylint: disable=no-value-for-parameter
-  sender_addr = package_address() # pylint: disable=no-value-for-parameter
+  recip_addr = arb_addr() # pylint: disable=no-value-for-parameter
+  sender_addr = arb_addr() # pylint: disable=no-value-for-parameter
   st.assume(recip_addr != sender_addr)
   st.assume(recip_addr)
   st.assume(sender_addr)
@@ -58,7 +33,7 @@ def sender_and_recipient_pair(draw):
 
 @composite
 def proto_meld(draw):
-  addr = draw(package_address()) # pylint: disable=no-value-for-parameter
+  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
   dp_resource = draw(package_resource()) # pylint: disable=no-value-for-parameter
   dp_type = draw(package_type()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type)
@@ -66,7 +41,7 @@ def proto_meld(draw):
 
 @composite
 def full_meld(draw):
-  addr = draw(package_address()) # pylint: disable=no-value-for-parameter
+  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
   dp_resource = draw(package_resource()) # pylint: disable=no-value-for-parameter
   dp_type = draw(package_type()) # pylint: disable=no-value-for-parameter
   dp_shape = draw(package_field_shape()) # pylint: disable=no-value-for-parameter
@@ -76,7 +51,7 @@ def full_meld(draw):
 @composite
 def package_inputs(draw):
   meld = draw(st.one_of(proto_meld(),full_meld())) # pylint: disable=no-value-for-parameter
-  sender_addr = draw(package_address()) # pylint: disable=no-value-for-parameter
+  sender_addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
   return (meld, sender_addr)
 
 @composite

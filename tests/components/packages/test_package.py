@@ -3,7 +3,8 @@ import unittest
 from hypothesis import given
 import hypothesis.strategies as st
 
-from tests.strategies.packing_strats import package_inputs, package_arbitrary,package_address,valid_package_arbitrary
+from tests.strategies.packing_strats import package_inputs, package_arbitrary,valid_package_arbitrary
+from tests.strategies.pos_strats import arb_addr
 from tests.strategies.data_strats import valid_resource_data
 
 from components.packages.package import Package
@@ -119,14 +120,14 @@ class TestPackage(unittest.TestCase):
     meld = f'{input_pack.sender};{input_pack.address};{input_pack.resource};{input_pack.ctg_type};{input_pack.shape}'
     self.assertEqual(input_pack.get_meld(),meld)
 
-  @given(valid_package_arbitrary(), package_address()) # pylint: disable=no-value-for-parameter
+  @given(valid_package_arbitrary(), arb_addr()) # pylint: disable=no-value-for-parameter
   def test_update_address(self,input_pack, new_addr):
     input_pack.update(new_addr)
     self.assertEqual(input_pack.address, new_addr)
     self.assertFalse(input_pack.is_built())
     self.assertIsNone(input_pack.var)
 
-  @given(valid_package_arbitrary(), package_address()) # pylint: disable=no-value-for-parameter
+  @given(valid_package_arbitrary(), arb_addr()) # pylint: disable=no-value-for-parameter
   def test_reset(self,input_pack, new_addr):
     input_pack.update(new_addr)
     input_pack.reset()

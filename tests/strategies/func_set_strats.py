@@ -7,7 +7,8 @@ from components.axioms.configs import proc_ids,set_ids,set_ids
 from components.enums.prop_types import PackType,SuperSet
 
 from tests.strategies.prop_strats import set_type_prop
-from tests.strategies.packing_strats import package_arbitrary, package_address, partial_address
+from tests.strategies.packing_strats import package_arbitrary
+from tests.strategies.pos_strats import arb_addr, partial_address
 from tests.strategies.data_strats import valid_resource_data
 
 from components.packages.package import Package

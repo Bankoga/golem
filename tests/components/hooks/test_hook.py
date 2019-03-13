@@ -8,7 +8,8 @@ from components.axioms.props import dest_key_pattern, old_id_pattern
 from components.enums.prop_types import FieldType,HookType,RsrcType,PackType
 from components.packages.misc_funcs import build_address, build_meld
 from tests.components.packages.test_package import TestPackage
-from tests.strategies.packing_strats import package_address,full_address,partial_address,arbitrary_id
+from tests.strategies.packing_strats import arbitrary_id
+from tests.strategies.pos_strats import arb_addr,full_address,partial_address
 from tests.strategies.prop_strats import package_field_shape,set_type_prop,package_resource,hook_type,package_type
 
 class TestHook(TestPackage):
@@ -84,7 +85,7 @@ class TestHook(TestPackage):
     meld = ";".join(meld_tuple)
     self._read_data_(meld)
 
-  @given(arbitrary_id(), hook_type(), package_address(), package_resource(), package_type(), package_field_shape()) # pylint: disable=no-value-for-parameter
+  @given(arbitrary_id(), hook_type(), arb_addr(), package_resource(), package_type(), package_field_shape()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
     inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
     self._read_data_(inputs)
