@@ -1,4 +1,4 @@
-from components.vars.misc import reg_keys
+from components.vars.misc import reg_keys, addr_keys
 
 from numpy import array_equal
 
@@ -8,4 +8,6 @@ def reg_item_check(reg_item):
   return v
 
 def addr_item_check(addr_item):
-  return -1
+  item_keys = list(addr_item.keys())
+  v = array_equal(item_keys, addr_keys)
+  return v

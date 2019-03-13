@@ -1,2 +1,2 @@
 reg_keys = ['reg_id']
-addr_keys = reg_keys.copy().extend(['address', 'pos'])
+addr_keys = ['address', 'pos', 'reg_id']

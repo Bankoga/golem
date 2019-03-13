@@ -8,12 +8,15 @@ class Registry(MatrixComp):
 
   def add_item(self, new_item):
     if reg_item_check(new_item):
-      if new_item['reg_id'] in self.var:
-        raise RuntimeError('Cannot add duplicate item to registry!')
-      self.var[new_item['reg_id']] = new_item
+      self._dup_safe_add(new_item)
     else:
       raise RuntimeError('Cannot add invalid item to registry!')
   
+  def _dup_safe_add(self, new_item):
+    if new_item['reg_id'] in self.var:
+      raise RuntimeError('Cannot add duplicate item to registry!')
+    self.var[new_item['reg_id']] = new_item
+
   def remove_item(self, reg_id):
     if not reg_id in self.var:
       raise RuntimeError('Cannot remove what does not exist!')
