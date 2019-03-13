@@ -41,5 +41,15 @@ class TestAddressRegistry(TestRegistry):
   def test_remove_item(self,old_item):
     self.remove_item(old_item)
 
+  # def test_send_package(self, package):
+  #   """
+  #   what does it mean to check a package?
+  #   Do we require a valid recipient and sender valid in a specified context?
+  #   Do we simply do property safety checks?
+  #   Is data required?
+  #   """
+  #   if package_check(package):
+  #     self.test_send_package(package)
+
 if __name__ == '__main__':
   unittest.main()
