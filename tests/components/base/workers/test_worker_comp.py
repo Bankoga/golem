@@ -3,6 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
+from components.matrix.address_registry import AddressRegistry
 from components.base.workers.worker_comp import WorkerComp
 from components.enums.pos import CtgType
 
@@ -12,7 +13,7 @@ from tests.strategies.pos_strats import arb_addr
 
 class TestWorkerComp(TestStaticComp):
   def setUp(self):
-    self.registry = {}
+    self.registry = AddressRegistry(label='global_registry')
     self.address = 'm_0-f_0-g_0'
     self.label = 'pr_0'
     self.ctg = CtgType.PACKAGER
@@ -30,7 +31,7 @@ class TestWorkerComp(TestStaticComp):
       self.comp.operate()
   
   def test_set_address_post_registration(self):
-    self.comp.register(self.registry)
+    self.comp.register(self.address,self.registry)
     with self.assertRaises(RuntimeError):
       self.comp.address = 'Anything'
 
@@ -43,14 +44,15 @@ class TestWorkerComp(TestStaticComp):
       self.comp.is_registered = True
 
   def test_reg_item(self):
+    self.comp.register(self.address, self.registry)
     self.assertEqual(self.comp.reg_item, self.reg_item)
   
   def test_set_reg_item(self):
     with self.assertRaises(RuntimeError):
-      self.comp.reg_item['address'] = 'stuff?'
+      self.comp.reg_item = {}
 
   def test_register(self):
-    self.comp.register(self.registry)
+    self.comp.register(self.address,self.registry)
     """
     For every worker, what needs to be registered?
     successful registration means

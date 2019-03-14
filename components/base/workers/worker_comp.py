@@ -40,7 +40,8 @@ class WorkerComp(StaticComp):
     raise RuntimeError('This property cannot be set by the user!')
 
   @abstractmethod
-  def register(self, registry):
+  def register(self, address, registry):
+    self.__address = address
     registry.add_item(self.reg_item)
 
     self.__is_registered = True
