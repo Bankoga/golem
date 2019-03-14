@@ -4,8 +4,11 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from tests.components.base.test_passive_comp import TestPassiveComp
+from tests.strategies.data_strats import valid_locale_inputs
 
+from components.data.locale import Locale
 from components.enums.pos import CtgType
+from components.vars.data import locale
 
 from utils.pos import Pos
 
@@ -13,11 +16,55 @@ class TestLocale(TestPassiveComp):
 
   def setUp(self):
     self.ctg = CtgType.DATA
-    # self.pos = Pos(self.ctg,r=self.r,c=self.c)
+    self.address = 'm_0'
+    self.pos = Pos(self.ctg)
     self.label = 'TotallyValidId'
-    self.var = 'Stuff?'#ones(self.f_shape)
-    self.comp = Locale(label=self.label)
+    self.var = (self.address,self.pos)
+    self.comp = Locale(self.address, self.pos, label=self.label)
 
+  @given(valid_locale_inputs()) # pylint: disable=no-value-for-parameter
+  def test_set_var(self, new_var):
+    if not new_var is None:
+      with self.assertRaises(RuntimeError):
+        self.comp.var = new_var
+    else:
+      self.comp.var = new_var
+
+  def test_get_var(self):
+    self.assertEqual(self.comp.var, self.var)
+
+  def test_get_address(self):
+    self.assertEqual(self.comp.address, self.address)
+  
+  def test_get_pos(self):
+    self.assertEqual(self.comp.pos, self.pos)
+  
+  def test_set_invalid_address(self, addr):
+    pass
+
+  def test_set_address(self, addr):
+    pass
+
+  def test_set_invalid_pos(self, addr):
+    pass
+
+  def test_set_pos(self, addr):
+    pass
+
+  def test_update_address(self,new_address):
+    pass
+    
+  def test_update_pos(self,new_pos):
+    pass
+    
+
+
+  # @given(valid_locale()) # pylint: disable=no-value-for-parameter
+  # def test_get_pos_in(self, locale):
+  #   pass
+
+  # def test_locale(self):
+  #   pass
   # @given(st.one_of(st.text(),st.integers(),st.lists(st.integers())))
   # def test_set_var(self, new_var):
   #   if shape in new_var:

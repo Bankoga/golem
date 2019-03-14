@@ -4,6 +4,7 @@ class PassiveComp(StaticComp):
 
   def __init__(self, var, **kwargs):
     super().__init__(kwargs['label'],kwargs['ctg'])
+    # TODO: Rework var to be tuple based with getters and setters!
     self.var = var
 
   @property

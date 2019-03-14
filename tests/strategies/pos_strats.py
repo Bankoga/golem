@@ -38,11 +38,6 @@ def valid_floor(draw):
   return res
 
 @composite
-def valid_locale(draw):
-  res = {}
-  return res
-
-@composite
 def valid_direction(draw):
   res = draw(st.sampled_from(sorted(cardinal_keys.keys())))
   st.assume(res)

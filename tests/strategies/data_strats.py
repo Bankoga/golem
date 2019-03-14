@@ -6,13 +6,13 @@ from components.axioms.data import var_types
 from components.axioms.matrix import max_resource_value, min_resource_value
 from components.data.conv_shape import ConvShape
 from tests.strategies.prop_strats import arbitrary_id
-from tests.strategies.pos_strats import valid_pos
+from tests.strategies.pos_strats import valid_pos, arb_addr
 
 @composite
 def valid_shape(draw):
   x = draw(valid_conv_shape()) # pylint: disable=no-value-for-parameter
   return x.f_shape
-
+ 
 @composite
 def valid_resource_data(draw):
   data = draw(st.builds(full,valid_shape(),st.decimals(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
@@ -28,3 +28,14 @@ def valid_conv_shape(draw):
   y = ConvShape(arb_id, p, x.shape, (1,1))
   st.assume(y)
   return y
+
+@composite
+def valid_locale(draw):
+  res = {}
+  return res
+
+@composite
+def valid_locale_inputs(draw):
+  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  pos = draw(valid_pos()) # pylint: disable=no-value-for-parameter
+  return (addr,pos)
