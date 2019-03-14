@@ -13,13 +13,15 @@ from tests.strategies.pos_strats import arb_addr
 class TestWorkerComp(TestStaticComp):
   def setUp(self):
     self.registry = {}
-    self.label = 'TotallyValidId'
-    self.ctg = CtgType.FSET
+    self.address = 'm_0-f_0-g_0'
+    self.label = 'pr_0'
+    self.ctg = CtgType.PACKAGER
+    self.reg_item = {
+      'address': self.address,
+      'pos': None,
+      'reg_id': self.label
+    }
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
-
-  # @given(arbitrary_address())
-  # def test_address_set(self, addr):
-  #   self.address = addr
 
   def test_pre_registered_state(self):
     self.assertFalse(self.comp.is_registered)
@@ -41,7 +43,7 @@ class TestWorkerComp(TestStaticComp):
       self.comp.is_registered = True
 
   def test_reg_item(self):
-    pass
+    self.assertEqual(self.comp.reg_item, self.reg_item)
   
   def test_set_reg_item(self):
     with self.assertRaises(RuntimeError):
