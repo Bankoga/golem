@@ -27,7 +27,7 @@ def partial_address(draw):
 
 @composite
 def arb_addr(draw):
-  addr = st.one_of(full_address(),partial_address()) # pylint: disable=no-value-for-parameter
+  addr = draw(st.one_of(full_address(),partial_address())) # pylint: disable=no-value-for-parameter
   st.assume(addr)
   return addr
 

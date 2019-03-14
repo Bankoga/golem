@@ -1,6 +1,6 @@
 from components.axioms.props import id_pattern
 
-address_pattern = f'{id_pattern}-{id_pattern}' # "^[a-zA-Z0-9_]{2,64}$"
+address_pattern = '^[a-zA-Z0-9_]{2,64}(-[a-zA-Z0-9_]{2,64})?$'
 
 package_map = {
   'core': 'main',
