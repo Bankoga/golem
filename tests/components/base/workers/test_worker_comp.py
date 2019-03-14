@@ -13,15 +13,16 @@ class TestWorkerComp(TestStaticComp):
     self.ctg = CtgType.FSET
     self.comp = WorkerComp(item_id=self.label, ctg=self.ctg)
 
-  # def test_default_address(self):
-  #   self.
-
   # @given(arbitrary_address())
   # def test_address_set(self, addr):
   #   self.address = addr
 
-  # def test_is_registered(self):
-  #   pass
+  def test_pre_registered_state(self):
+    self.assertFalse(self.comp.is_registered)
+
+  def test_set_is_registered(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.is_registered = True
 
   def test_register(self):
     # For every worker, what needs to be registered?
