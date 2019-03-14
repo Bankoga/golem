@@ -1,11 +1,8 @@
 from components.enums.pos import Floor, CtgType, Dimension
 
 class Pos:
-  def __init__(self,comp_type,floor=Floor.WAREHOUSE,x=-1,y=-1,z=-1,r=-1,c=-1):
-    if (comp_type not in CtgType):
-      raise ValueError('Pos requires a valid component type!')
-
-    self.comp_type = comp_type
+  def __init__(self,op_lvl=-1,floor=Floor.WAREHOUSE,x=-1,y=-1,z=-1,r=-1,c=-1):
+    self.op_lvl = op_lvl
     self.floor = floor
     self.x = x
     self.y = y
@@ -16,12 +13,12 @@ class Pos:
   
   def get_hash(self):
     if self._pos_tup_ is None:
-      self._pos_tup_ = (self.comp_type,self.floor,self.x,self.y,self.z,self.r,self.c)
+      self._pos_tup_ = (self.op_lvl,self.floor,self.x,self.y,self.z,self.r,self.c)
     return hash(self._pos_tup_)
   
   def get_dim_value(self,dim_key):
     if dim_key is Dimension.OP_LVL:
-      return self.comp_type.value
+      return self.op_lvl
     elif dim_key is Dimension.FLOOR:
       return self.floor.value
     elif dim_key is Dimension.LENGTH:
