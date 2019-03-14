@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 
 from components.base.static_comp import StaticComp
 from components.enums.prop_types import CtgType
-from tests.strategies.pos_strats import valid_locale, ctg_prop
+from tests.strategies.pos_strats import ctg_prop
 from tests.strategies.prop_strats import arbitrary_id,arbitrary_invalid_id
 
 class TestStaticComp(unittest.TestCase):
@@ -39,13 +39,6 @@ class TestStaticComp(unittest.TestCase):
 
   def test_get_ctg(self):
     self.assertEqual(self.comp.ctg, self.ctg)
-
-  # @given(valid_locale()) # pylint: disable=no-value-for-parameter
-  # def test_get_pos_in(self, locale):
-  #   pass
-
-  # def test_locale(self):
-  #   pass
 
 if __name__ == '__main__':
   unittest.main()
