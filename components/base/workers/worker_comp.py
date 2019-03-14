@@ -4,8 +4,32 @@ from components.base.static_comp import StaticComp
 
 class WorkerComp(StaticComp):
   def __init__(self, **kwargs):
-    super().__init__(kwargs['item_id'],kwargs['ctg'])
+    super().__init__(kwargs['label'],kwargs['ctg'])
     self.__is_registered = False
+    self.__address = None
+
+  @property
+  def reg_item(self):
+    return {
+      'address': self.address,
+      'pos': None,
+      'reg_id': self.label
+    }
+  
+  @reg_item.setter
+  def reg_item(self, value):
+    raise RuntimeError('The reg item cannot be set!')
+
+  @property
+  def address(self):
+    return self.__address
+
+  @address.setter
+  def address(self, value):
+    if self.is_registered:
+      raise RuntimeError('The address cannot be changed after registration!')
+    else:
+      self.__address = value
 
   @property
   def is_registered(self):
@@ -16,9 +40,15 @@ class WorkerComp(StaticComp):
     raise RuntimeError('This property cannot be set by the user!')
 
   @abstractmethod
-  def register(self):
-    raise RuntimeError('An unimplemented worker type cannot register!')
+  def register(self, registry):
+    registry.add_item(self.reg_item)
+
+    self.__is_registered = True
   
   @abstractmethod
   def operate(self):
-    raise RuntimeError('An unimplemented worker type cannot operate!')
+    if not self.is_registered:
+      raise RuntimeError('An unregistered worker type cannot operate!')
+    else:
+      pass
+      # ?

@@ -16,7 +16,7 @@ class TestAddressRegistry(TestRegistry):
     self.label = 'GlobalMailRegistry'
     self.ctg = CtgType.MATRIX
     self.var = {}
-    self.comp = AddressRegistry(item_id=self.label)
+    self.comp = AddressRegistry(label=self.label)
   
   @given(st.one_of(addr_item_var(), addr_item_valid_var())) # pylint: disable=no-value-for-parameter
   def test_add_item(self, new_item):

@@ -33,9 +33,9 @@ class TestConvInstruction(TestInstruction):
     self.comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes, self.source_ind,self.source_shape,self.pos)
 
   @given(arbitrary_id(), valid_direction(), st.lists(valid_conv_shape()),valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, itm_id,direction, conv_shapes,pos):
+  def test_default(self, label,direction, conv_shapes,pos):
         # for efficiency reasons, eventually instructions will need to be built before processing
-    inst = ConvInstruction(itm_id,direction, conv_shapes, self.source_ind, self.source_shape,pos)
+    inst = ConvInstruction(label,direction, conv_shapes, self.source_ind, self.source_shape,pos)
     self.assertEqual(inst.get_ctg(), RuleType.CONV)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)

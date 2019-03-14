@@ -12,7 +12,7 @@ class TestActiveComp(TestPassiveComp):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
     self.var = 'Any arbitrary type of object?'
-    self.comp = ActiveComp(self.var, item_id=self.label, ctg=self.ctg)
+    self.comp = ActiveComp(self.var, label=self.label, ctg=self.ctg)
 
   @given(st.lists(st.one_of(st.text(),st.integers(),st.lists(st.integers()))))
   def test_update(self, new_var):

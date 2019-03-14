@@ -34,7 +34,7 @@ class TestPackage(unittest.TestCase):
     else:
       self.assertTrue(datp.shape == FieldType.UNSET)
     self.var = None
-    self.assertEqual(datp.itm_id, datp.get_meld())
+    self.assertEqual(datp.label, datp.get_meld())
 
   # def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
@@ -64,7 +64,7 @@ class TestPackage(unittest.TestCase):
       self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
     else:
       self.assertTrue(datp.shape == FieldType.UNSET)
-    self.assertEqual(datp.itm_id, datp.get_meld())
+    self.assertEqual(datp.label, datp.get_meld())
 
   """
   There are N cases of address description for packages

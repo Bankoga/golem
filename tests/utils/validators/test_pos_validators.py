@@ -16,9 +16,9 @@ from utils.validators.pos_validators import is_valid_ctg,is_valid_addr
 class TestPosValidators(unittest.TestCase):
 
   @given(arbitrary_invalid_id()) # pylint: disable=no-value-for-parameter
-  def test_is_valid_ctg_on_id(self, itm_id):
-    result = is_valid_ctg(itm_id)
-    if itm_id in CtgType:
+  def test_is_valid_ctg_on_id(self, label):
+    result = is_valid_ctg(label)
+    if label in CtgType:
       self.assertTrue(result)
     else:
       self.assertFalse(result)

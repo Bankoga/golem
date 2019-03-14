@@ -12,13 +12,13 @@ class Component:
   Some require updates, but no builds, some require both, some are static
     """
     self.ctg_type = ctg_type
-    self.itm_id = component_id
+    self.label = component_id
     self.op_lvl = CtgType(component_type) # TODO: offload this into the pos object
     self._built_ = False
     self.var = None
 
   def get_id(self):
-    return self.itm_id
+    return self.label
 
   def get_ctg(self):
     return self.ctg_type

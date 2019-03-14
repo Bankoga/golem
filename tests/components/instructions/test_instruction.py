@@ -24,12 +24,12 @@ class TestInstruction(TestComponent):
     self.comp = Instruction(self.valid_c_id,self.valid_c_type,self.pos)
 
   @given(arbitrary_id(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, itm_id, rtype, pos):
+  def test_default(self, label, rtype, pos):
     # for efficiency reasons, eventually instructions will need to be built before processing
-    # itm_id = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?
-    inst = Instruction(itm_id, rtype, pos)
+    # label = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?
+    inst = Instruction(label, rtype, pos)
     c_lvl = rtype.get_component_type()
-    self.assertEqual(inst.get_id(), itm_id)
+    self.assertEqual(inst.get_id(), label)
     self.assertEqual(inst.op_lvl, CtgType(c_lvl))
     self.assertEqual(inst.ctg_type, rtype)
     self.assertIsNone(inst.curr_shape)

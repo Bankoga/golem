@@ -11,7 +11,7 @@ class TestConsumerComp(TestWorkerComp):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
-    self.comp = ConsumerComp(item_id=self.label, ctg=self.ctg)
+    self.comp = ConsumerComp(label=self.label, ctg=self.ctg)
 
   def test_register(self):
     with self.assertRaises(RuntimeError):

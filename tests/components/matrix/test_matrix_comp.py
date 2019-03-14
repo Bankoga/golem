@@ -13,7 +13,7 @@ class TestMatrixComp(TestActiveComp):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.MATRIX
     self.var = {}
-    self.comp = MatrixComp(self.var, item_id=self.label)
+    self.comp = MatrixComp(self.var, label=self.label)
 
 if __name__ == '__main__':
   unittest.main()

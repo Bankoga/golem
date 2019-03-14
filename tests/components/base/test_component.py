@@ -20,7 +20,7 @@ class TestComponent(unittest.TestCase):
   def test_base_component(self, component_id, component_type):
     comp = Component(component_id, component_type)
     self.assertIsNone(comp.ctg_type)
-    self.assertEqual(comp.itm_id, component_id)
+    self.assertEqual(comp.label, component_id)
     self.assertEqual(comp.op_lvl, CtgType(component_type))
 
   @given(st.text(),st.sampled_from(CtgType))

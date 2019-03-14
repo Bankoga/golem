@@ -12,7 +12,7 @@ class TestBuildableComp(TestPassiveComp):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
     self.var = 'Any arbitrary type of object?'
-    self.comp = BuildableComp(item_id=self.label, ctg=self.ctg)
+    self.comp = BuildableComp(label=self.label, ctg=self.ctg)
 
   def test_pre_build(self):
     self.assertFalse(self.comp.is_built)

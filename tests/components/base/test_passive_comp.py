@@ -12,7 +12,7 @@ class TestPassiveComp(TestStaticComp):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
     self.var = 'Any arbitrary type of object?'
-    self.comp = PassiveComp(self.var, item_id=self.label, ctg=self.ctg)
+    self.comp = PassiveComp(self.var, label=self.label, ctg=self.ctg)
 
   @given(st.one_of(st.text(),st.integers(),st.lists(st.integers())))
   def test_set_var(self, new_var):

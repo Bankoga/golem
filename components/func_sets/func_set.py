@@ -41,7 +41,7 @@ class FuncSet(MediatorComp):
     self.input_shapes=dict()
 
   def get_id(self):
-    return self.itm_id
+    return self.label
 
   def get_type(self):
     return self.ctg_type

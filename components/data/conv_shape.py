@@ -13,12 +13,12 @@ class ConvShape(PassiveComp):
   the position is relative to its parents X,Y (or row/column) index within stage Z
   """
 
-  def __init__(self,item_id,pos,f_shape,s_shape=None):
+  def __init__(self,label,pos,f_shape,s_shape=None):
     self.pos = pos
     self.f_shape = f_shape
     self.s_shape = s_shape
     var = ones(f_shape)
-    super().__init__(var, item_id=item_id,ctg=CtgType.DATA)
+    super().__init__(var, label=label,ctg=CtgType.DATA)
 
   @property
   def var(self):

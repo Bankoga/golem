@@ -17,7 +17,7 @@ class TestRegistry(TestMatrixComp):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.MATRIX
     self.var = {}
-    self.comp = Registry(item_id=self.label)
+    self.comp = Registry(label=self.label)
 
   def add_invalid_item(self,new_item):
     with self.assertRaises(RuntimeError):
