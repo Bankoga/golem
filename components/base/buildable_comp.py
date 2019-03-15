@@ -1,20 +1,20 @@
-from components.base.passive_comp import PassiveComp
+from components.base.static_comp import StaticComp
 
-class BuildableComp(PassiveComp):
+class BuildableComp(StaticComp):
   def __init__(self, **kwargs):
+    super().__init__(kwargs['label'],kwargs['ctg'])
     self.__is_built = False
-    super().__init__(None,**kwargs)
 
   @property
   def var(self):
     return self.__var
 
   @var.setter
-  def var(self, var):
+  def var(self, *args):
     if self.is_built:
       raise RuntimeError('Cannot set the var of a built component!')
     else:
-      self.__var = var
+      self.__var = tuple(*args)
 
   @property
   def is_built(self):
@@ -24,8 +24,8 @@ class BuildableComp(PassiveComp):
   def is_built(self, value):
     raise RuntimeError('Cannot set the build status of a component. Simply build it!')
 
-  def build(self, value):
+  def build(self, *args):
     if self.is_built:
       raise RuntimeError('Cannot build an already built component!')
-    self.var = value
+    self.var = args
     self.__is_built = True
