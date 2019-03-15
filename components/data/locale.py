@@ -4,17 +4,7 @@ from components.enums.pos import CtgType
 class Locale(PassiveComp):
   def __init__(self, address, pos, **kwargs):
     kwargs['ctg'] = CtgType.DATA
-    super().__init__(None, **kwargs)
-    self.__var = (address, pos)
-
-  @property
-  def var(self):
-    return self.__var
-
-  @var.setter
-  def var(self, var):
-    if not var is None:
-      raise RuntimeError('Vars cannot be set directly')
+    super().__init__(address, pos, **kwargs)
 
   @property
   def address(self):
