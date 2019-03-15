@@ -11,8 +11,9 @@ class TestPassiveComp(TestStaticComp):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
-    self.var = 'Any arbitrary type of object?'
-    self.comp = PassiveComp(self.var, label=self.label, ctg=self.ctg)
+    self.value = 'Any arbitrary type of object?'
+    self.var = tuple([self.value])
+    self.comp = PassiveComp(self.value, label=self.label, ctg=self.ctg)
 
   def test_setter_error(self):
     with self.assertRaises(RuntimeError):
@@ -24,7 +25,7 @@ class TestPassiveComp(TestStaticComp):
       self.comp.var = new_var
 
   def test_get_var(self):
-    self.assertEqual(self.comp.var[0], self.var)
+    self.assertEqual(self.comp.var, self.var)
 
 if __name__ == '__main__':
   unittest.main()

@@ -1,18 +1,22 @@
-from components.base.passive_comp import PassiveComp
+from components.base.static_comp import StaticComp
 
-class ActiveComp(PassiveComp):
+class ActiveComp(StaticComp):
 
-  def __init__(self, var, **kwargs):
-    self.__base_set = False
-    super().__init__(var, **kwargs)
+  def __init__(self, *args, **kwargs):
+    super().__init__(kwargs['label'],kwargs['ctg'])
+    self.__baseline = False
+    self.__var = tuple(args)
 
   @property
-  def base_set(self):
-    return self.__base_set
+  def baseline(self):
+    return self.__baseline
   
-  @base_set.setter
-  def base_set(self,value):
-    raise RuntimeError('The base var has already been set!')
+  @baseline.setter
+  def baseline(self,value):
+    if not self.baseline:
+      self.__baseline = value
+    else:
+      raise RuntimeError('The base var has already been set!')
 
   @property
   def var(self):
@@ -20,28 +24,16 @@ class ActiveComp(PassiveComp):
 
   @var.setter
   def var(self, var):
-    self.__var = var
-    if not self.base_set:
-      self.init_var = self.var
-      self.__base_set = True
-
-  @property
-  def init_var(self):
-    return self.__init_var
+    self.setter_error()
   
-  @init_var.setter
-  def init_var(self, value):
-    if self.base_set:
-      raise RuntimeError('Setting the base var is not allowed!')
-    else:
-      self.__init_var = value
-
-  def update(self, args, **kwargs):
-    if len(args) == 1:
-      self.var = args[0]
+  def update(self, *args):
+    self.__var = tuple(args)
   
   def reset(self):
-    if self.base_set:
-      self.var = self.init_var
+    if self.baseline:
+      self.__var = self.baseline
     else:
       raise RuntimeError('Attempted to reset an unset base')
+  
+  def setter_error(self):
+    raise RuntimeError('Cannot set var of active component directly! Must use update!')
