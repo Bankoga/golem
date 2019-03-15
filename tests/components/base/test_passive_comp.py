@@ -16,11 +16,11 @@ class TestPassiveComp(TestStaticComp):
 
   @given(st.one_of(st.text(),st.integers(),st.lists(st.integers())))
   def test_set_var(self, new_var):
-    self.comp.var = new_var
-    self.assertEqual(self.comp.var, new_var)
+    with self.assertRaises(RuntimeError):
+      self.comp.var = new_var
 
   def test_get_var(self):
-    self.assertEqual(self.comp.var, self.var)
+    self.assertEqual(self.comp.var[0], self.var)
 
 if __name__ == '__main__':
   unittest.main()

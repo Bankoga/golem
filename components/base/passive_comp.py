@@ -2,10 +2,10 @@ from components.base.static_comp import StaticComp
 
 class PassiveComp(StaticComp):
 
-  def __init__(self, var, **kwargs):
+  def __init__(self, *args, **kwargs):
     super().__init__(kwargs['label'],kwargs['ctg'])
     # TODO: Rework var to be tuple based with getters and setters!
-    self.var = var
+    self.__var = tuple(args)
 
   @property
   def var(self):
@@ -13,4 +13,4 @@ class PassiveComp(StaticComp):
 
   @var.setter
   def var(self, var):
-    self.__var = var
+    raise RuntimeError('Vars cannot be set directly')
