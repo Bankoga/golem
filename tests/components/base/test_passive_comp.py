@@ -14,6 +14,10 @@ class TestPassiveComp(TestStaticComp):
     self.var = 'Any arbitrary type of object?'
     self.comp = PassiveComp(self.var, label=self.label, ctg=self.ctg)
 
+  def test_setter_error(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.setter_error()
+
   @given(st.one_of(st.text(),st.integers(),st.lists(st.integers())))
   def test_set_var(self, new_var):
     with self.assertRaises(RuntimeError):

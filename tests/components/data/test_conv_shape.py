@@ -18,32 +18,49 @@ from tests.strategies.data_strats import valid_resource_data
 class TestConvShape(TestPassiveComp):
 
   def setUp(self):
-    
-    self.f_shape = (4,4)
-    self.s_shape = (1,1)
-    self.r = 5
-    self.c = 5
+    self.filter_shape = (4,4)
+    self.spacing_shape = (1,1)
+    self.source_id = 'ID_of_locale_used_for_source_index'
+    self.source_index = (5,5)
+    self.weights = ones(self.filter_shape)
+    self.var = (self.source_id, self.source_index, self.filter_shape, self.spacing_shape,self.weights)
     self.ctg = CtgType.DATA
-    self.pos = Pos(self.ctg,r=self.r,c=self.c)
     self.label = 'TotallyValidId'
-    self.var = ones(self.f_shape)
-    self.comp = ConvShape(self.label,self.pos,self.f_shape,self.s_shape)
-
-  # @given(st.one_of(st.text(),st.integers(),st.lists(st.integers())))
-  # def test_set_var(self, new_var):
-  #   if shape in new_var:
-  #     self.comp.set_var(new_var[0], new_var[1])
-  #     result = self.comp.get_var(new_var[0])
-  #     self.assertEqual(result, new_var[1])
-  #   else:
-  #     with self.assertRaises(RuntimeError):
-  #       self.comp.set_var(new_var)
+    self.comp = ConvShape(self.source_id,self.source_index, self.filter_shape, self.spacing_shape,label=self.label)
 
   def test_get_var(self):
-    result = self.comp.var
-    self.assertTrue(array_equal(result, self.var))
-    self.assertEqual(self.comp.f_shape,self.f_shape)
-    self.assertEqual(self.comp.s_shape,self.s_shape)
-    
+    self.assertTrue(self.comp.var, self.var)
+
+  def test_get_weights(self):
+    self.assertTrue(array_equal(self.comp.weights, self.weights))
+
+  def test_get_filter_shape(self):
+    self.assertEqual(self.comp.filter_shape, self.filter_shape)
+
+  def test_get_spacing_shape(self):
+    self.assertEqual(self.comp.spacing_shape, self.spacing_shape)
+  
+  def test_get_source_index(self):
+    self.assertEqual(self.comp.source_index, self.source_index)
+
+  def test_get_source_id(self):
+    self.assertEqual(self.comp.source_id, self.source_id)
+
+  def test_set_weights(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.weights = 'Does not matter'
+
+  def test_set_filter_shape(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.filter_shape = 'Does not matter'
+
+  def test_set_spacing_shape(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.spacing_shape = 'Does not matter'
+  
+  def test_set_source_index(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_index = 'Does not matter'
+
 if __name__ == '__main__':
   unittest.main()
