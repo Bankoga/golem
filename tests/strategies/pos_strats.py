@@ -5,6 +5,7 @@ from hypothesis.strategies import composite
 from components.axioms.pos import cardinal_keys
 from components.enums.pos import Floor, CtgType, Dimension
 from components.packages.package import Package
+from components.vars.data import Address
 
 from tests.strategies.prop_strats import arbitrary_id
 
@@ -12,22 +13,19 @@ from utils.pos import Pos
 
 @composite
 def full_address(draw):
-  m_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
-  g_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
-  st.assume(m_id != g_id)
-  st.assume(m_id)
-  st.assume(g_id)
-  return f'{m_id}-{g_id}'
+  ids = draw(st.lists(arbitrary_id(),max_size=7)) # pylint: disable=no-value-for-parameter
+  res = Address(*ids)
+  return res
 
 @composite
 def partial_address(draw):
-  m_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
-  st.assume(m_id)
-  return m_id
+  ids = draw(st.lists(arbitrary_id(),max_size=7)) # pylint: disable=no-value-for-parameter
+  res = Address(*ids)
+  return res
 
 @composite
 def arb_addr(draw):
-  addr = draw(st.one_of(full_address(),partial_address())) # pylint: disable=no-value-for-parameter
+  addr = draw(st.one_of(partial_address())) # pylint: disable=no-value-for-parameter
   st.assume(addr)
   return addr
 

@@ -6,6 +6,7 @@ from hypothesis import strategies as st
 from components.matrix.address_registry import AddressRegistry
 from components.base.workers.worker_comp import WorkerComp
 from components.enums.pos import CtgType
+from components.vars.data import Address
 
 from tests.components.base.test_static_comp import TestStaticComp
 
@@ -14,7 +15,7 @@ from tests.strategies.pos_strats import arb_addr
 class TestWorkerComp(TestStaticComp):
   def setUp(self):
     self.registry = AddressRegistry(label='global_registry')
-    self.address = 'm_0-f_0-g_0'
+    self.address = Address(golem='a',matrix='l',func_set='b')
     self.label = 'pr_0'
     self.ctg = CtgType.PACKAGER
     self.reg_item = {

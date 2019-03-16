@@ -24,7 +24,7 @@ class TestMatrix(unittest.TestCase):
     self.assertEqual(result, expectation)
     # if each property does not pass validation, return False
     # if everything else passes, return True
-
+    
   @given(st.one_of(addr_item_var(), addr_item_valid_var())) # pylint: disable=no-value-for-parameter
   def test_addr_item_check(self, addr_item):
     # if it does not fit the addr_item dict pattern, return False
