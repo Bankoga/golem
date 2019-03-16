@@ -1,2 +1,11 @@
+import numpy
+import typing
+
 locale = ('address', 'pos')
-conv_shape = ('source_id','source_index','filter_shape','spacing_shape','weights')
+
+class ConvVar(typing.NamedTuple):
+  source_id: str
+  source_index: tuple
+  filter_shape: tuple
+  spacing_shape: tuple
+  weights: list
