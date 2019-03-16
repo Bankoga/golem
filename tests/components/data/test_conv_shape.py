@@ -2,15 +2,18 @@ import unittest
 
 from hypothesis import given
 from hypothesis import strategies as st
-from numpy import array_equal, ones
+
+from tests.components.base.test_passive_comp import TestPassiveComp
 
 from components.data.conv_shape import ConvShape
+
 from components.enums.pos import CtgType
-from components.vars.data import ConvVar
-from tests.components.base.test_passive_comp import TestPassiveComp
-from tests.strategies.data_strats import valid_resource_data
+
 from utils.pos import Pos
 
+from numpy import ones, array_equal
+
+from tests.strategies.data_strats import valid_resource_data
 
 class TestConvShape(TestPassiveComp):
 
@@ -20,17 +23,14 @@ class TestConvShape(TestPassiveComp):
     self.source_id = 'ID_of_locale_used_for_source_index'
     self.source_index = (5,5)
     self.weights = ones(self.filter_shape)
-    self.var = ConvVar(source_id=self.source_id,
-     source_index=self.source_index,
-     filter_shape=self.filter_shape,
-     spacing_shape=self.spacing_shape,
-    weights=self.weights)
+    self.var = tuple([self.source_id, self.source_index, self.filter_shape, self.spacing_shape,self.weights])
     self.ctg = CtgType.DATA
     self.label = 'TotallyValidId'
     self.comp = ConvShape(self.source_id,self.source_index, self.filter_shape, self.spacing_shape,label=self.label)
 
   def test_get_var(self):
-    self.assertTrue(self.comp.var, self.var)
+    for i in range(len(self.comp.var)):
+      self.assertTrue(array_equal(self.comp.var[i], self.var[i]))
 
   def test_get_weights(self):
     self.assertTrue(array_equal(self.comp.weights, self.weights))
