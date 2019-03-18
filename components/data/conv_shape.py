@@ -1,8 +1,8 @@
 from numpy import ones
 
 from components.base.passive_comp import PassiveComp
-
 from components.enums.pos import CtgType
+from components.vars.data import ConvVar
 
 class ConvShape(PassiveComp):
 
@@ -13,13 +13,16 @@ class ConvShape(PassiveComp):
   the position is relative to its parents X,Y (or row/column) index within stage Z
   """
 
-  def __init__(self,source_id,source_index,f_shape,s_shape=None, **kwargs):
+  def __init__(self,f_shape,s_shape=None, **kwargs):
     kwargs['ctg']=CtgType.DATA
-    super().__init__(source_id,source_index,f_shape,s_shape,ones(f_shape), **kwargs)
+    super().__init__(f_shape,s_shape,ones(f_shape), **kwargs)
+
+  def prepare_args(self, *args):
+    return ConvVar(*args)
 
   @property
   def weights(self):
-    return self.var[4]
+    return self.var.weights
   
   @weights.setter
   def weights(self, value):
@@ -27,7 +30,7 @@ class ConvShape(PassiveComp):
 
   @property
   def filter_shape(self):
-    return self.var[2]
+    return self.var.filter_shape
   
   @filter_shape.setter
   def filter_shape(self, value):
@@ -35,24 +38,8 @@ class ConvShape(PassiveComp):
 
   @property
   def spacing_shape(self):
-    return self.var[3]
+    return self.var.spacing_shape
   
   @spacing_shape.setter
   def spacing_shape(self, value):
-    self.setter_error()
-  
-  @property
-  def source_index(self):
-    return self.var[1]
-  
-  @source_index.setter
-  def source_index(self, value):
-    self.setter_error()
-
-  @property
-  def source_id(self):
-    return self.var[0]
-  
-  @source_id.setter
-  def source_id(self, value):
     self.setter_error()

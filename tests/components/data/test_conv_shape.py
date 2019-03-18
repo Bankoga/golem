@@ -2,31 +2,36 @@ import unittest
 
 from hypothesis import given
 from hypothesis import strategies as st
-
-from tests.components.base.test_passive_comp import TestPassiveComp
+from numpy import array_equal, ones
 
 from components.data.conv_shape import ConvShape
-
 from components.enums.pos import CtgType
-
+from components.vars.data import ConvVar
+from tests.components.base.test_passive_comp import TestPassiveComp
+from tests.strategies.data_strats import valid_resource_data, valid_shape, valid_weights
 from utils.pos import Pos
 
-from numpy import ones, array_equal
-
-from tests.strategies.data_strats import valid_resource_data
 
 class TestConvShape(TestPassiveComp):
 
   def setUp(self):
     self.filter_shape = (4,4)
     self.spacing_shape = (1,1)
-    self.source_id = 'ID_of_locale_used_for_source_index'
-    self.source_index = (5,5)
     self.weights = ones(self.filter_shape)
-    self.var = tuple([self.source_id, self.source_index, self.filter_shape, self.spacing_shape,self.weights])
+    self.var = ConvVar(filter_shape=self.filter_shape, spacing_shape=self.spacing_shape,weights=self.weights)
     self.ctg = CtgType.DATA
     self.label = 'TotallyValidId'
-    self.comp = ConvShape(self.source_id,self.source_index, self.filter_shape, self.spacing_shape,label=self.label)
+    self.comp = ConvShape(self.filter_shape, self.spacing_shape,label=self.label)
+
+  @given(valid_shape(),valid_shape(),valid_weights()) # pylint: disable=no-value-for-parameter
+  def test_prepare_args(self, f_shape,s_shape,weights):
+    var_args = [f_shape,s_shape,weights]
+    expectation = ConvVar(filter_shape=f_shape, spacing_shape=s_shape,weights=weights)
+    result = self.comp.prepare_args(*var_args)
+    self.assertEqual(result, expectation)
+    self.assertEqual(result.filter_shape, f_shape)
+    self.assertEqual(result.spacing_shape, s_shape)
+    self.assertTrue(array_equal(result.weights, weights))
 
   def test_get_var(self):
     for i in range(len(self.comp.var)):
@@ -40,12 +45,6 @@ class TestConvShape(TestPassiveComp):
 
   def test_get_spacing_shape(self):
     self.assertEqual(self.comp.spacing_shape, self.spacing_shape)
-  
-  def test_get_source_index(self):
-    self.assertEqual(self.comp.source_index, self.source_index)
-
-  def test_get_source_id(self):
-    self.assertEqual(self.comp.source_id, self.source_id)
 
   def test_set_weights(self):
     with self.assertRaises(RuntimeError):
@@ -58,10 +57,6 @@ class TestConvShape(TestPassiveComp):
   def test_set_spacing_shape(self):
     with self.assertRaises(RuntimeError):
       self.comp.spacing_shape = 'Does not matter'
-  
-  def test_set_source_index(self):
-    with self.assertRaises(RuntimeError):
-      self.comp.source_index = 'Does not matter'
 
 if __name__ == '__main__':
   unittest.main()
