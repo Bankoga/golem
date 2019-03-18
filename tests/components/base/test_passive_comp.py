@@ -15,6 +15,12 @@ class TestPassiveComp(TestStaticComp):
     self.var = tuple([self.value])
     self.comp = PassiveComp(self.value, label=self.label, ctg=self.ctg)
 
+  @given(st.lists(st.integers()))
+  def test_prepare_args(self, var_args):
+    expectation = tuple(var_args)
+    result = self.comp.prepare_args(*var_args)
+    self.assertEqual(result, expectation)
+
   def test_setter_error(self):
     with self.assertRaises(RuntimeError):
       self.comp.setter_error()
