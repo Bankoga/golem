@@ -21,12 +21,10 @@ def reg_item_valid_var(draw):
 @composite
 def addr_item_var(draw):
   addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
-  pos = draw(valid_pos()) # pylint: disable=no-value-for-parameter
   reg_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
   addr_item = {
-    'address': addr,
-    'pos': pos,
-    'reg_id': reg_id
+    'reg_id': reg_id,
+    'address': addr
   }
   return addr_item
 
