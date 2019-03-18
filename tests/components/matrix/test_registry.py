@@ -16,8 +16,18 @@ class TestRegistry(TestMatrixComp):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.MATRIX
-    self.var = {}
+    self.value = {}
+    self.var = tuple([self.value])
+    self.registry = self.var[0]
     self.comp = Registry(label=self.label)
+
+  def test_registry(self):
+    self.assertEqual(self.comp.registry, self.registry)
+
+  @given(st.one_of(st.text(),st.integers(),st.lists(st.integers())))
+  def test_set_registry(self, new_var):
+    with self.assertRaises(RuntimeError):
+      self.comp.registry = new_var
 
   def add_invalid_item(self,new_item):
     with self.assertRaises(RuntimeError):
@@ -25,7 +35,7 @@ class TestRegistry(TestMatrixComp):
 
   def add_valid_item(self,new_item):
     self.comp.add_item(new_item)
-    self.assertTrue(len(self.comp.var), 1)
+    self.assertTrue(len(self.comp.registry), 1)
     self.comp.remove_item(new_item['reg_id'])
 
   @given(reg_item_var()) # pylint: disable=no-value-for-parameter

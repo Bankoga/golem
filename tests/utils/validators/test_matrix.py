@@ -11,11 +11,12 @@ from tests.strategies.var_strats import reg_item_var,reg_item_valid_var,addr_ite
 from utils.validators.matrix import reg_item_check,addr_item_check
 
 class TestMatrix(unittest.TestCase):
-  
+
+  # TODO: these are really poorly written test cases... Need to rewrite them
   @given(st.one_of(reg_item_var(), reg_item_valid_var())) # pylint: disable=no-value-for-parameter
   def test_reg_item_check(self, reg_item):
     # if it does not fit the reg_item dict pattern, return False
-    if (array_equal(list(reg_item.keys()),reg_keys)):
+    if (array_equal(tuple(reg_item.keys()),reg_keys)):
       expectation = True
     else:
       expectation = False
@@ -28,7 +29,7 @@ class TestMatrix(unittest.TestCase):
   @given(st.one_of(addr_item_var(), addr_item_valid_var())) # pylint: disable=no-value-for-parameter
   def test_addr_item_check(self, addr_item):
     # if it does not fit the addr_item dict pattern, return False
-    expectation = (array_equal(list(addr_item.keys()),addr_keys))
+    expectation = (array_equal(tuple(addr_item.keys()),addr_keys))
 
     result = addr_item_check(addr_item)
     self.assertEqual(result, expectation)

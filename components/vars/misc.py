@@ -1,2 +1,2 @@
-reg_keys = ('reg_id')
-addr_keys = ('reg_id','address', 'pos')
+reg_keys = tuple(['reg_id'])
+addr_keys = tuple(['reg_id','address'])
