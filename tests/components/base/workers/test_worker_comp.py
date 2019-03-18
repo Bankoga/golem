@@ -19,9 +19,8 @@ class TestWorkerComp(TestStaticComp):
     self.label = 'pr_0'
     self.ctg = CtgType.PACKAGER
     self.reg_item = {
-      'address': self.address,
-      'pos': None,
-      'reg_id': self.label
+      'reg_id': self.label,
+      'address': self.address
     }
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
 

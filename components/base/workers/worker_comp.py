@@ -11,9 +11,8 @@ class WorkerComp(StaticComp):
   @property
   def reg_item(self):
     return {
-      'address': self.address,
-      'pos': None,
-      'reg_id': self.label
+      'reg_id': self.label,
+      'address': self.address
     }
   
   @reg_item.setter
