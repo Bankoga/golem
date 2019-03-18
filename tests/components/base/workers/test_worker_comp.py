@@ -8,11 +8,11 @@ from components.base.workers.worker_comp import WorkerComp
 from components.enums.pos import CtgType
 from components.vars.data import Address
 
-from tests.components.base.test_static_comp import TestStaticComp
+from tests.components.base.test_active_comp import TestActiveComp
 
 from tests.strategies.pos_strats import arb_addr
 
-class TestWorkerComp(TestStaticComp):
+class TestWorkerComp(TestActiveComp):
   def setUp(self):
     self.registry = AddressRegistry(label='global_registry')
     self.address = Address(golem='a',matrix='l',func_set='b')

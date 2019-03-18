@@ -1,9 +1,9 @@
 from abc import abstractmethod
 
-from components.base.static_comp import StaticComp
+from components.base.active_comp import ActiveComp
 
-class WorkerComp(StaticComp):
-  def __init__(self, **kwargs):
+class WorkerComp(ActiveComp):
+  def __init__(self, reg_connection,**kwargs):
     super().__init__(kwargs['label'],kwargs['ctg'])
     self.__is_registered = False
     self.__address = None
