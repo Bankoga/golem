@@ -12,8 +12,9 @@ class TestMatrixComp(TestActiveComp):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.MATRIX
-    self.var = {}
-    self.comp = MatrixComp(self.var, label=self.label)
+    self.value = {}
+    self.var = tuple([self.value])
+    self.comp = MatrixComp(self.value, label=self.label)
 
 if __name__ == '__main__':
   unittest.main()
