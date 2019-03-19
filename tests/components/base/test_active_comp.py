@@ -32,10 +32,10 @@ class TestActiveComp(TestPassiveComp):
       self.comp.reset()
 
   def test_reset_with_baseline(self):
-    self.comp.baseline = self.value
+    self.comp.baseline = 'A baseline!'
     self.comp.update('Things')
     self.comp.reset()
-    self.assertEqual(self.comp.var,self.var)
+    self.assertEqual(self.comp.var,tuple(['A baseline!']))
 
 if __name__ == '__main__':
   unittest.main()
