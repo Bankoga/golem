@@ -5,7 +5,7 @@ from hypothesis import given
 from numpy import array_equal
 
 from components.axioms.props import dest_key_pattern
-from components.enums.prop_types import FieldType, PackType, RsrcType
+from components.enums.prop_types import FieldType, ChannelType, RsrcType
 from components.channels.misc_funcs import (build_address, build_meld,
                                             build_package,
                                             build_package_inputs)
@@ -13,6 +13,7 @@ from components.enums.pos import CtgType
 from components.channels.channel import Channel
 from components.vars.data import Address
 from components.matrix.address_registry import AddressRegistry
+from components.matrix.channel_registry import ChannelRegistry
 from tests.components.base.workers.test_mediator_comp import TestMediatorComp
 from tests.strategies.data_strats import valid_resource_data
 from tests.strategies.packing_strats import (package_arbitrary, package_inputs,
@@ -21,19 +22,24 @@ from tests.strategies.pos_strats import arb_addr
 
 class TestChannel(TestMediatorComp):
   def setUp(self):
-    self.registry = ChannelRegistry(label='local_channel_registry')
-    self.sender = Address(golem='a',matrix='l',func_set='b')
-    self.recipient = Address(golem='a',matrix='l',func_set='c')
+    self.address_registry = AddressRegistry(label='global_address_registry_api')
+    self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
+    self.sender = Address(golem='a',matrix='l',func_set='glg', group='assoc_from')
+    self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
+    self.shape = (256,256)
+    self.resource = RsrcType.ENERGY
+    self.channel_type = ChannelType.AGGREGATE
+    self.meld = f'{self.recipient};{self.resource};{self.channel_type};{self.shape}'
     self.label = 'ch_bc_star_energy'
     self.ctg = CtgType.CHANNEL
     self.reg_item = {
       'reg_id': self.label,
-      'sender': self.sender,
-      'recipient': self.recipient
+      'recipient': self.recipient,
+      'sender': self.sender
     }
-    self.values = [self.registry]
+    self.values = [self.address_registry,self.channel_registry,self.channel_type,self.meld,self.recipient,self.resource,self.sender,self.shape]
     self.var = tuple(self.values)
-    self.comp = Channel(label=self.label, ctg=self.ctg)
+    self.comp = Channel(self.meld,self.sender,label=self.label, ctg=self.ctg)
 
   # def _read_data_(self, meld,sender_address):
   #   datp=Channel(meld,sender_address)
@@ -45,20 +51,15 @@ class TestChannel(TestMediatorComp):
   #   else:
   #     self.assertTrue(datp.resource == RsrcType.UNSET)
   #   if len(meld_tuple)>2 and meld_tuple[2]:
-  #     self.assertTrue(datp.ctg_type == PackType.UNSET or datp.ctg_type==PackType(meld_tuple[2]))
+  #     self.assertTrue(datp.ctg_type == ChannelType.UNSET or datp.ctg_type==ChannelType(meld_tuple[2]))
   #   else:
-  #     self.assertTrue(datp.ctg_type == PackType.UNSET)
+  #     self.assertTrue(datp.ctg_type == ChannelType.UNSET)
   #   if len(meld_tuple)>3 and meld_tuple[3]:
   #     self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
   #   else:
   #     self.assertTrue(datp.shape == FieldType.UNSET)
   #   self.var = None
   #   self.assertEqual(datp.label, datp.get_meld())
-
-  # # def setUp(self):
-  #   # In order to test all the variants for the integration, we will need BDD tests
-  #   # addr = build_address('GLG','noise_from')
-  #   # self._read_data_(inputs[0],inputs[1])
 
   # @given(package_inputs()) # pylint: disable=no-value-for-parameter
   # def test_read_data(self,inputs):#meld_tuple,sender_address):
@@ -76,9 +77,9 @@ class TestChannel(TestMediatorComp):
   #   else:
   #     self.assertTrue(datp.resource == RsrcType.UNSET)
   #   if len(meld_tuple)>2 and meld_tuple[2]:
-  #     self.assertTrue(datp.ctg_type == PackType.UNSET or datp.ctg_type==PackType(meld_tuple[2]))
+  #     self.assertTrue(datp.ctg_type == ChannelType.UNSET or datp.ctg_type==ChannelType(meld_tuple[2]))
   #   else:
-  #     self.assertTrue(datp.ctg_type == PackType.UNSET)
+  #     self.assertTrue(datp.ctg_type == ChannelType.UNSET)
   #   if len(meld_tuple)>3 and meld_tuple[3]:
   #     self.assertTrue(datp.shape == FieldType.UNSET or datp.shape==meld_tuple[3])
   #   else:

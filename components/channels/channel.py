@@ -1,5 +1,6 @@
 from components.base.workers.mediator_comp import MediatorComp
-from components.enums.prop_types import PackType,RsrcType,FieldType
+from components.enums.pos import CtgType
+from components.enums.prop_types import ChannelType,RsrcType,FieldType
 from chainer import Variable
 
 class Channel(MediatorComp):
@@ -19,29 +20,29 @@ class Channel(MediatorComp):
   
   eventually, are package shapes going to be chainer variables?
   """
-  def __init__(self, meld,sender_address):
-    self.meld_tuple = meld.split(';')
-    self.sender = sender_address
-    self.read_data()
-    super().__init__(self.get_meld(),self.ctg)
+  def __init__(self, meld,sender_address, **kwargs):
+    args = self.read_data(meld,sender_address)
+    kwargs['ctg'] = CtgType.CHANNEL
+    super().__init__(*args,**kwargs)
   
-  def read_data(self):
-    self.address=self.meld_tuple[0]
-    self.resource=RsrcType.UNSET
-    self.shape = FieldType.UNSET
-    self.ctg = PackType.UNSET
-    if len(self.meld_tuple) > 1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
-      self.resource = self.meld_tuple[1]
-      if self.meld_tuple[2] != 0 and self.meld_tuple[2] in PackType:
-        self.ctg_type=PackType(self.meld_tuple[2])
-        if len(self.meld_tuple) >3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:
-          self.shape=FieldType(self.meld_tuple[3])
-    self.var = None
+  def read_data(self, meld,sender_address):
+    meld_tuple = meld.split(';')
+    recipient=meld_tuple[0]
+    resource=RsrcType.UNSET
+    shape = (-1,-1)
+    channel_type = ChannelType.UNSET
+    if len(meld_tuple) > 1 and meld_tuple[1] and meld_tuple[1] in RsrcType:
+      resource = meld_tuple[1]
+      if meld_tuple[2] != 0 and meld_tuple[2] in ChannelType:
+        channel_type=ChannelType(meld_tuple[2])
+        if len(meld_tuple) >3 and meld_tuple[3] and type(meld_tuple[3]) == tuple:
+          shape=meld_tuple[3]
+    return [{},{},channel_type,meld,recipient,resource,sender_address,shape]
 
-  def get_meld(self):
-      return f'{self.sender};{self.address};{self.resource};{self.ctg_type};{self.shape}'
+  # def get_meld(self):
+  #     return f'{self.sender};{self.recipient};{self.resource};{self.channel_type};{self.shape}'
 
-  def update(self, new_addr):
-    self.address = new_addr
-    self._built_ = False
-    self.var = None
+  # def update(self, new_addr):
+  #   self.recipient = new_addr
+  #   self._built_ = False
+  #   self.var = None
