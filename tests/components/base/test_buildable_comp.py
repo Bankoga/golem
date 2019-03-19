@@ -11,12 +11,12 @@ class TestBuildableComp(TestPassiveComp):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
-    self.value = None
-    self.var = tuple([self.value])
+    self.values = [None]
+    self.var = tuple(self.values)
     self.comp = BuildableComp(label=self.label, ctg=self.ctg)
 
   def test_get_var_built(self):
-    self.comp.build(self.value)
+    self.comp.build(*self.values)
     self.assertEqual(self.comp.var, self.var)
 
   def test_set_is_built(self):
@@ -24,17 +24,17 @@ class TestBuildableComp(TestPassiveComp):
       self.comp.is_built = 'Does not matter'
 
   def test_build(self):
-    self.comp.build(self.value)
+    self.comp.build(*self.values)
     self.assertEqual(self.comp.var, self.var)
     self.assertTrue(self.comp.is_built)
 
   def test_double_build(self):
-    self.comp.build(self.value)
+    self.comp.build(*self.values)
     with self.assertRaises(RuntimeError):
-      self.comp.build(self.value)
+      self.comp.build(*self.values)
 
   def test_set_built_var(self):
-    self.comp.build(self.value)
+    self.comp.build(*self.values)
     with self.assertRaises(RuntimeError):
       self.comp.var = self.var
 
