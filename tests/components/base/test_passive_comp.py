@@ -21,6 +21,11 @@ class TestPassiveComp(TestStaticComp):
     result = self.comp.prepare_args(*var_args)
     self.assertEqual(result, expectation)
 
+  @given(st.lists(st.one_of(st.text(),st.integers(),st.lists(st.integers()))))
+  def test_update(self, new_var):
+    self.comp.update(new_var)
+    self.assertEqual(self.comp.var, tuple([new_var]))
+
   def test_setter_error(self):
     with self.assertRaises(RuntimeError):
       self.comp.setter_error()
@@ -32,6 +37,7 @@ class TestPassiveComp(TestStaticComp):
 
   def test_get_var(self):
     self.assertEqual(self.comp.var, self.var)
+
 
 if __name__ == '__main__':
   unittest.main()
