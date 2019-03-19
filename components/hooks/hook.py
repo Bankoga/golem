@@ -3,7 +3,7 @@ from components.enums.prop_types import HookType,PackType,RsrcType,FieldType
 from components.channels.channel import Channel
 import re
 
-class Hook(Package):
+class Hook(Channel):
   """
   For all intents and purposes, a hook is a trigger for building packages
   Hooks have these additional properties to package properties in the proc configs

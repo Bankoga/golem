@@ -120,8 +120,8 @@ class TestCell(unittest.TestCase):
   
   @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter
   def test_exec_instruction(self, instruction):
-    directions = instruction[0]
-    conv_shapes = instruction[1]
+    # directions = instruction[0]
+    # conv_shapes = instruction[1]
     
     pass
 

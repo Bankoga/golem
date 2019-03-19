@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from components.base.mediator_comp import MediatorComp
+from components.base.workers.mediator_comp import MediatorComp
 
 from components.enums.pos import CtgType
 from components.enums.prop_types import GroupType
@@ -44,7 +44,7 @@ class FuncSet(MediatorComp):
     return self.label
 
   def get_type(self):
-    return self.ctg_type
+    return self.ctg
 
   @abstractmethod
   def process_inputs(self, inputs=None):
@@ -60,7 +60,7 @@ class FuncSet(MediatorComp):
 
   def operate(self, inputs=None):
     super().operate()
-    proc_inputs = self.process_inputs(inputs)
+    # proc_inputs = self.process_inputs(inputs)
 
   def build(self):
     super().build(None)

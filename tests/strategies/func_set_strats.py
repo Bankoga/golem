@@ -52,7 +52,7 @@ def group_input_set(draw, elements=partial_address()): # pylint: disable=no-valu
     inp.update(f'{address}-{funcset.groups[group]["id"]}')
     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
     inp.build(resc_data)
-    meld = inp.get_meld()
+    # meld = inp.get_meld()
     group_inputs.append(inp)
   st.assume(group_inputs)
   return group_inputs

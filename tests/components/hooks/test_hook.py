@@ -7,11 +7,11 @@ from components.hooks.hook import Hook
 from components.axioms.props import dest_key_pattern, old_id_pattern 
 from components.enums.prop_types import FieldType,HookType,RsrcType,PackType
 from components.channels.misc_funcs import build_address, build_meld
-from tests.components.packages.test_package import TestPackage
+from tests.components.channels.test_channel import TestChannel
 from tests.strategies.pos_strats import arb_addr,full_address,partial_address
 from tests.strategies.prop_strats import arbitrary_id, package_field_shape,set_type_prop,package_resource,hook_type,package_type
 
-class TestHook(TestPackage):
+class TestHook(TestChannel):
   # def setUp(self):
     # self.hook = Hook()
   # NO TOUCHY OUTPUTS UNTIL DONE WITH HOOKS!!!!!!
