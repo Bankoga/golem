@@ -58,5 +58,11 @@ class TestConvShape(TestPassiveComp):
     with self.assertRaises(RuntimeError):
       self.comp.spacing_shape = 'Does not matter'
 
+  @given(valid_shape(),valid_shape(),valid_weights()) # pylint: disable=no-value-for-parameter
+  def test_update(self,f_shape,s_shape,weights):
+    self.comp.update(f_shape,s_shape,weights)
+    self.assertEqual(self.comp.var, ConvVar(filter_shape=f_shape,spacing_shape=s_shape,weights=weights))
+
+
 if __name__ == '__main__':
   unittest.main()
