@@ -9,7 +9,6 @@ from components.matrix.address_registry import AddressRegistry
 from components.vars.data import Address
 from tests.components.base.workers.test_worker_comp import TestWorkerComp
 
-
 class TestMediatorComp(TestWorkerComp):
   def setUp(self):
     self.registry = AddressRegistry(label='global_registry')

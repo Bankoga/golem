@@ -1,9 +1,8 @@
-# from components.base.dynamic_comp import DynamicComp
-from components.base.component import Component
+from components.base.workers.mediator_comp import MediatorComp
 from components.enums.prop_types import PackType,RsrcType,FieldType
 from chainer import Variable
 
-class Package(Component):
+class Channel(MediatorComp):
   """
   For all intents and purposes, a package is a mail package
   It has the following properties
@@ -24,13 +23,13 @@ class Package(Component):
     self.meld_tuple = meld.split(';')
     self.sender = sender_address
     self.read_data()
-    super().__init__(self.get_meld(),self.ctg_type.get_component_type(),self.ctg_type)
+    super().__init__(self.get_meld(),self.ctg)
   
   def read_data(self):
     self.address=self.meld_tuple[0]
     self.resource=RsrcType.UNSET
     self.shape = FieldType.UNSET
-    self.ctg_type = PackType.UNSET
+    self.ctg = PackType.UNSET
     if len(self.meld_tuple) > 1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
       self.resource = self.meld_tuple[1]
       if self.meld_tuple[2] != 0 and self.meld_tuple[2] in PackType:
@@ -42,31 +41,7 @@ class Package(Component):
   def get_meld(self):
       return f'{self.sender};{self.address};{self.resource};{self.ctg_type};{self.shape}'
 
-  def operate(self):
-    super().operate()
-
-  def build(self, data=None):
-    super().build(data)
-
   def update(self, new_addr):
     self.address = new_addr
     self._built_ = False
     self.var = None
-
-  def reset(self):
-    super().reset()
-
-  def __eq__(self, other):
-    return self.__dict__ == other.__dict__
-  
-  def __lt__(self,other):
-    return self.get_meld() < other.get_meld()
-  
-  def __le__(self,other):
-    return self.get_meld() <= other.get_meld()
-  
-  def __gt__(self,other):
-    return self.get_meld() > other.get_meld()
-  
-  def __ge__(self,other):
-    return self.get_meld() >= other.get_meld()

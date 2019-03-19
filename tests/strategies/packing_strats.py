@@ -6,8 +6,8 @@ from hypothesis.strategies import composite
 from numpy import full, ones
 
 from components.axioms.props import id_pattern
-from components.packages.package import Package
-from components.packages.misc_funcs import (build_meld)
+from components.channels.channel import Channel
+from components.channels.misc_funcs import (build_meld)
 
 from tests.strategies.pos_strats import full_address, partial_address, arb_addr
 from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
@@ -64,13 +64,13 @@ def valid_cell_instruction(draw):
 @composite
 def package_arbitrary(draw):
   inputs = draw(package_inputs()) # pylint: disable=no-value-for-parameter
-  pack = Package(inputs[0], inputs[1])
+  pack = Channel(inputs[0], inputs[1])
   return pack
 
 @composite
 def valid_package_arbitrary(draw):
   inputs = draw(package_inputs()) # pylint: disable=no-value-for-parameter
-  pack = Package(inputs[0], inputs[1])
+  pack = Channel(inputs[0], inputs[1])
   """
   given that we have a package
   when we want check the conv sign

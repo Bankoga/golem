@@ -14,6 +14,7 @@ class Address(typing.NamedTuple):
   group: str = None
   packager: str = None
   instruction: str = None
+  channel: str = None
 
 
 # items must be filled in the correct order without skipping!

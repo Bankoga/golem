@@ -4,7 +4,7 @@ from hypothesis.strategies import composite
 
 from components.axioms.pos import cardinal_keys
 from components.enums.pos import Floor, CtgType, Dimension
-from components.packages.package import Package
+from components.channels.channel import Channel
 from components.vars.data import Address
 
 from tests.strategies.prop_strats import arbitrary_id

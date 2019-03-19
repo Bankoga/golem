@@ -14,7 +14,7 @@ class Melder:
     """
     # case 
     parts=meld.split(",")
-    return Package(tuple(parts))
+    return Channel(tuple(parts))
 
   def eval_melds(self):
     pass

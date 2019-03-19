@@ -11,8 +11,8 @@ from tests.strategies.packing_strats import package_arbitrary
 from tests.strategies.pos_strats import arb_addr, partial_address
 from tests.strategies.data_strats import valid_resource_data
 
-from components.packages.package import Package
-from components.packages.misc_funcs import build_address, build_meld, build_package_inputs, build_package
+from components.channels.channel import Channel
+from components.channels.misc_funcs import build_address, build_meld, build_package_inputs, build_package
 
 from components.func_sets.fs_builder_provider import fs_services
 
@@ -128,7 +128,7 @@ def valid_module_input_set(draw):
 #   inputs = build_package(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
 #   sender_address = build_address(sm_id,sg_id)
 #   meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
-#   res = Package(meld,sender_address)
+#   res = Channel(meld,sender_address)
 #   self.assertEqual(inputs, res)
 
 # @composite

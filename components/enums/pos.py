@@ -22,7 +22,7 @@ class CtgType(Enum):
   GROUP = auto()
   PACKAGER = auto()
   INSTRUCTION = auto()
-  PACKAGE = auto()
+  CHANNEL = auto()
   DATA = auto()
 
 class Floor(Enum):

@@ -8,8 +8,8 @@ from components.enums.prop_types import FieldType,PackType,RsrcType
 from tests.strategies.pos_strats import full_address,partial_address,arb_addr
 from tests.strategies.prop_strats import package_field_shape,package_resource,package_type, arbitrary_id
 
-from components.packages.package import Package
-from components.packages.misc_funcs import build_address, build_meld, build_package_inputs, build_package
+from components.channels.channel import Channel
+from components.channels.misc_funcs import build_address, build_meld, build_package_inputs, build_package
 
 class TestMiscFuncs(unittest.TestCase):
   # @given(st.text(),st.text())
@@ -56,5 +56,5 @@ class TestMiscFuncs(unittest.TestCase):
     inputs = build_package(recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id)
     sender_address = build_address(sm_id,sg_id)
     meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
-    res = Package(meld,sender_address)
+    res = Channel(meld,sender_address)
     self.assertEqual(inputs, res)

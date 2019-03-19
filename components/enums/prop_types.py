@@ -71,7 +71,7 @@ class PackType(Enum):
   AGGREGATE = 2
   OVERLAY = 9
   def get_component_type(self):
-    return CtgType.PACKAGE
+    return CtgType.CHANNEL
 
 class RsrcType(Enum):
   UNSET = 1

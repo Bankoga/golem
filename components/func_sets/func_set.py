@@ -4,7 +4,7 @@ from components.base.mediator_comp import MediatorComp
 from components.enums.pos import CtgType
 from components.enums.prop_types import GroupType
 
-from components.packages.misc_funcs import build_address
+from components.channels.misc_funcs import build_address
 class FuncSet(MediatorComp):
   """
   A functional set is an addressable processing region within a matrix

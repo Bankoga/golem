@@ -10,7 +10,7 @@ from components.axioms.props import id_pattern, invalid_id_pattern
 from components.enums.prop_types import FuncSetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType, SuperSet
 from components.axioms.maps.set import get_ids
 
-from components.packages.package import Package
+from components.channels.channel import Channel
 
 
 @composite

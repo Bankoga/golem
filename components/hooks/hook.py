@@ -1,6 +1,6 @@
 from components.axioms.props import old_id_pattern 
 from components.enums.prop_types import HookType,PackType,RsrcType,FieldType
-from components.packages.package import Package
+from components.channels.channel import Channel
 import re
 
 class Hook(Package):
