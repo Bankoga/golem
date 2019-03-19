@@ -10,7 +10,7 @@ from components.vars.data import Address
 from tests.components.base.workers.test_worker_comp import TestWorkerComp
 
 
-class MestCediatorComp(TestWorkerComp):
+class TestMediatorComp(TestWorkerComp):
   def setUp(self):
     self.registry = AddressRegistry(label='global_registry')
     self.address = Address(golem='a',matrix='l',func_set='b')
@@ -20,6 +20,8 @@ class MestCediatorComp(TestWorkerComp):
       'reg_id': self.label,
       'address': self.address
     }
+    self.values = [self.registry]
+    self.var = tuple(self.values)
     self.comp = MediatorComp(label=self.label, ctg=self.ctg)
 
 if __name__ == '__main__':

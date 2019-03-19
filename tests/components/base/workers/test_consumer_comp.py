@@ -20,6 +20,8 @@ class TestConsumerComp(TestWorkerComp):
       'reg_id': self.label,
       'address': self.address
     }
+    self.values = [self.registry]
+    self.var = tuple(self.values)
     self.comp = ConsumerComp(label=self.label, ctg=self.ctg)
 
 if __name__ == '__main__':
