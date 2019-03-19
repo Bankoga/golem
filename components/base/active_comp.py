@@ -22,6 +22,3 @@ class ActiveComp(PassiveComp):
       self.update(self.baseline)
     else:
       raise RuntimeError('Attempted to reset an unset base')
-  
-  def setter_error(self):
-    raise RuntimeError('Cannot set var of active component directly! Must use update!')
