@@ -5,19 +5,15 @@ from hypothesis import strategies as st
 
 from components.base.buildable_comp import BuildableComp
 from components.enums.prop_types import CtgType
-from tests.components.base.test_static_comp import TestStaticComp
+from tests.components.base.test_passive_comp import TestPassiveComp
 
-class TestBuildableComp(TestStaticComp):
+class TestBuildableComp(TestPassiveComp):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
-    self.value = 'Any arbitrary type of object?'
+    self.value = None
     self.var = tuple([self.value])
     self.comp = BuildableComp(label=self.label, ctg=self.ctg)
-
-  def test_get_var_unbuilt(self):
-    with self.assertRaises(AttributeError):
-      self.assertEqual(self.comp.var, self.var)
 
   def test_get_var_built(self):
     self.comp.build(self.value)
@@ -36,14 +32,6 @@ class TestBuildableComp(TestStaticComp):
     self.comp.build(self.value)
     with self.assertRaises(RuntimeError):
       self.comp.build(self.value)
-
-  def test_set_unbuilt_naked_var(self):
-    self.comp.var = self.value
-    self.assertEqual(self.comp.var, tuple(self.value))
-
-  def test_set_unbuilt_wrapped_var(self):
-    self.comp.var = [self.value]
-    self.assertEqual(self.comp.var, self.var)
 
   def test_set_built_var(self):
     self.comp.build(self.value)
