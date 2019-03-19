@@ -1,4 +1,4 @@
-from components.vars.misc import reg_keys, addr_keys
+from components.vars.misc import reg_keys, addr_keys, channel_keys
 
 from numpy import array_equal
 
@@ -10,4 +10,9 @@ def reg_item_check(reg_item):
 def addr_item_check(addr_item):
   item_keys = tuple(addr_item.keys())
   v = array_equal(item_keys, addr_keys)
+  return v
+
+def channel_item_check(channel_item):
+  item_keys = tuple(channel_item.keys())
+  v = array_equal(item_keys, channel_keys)
   return v

@@ -34,3 +34,21 @@ def addr_item_valid_var(draw):
   addr_item = draw(addr_item_var()) # pylint: disable=no-value-for-parameter
   st.assume(addr_item)
   return addr_item
+
+@composite
+def channel_item_var(draw):
+  recipient = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  sender = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  reg_id = draw(arbitrary_id()) # pylint: disable=no-value-for-parameter
+  channel_item = {
+    'reg_id': reg_id,
+    'recipient': recipient,
+    'sender': sender
+  }
+  return channel_item
+
+@composite
+def channel_item_valid_var(draw):
+  channel_item = draw(channel_item_var()) # pylint: disable=no-value-for-parameter
+  st.assume(channel_item)
+  return channel_item
