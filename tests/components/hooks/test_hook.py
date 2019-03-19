@@ -5,7 +5,7 @@ import hypothesis.strategies as st
 
 from components.hooks.hook import Hook
 from components.axioms.props import dest_key_pattern, old_id_pattern 
-from components.enums.prop_types import FieldType,HookType,RsrcType,PackType
+from components.enums.prop_types import FieldType,HookType,RsrcType,ChannelType
 from components.channels.misc_funcs import build_address, build_meld
 from tests.components.channels.test_channel import TestChannel
 from tests.strategies.pos_strats import arb_addr,full_address,partial_address
@@ -41,9 +41,9 @@ class TestHook(TestChannel):
     else:
       self.assertTrue(hook.resource == RsrcType.UNSET)
     if len(meld_tuple)>4 and meld_tuple[4]:
-      self.assertTrue(hook.ctg_type == PackType.UNSET or hook.ctg_type==PackType(meld_tuple[4]))
+      self.assertTrue(hook.ctg_type == ChannelType.UNSET or hook.ctg_type==ChannelType(meld_tuple[4]))
     else:
-      self.assertTrue(hook.ctg_type == PackType.UNSET)
+      self.assertTrue(hook.ctg_type == ChannelType.UNSET)
     if len(meld_tuple)>5 and meld_tuple[5]:
       self.assertTrue(hook.shape == FieldType.UNSET or hook.shape==meld_tuple[5])
     else:
@@ -64,9 +64,9 @@ class TestHook(TestChannel):
     else:
       self.assertTrue(hook.resource == RsrcType.UNSET)
     if len(meld_tuple)>2 and meld_tuple[2]:
-      self.assertTrue(hook.ctg_type == PackType.UNSET or hook.ctg_type==PackType(meld_tuple[2]))
+      self.assertTrue(hook.ctg_type == ChannelType.UNSET or hook.ctg_type==ChannelType(meld_tuple[2]))
     else:
-      self.assertTrue(hook.ctg_type == PackType.UNSET)
+      self.assertTrue(hook.ctg_type == ChannelType.UNSET)
     if len(meld_tuple)>3 and meld_tuple[3]:
       self.assertTrue(hook.shape == FieldType.UNSET or hook.shape==meld_tuple[3])
     else:
@@ -74,7 +74,7 @@ class TestHook(TestChannel):
 
   def setUp(self):
     # In order to test all the variants for the integration, we will need BDD tests
-    self.meld = build_meld('m_id-g_id',RsrcType.ENERGY,PackType.AGGREGATE,FieldType.TEST_INPUT)
+    self.meld = build_meld('m_id-g_id',RsrcType.ENERGY,ChannelType.AGGREGATE,FieldType.TEST_INPUT)
     self.hook_id = 'cycle'
     self.hook_type = HookType.UNI
     self.hook=Hook(self.meld,self.hook_id,self.hook_type)

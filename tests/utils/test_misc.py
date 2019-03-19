@@ -15,7 +15,7 @@
 #   def test_input_sort(self, inputs):
 #     expectation = {}
 #     for pack in inputs:
-#       if pack.get_type() is PackType.
+#       if pack.get_type() is ChannelType.
     
 
 # if __name__ == '__main__':

@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 
 from components.packagers.cells.cell import Cell
 from components.axioms.cell_types import CellType,cell_data
-from components.enums.prop_types import RuleType, RsrcType, PackType,FieldType, PackagerType
+from components.enums.prop_types import RuleType, RsrcType, ChannelType,FieldType, PackagerType
 
 from tests.strategies.packing_strats import valid_cell_instruction
 from tests.strategies.prop_strats import cell_type_prop
@@ -68,7 +68,7 @@ class TestCell(unittest.TestCase):
   #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
   #       st.sampled_from(['sender_set_id','self','Self', '']),
   #       st.sampled_from(RsrcType),
-  #       st.sampled_from(PackType),
+  #       st.sampled_from(ChannelType),
   #       st.sampled_from(FieldType),
   #       st.sampled_from(['SenderModuleId','self','Self']),
   #       st.sampled_from(['sender_set_id','self','Self',''])))

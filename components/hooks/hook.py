@@ -1,5 +1,5 @@
 from components.axioms.props import old_id_pattern 
-from components.enums.prop_types import HookType,PackType,RsrcType,FieldType
+from components.enums.prop_types import HookType,ChannelType,RsrcType,FieldType
 from components.channels.channel import Channel
 import re
 
@@ -34,13 +34,13 @@ class Hook(Channel):
 
   def read_data(self):
     self.resource = RsrcType.UNSET
-    self.ctg_type = PackType.UNSET
+    self.ctg_type = ChannelType.UNSET
     self.shape = FieldType.UNSET
     self.address=self.meld_tuple[0]
     if len(self.meld_tuple)>1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
       self.resource=RsrcType(self.meld_tuple[1])
-    if len(self.meld_tuple)>2 and self.meld_tuple[2] and self.meld_tuple[2] in PackType:
-      self.ctg_type=PackType(self.meld_tuple[2])
+    if len(self.meld_tuple)>2 and self.meld_tuple[2] and self.meld_tuple[2] in ChannelType:
+      self.ctg_type=ChannelType(self.meld_tuple[2])
     if len(self.meld_tuple)>3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:
       self.shape=self.meld_tuple[3]
 

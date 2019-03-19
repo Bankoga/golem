@@ -3,7 +3,7 @@ from numpy import array, append
 from components.func_sets.func_set import FuncSet
 from utils.cardinators.cardinator_provider import cardinator_services
 from components.axioms.configs import file_type
-from components.enums.prop_types import FuncSetType, PackType
+from components.enums.prop_types import FuncSetType, ChannelType
 
 from utils.config_reader import read
 from utils.misc import heapsort
@@ -67,13 +67,13 @@ class Proc(FuncSet):
         results[p_type].append(pack)
       else:
         results[p_type] = [pack]
-    if PackType.AGGREGATE in results:
-      results[PackType.AGGREGATE] = heapsort(results[PackType.AGGREGATE])
+    if ChannelType.AGGREGATE in results:
+      results[ChannelType.AGGREGATE] = heapsort(results[ChannelType.AGGREGATE])
       agg = None
-      for pack in results[PackType.AGGREGATE]:
+      for pack in results[ChannelType.AGGREGATE]:
         if agg is None:
           agg = pack.var
         else:
           append(agg, pack.var)
-      results[PackType.AGGREGATE] = agg
+      results[ChannelType.AGGREGATE] = agg
     return results

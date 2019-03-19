@@ -4,7 +4,7 @@ from hypothesis import settings
 from hypothesis import HealthCheck
 
 from components.axioms.configs import proc_ids,set_ids,set_ids
-from components.enums.prop_types import PackType,SuperSet
+from components.enums.prop_types import ChannelType,SuperSet
 
 from tests.strategies.prop_strats import set_type_prop
 from tests.strategies.packing_strats import package_arbitrary
@@ -70,13 +70,13 @@ def module_input_set(draw, elements=partial_address()): # pylint: disable=no-val
   inputs = []
   for pack in packs_overlay:
     pack.update(address)
-    pack.ctg_type = PackType.OVERLAY
+    pack.ctg_type = ChannelType.OVERLAY
     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
     pack.build(resc_data)
     inputs.append(pack)
   for pack in packs_aggrg:
     pack.update(address)
-    pack.ctg_type = PackType.AGGREGATE
+    pack.ctg_type = ChannelType.AGGREGATE
     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
     pack.build(resc_data)
     inputs.append(pack)
@@ -106,7 +106,7 @@ def valid_module_input_set(draw):
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_set_id','self','Self', '']),
 # st.sampled_from(RsrcType),
-# st.sampled_from(PackType),
+# st.sampled_from(ChannelType),
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_set_id','self','Self','']))
@@ -120,7 +120,7 @@ def valid_module_input_set(draw):
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_set_id','self','Self', '']),
 # st.sampled_from(RsrcType),
-# st.sampled_from(PackType),
+# st.sampled_from(ChannelType),
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_set_id','self','Self','']))
@@ -155,7 +155,7 @@ def valid_module_input_set(draw):
 #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
 #       st.sampled_from(['sender_set_id','self','Self', '']),
 #       st.sampled_from(RsrcType),
-#       st.sampled_from(PackType),
+#       st.sampled_from(ChannelType),
 #       st.sampled_from(FieldType),
 #       st.sampled_from(['SenderModuleId','self','Self']),
 #       st.sampled_from(['sender_set_id','self','Self',''])))

@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.enums.prop_types import FieldType,PackType,RsrcType
+from components.enums.prop_types import FieldType,ChannelType,RsrcType
 
 from tests.strategies.pos_strats import full_address,partial_address,arb_addr
 from tests.strategies.prop_strats import package_field_shape,package_resource,package_type, arbitrary_id
@@ -32,7 +32,7 @@ class TestMiscFuncs(unittest.TestCase):
   
   @given(arb_addr(), # pylint: disable=no-value-for-parameter
   st.sampled_from(RsrcType),
-  st.sampled_from(PackType),
+  st.sampled_from(ChannelType),
   st.sampled_from(FieldType),
   st.sampled_from(['SenderModuleId','self','Self']),
   st.sampled_from(['sender_set_id','self','Self','']))
@@ -47,7 +47,7 @@ class TestMiscFuncs(unittest.TestCase):
 
   @given(arb_addr(), # pylint: disable=no-value-for-parameter
   st.sampled_from(RsrcType),
-  st.sampled_from(PackType),
+  st.sampled_from(ChannelType),
   st.sampled_from(FieldType),
   st.sampled_from(['SenderModuleId','self','Self']),
   st.sampled_from(['sender_set_id','self','Self','']))

@@ -25,7 +25,7 @@ def build_package(recip_addr,dp_resource,dp_type,dp_shape, sm_id, sg_id):
 def sort_data_packs(self, packages):
   """
   given a list of packages
-    sorts into N=PackType lists
+    sorts into N=ChannelType lists
     said list use a guaranteed insertion sort using sender pos
   """
   pass

@@ -64,9 +64,9 @@ class RuleType(Enum):
   def get_component_type(self):
     return CtgType.INSTRUCTION
 
-# (PackType|RsrcType|FieldType|FuncSetType|HookType|RuleType)
+# (ChannelType|RsrcType|FieldType|FuncSetType|HookType|RuleType)
 
-class PackType(Enum):
+class ChannelType(Enum):
   UNSET = 1
   AGGREGATE = 2
   OVERLAY = 9
