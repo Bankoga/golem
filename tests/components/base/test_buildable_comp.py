@@ -15,13 +15,13 @@ class TestBuildableComp(TestPassiveComp):
     self.var = tuple(self.values)
     self.comp = BuildableComp(label=self.label, ctg=self.ctg)
 
-  def test_get_var_built(self):
-    self.comp.build(*self.values)
-    self.assertEqual(self.comp.var, self.var)
-
   def test_set_is_built(self):
     with self.assertRaises(RuntimeError):
       self.comp.is_built = 'Does not matter'
+
+  def test_get_var(self):
+    self.comp.build(*self.values)
+    self.assertEqual(self.comp.var, self.var)
 
   def test_build(self):
     self.comp.build(*self.values)
