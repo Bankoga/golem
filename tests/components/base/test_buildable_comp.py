@@ -11,7 +11,7 @@ class TestBuildableComp(TestPassiveComp):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
-    self.values = [None]
+    self.values = []
     self.var = tuple(self.values)
     self.comp = BuildableComp(label=self.label, ctg=self.ctg)
 

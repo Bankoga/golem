@@ -2,7 +2,7 @@ from components.base.passive_comp import PassiveComp
 
 class BuildableComp(PassiveComp):
   def __init__(self, *args, **kwargs):
-    super().__init__(None,**kwargs)
+    super().__init__(*args,**kwargs)
     self.__is_built = False
 
   @property
