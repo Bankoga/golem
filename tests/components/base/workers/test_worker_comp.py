@@ -9,12 +9,13 @@ from components.enums.pos import CtgType
 from components.vars.data import Address
 
 from tests.components.base.test_active_comp import TestActiveComp
+from tests.components.base.test_buildable_comp import TestBuildableComp
 
+from tests.strategies.matrix_strats import addr_reg
 from tests.strategies.pos_strats import arb_addr
 
-class TestWorkerComp(TestActiveComp):
+class TestWorkerComp(TestActiveComp, TestBuildableComp):
   def setUp(self):
-    self.registry = AddressRegistry(label='global_registry')
     self.address = Address(golem='a',matrix='l',func_set='b')
     self.label = 'pr_0'
     self.ctg = CtgType.PACKAGER
@@ -22,16 +23,33 @@ class TestWorkerComp(TestActiveComp):
       'reg_id': self.label,
       'address': self.address
     }
+    self.registry = AddressRegistry(label='global_registry')
+    self.values = [self.registry]
+    self.var = tuple(self.values)
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
+
+  def test_get_reg_connection(self):
+    self.comp.build(self.registry)
+    self.assertEqual(self.comp.reg_connection, self.var[0])
+
+  @given(st.one_of(addr_reg(), st.integers())) # pylint: disable=no-value-for-parameter
+  def test_set_reg_connection(self, possible_reg):
+    if type(possible_reg) == AddressRegistry:
+      self.comp.reg_connection = possible_reg
+      self.assertEqual(self.comp.reg_connection, possible_reg)
+    else:
+      with self.assertRaises(RuntimeError):
+        self.comp.reg_connection = possible_reg
 
   def test_pre_registered_state(self):
     self.assertFalse(self.comp.is_registered)
     self.assertIsNone(self.comp.address)
     with self.assertRaises(RuntimeError):
       self.comp.operate()
-  
+
   def test_set_address_post_registration(self):
-    self.comp.register(self.address,self.registry)
+    self.comp.build(*self.values)
+    self.comp.register(self.address)
     with self.assertRaises(RuntimeError):
       self.comp.address = 'Anything'
 
@@ -44,7 +62,8 @@ class TestWorkerComp(TestActiveComp):
       self.comp.is_registered = True
 
   def test_reg_item(self):
-    self.comp.register(self.address, self.registry)
+    self.comp.build(*self.values)
+    self.comp.register(self.address)
     self.assertEqual(self.comp.reg_item, self.reg_item)
   
   def test_set_reg_item(self):
@@ -52,7 +71,8 @@ class TestWorkerComp(TestActiveComp):
       self.comp.reg_item = {}
 
   def test_register(self):
-    self.comp.register(self.address,self.registry)
+    self.comp.build(*self.values)
+    self.comp.register(self.address)
     """
     For every worker, what needs to be registered?
     successful registration means
@@ -64,6 +84,11 @@ class TestWorkerComp(TestActiveComp):
 
   # def test_operate(self):
   #   pass
+
+  def test_build_with_data(self):
+    self.comp.build(*self.values, address=self.address)
+    self.assertEqual(self.comp.var, self.var)
+    self.assertTrue(self.comp.is_built)
 
 if __name__ == '__main__':
   unittest.main()

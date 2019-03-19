@@ -1,12 +1,25 @@
 from abc import abstractmethod
 
 from components.base.active_comp import ActiveComp
+from components.base.buildable_comp import BuildableComp
+from components.matrix.address_registry import AddressRegistry
 
-class WorkerComp(ActiveComp):
-  def __init__(self, reg_connection,**kwargs):
-    super().__init__(kwargs['label'],kwargs['ctg'])
+class WorkerComp(BuildableComp, ActiveComp):
+  def __init__(self, *args,**kwargs):
+    super().__init__(*args, **kwargs)
     self.__is_registered = False
     self.__address = None
+
+  @property
+  def reg_connection(self):
+    return self.var[0]
+
+  @reg_connection.setter
+  def reg_connection(self, value):
+    if type(value) == AddressRegistry:
+      self.update(value)
+    else:
+      raise RuntimeError('Attempted to set an invalid reg connection!')
 
   @property
   def reg_item(self):
@@ -39,12 +52,11 @@ class WorkerComp(ActiveComp):
     raise RuntimeError('This property cannot be set by the user!')
 
   @abstractmethod
-  def register(self, address, registry):
+  def register(self, address, registry=None):
     self.__address = address
-    registry.add_item(self.reg_item)
-
+    self.reg_connection.add_item(self.reg_item)
     self.__is_registered = True
-  
+
   @abstractmethod
   def operate(self):
     if not self.is_registered:
@@ -52,3 +64,8 @@ class WorkerComp(ActiveComp):
     else:
       pass
       # ?
+
+  def build(self, *args, **kwargs):
+    super().build(*args)
+    if 'address' in kwargs:
+      self.register(kwargs['address'])
