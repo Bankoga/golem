@@ -1,11 +1,10 @@
-from components.base.static_comp import StaticComp
+from components.base.passive_comp import PassiveComp
 
-class ActiveComp(StaticComp):
+class ActiveComp(PassiveComp):
 
   def __init__(self, *args, **kwargs):
-    super().__init__(kwargs['label'],kwargs['ctg'])
+    super().__init__(*args,**kwargs)
     self.__baseline = False
-    self.__var = tuple(args)
 
   @property
   def baseline(self):
@@ -18,20 +17,9 @@ class ActiveComp(StaticComp):
     else:
       raise RuntimeError('The base var has already been set!')
 
-  @property
-  def var(self):
-    return self.__var
-
-  @var.setter
-  def var(self, var):
-    self.setter_error()
-  
-  def update(self, *args):
-    self.__var = tuple(args)
-  
   def reset(self):
     if self.baseline:
-      self.__var = self.baseline
+      self.update(self.baseline)
     else:
       raise RuntimeError('Attempted to reset an unset base')
   
