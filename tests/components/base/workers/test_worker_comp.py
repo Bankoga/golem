@@ -28,18 +28,18 @@ class TestWorkerComp(TestActiveComp, TestBuildableComp):
     self.var = tuple(self.values)
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
 
-  def test_get_reg_connection(self):
+  def test_get_registry(self):
     self.comp.build(self.registry)
-    self.assertEqual(self.comp.reg_connection, self.var[0])
+    self.assertEqual(self.comp.registry, self.var[0])
 
   @given(st.one_of(addr_reg(), st.integers())) # pylint: disable=no-value-for-parameter
-  def test_set_reg_connection(self, possible_reg):
+  def test_set_registry(self, possible_reg):
     if type(possible_reg) == AddressRegistry:
-      self.comp.reg_connection = possible_reg
-      self.assertEqual(self.comp.reg_connection, possible_reg)
+      self.comp.registry = possible_reg
+      self.assertEqual(self.comp.registry, possible_reg)
     else:
       with self.assertRaises(RuntimeError):
-        self.comp.reg_connection = possible_reg
+        self.comp.registry = possible_reg
 
   def test_pre_registered_state(self):
     self.assertFalse(self.comp.is_registered)

@@ -11,11 +11,11 @@ class WorkerComp(BuildableComp, ActiveComp):
     self.__address = None
 
   @property
-  def reg_connection(self):
+  def registry(self):
     return self.var[0]
 
-  @reg_connection.setter
-  def reg_connection(self, value):
+  @registry.setter
+  def registry(self, value):
     if type(value) == AddressRegistry:
       self.update(value)
     else:
@@ -54,7 +54,7 @@ class WorkerComp(BuildableComp, ActiveComp):
   @abstractmethod
   def register(self, address, registry=None):
     self.__address = address
-    self.reg_connection.add_item(self.reg_item)
+    self.registry.add_item(self.reg_item)
     self.__is_registered = True
 
   @abstractmethod
