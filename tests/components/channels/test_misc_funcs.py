@@ -5,6 +5,7 @@ from hypothesis import strategies as st
 
 from components.enums.prop_types import FieldType,ChannelType,RsrcType
 
+from tests.strategies.data_strats import valid_shape
 from tests.strategies.pos_strats import full_address,partial_address,arb_addr
 from tests.strategies.prop_strats import channel_field_shape,channel_resource,channel_type, arbitrary_id
 
@@ -21,40 +22,40 @@ class TestMiscFuncs(unittest.TestCase):
     else:
       self.assertEqual(addr, f'{m_id}-{g_id}')
 
-  @given(arb_addr(),channel_resource(),channel_type(),channel_field_shape()) # pylint: disable=no-value-for-parameter
-  def test_build_meld(self, recip_addr,dp_resource,dp_type,dp_shape):
+  @given(channel_type(),channel_resource(),arb_addr(),channel_field_shape()) # pylint: disable=no-value-for-parameter
+  def test_build_meld(self, ch_type,dp_resource,recip_addr,dp_shape):
     # addr = build_address(rm_id,rg_id)
-    meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
+    meld = build_meld(ch_type,dp_resource,recip_addr,dp_shape)
     if dp_shape is None:
-      self.assertEqual(meld, f'{recip_addr};{dp_resource};{dp_type}')
+      self.assertEqual(meld, f'{ch_type};{dp_resource};{recip_addr}')
     else:
-      self.assertEqual(meld, f'{recip_addr};{dp_resource};{dp_type};{dp_shape}')
+      self.assertEqual(meld, f'{ch_type};{dp_resource};{recip_addr};{dp_shape}')
   
-  @given(arb_addr(), # pylint: disable=no-value-for-parameter
+  @given(st.sampled_from(ChannelType),
   st.sampled_from(RsrcType),
-  st.sampled_from(ChannelType),
-  st.sampled_from(FieldType),
+  arb_addr(), # pylint: disable=no-value-for-parameter
+  valid_shape(), # pylint: disable=no-value-for-parameter
   st.sampled_from(['SenderModuleId','self','Self']),
   st.sampled_from(['sender_set_id','self','Self','']))
   # st.one_of(full_address,partial_address),
   # HERE, I only need to test building the inputs for packages with great verbage
-  def test_build_channel_inputs(self,recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-    inputs = build_channel_inputs(recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+  def test_build_channel_inputs(self,ch_type,dp_resource,recip_addr,dp_shape,sm_id,sg_id):
+    inputs = build_channel_inputs(ch_type,dp_resource,recip_addr,dp_shape,sm_id,sg_id)
     sender_address = build_address(sm_id,sg_id)
-    meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
+    meld = build_meld(ch_type,dp_resource,recip_addr,dp_shape)
     res = tuple([meld,sender_address])
     self.assertEqual(inputs, res)
 
-  @given(arb_addr(), # pylint: disable=no-value-for-parameter
+  @given(st.sampled_from(ChannelType),
   st.sampled_from(RsrcType),
-  st.sampled_from(ChannelType),
-  st.sampled_from(FieldType),
+  arb_addr(), # pylint: disable=no-value-for-parameter
+  valid_shape(), # pylint: disable=no-value-for-parameter
   st.sampled_from(['SenderModuleId','self','Self']),
   st.sampled_from(['sender_set_id','self','Self','']))
   # HERE, I only need to test building packages with great verbage using data already supplied
-  def test_build_package(self,recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-    inputs = build_package(recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+  def test_build_package(self,ch_type,dp_resource,recip_addr,dp_shape,sm_id,sg_id):
+    inputs = build_package(ch_type,dp_resource,recip_addr,dp_shape,sm_id,sg_id)
     sender_address = build_address(sm_id,sg_id)
-    meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
+    meld = build_meld(ch_type,dp_resource,recip_addr,dp_shape)
     res = Channel(meld,sender_address)
     self.assertEqual(inputs, res)

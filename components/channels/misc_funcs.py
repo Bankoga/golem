@@ -6,20 +6,20 @@ def build_address(module_id, set_id):
   else:
     return f'{module_id}-{set_id}'
 
-def build_meld(recip_addr,dp_resource,dp_type,dp_shape=None):
+def build_meld(ch_type,dp_resource,recip_addr,dp_shape=None):
   if dp_shape is None:
-    return f'{recip_addr};{dp_resource};{dp_type}'
+    return f'{ch_type};{dp_resource};{recip_addr}'
   else:
-    return f'{recip_addr};{dp_resource};{dp_type};{dp_shape}'
+    return f'{ch_type};{dp_resource};{recip_addr};{dp_shape}'
 
-def build_channel_inputs(recip_addr,dp_resource,dp_type,dp_shape, sm_id, sg_id):
+def build_channel_inputs(ch_type,dp_resource,recip_addr,dp_shape, sm_id, sg_id):
   sender_address = build_address(sm_id,sg_id)
-  meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
+  meld = build_meld(ch_type,dp_resource,recip_addr,dp_shape)
   return tuple([meld,sender_address])
 
-def build_package(recip_addr,dp_resource,dp_type,dp_shape, sm_id, sg_id):
+def build_package(ch_type,dp_resource,recip_addr,dp_shape, sm_id, sg_id):
   sender_address = build_address(sm_id,sg_id)
-  meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
+  meld = build_meld(ch_type,dp_resource,recip_addr,dp_shape)
   return Channel(meld,sender_address)
 
 def sort_data_packs(self, packages):
