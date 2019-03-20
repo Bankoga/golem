@@ -24,8 +24,14 @@ def partial_address(draw):
   return res
 
 @composite
-def relative_address(draw):
+def rel_addr(draw):
+  ids = draw(st.lists(arbitrary_id(),max_size=7)) # pylint: disable=no-value-for-parameter
   res = ''
+  for i in ids:
+    if res == '':
+      res = i
+    else:
+      res = f'{res}-{i}'
   return res
 
 @composite

@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.enums.prop_types import FieldType, ChannelType, RsrcType
-from tests.strategies.channel_strats import arb_meld
+from tests.strategies.channel_strats import arb_meld_str
 from components.vars.meld import Meld, read_meld_str
 
 
@@ -23,7 +23,7 @@ class TestMeld(unittest.TestCase):
     for i,k in enumerate(self.defaults):
       self.assertEqual(self.meld[i], self.defaults[k])
 
-  @given(arb_meld()) # pylint: disable=no-value-for-parameter
+  @given(arb_meld_str()) # pylint: disable=no-value-for-parameter
   def test_read_meld_str(self,meld_str):
     meld_tuple = meld_str.split(';')
     res = read_meld_str(meld_str)

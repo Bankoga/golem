@@ -2,6 +2,7 @@ from components.base.workers.mediator_comp import MediatorComp
 from components.enums.pos import CtgType
 from components.enums.prop_types import ChannelType,RsrcType,FieldType
 from chainer import Variable
+from components.vars.meld import read_meld_str
 
 class Channel(MediatorComp):
   """
@@ -21,23 +22,17 @@ class Channel(MediatorComp):
   eventually, are package shapes going to be chainer variables?
   """
   def __init__(self, meld,sender_address, **kwargs):
-    args = self.read_meld(meld,sender_address)
+    meld_var = read_meld_str(meld)
+    args = self.get_args(meld_var,sender_address)
     kwargs['ctg'] = CtgType.CHANNEL
     super().__init__(*args,**kwargs)
   
-  def read_meld(self, meld,sender_address):
-    meld_tuple = meld.split(';')
-    recipient=meld_tuple[0]
-    resource=RsrcType.UNSET
-    shape = (-1,-1)
-    channel_type = ChannelType.UNSET
-    if len(meld_tuple) > 1 and meld_tuple[1] and meld_tuple[1] in RsrcType:
-      resource = meld_tuple[1]
-      if meld_tuple[2] != 0 and meld_tuple[2] in ChannelType:
-        channel_type=ChannelType(meld_tuple[2])
-        if len(meld_tuple) >3 and meld_tuple[3] and type(meld_tuple[3]) == tuple:
-          shape=meld_tuple[3]
-    return [{},{},channel_type,meld,recipient,resource,sender_address,shape]
+  def get_args(self, meld,sender_address):
+    args = [{},{},meld,sender_address]
+    # args.append(*meld)
+    return args
+    # return [{},{},channel_type,meld,recipient,resource,sender_address,shape]
+
 
   # def get_meld(self):
   #     return f'{self.sender};{self.recipient};{self.resource};{self.channel_type};{self.shape}'
