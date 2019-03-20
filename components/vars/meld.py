@@ -9,4 +9,5 @@ class Meld(typing.NamedTuple):
   shape: tuple = (1,1)
 
 def read_meld_str(meld_str):
-  return Meld(meld_str.split(';'))
+  meld_tuple = meld_str.split(';')
+  return Meld(*meld_tuple)
