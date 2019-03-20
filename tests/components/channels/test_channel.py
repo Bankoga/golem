@@ -26,23 +26,24 @@ class TestChannel(TestMediatorComp):
   def setUp(self):
     self.address_registry = AddressRegistry(label='global_address_registry_api')
     self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
-    self.address = Address(golem='a',matrix='l',func_set='glg', group='assoc_from')
+    self.sender = Address(golem='a',matrix='l',func_set='glg', group='assoc_from')
     self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
+    self.address = self.recipient
     self.shape = (256,256)
     self.resource = RsrcType.ENERGY
     self.channel_type = ChannelType.AGGREGATE
-    self.meld_str = f'{self.recipient};{self.resource};{self.channel_type};{self.shape}'
+    self.meld_str = f'{self.address};{self.resource};{self.channel_type};{self.shape}'
     self.meld_var = read_meld_str(self.meld_str)
     self.label = 'ch_bc_star_energy'
     self.ctg = CtgType.CHANNEL
     self.reg_item = {
       'reg_id': self.label,
-      'recipient': self.recipient,
-      'sender': self.address
+      'recipient': self.address,
+      'sender': self.sender
     }
-    self.values = [self.address_registry,self.channel_registry,self.meld_var,self.address]
+    self.values = [self.address_registry,self.channel_registry,self.meld_var,self.sender]
     self.var = tuple(self.values)
-    self.comp = Channel(self.meld_str,self.address,label=self.label, ctg=self.ctg)
+    self.comp = Channel(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
 
   @given(arb_meld_str(), arb_addr()) # pylint: disable=no-value-for-parameter
   def test_get_args(self, meld_str,sender_address):
@@ -50,6 +51,41 @@ class TestChannel(TestMediatorComp):
     result = self.comp.get_args(meld_var,sender_address)
     expectation = [{},{},meld_var,sender_address]
     self.assertEqual(result,expectation)
+
+  def test_get_meld(self):
+    self.assertEqual(self.comp.meld, self.meld_var)
+
+  def test_set_meld(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.meld  = 'Some string'
+
+  def test_get_recipient(self):
+    self.assertEqual(self.comp.recipient, self.address)
+
+  def test_set_recipient(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.recipient  = 'Some string'
+
+  def test_get_sender(self):
+    self.assertEqual(self.comp.sender, self.sender)
+
+  def test_set_sender(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.sender  = 'Some string'
+
+  def test_get_shape(self):
+    self.assertEqual(self.comp.shape, self.shape)
+
+  def test_set_shape(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.shape  = 'Some string'
+
+  def test_get_resource(self):
+    self.assertEqual(self.comp.resource, self.resource)
+
+  def test_set_resource(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.resource  = 'Some string'
 
 if __name__ == '__main__':
     unittest.main()

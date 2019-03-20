@@ -66,6 +66,11 @@ class TestWorkerComp(TestActiveComp, TestBuildableComp):
     self.comp.register(self.address)
     self.maxDiff = None
     self.assertEqual(self.comp.reg_item, self.reg_item)
+
+  def test_reg_item_help(self):
+    res = self.comp.reg_item_help()
+    self.maxDiff = None
+    self.assertEqual(res, self.reg_item)
   
   def test_set_reg_item(self):
     with self.assertRaises(RuntimeError):

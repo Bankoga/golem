@@ -33,7 +33,61 @@ class Channel(MediatorComp):
     return args
     # return [{},{},channel_type,meld,recipient,resource,sender_address,shape]
 
+  def reg_item_help(self):
+    return {
+      'reg_id': self.label,
+      'recipient': self.recipient,
+      'sender': self.sender
+    }
 
+  @property
+  def meld(self):
+    return self.var[2]
+  
+  @meld.setter
+  def meld(self, value):
+    self.setter_error()
+
+  @property
+  def address(self):
+    return self.meld.address
+  
+  @address.setter
+  def address(self, value):
+    self.setter_error()
+
+  @property
+  def recipient(self):
+    return self.address
+
+  @recipient.setter
+  def recipient(self, value):
+    self.setter_error()
+
+  @property
+  def sender(self):
+    return self.var[3]
+
+  @sender.setter
+  def sender(self, value):
+    self.setter_error()
+
+  @property
+  def shape(self):
+    return self.meld.shape
+
+  @shape.setter
+  def shape(self, value):
+    self.setter_error()
+
+  @property
+  def resource(self):
+    return self.meld.resource
+
+  @resource.setter
+  def resource(self, value):
+    self.setter_error()
+  
   # def get_meld(self):
   #     return f'{self.sender};{self.recipient};{self.resource};{self.channel_type};{self.shape}'
 
