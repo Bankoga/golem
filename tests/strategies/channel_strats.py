@@ -9,9 +9,9 @@ from components.axioms.props import id_pattern
 from components.channels.channel import Channel
 from components.channels.misc_funcs import (build_meld)
 
-from tests.strategies.pos_strats import full_address, partial_address, arb_addr
+from tests.strategies.pos_strats import full_address, partial_address, arb_addr, relative_address
 from tests.strategies.prop_strats import (channel_field_shape, channel_resource, channel_type)
-from tests.strategies.data_strats import valid_resource_data
+from tests.strategies.data_strats import valid_resource_data,valid_shape
 
 """
 What are the pools of object examples we need to draw from?
@@ -33,24 +33,34 @@ def sender_and_recipient_pair(draw):
 
 @composite
 def proto_meld(draw):
-  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  addr = draw(relative_address()) # pylint: disable=no-value-for-parameter
   dp_resource = draw(channel_resource()) # pylint: disable=no-value-for-parameter
-  dp_type = draw(channel_type()) # pylint: disable=no-value-for-parameter
+  dp_type = draw(valid_shape()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type)
   return meld
 
 @composite
 def full_meld(draw):
-  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  addr = draw(relative_address()) # pylint: disable=no-value-for-parameter
   dp_resource = draw(channel_resource()) # pylint: disable=no-value-for-parameter
-  dp_type = draw(channel_type()) # pylint: disable=no-value-for-parameter
+  dp_type = draw(valid_shape()) # pylint: disable=no-value-for-parameter
   dp_shape = draw(channel_field_shape()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type,dp_shape)
   return meld
 
 @composite
+def arb_meld(draw):
+  # meld = draw(st.one_of(proto_meld(),full_meld())) # pylint: disable=no-value-for-parameter
+  ch_resource = draw(channel_resource()) # pylint: disable=no-value-for-parameter
+  ch_type = draw(valid_shape()) # pylint: disable=no-value-for-parameter
+  addr = draw(relative_address()) # pylint: disable=no-value-for-parameter
+  ch_shape = draw(channel_field_shape()) # pylint: disable=no-value-for-parameter
+  meld = build_meld(ch_type,ch_resource,addr,ch_shape)
+  return meld
+
+@composite
 def channel_inputs(draw):
-  meld = draw(st.one_of(proto_meld(),full_meld())) # pylint: disable=no-value-for-parameter
+  meld = draw(arb_meld()) # pylint: disable=no-value-for-parameter
   sender_addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
   return (meld, sender_addr)
 
