@@ -16,7 +16,7 @@ from tests.strategies.pos_strats import arb_addr
 
 class TestWorkerComp(TestActiveComp, TestBuildableComp):
   def setUp(self):
-    self.address_registry = AddressRegistry(label='global_registry')
+    self.registry = AddressRegistry(label='global_registry')
     self.address = Address(golem='a',matrix='l',func_set='b')
     self.label = 'pr_0'
     self.ctg = CtgType.PACKAGER
@@ -24,12 +24,12 @@ class TestWorkerComp(TestActiveComp, TestBuildableComp):
       'reg_id': self.label,
       'address': self.address
     }
-    self.values = [self.address_registry]
+    self.values = [self.registry]
     self.var = tuple(self.values)
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
 
   def test_get_reg_connection(self):
-    self.comp.build(self.address_registry)
+    self.comp.build(self.registry)
     self.assertEqual(self.comp.reg_connection, self.var[0])
 
   @given(st.one_of(addr_reg(), st.integers())) # pylint: disable=no-value-for-parameter
