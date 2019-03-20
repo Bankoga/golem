@@ -47,6 +47,7 @@ class TestChannel(TestMediatorComp):
 
   @given(arb_meld_str(), arb_addr()) # pylint: disable=no-value-for-parameter
   def test_get_args(self, meld_str,sender_address):
+    # TODO: EXPAND THE MELD FULLY FOR ARGS INSTEAD OF NESTING IT
     meld_var = read_meld_str(self.meld_str)
     result = self.comp.get_args(meld_var,sender_address)
     expectation = [{},{},meld_var,sender_address]
@@ -96,7 +97,7 @@ class TestChannel(TestMediatorComp):
     self.comp.build(*self.values)
     self.assertEqual(self.comp.ch_type, self.ch_type)
 
-  def test_set_resource(self):
+  def test_set_ch_type(self):
     with self.assertRaises(RuntimeError):
       self.comp.ch_type  = 'Some string'
 
