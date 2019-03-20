@@ -9,6 +9,11 @@ class Meld(typing.NamedTuple):
   address: Address = None
   shape: tuple = (1,1)
 
+  def __str__(self):
+    return f'{self.ch_type};{self.resource};{self.address};{self.shape}'
+  
+  # TODO: add init to meld so that it can process string melds?
+
 def read_meld_str(meld_str):
   meld_tuple = meld_str.split(';')
   return Meld(*meld_tuple)
