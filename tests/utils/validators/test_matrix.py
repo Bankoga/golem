@@ -12,7 +12,7 @@ from utils.validators.matrix import reg_item_check,addr_item_check,channel_item_
 
 class TestMatrix(unittest.TestCase):
 
-  # TODO: these are really poorly written test cases... Need to rewrite them
+  # TODO: the is a really poorly written test case... Need to rewrite
   @given(st.one_of(reg_item_var(), reg_item_valid_var())) # pylint: disable=no-value-for-parameter
   def test_reg_item_check(self, reg_item):
     # if it does not fit the reg_item dict pattern, return False
@@ -25,7 +25,8 @@ class TestMatrix(unittest.TestCase):
     self.assertEqual(result, expectation)
     # if each property does not pass validation, return False
     # if everything else passes, return True
-    
+
+  # TODO: the is a really poorly written test case... Need to rewrite
   @given(st.one_of(addr_item_var(), addr_item_valid_var())) # pylint: disable=no-value-for-parameter
   def test_addr_item_check(self, addr_item):
     # if it does not fit the addr_item dict pattern, return False
