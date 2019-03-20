@@ -33,13 +33,18 @@ class Channel(MediatorComp):
     return args
     # return [{},{},channel_type,meld,recipient,resource,sender_address,shape]
 
-  def reg_item_help(self):
+  @property
+  def reg_item(self):
     return {
       'reg_id': self.label,
       'recipient': self.recipient,
       'sender': self.sender
     }
-
+  
+  @reg_item.setter
+  def reg_item(self, value):
+    raise RuntimeError('The reg item cannot be set!')
+  
   @property
   def meld(self):
     return self.var[2]

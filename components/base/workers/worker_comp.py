@@ -21,15 +21,12 @@ class WorkerComp(BuildableComp, ActiveComp):
     else:
       raise RuntimeError('Attempted to set an invalid reg connection!')
 
-  def reg_item_help(self):
+  @property
+  def reg_item(self):
     return {
       'reg_id': self.label,
       'address': self.address
     }
-  
-  @property
-  def reg_item(self):
-    return self.reg_item_help()
   
   @reg_item.setter
   def reg_item(self, value):
