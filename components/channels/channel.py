@@ -21,11 +21,11 @@ class Channel(MediatorComp):
   eventually, are package shapes going to be chainer variables?
   """
   def __init__(self, meld,sender_address, **kwargs):
-    args = self.read_data(meld,sender_address)
+    args = self.read_meld(meld,sender_address)
     kwargs['ctg'] = CtgType.CHANNEL
     super().__init__(*args,**kwargs)
   
-  def read_data(self, meld,sender_address):
+  def read_meld(self, meld,sender_address):
     meld_tuple = meld.split(';')
     recipient=meld_tuple[0]
     resource=RsrcType.UNSET
