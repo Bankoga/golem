@@ -8,7 +8,7 @@ from components.axioms.props import dest_key_pattern
 from components.enums.prop_types import FieldType, ChannelType, RsrcType
 from components.channels.misc_funcs import (build_address, build_meld,
                                             build_package,
-                                            build_package_inputs)
+                                            build_channel_inputs)
 from components.enums.pos import CtgType
 from components.channels.channel import Channel
 from components.vars.data import Address
@@ -16,8 +16,8 @@ from components.matrix.address_registry import AddressRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from tests.components.base.workers.test_mediator_comp import TestMediatorComp
 from tests.strategies.data_strats import valid_resource_data
-from tests.strategies.packing_strats import (package_arbitrary, package_inputs,
-                                             valid_package_arbitrary)
+from tests.strategies.packing_strats import (channel_arbitrary, channel_inputs,
+                                             valid_channel_arbitrary)
 from tests.strategies.pos_strats import arb_addr
 
 class TestChannel(TestMediatorComp):
@@ -61,7 +61,7 @@ class TestChannel(TestMediatorComp):
   #   self.var = None
   #   self.assertEqual(datp.label, datp.get_meld())
 
-  # @given(package_inputs()) # pylint: disable=no-value-for-parameter
+  # @given(channel_inputs()) # pylint: disable=no-value-for-parameter
   # def test_read_data(self,inputs):#meld_tuple,sender_address):
   #   # st.tuples(st.from_regex(dest_key_pattern),st.text(),st.text()), st.from_regex(dest_key_pattern)
   #   meld = inputs[0]
@@ -107,27 +107,27 @@ class TestChannel(TestMediatorComp):
   #   ['SenderModuleId','','RecipientModuleId','recipient_set_id'],
   #   ['SenderModuleId','sender_set_id','RecipientModuleId','recipient_set_id']
   # """
-  # @given(package_inputs()) # pylint: disable=no-value-for-parameter
+  # @given(channel_inputs()) # pylint: disable=no-value-for-parameter
   # def test_sampled_msg_read(self, inputs):
   #   self._read_data_(inputs[0],inputs[1])
 
-  # @given(package_inputs()) # pylint: disable=no-value-for-parameter
+  # @given(channel_inputs()) # pylint: disable=no-value-for-parameter
   # def test_compare_equal_packages(self, inputs):
   #   datp1 = Channel(inputs[0],inputs[1])
   #   datp2 = Channel(inputs[0],inputs[1])
   #   self.assertEqual(datp1,datp2)
 
-  # @given(package_arbitrary(),package_arbitrary()) # pylint: disable=no-value-for-parameter
+  # @given(channel_arbitrary(),channel_arbitrary()) # pylint: disable=no-value-for-parameter
   # def test_compare_arbitrary_packages(self, pack_a,pack_b):
   #   self.assertTrue(pack_a < pack_b or pack_b > pack_a or pack_a == pack_b or pack_a >= pack_b or pack_a <= pack_b)
 
-  # @given(package_arbitrary()) # pylint: disable=no-value-for-parameter
+  # @given(channel_arbitrary()) # pylint: disable=no-value-for-parameter
   # def test_unbuilt(self, input_pack):
   #   self.assertFalse(input_pack.is_built())
   #   with self.assertRaises(RuntimeError):
   #     input_pack.operate()
 
-  # @given(package_arbitrary(), valid_resource_data()) # pylint: disable=no-value-for-parameter
+  # @given(channel_arbitrary(), valid_resource_data()) # pylint: disable=no-value-for-parameter
   # def test_build(self, input_pack, data):
   #   self.assertFalse(input_pack.is_built())
   #   input_pack.build(data)
@@ -135,19 +135,19 @@ class TestChannel(TestMediatorComp):
   #   self.assertTrue(array_equal(input_pack.var, data))
   #   input_pack.operate()
 
-  # @given(package_arbitrary()) # pylint: disable=no-value-for-parameter
+  # @given(channel_arbitrary()) # pylint: disable=no-value-for-parameter
   # def test_get_meld(self,input_pack):
   #   meld = f'{input_pack.sender};{input_pack.address};{input_pack.resource};{input_pack.ctg_type};{input_pack.shape}'
   #   self.assertEqual(input_pack.get_meld(),meld)
 
-  # @given(valid_package_arbitrary(), arb_addr()) # pylint: disable=no-value-for-parameter
+  # @given(valid_channel_arbitrary(), arb_addr()) # pylint: disable=no-value-for-parameter
   # def test_update_address(self,input_pack, new_addr):
   #   input_pack.update(new_addr)
   #   self.assertEqual(input_pack.address, new_addr)
   #   self.assertFalse(input_pack.is_built())
   #   self.assertIsNone(input_pack.var)
 
-  # @given(valid_package_arbitrary(), arb_addr()) # pylint: disable=no-value-for-parameter
+  # @given(valid_channel_arbitrary(), arb_addr()) # pylint: disable=no-value-for-parameter
   # def test_reset(self,input_pack, new_addr):
   #   input_pack.update(new_addr)
   #   input_pack.reset()

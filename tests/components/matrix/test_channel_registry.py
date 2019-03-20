@@ -50,7 +50,7 @@ class TestChannelRegistry(TestRegistry):
   #   Do we simply do property safety checks?
   #   Is data required?
   #   """
-  #   if package_check(package):
+  #   if channel_check(package):
   #     self.test_send_package(package)
 
 if __name__ == '__main__':

@@ -10,7 +10,7 @@ from components.channels.channel import Channel
 from components.channels.misc_funcs import (build_meld)
 
 from tests.strategies.pos_strats import full_address, partial_address, arb_addr
-from tests.strategies.prop_strats import (package_field_shape, package_resource, package_type)
+from tests.strategies.prop_strats import (channel_field_shape, channel_resource, channel_type)
 from tests.strategies.data_strats import valid_resource_data
 
 """
@@ -34,22 +34,22 @@ def sender_and_recipient_pair(draw):
 @composite
 def proto_meld(draw):
   addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
-  dp_resource = draw(package_resource()) # pylint: disable=no-value-for-parameter
-  dp_type = draw(package_type()) # pylint: disable=no-value-for-parameter
+  dp_resource = draw(channel_resource()) # pylint: disable=no-value-for-parameter
+  dp_type = draw(channel_type()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type)
   return meld
 
 @composite
 def full_meld(draw):
   addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
-  dp_resource = draw(package_resource()) # pylint: disable=no-value-for-parameter
-  dp_type = draw(package_type()) # pylint: disable=no-value-for-parameter
-  dp_shape = draw(package_field_shape()) # pylint: disable=no-value-for-parameter
+  dp_resource = draw(channel_resource()) # pylint: disable=no-value-for-parameter
+  dp_type = draw(channel_type()) # pylint: disable=no-value-for-parameter
+  dp_shape = draw(channel_field_shape()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type,dp_shape)
   return meld
 
 @composite
-def package_inputs(draw):
+def channel_inputs(draw):
   meld = draw(st.one_of(proto_meld(),full_meld())) # pylint: disable=no-value-for-parameter
   sender_addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
   return (meld, sender_addr)
@@ -62,14 +62,14 @@ def valid_cell_instruction(draw):
   return instruction
 
 @composite
-def package_arbitrary(draw):
-  inputs = draw(package_inputs()) # pylint: disable=no-value-for-parameter
+def channel_arbitrary(draw):
+  inputs = draw(channel_inputs()) # pylint: disable=no-value-for-parameter
   pack = Channel(inputs[0], inputs[1])
   return pack
 
 @composite
-def valid_package_arbitrary(draw):
-  inputs = draw(package_inputs()) # pylint: disable=no-value-for-parameter
+def valid_channel_arbitrary(draw):
+  inputs = draw(channel_inputs()) # pylint: disable=no-value-for-parameter
   pack = Channel(inputs[0], inputs[1])
   """
   given that we have a package
@@ -84,10 +84,10 @@ def valid_package_arbitrary(draw):
 
 # @composite
 # def input_pack_arbitrary(draw):
-#   pack = draw(package_arbitrary()): # pylint: disable=no-value-for-parameter
+#   pack = draw(channel_arbitrary()): # pylint: disable=no-value-for-parameter
 #   pack.build()
 #   return pack
 
 @composite
-def valid_package_from_context(draw):
+def valid_channel_from_context(draw):
   pass

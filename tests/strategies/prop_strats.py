@@ -5,12 +5,13 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
 from components.axioms.cell_types import CellType
+from components.axioms.maps.set import get_ids
 from components.axioms.matrix import max_resource_value, min_resource_value
 from components.axioms.props import id_pattern, invalid_id_pattern
-from components.enums.prop_types import FuncSetType, FieldType, HookType, ChannelType, RsrcType, PackagerType, RuleType, SuperSet
-from components.axioms.maps.set import get_ids
-
 from components.channels.channel import Channel
+from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
+                                         HookType, PackagerType, RsrcType,
+                                         RuleType, SuperSet)
 
 
 @composite
@@ -39,7 +40,6 @@ def node_type_prop(draw):
   st.assume(res != PackagerType.UNSET)
   return res
 
-
 @composite
 def hook_type(draw):
   res = draw(st.sampled_from(HookType))
@@ -48,7 +48,7 @@ def hook_type(draw):
   return res
 
 @composite
-def package_resource(draw):
+def channel_resource(draw):
   res = draw(st.sampled_from(RsrcType))
   st.assume(res)
   st.assume(res != RsrcType.UNSET)
@@ -69,14 +69,14 @@ def set_type_prop(draw):
   return res
 
 @composite
-def package_type(draw):
+def channel_type(draw):
   res = draw(st.sampled_from(ChannelType))
   st.assume(res)
   st.assume(res != ChannelType.UNSET)
   return res
 
 @composite
-def package_field_shape(draw):
+def channel_field_shape(draw):
   res = draw(st.sampled_from(FieldType))
   st.assume(res)
   st.assume(res != FieldType.UNSET)
@@ -88,7 +88,6 @@ def rule_type_prop(draw):
   st.assume(res)
   st.assume(res != RuleType.UNSET)
   return res
-
 
 @composite
 def fs_provider_id(draw):

@@ -7,12 +7,12 @@ from components.axioms.configs import proc_ids,set_ids,set_ids
 from components.enums.prop_types import ChannelType,SuperSet
 
 from tests.strategies.prop_strats import set_type_prop
-from tests.strategies.packing_strats import package_arbitrary
+from tests.strategies.packing_strats import channel_arbitrary
 from tests.strategies.pos_strats import arb_addr, partial_address
 from tests.strategies.data_strats import valid_resource_data
 
 from components.channels.channel import Channel
-from components.channels.misc_funcs import build_address, build_meld, build_package_inputs, build_package
+from components.channels.misc_funcs import build_address, build_meld, build_channel_inputs, build_package
 
 from components.func_sets.fs_builder_provider import fs_services
 
@@ -47,7 +47,7 @@ def group_input_set(draw, elements=partial_address()): # pylint: disable=no-valu
   group_inputs = []
   funcset = draw(proc_group()) # pylint: disable=no-value-for-parameter
   for group in funcset.groups:
-    inp = draw(package_arbitrary()) # pylint: disable=no-value-for-parameter
+    inp = draw(channel_arbitrary()) # pylint: disable=no-value-for-parameter
     groups.append(funcset.groups[group]['id'])
     inp.update(f'{address}-{funcset.groups[group]["id"]}')
     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
@@ -64,8 +64,8 @@ def module_input_set(draw, elements=partial_address()): # pylint: disable=no-val
   # thus we need to generate two or more sets of inputs that get merged into one
   # inputs to the module
   address = draw(elements)#partial_address()) # pylint: disable=no-value-for-parameter
-  packs_overlay = draw(st.lists(package_arbitrary(), max_size=3)) # pylint: disable=no-value-for-parameter
-  packs_aggrg = draw(st.lists(package_arbitrary(),max_size=4)) # pylint: disable=no-value-for-parameter
+  packs_overlay = draw(st.lists(channel_arbitrary(), max_size=3)) # pylint: disable=no-value-for-parameter
+  packs_aggrg = draw(st.lists(channel_arbitrary(),max_size=4)) # pylint: disable=no-value-for-parameter
   st.assume(address)
   inputs = []
   for pack in packs_overlay:
@@ -110,8 +110,8 @@ def valid_module_input_set(draw):
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_set_id','self','Self','']))
-# def test_build_package_inputs(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-#   inputs = build_package_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+# def test_build_channel_inputs(self,rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+#   inputs = build_channel_inputs(rm_id,rg_id,dp_resource,dp_type,dp_shape,sm_id,sg_id)
 #   sender_address = build_address(sm_id,sg_id)
 #   meld = build_meld(rm_id,rg_id,dp_resource,dp_type,dp_shape)
 #   res = tuple([meld,sender_address])

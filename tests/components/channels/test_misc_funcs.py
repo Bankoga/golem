@@ -6,10 +6,10 @@ from hypothesis import strategies as st
 from components.enums.prop_types import FieldType,ChannelType,RsrcType
 
 from tests.strategies.pos_strats import full_address,partial_address,arb_addr
-from tests.strategies.prop_strats import package_field_shape,package_resource,package_type, arbitrary_id
+from tests.strategies.prop_strats import channel_field_shape,channel_resource,channel_type, arbitrary_id
 
 from components.channels.channel import Channel
-from components.channels.misc_funcs import build_address, build_meld, build_package_inputs, build_package
+from components.channels.misc_funcs import build_address, build_meld, build_channel_inputs, build_package
 
 class TestMiscFuncs(unittest.TestCase):
   # @given(st.text(),st.text())
@@ -21,7 +21,7 @@ class TestMiscFuncs(unittest.TestCase):
     else:
       self.assertEqual(addr, f'{m_id}-{g_id}')
 
-  @given(arb_addr(),package_resource(),package_type(),package_field_shape()) # pylint: disable=no-value-for-parameter
+  @given(arb_addr(),channel_resource(),channel_type(),channel_field_shape()) # pylint: disable=no-value-for-parameter
   def test_build_meld(self, recip_addr,dp_resource,dp_type,dp_shape):
     # addr = build_address(rm_id,rg_id)
     meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
@@ -38,8 +38,8 @@ class TestMiscFuncs(unittest.TestCase):
   st.sampled_from(['sender_set_id','self','Self','']))
   # st.one_of(full_address,partial_address),
   # HERE, I only need to test building the inputs for packages with great verbage
-  def test_build_package_inputs(self,recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id):
-    inputs = build_package_inputs(recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id)
+  def test_build_channel_inputs(self,recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id):
+    inputs = build_channel_inputs(recip_addr,dp_resource,dp_type,dp_shape,sm_id,sg_id)
     sender_address = build_address(sm_id,sg_id)
     meld = build_meld(recip_addr,dp_resource,dp_type,dp_shape)
     res = tuple([meld,sender_address])
