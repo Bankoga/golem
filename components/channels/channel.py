@@ -3,6 +3,7 @@ from components.enums.pos import CtgType
 from components.enums.prop_types import ChannelType,RsrcType,FieldType
 from chainer import Variable
 from components.vars.meld import read_meld_str
+from components.vars.data import Address
 
 class Channel(MediatorComp):
   """
@@ -23,7 +24,7 @@ class Channel(MediatorComp):
   """
   def __init__(self, meld,sender_address, **kwargs):
     meld_var = read_meld_str(meld)
-    args = self.get_args(meld_var,sender_address)
+    args = self.get_args(meld_var,str(sender_address))
     kwargs['ctg'] = CtgType.CHANNEL
     super().__init__(*args,**kwargs)
   
@@ -54,16 +55,8 @@ class Channel(MediatorComp):
     self.setter_error()
 
   @property
-  def address(self):
-    return self.meld.address
-  
-  @address.setter
-  def address(self, value):
-    self.setter_error()
-
-  @property
   def recipient(self):
-    return self.address
+    return self.meld.address
 
   @recipient.setter
   def recipient(self, value):

@@ -25,23 +25,23 @@ from tests.strategies.pos_strats import arb_addr
 class TestChannel(TestMediatorComp):
   def setUp(self):
     self.address_registry = AddressRegistry(label='global_address_registry_api')
-    self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
-    self.sender = Address(golem='a',matrix='l',func_set='glg', group='assoc_from')
+    self.registry = ChannelRegistry(label='global_channel_registry_api')
+    self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
+    self.address = None
     self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
-    self.address = self.recipient
     self.shape = (256,256)
     self.resource = RsrcType.ENERGY
     self.channel_type = ChannelType.AGGREGATE
-    self.meld_str = f'{self.address};{self.resource};{self.channel_type};{self.shape}'
+    self.meld_str = f'{self.channel_type};{self.resource};{self.recipient};{self.shape}'
     self.meld_var = read_meld_str(self.meld_str)
     self.label = 'ch_bc_star_energy'
     self.ctg = CtgType.CHANNEL
     self.reg_item = {
       'reg_id': self.label,
-      'recipient': self.address,
-      'sender': self.sender
+      'recipient': str(self.recipient),
+      'sender': str(self.sender)
     }
-    self.values = [self.address_registry,self.channel_registry,self.meld_var,self.sender]
+    self.values = [self.registry,self.address_registry,self.meld_var,str(self.sender)]
     self.var = tuple(self.values)
     self.comp = Channel(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
 
@@ -60,7 +60,7 @@ class TestChannel(TestMediatorComp):
       self.comp.meld  = 'Some string'
 
   def test_get_recipient(self):
-    self.assertEqual(self.comp.recipient, self.address)
+    self.assertEqual(self.comp.recipient, self.recipient)
 
   def test_set_recipient(self):
     with self.assertRaises(RuntimeError):
