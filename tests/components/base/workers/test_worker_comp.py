@@ -28,7 +28,7 @@ class TestWorkerComp(TestBuildableComp):
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
 
   def test_get_registry(self):
-    self.comp.build(self.registry)
+    self.comp.build(*self.values)
     self.assertEqual(self.comp.registry, self.var[0])
 
   @given(st.one_of(addr_reg(), st.integers())) # pylint: disable=no-value-for-parameter

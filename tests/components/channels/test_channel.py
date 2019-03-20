@@ -29,7 +29,7 @@ class TestChannel(TestMediatorComp):
     self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
     self.address = None
     self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
-    self.shape = (256,256)
+    self.shape = tuple([256,256])
     self.resource = RsrcType.ENERGY
     self.ch_type = ChannelType.AGGREGATE
     self.meld_str = f'{self.ch_type.name};{self.resource.name};{self.recipient};{self.shape}'
@@ -41,17 +41,17 @@ class TestChannel(TestMediatorComp):
       'recipient': str(self.recipient),
       'sender': str(self.sender)
     }
-    self.values = [self.registry,self.address_registry,self.meld_var,str(self.sender)]
+    self.values = [self.registry,self.address_registry,str(self.meld_var),str(self.sender)]
     self.var = tuple(self.values)
     self.comp = Channel(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
 
-  @given(arb_meld_str(), arb_addr()) # pylint: disable=no-value-for-parameter
-  def test_get_args(self, meld_str,sender_address):
-    # TODO: EXPAND THE MELD FULLY FOR ARGS INSTEAD OF NESTING IT
-    meld_var = read_meld_str(self.meld_str)
-    result = self.comp.get_args(meld_var,sender_address)
-    expectation = [{},{},meld_var,sender_address]
-    self.assertEqual(result,expectation)
+  def test_get_meld_str(self):
+    self.comp.build(*self.values)
+    self.assertEqual(self.comp.meld_str, self.meld_str)
+
+  def test_set_meld_str(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.meld_str  = 'Some string'
 
   def test_get_meld(self):
     self.comp.build(*self.values)
@@ -83,7 +83,7 @@ class TestChannel(TestMediatorComp):
 
   def test_set_shape(self):
     with self.assertRaises(RuntimeError):
-      self.comp.shape  = 'Some string'
+      self.comp.shape  = (94,40)
 
   def test_get_resource(self):
     self.comp.build(*self.values)
@@ -100,6 +100,15 @@ class TestChannel(TestMediatorComp):
   def test_set_ch_type(self):
     with self.assertRaises(RuntimeError):
       self.comp.ch_type  = 'Some string'
+
+  def test_build_with_data(self):
+    meld_str = f'{self.ch_type.name};{self.resource.name};{self.sender};{self.shape}'
+    meld_var = read_meld_str(meld_str)
+    self.values[2] = str(meld_var)
+    self.comp.build(*self.values)
+    self.assertEqual(self.comp.meld,meld_var)
+    self.assertEqual(self.comp.var, tuple(self.values))
+    self.assertTrue(self.comp.is_built)
 
 if __name__ == '__main__':
     unittest.main()

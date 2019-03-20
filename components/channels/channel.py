@@ -22,17 +22,12 @@ class Channel(MediatorComp):
   
   eventually, are package shapes going to be chainer variables?
   """
-  def __init__(self, meld,sender_address, **kwargs):
-    meld_var = read_meld_str(meld)
-    args = self.get_args(meld_var,str(sender_address))
+  def __init__(self, meld_str,sender_address, **kwargs):
+    # meld_var = read_meld_str(meld)
+    args = [{},{},meld_str,sender_address]
     kwargs['ctg'] = CtgType.CHANNEL
     super().__init__(*args,**kwargs)
-  
-  def get_args(self, meld,sender_address):
-    args = [{},{},meld,sender_address]
-    # args.append(*meld)
-    return args
-    # return [{},{},ch_type,meld,recipient,resource,sender_address,shape]
+    self.__meld = None
 
   @property
   def reg_item(self):
@@ -47,8 +42,19 @@ class Channel(MediatorComp):
     raise RuntimeError('The reg item cannot be set!')
   
   @property
-  def meld(self):
+  def meld_str(self):
     return self.var[2]
+  
+  @meld_str.setter
+  def meld_str(self, value):
+    self.setter_error()
+    
+  @property
+  def meld(self):
+    if self.__meld is None:
+      self.__meld = read_meld_str(self.meld_str)
+    else:
+      return self.__meld
   
   @meld.setter
   def meld(self, value):
@@ -93,10 +99,9 @@ class Channel(MediatorComp):
   @ch_type.setter
   def ch_type(self, value):
     self.setter_error()
-  # def get_meld(self):
-  #     return f'{self.sender};{self.recipient};{self.resource};{self.ch_type};{self.shape}'
-
-  # def update(self, new_addr):
-  #   self.recipient = new_addr
-  #   self._built_ = False
-  #   self.var = None
+    
+  def build(self, *args, **kwargs):
+    super().build(*args)
+    self.__meld = read_meld_str(self.meld_str)
+    if 'address' in kwargs:
+      self.register(kwargs['address'])
