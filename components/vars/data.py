@@ -2,6 +2,7 @@ import numpy
 import typing
 
 from utils.pos import Pos
+from utils.helpers.props import build_addr_id
 
 locale = ('address', 'pos')
 # var_types = ['pos', 'f_shape', 's_shape', 'weights']
@@ -16,6 +17,8 @@ class Address(typing.NamedTuple):
   instruction: str = None
   channel: str = None
 
+  def __str__(self):
+    return build_addr_id(self)
 
 # items must be filled in the correct order without skipping!
 

@@ -6,6 +6,7 @@ from components.axioms.pos import cardinal_keys
 from components.enums.pos import Floor, CtgType, Dimension
 from components.channels.channel import Channel
 from components.vars.data import Address
+from utils.helpers.props import build_addr_id
 
 from tests.strategies.prop_strats import arbitrary_id
 
@@ -26,12 +27,7 @@ def partial_address(draw):
 @composite
 def rel_addr(draw):
   ids = draw(st.lists(arbitrary_id(),max_size=7)) # pylint: disable=no-value-for-parameter
-  res = ''
-  for i in ids:
-    if res == '':
-      res = i
-    else:
-      res = f'{res}-{i}'
+  res = build_addr_id(ids)
   return res
 
 @composite
