@@ -1,6 +1,6 @@
 from components.base.workers.mediator_comp import MediatorComp
 from components.enums.pos import CtgType
-from components.enums.prop_types import ChannelType,RsrcType,FieldType
+from components.enums.prop_types import ChannelType,RsrcType
 from chainer import Variable
 from components.vars.meld import read_meld_str
 from components.vars.data import Address
@@ -32,7 +32,7 @@ class Channel(MediatorComp):
     args = [{},{},meld,sender_address]
     # args.append(*meld)
     return args
-    # return [{},{},channel_type,meld,recipient,resource,sender_address,shape]
+    # return [{},{},ch_type,meld,recipient,resource,sender_address,shape]
 
   @property
   def reg_item(self):
@@ -80,14 +80,21 @@ class Channel(MediatorComp):
 
   @property
   def resource(self):
-    return self.meld.resource
+    return RsrcType[self.meld.resource]
 
   @resource.setter
   def resource(self, value):
     self.setter_error()
-  
+
+  @property
+  def ch_type(self):
+    return ChannelType[self.meld.ch_type]
+
+  @ch_type.setter
+  def ch_type(self, value):
+    self.setter_error()
   # def get_meld(self):
-  #     return f'{self.sender};{self.recipient};{self.resource};{self.channel_type};{self.shape}'
+  #     return f'{self.sender};{self.recipient};{self.resource};{self.ch_type};{self.shape}'
 
   # def update(self, new_addr):
   #   self.recipient = new_addr

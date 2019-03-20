@@ -69,7 +69,7 @@ def set_type_prop(draw):
   return res
 
 @composite
-def channel_type(draw):
+def ch_type(draw):
   res = draw(st.sampled_from(ChannelType))
   st.assume(res)
   st.assume(res != ChannelType.UNSET)

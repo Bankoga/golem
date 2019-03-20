@@ -9,7 +9,7 @@ from components.enums.prop_types import FieldType,HookType,RsrcType,ChannelType
 from components.channels.misc_funcs import build_address, build_meld
 from tests.components.channels.test_channel import TestChannel
 from tests.strategies.pos_strats import arb_addr,full_address,partial_address
-from tests.strategies.prop_strats import arbitrary_id, channel_field_shape,set_type_prop,channel_resource,hook_type,channel_type
+from tests.strategies.prop_strats import arbitrary_id, channel_field_shape,set_type_prop,channel_resource,hook_type,ch_type
 
 class TestHook(TestChannel):
   # def setUp(self):
@@ -84,7 +84,7 @@ class TestHook(TestChannel):
     meld = ";".join(meld_tuple)
     self._read_data_(meld)
 
-  @given(arbitrary_id(), hook_type(), arb_addr(), channel_resource(), channel_type(), channel_field_shape()) # pylint: disable=no-value-for-parameter
+  @given(arbitrary_id(), hook_type(), arb_addr(), channel_resource(), ch_type(), channel_field_shape()) # pylint: disable=no-value-for-parameter
   def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
     inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
     self._read_data_(inputs)

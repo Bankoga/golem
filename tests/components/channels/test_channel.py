@@ -31,8 +31,8 @@ class TestChannel(TestMediatorComp):
     self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
     self.shape = (256,256)
     self.resource = RsrcType.ENERGY
-    self.channel_type = ChannelType.AGGREGATE
-    self.meld_str = f'{self.channel_type};{self.resource};{self.recipient};{self.shape}'
+    self.ch_type = ChannelType.AGGREGATE
+    self.meld_str = f'{self.ch_type.name};{self.resource.name};{self.recipient};{self.shape}'
     self.meld_var = read_meld_str(self.meld_str)
     self.label = 'ch_bc_star_energy'
     self.ctg = CtgType.CHANNEL
@@ -53,6 +53,7 @@ class TestChannel(TestMediatorComp):
     self.assertEqual(result,expectation)
 
   def test_get_meld(self):
+    self.comp.build(*self.values)
     self.assertEqual(self.comp.meld, self.meld_var)
 
   def test_set_meld(self):
@@ -60,20 +61,23 @@ class TestChannel(TestMediatorComp):
       self.comp.meld  = 'Some string'
 
   def test_get_recipient(self):
-    self.assertEqual(self.comp.recipient, self.recipient)
+    self.comp.build(*self.values)
+    self.assertEqual(self.comp.recipient, str(self.recipient))
 
   def test_set_recipient(self):
     with self.assertRaises(RuntimeError):
       self.comp.recipient  = 'Some string'
 
   def test_get_sender(self):
-    self.assertEqual(self.comp.sender, self.sender)
+    self.comp.build(*self.values)
+    self.assertEqual(self.comp.sender, str(self.sender))
 
   def test_set_sender(self):
     with self.assertRaises(RuntimeError):
       self.comp.sender  = 'Some string'
 
   def test_get_shape(self):
+    self.comp.build(*self.values)
     self.assertEqual(self.comp.shape, self.shape)
 
   def test_set_shape(self):
@@ -81,11 +85,20 @@ class TestChannel(TestMediatorComp):
       self.comp.shape  = 'Some string'
 
   def test_get_resource(self):
+    self.comp.build(*self.values)
     self.assertEqual(self.comp.resource, self.resource)
 
   def test_set_resource(self):
     with self.assertRaises(RuntimeError):
       self.comp.resource  = 'Some string'
+
+  def test_get_ch_type(self):
+    self.comp.build(*self.values)
+    self.assertEqual(self.comp.ch_type, self.ch_type)
+
+  def test_set_resource(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.ch_type  = 'Some string'
 
 if __name__ == '__main__':
     unittest.main()
