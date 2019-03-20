@@ -1,10 +1,9 @@
 from abc import abstractmethod
 
-from components.base.active_comp import ActiveComp
 from components.base.buildable_comp import BuildableComp
 from components.matrix.address_registry import AddressRegistry
 
-class WorkerComp(BuildableComp, ActiveComp):
+class WorkerComp(BuildableComp):
   def __init__(self, *args,**kwargs):
     super().__init__(*args, **kwargs)
     self.__is_registered = False
