@@ -7,7 +7,7 @@ from components.packagers.cells.cell import Cell
 from components.axioms.cell_types import CellType,cell_data
 from components.enums.prop_types import RuleType, RsrcType, ChannelType,FieldType, PackagerType
 
-from tests.strategies.packing_strats import valid_cell_instruction
+from tests.strategies.channel_strats import valid_cell_instruction
 from tests.strategies.prop_strats import cell_type_prop
 
 from components.channels.misc_funcs import build_address, build_meld, build_package

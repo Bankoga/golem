@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from tests.strategies.packing_strats import channel_arbitrary,valid_channel_arbitrary
+from tests.strategies.channel_strats import channel_arbitrary,valid_channel_arbitrary
 
 from utils.helpers.convoluter import get_conv_sign
 

@@ -16,7 +16,7 @@ from components.matrix.address_registry import AddressRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from tests.components.base.workers.test_mediator_comp import TestMediatorComp
 from tests.strategies.data_strats import valid_resource_data
-from tests.strategies.packing_strats import (channel_arbitrary, channel_inputs,
+from tests.strategies.channel_strats import (channel_arbitrary, channel_inputs,
                                              valid_channel_arbitrary)
 from tests.strategies.pos_strats import arb_addr
 
