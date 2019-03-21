@@ -8,11 +8,18 @@ from components.enums.prop_types import CtgType
 from tests.components.base.test_static_comp import TestStaticComp
 
 class TestPassiveComp(TestStaticComp):
-  def setUp(self):
+  def set_up_base():
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
+
+
+  def set_up_var(self):
     self.value = 'Any arbitrary type of object?'
     self.var = tuple([self.value])
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_var()
     self.comp = PassiveComp(self.value, label=self.label, ctg=self.ctg)
 
   @given(st.lists(st.integers()))
