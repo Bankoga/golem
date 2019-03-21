@@ -1,9 +1,9 @@
-from data.axioms.configs import file_type
+from components.axioms.configs import file_type
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.pos import Pos
 from components.func_sets.func_set import FuncSet
-from data.enums.prop_types import FuncSetType
+from components.enums.prop_types import FuncSetType
 
 
 class Coder(FuncSet):

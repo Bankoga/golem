@@ -3,11 +3,11 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.enums.prop_types import RuleType
+from components.enums.prop_types import RuleType
 
 from tests.components.instructions.test_instruction import TestInstruction
 from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
-from tests.strategies.packing_strats import valid_conv_shape,valid_resource_data
+from tests.strategies.data_strats import valid_conv_shape, valid_resource_data
 from tests.strategies.func_set_strats import module_input_set,processed_module_input_set
 from tests.strategies.pos_strats import valid_direction, valid_pos
 
@@ -33,9 +33,9 @@ class TestConvInstruction(TestInstruction):
     self.comp = ConvInstruction(self.valid_c_id,self.direction,self.conv_shapes, self.source_ind,self.source_shape,self.pos)
 
   @given(arbitrary_id(), valid_direction(), st.lists(valid_conv_shape()),valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, itm_id,direction, conv_shapes,pos):
+  def test_default(self, label,direction, conv_shapes,pos):
         # for efficiency reasons, eventually instructions will need to be built before processing
-    inst = ConvInstruction(itm_id,direction, conv_shapes, self.source_ind, self.source_shape,pos)
+    inst = ConvInstruction(label,direction, conv_shapes, self.source_ind, self.source_shape,pos)
     self.assertEqual(inst.get_ctg(), RuleType.CONV)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)

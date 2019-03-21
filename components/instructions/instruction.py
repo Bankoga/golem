@@ -1,14 +1,14 @@
 from abc import abstractmethod
-from components.component import Component
-from data.enums.prop_types import RuleType
+from components.base.workers.consumer_comp import ConsumerComp
+from components.enums.prop_types import RuleType
 
-class Instruction(Component):
-  def __init__(self, itm_id, rtype, pos):
+class Instruction(ConsumerComp):
+  def __init__(self, label, rtype, pos):
     self.item_label = f'{rtype.name}-{pos.get_hash()}'
     # hash(self.item_label)
     # What is the id of AN instruction in the matrix?
     # some func of type name, shape, position, and ?
-    super().__init__(itm_id, rtype.get_component_type(), rtype)
+    super().__init__(label, rtype.get_component_type(), rtype)
     self.curr_shape = None
     self.curr_bearing = None
     self.curr_pos = None

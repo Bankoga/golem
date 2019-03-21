@@ -1,5 +1,5 @@
 from utils.object_factory import *
-from data.axioms.configs import coder_ids
+from components.axioms.configs import coder_ids
 from components.func_sets.coders.parts_sensor import PartsSensorBuilder
 # from components.func_sets.coders.dc_granular_cort import DCGranularCortBuilder
 

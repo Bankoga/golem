@@ -1,6 +1,6 @@
 from components.func_sets.coders.coder import Coder
-from data.axioms.configs import coder_ids
-from data.enums.prop_types import FuncSetType
+from components.axioms.configs import coder_ids
+from components.enums.prop_types import FuncSetType
 
 class PartsSensor(Coder):
   def __init__(self):

@@ -1,10 +1,10 @@
-from data.enums.prop_types import RuleType
+from components.enums.prop_types import RuleType
 
 from components.instructions.instruction import Instruction
 
 class ConvInstruction(Instruction):
-  def __init__(self,itm_id,direction,conv_shapes,source_ind,source_shape,pos):
-    super().__init__(itm_id,RuleType.CONV, pos)
+  def __init__(self,label,direction,conv_shapes,source_ind,source_shape,pos):
+    super().__init__(label,RuleType.CONV, pos)
     self.shape = source_shape
     self.direction = direction
     self.ind = source_ind

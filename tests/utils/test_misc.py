@@ -3,7 +3,7 @@
 # from hypothesis import given
 # from hypothesis import strategies as st
 
-# from data.axioms.configs import set_ids
+# from components.axioms.configs import set_ids
 # from tests.strategies.func_set_strats import module_input_set
 
 # from utils.misc import input_sort
@@ -15,7 +15,7 @@
 #   def test_input_sort(self, inputs):
 #     expectation = {}
 #     for pack in inputs:
-#       if pack.get_type() is PackType.
+#       if pack.get_type() is ChannelType.
     
 
 # if __name__ == '__main__':

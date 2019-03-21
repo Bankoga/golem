@@ -3,16 +3,16 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from data.enums.prop_types import RuleType
-from data.enums.pos import ComponentType
+from components.enums.prop_types import RuleType
+from components.enums.pos import CtgType
 from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
 from tests.strategies.pos_strats import valid_pos
-from tests.strategies.packing_strats import valid_resource_data
+from tests.strategies.data_strats import valid_resource_data
 
 from utils.pos import Pos
 from components.instructions.instruction import Instruction
 
-from tests.components.test_component import TestComponent
+from tests.components.base.test_component import TestComponent
 
 from numpy import array_equal
 
@@ -20,17 +20,17 @@ class TestInstruction(TestComponent):
   def setUp(self):
     self.valid_c_id = 'TotallyValidId'
     self.valid_c_type = RuleType.CONV
-    self.pos = Pos()
+    self.pos = Pos(RuleType.CONV.get_component_type())
     self.comp = Instruction(self.valid_c_id,self.valid_c_type,self.pos)
 
   @given(arbitrary_id(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
-  def test_default(self, itm_id, rtype, pos):
+  def test_default(self, label, rtype, pos):
     # for efficiency reasons, eventually instructions will need to be built before processing
-    # itm_id = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?
-    inst = Instruction(itm_id, rtype, pos)
+    # label = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?
+    inst = Instruction(label, rtype, pos)
     c_lvl = rtype.get_component_type()
-    self.assertEqual(inst.get_id(), itm_id)
-    self.assertEqual(inst.op_lvl, ComponentType(c_lvl))
+    self.assertEqual(inst.get_id(), label)
+    self.assertEqual(inst.op_lvl, CtgType(c_lvl))
     self.assertEqual(inst.ctg_type, rtype)
     self.assertIsNone(inst.curr_shape)
     self.assertIsNone(inst.curr_bearing)

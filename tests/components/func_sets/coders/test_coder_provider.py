@@ -1,7 +1,7 @@
 import unittest
 from hypothesis import given
 import hypothesis.strategies as st
-from data.axioms.configs import coder_ids
+from components.axioms.configs import coder_ids
 from components.func_sets.coders.coder_provider import coder_services
 
 class TestCoderProvider(unittest.TestCase):
