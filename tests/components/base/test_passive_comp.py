@@ -12,7 +12,6 @@ class TestPassiveComp(TestStaticComp):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
 
-
   def set_up_var(self):
     self.value = 'Any arbitrary type of object?'
     self.var = tuple([self.value])
