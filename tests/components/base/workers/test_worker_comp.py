@@ -14,17 +14,23 @@ from tests.strategies.matrix_strats import addr_reg
 from tests.strategies.pos_strats import arb_addr
 
 class TestWorkerComp(TestBuildableComp):
-  def setUp(self):
-    self.registry = AddressRegistry(label='global_registry')
-    self.address = Address(golem='a',matrix='l',func_set='b')
+  def set_up_base(self):
     self.label = 'pr_0'
     self.ctg = CtgType.PACKAGER
+
+  def set_up_var(self):
+    self.registry = AddressRegistry(label='global_registry')
+    self.address = Address(golem='a',matrix='l',func_set='b')
     self.reg_item = {
       'reg_id': self.label,
       'address': self.address
     }
     self.values = [self.registry]
     self.var = tuple(self.values)
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_var()
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
