@@ -13,14 +13,20 @@ from utils.pos import Pos
 
 
 class TestConvShape(TestPassiveComp):
-
-  def setUp(self):
+  def set_up_base(self):
+    self.ctg = CtgType.DATA
+    self.label = 'TotallyValidId'
+    
+  def set_up_var(self):
     self.filter_shape = (4,4)
     self.spacing_shape = (1,1)
     self.weights = ones(self.filter_shape)
+    self.values = [self.filter_shape,self.spacing_shape,self.weights]
     self.var = ConvVar(filter_shape=self.filter_shape, spacing_shape=self.spacing_shape,weights=self.weights)
-    self.ctg = CtgType.DATA
-    self.label = 'TotallyValidId'
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_var()
     self.comp = ConvShape(self.filter_shape, self.spacing_shape,label=self.label)
 
   @given(valid_shape(),valid_shape(),valid_weights()) # pylint: disable=no-value-for-parameter
