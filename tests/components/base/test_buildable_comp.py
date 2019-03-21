@@ -8,11 +8,17 @@ from components.enums.prop_types import CtgType
 from tests.components.base.test_passive_comp import TestPassiveComp
 
 class TestBuildableComp(TestPassiveComp):
-  def setUp(self):
+  def set_up_base(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
+
+  def set_up_var(self):
     self.values = []
     self.var = tuple(self.values)
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_var()
     self.comp = BuildableComp(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
