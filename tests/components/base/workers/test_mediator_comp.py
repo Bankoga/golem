@@ -28,10 +28,9 @@ class TestMediatorComp(TestWorkerComp):
     self.values = [self.registry, self.channel_registry]
     self.var = tuple(self.values)
     self.comp = MediatorComp(label=self.label, ctg=self.ctg)
-    # self.comp.build(*self.values)
+    self.comp.build(*self.values)
 
   def test_get_address_registry(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.address_registry, self.address_registry)
 
   def test_set_address_registry(self):
@@ -39,7 +38,6 @@ class TestMediatorComp(TestWorkerComp):
       self.comp.address_registry = self.address_registry
 
   def test_get_channel_registry(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.channel_registry, self.channel_registry)
 
   def test_set_channel_registry(self):
@@ -47,12 +45,10 @@ class TestMediatorComp(TestWorkerComp):
       self.comp.channel_registry = self.channel_registry
 
   def test_register_address(self, new_addr):
-    self.comp.build(*self.values)
     res = self.comp.register_address(new_addr)
     self.assertTrue(res)
 
   def test_register_channel(self, new_channel):
-    self.comp.build(*self.values)
     res = self.comp.register_channel(new_channel)
     self.assertTrue(res)
 
