@@ -8,7 +8,7 @@ from components.enums.prop_types import CtgType
 from tests.components.base.test_static_comp import TestStaticComp
 
 class TestPassiveComp(TestStaticComp):
-  def set_up_base():
+  def set_up_base(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
 
