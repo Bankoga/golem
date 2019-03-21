@@ -23,6 +23,7 @@ class TestConsumerComp(TestWorkerComp):
     self.values = [self.registry]
     self.var = tuple(self.values)
     self.comp = ConsumerComp(label=self.label, ctg=self.ctg)
+    self.comp.build(*self.values)
 
 if __name__ == '__main__':
   unittest.main()

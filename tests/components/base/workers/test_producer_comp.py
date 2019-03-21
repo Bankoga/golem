@@ -23,6 +23,7 @@ class TestProducerComp(TestWorkerComp):
     self.values = [self.registry]
     self.var = tuple(self.values)
     self.comp = ProducerComp(label=self.label, ctg=self.ctg)
+    self.comp.build(*self.values)
 
 if __name__ == '__main__':
   unittest.main()
