@@ -11,21 +11,27 @@ from components.vars.data import Address
 from tests.components.base.workers.test_worker_comp import TestWorkerComp
 
 class TestMediatorComp(TestWorkerComp):
-  def setUp(self):
+  def set_up_base(self):
+    self.label = 'glg'
+    self.ctg = CtgType.FSET
+
+  def set_up_var(self):
     self.registry = AddressRegistry(label='global_address_registry_api')
     self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
     self.address_registry = self.registry
     self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
     self.address = Address(golem='a',matrix='l',func_set='glg')
     self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
-    self.label = 'glg'
-    self.ctg = CtgType.FSET
     self.reg_item = {
       'reg_id': self.label,
       'address': self.address
     }
     self.values = [self.registry, self.channel_registry]
     self.var = tuple(self.values)
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_var()
     self.comp = MediatorComp(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
