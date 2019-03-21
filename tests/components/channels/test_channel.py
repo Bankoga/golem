@@ -23,7 +23,11 @@ from tests.strategies.channel_strats import (channel_arbitrary, channel_inputs,
 from tests.strategies.pos_strats import arb_addr
 
 class TestChannel(TestMediatorComp):
-  def setUp(self):
+  def set_up_base(self):
+    self.label = 'ch_bc_star_energy'
+    self.ctg = CtgType.CHANNEL
+
+  def set_up_var(self):
     self.address_registry = AddressRegistry(label='global_address_registry_api')
     self.registry = ChannelRegistry(label='global_channel_registry_api')
     self.channel_registry = self.registry
@@ -35,8 +39,6 @@ class TestChannel(TestMediatorComp):
     self.ch_type = ChannelType.AGGREGATE
     self.meld_str = f'{self.ch_type.name};{self.resource.name};{self.recipient};{self.shape}'
     self.meld_var = read_meld_str(self.meld_str)
-    self.label = 'ch_bc_star_energy'
-    self.ctg = CtgType.CHANNEL
     self.reg_item = {
       'reg_id': self.label,
       'recipient': str(self.recipient),
@@ -44,6 +46,10 @@ class TestChannel(TestMediatorComp):
     }
     self.values = [self.registry,self.address_registry,str(self.meld_var),str(self.sender)]
     self.var = tuple(self.values)
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_var()
     self.comp = Channel(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
