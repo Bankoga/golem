@@ -3,20 +3,26 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
-from numpy import full, ones
 
-from data.axioms.cell_types import CellType
-from data.axioms.matrix import max_resource_value, min_resource_value
-from data.axioms.props import id_pattern
-from data.enums.prop_types import FuncSetType, FieldType, HookType, PackType, RsrcType, PackagerType, RuleType, SuperSet
-from data.maps.set import get_ids
-
-from components.packages.package import Package
+from components.axioms.cell_types import CellType
+from components.axioms.maps.set import get_ids
+from components.axioms.matrix import max_resource_value, min_resource_value
+from components.axioms.props import id_pattern, invalid_id_pattern
+from components.channels.channel import Channel
+from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
+                                         HookType, PackagerType, RsrcType,
+                                         RuleType, SuperSet)
 
 
 @composite
 def arbitrary_id(draw):
-  res = st.text()#from_regex(id_pattern)
+  res = draw(st.from_regex(id_pattern))
+  st.assume(res)
+  return res
+
+@composite
+def arbitrary_invalid_id(draw):
+  res = draw(st.from_regex(invalid_id_pattern))
   st.assume(res)
   return res
 
@@ -34,7 +40,6 @@ def node_type_prop(draw):
   st.assume(res != PackagerType.UNSET)
   return res
 
-
 @composite
 def hook_type(draw):
   res = draw(st.sampled_from(HookType))
@@ -43,7 +48,7 @@ def hook_type(draw):
   return res
 
 @composite
-def package_resource(draw):
+def channel_resource(draw):
   res = draw(st.sampled_from(RsrcType))
   st.assume(res)
   st.assume(res != RsrcType.UNSET)
@@ -64,14 +69,14 @@ def set_type_prop(draw):
   return res
 
 @composite
-def package_type(draw):
-  res = draw(st.sampled_from(PackType))
+def ch_type(draw):
+  res = draw(st.sampled_from(ChannelType))
   st.assume(res)
-  st.assume(res != PackType.UNSET)
+  st.assume(res != ChannelType.UNSET)
   return res
 
 @composite
-def package_field_shape(draw):
+def channel_field_shape(draw):
   res = draw(st.sampled_from(FieldType))
   st.assume(res)
   st.assume(res != FieldType.UNSET)
@@ -83,7 +88,6 @@ def rule_type_prop(draw):
   st.assume(res)
   st.assume(res != RuleType.UNSET)
   return res
-
 
 @composite
 def fs_provider_id(draw):

@@ -1,6 +1,6 @@
 from components.packagers import packager
-from data.axioms.cell_types import CellType, cell_data
-from data.enums.prop_types import PackagerType
+from components.axioms.cell_types import CellType, cell_data
+from components.enums.prop_types import PackagerType
 
 class Cell(packager.Packager):
   

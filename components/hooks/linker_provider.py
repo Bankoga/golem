@@ -1,5 +1,5 @@
 from utils.object_factory import *
-from data.axioms.configs import links
+from components.axioms.configs import links
 from components.hooks.loop_i import LoopILinkerBuilder
 from components.hooks.dm import DmLinkerBuilder
 from components.hooks.gate_i import GateILinkerBuilder

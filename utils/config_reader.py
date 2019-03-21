@@ -1,5 +1,5 @@
 from yaml import load, dump
-from data.axioms.configs import dirs
+from components.axioms.configs import dirs
 
 """
 Plans:

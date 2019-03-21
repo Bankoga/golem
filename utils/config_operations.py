@@ -1,5 +1,5 @@
 from utils.config_reader import read
-from data.axioms.pos_maps import package_map, pipeline_map
+from components.axioms.pos import package_map, pipeline_map
 
 def build_full_config(config):
     for i,module in enumerate(config['modules']):

@@ -4,8 +4,8 @@ from hypothesis import strategies as st
 
 from numpy import array, append
 
-from data.axioms.configs import proc_ids,file_type,set_ids
-from data.enums.prop_types import FuncSetType, PackType
+from components.axioms.configs import proc_ids,file_type,set_ids
+from components.enums.prop_types import FuncSetType, ChannelType
 from components.func_sets.procs.proc import Proc
 from components.func_sets.procs.proc_provider import proc_services
 
@@ -126,15 +126,15 @@ class TestProc(unittest.TestCase):
         expectation[p_type].append(pack)
       else:
         expectation[p_type] = [pack]
-    if PackType.AGGREGATE in expectation:
-      expectation[PackType.AGGREGATE] = heapsort(expectation[PackType.AGGREGATE])
+    if ChannelType.AGGREGATE in expectation:
+      expectation[ChannelType.AGGREGATE] = heapsort(expectation[ChannelType.AGGREGATE])
       agg = None
-      for pack in expectation[PackType.AGGREGATE]:
+      for pack in expectation[ChannelType.AGGREGATE]:
         if agg is None:
           agg = pack.var
         else:
           append(agg, pack.var)
-      expectation[PackType.AGGREGATE] = agg
+      expectation[ChannelType.AGGREGATE] = agg
     self.assertEqual(results, expectation)
 
 

@@ -1,11 +1,11 @@
 from abc import abstractmethod
-from components.component import Component
+from components.base.workers.mediator_comp import MediatorComp
 
-from data.enums.pos import ComponentType
-from data.enums.prop_types import GroupType
+from components.enums.pos import CtgType
+from components.enums.prop_types import GroupType
 
-from components.packages.misc_funcs import build_address
-class FuncSet(Component):
+from components.channels.misc_funcs import build_address
+class FuncSet(MediatorComp):
   """
   A functional set is an addressable processing region within a matrix
   It is a package production group
@@ -35,15 +35,16 @@ class FuncSet(Component):
   def __init__(self, set_id, set_type):
     super().__init__(set_id, set_type.get_component_type(), ctg_type=set_type)
     # once fully initialized, a module has very few aggregate properties to consider during operation.
+    # TODO: every group is at most, a 4x4 matrix of packagers!
     self.prev_activations=dict()
     self.groups=dict()
     self.input_shapes=dict()
 
   def get_id(self):
-    return self.itm_id
+    return self.label
 
   def get_type(self):
-    return self.ctg_type
+    return self.ctg
 
   @abstractmethod
   def process_inputs(self, inputs=None):
@@ -59,7 +60,7 @@ class FuncSet(Component):
 
   def operate(self, inputs=None):
     super().operate()
-    proc_inputs = self.process_inputs(inputs)
+    # proc_inputs = self.process_inputs(inputs)
 
   def build(self):
     super().build(None)

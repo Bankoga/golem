@@ -11,8 +11,8 @@
 # from utils.config_reader import read
 # from utils.config_operations import build_full_config
 # from utils.config_operations import build_module_entry
-# from data.axioms.pos_maps import package_map, pipeline_map
-# from data.axioms.configs import proc_ids
+# from components.axioms.pos import package_map, pipeline_map
+# from components.axioms.configs import proc_ids
 
 # def _check_results_contains_property_from_parts_(self, result, prop, part):
 #   if (part[prop] is None):

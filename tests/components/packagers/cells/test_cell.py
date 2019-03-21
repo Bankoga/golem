@@ -4,13 +4,13 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.packagers.cells.cell import Cell
-from data.axioms.cell_types import CellType,cell_data
-from data.enums.prop_types import RuleType, RsrcType, PackType,FieldType, PackagerType
+from components.axioms.cell_types import CellType,cell_data
+from components.enums.prop_types import RuleType, RsrcType, ChannelType,FieldType, PackagerType
 
-from tests.strategies.packing_strats import valid_cell_instruction
+from tests.strategies.channel_strats import valid_cell_instruction
 from tests.strategies.prop_strats import cell_type_prop
 
-from components.packages.misc_funcs import build_address, build_meld, build_package
+from components.channels.misc_funcs import build_address, build_meld, build_package
 
 class TestCell(unittest.TestCase):
   # def setUp(self):
@@ -68,7 +68,7 @@ class TestCell(unittest.TestCase):
   #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
   #       st.sampled_from(['sender_set_id','self','Self', '']),
   #       st.sampled_from(RsrcType),
-  #       st.sampled_from(PackType),
+  #       st.sampled_from(ChannelType),
   #       st.sampled_from(FieldType),
   #       st.sampled_from(['SenderModuleId','self','Self']),
   #       st.sampled_from(['sender_set_id','self','Self',''])))
@@ -120,8 +120,8 @@ class TestCell(unittest.TestCase):
   
   @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter
   def test_exec_instruction(self, instruction):
-    directions = instruction[0]
-    conv_shapes = instruction[1]
+    # directions = instruction[0]
+    # conv_shapes = instruction[1]
     
     pass
 
