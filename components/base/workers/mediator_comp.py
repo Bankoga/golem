@@ -19,9 +19,3 @@ class MediatorComp(WorkerComp):
   @channel_registry.setter
   def channel_registry(self, value):
     raise RuntimeError('Cannot set channel registry!')
-  
-  def register_address(self, new_addr):
-    return False
-  
-  def register_channel(self, new_addr):
-    return False

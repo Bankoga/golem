@@ -9,7 +9,6 @@ from components.matrix.address_registry import AddressRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from components.vars.data import Address
 from tests.components.base.workers.test_worker_comp import TestWorkerComp
-from tests.strategies.pos_strats import arb_addr
 
 class TestMediatorComp(TestWorkerComp):
   def setUp(self):
@@ -43,14 +42,6 @@ class TestMediatorComp(TestWorkerComp):
   def test_set_channel_registry(self):
     with self.assertRaises(RuntimeError):
       self.comp.channel_registry = self.channel_registry
-
-  def test_register_address(self, new_addr):
-    res = self.comp.register_address(new_addr)
-    self.assertTrue(res)
-
-  def test_register_channel(self, new_channel):
-    res = self.comp.register_channel(new_channel)
-    self.assertTrue(res)
 
 if __name__ == '__main__':
   unittest.main()
