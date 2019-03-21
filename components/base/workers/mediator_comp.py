@@ -4,4 +4,24 @@ class MediatorComp(WorkerComp):
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
 
-# TODO: every mediator needs to receive a hook to the registry so that it can be used to create channels and register things
+  @property
+  def address_registry(self):
+    return self.registry
+
+  @address_registry.setter
+  def address_registry(self, value):
+    raise RuntimeError('Cannot set address registry!')
+
+  @property
+  def channel_registry(self):
+    return self.var[1]
+
+  @channel_registry.setter
+  def channel_registry(self, value):
+    raise RuntimeError('Cannot set channel registry!')
+  
+  def register_address(self, new_addr):
+    return False
+  
+  def register_channel(self, new_addr):
+    return False

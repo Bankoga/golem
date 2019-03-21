@@ -36,7 +36,7 @@ class Channel(MediatorComp):
       'recipient': self.recipient,
       'sender': self.sender
     }
-  
+
   @reg_item.setter
   def reg_item(self, value):
     raise RuntimeError('The reg item cannot be set!')
