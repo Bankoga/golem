@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from components.base.consumer_comp import ConsumerComp
+from components.base.workers.consumer_comp import ConsumerComp
 from components.enums.prop_types import RuleType
 
 class Instruction(ConsumerComp):

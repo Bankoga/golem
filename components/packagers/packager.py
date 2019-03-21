@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from components.base.producer_comp import ProducerComp
+from components.base.workers.producer_comp import ProducerComp
 
 from components.axioms.packager import defaults as prd
 from components.enums.prop_types import PackagerType
