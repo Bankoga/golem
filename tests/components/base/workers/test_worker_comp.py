@@ -26,9 +26,9 @@ class TestWorkerComp(TestBuildableComp):
     self.values = [self.registry]
     self.var = tuple(self.values)
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
+    self.comp.build(*self.values)
 
   def test_get_registry(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.registry, self.var[0])
 
   @given(st.one_of(addr_reg(), st.integers())) # pylint: disable=no-value-for-parameter
@@ -41,19 +41,20 @@ class TestWorkerComp(TestBuildableComp):
         self.comp.registry = possible_reg
 
   def test_pre_registered_state(self):
+    self.comp = WorkerComp(label=self.label, ctg=self.ctg)
     self.assertFalse(self.comp.is_registered)
     self.assertIsNone(self.comp.address)
     with self.assertRaises(RuntimeError):
       self.comp.operate()
 
   def test_set_address_post_registration(self):
-    self.comp.build(*self.values)
     self.comp.register(self.address)
     with self.assertRaises(RuntimeError):
       self.comp.address = 'Anything'
 
   @given(arb_addr()) # pylint: disable=no-value-for-parameter
   def test_set_address_pre_registration(self, addr):
+    self.comp = WorkerComp(label=self.label, ctg=self.ctg)
     self.address = addr
 
   def test_set_is_registered(self):
@@ -61,7 +62,6 @@ class TestWorkerComp(TestBuildableComp):
       self.comp.is_registered = True
 
   def test_reg_item(self):
-    self.comp.build(*self.values)
     self.comp.register(self.address)
     self.maxDiff = None
     self.assertEqual(self.comp.reg_item, self.reg_item)
@@ -71,7 +71,6 @@ class TestWorkerComp(TestBuildableComp):
       self.comp.reg_item = {}
 
   def test_register(self):
-    self.comp.build(*self.values)
     self.comp.register(self.address)
     """
     For every worker, what needs to be registered?
@@ -86,6 +85,7 @@ class TestWorkerComp(TestBuildableComp):
   #   pass
 
   def test_build_with_data(self):
+    self.comp = WorkerComp(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values, address=self.address)
     self.assertEqual(self.comp.var, self.var)
     self.assertTrue(self.comp.is_built)
