@@ -37,6 +37,22 @@ class Channel(MediatorComp):
       'sender': self.sender
     }
 
+  @property
+  def address_registry(self):
+    return self.var[1]
+
+  @address_registry.setter
+  def address_registry(self, value):
+    raise RuntimeError('Cannot set address registry!')
+
+  @property
+  def channel_registry(self):
+    return self.registry
+
+  @channel_registry.setter
+  def channel_registry(self, value):
+    raise RuntimeError('Cannot set channel registry!')
+
   @reg_item.setter
   def reg_item(self, value):
     raise RuntimeError('The reg item cannot be set!')

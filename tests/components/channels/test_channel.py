@@ -26,6 +26,7 @@ class TestChannel(TestMediatorComp):
   def setUp(self):
     self.address_registry = AddressRegistry(label='global_address_registry_api')
     self.registry = ChannelRegistry(label='global_channel_registry_api')
+    self.channel_registry = self.registry
     self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
     self.address = None
     self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
@@ -44,9 +45,9 @@ class TestChannel(TestMediatorComp):
     self.values = [self.registry,self.address_registry,str(self.meld_var),str(self.sender)]
     self.var = tuple(self.values)
     self.comp = Channel(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
+    self.comp.build(*self.values)
 
   def test_get_meld_str(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.meld_str, self.meld_str)
 
   def test_set_meld_str(self):
@@ -54,7 +55,6 @@ class TestChannel(TestMediatorComp):
       self.comp.meld_str  = 'Some string'
 
   def test_get_meld(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.meld, self.meld_var)
 
   def test_set_meld(self):
@@ -62,7 +62,6 @@ class TestChannel(TestMediatorComp):
       self.comp.meld  = 'Some string'
 
   def test_get_recipient(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.recipient, str(self.recipient))
 
   def test_set_recipient(self):
@@ -70,7 +69,6 @@ class TestChannel(TestMediatorComp):
       self.comp.recipient  = 'Some string'
 
   def test_get_sender(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.sender, str(self.sender))
 
   def test_set_sender(self):
@@ -78,7 +76,6 @@ class TestChannel(TestMediatorComp):
       self.comp.sender  = 'Some string'
 
   def test_get_shape(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.shape, self.shape)
 
   def test_set_shape(self):
@@ -86,7 +83,6 @@ class TestChannel(TestMediatorComp):
       self.comp.shape  = (94,40)
 
   def test_get_resource(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.resource, self.resource)
 
   def test_set_resource(self):
@@ -94,7 +90,6 @@ class TestChannel(TestMediatorComp):
       self.comp.resource  = 'Some string'
 
   def test_get_ch_type(self):
-    self.comp.build(*self.values)
     self.assertEqual(self.comp.ch_type, self.ch_type)
 
   def test_set_ch_type(self):
@@ -102,6 +97,7 @@ class TestChannel(TestMediatorComp):
       self.comp.ch_type  = 'Some string'
 
   def test_build_with_data(self):
+    self.comp = Channel(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
     meld_str = f'{self.ch_type.name};{self.resource.name};{self.sender};{self.shape}'
     meld_var = read_meld_str(meld_str)
     self.values[2] = str(meld_var)
