@@ -61,8 +61,7 @@ class WorkerComp(BuildableComp):
     if not self.is_registered:
       raise RuntimeError('An unregistered worker type cannot operate!')
     else:
-      pass
-      # ?
+      return True
 
   def build(self, *args, **kwargs):
     super().build(*args)
