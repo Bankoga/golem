@@ -15,7 +15,16 @@ class Instruction(ConsumerComp):
 
   def prepare_args(self,*args):
     self.__prev_data = []
+    self.__old_data = []
     return super().prepare_args(*args)
+
+  @property
+  def old_data(self):
+    return self.__old_data
+  
+  @old_data.setter
+  def old_data(self, value):
+    raise RuntimeError('Old Data cannot be set!')
 
   @property
   def prev_data(self):
@@ -26,8 +35,12 @@ class Instruction(ConsumerComp):
     raise RuntimeError('Prev Data cannot be set!')
 
   def operate_details(self,curr_data=[]):
-    try:
+    if self.instruction_details(curr_data):
+      self.__old_data.append(self.prev_data)
       self.__prev_data = curr_data
       return True
-    except:
+    else:
       return False
+  
+  def instruction_details(self, curr_data=[]):
+    return True
