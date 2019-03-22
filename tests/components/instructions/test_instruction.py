@@ -27,9 +27,10 @@ class TestInstruction(TestConsumerComp):
       'reg_id': self.label,
       'address': self.address
     }
+    self.rule_type = RuleType.CONV
     self.old_data = []
     self.prev_data = []
-    self.values = [self.registry]
+    self.values = [self.registry, self.rule_type]
     self.var = tuple(self.values)
 
   def setUp(self):

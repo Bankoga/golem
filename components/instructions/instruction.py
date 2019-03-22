@@ -9,8 +9,8 @@ class Instruction(ConsumerComp):
   """
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def __init__(self, *args, **kwargs):
-    if not 'label' in kwargs and not kwargs['label'] is None:
-      kwargs['label'] = f'{args[0].name}-{hash(args[1])}'
+    # if not 'label' in kwargs and not kwargs['label'] is None:
+    #   kwargs['label'] = f'{args[0].name}-{hash(args[1])}'
     kwargs['ctg'] = CtgType.INSTRUCTION
     super().__init__(*args, **kwargs)
 
