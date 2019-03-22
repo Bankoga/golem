@@ -25,9 +25,8 @@ class Instruction(ConsumerComp):
   def prev_data(self, value):
     raise RuntimeError('Prev Data cannot be set!')
 
-  def operate(self,curr_data=[]):
+  def operate_details(self,curr_data=[]):
     try:
-      super().operate()
       self.__prev_data = curr_data
       return True
     except:
