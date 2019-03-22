@@ -56,14 +56,14 @@ class WorkerComp(BuildableComp):
     self.registry.add_item(self.reg_item)
     self.__is_registered = True
 
-  def operate(self):
+  def operate(self,*args,**kwargs):
     if not self.is_registered:
       raise RuntimeError('An unregistered worker type cannot operate!')
     else:
       return self.operate_details()
 
   @abstractmethod
-  def operate_details(self):
+  def operate_details(self,*args,**kwargs):
     return True
     
   def build(self, *args, **kwargs):
