@@ -14,7 +14,8 @@ class ConvShape(PassiveComp):
   """
 
   def __init__(self,f_shape,s_shape=None, **kwargs):
-    if not 'label' in kwargs['label']:
+    has_label = ('label' in kwargs and not kwargs['label'] is None)
+    if not has_label:
       kwargs['label'] = ''
     kwargs['ctg']=CtgType.DATA
     super().__init__(f_shape,s_shape,ones(f_shape), **kwargs)
