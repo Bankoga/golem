@@ -28,6 +28,8 @@ class TestInstruction(TestConsumerComp):
       'address': self.address
     }
     self.rule_type = RuleType.CONV
+    self.curr_data = ['An input']
+    self.prev_data = []
     self.values = [self.registry, self.rule_type]
     self.var = tuple(self.values)
 
@@ -37,6 +39,20 @@ class TestInstruction(TestConsumerComp):
     # self.pos = Pos(RuleType.CONV.get_component_type())
     self.comp = Instruction(label=self.label)
     self.comp.build(*self.values)
+
+  @given(st.lists(st.integers()))
+  def test_prepare_args(self, var_args):
+    expectation = tuple(var_args)
+    result = self.comp.prepare_args(*var_args)
+    self.assertEqual(result, expectation)
+    self.assertEqual(self.comp.prev_data, self.prev_data)
+
+  def test_get_prev_data(self):
+    self.assertEqual(self.comp.prev_data, self.prev_data)
+  
+  def test_set_prev_data(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.prev_data = self.prev_data
 
   # @given(arbitrary_id(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label, rtype, pos):
