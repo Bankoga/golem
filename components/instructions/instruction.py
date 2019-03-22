@@ -1,3 +1,4 @@
+from abc import abstractmethod
 from components.base.workers.consumer_comp import ConsumerComp
 from components.enums.prop_types import RuleType
 from components.enums.pos import CtgType
@@ -42,5 +43,6 @@ class Instruction(ConsumerComp):
     else:
       return False
   
+  @abstractmethod
   def instruction_details(self, curr_data=[]):
     return True
