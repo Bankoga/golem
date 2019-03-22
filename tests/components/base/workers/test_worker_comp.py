@@ -91,6 +91,9 @@ class TestWorkerComp(TestBuildableComp):
     self.comp.register(self.address)
     self.assertTrue(self.comp.operate())
 
+  def test_operate_helper(self):
+    self.assertTrue(self.comp.operate_details())
+
   def test_build_with_data(self):
     self.comp = WorkerComp(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values, address=self.address)

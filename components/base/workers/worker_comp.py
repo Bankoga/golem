@@ -56,13 +56,16 @@ class WorkerComp(BuildableComp):
     self.registry.add_item(self.reg_item)
     self.__is_registered = True
 
-  @abstractmethod
   def operate(self):
     if not self.is_registered:
       raise RuntimeError('An unregistered worker type cannot operate!')
     else:
-      return True
+      return self.operate_details()
 
+  @abstractmethod
+  def operate_details(self):
+    return True
+    
   def build(self, *args, **kwargs):
     super().build(*args)
     if 'address' in kwargs:
