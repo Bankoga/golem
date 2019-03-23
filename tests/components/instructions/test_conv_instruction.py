@@ -46,7 +46,7 @@ class TestConvInstruction(TestInstruction):
     self.resource = RsrcType.ENERGY
     self.old_data = []
     self.prev_data = []
-    self.values = [self.registry, self.rule_type]
+    self.values = [self.registry,self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,]
     self.var = tuple(self.values)
 
   def setUp(self):
@@ -57,12 +57,6 @@ class TestConvInstruction(TestInstruction):
 
   def test_instruction_details(self):
     self.assertTrue(self.comp.instruction_details())
-
-  def test_build_with_data(self):
-    self.comp = ConvInstruction(self.registry,self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,label=self.label)
-    self.comp.build(*self.values, address=self.address)
-    self.assertEqual(self.comp.var, self.var)
-    self.assertTrue(self.comp.is_built)
 
   # @given(arb_label(), valid_direction(), st.lists(valid_conv_shape()),valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label,direction, conv_shapes,pos):

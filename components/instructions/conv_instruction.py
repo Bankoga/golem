@@ -14,10 +14,6 @@ class ConvInstruction(Instruction):
   def conv(self, npmatrix):
     return 0
 
-  def build_details(self, *args, **kwargs):
-    if 'address' in kwargs:
-      self.register(kwargs['address'])
-
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def instruction_details(self,curr_data=[],inputs=None,context=None):
     res = 0
