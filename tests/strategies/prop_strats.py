@@ -13,10 +13,16 @@ from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
                                          HookType, PackagerType, RsrcType,
                                          RuleType, SuperSet)
 
+from utils.helpers.prop_gen_help import roll_name
+
+@composite
+def arb_name(draw):
+  res = roll_name()
+  return res
 
 @composite
 def arb_label(draw):
-  res = draw(st.from_regex(label_pattern))
+  res = draw(arb_name())#st.from_regex(label_pattern)) # pylint: disable=no-value-for-parameter
   st.assume(res)
   return res
 

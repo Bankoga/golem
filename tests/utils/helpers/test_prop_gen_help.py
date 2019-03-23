@@ -4,8 +4,8 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.axioms.props import pg_data
-
-from utils.helpers.prop_gen_help import draw, draw_from, roll, roll_for_syllables, produce_syllables, roll_name
+from tests.strategies.prop_strats import arb_label
+from utils.helpers.prop_gen_help import draw, draw_from, roll, roll_for_syllables, produce_syllables, roll_name, kin_label_gen_unique, roll_new_name
 from utils.validators.prop_validators import is_valid_label
 import re
 
@@ -46,9 +46,18 @@ class TestPropGenHelp(unittest.TestCase):
     res = roll_name()
     self.assertTrue(is_valid_label(res))
 
-  @given(arb_label())
-  def test_rel_label_gen(self, parent, example_child, prefix, suffix):
-    result = rel_label_gen(parent, example_child, prefix, suffix)
+  def test_roll_new_name(self):
+    old_names = []
+    for i in range(20):
+      old_names.append(roll_name())
+    res = roll_new_name(old_names)
+    self.assertTrue(is_valid_label(res))
+
+  @given(arb_label(), st.integers(max_value=1000), st.text(), st.text()) # pylint: disable=no-value-for-parameter
+  def test_kin_label_gen_unique(self, parent, num_children, prefix, suffix):
+    results = kin_label_gen_unique(parent, num_children, prefix, suffix)
+    for res in results:
+      self.assertTrue(is_valid_label(res))
 
 if __name__ == '__main__':
   unittest.main()

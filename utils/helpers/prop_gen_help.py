@@ -44,18 +44,29 @@ def roll_name():
   sylbs = roll_for_syllables()
   res = ''
   for sylb in sylbs:
-    join_roll = roll(4)
-    if join_roll == 1:
-      res = f'{res}{sylb}'
-    elif join_roll == 2:
-      res = f'{res}_{sylb}'
-    elif join_roll == 2:
-      res = f'{res}__{sylb}'
-    else:
-      res = f'{res}___{sylb}'
+      if res == '':
+        res = sylb
+      else:
+        join_roll = roll(2)
+        if join_roll == 1:
+            res = f'{res}{sylb.lower()}'
+        elif join_roll == 2:
+          res = f'{res}_{sylb}'
   return res
 
 # def rel_label_gen(parent, example_child, prefix=None,suffix=None):
 #   obj_type_name = type(example_child).__name__
-# Syllables can be placed together to form one word, or separated by spaces or hyphens.
-#   return []
+
+def kin_label_gen_unique(parent, num_children, prefix=None,suffix=None):
+  names = []
+  for i in range(num_children):
+    name = f'{parent}_{roll_new_name(names)}'
+    names.append(name)
+  return names
+
+def roll_new_name(old_names):
+  found_name = False
+  while not found_name:
+    name = roll_name()
+    if not name in old_names:
+      return name
