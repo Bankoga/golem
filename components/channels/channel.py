@@ -116,8 +116,7 @@ class Channel(Mediator):
   def ch_type(self, value):
     self.setter_error()
     
-  def build(self, *args, **kwargs):
-    super().build(*args, **kwargs)
+  def build_details(self, *args, **kwargs):
     self.__meld = read_meld_str(self.meld_str)
     if 'address' in kwargs:
       self.register(kwargs['address'])

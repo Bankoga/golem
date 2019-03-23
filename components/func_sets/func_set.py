@@ -62,9 +62,6 @@ class FuncSet(Mediator):
     super().operate()
     # proc_inputs = self.process_inputs(inputs)
 
-  def build(self):
-    super().build(None)
-
   # @abstractmethod
   # def _build_func_(self):
   # def _build_funcs_(self):
