@@ -54,9 +54,6 @@ def roll_name():
           res = f'{res}_{sylb}'
   return res
 
-# def rel_label_gen(parent, example_child, prefix=None,suffix=None):
-#   obj_type_name = type(example_child).__name__
-
 def kin_label_gen_unique(parent, num_children, prefix=None,suffix=None):
   names = []
   for i in range(num_children):
