@@ -6,7 +6,7 @@ from hypothesis import strategies as st
 from components.base.static_comp import StaticComp
 from components.enums.prop_types import CtgType
 from tests.strategies.pos_strats import ctg_prop
-from tests.strategies.prop_strats import arbitrary_id,arbitrary_invalid_id
+from tests.strategies.prop_strats import arbitrary_id,arbitrary_invalid_label
 
 class TestStaticComp(unittest.TestCase):
   def setUp(self):
@@ -14,8 +14,8 @@ class TestStaticComp(unittest.TestCase):
     self.ctg = CtgType.FSET
     self.comp = StaticComp(self.label, self.ctg)
 
-  @given(arbitrary_invalid_id()) # pylint: disable=no-value-for-parameter
-  def test_set_invalid_id(self,label):
+  @given(arbitrary_invalid_label()) # pylint: disable=no-value-for-parameter
+  def test_set_invalid_label(self,label):
     with self.assertRaises(ValueError):
       self.comp.label = label
 

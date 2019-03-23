@@ -1,7 +1,7 @@
 old_id_pattern = "[a-zA-Z0-9_]*$"
 dest_key_pattern = "[a-zA-Z0-9_].*(-[a-zA-Z0-9_].*)?"
 id_pattern = "^[a-zA-Z0-9_]{2,64}$"
-invalid_id_pattern = "^[.]{2,64}$"
+invalid_label_pattern = "^[.]{2,64}$"
 pg_data = {
   'max_syllables': 5,
   'syllables':['Af','Al','Ael','Baf','Bel','Ber','Berd','Bes','Bo','Bor','Bran','Bru','Car','Chor','Cig','Cla','Da','Do','Doh','Don','Dor','Dre','Dreb','Eg','Feg','Er','Es','Ev','Fal','Ful','Fan','Fen','Far','Fum','Ga','Gahn','Gaith','Gar','Gen','Glen','Go','Gram','Ha','Hag','Harg','Ho','Ig','Ka','Kar','Kra','Krac','Ky','Lag','Lap','Le','Lef','Lis','Lo','Lu','Mal','Mar','Me','Mez','Mich','Mil','Mul','Mo','Mun','Mus','Ned','Nic','No','Nor','Nu','Os','Pal','Pen','Phil','Po','Poy','Pos','Pus','Pres','Quas','Que','Rag','Ralt','Ram','Rin','Ron','Ris','Ro','Sa','See','Ser','Sur','Sho','Sit','Spor','Tar','Tas','Ten','Ton','To','Tra','Treb','Tred','Tue','Vak','Ven','Web','Wil','Yor','Zef','Zell','Zen','Zo'],

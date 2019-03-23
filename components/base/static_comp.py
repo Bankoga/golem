@@ -1,5 +1,5 @@
 from utils.validators.pos_validators import is_valid_ctg
-from utils.validators.prop_validators import is_valid_id
+from utils.validators.prop_validators import is_valid_label
 
 class StaticComp:
   def __init__(self, label, ctg):
@@ -16,7 +16,7 @@ class StaticComp:
 
   @label.setter
   def label(self, value): # pylint: disable=function-redefined
-    if not is_valid_id(value):
+    if not is_valid_label(value):
       raise ValueError('INVALID ID!')
     else:
       self.__label = value

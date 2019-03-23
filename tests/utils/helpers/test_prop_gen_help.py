@@ -6,7 +6,7 @@ from hypothesis import strategies as st
 from components.axioms.props import pg_data
 
 from utils.helpers.prop_gen_help import draw, draw_from, roll, roll_for_syllables, produce_syllables, roll_name
-from utils.validators.prop_validators import is_valid_id
+from utils.validators.prop_validators import is_valid_label
 import re
 
 class TestPropGenHelp(unittest.TestCase):
@@ -44,7 +44,7 @@ class TestPropGenHelp(unittest.TestCase):
 
   def test_roll_name(self):
     res = roll_name()
-    self.assertTrue(is_valid_id(res))
+    self.assertTrue(is_valid_label(res))
 
   # @given()
   # def test_rel_label_gen(self, parent, example_child, prefix, suffix):
