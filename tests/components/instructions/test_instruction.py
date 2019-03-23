@@ -64,6 +64,13 @@ class TestInstruction(TestConsumer):
 
   def test_instruction_details(self):
     self.assertTrue(self.comp.instruction_details())
+  
+  # TODO: Define and implement operate details
+  # def test_operate_details(self,inputs):
+  #   old_prev = self.comp.prev_data
+  #   res = self.comp.operate_details(inputs)
+  #   self.assertIn(old_prev, self.comp.old_data)
+  #   self.assertEqual(self.comp.prev_data, inputs)
 
   # @given(arb_label(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label, rtype, pos):
