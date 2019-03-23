@@ -1,10 +1,10 @@
 from abc import abstractmethod
-from components.base.workers.producer_comp import ProducerComp
+from components.base.mechanisms.producer import Producer
 
 from components.axioms.packager import defaults as prd
 from components.enums.prop_types import PackagerType
 
-class Packager(ProducerComp):
+class Packager(Producer):
   """
   The actual algorithms that power the matrix
   Not the function sets, or the meta-containers, or regions, but a unified algorithm or method

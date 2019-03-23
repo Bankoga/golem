@@ -9,13 +9,13 @@ from components.enums.prop_types import RuleType
 from components.instructions.instruction import Instruction
 from components.matrix.address_registry import AddressRegistry
 from components.vars.data import Address
-from tests.components.base.workers.test_consumer_comp import TestConsumerComp
+from tests.components.base.mechanisms.test_consumer import TestConsumer
 from tests.strategies.data_strats import valid_resource_data
 from tests.strategies.pos_strats import valid_pos
 from tests.strategies.prop_strats import arb_label, rule_type_prop
 from utils.pos import Pos
 
-class TestInstruction(TestConsumerComp):
+class TestInstruction(TestConsumer):
   def set_up_base(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.INSTRUCTION

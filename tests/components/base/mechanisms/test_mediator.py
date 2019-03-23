@@ -3,14 +3,14 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.base.workers.mediator_comp import MediatorComp
+from components.base.mechanisms.mediator import Mediator
 from components.enums.pos import CtgType
 from components.matrix.address_registry import AddressRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from components.vars.data import Address
-from tests.components.base.workers.test_worker_comp import TestWorkerComp
+from tests.components.base.mechanisms.test_mechanism import TestMechanism
 
-class TestMediatorComp(TestWorkerComp):
+class TestMediator(TestMechanism):
   def set_up_base(self):
     self.label = 'glg'
     self.ctg = CtgType.FSET
@@ -32,7 +32,7 @@ class TestMediatorComp(TestWorkerComp):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = MediatorComp(label=self.label, ctg=self.ctg)
+    self.comp = Mediator(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
   def test_get_address_registry(self):

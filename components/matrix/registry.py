@@ -49,7 +49,7 @@ class Registry(MatrixComp):
 #       yield sub
 
 
-# REGISTRY = {cls.__name__: cls for cls in subclasses(WorkerComp)}
+# REGISTRY = {cls.__name__: cls for cls in subclasses(Mechanism)}
 
 # def register_class(target_class):
 #   REGISTRY[target_class.__name__] = target_class

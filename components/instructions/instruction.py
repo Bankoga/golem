@@ -1,9 +1,9 @@
 from abc import abstractmethod
-from components.base.workers.consumer_comp import ConsumerComp
+from components.base.mechanisms.consumer import Consumer
 from components.enums.prop_types import RuleType
 from components.enums.pos import CtgType
 
-class Instruction(ConsumerComp):
+class Instruction(Consumer):
   """
   Instruction: An algorithm for turning a buffer of inputs into outputs for a channel
   """

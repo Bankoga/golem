@@ -1,6 +1,6 @@
-from components.base.workers.worker_comp import WorkerComp
+from components.base.mechanisms.mechanism import Mechanism
 
-class MediatorComp(WorkerComp):
+class Mediator(Mechanism):
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
 

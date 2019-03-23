@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.matrix.address_registry import AddressRegistry
-from components.base.workers.worker_comp import WorkerComp
+from components.base.mechanisms.mechanism import Mechanism
 from components.enums.pos import CtgType
 from components.vars.data import Address
 
@@ -13,7 +13,7 @@ from tests.components.base.test_buildable_comp import TestBuildableComp
 from tests.strategies.matrix_strats import addr_reg
 from tests.strategies.pos_strats import arb_addr
 
-class TestWorkerComp(TestBuildableComp):
+class TestMechanism(TestBuildableComp):
   def set_up_base(self):
     self.label = 'pr_0'
     self.ctg = CtgType.PACKAGER
@@ -31,7 +31,7 @@ class TestWorkerComp(TestBuildableComp):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = WorkerComp(label=self.label, ctg=self.ctg)
+    self.comp = Mechanism(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
   def test_get_registry(self):
@@ -47,7 +47,7 @@ class TestWorkerComp(TestBuildableComp):
         self.comp.registry = possible_reg
 
   def test_pre_registered_state(self):
-    self.comp = WorkerComp(label=self.label, ctg=self.ctg)
+    self.comp = Mechanism(label=self.label, ctg=self.ctg)
     self.assertFalse(self.comp.is_registered)
     self.assertIsNone(self.comp.address)
     with self.assertRaises(RuntimeError):
@@ -60,7 +60,7 @@ class TestWorkerComp(TestBuildableComp):
 
   @given(arb_addr()) # pylint: disable=no-value-for-parameter
   def test_set_address_pre_registration(self, addr):
-    self.comp = WorkerComp(label=self.label, ctg=self.ctg)
+    self.comp = Mechanism(label=self.label, ctg=self.ctg)
     self.address = addr
 
   def test_set_is_registered(self):
@@ -95,7 +95,7 @@ class TestWorkerComp(TestBuildableComp):
     self.assertTrue(self.comp.operate_details())
 
   def test_build_with_data(self):
-    self.comp = WorkerComp(label=self.label, ctg=self.ctg)
+    self.comp = Mechanism(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values, address=self.address)
     self.assertEqual(self.comp.var, self.var)
     self.assertTrue(self.comp.is_built)
