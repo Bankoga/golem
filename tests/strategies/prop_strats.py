@@ -7,7 +7,7 @@ from hypothesis.strategies import composite
 from components.axioms.cell_types import CellType
 from components.axioms.maps.set import get_ids
 from components.axioms.matrix import max_resource_value, min_resource_value
-from components.axioms.props import id_pattern, invalid_label_pattern
+from components.axioms.props import label_pattern, invalid_label_pattern
 from components.channels.channel import Channel
 from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
                                          HookType, PackagerType, RsrcType,
@@ -16,7 +16,7 @@ from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
 
 @composite
 def arbitrary_id(draw):
-  res = draw(st.from_regex(id_pattern))
+  res = draw(st.from_regex(label_pattern))
   st.assume(res)
   return res
 

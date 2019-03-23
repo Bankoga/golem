@@ -1,4 +1,4 @@
-# from components.axioms.props import old_id_pattern 
+# from components.axioms.props import old_label_pattern 
 # from components.enums.prop_types import HookType,ChannelType,RsrcType,FieldType
 # from components.channels.channel import Channel
 # import re
@@ -45,7 +45,7 @@
 #       self.shape=self.meld_tuple[3]
 
 #   def update_id(self,container_id):
-#     if (not self._id_updated_ and container_id):# and re.search(old_id_pattern, container_id)):
+#     if (not self._id_updated_ and container_id):# and re.search(old_label_pattern, container_id)):
 #       new_id = f'{container_id}-{self.hook_id}'
 #       self.hook_id = new_id
 #       self._id_updated_ = True

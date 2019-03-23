@@ -5,7 +5,7 @@ import re
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.axioms.props import id_pattern
+from components.axioms.props import label_pattern
 
 from tests.strategies.prop_strats import arbitrary_id, arbitrary_invalid_label
 
@@ -16,7 +16,7 @@ class TestPropValidators(unittest.TestCase):
   @given(arbitrary_invalid_label()) # pylint: disable=no-value-for-parameter
   def test_is_valid_label_on_arbitrary(self, label):
     result = is_valid_label(label)
-    if len(re.findall(id_pattern, label)) == 1:
+    if len(re.findall(label_pattern, label)) == 1:
       self.assertTrue(result)
     else:
       self.assertFalse(result)
@@ -24,7 +24,7 @@ class TestPropValidators(unittest.TestCase):
   @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
   def test_is_valid_label(self, label):
     result = is_valid_label(label)
-    if len(re.findall(id_pattern, label)) == 1:
+    if len(re.findall(label_pattern, label)) == 1:
       self.assertTrue(result)
     else:
       self.assertFalse(result)

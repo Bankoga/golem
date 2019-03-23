@@ -1,6 +1,6 @@
-old_id_pattern = "[a-zA-Z0-9_]*$"
+old_label_pattern = "[a-zA-Z0-9_]*$"
 dest_key_pattern = "[a-zA-Z0-9_].*(-[a-zA-Z0-9_].*)?"
-id_pattern = "^[a-zA-Z0-9_]{2,64}$"
+label_pattern = "^[a-zA-Z0-9_]{2,64}$"
 invalid_label_pattern = "^[.]{2,64}$"
 pg_data = {
   'max_syllables': 5,

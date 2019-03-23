@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 from hypothesis.strategies import composite
 from numpy import full, ones
 
-from components.axioms.props import id_pattern
+from components.axioms.props import label_pattern
 from components.channels.channel import Channel
 from components.channels.misc_funcs import (build_meld)
 from components.vars.meld import read_meld_str

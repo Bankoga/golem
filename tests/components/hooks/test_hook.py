@@ -4,7 +4,7 @@
 # import hypothesis.strategies as st
 
 # from components.hooks.hook import Hook
-# from components.axioms.props import dest_key_pattern, old_id_pattern 
+# from components.axioms.props import dest_key_pattern, old_label_pattern 
 # from components.enums.prop_types import FieldType,HookType,RsrcType,ChannelType
 # from components.channels.misc_funcs import build_address, build_meld
 # from tests.components.channels.test_channel import TestChannel
