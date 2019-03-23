@@ -1,4 +1,4 @@
-from components.base.mechanisms.mediator import Mediator
+from components.base.mechanisms.mediators.mediator import Mediator
 from components.enums.pos import CtgType
 from components.enums.prop_types import ChannelType,RsrcType
 from chainer import Variable

@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from components.base.mechanisms.producer import Producer
+from components.base.mechanisms.cogs.producer import Producer
 
 from components.axioms.packager import defaults as prd
 from components.enums.prop_types import PackagerType

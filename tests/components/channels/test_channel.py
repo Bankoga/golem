@@ -15,7 +15,7 @@ from components.vars.data import Address
 from components.matrix.address_registry import AddressRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from components.vars.meld import read_meld_str
-from tests.components.base.mechanisms.test_mediator import TestMediator
+from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
 from tests.strategies.channel_strats import arb_meld_str
 from tests.strategies.data_strats import valid_resource_data
 from tests.strategies.channel_strats import (channel_arbitrary, channel_inputs,

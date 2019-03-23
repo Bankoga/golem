@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from components.base.mechanisms.consumer import Consumer
+from components.base.mechanisms.cogs.consumer import Consumer
 from components.enums.prop_types import RuleType
 from components.enums.pos import CtgType
 

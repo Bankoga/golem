@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.base.mechanisms.mediator import Mediator
+from components.base.mechanisms.mediators.mediator import Mediator
 from components.enums.pos import CtgType
 from components.matrix.address_registry import AddressRegistry
 from components.matrix.channel_registry import ChannelRegistry
