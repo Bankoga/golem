@@ -15,12 +15,12 @@ class BuildableComp(PassiveComp):
   def is_built(self, value):
     raise RuntimeError('Cannot set the build status of a component. Simply build it!')
 
-  @abstractmethod
   def build(self, *args, **kwargs):
     if self.is_built:
       raise RuntimeError('Cannot build an already built component!')
     self.build_details(*args, **kwargs)
+    self.__is_built = True
   
+  @abstractmethod
   def build_details(self, *args, **kwargs):
     self.update(*args)
-    self.__is_built = True

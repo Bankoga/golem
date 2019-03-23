@@ -67,5 +67,6 @@ class Mechanism(BuildableComp):
     return True
     
   def build_details(self, *args, **kwargs):
+    super().build_details(*args, **kwargs)
     if 'address' in kwargs:
       self.register(kwargs['address'])
