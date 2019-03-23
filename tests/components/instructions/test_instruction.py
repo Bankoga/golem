@@ -12,7 +12,7 @@ from components.vars.data import Address
 from tests.components.base.workers.test_consumer_comp import TestConsumerComp
 from tests.strategies.data_strats import valid_resource_data
 from tests.strategies.pos_strats import valid_pos
-from tests.strategies.prop_strats import arbitrary_id, rule_type_prop
+from tests.strategies.prop_strats import arb_label, rule_type_prop
 from utils.pos import Pos
 
 class TestInstruction(TestConsumerComp):
@@ -65,7 +65,7 @@ class TestInstruction(TestConsumerComp):
   def test_instruction_details(self):
     self.assertTrue(self.comp.instruction_details())
 
-  # @given(arbitrary_id(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
+  # @given(arb_label(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label, rtype, pos):
   #   # for efficiency reasons, eventually instructions will need to be built before processing
   #   # label = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?

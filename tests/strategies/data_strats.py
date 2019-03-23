@@ -4,7 +4,7 @@ from numpy import full, ones
 
 from components.axioms.matrix import max_resource_value, min_resource_value
 from components.data.conv_shape import ConvShape
-from tests.strategies.prop_strats import arbitrary_id
+from tests.strategies.prop_strats import arb_label
 from tests.strategies.pos_strats import valid_pos, arb_addr
 
 @composite

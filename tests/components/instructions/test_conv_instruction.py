@@ -7,7 +7,7 @@ from components.enums.prop_types import RuleType, RsrcType
 from components.enums.pos import CtgType
 
 from tests.components.instructions.test_instruction import TestInstruction
-from tests.strategies.prop_strats import rule_type_prop, arbitrary_id
+from tests.strategies.prop_strats import rule_type_prop, arb_label
 from tests.strategies.data_strats import valid_conv_shape, valid_resource_data
 from tests.strategies.func_set_strats import module_input_set,processed_module_input_set
 from tests.strategies.pos_strats import valid_direction, valid_pos
@@ -42,7 +42,7 @@ class TestConvInstruction(TestInstruction):
     self.set_up_var()
     self.comp = ConvInstruction(self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,label=self.label)
 
-  # @given(arbitrary_id(), valid_direction(), st.lists(valid_conv_shape()),valid_pos()) # pylint: disable=no-value-for-parameter
+  # @given(arb_label(), valid_direction(), st.lists(valid_conv_shape()),valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label,direction, conv_shapes,pos):
   #       # for efficiency reasons, eventually instructions will need to be built before processing
   #   inst = ConvInstruction(label,direction, conv_shapes, self.source_ind, self.source_shape,pos)

@@ -46,9 +46,9 @@ class TestPropGenHelp(unittest.TestCase):
     res = roll_name()
     self.assertTrue(is_valid_label(res))
 
-  # @given()
-  # def test_rel_label_gen(self, parent, example_child, prefix, suffix):
-  #   result = rel_label_gen(parent, example_child, prefix, suffix)
+  @given(arb_label())
+  def test_rel_label_gen(self, parent, example_child, prefix, suffix):
+    result = rel_label_gen(parent, example_child, prefix, suffix)
 
 if __name__ == '__main__':
   unittest.main()

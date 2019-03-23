@@ -15,8 +15,8 @@ class Packager(ProducerComp):
   All packagers use multiple instructions to transform input into output
   """
 
-  def __init__(self, rule_type, arb_id):
-    super().__init__(arb_id, rule_type.get_component_type(),rule_type)
+  def __init__(self, rule_type, arb_label):
+    super().__init__(arb_label, rule_type.get_component_type(),rule_type)
     self.read_data()
 
   @abstractmethod

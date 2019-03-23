@@ -9,7 +9,7 @@
 # from components.channels.misc_funcs import build_address, build_meld
 # from tests.components.channels.test_channel import TestChannel
 # from tests.strategies.pos_strats import arb_addr,full_address,partial_address
-# from tests.strategies.prop_strats import arbitrary_id, channel_field_shape,set_type_prop,channel_resource,hook_type,ch_type
+# from tests.strategies.prop_strats import arb_label, channel_field_shape,set_type_prop,channel_resource,hook_type,ch_type
 
 # class TestHook(TestChannel):
 #   # def setUp(self):
@@ -84,7 +84,7 @@
 #     meld = ";".join(meld_tuple)
 #     self._read_data_(meld)
 
-#   @given(arbitrary_id(), hook_type(), arb_addr(), channel_resource(), ch_type(), channel_field_shape()) # pylint: disable=no-value-for-parameter
+#   @given(arb_label(), hook_type(), arb_addr(), channel_resource(), ch_type(), channel_field_shape()) # pylint: disable=no-value-for-parameter
 #   def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
 #     inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
 #     self._read_data_(inputs)
@@ -97,13 +97,13 @@
 #     else:
 #       self.assertEqual(self.hook.hook_id,f'{container_id}-{self.hook_id}')
 
-#   @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
+#   @given(arb_label()) # pylint: disable=no-value-for-parameter
 #   def test_update_valid_once(self,container_id):
 #     self.hook=Hook(self.meld,self.hook_id,self.hook_type)
 #     self.hook.update_id(container_id)
 #     self._check_hook_(container_id)
   
-#   @given(arbitrary_id()) # pylint: disable=no-value-for-parameter
+#   @given(arb_label()) # pylint: disable=no-value-for-parameter
 #   def test_update_invalidly(self,container_id):
 #     self.hook=Hook(self.meld,self.hook_id,self.hook_type)
 #     self.hook.update_id(container_id)

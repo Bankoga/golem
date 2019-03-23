@@ -15,7 +15,7 @@ from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
 
 
 @composite
-def arbitrary_id(draw):
+def arb_label(draw):
   res = draw(st.from_regex(label_pattern))
   st.assume(res)
   return res

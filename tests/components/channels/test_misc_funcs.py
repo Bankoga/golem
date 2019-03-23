@@ -7,14 +7,14 @@ from components.enums.prop_types import FieldType,ChannelType,RsrcType
 
 from tests.strategies.data_strats import valid_shape
 from tests.strategies.pos_strats import full_address,partial_address,arb_addr
-from tests.strategies.prop_strats import channel_field_shape,channel_resource,ch_type, arbitrary_id
+from tests.strategies.prop_strats import channel_field_shape,channel_resource,ch_type, arb_label
 
 from components.channels.channel import Channel
 from components.channels.misc_funcs import build_address, build_meld, build_channel_inputs, build_package
 
 class TestMiscFuncs(unittest.TestCase):
   # @given(st.text(),st.text())
-  @given(arbitrary_id(), arbitrary_id()) # pylint: disable=no-value-for-parameter
+  @given(arb_label(), arb_label()) # pylint: disable=no-value-for-parameter
   def test_build_address(self, m_id, g_id):
     addr = build_address(m_id, g_id)
     if g_id is None:
