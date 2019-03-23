@@ -3,8 +3,8 @@ from components.enums.prop_types import RuleType
 from components.instructions.instruction import Instruction
 
 class ConvInstruction(Instruction):
-  def __init__(self,label,direction,conv_shapes,source_ind,source_shape,pos):
-    super().__init__(label,RuleType.CONV, pos)
+  def __init__(self,direction,resource,conv_shapes,source_ind,source_shape,**kwargs):
+    super().__init__(RuleType.CONV, **kwargs)
     self.shape = source_shape
     self.direction = direction
     self.ind = source_ind
@@ -14,25 +14,8 @@ class ConvInstruction(Instruction):
   def conv(self, npmatrix):
     return 0
 
-  def get_input(self):
-    pass
-
-  def build(self, data=None):
-    # weights = self.set_up_weights(self.conv_shapes)
-    if (self._built_):
-      raise RuntimeError('This is not yet implemented')
-    else:
-      super().build(data)
-  
-  def reset(self):
-    raise RuntimeError('This is not yet implemented')
-
-  def update(self, new_data):
-    raise RuntimeError('This is not yet implemented')
-
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
-  def operate(self,inputs=None,context=None):
-    super().operate()
+  def instruction_details(self,curr_data=[],inputs=None,context=None):
     res = 0
     # for each read, we change the Z in the direction supplied using the PROPER cardinator
     #  we also change the size of the sample
