@@ -2,45 +2,67 @@ import unittest
 
 from hypothesis import given
 from hypothesis import strategies as st
-
-from components.enums.prop_types import RuleType, RsrcType
-from components.enums.pos import CtgType
-
-from tests.components.instructions.test_instruction import TestInstruction
-from tests.strategies.prop_strats import rule_type_prop, arb_label
-from tests.strategies.data_strats import valid_conv_shape, valid_resource_data
-from tests.strategies.func_set_strats import module_input_set,processed_module_input_set
-from tests.strategies.pos_strats import valid_direction, valid_pos
-
-from utils.pos import Pos
-from components.instructions.conv_instruction import ConvInstruction
 from numpy import array_equal
+
 from components.data.conv_shape import ConvShape as cs
+from components.enums.pos import CtgType
+from components.enums.prop_types import RsrcType, RuleType
+from components.instructions.conv_instruction import ConvInstruction
+from components.matrix.address_registry import AddressRegistry
+from components.vars.data import Address
+from tests.components.instructions.test_instruction import TestInstruction
+from tests.strategies.data_strats import valid_conv_shape, valid_resource_data
+from tests.strategies.func_set_strats import (module_input_set,
+                                              processed_module_input_set)
+from tests.strategies.pos_strats import valid_direction, valid_pos
+from tests.strategies.prop_strats import arb_label, rule_type_prop
+from utils.helpers.prop_gen_help import roll_name
+from utils.pos import Pos
+
 
 class TestConvInstruction(TestInstruction):
   def set_up_base(self):
     self.label = 'TotallyValidId'
-    self.ctg = CtgType.DATA
+    self.ctg = CtgType.INSTRUCTION
     self.rule_type= RuleType.CONV
   
   def set_up_var(self):
-    pass
+    self.registry = AddressRegistry(label='global_address_registry_api')
+    self.address = Address(golem='a',matrix='l',func_set='b', stage='a',group='a',packager='p',instruction=self.label)
+    self.reg_item = {
+      'reg_id': self.label,
+      'address': self.address
+    }
     # self.pos = Pos(self.ctg.get_component_type())
-    self.conv_shapes = [cs((4,4)),
-                        cs((1)),
-                        cs((4,4)),
-                        cs((9,9),(1,1)),
-                        cs((4,2),(1)),
-                        cs((12,12))]
+    self.conv_shapes = [cs((4,4),label=f'{self.label}_{roll_name()}'),
+                        cs((1),label=f'{self.label}_{roll_name()}'),
+                        cs((4,4),label=f'{self.label}_{roll_name()}'),
+                        cs((9,9),(1,1),label=f'{self.label}_{roll_name()}'),
+                        cs((4,2),(1),label=f'{self.label}_{roll_name()}'),
+                        cs((12,12),label=f'{self.label}_{roll_name()}')]
     self.source_shape = (256,256)
     self.source_ind = (45,25)
     self.direction = 'A' # TODO: Use correct ENUM
     self.resource = RsrcType.ENERGY
+    self.old_data = []
+    self.prev_data = []
+    self.values = [self.registry, self.rule_type]
+    self.var = tuple(self.values)
 
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = ConvInstruction(self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,label=self.label)
+    self.comp = ConvInstruction(self.registry,self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,label=self.label)
+    self.comp.build(*self.values)
+
+  def test_instruction_details(self):
+    self.assertTrue(self.comp.instruction_details())
+
+  def test_build_with_data(self):
+    self.comp = ConvInstruction(self.registry,self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,label=self.label)
+    self.comp.build(*self.values, address=self.address)
+    self.assertEqual(self.comp.var, self.var)
+    self.assertTrue(self.comp.is_built)
 
   # @given(arb_label(), valid_direction(), st.lists(valid_conv_shape()),valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label,direction, conv_shapes,pos):

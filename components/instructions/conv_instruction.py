@@ -3,13 +3,13 @@ from components.enums.prop_types import RuleType
 from components.instructions.instruction import Instruction
 
 class ConvInstruction(Instruction):
-  def __init__(self,direction,resource,conv_shapes,source_ind,source_shape,**kwargs):
-    super().__init__(RuleType.CONV, **kwargs)
-    self.shape = source_shape
-    self.direction = direction
-    self.ind = source_ind
+  def __init__(self,registry,direction,resource,conv_shapes,source_ind,source_shape,**kwargs):
+    args = [registry, direction, resource, conv_shapes, source_ind, source_shape]
+    super().__init__(*args, **kwargs)
+    # self.shape = source_shape
+    # self.direction = direction
+    # self.ind = source_ind
     # each conv shape represents a step to take in a direction during the sampling process
-    self.build(conv_shapes)
     
   def conv(self, npmatrix):
     return 0
