@@ -27,19 +27,35 @@ def produce_syllables(num_syllables):
   return res
 
 def roll_for_syllables():
-  res_roll = roll(20)
-  if 1 <= res_roll and res_roll <= 4:
+  res_roll = roll(100)
+  if 1 <= res_roll and res_roll <= 10:
     num_syllables = 1
-  elif 5 <= res_roll and res_roll <= 8:
+  elif 11 <= res_roll and res_roll <= 70:
     num_syllables = 2
-  elif 9 <= res_roll and res_roll <= 12:
+  elif 71 <= res_roll and res_roll <= 80:
     num_syllables = 3
-  elif 13 <= res_roll and res_roll <= 16:
+  elif 81 <= res_roll and res_roll <= 90:
     num_syllables = 4
   else:
     num_syllables = 5
   return produce_syllables(num_syllables)
 
+def roll_name():
+  sylbs = roll_for_syllables()
+  res = ''
+  for sylb in sylbs:
+    join_roll = roll(4)
+    if join_roll == 1:
+      res = f'{res}{sylb}'
+    elif join_roll == 2:
+      res = f'{res}_{sylb}'
+    elif join_roll == 2:
+      res = f'{res}__{sylb}'
+    else:
+      res = f'{res}___{sylb}'
+  return res
+
 # def rel_label_gen(parent, example_child, prefix=None,suffix=None):
 #   obj_type_name = type(example_child).__name__
+# Syllables can be placed together to form one word, or separated by spaces or hyphens.
 #   return []
