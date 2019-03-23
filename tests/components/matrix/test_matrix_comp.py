@@ -6,9 +6,9 @@ from hypothesis import strategies as st
 from components.enums.pos import CtgType
 from components.matrix.matrix_comp import MatrixComp
 
-from tests.components.base.test_active_comp import TestActiveComp
+from tests.components.base.test_plastic_comp import TestPlasticComp
 
-class TestMatrixComp(TestActiveComp):
+class TestMatrixComp(TestPlasticComp):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.MATRIX

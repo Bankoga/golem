@@ -1,6 +1,6 @@
 from components.base.passive_comp import PassiveComp
 
-class ActiveComp(PassiveComp):
+class PlasticComp(PassiveComp):
 
   def __init__(self, *args, **kwargs):
     super().__init__(*args,**kwargs)
