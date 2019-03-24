@@ -20,7 +20,7 @@ class ConvShape(PassiveComp):
     kwargs['ctg']=CtgType.DATA
     super().__init__(f_shape,s_shape,ones(f_shape), **kwargs)
 
-  def prepare_args(self, *args):
+  def prepare_var_args(self, *args):
     return ConvVar(*args)
 
   @property

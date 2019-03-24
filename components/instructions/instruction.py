@@ -14,10 +14,10 @@ class Instruction(Consumer):
     kwargs['ctg'] = CtgType.INSTRUCTION
     super().__init__(*args, **kwargs)
 
-  def prepare_args(self,*args):
+  def prepare_var_args(self,*args):
     self.__prev_data = []
     self.__old_data = []
-    return super().prepare_args(*args)
+    return super().prepare_var_args(*args)
 
   @property
   def old_data(self):

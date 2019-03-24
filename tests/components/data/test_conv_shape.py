@@ -30,10 +30,10 @@ class TestConvShape(TestPassiveComp):
     self.comp = ConvShape(self.filter_shape, self.spacing_shape,label=self.label)
 
   @given(valid_shape(),valid_shape(),valid_weights()) # pylint: disable=no-value-for-parameter
-  def test_prepare_args(self, f_shape,s_shape,weights):
+  def test_prepare_var_args(self, f_shape,s_shape,weights):
     var_args = [f_shape,s_shape,weights]
     expectation = ConvVar(filter_shape=f_shape, spacing_shape=s_shape,weights=weights)
-    result = self.comp.prepare_args(*var_args)
+    result = self.comp.prepare_var_args(*var_args)
     self.assertEqual(result, expectation)
     self.assertEqual(result.filter_shape, f_shape)
     self.assertEqual(result.spacing_shape, s_shape)

@@ -22,9 +22,9 @@ class TestPassiveComp(TestStaticComp):
     self.comp = PassiveComp(self.values, label=self.label, ctg=self.ctg)
 
   @given(st.lists(st.integers()))
-  def test_prepare_args(self, var_args):
+  def test_prepare_var_args(self, var_args):
     expectation = tuple(var_args)
-    result = self.comp.prepare_args(*var_args)
+    result = self.comp.prepare_var_args(*var_args)
     self.assertEqual(result, expectation)
 
   @given(st.lists(st.one_of(st.text(),st.integers(),st.lists(st.integers()))))
