@@ -13,12 +13,6 @@ class TestPlasticComp(TestPassiveComp,TestWeightedComp):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.INSTRUCTION
 
-  def set_up_defaults(self):
-    self.default_num_dim_of_mass = 0
-    self.default_shape = None
-    self.default_weights = []
-    self.default_is_locked = False
-
   def set_up_var(self):
     self.value = 'Any arbitrary type of object?'
     self.var = tuple([self.value])
