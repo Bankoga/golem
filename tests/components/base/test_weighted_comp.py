@@ -8,7 +8,7 @@ from components.enums.pos import CtgType
 
 from tests.components.base.test_static_comp import TestStaticComp
 from tests.strategies.data_strats import valid_shape, valid_weights
-from numpy import array_equal
+from numpy import array_equal, ones
 
 class TestWeightedComp(TestStaticComp):
   def set_up_base(self):
@@ -45,6 +45,7 @@ class TestWeightedComp(TestStaticComp):
     self.comp.shape = new_shape
     self.assertTrue(array_equal(self.comp.shape, new_shape))
     self.assertTrue(array_equal(self.comp.num_dim_of_mass, len(new_shape)))
+    self.assertTrue(array_equal(self.comp.weights, ones(new_shape)))
 
   def test_get_weights(self):
     self.assertTrue(array_equal(self.comp.weights, self.default_weights))

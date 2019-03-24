@@ -1,4 +1,5 @@
 from components.base.static_comp import StaticComp
+from numpy import ones
 
 class WeightedComp(StaticComp):
 
@@ -36,6 +37,7 @@ class WeightedComp(StaticComp):
     else:
       self.__shape = value
       self.__num_dim_of_mass = len(self.__shape)
+      self.weights = ones(value)
     
   @property
   def num_dim_of_mass(self):
