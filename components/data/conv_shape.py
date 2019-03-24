@@ -1,10 +1,10 @@
-from numpy import ones
+from numpy import array, ones
 
-from components.base.passive_comp import PassiveComp
+from components.base.plastic_comp import PlasticComp
 from components.enums.pos import CtgType
 from components.vars.data import ConvVar
 
-class ConvShape(PassiveComp):
+class ConvShape(PlasticComp):
 
   """
   While ConvShapes are components, we need to break up the component base class into two types
@@ -18,18 +18,16 @@ class ConvShape(PassiveComp):
     if not has_label:
       kwargs['label'] = ''
     kwargs['ctg']=CtgType.DATA
-    super().__init__(f_shape,s_shape,ones(f_shape), **kwargs)
+    super().__init__(f_shape,s_shape, **kwargs)
+
+  def set_weighted_defaults(self):
+    shape = tuple([1])
+    super().set_weighted_defaults(shape=shape,weights=ones(shape))
 
   def prepare_var_args(self, *args):
-    return ConvVar(*args)
-
-  @property
-  def weights(self):
-    return self.var.weights
-  
-  @weights.setter
-  def weights(self, value):
-    self.setter_error()
+    res = ConvVar(*args)
+    self.shape = res.filter_shape
+    return res
 
   @property
   def filter_shape(self):
@@ -46,3 +44,7 @@ class ConvShape(PassiveComp):
   @spacing_shape.setter
   def spacing_shape(self, value):
     self.setter_error()
+  
+  def update(self, *args):
+    super().update(*args)
+    self.shape = self.filter_shape
