@@ -17,7 +17,7 @@ class TestWeightedComp(TestStaticComp):
 
   def set_up_defaults(self):
     self.default_num_dim_of_mass = 0
-    self.default_shape = None
+    self.default_shape = tuple([])
     self.default_weights = []
     self.default_is_locked = False
 

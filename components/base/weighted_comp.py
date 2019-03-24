@@ -6,11 +6,13 @@ class WeightedComp(StaticComp):
    super().__init__(*args, **kwargs)
   
   def set_defaults(self):
-    self.__is_locked = False
-    self.__num_dim_of_mass = 0
-    self.__shape = None
-    self.__weights = []
+    self.set_weighted_defaults()
     return super().set_defaults()
+  
+  def set_weighted_defaults(self):
+    self.__is_locked = False
+    self.shape = tuple([])
+    self.weights = []
    
   @property
   def weights(self):
