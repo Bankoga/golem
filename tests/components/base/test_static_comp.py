@@ -14,6 +14,9 @@ class TestStaticComp(unittest.TestCase):
     self.ctg = CtgType.FSET
     self.comp = StaticComp(self.label, self.ctg)
 
+  def test_set_up_defaults(self):
+    self.assertTrue(self.comp.set_up_defaults())
+
   @given(arbitrary_invalid_label()) # pylint: disable=no-value-for-parameter
   def test_set_invalid_label(self,label):
     with self.assertRaises(ValueError):
