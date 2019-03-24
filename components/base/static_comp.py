@@ -5,9 +5,9 @@ class StaticComp:
   def __init__(self, label, ctg):
     self.label = label
     self.ctg = ctg
-    self.set_up_defaults()
+    self.set_defaults()
 
-  def set_up_defaults(self):
+  def set_defaults(self):
     return True
 
   @property
