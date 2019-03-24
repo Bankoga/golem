@@ -11,7 +11,7 @@ from components.instructions.conv_instruction import ConvInstruction
 from components.matrix.address_registry import AddressRegistry
 from components.vars.data import Address
 from tests.components.instructions.test_instruction import TestInstruction
-from tests.strategies.data_strats import valid_conv_shape, valid_resource_data
+from tests.strategies.data_strats import valid_resource_array, valid_shape_and_index, valid_resource_data, valid_sz_shape_and_index
 from tests.strategies.func_set_strats import (module_input_set,
                                               processed_module_input_set)
 from tests.strategies.pos_strats import valid_direction, valid_pos
@@ -49,9 +49,13 @@ class TestConvInstruction(TestInstruction):
     self.values = [self.registry,self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,]
     self.var = tuple(self.values)
 
+  def set_up_dynamic_props(self):
+    pass
+
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
+    self.set_up_dynamic_props()
     self.comp = ConvInstruction(self.registry,self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,label=self.label)
     self.comp.build(*self.values)
 
@@ -72,21 +76,61 @@ class TestConvInstruction(TestInstruction):
   #   self.assertEqual(inst.shape,self.source_shape)
   #   self.assertEqual(inst.pos,pos)
 
-  # @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
-  # def test_conv(self, npmatrix):
-  #   # TODO: Build a valid package for a specific id strategy
-  #   """ what needs to be considered when applying a conv to an arbitrary matrix?
-  #       these are all part of the conv considerations
-  #       The matrix has already been grabbed at this point!
-  #       what about size mismatches between regions? We care about those
-  #       Where is activity tracked for plasticity? inside the instruction
-  #   """
-  #   result = self.comp.conv(npmatrix)
-  #   expectation = 0
-  #   # extract the slice of the matrix we wish to use for the convolution with empty space fill
-  #   # self.comp.extract(npmatrix)
-  #   self.assertEqual(result,expectation)
+  @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
+  def test_conv(self, npmatrix_array):
+    # # TODO: Build a valid package for a specific id strategy
+    # """ what needs to be considered when applying a conv to an arbitrary matrix?
+    #     these are all part of the conv considerations
+    #     The matrix has already been grabbed at this point!
+    #     what about size mismatches between regions? We care about those
+    #     Where is activity tracked for plasticity? inside the instruction
+    # """
+    # result = self.comp.conv(npmatrix_array)
+    # expectation = 0
+    # a convolution is the dot product of two vectors
+    # convs here, use source and compression/expansion aware indexing for slice extraction
+    # why not just use the index directly, and grab everything from there in ascending order?
+    # # extract the slice of the matrix we wish to use for the convolution with empty space fill
+    # # self.comp.extract(npmatrix)
+    # self.assertEqual(result,expectation)
+    pass
 
+  @given(valid_sz_shape_and_index())
+  def test_extract_quadrant(self, sz_shape_and_index):
+    input_shape, input_ind,side_sz = sz_shape_and_index
+    x = input_ind[0]
+    if len(input_ind) > 1:
+      y = input_ind[1]
+      expectation = input_shape[x:x+side_sz][y:y+side_sz]
+    else:
+      expectation = input_shape[x:x+side_sz]
+    res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
+    self.assertTrue(array_equal(res, expectation))
+
+  @given(valid_shape_and_index())
+  def test_extract_quadrant_arbitrary_size(self, side_sz,shape_and_index):
+    valid_sz = shape_and_index[0] 
+    if len(shape_and_index > 1):
+      valid_sz = min(shape_and_index[0],shape_and_index[1])
+    if 0 <= side_sz and side_sz <= valid_sz:
+      self.test_extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
+    else:
+      with self.assertRaises(RuntimeError):
+        self.comp.extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
+
+  @given(valid_shape_and_index(),valid_resource_data())
+  def test_extract_quadrants(self, shape_and_index, input_shape):
+    source_shape, source_ind = shape_and_index
+    pass
+    """
+    cases
+    if i,j is out of bounds:
+      raise error
+    elif i,j is in bounds:
+      raw or adjusted input shape is smaller than weights (padding or no?)
+      input shape can support a full slice of size equal to weights
+    """
+    pass
 
   # @given(valid_conv_shape(), valid_resource_data()) # pylint: disable=no-value-for-parameter
   # def test_extract(self,conv_shape,npmatrix):

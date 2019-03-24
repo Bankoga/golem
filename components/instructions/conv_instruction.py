@@ -31,5 +31,9 @@ class ConvInstruction(Instruction):
     # we only return the step_res from a perform, so as to handle plasticity at the function group level
     return res
 
+  def extract_quadrant(self, side_sz, input_ind, input_shape):
+    return []
+
+
   def update_weight(self):
     pass
