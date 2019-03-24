@@ -9,10 +9,10 @@ class WeightedComp(StaticComp):
     self.set_weighted_defaults()
     return super().set_defaults()
   
-  def set_weighted_defaults(self):
+  def set_weighted_defaults(self, shape=tuple([]),weights=[]):
     self.__is_locked = False
-    self.shape = tuple([])
-    self.weights = []
+    self.shape = shape
+    self.weights = weights
    
   @property
   def weights(self):
