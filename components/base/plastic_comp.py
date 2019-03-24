@@ -4,7 +4,10 @@ class PlasticComp(PassiveComp):
 
   def __init__(self, *args, **kwargs):
     super().__init__(*args,**kwargs)
+
+  def set_defaults(self):
     self.__baseline = False
+    return super().set_defaults()
 
   @property
   def baseline(self):
