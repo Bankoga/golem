@@ -27,7 +27,10 @@ class Channel(Mediator):
     args = [{},{},meld_str,sender_address]
     kwargs['ctg'] = CtgType.CHANNEL
     super().__init__(*args,**kwargs)
+
+  def set_defaults(self):
     self.__meld = None
+    return super().set_defaults()
 
   @property
   def reg_item(self):
