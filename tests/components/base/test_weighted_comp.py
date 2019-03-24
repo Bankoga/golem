@@ -15,7 +15,7 @@ class TestWeightedComp(TestStaticComp):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.INSTRUCTION
 
-  def set_defaults(self):
+  def set_up_defaults(self):
     self.default_num_dim_of_mass = 0
     self.default_shape = None
     self.default_weights = []
@@ -26,7 +26,7 @@ class TestWeightedComp(TestStaticComp):
   
   def setUp(self):
     self.set_up_base()
-    self.set_defaults()
+    self.set_up_defaults()
     self.set_up_dynamic_props()
     self.comp = WeightedComp(label=self.label, ctg=self.ctg)
 
