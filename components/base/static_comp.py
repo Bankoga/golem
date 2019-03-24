@@ -2,9 +2,9 @@ from utils.validators.pos_validators import is_valid_ctg
 from utils.validators.prop_validators import is_valid_label
 
 class StaticComp:
-  def __init__(self, label, ctg):
-    self.label = label
-    self.ctg = ctg
+  def __init__(self, *args, **kwargs):
+    self.label = kwargs['label']
+    self.ctg = kwargs['ctg']
     self.set_defaults()
 
   def set_defaults(self):

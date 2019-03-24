@@ -3,7 +3,7 @@ from components.base.static_comp import StaticComp
 class PassiveComp(StaticComp):
 
   def __init__(self, *args, **kwargs):
-    super().__init__(kwargs['label'],kwargs['ctg'])
+    super().__init__(*args, **kwargs)
     self.__var = self.prepare_var_args(*args)
 
   def prepare_var_args(self,*args):

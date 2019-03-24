@@ -3,7 +3,7 @@ from components.base.static_comp import StaticComp
 class WeightedComp(StaticComp):
 
   def __init__(self, *args, **kwargs):
-   super().__init__(kwargs['label'], kwargs['ctg'])
+   super().__init__(*args, **kwargs)
   
   def set_defaults(self):
     self.__is_locked = False

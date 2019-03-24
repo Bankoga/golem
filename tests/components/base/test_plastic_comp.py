@@ -6,13 +6,27 @@ from hypothesis import strategies as st
 from components.base.plastic_comp import PlasticComp
 from components.enums.prop_types import CtgType
 from tests.components.base.test_passive_comp import TestPassiveComp
+from tests.components.base.test_weighted_comp import TestWeightedComp
 
-class TestPlasticComp(TestPassiveComp):
-  def setUp(self):
+class TestPlasticComp(TestPassiveComp,TestWeightedComp):
+  def set_up_base(self):
     self.label = 'TotallyValidId'
-    self.ctg = CtgType.FSET
+    self.ctg = CtgType.INSTRUCTION
+
+  def set_up_defaults(self):
+    self.default_num_dim_of_mass = 0
+    self.default_shape = None
+    self.default_weights = []
+    self.default_is_locked = False
+
+  def set_up_var(self):
     self.value = 'Any arbitrary type of object?'
     self.var = tuple([self.value])
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_defaults()
+    self.set_up_var()
     self.comp = PlasticComp(self.value, label=self.label, ctg=self.ctg)
 
   def test_baseline(self):

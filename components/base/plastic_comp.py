@@ -1,6 +1,7 @@
 from components.base.passive_comp import PassiveComp
+from components.base.weighted_comp import WeightedComp
 
-class PlasticComp(PassiveComp):
+class PlasticComp(PassiveComp, WeightedComp):
 
   def __init__(self, *args, **kwargs):
     super().__init__(*args,**kwargs)
