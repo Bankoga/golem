@@ -10,7 +10,7 @@ class WeightedComp(StaticComp):
     self.__num_dim_of_mass = 0
     self.__shape = None
     self.__weights = []
-    return True
+    return super().set_defaults()
    
   @property
   def weights(self):

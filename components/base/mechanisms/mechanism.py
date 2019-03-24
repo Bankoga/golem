@@ -6,8 +6,11 @@ from components.matrix.address_registry import AddressRegistry
 class Mechanism(BuildableComp):
   def __init__(self, *args,**kwargs):
     super().__init__(*args, **kwargs)
+
+  def set_defaults(self):
     self.__is_registered = False
     self.__address = None
+    return super().set_defaults()
 
   @property
   def registry(self):

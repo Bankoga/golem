@@ -5,7 +5,10 @@ class BuildableComp(PassiveComp):
   def __init__(self, *args, **kwargs):
     args = []
     super().__init__(*args,**kwargs)
+
+  def set_defaults(self):
     self.__is_built = False
+    return super().set_defaults()
 
   @property
   def is_built(self):
