@@ -68,6 +68,22 @@ class TestConvInstruction(TestInstruction):
     self.prev_data = []
     pass
 
+  def quadrant_helper(self, sz_shape_and_index):
+    input_shape, input_ind,side_sz = sz_shape_and_index
+    x_sz = side_sz
+    y_sz = side_sz
+    if type(side_sz) is tuple:
+      x_sz = side_sz[0]
+      y_sz = side_sz[1]
+    x = input_ind[0]
+    if len(input_ind) > 1:
+      y = input_ind[1]
+      expectation = input_shape[x:x+x_sz][y:y+y_sz]
+    else:
+      expectation = input_shape[x:x+side_sz]
+    res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
+    self.assertTrue(array_equal(res, expectation))
+
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
@@ -164,31 +180,21 @@ class TestConvInstruction(TestInstruction):
 
   @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
   def test_extract_quadrant(self, sz_shape_and_index):
-    input_shape, input_ind,side_sz = sz_shape_and_index
-    x_sz = side_sz
-    y_sz = side_sz
-    if type(side_sz) is tuple:
-      x_sz = side_sz[0]
-      y_sz = side_sz[1]
-    x = input_ind[0]
-    if len(input_ind) > 1:
-      y = input_ind[1]
-      expectation = input_shape[x:x+x_sz][y:y+y_sz]
-    else:
-      expectation = input_shape[x:x+side_sz]
-    res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
-    self.assertTrue(array_equal(res, expectation))
+    self.quadrant_helper(sz_shape_and_index)
 
-  @given(valid_shape_and_index()) # pylint: disable=no-value-for-parameter
-  def test_extract_quadrant_arbitrary_size(self, side_sz,shape_and_index):
-    valid_sz = shape_and_index[0] 
-    if len(shape_and_index > 1):
-      valid_sz = min(shape_and_index[0],shape_and_index[1])
-    if 0 <= side_sz and side_sz <= valid_sz:
-      self.test_extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
-    else:
-      with self.assertRaises(RuntimeError):
-        self.comp.extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
+  # @given(st.integers(), valid_shape_and_index()) # pylint: disable=no-value-for-parameter
+  # def test_extract_quadrant_arbitrary_size(self, side_sz,shape_and_index):
+  #   x_sz = shape_and_index[0]
+  #   y_sz = shape_and_index[0]
+  #   if type(shape_and_index[0]) is tuple:
+  #     x_sz = shape_and_index[0][0]
+  #     y_sz = shape_and_index[0][1]
+  #   valid_sz = min(x_sz,y_sz)
+  #   if not (0 <= side_sz and side_sz <= valid_sz):
+  #     with self.assertRaises(RuntimeError):
+  #       self.comp.extract_quadrant(shape_and_index[0],shape_and_index[1],side_sz)
+  #   else:
+  #     self.quadrant_helper((shape_and_index[0],shape_and_index[1],side_sz))
 
   # @given(valid_shape_and_index(),valid_resource_data()) # pylint: disable=no-value-for-parameter
   # def test_extract_quadrants(self, shape_and_index, input_shape):
