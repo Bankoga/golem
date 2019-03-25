@@ -151,6 +151,17 @@ class TestConvInstruction(TestInstruction):
     # self.assertEqual(result,expectation)
     pass
 
+  @given(st.tuples(st.integers(),st.integers()))
+  def test_get_side_szs(self, side_sz):
+    x_sz = side_sz
+    y_sz = side_sz
+    if type(side_sz) is tuple:
+      x_sz = side_sz[0]
+      y_sz = side_sz[1]
+    res_x, res_y = self.comp.get_side_szs(side_sz)
+    self.assertEqual(res_x, x_sz)
+    self.assertEqual(res_y, y_sz)
+
   @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
   def test_extract_quadrant(self, sz_shape_and_index):
     input_shape, input_ind,side_sz = sz_shape_and_index

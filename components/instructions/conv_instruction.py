@@ -38,13 +38,17 @@ class ConvInstruction(Instruction):
     # we only return the step_res from a perform, so as to handle plasticity at the function group level
     return res
 
-  def extract_quadrant(self, input_ind, input_shape,side_sz):
-    x = input_ind[0]
+  def get_side_szs(self, side_sz):
     x_sz = side_sz
     y_sz = side_sz
     if type(side_sz) is tuple:
       x_sz = side_sz[0]
       y_sz = side_sz[1]
+    return (x_sz,y_sz)
+
+  def extract_quadrant(self, input_ind, input_shape,side_sz):
+    x = input_ind[0]
+    x_sz, y_sz = self.get_side_szs(side_sz)
     if len(input_ind) > 1:
       y = input_ind[1]
       quadrant = input_shape[x:x+x_sz][y:y+y_sz]
