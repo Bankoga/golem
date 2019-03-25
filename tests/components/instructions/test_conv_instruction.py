@@ -118,7 +118,7 @@ class TestConvInstruction(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.conv_shape_defs = self.conv_shape_defs
 
-  @given(st.lists(valid_shape()))
+  @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
   def test_set_up_conv_shapes(self,conv_shape_defs):
     self.comp.set_up_conv_shapes(conv_shape_defs)
     for i,(f_shape,s_shape) in enumerate(conv_shape_defs):
@@ -127,6 +127,7 @@ class TestConvInstruction(TestInstruction):
 
   def test_get_conv_shapes(self):
     self.assertEqual(self.comp.conv_shapes, self.conv_shapes)
+
   def test_set_conv_shapes(self):
     with self.assertRaises(RuntimeError):
       self.comp.conv_shapes = self.conv_shapes
@@ -150,28 +151,33 @@ class TestConvInstruction(TestInstruction):
     # self.assertEqual(result,expectation)
     pass
 
-  # @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
-  # def test_extract_quadrant(self, sz_shape_and_index):
-  #   input_shape, input_ind,side_sz = sz_shape_and_index
-  #   x = input_ind[0]
-  #   if len(input_ind) > 1:
-  #     y = input_ind[1]
-  #     expectation = input_shape[x:x+side_sz][y:y+side_sz]
-  #   else:
-  #     expectation = input_shape[x:x+side_sz]
-  #   res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
-  #   self.assertTrue(array_equal(res, expectation))
+  @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
+  def test_extract_quadrant(self, sz_shape_and_index):
+    input_shape, input_ind,side_sz = sz_shape_and_index
+    x_sz = side_sz
+    y_sz = side_sz
+    if type(side_sz) is tuple:
+      x_sz = side_sz[0]
+      y_sz = side_sz[1]
+    x = input_ind[0]
+    if len(input_ind) > 1:
+      y = input_ind[1]
+      expectation = input_shape[x:x+x_sz][y:y+y_sz]
+    else:
+      expectation = input_shape[x:x+side_sz]
+    res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
+    self.assertTrue(array_equal(res, expectation))
 
-  # @given(valid_shape_and_index()) # pylint: disable=no-value-for-parameter
-  # def test_extract_quadrant_arbitrary_size(self, side_sz,shape_and_index):
-  #   valid_sz = shape_and_index[0] 
-  #   if len(shape_and_index > 1):
-  #     valid_sz = min(shape_and_index[0],shape_and_index[1])
-  #   if 0 <= side_sz and side_sz <= valid_sz:
-  #     self.test_extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
-  #   else:
-  #     with self.assertRaises(RuntimeError):
-  #       self.comp.extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
+  @given(valid_shape_and_index()) # pylint: disable=no-value-for-parameter
+  def test_extract_quadrant_arbitrary_size(self, side_sz,shape_and_index):
+    valid_sz = shape_and_index[0] 
+    if len(shape_and_index > 1):
+      valid_sz = min(shape_and_index[0],shape_and_index[1])
+    if 0 <= side_sz and side_sz <= valid_sz:
+      self.test_extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
+    else:
+      with self.assertRaises(RuntimeError):
+        self.comp.extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
 
   # @given(valid_shape_and_index(),valid_resource_data()) # pylint: disable=no-value-for-parameter
   # def test_extract_quadrants(self, shape_and_index, input_shape):

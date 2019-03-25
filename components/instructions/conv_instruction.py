@@ -38,9 +38,19 @@ class ConvInstruction(Instruction):
     # we only return the step_res from a perform, so as to handle plasticity at the function group level
     return res
 
-  def extract_quadrant(self, side_sz, input_ind, input_shape):
-    return []
-
+  def extract_quadrant(self, input_ind, input_shape,side_sz):
+    x = input_ind[0]
+    x_sz = side_sz
+    y_sz = side_sz
+    if type(side_sz) is tuple:
+      x_sz = side_sz[0]
+      y_sz = side_sz[1]
+    if len(input_ind) > 1:
+      y = input_ind[1]
+      quadrant = input_shape[x:x+x_sz][y:y+y_sz]
+    else:
+      quadrant = input_shape[x:x+x_sz]
+    return quadrant
 
   def update_weight(self):
     pass
