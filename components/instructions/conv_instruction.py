@@ -1,16 +1,23 @@
 from components.enums.prop_types import RuleType
-
+from components.data.conv_shape import ConvShape
 from components.instructions.instruction import Instruction
+from utils.helpers.prop_gen_help import roll_name
 
 class ConvInstruction(Instruction):
-  def __init__(self,registry,direction,resource,conv_shapes,source_ind,source_shape,**kwargs):
-    args = [registry, direction, resource, conv_shapes, source_ind, source_shape]
+  def __init__(self,registry,source_ind,source_shape,step_direction,num_steps,resource_accepted,conv_shape_defs,**kwargs):
+    args = [registry, source_ind, source_shape, step_direction, num_steps, resource_accepted, conv_shape_defs]
     super().__init__(*args, **kwargs)
+    # self.set_up_conv_shapes(self.conv_shape_defs)
     # self.shape = source_shape
-    # self.direction = direction
+    # self.step_direction = step_direction
     # self.ind = source_ind
     # each conv shape represents a step to take in a direction during the sampling process
-    
+  
+  def set_up_conv_shapes(self, shape_defs):
+    res = []
+    for shapes in shape_defs:
+      res.append(ConvShape(*shapes,label=f'{self.label}_{roll_name()}'))
+    self.__conv_shapes = res
   def conv(self, npmatrix):
     return 0
 
@@ -37,3 +44,65 @@ class ConvInstruction(Instruction):
 
   def update_weight(self):
     pass
+
+  @property
+  def source_ind(self):
+    return self.var[1]
+
+  @source_ind.setter
+  def source_ind(self,value):
+    raise RuntimeError('Can not set the value of source_ind!')
+
+  @property
+  def source_shape(self):
+    return self.var[2]
+
+  @source_shape.setter
+  def source_shape(self,value):
+    raise RuntimeError('Can not set the value of source_shape!')
+
+  @property
+  def step_direction(self):
+    return self.var[3]
+
+  @step_direction.setter
+  def step_direction(self,value):
+    raise RuntimeError('Can not set the value of step_direction!')
+
+  @property
+  def num_steps(self):
+    return self.var[4]
+
+  @num_steps.setter
+  def num_steps(self,value):
+    raise RuntimeError('Can not set the value of num_steps!')
+
+  @property
+  def resource_accepted(self):
+    return self.var[5]
+
+  @resource_accepted.setter
+  def resource_accepted(self,value):
+    raise RuntimeError('Can not set the value of resource_accepted!')
+  
+  
+  @property
+  def conv_shape_defs(self):
+    return self.var[6]
+
+  @conv_shape_defs.setter
+  def conv_shape_defs(self,value):
+    raise RuntimeError('Can not set the value of conv_shape_defs!')
+
+
+  @property
+  def conv_shapes(self):
+    return self.__conv_shapes
+
+  @conv_shapes.setter
+  def conv_shapes(self,value):
+    raise RuntimeError('Can not set the value of conv_shapes!')
+
+  def build_details(self, *args, **kwargs):
+    super().build_details(*args, **kwargs)
+    self.set_up_conv_shapes(self.conv_shape_defs)

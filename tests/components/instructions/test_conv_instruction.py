@@ -11,7 +11,7 @@ from components.instructions.conv_instruction import ConvInstruction
 from components.matrix.address_registry import AddressRegistry
 from components.vars.data import Address
 from tests.components.instructions.test_instruction import TestInstruction
-from tests.strategies.data_strats import valid_resource_array, valid_shape_and_index, valid_resource_data, valid_sz_shape_and_index
+from tests.strategies.data_strats import valid_resource_array, valid_shape_and_index, valid_resource_data, valid_sz_shape_and_index, valid_shape
 from tests.strategies.func_set_strats import (module_input_set,
                                               processed_module_input_set)
 from tests.strategies.pos_strats import valid_direction, valid_pos
@@ -33,48 +33,103 @@ class TestConvInstruction(TestInstruction):
       'reg_id': self.label,
       'address': self.address
     }
+    self.conv_shape_defs = [
+      [(4,4)],
+      [tuple([1])],
+      [(4,4)],
+      [(9,9),(1,1)],
+      [(4,2),tuple([1])],
+      [(12,12)]
+    ]
+    self.source_shape = (256,256)
+    self.source_ind = (45,25)
+    self.step_direction = 'A' # TODO: Use correct ENUM
+    self.num_steps = len(self.conv_shape_defs)
+    self.resource_accepted = RsrcType.ENERGY
+    self.values = [self.registry,
+                   self.source_ind,
+                   self.source_shape,
+                   self.step_direction,
+                   self.num_steps,
+                   self.resource_accepted,
+                   self.conv_shape_defs
+                  ]
+    self.var = tuple(self.values)
+
+  def set_up_dynamic_props(self):
     # self.pos = Pos(self.ctg.get_component_type())
     self.conv_shapes = [cs((4,4),label=f'{self.label}_{roll_name()}'),
-                        cs((1),label=f'{self.label}_{roll_name()}'),
+                        cs(tuple([1]),label=f'{self.label}_{roll_name()}'),
                         cs((4,4),label=f'{self.label}_{roll_name()}'),
                         cs((9,9),(1,1),label=f'{self.label}_{roll_name()}'),
                         cs((4,2),(1),label=f'{self.label}_{roll_name()}'),
                         cs((12,12),label=f'{self.label}_{roll_name()}')]
-    self.source_shape = (256,256)
-    self.source_ind = (45,25)
-    self.direction = 'A' # TODO: Use correct ENUM
-    self.resource = RsrcType.ENERGY
     self.old_data = []
     self.prev_data = []
-    self.values = [self.registry,self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,]
-    self.var = tuple(self.values)
-
-  def set_up_dynamic_props(self):
     pass
 
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
     self.set_up_dynamic_props()
-    self.comp = ConvInstruction(self.registry,self.direction,self.resource,self.conv_shapes,self.source_ind,self.source_shape,label=self.label)
+    self.comp = ConvInstruction(self.registry,
+                                self.source_ind,
+                                self.source_shape,
+                                self.step_direction,
+                                self.num_steps,
+                                self.resource_accepted,
+                                self.conv_shape_defs,
+                                label=self.label)
     self.comp.build(*self.values)
 
   def test_instruction_details(self):
     self.assertTrue(self.comp.instruction_details())
 
-  # @given(arb_label(), valid_direction(), st.lists(valid_conv_shape()),valid_pos()) # pylint: disable=no-value-for-parameter
-  # def test_default(self, label,direction, conv_shapes,pos):
-  #       # for efficiency reasons, eventually instructions will need to be built before processing
-  #   inst = ConvInstruction(label,direction, conv_shapes, self.source_ind, self.source_shape,pos)
-  #   self.assertEqual(inst.get_ctg(), RuleType.CONV)
-  #   self.assertIsNone(inst.curr_shape)
-  #   self.assertIsNone(inst.curr_bearing)
-  #   self.assertIsNone(inst.curr_pos)
-  #   self.assertEqual(inst.direction,direction)
-  #   self.assertEqual(inst.var,conv_shapes)
-  #   self.assertEqual(inst.ind,self.source_ind)
-  #   self.assertEqual(inst.shape,self.source_shape)
-  #   self.assertEqual(inst.pos,pos)
+  def test_get_source_ind(self):
+    self.assertEqual(self.comp.source_ind, self.source_ind)
+
+  def test_set_source_ind(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_ind = self.source_ind
+    
+  def test_get_source_shape(self):
+    self.assertEqual(self.comp.source_shape, self.source_shape)
+  def test_set_source_shape(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_shape = self.source_shape
+    
+  def test_get_step_direction(self):
+    self.assertEqual(self.comp.step_direction, self.step_direction)
+  def test_set_step_direction(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.step_direction = self.step_direction
+    
+  def test_get_resource_accepted(self):
+    self.assertEqual(self.comp.resource_accepted, self.resource_accepted)
+  def test_set_resource_accepted(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.resource_accepted = self.resource_accepted
+    
+  def test_get_conv_shape_defs(self):
+    for i,cnv_shp in enumerate(self.comp.conv_shape_defs):
+      self.assertEqual(cnv_shp[0], self.conv_shape_defs[i][0])
+
+  def test_set_conv_shape_defs(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.conv_shape_defs = self.conv_shape_defs
+
+  @given(st.lists(valid_shape()))
+  def test_set_up_conv_shapes(self,conv_shape_defs):
+    self.comp.set_up_conv_shapes(conv_shape_defs)
+    for i,(f_shape,s_shape) in enumerate(conv_shape_defs):
+      self.assertTrue(self.comp.conv_shapes[i].filter_shape == f_shape)
+      self.assertTrue(self.comp.conv_shapes[i].spacing_shape == s_shape)
+
+  def test_get_conv_shapes(self):
+    self.assertEqual(self.comp.conv_shapes, self.conv_shapes)
+  def test_set_conv_shapes(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.conv_shapes = self.conv_shapes
 
   @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
   def test_conv(self, npmatrix_array):
@@ -95,42 +150,42 @@ class TestConvInstruction(TestInstruction):
     # self.assertEqual(result,expectation)
     pass
 
-  @given(valid_sz_shape_and_index())
-  def test_extract_quadrant(self, sz_shape_and_index):
-    input_shape, input_ind,side_sz = sz_shape_and_index
-    x = input_ind[0]
-    if len(input_ind) > 1:
-      y = input_ind[1]
-      expectation = input_shape[x:x+side_sz][y:y+side_sz]
-    else:
-      expectation = input_shape[x:x+side_sz]
-    res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
-    self.assertTrue(array_equal(res, expectation))
+  # @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
+  # def test_extract_quadrant(self, sz_shape_and_index):
+  #   input_shape, input_ind,side_sz = sz_shape_and_index
+  #   x = input_ind[0]
+  #   if len(input_ind) > 1:
+  #     y = input_ind[1]
+  #     expectation = input_shape[x:x+side_sz][y:y+side_sz]
+  #   else:
+  #     expectation = input_shape[x:x+side_sz]
+  #   res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
+  #   self.assertTrue(array_equal(res, expectation))
 
-  @given(valid_shape_and_index())
-  def test_extract_quadrant_arbitrary_size(self, side_sz,shape_and_index):
-    valid_sz = shape_and_index[0] 
-    if len(shape_and_index > 1):
-      valid_sz = min(shape_and_index[0],shape_and_index[1])
-    if 0 <= side_sz and side_sz <= valid_sz:
-      self.test_extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
-    else:
-      with self.assertRaises(RuntimeError):
-        self.comp.extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
+  # @given(valid_shape_and_index()) # pylint: disable=no-value-for-parameter
+  # def test_extract_quadrant_arbitrary_size(self, side_sz,shape_and_index):
+  #   valid_sz = shape_and_index[0] 
+  #   if len(shape_and_index > 1):
+  #     valid_sz = min(shape_and_index[0],shape_and_index[1])
+  #   if 0 <= side_sz and side_sz <= valid_sz:
+  #     self.test_extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
+  #   else:
+  #     with self.assertRaises(RuntimeError):
+  #       self.comp.extract_quadrant((shape_and_index[0],shape_and_index[1],side_sz))
 
-  @given(valid_shape_and_index(),valid_resource_data())
-  def test_extract_quadrants(self, shape_and_index, input_shape):
-    source_shape, source_ind = shape_and_index
-    pass
-    """
-    cases
-    if i,j is out of bounds:
-      raise error
-    elif i,j is in bounds:
-      raw or adjusted input shape is smaller than weights (padding or no?)
-      input shape can support a full slice of size equal to weights
-    """
-    pass
+  # @given(valid_shape_and_index(),valid_resource_data()) # pylint: disable=no-value-for-parameter
+  # def test_extract_quadrants(self, shape_and_index, input_shape):
+  #   source_shape, source_ind = shape_and_index
+  #   pass
+  #   """
+  #   cases
+  #   if i,j is out of bounds:
+  #     raise error
+  #   elif i,j is in bounds:
+  #     raw or adjusted input shape is smaller than weights (padding or no?)
+  #     input shape can support a full slice of size equal to weights
+  #   """
+  #   pass
 
   # @given(valid_conv_shape(), valid_resource_data()) # pylint: disable=no-value-for-parameter
   # def test_extract(self,conv_shape,npmatrix):
