@@ -35,7 +35,10 @@ class WeightedComp(StaticComp):
     if self.is_locked:
       raise RuntimeError('Can not change shape of a locked component!')
     else:
-      self.__shape = value
+      if not type(value) == tuple:
+        self.__shape = tuple([value])
+      else:
+        self.__shape = value
       self.__num_dim_of_mass = len(self.__shape)
       self.weights = ones(value)
     
