@@ -7,7 +7,7 @@ from numpy import array_equal
 from components.data.collector_segment import CollectorSegment as cs
 from components.enums.pos import CtgType
 from components.enums.prop_types import RsrcType, RuleType
-from components.instructions.conv_instruction import ConvInstruction
+from components.instructions.collector import Collector
 from components.matrix.address_registry import AddressRegistry
 from components.vars.data import Address
 from tests.components.instructions.test_instruction import TestInstruction
@@ -24,7 +24,7 @@ from utils.helpers.prop_gen_help import roll_name
 from utils.pos import Pos
 
 
-class TestConvInstruction(TestInstruction):
+class TestCollector(TestInstruction):
   def set_up_base(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.INSTRUCTION
@@ -92,7 +92,7 @@ class TestConvInstruction(TestInstruction):
     self.set_up_base()
     self.set_up_var()
     self.set_up_dynamic_props()
-    self.comp = ConvInstruction(self.registry,
+    self.comp = Collector(self.registry,
                                 self.source_ind,
                                 self.source_shape,
                                 self.step_direction,

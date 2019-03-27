@@ -14,7 +14,7 @@ class TestConsumer(TestMechanism):
   def setUp(self):
     self.registry = AddressRegistry(label='global_registry')
     self.address = Address(golem='a',matrix='l',func_set='b',stage='base',group='randos',packager='star_0',instruction='conv_instruct_0')
-    self.label = 'conv_instruction_0'
+    self.label = 'collector_0'
     self.ctg = CtgType.INSTRUCTION
     self.reg_item = {
       'reg_id': self.label,

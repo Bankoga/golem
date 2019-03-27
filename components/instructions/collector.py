@@ -3,7 +3,7 @@ from components.data.collector_segment import CollectorSegment
 from components.instructions.instruction import Instruction
 from utils.helpers.prop_gen_help import roll_name
 
-class ConvInstruction(Instruction):
+class Collector(Instruction):
   def __init__(self,registry,source_ind,source_shape,step_direction,num_steps,resource_accepted,collector_segment_defs,**kwargs):
     args = [registry, source_ind, source_shape, step_direction, num_steps, resource_accepted, collector_segment_defs]
     super().__init__(*args, **kwargs)

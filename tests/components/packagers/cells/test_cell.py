@@ -109,7 +109,7 @@ class TestCell(unittest.TestCase):
   def test_process(self, inputs):
     """
     given the properties
-      - conv_instructions
+      - collectors
       - module_inputs_dict
       - module_outputs_dict
     when it is time to process inputs
