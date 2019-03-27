@@ -23,6 +23,6 @@ class PlasticComp(PassiveComp, WeightedComp):
 
   def reset(self):
     if self.baseline:
-      self.update(self.baseline)
+      self.update(*self.baseline)
     else:
       raise RuntimeError('Attempted to reset an unset base')
