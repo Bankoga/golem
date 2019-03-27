@@ -3,17 +3,25 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.base.active_comp import ActiveComp
+from components.base.plastic_comp import PlasticComp
 from components.enums.prop_types import CtgType
 from tests.components.base.test_passive_comp import TestPassiveComp
+from tests.components.base.test_weighted_comp import TestWeightedComp
 
-class TestActiveComp(TestPassiveComp):
-  def setUp(self):
+class TestPlasticComp(TestPassiveComp,TestWeightedComp):
+  def set_up_base(self):
     self.label = 'TotallyValidId'
-    self.ctg = CtgType.FSET
+    self.ctg = CtgType.INSTRUCTION
+
+  def set_up_var(self):
     self.value = 'Any arbitrary type of object?'
     self.var = tuple([self.value])
-    self.comp = ActiveComp(self.value, label=self.label, ctg=self.ctg)
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_defaults()
+    self.set_up_var()
+    self.comp = PlasticComp(self.value, label=self.label, ctg=self.ctg)
 
   def test_baseline(self):
     self.assertFalse(self.comp.baseline)

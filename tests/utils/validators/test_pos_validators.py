@@ -9,13 +9,13 @@ from components.axioms.pos import address_pattern
 from components.enums.pos import CtgType
 
 from tests.strategies.pos_strats import ctg_prop,arb_addr
-from tests.strategies.prop_strats import arbitrary_invalid_id
+from tests.strategies.prop_strats import arbitrary_invalid_label
 
 from utils.validators.pos_validators import is_valid_ctg,is_valid_addr
 
 class TestPosValidators(unittest.TestCase):
 
-  @given(arbitrary_invalid_id()) # pylint: disable=no-value-for-parameter
+  @given(arbitrary_invalid_label()) # pylint: disable=no-value-for-parameter
   def test_is_valid_ctg_on_id(self, label):
     result = is_valid_ctg(label)
     if label in CtgType:
@@ -31,7 +31,7 @@ class TestPosValidators(unittest.TestCase):
     else:
       self.assertFalse(result)
 
-  @given(st.one_of(arb_addr(), arbitrary_invalid_id())) # pylint: disable=no-value-for-parameter
+  @given(st.one_of(arb_addr(), arbitrary_invalid_label())) # pylint: disable=no-value-for-parameter
   def test_addr_check(self, addr):
     match = re.search(address_pattern, addr)
     if match is None:

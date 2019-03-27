@@ -7,22 +7,28 @@ from hypothesis.strategies import composite
 from components.axioms.cell_types import CellType
 from components.axioms.maps.set import get_ids
 from components.axioms.matrix import max_resource_value, min_resource_value
-from components.axioms.props import id_pattern, invalid_id_pattern
+from components.axioms.props import label_pattern, invalid_label_pattern
 from components.channels.channel import Channel
 from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
                                          HookType, PackagerType, RsrcType,
                                          RuleType, SuperSet)
 
+from utils.helpers.prop_gen_help import roll_name
 
 @composite
-def arbitrary_id(draw):
-  res = draw(st.from_regex(id_pattern))
+def arb_name(draw):
+  res = roll_name()
+  return res
+
+@composite
+def arb_label(draw):
+  res = draw(arb_name())#st.from_regex(label_pattern)) # pylint: disable=no-value-for-parameter
   st.assume(res)
   return res
 
 @composite
-def arbitrary_invalid_id(draw):
-  res = draw(st.from_regex(invalid_id_pattern))
+def arbitrary_invalid_label(draw):
+  res = draw(st.from_regex(invalid_label_pattern))
   st.assume(res)
   return res
 

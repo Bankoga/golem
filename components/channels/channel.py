@@ -1,11 +1,11 @@
-from components.base.workers.mediator_comp import MediatorComp
+from components.base.mechanisms.mediators.mediator import Mediator
 from components.enums.pos import CtgType
 from components.enums.prop_types import ChannelType,RsrcType
 from chainer import Variable
 from components.vars.meld import read_meld_str
 from components.vars.data import Address
 
-class Channel(MediatorComp):
+class Channel(Mediator):
   """
   For all intents and purposes, a package is a mail package
   It has the following properties
@@ -27,7 +27,10 @@ class Channel(MediatorComp):
     args = [{},{},meld_str,sender_address]
     kwargs['ctg'] = CtgType.CHANNEL
     super().__init__(*args,**kwargs)
+
+  def set_defaults(self):
     self.__meld = None
+    return super().set_defaults()
 
   @property
   def reg_item(self):
@@ -116,8 +119,6 @@ class Channel(MediatorComp):
   def ch_type(self, value):
     self.setter_error()
     
-  def build(self, *args, **kwargs):
-    super().build(*args)
+  def build_details(self, *args, **kwargs):
+    super().build_details(*args, **kwargs)
     self.__meld = read_meld_str(self.meld_str)
-    if 'address' in kwargs:
-      self.register(kwargs['address'])

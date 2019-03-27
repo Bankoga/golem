@@ -1,38 +1,112 @@
 from components.enums.prop_types import RuleType
-
+from components.data.conv_shape import ConvShape
 from components.instructions.instruction import Instruction
+from utils.helpers.prop_gen_help import roll_name
 
 class ConvInstruction(Instruction):
-  def __init__(self,label,direction,conv_shapes,source_ind,source_shape,pos):
-    super().__init__(label,RuleType.CONV, pos)
-    self.shape = source_shape
-    self.direction = direction
-    self.ind = source_ind
+  def __init__(self,registry,source_ind,source_shape,step_direction,num_steps,resource_accepted,conv_shape_defs,**kwargs):
+    args = [registry, source_ind, source_shape, step_direction, num_steps, resource_accepted, conv_shape_defs]
+    super().__init__(*args, **kwargs)
+    # self.set_up_conv_shapes(self.conv_shape_defs)
+    # self.shape = source_shape
+    # self.step_direction = step_direction
+    # self.ind = source_ind
     # each conv shape represents a step to take in a direction during the sampling process
-    self.build(conv_shapes)
-    
+  
+  def set_up_conv_shapes(self, shape_defs):
+    res = []
+    for shapes in shape_defs:
+      res.append(ConvShape(*shapes,label=f'{self.label}_{roll_name()}'))
+    self.__conv_shapes = res
   def conv(self, npmatrix):
     return 0
 
-  def get_input(self):
-    pass
 
-  def build(self, data=None):
-    # weights = self.set_up_weights(self.conv_shapes)
-    if (self._built_):
-      raise RuntimeError('This is not yet implemented')
-    else:
-      super().build(data)
+  @property
+  def source_ind(self):
+    return self.var[1]
+
+  @source_ind.setter
+  def source_ind(self,value):
+    raise RuntimeError('Can not set the value of source_ind!')
+
+  @property
+  def source_shape(self):
+    return self.var[2]
+
+  @source_shape.setter
+  def source_shape(self,value):
+    raise RuntimeError('Can not set the value of source_shape!')
+
+  @property
+  def step_direction(self):
+    return self.var[3]
+
+  @step_direction.setter
+  def step_direction(self,value):
+    raise RuntimeError('Can not set the value of step_direction!')
+
+  @property
+  def num_steps(self):
+    return self.var[4]
+
+  @num_steps.setter
+  def num_steps(self,value):
+    raise RuntimeError('Can not set the value of num_steps!')
+
+  @property
+  def resource_accepted(self):
+    return self.var[5]
+
+  @resource_accepted.setter
+  def resource_accepted(self,value):
+    raise RuntimeError('Can not set the value of resource_accepted!')
   
-  def reset(self):
-    raise RuntimeError('This is not yet implemented')
+  @property
+  def conv_shape_defs(self):
+    return self.var[6]
 
-  def update(self, new_data):
-    raise RuntimeError('This is not yet implemented')
+  @conv_shape_defs.setter
+  def conv_shape_defs(self,value):
+    raise RuntimeError('Can not set the value of conv_shape_defs!')
+
+  @property
+  def conv_shapes(self):
+    return self.__conv_shapes
+
+  @conv_shapes.setter
+  def conv_shapes(self,value):
+    raise RuntimeError('Can not set the value of conv_shapes!')
+
+  def build_details(self, *args, **kwargs):
+    super().build_details(*args, **kwargs)
+    self.set_up_conv_shapes(self.conv_shape_defs)
+
+
+
+  def get_side_szs(self, side_sz):
+    x_sz = side_sz
+    y_sz = side_sz
+    if type(side_sz) is tuple:
+      x_sz = side_sz[0]
+      y_sz = side_sz[1]
+    return (x_sz,y_sz)
+
+  def extract_quadrant(self, input_ind, input_shape,side_sz):
+    x = input_ind[0]
+    x_sz, y_sz = self.get_side_szs(side_sz)
+    if len(input_ind) > 1:
+      y = input_ind[1]
+      quadrant = input_shape[x:x+x_sz][y:y+y_sz]
+    else:
+      quadrant = input_shape[x:x+x_sz]
+    return quadrant
+
+  def apply_conv_shape(self, cnv_shp, resource_data):
+    return 0
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
-  def operate(self,inputs=None,context=None):
-    super().operate()
+  def instruction_details(self,curr_data=[],inputs=None,context=None):
     res = 0
     # for each read, we change the Z in the direction supplied using the PROPER cardinator
     #  we also change the size of the sample
@@ -47,6 +121,3 @@ class ConvInstruction(Instruction):
     #   res.append(step_res * abs(diff(ind,self.pos.z)))
     # we only return the step_res from a perform, so as to handle plasticity at the function group level
     return res
-
-  def update_weight(self):
-    pass

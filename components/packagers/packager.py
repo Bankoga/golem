@@ -1,10 +1,10 @@
 from abc import abstractmethod
-from components.base.workers.producer_comp import ProducerComp
+from components.base.mechanisms.cogs.producer import Producer
 
 from components.axioms.packager import defaults as prd
 from components.enums.prop_types import PackagerType
 
-class Packager(ProducerComp):
+class Packager(Producer):
   """
   The actual algorithms that power the matrix
   Not the function sets, or the meta-containers, or regions, but a unified algorithm or method
@@ -15,8 +15,8 @@ class Packager(ProducerComp):
   All packagers use multiple instructions to transform input into output
   """
 
-  def __init__(self, rule_type, arb_id):
-    super().__init__(arb_id, rule_type.get_component_type(),rule_type)
+  def __init__(self, rule_type, arb_label):
+    super().__init__(arb_label, rule_type.get_component_type(),rule_type)
     self.read_data()
 
   @abstractmethod

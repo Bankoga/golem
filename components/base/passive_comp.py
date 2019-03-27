@@ -3,10 +3,10 @@ from components.base.static_comp import StaticComp
 class PassiveComp(StaticComp):
 
   def __init__(self, *args, **kwargs):
-    super().__init__(kwargs['label'],kwargs['ctg'])
-    self.__var = self.prepare_args(*args)
+    super().__init__(*args, **kwargs)
+    self.__var = self.prepare_var_args(*args)
 
-  def prepare_args(self,*args):
+  def prepare_var_args(self,*args):
     return tuple(args)
 
   @property
@@ -21,4 +21,4 @@ class PassiveComp(StaticComp):
     raise RuntimeError('Cannot set var of component!')
 
   def update(self, *args):
-    self.__var = self.prepare_args(*args)
+    self.__var = self.prepare_var_args(*args)

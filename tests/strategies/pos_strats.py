@@ -8,25 +8,25 @@ from components.channels.channel import Channel
 from components.vars.data import Address
 from utils.helpers.props import build_addr_id
 
-from tests.strategies.prop_strats import arbitrary_id
+from tests.strategies.prop_strats import arb_label
 
 from utils.pos import Pos
 
 @composite
 def full_address(draw):
-  ids = draw(st.lists(arbitrary_id(),max_size=7)) # pylint: disable=no-value-for-parameter
+  ids = draw(st.lists(arb_label(),max_size=7)) # pylint: disable=no-value-for-parameter
   res = Address(*ids)
   return res
 
 @composite
 def partial_address(draw):
-  ids = draw(st.lists(arbitrary_id(),max_size=7)) # pylint: disable=no-value-for-parameter
+  ids = draw(st.lists(arb_label(),max_size=7)) # pylint: disable=no-value-for-parameter
   res = Address(*ids)
   return res
 
 @composite
 def rel_addr(draw):
-  ids = draw(st.lists(arbitrary_id(),max_size=7)) # pylint: disable=no-value-for-parameter
+  ids = draw(st.lists(arb_label(),max_size=7)) # pylint: disable=no-value-for-parameter
   res = build_addr_id(ids)
   return res
 

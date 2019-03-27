@@ -1,4 +1,4 @@
-from components.axioms.props import id_pattern
+from components.axioms.props import label_pattern
 
 address_pattern = '^[a-zA-Z0-9_]{2,64}(-[a-zA-Z0-9_]{2,64}){0,5}$'
 

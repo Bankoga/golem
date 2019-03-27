@@ -3,11 +3,14 @@ from abc import abstractmethod
 from components.base.buildable_comp import BuildableComp
 from components.matrix.address_registry import AddressRegistry
 
-class WorkerComp(BuildableComp):
+class Mechanism(BuildableComp):
   def __init__(self, *args,**kwargs):
     super().__init__(*args, **kwargs)
+
+  def set_defaults(self):
     self.__is_registered = False
     self.__address = None
+    return super().set_defaults()
 
   @property
   def registry(self):
@@ -56,15 +59,17 @@ class WorkerComp(BuildableComp):
     self.registry.add_item(self.reg_item)
     self.__is_registered = True
 
-  @abstractmethod
-  def operate(self):
+  def operate(self,*args,**kwargs):
     if not self.is_registered:
       raise RuntimeError('An unregistered worker type cannot operate!')
     else:
-      pass
-      # ?
+      return self.operate_details()
 
-  def build(self, *args, **kwargs):
-    super().build(*args)
+  @abstractmethod
+  def operate_details(self,*args,**kwargs):
+    return True
+    
+  def build_details(self, *args, **kwargs):
+    super().build_details(*args, **kwargs)
     if 'address' in kwargs:
       self.register(kwargs['address'])

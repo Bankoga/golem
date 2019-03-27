@@ -15,14 +15,14 @@ from components.vars.data import Address
 from components.matrix.address_registry import AddressRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from components.vars.meld import read_meld_str
-from tests.components.base.workers.test_mediator_comp import TestMediatorComp
+from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
 from tests.strategies.channel_strats import arb_meld_str
 from tests.strategies.data_strats import valid_resource_data
 from tests.strategies.channel_strats import (channel_arbitrary, channel_inputs,
                                              valid_channel_arbitrary)
 from tests.strategies.pos_strats import arb_addr
 
-class TestChannel(TestMediatorComp):
+class TestChannel(TestMediator):
   def set_up_base(self):
     self.label = 'ch_bc_star_energy'
     self.ctg = CtgType.CHANNEL
