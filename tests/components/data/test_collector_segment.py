@@ -7,11 +7,11 @@ from numpy import array, array_equal, ones
 from components.data.collector_segment import CollectorSegment
 from components.enums.pos import CtgType
 from components.vars.data import ConvVar
-from tests.components.base.test_passive_comp import TestPassiveComp
+from tests.components.base.test_plastic_comp import TestPlasticComp
 from tests.strategies.data_strats import valid_resource_data, valid_shape, valid_weights
 from utils.pos import Pos
 
-class TestCollectorSegment(TestPassiveComp):
+class TestCollectorSegment(TestPlasticComp):
   def set_up_base(self):
     self.ctg = CtgType.DATA
     self.label = 'TotallyValidId'
@@ -24,15 +24,19 @@ class TestCollectorSegment(TestPassiveComp):
     self.var = ConvVar(filter_shape=self.filter_shape, spacing_shape=self.spacing_shape)
 
   def set_up_defaults(self):
-    self.default_shape = tuple([1])
+    self.default_shape = (tuple([1]))
     self.default_weights = ones(self.default_shape)
     self.default_num_dim_of_mass = len(self.default_shape)
     self.default_is_locked = False
+
+  def set_up_dynamic_props(self):
+    self.baseline = self.values
 
   def setUp(self):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
+    self.set_up_dynamic_props()
     self.comp = CollectorSegment(self.filter_shape, self.spacing_shape,label=self.label)
 
   @given(valid_shape(),valid_shape()) # pylint: disable=no-value-for-parameter
@@ -68,6 +72,13 @@ class TestCollectorSegment(TestPassiveComp):
     self.comp.update(f_shape,s_shape)
     self.assertEqual(self.comp.var, ConvVar(filter_shape=f_shape,spacing_shape=s_shape))
     self.assertEqual(self.comp.weights.shape, self.comp.filter_shape)
+
+  def test_reset_with_baseline(self):
+    self.comp.baseline = self.baseline
+    self.comp.update((8,8))
+    self.assertTrue(array_equal(self.comp.filter_shape, (8,8)))
+    self.comp.reset()
+    self.assertEqual(self.comp.var,ConvVar(*self.baseline))
 
 if __name__ == '__main__':
   unittest.main()
