@@ -38,5 +38,5 @@ class Address(typing.NamedTuple):
 #   outgoing: list
 
 class ConvVar(typing.NamedTuple):
-  filter_shape: tuple
+  fill_shape: tuple
   spacing_shape: tuple = tuple([0])

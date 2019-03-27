@@ -26,15 +26,15 @@ class CollectorSegment(PlasticComp):
 
   def prepare_var_args(self, *args):
     res = ConvVar(*args)
-    self.shape = res.filter_shape
+    self.shape = res.fill_shape
     return res
 
   @property
-  def filter_shape(self):
-    return self.var.filter_shape
+  def fill_shape(self):
+    return self.var.fill_shape
   
-  @filter_shape.setter
-  def filter_shape(self, value):
+  @fill_shape.setter
+  def fill_shape(self, value):
     self.setter_error()
 
   @property
@@ -47,4 +47,4 @@ class CollectorSegment(PlasticComp):
   
   def update(self, *args):
     super().update(*args)
-    self.shape = self.filter_shape
+    self.shape = self.fill_shape

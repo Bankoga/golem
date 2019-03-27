@@ -142,7 +142,7 @@ class TestCollector(TestInstruction):
   def test_set_up_collector_segments(self,collector_segment_defs):
     self.comp.set_up_collector_segments(collector_segment_defs)
     for i,(f_shape,s_shape) in enumerate(collector_segment_defs):
-      self.assertTrue(self.comp.collector_segments[i].filter_shape == f_shape)
+      self.assertTrue(self.comp.collector_segments[i].fill_shape == f_shape)
       self.assertTrue(self.comp.collector_segments[i].spacing_shape == s_shape)
 
   def test_get_collector_segments(self):
@@ -197,7 +197,7 @@ class TestCollector(TestInstruction):
 
   # @given(valid_collector_segment(),valid_resource_data()) # pylint: disable=no-value-for-parameter
   # def test_apply_collector_segment(self, cnv_shp, resource_data):
-  #   conv_quad = self.comp.extract_quadrant(self.source_ind, resource_data, cnv_shp.filter_shape)
+  #   conv_quad = self.comp.extract_quadrant(self.source_ind, resource_data, cnv_shp.fill_shape)
   #   expectation = array(cnv_shp.weights.shape) #this is a numpy array that is the dot product of the two arrays
   #   for i in cnv_shp.weights:
   #     for j in nv_shp.weights[j]:
