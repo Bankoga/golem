@@ -20,9 +20,6 @@ class TestWeightedComp(TestStaticComp):
     self.default_shape = tuple([])
     self.default_weights = []
     self.default_is_locked = False
-
-  def set_up_dynamic_props(self):
-    pass
   
   def setUp(self):
     self.set_up_base()

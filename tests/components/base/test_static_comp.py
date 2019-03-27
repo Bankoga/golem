@@ -14,6 +14,9 @@ class TestStaticComp(unittest.TestCase):
     self.ctg = CtgType.FSET
     self.comp = StaticComp(self.label, self.ctg)
 
+  def set_up_dynamic_props(self):
+    pass
+
   def test_set_defaults(self):
     self.assertTrue(self.comp.set_defaults())
 
