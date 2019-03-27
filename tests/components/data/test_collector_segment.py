@@ -24,7 +24,7 @@ class TestCollectorSegment(TestPlasticComp):
     self.var = ConvVar(filter_shape=self.filter_shape, spacing_shape=self.spacing_shape)
 
   def set_up_defaults(self):
-    self.default_shape = (tuple([1]))
+    self.default_shape = (4,4)
     self.default_weights = ones(self.default_shape)
     self.default_num_dim_of_mass = len(self.default_shape)
     self.default_is_locked = False
