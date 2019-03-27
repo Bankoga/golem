@@ -1,23 +1,23 @@
 from components.enums.prop_types import RuleType
-from components.data.conv_shape import ConvShape
+from components.data.collector_segment import CollectorSegment
 from components.instructions.instruction import Instruction
 from utils.helpers.prop_gen_help import roll_name
 
 class ConvInstruction(Instruction):
-  def __init__(self,registry,source_ind,source_shape,step_direction,num_steps,resource_accepted,conv_shape_defs,**kwargs):
-    args = [registry, source_ind, source_shape, step_direction, num_steps, resource_accepted, conv_shape_defs]
+  def __init__(self,registry,source_ind,source_shape,step_direction,num_steps,resource_accepted,collector_segment_defs,**kwargs):
+    args = [registry, source_ind, source_shape, step_direction, num_steps, resource_accepted, collector_segment_defs]
     super().__init__(*args, **kwargs)
-    # self.set_up_conv_shapes(self.conv_shape_defs)
+    # self.set_up_collector_segments(self.collector_segment_defs)
     # self.shape = source_shape
     # self.step_direction = step_direction
     # self.ind = source_ind
     # each conv shape represents a step to take in a direction during the sampling process
   
-  def set_up_conv_shapes(self, shape_defs):
+  def set_up_collector_segments(self, shape_defs):
     res = []
     for shapes in shape_defs:
-      res.append(ConvShape(*shapes,label=f'{self.label}_{roll_name()}'))
-    self.__conv_shapes = res
+      res.append(CollectorSegment(*shapes,label=f'{self.label}_{roll_name()}'))
+    self.__collector_segments = res
   def conv(self, npmatrix):
     return 0
 
@@ -63,24 +63,24 @@ class ConvInstruction(Instruction):
     raise RuntimeError('Can not set the value of resource_accepted!')
   
   @property
-  def conv_shape_defs(self):
+  def collector_segment_defs(self):
     return self.var[6]
 
-  @conv_shape_defs.setter
-  def conv_shape_defs(self,value):
-    raise RuntimeError('Can not set the value of conv_shape_defs!')
+  @collector_segment_defs.setter
+  def collector_segment_defs(self,value):
+    raise RuntimeError('Can not set the value of collector_segment_defs!')
 
   @property
-  def conv_shapes(self):
-    return self.__conv_shapes
+  def collector_segments(self):
+    return self.__collector_segments
 
-  @conv_shapes.setter
-  def conv_shapes(self,value):
-    raise RuntimeError('Can not set the value of conv_shapes!')
+  @collector_segments.setter
+  def collector_segments(self,value):
+    raise RuntimeError('Can not set the value of collector_segments!')
 
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
-    self.set_up_conv_shapes(self.conv_shape_defs)
+    self.set_up_collector_segments(self.collector_segment_defs)
 
 
 
@@ -102,7 +102,7 @@ class ConvInstruction(Instruction):
       quadrant = input_shape[x:x+x_sz]
     return quadrant
 
-  def apply_conv_shape(self, cnv_shp, resource_data):
+  def apply_collector_segment(self, cnv_shp, resource_data):
     return 0
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations

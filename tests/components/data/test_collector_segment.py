@@ -4,14 +4,14 @@ from hypothesis import given
 from hypothesis import strategies as st
 from numpy import array, array_equal, ones
 
-from components.data.conv_shape import ConvShape
+from components.data.collector_segment import CollectorSegment
 from components.enums.pos import CtgType
 from components.vars.data import ConvVar
 from tests.components.base.test_passive_comp import TestPassiveComp
 from tests.strategies.data_strats import valid_resource_data, valid_shape, valid_weights
 from utils.pos import Pos
 
-class TestConvShape(TestPassiveComp):
+class TestCollectorSegment(TestPassiveComp):
   def set_up_base(self):
     self.ctg = CtgType.DATA
     self.label = 'TotallyValidId'
@@ -33,7 +33,7 @@ class TestConvShape(TestPassiveComp):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
-    self.comp = ConvShape(self.filter_shape, self.spacing_shape,label=self.label)
+    self.comp = CollectorSegment(self.filter_shape, self.spacing_shape,label=self.label)
 
   @given(valid_shape(),valid_shape()) # pylint: disable=no-value-for-parameter
   def test_prepare_var_args(self, f_shape,s_shape):

@@ -4,14 +4,14 @@ from hypothesis import given
 from hypothesis import strategies as st
 from numpy import array_equal
 
-from components.data.conv_shape import ConvShape as cs
+from components.data.collector_segment import CollectorSegment as cs
 from components.enums.pos import CtgType
 from components.enums.prop_types import RsrcType, RuleType
 from components.instructions.conv_instruction import ConvInstruction
 from components.matrix.address_registry import AddressRegistry
 from components.vars.data import Address
 from tests.components.instructions.test_instruction import TestInstruction
-from tests.strategies.data_strats import (valid_conv_shape,
+from tests.strategies.data_strats import (valid_collector_segment,
                                           valid_resource_array,
                                           valid_resource_data, valid_shape,
                                           valid_shape_and_index,
@@ -37,7 +37,7 @@ class TestConvInstruction(TestInstruction):
       'reg_id': self.label,
       'address': self.address
     }
-    self.conv_shape_defs = [
+    self.collector_segment_defs = [
       [(4,4)],
       [tuple([1])],
       [(4,4)],
@@ -48,7 +48,7 @@ class TestConvInstruction(TestInstruction):
     self.source_shape = (256,256)
     self.source_ind = (45,25)
     self.step_direction = 'A' # TODO: Use correct ENUM
-    self.num_steps = len(self.conv_shape_defs)
+    self.num_steps = len(self.collector_segment_defs)
     self.resource_accepted = RsrcType.ENERGY
     self.values = [self.registry,
                    self.source_ind,
@@ -56,13 +56,13 @@ class TestConvInstruction(TestInstruction):
                    self.step_direction,
                    self.num_steps,
                    self.resource_accepted,
-                   self.conv_shape_defs
+                   self.collector_segment_defs
                   ]
     self.var = tuple(self.values)
 
   def set_up_dynamic_props(self):
     # self.pos = Pos(self.ctg.get_component_type())
-    self.conv_shapes = [cs((4,4),label=f'{self.label}_{roll_name()}'),
+    self.collector_segments = [cs((4,4),label=f'{self.label}_{roll_name()}'),
                         cs(tuple([1]),label=f'{self.label}_{roll_name()}'),
                         cs((4,4),label=f'{self.label}_{roll_name()}'),
                         cs((9,9),(1,1),label=f'{self.label}_{roll_name()}'),
@@ -98,7 +98,7 @@ class TestConvInstruction(TestInstruction):
                                 self.step_direction,
                                 self.num_steps,
                                 self.resource_accepted,
-                                self.conv_shape_defs,
+                                self.collector_segment_defs,
                                 label=self.label)
     self.comp.build(*self.values)
 
@@ -130,27 +130,27 @@ class TestConvInstruction(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.resource_accepted = self.resource_accepted
     
-  def test_get_conv_shape_defs(self):
-    for i,cnv_shp in enumerate(self.comp.conv_shape_defs):
-      self.assertEqual(cnv_shp[0], self.conv_shape_defs[i][0])
+  def test_get_collector_segment_defs(self):
+    for i,cnv_shp in enumerate(self.comp.collector_segment_defs):
+      self.assertEqual(cnv_shp[0], self.collector_segment_defs[i][0])
 
-  def test_set_conv_shape_defs(self):
+  def test_set_collector_segment_defs(self):
     with self.assertRaises(RuntimeError):
-      self.comp.conv_shape_defs = self.conv_shape_defs
+      self.comp.collector_segment_defs = self.collector_segment_defs
 
   @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
-  def test_set_up_conv_shapes(self,conv_shape_defs):
-    self.comp.set_up_conv_shapes(conv_shape_defs)
-    for i,(f_shape,s_shape) in enumerate(conv_shape_defs):
-      self.assertTrue(self.comp.conv_shapes[i].filter_shape == f_shape)
-      self.assertTrue(self.comp.conv_shapes[i].spacing_shape == s_shape)
+  def test_set_up_collector_segments(self,collector_segment_defs):
+    self.comp.set_up_collector_segments(collector_segment_defs)
+    for i,(f_shape,s_shape) in enumerate(collector_segment_defs):
+      self.assertTrue(self.comp.collector_segments[i].filter_shape == f_shape)
+      self.assertTrue(self.comp.collector_segments[i].spacing_shape == s_shape)
 
-  def test_get_conv_shapes(self):
-    self.assertEqual(self.comp.conv_shapes, self.conv_shapes)
+  def test_get_collector_segments(self):
+    self.assertEqual(self.comp.collector_segments, self.collector_segments)
 
-  def test_set_conv_shapes(self):
+  def test_set_collector_segments(self):
     with self.assertRaises(RuntimeError):
-      self.comp.conv_shapes = self.conv_shapes
+      self.comp.collector_segments = self.collector_segments
 
   @given(st.tuples(st.integers(),st.integers()))
   def test_get_side_szs(self, side_sz):
@@ -195,15 +195,15 @@ class TestConvInstruction(TestInstruction):
   #   """
   #   pass
 
-  # @given(valid_conv_shape(),valid_resource_data()) # pylint: disable=no-value-for-parameter
-  # def test_apply_conv_shape(self, cnv_shp, resource_data):
+  # @given(valid_collector_segment(),valid_resource_data()) # pylint: disable=no-value-for-parameter
+  # def test_apply_collector_segment(self, cnv_shp, resource_data):
   #   conv_quad = self.comp.extract_quadrant(self.source_ind, resource_data, cnv_shp.filter_shape)
   #   expectation = array(cnv_shp.weights.shape) #this is a numpy array that is the dot product of the two arrays
   #   for i in cnv_shp.weights:
   #     for j in nv_shp.weights[j]:
         
 
-  #   res = self.comp.apply_conv_shape(cnv_shp, resource_data)
+  #   res = self.comp.apply_collector_segment(cnv_shp, resource_data)
   #   self.assertEqual(res, expectation)
 
   @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
@@ -255,7 +255,7 @@ class TestConvInstruction(TestInstruction):
   # def test_build(self):
   #   self.assertTrue(self.comp.is_built())
   
-  # @given(st.lists(valid_conv_shape())) # pylint: disable=no-value-for-parameter
+  # @given(st.lists(valid_collector_segment())) # pylint: disable=no-value-for-parameter
   # def test_update_data_built(self,new_data):
   #   with self.assertRaises(RuntimeError):
   #     self.comp.build()

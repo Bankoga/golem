@@ -4,10 +4,10 @@ from components.base.plastic_comp import PlasticComp
 from components.enums.pos import CtgType
 from components.vars.data import ConvVar
 
-class ConvShape(PlasticComp):
+class CollectorSegment(PlasticComp):
 
   """
-  While ConvShapes are components, we need to break up the component base class into two types
+  While CollectorSegments are components, we need to break up the component base class into two types
   Why one asks? Because some components require building, and others don't
   Some require updates, but no builds, some require both, some are static
   the position is relative to its parents X,Y (or row/column) index within stage Z
