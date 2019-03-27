@@ -21,43 +21,6 @@ class ConvInstruction(Instruction):
   def conv(self, npmatrix):
     return 0
 
-  # for nested cardinal rotations, apply each rotation by its value/the number of rotations
-  def instruction_details(self,curr_data=[],inputs=None,context=None):
-    res = 0
-    # for each read, we change the Z in the direction supplied using the PROPER cardinator
-    #  we also change the size of the sample
-    #   this means we either have to be given the cardinator
-    #   OR
-    #   we have to be able to select the cardinator
-    #   so that we can get_card_index(ind, inputs)
-    #   context.get_inputs_at_steps_in(direction, inputs)
-    #   input_pack = select the inputs using our Pos info plus the card index
-    #   patch = extract a slice from the input_pack according to the current shape
-    #   step_res = shape.weights * patch
-    #   res.append(step_res * abs(diff(ind,self.pos.z)))
-    # we only return the step_res from a perform, so as to handle plasticity at the function group level
-    return res
-
-  def get_side_szs(self, side_sz):
-    x_sz = side_sz
-    y_sz = side_sz
-    if type(side_sz) is tuple:
-      x_sz = side_sz[0]
-      y_sz = side_sz[1]
-    return (x_sz,y_sz)
-
-  def extract_quadrant(self, input_ind, input_shape,side_sz):
-    x = input_ind[0]
-    x_sz, y_sz = self.get_side_szs(side_sz)
-    if len(input_ind) > 1:
-      y = input_ind[1]
-      quadrant = input_shape[x:x+x_sz][y:y+y_sz]
-    else:
-      quadrant = input_shape[x:x+x_sz]
-    return quadrant
-
-  def update_weight(self):
-    pass
 
   @property
   def source_ind(self):
@@ -99,7 +62,6 @@ class ConvInstruction(Instruction):
   def resource_accepted(self,value):
     raise RuntimeError('Can not set the value of resource_accepted!')
   
-  
   @property
   def conv_shape_defs(self):
     return self.var[6]
@@ -107,7 +69,6 @@ class ConvInstruction(Instruction):
   @conv_shape_defs.setter
   def conv_shape_defs(self,value):
     raise RuntimeError('Can not set the value of conv_shape_defs!')
-
 
   @property
   def conv_shapes(self):
@@ -120,3 +81,43 @@ class ConvInstruction(Instruction):
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
     self.set_up_conv_shapes(self.conv_shape_defs)
+
+
+
+  def get_side_szs(self, side_sz):
+    x_sz = side_sz
+    y_sz = side_sz
+    if type(side_sz) is tuple:
+      x_sz = side_sz[0]
+      y_sz = side_sz[1]
+    return (x_sz,y_sz)
+
+  def extract_quadrant(self, input_ind, input_shape,side_sz):
+    x = input_ind[0]
+    x_sz, y_sz = self.get_side_szs(side_sz)
+    if len(input_ind) > 1:
+      y = input_ind[1]
+      quadrant = input_shape[x:x+x_sz][y:y+y_sz]
+    else:
+      quadrant = input_shape[x:x+x_sz]
+    return quadrant
+
+  def apply_conv_shape(self, cnv_shp, resource_data):
+    return 0
+
+  # for nested cardinal rotations, apply each rotation by its value/the number of rotations
+  def instruction_details(self,curr_data=[],inputs=None,context=None):
+    res = 0
+    # for each read, we change the Z in the direction supplied using the PROPER cardinator
+    #  we also change the size of the sample
+    #   this means we either have to be given the cardinator
+    #   OR
+    #   we have to be able to select the cardinator
+    #   so that we can get_card_index(ind, inputs)
+    #   context.get_inputs_at_steps_in(direction, inputs)
+    #   input_pack = select the inputs using our Pos info plus the card index
+    #   patch = extract a slice from the input_pack according to the current shape
+    #   step_res = shape.weights * patch
+    #   res.append(step_res * abs(diff(ind,self.pos.z)))
+    # we only return the step_res from a perform, so as to handle plasticity at the function group level
+    return res

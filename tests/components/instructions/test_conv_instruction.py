@@ -11,7 +11,11 @@ from components.instructions.conv_instruction import ConvInstruction
 from components.matrix.address_registry import AddressRegistry
 from components.vars.data import Address
 from tests.components.instructions.test_instruction import TestInstruction
-from tests.strategies.data_strats import valid_resource_array, valid_shape_and_index, valid_resource_data, valid_sz_shape_and_index, valid_shape
+from tests.strategies.data_strats import (valid_conv_shape,
+                                          valid_resource_array,
+                                          valid_resource_data, valid_shape,
+                                          valid_shape_and_index,
+                                          valid_sz_shape_and_index)
 from tests.strategies.func_set_strats import (module_input_set,
                                               processed_module_input_set)
 from tests.strategies.pos_strats import valid_direction, valid_pos
@@ -148,25 +152,6 @@ class TestConvInstruction(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.conv_shapes = self.conv_shapes
 
-  @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
-  def test_conv(self, npmatrix_array):
-    # # TODO: Build a valid package for a specific id strategy
-    # """ what needs to be considered when applying a conv to an arbitrary matrix?
-    #     these are all part of the conv considerations
-    #     The matrix has already been grabbed at this point!
-    #     what about size mismatches between regions? We care about those
-    #     Where is activity tracked for plasticity? inside the instruction
-    # """
-    # result = self.comp.conv(npmatrix_array)
-    # expectation = 0
-    # a convolution is the dot product of two vectors
-    # convs here, use source and compression/expansion aware indexing for slice extraction
-    # why not just use the index directly, and grab everything from there in ascending order?
-    # # extract the slice of the matrix we wish to use for the convolution with empty space fill
-    # # self.comp.extract(npmatrix)
-    # self.assertEqual(result,expectation)
-    pass
-
   @given(st.tuples(st.integers(),st.integers()))
   def test_get_side_szs(self, side_sz):
     x_sz = side_sz
@@ -210,12 +195,36 @@ class TestConvInstruction(TestInstruction):
   #   """
   #   pass
 
-  # @given(valid_conv_shape(), valid_resource_data()) # pylint: disable=no-value-for-parameter
-  # def test_extract(self,conv_shape,npmatrix):
-  #   # if the input matrix is smaller than the output matrix or the conv, what do we do?
-  #   # slice the marix using the conv shape
-  #   pass
-  
+  # @given(valid_conv_shape(),valid_resource_data()) # pylint: disable=no-value-for-parameter
+  # def test_apply_conv_shape(self, cnv_shp, resource_data):
+  #   conv_quad = self.comp.extract_quadrant(self.source_ind, resource_data, cnv_shp.filter_shape)
+  #   expectation = array(cnv_shp.weights.shape) #this is a numpy array that is the dot product of the two arrays
+  #   for i in cnv_shp.weights:
+  #     for j in nv_shp.weights[j]:
+        
+
+  #   res = self.comp.apply_conv_shape(cnv_shp, resource_data)
+  #   self.assertEqual(res, expectation)
+
+  @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
+  def test_conv(self, npmatrix_array):
+    # # TODO: Build a valid package for a specific id strategy
+    # """ what needs to be considered when applying a conv to an arbitrary matrix?
+    #     these are all part of the conv considerations
+    #     The matrix has already been grabbed at this point!
+    #     what about size mismatches between regions? We care about those
+    #     Where is activity tracked for plasticity? inside the instruction
+    # """
+    # result = self.comp.conv(npmatrix_array)
+    # expectation = 0
+    # a convolution is the dot product of two vectors
+    # convs here, use source and compression/expansion aware indexing for slice extraction
+    # why not just use the index directly, and grab everything from there in ascending order?
+    # # extract the slice of the matrix we wish to use for the convolution with empty space fill
+    # # self.comp.extract(npmatrix)
+    # self.assertEqual(result,expectation)
+    pass
+
   # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   # def test_get_input(self,inputs):
   #   pass
