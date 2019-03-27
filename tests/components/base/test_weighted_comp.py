@@ -24,7 +24,6 @@ class TestWeightedComp(TestStaticComp):
   def setUp(self):
     self.set_up_base()
     self.set_up_defaults()
-    self.set_up_dynamic_props()
     self.comp = WeightedComp(label=self.label, ctg=self.ctg)
 
   def test_get_num_dim_of_mass(self):
