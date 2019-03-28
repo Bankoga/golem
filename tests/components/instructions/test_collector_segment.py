@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 from numpy import array, array_equal, ones
 
-from components.data.collector_segment import CollectorSegment
+from components.instructions.collector_segment import CollectorSegment
 from components.enums.pos import CtgType
 from components.vars.data import ConvVar
 from tests.components.base.test_plastic_comp import TestPlasticComp

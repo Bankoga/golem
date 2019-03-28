@@ -4,7 +4,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 from numpy import array_equal
 
-from components.data.collector_segment import CollectorSegment as cs
+from components.instructions.collector_segment import CollectorSegment as cs
 from components.enums.pos import CtgType
 from components.enums.prop_types import RsrcType, RuleType
 from components.instructions.collector import Collector
