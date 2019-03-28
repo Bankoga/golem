@@ -6,13 +6,6 @@ from components.enums.pos import CtgType
 
 class CollectorSegment(PlasticComp, Segment):
 
-  """
-  While CollectorSegments are components, we need to break up the component base class into two types
-  Why one asks? Because some components require building, and others don't
-  Some require updates, but no builds, some require both, some are static
-  the position is relative to its parents X,Y (or row/column) index within stage Z
-  """
-
   def __init__(self,*args, **kwargs):
     has_label = ('label' in kwargs and not kwargs['label'] is None)
     if not has_label:
