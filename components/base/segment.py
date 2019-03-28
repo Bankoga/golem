@@ -26,7 +26,7 @@ class Segment(StaticComp):
     return self.__fill_shape
   @fill_shape.setter
   def fill_shape(self, value):
-    self.setter_error()
+    self.__fill_shape = value
 
   def setter_error(self):
     raise RuntimeError('Can not set property of segment!')

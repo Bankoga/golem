@@ -48,9 +48,11 @@ class TestSegment(TestStaticComp):
 
   def test_get_fill_shape(self):
     self.assertEqual(self.comp.fill_shape, self.fill_shape)
-  def test_set_fill_shape(self):
-    with self.assertRaises(RuntimeError):
-      self.comp.fill_shape = 'Does not matter'
+
+  @given(valid_shape()) # pylint: disable=no-value-for-parameter
+  def test_set_fill_shape(self, arb_shape):
+    self.comp.fill_shape = arb_shape
+    self.assertEqual(self.comp.fill_shape, arb_shape)
 
 if __name__ == '__main__':
   unittest.main()
