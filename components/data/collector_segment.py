@@ -19,6 +19,10 @@ class CollectorSegment(PlasticComp):
     kwargs['ctg']=CtgType.DATA
     super().__init__(f_shape, **kwargs)
 
+  def prepare_var_args(self, *args, **kwargs):
+    self.shape = args[0]
+    return super().prepare_var_args(*args, **kwargs)
+
   def set_weighted_defaults(self):
     shape = tuple([1])
     super().set_weighted_defaults(shape=shape,weights=ones(shape))

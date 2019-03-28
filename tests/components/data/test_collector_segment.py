@@ -37,38 +37,38 @@ class TestCollectorSegment(TestPlasticComp):
     self.set_up_dynamic_props()
     self.comp = CollectorSegment(self.fill_shape,label=self.label)
 
-  # @given(valid_shape()) # pylint: disable=no-value-for-parameter
-  # def test_prepare_var_args(self, f_shape):
-  #   var_args = [f_shape]
-  #   expectation = tuple([f_shape])
-  #   result = self.comp.prepare_var_args(*var_args)
-  #   self.assertEqual(result, expectation)
-  #   self.assertEqual(result[0], f_shape)
-  #   self.assertEqual(self.comp.shape, result[0])
+  @given(valid_shape()) # pylint: disable=no-value-for-parameter
+  def test_prepare_var_args(self, f_shape):
+    var_args = [f_shape]
+    expectation = tuple([f_shape])
+    result = self.comp.prepare_var_args(*var_args)
+    self.assertEqual(result, expectation)
+    self.assertEqual(result[0], f_shape)
+    self.assertEqual(self.comp.shape, result[0])
 
-  # def test_get_var(self):
-  #   for i in range(len(self.comp.var)):
-  #     self.assertTrue(array_equal(self.comp.var[i], self.var[i]))
+  def test_get_var(self):
+    for i in range(len(self.comp.var)):
+      self.assertTrue(array_equal(self.comp.var[i], self.var[i]))
 
-  # def test_get_fill_shape(self):
-  #   self.assertEqual(self.comp.fill_shape, self.fill_shape)
+  def test_get_fill_shape(self):
+    self.assertEqual(self.comp.fill_shape, self.fill_shape)
 
-  # def test_set_fill_shape(self):
-  #   with self.assertRaises(RuntimeError):
-  #     self.comp.fill_shape = 'Does not matter'
+  def test_set_fill_shape(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.fill_shape = 'Does not matter'
 
-  # @given(valid_shape()) # pylint: disable=no-value-for-parameter
-  # def test_update(self,f_shape):
-  #   self.comp.update(f_shape)
-  #   self.assertEqual(self.comp.var, tuple([f_shape]))
-  #   self.assertEqual(self.comp.weights.shape, f_shape)
+  @given(valid_shape()) # pylint: disable=no-value-for-parameter
+  def test_update(self,f_shape):
+    self.comp.update(f_shape)
+    self.assertEqual(self.comp.var, tuple([f_shape]))
+    self.assertEqual(self.comp.weights.shape, f_shape)
 
-  # def test_reset_with_baseline(self):
-  #   self.comp.baseline = self.baseline
-  #   self.comp.update((8,8))
-  #   self.assertTrue(array_equal(self.comp.fill_shape, (8,8)))
-  #   self.comp.reset()
-  #   self.assertEqual(self.comp.var,tuple(*self.baseline))
+  def test_reset_with_baseline(self):
+    self.comp.baseline = self.baseline
+    self.comp.update((8,8))
+    self.assertTrue(array_equal(self.comp.fill_shape, (8,8)))
+    self.comp.reset()
+    self.assertEqual(self.comp.var,tuple(self.baseline))
 
 if __name__ == '__main__':
   unittest.main()
