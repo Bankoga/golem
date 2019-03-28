@@ -7,13 +7,13 @@ from numpy import array, array_equal, ones
 from components.vars.data import Address
 from components.data.collector_segment import CollectorSegment
 from components.enums.pos import CtgType
-from tests.components.base.test_passive_comp import TestPassiveComp
+from tests.components.base.test_static_comp import TestStaticComp
 from tests.strategies.data_strats import valid_resource_data, valid_shape, valid_weights
 from utils.pos import Pos
 from tests.strategies.pos_strats import arb_addr
 from components.base.segment import Segment
 
-class TestCollectorSegment(TestPassiveComp):
+class TestSegment(TestStaticComp):
   def set_up_base(self):
     self.ctg = CtgType.DATA
     self.label = 'dend_abov_a_segment_2'
