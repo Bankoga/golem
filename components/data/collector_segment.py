@@ -11,7 +11,7 @@ class CollectorSegment(PlasticComp, Segment):
     if not has_label:
       kwargs['label'] = ''
     kwargs['ctg']=CtgType.DATA
-    super().__init__(**kwargs)
+    super().__init__(*args, **kwargs)
     self.shape = self.fill_shape
 
   def set_weighted_defaults(self):

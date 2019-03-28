@@ -23,7 +23,8 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.source_index = (0,0)
     self.fill_shape = (4,4)
     self.weights = ones(self.fill_shape)
-    self.values = []
+    self.value = 'anything'
+    self.values = [self.value]
     self.var = tuple(self.values)
     self.baseline = self.values
 
@@ -37,7 +38,7 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
-    self.comp = CollectorSegment(address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
+    self.comp = CollectorSegment(self.value,address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
 
   # @given(arb_addr(), valid_shape(), valid_shape()) # pylint: disable=no-value-for-parameter
   # def test_prepare_var_args(self, address, source_index, f_shape):
