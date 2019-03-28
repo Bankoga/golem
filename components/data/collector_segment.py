@@ -2,7 +2,6 @@ from numpy import array, ones
 
 from components.base.plastic_comp import PlasticComp
 from components.enums.pos import CtgType
-from components.vars.data import ConvVar
 
 class CollectorSegment(PlasticComp):
 
@@ -13,36 +12,23 @@ class CollectorSegment(PlasticComp):
   the position is relative to its parents X,Y (or row/column) index within stage Z
   """
 
-  def __init__(self,f_shape,s_shape=None, **kwargs):
+  def __init__(self,f_shape, **kwargs):
     has_label = ('label' in kwargs and not kwargs['label'] is None)
     if not has_label:
       kwargs['label'] = ''
     kwargs['ctg']=CtgType.DATA
-    super().__init__(f_shape,s_shape, **kwargs)
+    super().__init__(f_shape, **kwargs)
 
   def set_weighted_defaults(self):
     shape = tuple([1])
     super().set_weighted_defaults(shape=shape,weights=ones(shape))
 
-  def prepare_var_args(self, *args):
-    res = ConvVar(*args)
-    self.shape = res.fill_shape
-    return res
-
   @property
   def fill_shape(self):
-    return self.var.fill_shape
+    return self.var[0]
   
   @fill_shape.setter
   def fill_shape(self, value):
-    self.setter_error()
-
-  @property
-  def spacing_shape(self):
-    return self.var.spacing_shape
-  
-  @spacing_shape.setter
-  def spacing_shape(self, value):
     self.setter_error()
   
   def update(self, *args):

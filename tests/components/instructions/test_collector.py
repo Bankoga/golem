@@ -4,18 +4,18 @@ from hypothesis import given
 from hypothesis import strategies as st
 from numpy import array_equal
 
-from components.instructions.collector_segment import CollectorSegment as cs
+from components.data.collector_segment import CollectorSegment as cs
 from components.enums.pos import CtgType
 from components.enums.prop_types import RsrcType, RuleType
 from components.instructions.collector import Collector
 from components.matrix.address_registry import AddressRegistry
 from components.vars.data import Address
 from tests.components.instructions.test_instruction import TestInstruction
-from tests.strategies.data_strats import (valid_collector_segment,
-                                          valid_resource_array,
+from tests.strategies.data_strats import (valid_resource_array,
                                           valid_resource_data, valid_shape,
                                           valid_shape_and_index,
                                           valid_sz_shape_and_index)
+from tests.strategies.instruction_strats import from tests.strategies.data_strats import (valid_collector_segment)
 from tests.strategies.func_set_strats import (module_input_set,
                                               processed_module_input_set)
 from tests.strategies.pos_strats import valid_direction, valid_pos

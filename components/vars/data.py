@@ -36,7 +36,3 @@ class Address(typing.NamedTuple):
 # class MediatorLocale(WorkerLocale):
 #   incoming: list
 #   outgoing: list
-
-class ConvVar(typing.NamedTuple):
-  fill_shape: tuple
-  spacing_shape: tuple = tuple([0])
