@@ -25,6 +25,7 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.weights = ones(self.fill_shape)
     self.values = []
     self.var = tuple(self.values)
+    self.baseline = self.values
 
   def set_up_defaults(self):
     self.default_shape = (4,4)
@@ -32,23 +33,19 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.default_num_dim_of_mass = len(self.default_shape)
     self.default_is_locked = False
 
-  def set_up_dynamic_props(self):
-    self.baseline = self.values
-
   def setUp(self):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
-    self.set_up_dynamic_props()
     self.comp = CollectorSegment(address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
 
-  @given(arb_addr(), valid_shape(), valid_shape()) # pylint: disable=no-value-for-parameter
-  def test_prepare_var_args(self, address, source_index, f_shape):
-    var_kwargs = {'address':address, 'source_index':source_index, 'fill_shape':f_shape}
-    expectation = tuple([])
-    result = self.comp.prepare_var_args(**var_kwargs)
-    self.assertEqual(result, expectation)
-    self.assertEqual(self.comp.shape, var_kwargs['fill_shape'])
+  # @given(arb_addr(), valid_shape(), valid_shape()) # pylint: disable=no-value-for-parameter
+  # def test_prepare_var_args(self, address, source_index, f_shape):
+  #   var_kwargs = {'address':address, 'source_index':source_index, 'fill_shape':f_shape}
+  #   expectation = tuple([])
+  #   result = self.comp.prepare_var_args(**var_kwargs)
+  #   self.assertEqual(result, expectation)
+  #   self.assertEqual(self.comp.shape, var_kwargs['fill_shape'])
 
 
 if __name__ == '__main__':

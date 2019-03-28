@@ -12,13 +12,7 @@ class CollectorSegment(PlasticComp, Segment):
       kwargs['label'] = ''
     kwargs['ctg']=CtgType.DATA
     super().__init__(**kwargs)
-
-  def prepare_var_args(self, *args, **kwargs):
-    if kwargs['fill_shape']:
-      self.shape = kwargs['fill_shape']
-    else:
-      self.shape = ()
-    return super().prepare_var_args(*args, **kwargs)
+    self.shape = self.fill_shape
 
   def set_weighted_defaults(self):
     shape = tuple([1])
