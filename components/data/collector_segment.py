@@ -27,6 +27,3 @@ class CollectorSegment(PlasticComp, Segment):
   def fill_shape(self, value):
     self.__fill_shape = value
     self.shape = value
-
-  def update(self, *args):
-    super().update(*args)
