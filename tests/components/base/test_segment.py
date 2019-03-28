@@ -22,7 +22,7 @@ class TestSegment(TestStaticComp):
     self.address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
     self.source_index = (0,0)
     self.fill_shape = (4,4)
-    self.values = [self.address,self.source_index,self.fill_shape]
+    self.values = []
     self.var = tuple(self.values)
 
   def set_up_defaults(self):
