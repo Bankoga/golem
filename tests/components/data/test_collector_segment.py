@@ -40,14 +40,11 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.set_up_var()
     self.comp = CollectorSegment(self.value,address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
 
-  # @given(arb_addr(), valid_shape(), valid_shape()) # pylint: disable=no-value-for-parameter
-  # def test_prepare_var_args(self, address, source_index, f_shape):
-  #   var_kwargs = {'address':address, 'source_index':source_index, 'fill_shape':f_shape}
-  #   expectation = tuple([])
-  #   result = self.comp.prepare_var_args(**var_kwargs)
-  #   self.assertEqual(result, expectation)
-  #   self.assertEqual(self.comp.shape, var_kwargs['fill_shape'])
-
+  @given(valid_shape()) # pylint: disable=no-value-for-parameter
+  def test_set_fill_shape(self, arb_shape):
+    self.comp.fill_shape = arb_shape
+    self.assertEqual(self.comp.fill_shape, arb_shape)
+    self.assertEqual(self.comp.shape, arb_shape)
 
 if __name__ == '__main__':
   unittest.main()
