@@ -4,31 +4,22 @@ from components.instructions.instruction import Instruction
 from utils.helpers.prop_gen_help import roll_name
 
 class Collector(Instruction):
-  def __init__(self,registry,source_ind,source_shape,step_direction,num_steps,resource_accepted,collector_segment_defs,**kwargs):
-    args = [registry, source_ind, source_shape, step_direction, num_steps, resource_accepted, collector_segment_defs]
+  def __init__(self,*args,**kwargs):#registry,source_index,source_shape,step_direction,num_steps,resource_accepted,collector_segment_defs
+    # args = [registry, source_index, source_shape, step_direction, num_steps, resource_accepted, collector_segment_defs]
     super().__init__(*args, **kwargs)
     # self.set_up_collector_segments(self.collector_segment_defs)
     # self.shape = source_shape
     # self.step_direction = step_direction
-    # self.ind = source_ind
+    # self.ind = source_index
     # each conv shape represents a step to take in a direction during the sampling process
-  
-  def set_up_collector_segments(self, shape_defs):
-    res = []
-    for shapes in shape_defs:
-      res.append(CollectorSegment(*shapes,label=f'{self.label}_{roll_name()}'))
-    self.__collector_segments = res
-  def conv(self, npmatrix):
-    return 0
-
 
   @property
-  def source_ind(self):
+  def source_index(self):
     return self.var[1]
 
-  @source_ind.setter
-  def source_ind(self,value):
-    raise RuntimeError('Can not set the value of source_ind!')
+  @source_index.setter
+  def source_index(self,value):
+    raise RuntimeError('Can not set the value of source_index!')
 
   @property
   def source_shape(self):
@@ -83,6 +74,14 @@ class Collector(Instruction):
     self.set_up_collector_segments(self.collector_segment_defs)
 
 
+  def set_up_collector_segments(self, shape_defs):
+    res = []
+    for item in shape_defs:
+      res.append(CollectorSegment(address=item[0],source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
+    self.__collector_segments = res
+  def conv(self, npmatrix):
+    return 0
+    
 
   def get_side_szs(self, side_sz):
     x_sz = side_sz

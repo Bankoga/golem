@@ -4,9 +4,9 @@ class PassiveComp(StaticComp):
 
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
-    self.__var = self.prepare_var_args(*args, **kwargs)
+    self.__var = self.prepare_var_args(*args)
 
-  def prepare_var_args(self,*args, **kwargs):
+  def prepare_var_args(self,*args):
     return tuple(args)
 
   @property

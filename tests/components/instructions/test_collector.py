@@ -15,7 +15,7 @@ from tests.strategies.data_strats import (valid_resource_array,
                                           valid_resource_data, valid_shape,
                                           valid_shape_and_index,
                                           valid_sz_shape_and_index)
-from tests.strategies.instruction_strats import from tests.strategies.data_strats import (valid_collector_segment)
+from tests.strategies.instruction_strats import (valid_collector_segment)
 from tests.strategies.func_set_strats import (module_input_set,
                                               processed_module_input_set)
 from tests.strategies.pos_strats import valid_direction, valid_pos
@@ -38,20 +38,20 @@ class TestCollector(TestInstruction):
       'address': self.address
     }
     self.collector_segment_defs = [
-      [(4,4)],
-      [tuple([1])],
-      [(4,4)],
-      [(9,9),(1,1)],
-      [(4,2),tuple([1])],
-      [(12,12)]
+      (self.address,(4,4)),
+      (self.address,tuple([1])),
+      (self.address,(4,4)),
+      (self.address,(9,9),(1,1)),
+      (self.address,(4,2),tuple([1])),
+      (self.address,(12,12))
     ]
     self.source_shape = (256,256)
-    self.source_ind = (45,25)
+    self.source_index = (45,25)
     self.step_direction = 'A' # TODO: Use correct ENUM
     self.num_steps = len(self.collector_segment_defs)
     self.resource_accepted = RsrcType.ENERGY
     self.values = [self.registry,
-                   self.source_ind,
+                   self.source_index,
                    self.source_shape,
                    self.step_direction,
                    self.num_steps,
@@ -62,15 +62,14 @@ class TestCollector(TestInstruction):
 
   def set_up_dynamic_props(self):
     # self.pos = Pos(self.ctg.get_component_type())
-    self.collector_segments = [cs((4,4),label=f'{self.label}_{roll_name()}'),
-                        cs(tuple([1]),label=f'{self.label}_{roll_name()}'),
-                        cs((4,4),label=f'{self.label}_{roll_name()}'),
-                        cs((9,9),(1,1),label=f'{self.label}_{roll_name()}'),
-                        cs((4,2),(1),label=f'{self.label}_{roll_name()}'),
-                        cs((12,12),label=f'{self.label}_{roll_name()}')]
+    self.collector_segments = [cs(address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
+                        cs(address=self.address,source_index=self.source_index,fill_shape=tuple([1]),label=f'{self.label}_{roll_name()}'),
+                        cs(address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
+                        cs(address=self.address,source_index=self.source_index,fill_shape=(9,9),label=f'{self.label}_{roll_name()}'),
+                        cs(address=self.address,source_index=self.source_index,fill_shape=(4,2),label=f'{self.label}_{roll_name()}'),
+                        cs(address=self.address,source_index=self.source_index,fill_shape=(12,12),label=f'{self.label}_{roll_name()}')]
     self.old_data = []
     self.prev_data = []
-    pass
 
   def quadrant_helper(self, sz_shape_and_index):
     input_shape, input_ind,side_sz = sz_shape_and_index
@@ -93,7 +92,7 @@ class TestCollector(TestInstruction):
     self.set_up_var()
     self.set_up_dynamic_props()
     self.comp = Collector(self.registry,
-                                self.source_ind,
+                                self.source_index,
                                 self.source_shape,
                                 self.step_direction,
                                 self.num_steps,
@@ -106,11 +105,11 @@ class TestCollector(TestInstruction):
     self.assertTrue(self.comp.instruction_details())
 
   def test_get_source_ind(self):
-    self.assertEqual(self.comp.source_ind, self.source_ind)
+    self.assertEqual(self.comp.source_index, self.source_index)
 
   def test_set_source_ind(self):
     with self.assertRaises(RuntimeError):
-      self.comp.source_ind = self.source_ind
+      self.comp.source_index = self.source_index
     
   def test_get_source_shape(self):
     self.assertEqual(self.comp.source_shape, self.source_shape)
@@ -183,7 +182,7 @@ class TestCollector(TestInstruction):
 
   # @given(valid_shape_and_index(),valid_resource_data()) # pylint: disable=no-value-for-parameter
   # def test_extract_quadrants(self, shape_and_index, input_shape):
-  #   source_shape, source_ind = shape_and_index
+  #   source_shape, source_index = shape_and_index
   #   pass
   #   """
   #   cases
@@ -197,7 +196,7 @@ class TestCollector(TestInstruction):
 
   # @given(valid_collector_segment(),valid_resource_data()) # pylint: disable=no-value-for-parameter
   # def test_apply_collector_segment(self, cnv_shp, resource_data):
-  #   conv_quad = self.comp.extract_quadrant(self.source_ind, resource_data, cnv_shp.fill_shape)
+  #   conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, cnv_shp.fill_shape)
   #   expectation = array(cnv_shp.weights.shape) #this is a numpy array that is the dot product of the two arrays
   #   for i in cnv_shp.weights:
   #     for j in nv_shp.weights[j]:
