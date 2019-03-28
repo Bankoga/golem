@@ -1,11 +1,11 @@
 from components.base.static_comp import StaticComp
 
 class Segment(StaticComp):
-  def __init__(self, address, source_index, fill_shape,**kwargs):
+  def __init__(self, *args,**kwargs):
     super().__init__(**kwargs)
-    self.__address = address
-    self.__source_index = source_index
-    self.__fill_shape = fill_shape
+    self.__address = kwargs['address']
+    self.__source_index = kwargs['source_index']
+    self.__fill_shape = kwargs['fill_shape']
   
   @property
   def address(self):

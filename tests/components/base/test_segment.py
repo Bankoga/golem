@@ -32,7 +32,7 @@ class TestSegment(TestStaticComp):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
-    self.comp = Segment(self.address,self.source_index,self.fill_shape,label=self.label,ctg=self.ctg)
+    self.comp = Segment(address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label,ctg=self.ctg)
 
   def test_get_address(self):
     self.assertEqual(self.comp.address, self.address)
