@@ -33,6 +33,7 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.default_weights = ones(self.default_shape)
     self.default_num_dim_of_mass = len(self.default_shape)
     self.default_is_locked = False
+    self.default_collection_chances = ones(self.default_shape)
 
   def setUp(self):
     self.set_up_base()
@@ -45,6 +46,15 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.comp.fill_shape = arb_shape
     self.assertEqual(self.comp.fill_shape, arb_shape)
     self.assertEqual(self.comp.shape, arb_shape)
+
+  def test_get_collection_chances(self):
+    self.assertTrue(array_equal(self.comp.collection_chances, self.default_collection_chances))
+  
+  def test_set_collection_chances(self):
+    self.comp.collection_chances = self.default_weights/2
+    self.assertTrue(array_equal(self.comp.collection_chances, self.default_weights/2))
+    self.comp.collection_chances[0][0] = 256
+    self.assertTrue(self.comp.collection_chances[0][0], 256)
 
 if __name__ == '__main__':
   unittest.main()
