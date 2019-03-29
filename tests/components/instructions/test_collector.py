@@ -22,7 +22,6 @@ from tests.strategies.pos_strats import valid_direction, valid_pos
 from tests.strategies.prop_strats import arb_label, rule_type_prop
 from utils.helpers.prop_gen_help import roll_name
 from utils.pos import Pos
-from math import isnan
 
 class TestCollector(TestInstruction):
   def set_up_base(self):
@@ -72,22 +71,6 @@ class TestCollector(TestInstruction):
                         cs(address=self.address,source_index=self.source_index,fill_shape=(12,12),label=f'{self.label}_{roll_name()}')]
     self.old_data = []
     self.prev_data = []
-
-  def quadrant_helper(self, sz_shape_and_index):
-    input_shape, input_ind,side_sz = sz_shape_and_index
-    x_sz = side_sz
-    y_sz = side_sz
-    if type(side_sz) is tuple:
-      x_sz = side_sz[0]
-      y_sz = side_sz[1]
-    x = input_ind[0]
-    if len(input_ind) > 1:
-      y = input_ind[1]
-      expectation = input_shape[x:x+x_sz][y:y+y_sz]
-    else:
-      expectation = input_shape[x:x+side_sz]
-    res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
-    self.assertTrue(array_equal(res, expectation))
 
   def setUp(self):
     self.set_up_base()
@@ -158,36 +141,6 @@ class TestCollector(TestInstruction):
   def test_set_collector_segments(self):
     with self.assertRaises(RuntimeError):
       self.comp.collector_segments = self.collector_segments
-
-  @given(st.tuples(st.integers(),st.integers()))
-  def test_get_side_szs(self, side_sz):
-    x_sz = side_sz
-    y_sz = side_sz
-    if type(side_sz) is tuple:
-      x_sz = side_sz[0]
-      y_sz = side_sz[1]
-    res_x, res_y = self.comp.get_side_szs(side_sz)
-    self.assertEqual(res_x, x_sz)
-    self.assertEqual(res_y, y_sz)
-
-  @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
-  def test_extract_quadrant(self, sz_shape_and_index):
-    self.quadrant_helper(sz_shape_and_index)
-
-  @given(valid_collector_segment(),valid_resource_data()) # pylint: disable=no-value-for-parameter
-  def test_apply_collector_segment(self, coll_sgmnt, resource_data):
-    if not self.comp.is_registered:
-      self.comp.register(self.address)
-    # conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, coll_sgmnt.fill_shape)
-    # expectation = array(coll_sgmnt.weights.shape) #this is a numpy array that is the dot product of the two arrays
-    # if coll_sgmnt is None:
-    #   with self.assertRaises(AttributeError):
-    #     res = self.comp.apply_collector_segment(coll_sgmnt, resource_data)
-    res = self.comp.apply_collector_segment(coll_sgmnt, resource_data)
-    self.assertTrue(res.shape == coll_sgmnt.weights.shape)
-    for i in range(len(coll_sgmnt.weights)):
-      for j in range(len(coll_sgmnt.weights[i])):
-        self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
 
   @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
   def test_instruction_details(self, npmatrix_array):

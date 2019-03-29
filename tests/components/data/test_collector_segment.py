@@ -4,14 +4,18 @@ from hypothesis import given
 from hypothesis import strategies as st
 from numpy import array, array_equal, ones
 
-from components.vars.data import Address
 from components.data.collector_segment import CollectorSegment
 from components.enums.pos import CtgType
+from components.vars.data import Address
 from tests.components.base.test_plastic_comp import TestPlasticComp
-from tests.strategies.data_strats import valid_resource_data, valid_shape, valid_weights
-from utils.pos import Pos
-from tests.strategies.pos_strats import arb_addr
 from tests.components.base.test_segment import TestSegment
+from tests.strategies.data_strats import (valid_resource_data, valid_shape,
+                                          valid_sz_shape_and_index,
+                                          valid_weights)
+from tests.strategies.instruction_strats import valid_collector_segment
+from tests.strategies.pos_strats import arb_addr
+from utils.pos import Pos
+from math import isnan
 
 class TestCollectorSegment(TestPlasticComp,TestSegment):
   def set_up_base(self):
@@ -55,6 +59,65 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.assertTrue(array_equal(self.comp.collection_chances, self.default_weights/2))
     self.comp.collection_chances[0][0] = 256
     self.assertTrue(self.comp.collection_chances[0][0], 256)
+
+  @given(st.tuples(st.integers(),st.integers()))
+  def test_get_side_szs(self, side_sz):
+    x_sz = side_sz
+    y_sz = side_sz
+    if type(side_sz) is tuple:
+      x_sz = side_sz[0]
+      y_sz = side_sz[1]
+    res_x, res_y = self.comp.get_side_szs(side_sz)
+    self.assertEqual(res_x, x_sz)
+    self.assertEqual(res_y, y_sz)
+  
+  def quadrant_helper(self, sz_shape_and_index):
+    input_shape, input_ind,side_sz = sz_shape_and_index
+    x_sz = side_sz
+    y_sz = side_sz
+    if type(side_sz) is tuple:
+      x_sz = side_sz[0]
+      y_sz = side_sz[1]
+    x = input_ind[0]
+    if len(input_ind) > 1:
+      y = input_ind[1]
+      expectation = input_shape[x:x+x_sz][y:y+y_sz]
+    else:
+      expectation = input_shape[x:x+side_sz]
+    res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
+    self.assertTrue(array_equal(res, expectation))
+
+  @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
+  def test_extract_quadrant(self, sz_shape_and_index):
+    self.quadrant_helper(sz_shape_and_index)
+
+  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_apply(self, resource_data):
+    # conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, coll_sgmnt.fill_shape)
+    # expectation = array(coll_sgmnt.weights.shape) #this is a numpy array that is the dot product of the two arrays
+    # if coll_sgmnt is None:
+    #   with self.assertRaises(AttributeError):
+    #     res = self.comp.apply(resource_data)
+    res = self.comp.apply(resource_data)
+    self.assertTrue(res.shape == coll_sgmnt.weights.shape)
+    for i in range(len(coll_sgmnt.weights)):
+      for j in range(len(coll_sgmnt.weights[i])):
+        self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
+
+  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_apply_local_collector_segments(self, resource_data):
+    # conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, coll_sgmnt.fill_shape)
+    # expectation = array(coll_sgmnt.weights.shape) #this is a numpy array that is the dot product of the two arrays
+    # if coll_sgmnt is None:
+    #   with self.assertRaises(AttributeError):
+    #     res = self.comp.apply(resource_data)
+    for coll_sgmnt in self.comp.collector_segments:
+      res = self.comp.apply(resource_data)
+      self.assertTrue(res.shape == coll_sgmnt.weights.shape)
+      for i in range(len(coll_sgmnt.weights)):
+        for j in range(len(coll_sgmnt.weights[i])):
+          self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
+
 
 if __name__ == '__main__':
   unittest.main()

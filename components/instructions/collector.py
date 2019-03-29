@@ -87,40 +87,12 @@ class Collector(Instruction):
   def conv(self, npmatrix):
     return 0
 
-
-  def get_side_szs(self, side_sz):
-    x_sz = side_sz
-    y_sz = side_sz
-    if type(side_sz) is tuple:
-      x_sz = side_sz[0]
-      y_sz = side_sz[1]
-    return (x_sz,y_sz)
-
-  def extract_quadrant(self, input_ind, input_shape,side_sz):
-    x = input_ind[0]
-    x_sz, y_sz = self.get_side_szs(side_sz)
-    if len(input_ind) > 1:
-      y = input_ind[1]
-      quadrant = input_shape[x:x+x_sz][y:y+y_sz]
-    else:
-      quadrant = input_shape[x:x+x_sz]
-    return quadrant
-
-  def apply_collector_segment(self, coll_sgmnt, resource_data):
-    """
-    This returns the resources actually available for useage by the parent of the collector
-    """
-    # diff_mag = diff_addrs(coll_sgmnt.address, self.address)
-    # adjusted_weights = (coll_sgmnt.weights - (diff_mag*self.attenuation_rate))
-    actuals = resource_data * coll_sgmnt.collection_chances * coll_sgmnt.weights #* coll_sgmnt.fill_shape
-    return actuals
-
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def instruction_details(self,curr_data=[],inputs=None,context=None):
     res = []
     for i, cllct_sgmnt in enumerate(self.collector_segments):
       if len(curr_data) > i:
-        res.append(self.apply_collector_segment(cllct_sgmnt, curr_data[i]))
+        res.append(cllct_sgmnt.apply(curr_data[i]))
       else:
         res.append(zeros(cllct_sgmnt.weights.shape))
       
