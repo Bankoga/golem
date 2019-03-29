@@ -140,9 +140,9 @@ class TestCollector(TestInstruction):
   @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
   def test_set_up_collector_segments(self,collector_segment_defs):
     self.comp.set_up_collector_segments(collector_segment_defs)
-    for i,(f_shape,s_shape) in enumerate(collector_segment_defs):
+    for i,(addr,f_shape) in enumerate(collector_segment_defs):
+      self.assertTrue(self.comp.collector_segments[i].address == addr)
       self.assertTrue(self.comp.collector_segments[i].fill_shape == f_shape)
-      self.assertTrue(self.comp.collector_segments[i].spacing_shape == s_shape)
 
   def test_get_collector_segments(self):
     self.assertEqual(self.comp.collector_segments, self.collector_segments)
