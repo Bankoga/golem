@@ -2,7 +2,7 @@ import unittest
 
 from hypothesis import given
 from hypothesis import strategies as st
-from numpy import array_equal
+from numpy import array, array_equal
 
 from components.data.collector_segment import CollectorSegment as cs
 from components.enums.pos import CtgType
@@ -29,6 +29,7 @@ class TestCollector(TestInstruction):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.INSTRUCTION
     self.rule_type= RuleType.CONV
+    self.max_resources = 256
   
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_address_registry_api')
@@ -166,63 +167,37 @@ class TestCollector(TestInstruction):
   def test_extract_quadrant(self, sz_shape_and_index):
     self.quadrant_helper(sz_shape_and_index)
 
-  # @given(st.integers(), valid_shape_and_index()) # pylint: disable=no-value-for-parameter
-  # def test_extract_quadrant_arbitrary_size(self, side_sz,shape_and_index):
-  #   x_sz = shape_and_index[0]
-  #   y_sz = shape_and_index[0]
-  #   if type(shape_and_index[0]) is tuple:
-  #     x_sz = shape_and_index[0][0]
-  #     y_sz = shape_and_index[0][1]
-  #   valid_sz = min(x_sz,y_sz)
-  #   if not (0 <= side_sz and side_sz <= valid_sz):
-  #     with self.assertRaises(RuntimeError):
-  #       self.comp.extract_quadrant(shape_and_index[0],shape_and_index[1],side_sz)
-  #   else:
-  #     self.quadrant_helper((shape_and_index[0],shape_and_index[1],side_sz))
-
-  # @given(valid_shape_and_index(),valid_resource_data()) # pylint: disable=no-value-for-parameter
-  # def test_extract_quadrants(self, shape_and_index, input_shape):
-  #   source_shape, source_index = shape_and_index
-  #   pass
-  #   """
-  #   cases
-  #   if i,j is out of bounds:
-  #     raise error
-  #   elif i,j is in bounds:
-  #     raw or adjusted input shape is smaller than weights (padding or no?)
-  #     input shape can support a full slice of size equal to weights
-  #   """
-  #   pass
-
-  # @given(valid_collector_segment(),valid_resource_data()) # pylint: disable=no-value-for-parameter
-  # def test_apply_collector_segment(self, cnv_shp, resource_data):
-  #   conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, cnv_shp.fill_shape)
-  #   expectation = array(cnv_shp.weights.shape) #this is a numpy array that is the dot product of the two arrays
-  #   for i in cnv_shp.weights:
-  #     for j in nv_shp.weights[j]:
-        
+  @given(valid_collector_segment(),valid_resource_data()) # pylint: disable=no-value-for-parameter
+  def test_apply_collector_segment(self, coll_sgmnt, resource_data):
+    conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, coll_sgmnt.fill_shape)
+    expectation = array(coll_sgmnt.weights.shape) #this is a numpy array that is the dot product of the two arrays
+    res = self.comp.apply_collector_segment(coll_sgmnt, resource_data)
+    self.assertTrue(res.shape == coll_sgmnt.weights.shape)
+    for i in coll_sgmnt.weights:
+      for j in coll_sgmnt.weights[i]:
+        self.assertTrue(0 <= res[i][j] and res[i][j] <= self.max_resources)
 
   #   res = self.comp.apply_collector_segment(cnv_shp, resource_data)
   #   self.assertEqual(res, expectation)
 
-  @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
-  def test_conv(self, npmatrix_array):
-    # # TODO: Build a valid package for a specific id strategy
-    # """ what needs to be considered when applying a conv to an arbitrary matrix?
-    #     these are all part of the conv considerations
-    #     The matrix has already been grabbed at this point!
-    #     what about size mismatches between regions? We care about those
-    #     Where is activity tracked for plasticity? inside the instruction
-    # """
-    # result = self.comp.conv(npmatrix_array)
-    # expectation = 0
-    # a convolution is the dot product of two vectors
-    # convs here, use source and compression/expansion aware indexing for slice extraction
-    # why not just use the index directly, and grab everything from there in ascending order?
-    # # extract the slice of the matrix we wish to use for the convolution with empty space fill
-    # # self.comp.extract(npmatrix)
-    # self.assertEqual(result,expectation)
-    pass
+  # @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
+  # def test_conv(self, npmatrix_array):
+  #   # # TODO: Build a valid package for a specific id strategy
+  #   # """ what needs to be considered when applying a conv to an arbitrary matrix?
+  #   #     these are all part of the conv considerations
+  #   #     The matrix has already been grabbed at this point!
+  #   #     what about size mismatches between regions? We care about those
+  #   #     Where is activity tracked for plasticity? inside the instruction
+  #   # """
+  #   # result = self.comp.conv(npmatrix_array)
+  #   # expectation = 0
+  #   # a convolution is the dot product of two vectors
+  #   # convs here, use source and compression/expansion aware indexing for slice extraction
+  #   # why not just use the index directly, and grab everything from there in ascending order?
+  #   # # extract the slice of the matrix we wish to use for the convolution with empty space fill
+  #   # # self.comp.extract(npmatrix)
+  #   # self.assertEqual(result,expectation)
+  #   pass
 
   # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
   # def test_get_input(self,inputs):

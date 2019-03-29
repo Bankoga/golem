@@ -2,8 +2,12 @@ from components.enums.prop_types import RuleType
 from components.data.collector_segment import CollectorSegment
 from components.instructions.instruction import Instruction
 from utils.helpers.prop_gen_help import roll_name
+from numpy import array
 
 class Collector(Instruction):
+  """
+  Collectors are for grabbing parent specific resource availability data from a defined set of addresses
+  """
   def __init__(self,*args,**kwargs):#registry,source_index,source_shape,step_direction,num_steps,resource_accepted,collector_segment_defs
     # args = [registry, source_index, source_shape, step_direction, num_steps, resource_accepted, collector_segment_defs]
     super().__init__(*args, **kwargs)
@@ -81,7 +85,7 @@ class Collector(Instruction):
     self.__collector_segments = res
   def conv(self, npmatrix):
     return 0
-    
+
 
   def get_side_szs(self, side_sz):
     x_sz = side_sz
@@ -101,8 +105,18 @@ class Collector(Instruction):
       quadrant = input_shape[x:x+x_sz]
     return quadrant
 
-  def apply_collector_segment(self, cnv_shp, resource_data):
-    return 0
+  def apply_collector_segment(self, coll_sgmnt, resource_data):
+    """
+    This returns the resources actually gathered for useage by the parent of the collector
+    """
+    # resource_actuals = array(coll_sgmnt.fill_shape)
+    # for i in resource_actuals:
+    #   for j in resource_actuals[i]:
+    #     resource_actuals[i][j] = 
+    distance = diff(coll_sgmnt.address, self.address)
+    adjusted_weights = (coll_sgmnt.weights - ((1+distance)*self.attenuation_rate))
+    actuals = resource_data * coll_sgmnt.fill_shape *coll_sgmnt.collection_chances * adjusted_weights
+    return actuals
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def instruction_details(self,curr_data=[],inputs=None,context=None):
