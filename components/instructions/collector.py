@@ -3,6 +3,7 @@ from components.data.collector_segment import CollectorSegment
 from components.instructions.instruction import Instruction
 from utils.helpers.prop_gen_help import roll_name
 from numpy import array
+from utils.pos import diff_addrs
 
 class Collector(Instruction):
   """
@@ -18,9 +19,15 @@ class Collector(Instruction):
     # each conv shape represents a step to take in a direction during the sampling process
 
   @property
+  def attenuation_rate(self):
+    return 2.5
+  @attenuation_rate.setter
+  def attenuation_rate(self,value):
+    raise RuntimeError('Can not set the value of attenuation_rate!')
+
+  @property
   def source_index(self):
     return self.var[1]
-
   @source_index.setter
   def source_index(self,value):
     raise RuntimeError('Can not set the value of source_index!')
@@ -28,7 +35,6 @@ class Collector(Instruction):
   @property
   def source_shape(self):
     return self.var[2]
-
   @source_shape.setter
   def source_shape(self,value):
     raise RuntimeError('Can not set the value of source_shape!')
@@ -36,7 +42,6 @@ class Collector(Instruction):
   @property
   def step_direction(self):
     return self.var[3]
-
   @step_direction.setter
   def step_direction(self,value):
     raise RuntimeError('Can not set the value of step_direction!')
@@ -44,7 +49,6 @@ class Collector(Instruction):
   @property
   def num_steps(self):
     return self.var[4]
-
   @num_steps.setter
   def num_steps(self,value):
     raise RuntimeError('Can not set the value of num_steps!')
@@ -52,7 +56,6 @@ class Collector(Instruction):
   @property
   def resource_accepted(self):
     return self.var[5]
-
   @resource_accepted.setter
   def resource_accepted(self,value):
     raise RuntimeError('Can not set the value of resource_accepted!')
@@ -60,7 +63,6 @@ class Collector(Instruction):
   @property
   def collector_segment_defs(self):
     return self.var[6]
-
   @collector_segment_defs.setter
   def collector_segment_defs(self,value):
     raise RuntimeError('Can not set the value of collector_segment_defs!')
@@ -68,7 +70,6 @@ class Collector(Instruction):
   @property
   def collector_segments(self):
     return self.__collector_segments
-
   @collector_segments.setter
   def collector_segments(self,value):
     raise RuntimeError('Can not set the value of collector_segments!')
@@ -107,15 +108,11 @@ class Collector(Instruction):
 
   def apply_collector_segment(self, coll_sgmnt, resource_data):
     """
-    This returns the resources actually gathered for useage by the parent of the collector
+    This returns the resources actually available for useage by the parent of the collector
     """
-    # resource_actuals = array(coll_sgmnt.fill_shape)
-    # for i in resource_actuals:
-    #   for j in resource_actuals[i]:
-    #     resource_actuals[i][j] = 
-    distance = diff(coll_sgmnt.address, self.address)
-    adjusted_weights = (coll_sgmnt.weights - ((1+distance)*self.attenuation_rate))
-    actuals = resource_data * coll_sgmnt.fill_shape *coll_sgmnt.collection_chances * adjusted_weights
+    # diff_mag = diff_addrs(coll_sgmnt.address, self.address)
+    # adjusted_weights = (coll_sgmnt.weights - (diff_mag*self.attenuation_rate))
+    actuals = resource_data * coll_sgmnt.collection_chances * coll_sgmnt.weights #* coll_sgmnt.fill_shape
     return actuals
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations

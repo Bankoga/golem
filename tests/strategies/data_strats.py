@@ -37,7 +37,7 @@ def valid_shape_and_index(draw):
  
 @composite
 def valid_resource_data(draw):
-  data = draw(st.builds(full,valid_shape(),st.decimals(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
+  data = draw(st.builds(full,valid_shape(),st.floats(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
   st.assume(data.any())
   return data
 

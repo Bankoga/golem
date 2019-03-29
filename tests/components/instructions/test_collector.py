@@ -22,7 +22,7 @@ from tests.strategies.pos_strats import valid_direction, valid_pos
 from tests.strategies.prop_strats import arb_label, rule_type_prop
 from utils.helpers.prop_gen_help import roll_name
 from utils.pos import Pos
-
+from math import isnan
 
 class TestCollector(TestInstruction):
   def set_up_base(self):
@@ -60,6 +60,7 @@ class TestCollector(TestInstruction):
                    self.collector_segment_defs
                   ]
     self.var = tuple(self.values)
+    self.attenuation_rate = 2.5
 
   def set_up_dynamic_props(self):
     # self.pos = Pos(self.ctg.get_component_type())
@@ -101,6 +102,12 @@ class TestCollector(TestInstruction):
                                 self.collector_segment_defs,
                                 label=self.label)
     self.comp.build(*self.values)
+
+  def test_get_attenuation_rate(self):
+    self.assertEqual(self.comp.attenuation_rate, self.attenuation_rate)
+  def test_set_attenuation_rate(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.attenuation_rate = self.attenuation_rate
 
   def test_instruction_details(self):
     self.assertTrue(self.comp.instruction_details())
@@ -169,13 +176,18 @@ class TestCollector(TestInstruction):
 
   @given(valid_collector_segment(),valid_resource_data()) # pylint: disable=no-value-for-parameter
   def test_apply_collector_segment(self, coll_sgmnt, resource_data):
-    conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, coll_sgmnt.fill_shape)
-    expectation = array(coll_sgmnt.weights.shape) #this is a numpy array that is the dot product of the two arrays
+    if not self.comp.is_registered:
+      self.comp.register(self.address)
+    # conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, coll_sgmnt.fill_shape)
+    # expectation = array(coll_sgmnt.weights.shape) #this is a numpy array that is the dot product of the two arrays
+    # if coll_sgmnt is None:
+    #   with self.assertRaises(AttributeError):
+    #     res = self.comp.apply_collector_segment(coll_sgmnt, resource_data)
     res = self.comp.apply_collector_segment(coll_sgmnt, resource_data)
     self.assertTrue(res.shape == coll_sgmnt.weights.shape)
-    for i in coll_sgmnt.weights:
-      for j in coll_sgmnt.weights[i]:
-        self.assertTrue(0 <= res[i][j] and res[i][j] <= self.max_resources)
+    for i in range(len(coll_sgmnt.weights)):
+      for j in range(len(coll_sgmnt.weights[i])):
+        self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
 
   #   res = self.comp.apply_collector_segment(cnv_shp, resource_data)
   #   self.assertEqual(res, expectation)
