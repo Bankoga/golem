@@ -33,3 +33,23 @@ class Pos:
       return self.c
     else:
       raise ValueError('Please supply a valid dimension!')
+
+def diff_addrs(addr_a, addr_b):
+  diff_mag = 0
+  if addr_a.golem != addr_b.golem:
+    diff_mag = diff_mag + 70
+  if addr_a.matrix != addr_b.matrix:
+    diff_mag = diff_mag + 60
+  if addr_a.func_set != addr_b.func_set:
+    diff_mag = diff_mag + 50
+  if addr_a.stage != addr_b.stage:
+    diff_mag = diff_mag + 40
+  if addr_a.group != addr_b.group:
+    diff_mag = diff_mag + 30
+  if addr_a.packager != addr_b.packager:
+    diff_mag = diff_mag + 20
+  if addr_a.instruction != addr_b.instruction:
+    diff_mag = diff_mag + 10
+  if addr_a.channel != addr_b.channel:
+    diff_mag = diff_mag + 1
+  return diff_mag

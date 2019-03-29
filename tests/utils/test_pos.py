@@ -5,8 +5,8 @@ from hypothesis import strategies as st
 
 from components.enums.pos import Floor, Dimension
 
-from utils.pos import Pos
-from tests.strategies.pos_strats import valid_pos, ctg_prop,dimension_prop,valid_floor
+from utils.pos import Pos, diff_addrs
+from tests.strategies.pos_strats import valid_pos, ctg_prop,dimension_prop,valid_floor, arb_addr
 
 class TestPos(unittest.TestCase):
 
@@ -57,3 +57,8 @@ class TestPos(unittest.TestCase):
     else:
       with self.assertRaises(ValueError):
         pos.get_dim_value(dim)
+  
+  @given(arb_addr(), arb_addr()) # pylint: disable=no-value-for-parameter
+  def test_diff_addr(self, addr_a, addr_b):
+    res = diff_addrs(addr_a, addr_b)
+    self.assertTrue(0 <= res and res <= 281)
