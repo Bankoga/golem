@@ -2,7 +2,7 @@ from components.enums.prop_types import RuleType
 from components.data.collector_segment import CollectorSegment
 from components.instructions.instruction import Instruction
 from utils.helpers.prop_gen_help import roll_name
-from numpy import array
+from numpy import array, zeros
 from utils.pos import diff_addrs
 
 class Collector(Instruction):
@@ -117,7 +117,13 @@ class Collector(Instruction):
 
   # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def instruction_details(self,curr_data=[],inputs=None,context=None):
-    res = 0
+    res = []
+    for i, cllct_sgmnt in enumerate(self.collector_segments):
+      if len(curr_data) > i:
+        res.append(self.apply_collector_segment(cllct_sgmnt, curr_data[i]))
+      else:
+        res.append(zeros(cllct_sgmnt.weights.shape))
+      
     #   patch = extract a slice from the input_pack according to the current shape
     #   step_res = shape.weights * patch
     #   res.append(step_res * abs(diff(ind,self.pos.z)))

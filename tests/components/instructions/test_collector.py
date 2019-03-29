@@ -109,9 +109,6 @@ class TestCollector(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.attenuation_rate = self.attenuation_rate
 
-  def test_instruction_details(self):
-    self.assertTrue(self.comp.instruction_details())
-
   def test_get_source_ind(self):
     self.assertEqual(self.comp.source_index, self.source_index)
 
@@ -192,83 +189,12 @@ class TestCollector(TestInstruction):
       for j in range(len(coll_sgmnt.weights[i])):
         self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
 
-  #   res = self.comp.apply_collector_segment(cnv_shp, resource_data)
-  #   self.assertEqual(res, expectation)
-
-  # @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
-  # def test_conv(self, npmatrix_array):
-  #   # # TODO: Build a valid package for a specific id strategy
-  #   # """ what needs to be considered when applying a conv to an arbitrary matrix?
-  #   #     these are all part of the conv considerations
-  #   #     The matrix has already been grabbed at this point!
-  #   #     what about size mismatches between regions? We care about those
-  #   #     Where is activity tracked for plasticity? inside the instruction
-  #   # """
-  #   # result = self.comp.conv(npmatrix_array)
-  #   # expectation = 0
-  #   # a convolution is the dot product of two vectors
-  #   # convs here, use source and compression/expansion aware indexing for slice extraction
-  #   # why not just use the index directly, and grab everything from there in ascending order?
-  #   # # extract the slice of the matrix we wish to use for the convolution with empty space fill
-  #   # # self.comp.extract(npmatrix)
-  #   # self.assertEqual(result,expectation)
-  #   pass
-
-  # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
-  # def test_get_input(self,inputs):
-  #   pass
-
-  # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
-  # def test_operate(self, inputs):
-  #   """
-  #   At a cell level, we execute all of our instructions using a method provided by the context
-  #   At an instruction level, we execute on the inputs within context in the direction specified using the contextual cardinator
-  #   for each direction
-  #     take a sample of the package shape for each shape
-  #     record activity information while sampling
-  #   combine all samples into a single result using distance attenuation
-  #   """
-  #   packages = inputs[0]
-  #   fs = inputs[1]
-  #   result = self.comp.operate(packages,fs)
-  #   parts = []
-  #   # for pack in inputs:
-  #   # for each instruction
-  #   #   we grab specifed_input from the inputs
-  #   #   we apply a 2d convolution with the specified shape
-  #   #   we do what with the result?
-
-  # def test_post_init_build_status(self):
-  #   self.assertTrue(self.comp.is_built())
-  
-  # def test_build(self):
-  #   self.assertTrue(self.comp.is_built())
-  
-  # @given(st.lists(valid_collector_segment())) # pylint: disable=no-value-for-parameter
-  # def test_update_data_built(self,new_data):
-  #   with self.assertRaises(RuntimeError):
-  #     self.comp.build()
-
-  # @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
-  # def test_update_data_unbuilt(self,new_data):
-  #   with self.assertRaises(RuntimeError):
-  #     self.comp.update(new_data)
-
-  # @given(processed_module_input_set()) # pylint: disable=no-value-for-parameter
-  # def test_(self, inputs):
-
-  # def test_update_weight(self,updates):
-  #   """
-  #   because plasticity is handled at the parent level of instructions
-  #   we need to ensure that each instruction can have it's weights updated properly
-  #   """
-  #   pass
-
-  
-  # @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
-  # def reset(self, new_data):
-  #   with self.assertRaises(RuntimeError):
-  #     self.comp.reset(new_data)
+  @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
+  def test_instruction_details(self, npmatrix_array):
+    results = self.comp.instruction_details(npmatrix_array)
+    self.assertTrue(len(results),len(self.collector_segments))
+    for i,item in enumerate(results):
+      self.assertEqual(item.shape, self.comp.collector_segments[i].fill_shape)
 
 if __name__ == '__main__':
   unittest.main()
