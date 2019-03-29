@@ -153,7 +153,10 @@ class TestCollector(TestInstruction):
       self.assertTrue(self.comp.collector_segments[i].fill_shape == f_shape)
 
   def test_get_collector_segments(self):
-    self.assertEqual(self.comp.collector_segments, self.collector_segments)
+    for i,cllct_sgmnt in enumerate(self.comp.collector_segments):
+      self.assertEqual(cllct_sgmnt.address, self.collector_segments[i].address)
+      self.assertEqual(cllct_sgmnt.source_index, self.collector_segments[i].source_index)
+      self.assertEqual(cllct_sgmnt.fill_shape, self.collector_segments[i].fill_shape)
 
   def test_set_collector_segments(self):
     with self.assertRaises(RuntimeError):
