@@ -16,7 +16,7 @@ Why does this seem possible without ridiculously expensive (from a startup persp
 
 The idea is that cell localized sets of 2d convolutions are probably sufficient to capture the computational power of the highly complex neurons in a glialform matrix with the intricacy of the graph only necessary for energy efficiency reasons. Furthermore, the machine learning framework already serves the purpose of the glia, so there is no need to have them be represented as cells. What I mean by localized convolutions is that each cell has it's own set of convolutions across different shapes which makes for much smaller individual convolutions but far more of them.
 
-While there is a serious hardware problem for running something with the equivalent of 1 Billion neurons in real time, it should be feasible for less than the price of an average mortgage because the problem of doing 1 billion sets of operations that naturally parallelize per timestep, and all run with a single broadcast trigger, has highly performant solutions. Dedicated hardware is an expression of softawre, and the efficiency of any piece of software on any arbitrary piece of hardware, will be determined by the alignment of the epistimologies embedded in both.
+While there is a serious hardware problem for running something with the equivalent of 1 Billion neurons in real time, it should be feasible for less than the price of an average mortgage because the problem of doing 1 billion sets of operations that naturally parallelize per timestep, and all run with a single broadcast trigger, has highly performant solutions. Dedicated hardware is an expression of softawre, and the efficiency of any piece of software on any arbitrary piece of hardware, will be determined by the alignment of the epistimologies embedded in both. An appropriately aligned sammich thus makes everything so much easier.
 
 > Fun fact: All human languages are either epistimologies or, at a minimum, are reflections of epistimologies.
 
@@ -86,7 +86,7 @@ Life does not appear to be mechanically differently in kind, than anything else 
 
 ### Consequences
 
-Well aside from these ideas being to practice more quickly than I am capable of, which really isn't important. I do not matter. You do not matter. Nothing matters. Thus everything matters.
+Well aside from others being able to take these ideas and put them into practice more quickly than I am capable of, which really isn't important. I do not matter. You do not matter. Nothing matters. Thus everything matters.
 
 There are lot of ramifications to this, most of which I'll not bother to record. For the purposes of this doc, we can say the following:
 
@@ -108,7 +108,7 @@ Most of the time, I've experienced camp A as a reason for organic chemistry to b
 
 ## Thanks for Reading
 
-Thanks for reading, and I hope you enjoyed. This is my job, though I am unpaid. At this point, I am dedicated to doing this for however long it takes me to succeed. Success if failure, and failure is success. Only through failure can we succeed.
+Thanks for reading, and I hope you enjoyed. This is my job, though I am unpaid. At this point, I am dedicated to doing this for however long it takes me to succeed. Success is failure, and failure is success. Through failure can we succeed.
 
 Only that which is lost, can be found!
 Logic is sufficient
