@@ -12,7 +12,7 @@ class CollectorSegment(PlasticComp, Segment):
       kwargs['label'] = ''
     kwargs['ctg']=CtgType.DATA
     super().__init__(*args, **kwargs)
-    self.__container_address = kwargs['container_address']
+    self.__source_address = kwargs['source_address']
     self.__fill_shape = kwargs['fill_shape']
     self.shape = kwargs['fill_shape']
     self.collection_chances = ones(kwargs['fill_shape'])
@@ -23,9 +23,15 @@ class CollectorSegment(PlasticComp, Segment):
     self.__collection_chances = ones(shape)
 
   @property
+  def source_address(self):
+    return self.__source_address
+  @source_address.setter
+  def source_address(self, value):
+    raise RuntimeError('Can not change the source address')
+
+  @property
   def fill_shape(self):
     return self.__fill_shape
-  
   @fill_shape.setter
   def fill_shape(self, value):
     self.__fill_shape = value
@@ -35,7 +41,6 @@ class CollectorSegment(PlasticComp, Segment):
   @property
   def collection_chances(self):
     return self.__collection_chances
-  
   @collection_chances.setter
   def collection_chances(self, value):
     self.__collection_chances = value
@@ -58,7 +63,7 @@ class CollectorSegment(PlasticComp, Segment):
       quadrant = input_shape[x:x+x_sz]
     return quadrant
 
-  def apply(self, container_address, resource_data):
+  def apply(self, resource_data):
     """
     This returns the resources actually available for useage by the parent of the collector
     """
@@ -85,4 +90,4 @@ class CollectorSegment(PlasticComp, Segment):
       for i,row in enumerate(resource_data):
         pass
         # actuals = quad * coll_sgmnt.collection_chances * coll_sgmnt.weights #* coll_sgmnt.fill_shape
-    return actuals
+    return array(actuals)

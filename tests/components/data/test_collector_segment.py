@@ -23,6 +23,7 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.label = 'dend_abov_a_segment_2'
     
   def set_up_var(self):
+    self.source_address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0')
     self.address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
     self.source_index = (0,0)
     self.fill_shape = (4,4)
@@ -43,7 +44,7 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
-    self.comp = CollectorSegment(self.value,address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
+    self.comp = CollectorSegment(self.value,source_address=self.source_address,address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
 
   @given(valid_shape()) # pylint: disable=no-value-for-parameter
   def test_set_fill_shape(self, arb_shape):
@@ -51,9 +52,15 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.assertEqual(self.comp.fill_shape, arb_shape)
     self.assertEqual(self.comp.shape, arb_shape)
 
+  def test_get_source_address(self):
+    self.assertEqual(self.comp.source_address, self.source_address)
+  @given(arb_addr()) # pylint: disable=no-value-for-parameter
+  def test_set_source_address(self, addr):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_address = addr
+  
   def test_get_collection_chances(self):
     self.assertTrue(array_equal(self.comp.collection_chances, self.default_collection_chances))
-  
   def test_set_collection_chances(self):
     self.comp.collection_chances = self.default_weights/2
     self.assertTrue(array_equal(self.comp.collection_chances, self.default_weights/2))
@@ -99,24 +106,23 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     #   with self.assertRaises(AttributeError):
     #     res = self.comp.apply(resource_data)
     res = self.comp.apply(resource_data)
-    self.assertTrue(res.shape == coll_sgmnt.weights.shape)
-    for i in range(len(coll_sgmnt.weights)):
-      for j in range(len(coll_sgmnt.weights[i])):
+    self.assertTrue(res.shape == self.comp.weights.shape)
+    for i in range(len(self.comp.weights)):
+      for j in range(len(self.comp.weights[i])):
         self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
 
   @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
   def test_apply_local_collector_segments(self, resource_data):
-    # conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, coll_sgmnt.fill_shape)
-    # expectation = array(coll_sgmnt.weights.shape) #this is a numpy array that is the dot product of the two arrays
-    # if coll_sgmnt is None:
+    # conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, self.comp.fill_shape)
+    # expectation = array(self.comp.weights.shape) #this is a numpy array that is the dot product of the two arrays
+    # if self.comp is None:
     #   with self.assertRaises(AttributeError):
     #     res = self.comp.apply(resource_data)
-    for coll_sgmnt in self.comp.collector_segments:
-      res = self.comp.apply(resource_data)
-      self.assertTrue(res.shape == coll_sgmnt.weights.shape)
-      for i in range(len(coll_sgmnt.weights)):
-        for j in range(len(coll_sgmnt.weights[i])):
-          self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
+    res = self.comp.apply(resource_data)
+    self.assertTrue(res.shape == self.comp.weights.shape)
+    for i in range(len(self.comp.weights)):
+      for j in range(len(self.comp.weights[i])):
+        self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
 
 
 if __name__ == '__main__':
