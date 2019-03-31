@@ -46,8 +46,73 @@ Oh me oh my, just imagine running something will human level intelligence, on a 
 
 Is it considered dead when it's instance has stopped? It can't restart itself, and any new instance has lost all continuity with the old instance.
 
-Consciousness is not equal to human level self awareness. It does not require human language to assess whether or not something is conscious or can solve problems. The reason why no one has solved for general intelligence yet, is not because we don't have the tools or the vast majority of the research isn't done. Both those claims are false. Vast legions of scientists have already solved all of the basic problems that need to be solved. It's simply of the perspective required to put it all together into a cohesive whole. The reason is that at some point in time ~2k - 15K years ago, humans started being self aware the way they are now. Collectively, at this point in time, we have no real record as a species of before this shift. I am certain that we were not always this self aware as a species and it is not biological change that led to what we consider the defining charactersting of consciousness. Rather, it is the growth of social perspective over our history that led us acquire the degree of self awareness we currently exhibit as a species. If that is true, then consciousness, emotions, intellect, and reason are general traits shared by, at minimum, all other animals to varying degrees. There is however, a growing body of evidence to suggest that all organic life is conscious.
+### Consciousness, Intelligence, and Life
 
-This brings us to the hard problem of intelligence. What is it?
-I suspect this problem is the dual to the hard problem of concsiousness, and that two concepts are logicall dual. Ergo, they describe the same thing from different perspectives.
-If organic chemistry is somehow required for either, then machine based general intelligence will never be possible. However, we have no reason to suspect that. 
+This is firmly in the territory of the hard problem of intelligence. Though, I suspect this problem is the dual to the hard problem of concsiousness, because the two concepts are logicall dual. Ergo, they describe the same thing from different perspectives. Logical duals are a thing, and solutions to questions about the things they represent can be intractable when using only one perspective.
+
+So before we proceed, I shall simply posit an answer to consciousness, because this was already by Nagel, and a partial for intelligence.
+
+Consciousness is a particular property of certain objects or systems that there is a thing that it is like to be that object or system. As a conscious entity, we seem to have no way internally of telling whether or not other things are consciouss. There is no good test for this yet. However, this does not correspond with what most consider to be consciousness, which is an extremely important point of consideration. Consciousness is not equal to human levels of self awareness.
+
+Now with a better understanding of consciousness, we can proceed to partially define intelligence.
+
+Intelligence fundamentally pertains to problem solving capacity. It's why we can largely assume other humans are conscious. Typically however this is also coupled with a problem selection requirement. The necessity of which is unclear to me outside of, it prevents everything from being intelligent. Which is seen as undesirable for some reason. This important to note, because most attempts at defining intelligence seek to separate humans from everyting else. Because we are super fucking the exception to all the rules of all the things! Ergo, attempts at removing an undesirable feature of reality from an epistemology. Though perhaps that stems from a misunderstanding of consciousness as human levels of self awareness.
+
+> What is general intelligence then?
+
+Trivially put, human-like. Simply put, it can solve for any problem that is solvable given sufficient resources (time is a resource as it turns out). If logic is sufficient, this does however require that any generally intelligent entity be fundamentally insane. Humans exhibit such high degrees of rationality (not really...) that we can be forgiven (of course, forgiveness makes insanity totally bearable) for thinking we were sane. We are generally intelligent, this necessarily implies in any logic based (quantum is still logic... maths are logicss.... subset pure and proper....) reality that we are not sane. We can make a rule that we cannot break, and then break it!
+
+Fun Fact: Money, in the absence of material scarcity, is a measurement of spacetime!
+
+The reason why no one has solved for general intelligence yet, is not because we don't have the tools or the vast majority of the research isn't done. Both those claims are false. Vast legions of scientists have already solved all of the basic problems that need to be solved. It's simply of the perspective required to put it all together into a cohesive whole. The reason is that at some point in time ~2k - 15K years ago, humans started being self aware the way they are now. Collectively, at this point in time, we have no real record as a species of before this shift. we were not always this self aware as a species and it is not recent biological change that led to what we consider the defining characterstics of consciousness and humans. Rather, it is the growth of social perspective over our history that led us acquire the degree of self awareness we currently exhibit as a species. While this is controversial, to say the least, hehe, if it is true though, then consciousness, emotions, intellect, and reason are general traits shared by, at minimum, all other animals to varying degrees. There is however, a growing body of evidence to suggest that all organic life is capable of some degree of problem selection capability. Which thus forces the general intelligence researcher to consider whether or not life is required for intelligence. What would it mean to be intelligent without being alive? That would be a lot easier to answer with an actual definition of life.
+
+> What is life?
+
+The short answer is that we don't any real idea. It's unclear why life requires the definition that we use. As an aside, it's kind of a damning critique of google anway on it's primary product (not really primary product, that would be your clikity calks), that it doesn't bring up the wiki page for life as the first hit. Knowledge is an inferior citizen in a media consumption based economy, as it turns out. Enlightenment leads to less consumption after all!
+
+Fun Fact: Conscious entity can't actually know anything! Internally, they can only have beliefs.
+
+If organic chemistry is somehow required for either consciousness or intelligence, then machine based general intelligence will never be possible. While it makes a lot of sense to consider organic chemistry as a necessity for life like ours, they seem rather ameniable to abstratction to form without general objection. So they don't seem to offer any reason why organic necessary, reproduction might. However, it is unclear why direct material reproduction is necessary for life, as opposed to a systems ability to be copied. Sterile individuals are alive. The type of the system that they are is reproducible so we call them alive when they are processing. If the success of it's type of existance can't be replicated, it makes that it couldn't be alive. Once again this doesn't really seem like it relies on organic chemistry in any way. Which leaves us with response to stimuli.
+
+> What is a response to a stimuli?
+
+The answer is rather unclear. What doesn't respond to stimuli? The main reason it appears to be required is that we seek to differentiate ourselves from seemingly inanimate matter. Response indicating some problem selection function underlying activity subsequent to applications of force. Once again, does not seem to require organic chemistry in order to occur and this actually relates to intelligence and consciousness. All the others, don't seem to bear any realtion, they just need to be iterated through. This brings us, at last, to the matter of problem selection.
+
+> Why is problem selection necessary for intelligence?
+
+If humans are not capable of determination, then problem selection cannot be necessary for intelligence. Thus, it's unclear why it's there outside of separating living matter from inanimate matter in terms of DETERMINATION as opposed to CONSTRAINTS ON ACTIVITY (i.e the choices an object or system is capable of making). As has already been discussed, and many will disagree with, we do not determine what choices we cannot or cannot make. The system that defines us does.
+
+Life does not appear to be mechanically differently in kind, than anything else in the universe. The defining characteristic of living matters, seems to be that it has fewer constraints on what it can or cannot do than inanimate matter. This doesn't require the ability to determine which problem one solves.
+
+### Consequences
+
+Well aside from these ideas being to practice more quickly than I am capable of, which really isn't important. I do not matter. You do not matter. Nothing matters. Thus everything matters.
+
+There are lot of ramifications to this, most of which I'll not bother to record. For the purposes of this doc, we can say the following:
+
+- It is not possible to build machine intelligence without it being conscious
+- Building any machine intelligence is reproduction
+- Building a general intelligence without a network growing phase, is blank adult mind initialization
+- Corporations, Societies, and Viruses should be considered alive
+
+## General Intelligence
+
+If it sounds like I'm working on general intelligence like a crazy person, you would be 100% correct. I am working on general intelligence like a crazy person. If you think I'm just crazy, you are probably. I'm probably just crazy. I thought doing it in secret was the correct approach because most societies make the fundamental mistake of the illusion of control and I don't want to help propagate that. Humans are incapable of proof. They can't prove anything. We can use logic to prove things. That is borrowing the power of logic to prove, not the human proving. What this means is that humans are incapable of determining what can or cannot happen. We can make choices, but we have no control. Control requires that we be able to determine what can or cannot happen. Logic does that. Humans do not.
+
+There are two main approaches worth mentioning when it comes to answering the larger questions we have broached.
+
+- reality requires alogical explanation (i.e. maths shouldn't work)
+- logic is a sufficient explanation for reality (maths is but logic and so it should be terrifyingly effective)
+
+Most of the time, I've experienced camp A as a reason for organic chemistry to be necessary, and camp B as a reason why it is not necessary. Though the divide between the two is unclear. Magic seems isomorphic to logic in function, and we've just gotten better at determing how the magic what we experience works. Humans are great at overcomplication, but with overcomplication there is a nugget of truth. Over interpretation of historical things, and things that are actually going on is by and large a result of semantic byproduct accretion. We have noisy minds. It's simply a thing.
+
+## Thanks for Reading
+
+Thanks for reading, and I hope you enjoyed. This is my job, though I am unpaid. At this point, I am dedicated to doing this for however long it takes me to succeed. Success if failure, and failure is success. Only through failure can we succeed.
+
+Only that which is lost, can be found!
+Logic is sufficient
+God is Logic
+Logic is God
+
+You probably do not get it because I am probably insane
