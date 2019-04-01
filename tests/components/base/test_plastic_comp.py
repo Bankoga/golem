@@ -15,7 +15,9 @@ class TestPlasticComp(TestPassiveComp,TestWeightedComp):
 
   def set_up_var(self):
     self.value = 'Any arbitrary type of object?'
-    self.var = tuple([self.value])
+    self.values = [self.value]
+    self.var = tuple(self.values)
+    self.baseline = self.values
 
   def setUp(self):
     self.set_up_base()
@@ -40,10 +42,10 @@ class TestPlasticComp(TestPassiveComp,TestWeightedComp):
       self.comp.reset()
 
   def test_reset_with_baseline(self):
-    self.comp.baseline = 'A baseline!'
-    self.comp.update('Things')
+    self.comp.baseline = self.baseline
+    self.comp.update(tuple(['random new values?']))
     self.comp.reset()
-    self.assertEqual(self.comp.var,tuple(['A baseline!']))
+    self.assertEqual(self.comp.var,tuple(self.baseline))
 
 if __name__ == '__main__':
   unittest.main()

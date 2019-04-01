@@ -109,7 +109,7 @@ class TestCell(unittest.TestCase):
   def test_process(self, inputs):
     """
     given the properties
-      - conv_instructions
+      - collectors
       - module_inputs_dict
       - module_outputs_dict
     when it is time to process inputs
@@ -121,7 +121,7 @@ class TestCell(unittest.TestCase):
   @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter
   def test_exec_instruction(self, instruction):
     # directions = instruction[0]
-    # conv_shapes = instruction[1]
+    # collector_segments = instruction[1]
     
     pass
 

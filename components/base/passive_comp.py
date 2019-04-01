@@ -20,5 +20,5 @@ class PassiveComp(StaticComp):
   def setter_error(self):
     raise RuntimeError('Cannot set var of component!')
 
-  def update(self, *args):
-    self.__var = self.prepare_var_args(*args)
+  def update(self, *args, **kwargs):
+    self.__var = self.prepare_var_args(*args, **kwargs)

@@ -13,13 +13,14 @@ class TestPassiveComp(TestStaticComp):
     self.ctg = CtgType.FSET
 
   def set_up_var(self):
-    self.values = ['Any arbitrary type of object?']
+    self.value = 'Any arbitrary type of object?'
+    self.values = [self.value]
     self.var = tuple(self.values)
 
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = PassiveComp(self.values, label=self.label, ctg=self.ctg)
+    self.comp = PassiveComp(self.value, label=self.label, ctg=self.ctg)
 
   @given(st.lists(st.integers()))
   def test_prepare_var_args(self, var_args):

@@ -12,7 +12,10 @@ class TestStaticComp(unittest.TestCase):
   def setUp(self):
     self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
-    self.comp = StaticComp(self.label, self.ctg)
+    self.comp = StaticComp(label=self.label, ctg=self.ctg)
+
+  def set_up_dynamic_props(self):
+    pass
 
   def test_set_defaults(self):
     self.assertTrue(self.comp.set_defaults())
