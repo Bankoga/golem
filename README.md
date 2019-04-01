@@ -8,6 +8,8 @@ As an aside, Aristotle was wrong; it simply needs to be said.
 
 That being said, this is an attempt at implementing a platform that can be leveraged to build arbitrarily large neural systems. A huge part of the problem when designing neural networks, is that there is no good language with which to formally define the highly intricate graphs of processing resources that is the central processing center in many fleshy complex processing systems.
 
+General Intelligence hasn't been solved for only because we want to still think that humans are exceptions to how reality functions.
+
 ## Goal
 
 A machine learning dialect and, mostly framework, for creating digital minds that are highly analagous in architecture to preexisting samples.
