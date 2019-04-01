@@ -24,7 +24,8 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     
   def set_up_var(self):
     self.source_address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0')
-    self.address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
+    self.residence_address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
+    self.address = self.residence_address
     self.source_index = (0,0)
     self.fill_shape = (4,4)
     self.weights = ones(self.fill_shape)
@@ -44,7 +45,7 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
-    self.comp = CollectorSegment(self.value,source_address=self.source_address,address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
+    self.comp = CollectorSegment(self.value,residence_address=self.residence_address,source_address=self.source_address,address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
 
   @given(valid_shape()) # pylint: disable=no-value-for-parameter
   def test_set_fill_shape(self, arb_shape):

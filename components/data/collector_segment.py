@@ -12,7 +12,6 @@ class CollectorSegment(PlasticComp, Segment):
       kwargs['label'] = ''
     kwargs['ctg']=CtgType.DATA
     super().__init__(*args, **kwargs)
-    self.__source_address = kwargs['source_address']
     self.__fill_shape = kwargs['fill_shape']
     self.shape = kwargs['fill_shape']
     self.collection_chances = ones(kwargs['fill_shape'])
@@ -21,13 +20,6 @@ class CollectorSegment(PlasticComp, Segment):
     shape = tuple([1])
     super().set_weighted_defaults(shape=shape,weights=ones(shape))
     self.__collection_chances = ones(shape)
-
-  @property
-  def source_address(self):
-    return self.__source_address
-  @source_address.setter
-  def source_address(self, value):
-    raise RuntimeError('Can not change the source address')
 
   @property
   def fill_shape(self):
@@ -75,14 +67,17 @@ class CollectorSegment(PlasticComp, Segment):
     if len(resource_data) > 1:
       y = resource_data[1]
       for i,row in enumerate(self.weights):
-        ar = []
-        for j,col in enumerate(row):
+        row_actuals = []
+        for j,col_itm in enumerate(row):
           pass
+          # item_res = A number
+          # [i][j] 
           # quadrant = input_shape[x:x+x_sz][y:y+y_sz]
           # quad = self.extract_quadrant(self.source_index, resource_data.shape, coll_sgmnt.shape)
           # actuals = quad * coll_sgmnt.collection_chances * coll_sgmnt.weights #* coll_sgmnt.fill_shape
           # loop_through_array(2d) and collect actuals from each expected index
-        actuals.append(ar)
+          # row_actuals.append()
+        actuals.append(row_actuals)
     else:
       # loop_through_array(1d) and collect actuals from each expected index
       # quadrant = input_shape[x:x+x_sz]
