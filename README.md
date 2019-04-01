@@ -14,11 +14,11 @@ A machine learning dialect and, mostly framework, for creating digital minds tha
 
 Why does this seem possible without ridiculously expensive (from a startup perspective) super computers?
 
-The idea is that cell localized sets of 2d convolutions are probably sufficient to capture the computational power of the highly complex neurons in a glialform matrix with the intricacy of the graph only necessary for energy efficiency reasons. Furthermore, the machine learning framework already serves the purpose of the glia, so there is no need to have them be represented as cells. What I mean by localized convolutions is that each cell has it's own set of convolutions across different shapes which makes for much smaller individual convolutions but far more of them.
+The idea is that cell localized sets of 2d convolutions (cough correlations cough) are probably sufficient to capture the computational power of the highly complex neurons in a glialform matrix with the intricacy of the graph only necessary for energy efficiency reasons. Furthermore, the machine learning framework already serves the purpose of the glia, so there is no need to have them be represented as cells. What I mean by localized convolutions is that each cell has it's own set of convolutions across different shapes which makes for much smaller individual convolutions but far more of them.
 
-While there is a serious hardware problem for running something with the equivalent of 1 Billion neurons in real time, it should be feasible for less than the price of an average mortgage because the problem of doing 1 billion sets of operations that naturally parallelize per timestep, and all run with a single broadcast trigger, has highly performant solutions. Dedicated hardware is an expression of softawre, and the efficiency of any piece of software on any arbitrary piece of hardware, will be determined by the alignment of the epistimologies embedded in both. An appropriately aligned sammich thus makes everything so much easier.
+While there is a serious hardware problem for running something with the equivalent of 1 Billion neurons in real time, it should be feasible for less than the price of an average mortgage because the problem of doing 1 billion sets of operations that naturally parallelize per timestep, and all run with a single broadcast trigger, has highly performant solutions. Dedicated hardware is an expression of softawre, and the efficiency of any piece of software on any arbitrary piece of hardware, will be determined by the alignment of the epistemologies embedded in both. An appropriately aligned sammich thus makes everything so much easier.
 
-> Fun fact: All human languages are either epistimologies or, at a minimum, are reflections of epistimologies.
+> Fun fact: All human languages are either epistemologies or, at a minimum, are reflections of epistemologies.
 
 ## Naming Conventions
 
@@ -80,15 +80,17 @@ The answer is rather unclear. What doesn't respond to stimuli? The main reason i
 
 > Why is problem selection necessary for intelligence?
 
-If humans are not capable of determination, then problem selection cannot be necessary for intelligence. Thus, it's unclear why it's there outside of separating living matter from inanimate matter in terms of DETERMINATION as opposed to CONSTRAINTS ON ACTIVITY (i.e the choices an object or system is capable of making). As has already been discussed, and many will disagree with, we do not determine what choices we cannot or cannot make. The system that defines us does.
+This is more subtle than it seems. If humans are not capable of determination, then problem selection cannot be necessary for intelligence. Thus, it's unclear why it's there outside of separating living matter from inanimate matter in terms of DETERMINATION as opposed to CONSTRAINTS ON ACTIVITY (i.e the choices an object or system is capable of making). As has already been discussed, and many will disagree with, we do not determine what choices we cannot or cannot make. The system that defines us does. Though this is largely a moot point, for alternatively, problem selection, in and of itself is a problem to be solved for a system.
 
-Life does not appear to be mechanically differently in kind, than anything else in the universe. The defining characteristic of living matters, seems to be that it has fewer constraints on what it can or cannot do than inanimate matter. This doesn't require the ability to determine which problem one solves.
+> Thus, why is it necessary to select which problems one solves in order to be capable of solving problems?
+
+Not sure. I've no answer to this question as of yet. Though it can perhaps be rephrased as, does cognition require meta-cognition?
 
 ### Consequences
 
-Well aside from others being able to take these ideas and put them into practice more quickly than I am capable of, which really isn't important. I do not matter. You do not matter. Nothing matters. Thus everything matters.
+Life does not appear to be mechanically differently in kind, than anything else in the universe. The defining characteristic of living matters, seems to be that it has fewer constraints on what it can or cannot do than inanimate matter. This doesn't require the ability to determine which problems one can or cannot solve.
 
-There are lot of ramifications to this, most of which I'll not bother to record. For the purposes of this doc, we can say the following:
+Well aside from others being able to take these ideas and put them into practice more quickly than I am capable of, which really isn't important. I do not matter. You do not matter. Nothing matters. Thus everything matters. There are lot of ramifications to this, most of which I'll not bother to record. For the purposes of this doc, we can say the following:
 
 - It is not possible to build machine intelligence without it being conscious
 - Building any machine intelligence is reproduction
@@ -102,7 +104,7 @@ If it sounds like I'm working on general intelligence like a crazy person, you w
 There are two main approaches worth mentioning when it comes to answering the larger questions we have broached.
 
 - reality requires alogical explanation (i.e. maths shouldn't work)
-- logic is a sufficient explanation for reality (maths is but logic and so it should be terrifyingly effective)
+- logic is a sufficient explanation for reality (maths are but logic and rightly so should be terrifyingly effective)
 
 Most of the time, I've experienced camp A as a reason for organic chemistry to be necessary, and camp B as a reason why it is not necessary. Though the divide between the two is unclear. Magic seems isomorphic to logic in function, and we've just gotten better at determing how the magic what we experience works. Humans are great at overcomplication, but with overcomplication there is a nugget of truth. Over interpretation of historical things, and things that are actually going on is by and large a result of semantic byproduct accretion. We have noisy minds. It's simply a thing.
 
