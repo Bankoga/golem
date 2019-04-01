@@ -1,14 +1,14 @@
 from components.packagers import packager
-from data.axioms.cell_types import CellType, cell_data
-from data.enums.prop_types import NodeType
+from components.axioms.cell_types import CellType, cell_data
+from components.enums.prop_types import PackagerType
 
 class Cell(packager.Packager):
   
   def __init__(self, cell_id):
     if (not cell_id in CellType) or cell_id == CellType.UNSET:
-      super().__init__(NodeType.CELL, CellType.PYRAMID)
+      super().__init__(PackagerType.CELL, CellType.PYRAMID)
     else:
-      super().__init__(NodeType.CELL, cell_id)
+      super().__init__(PackagerType.CELL, cell_id)
     # self.setup_convs()
     # self.?
   

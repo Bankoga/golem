@@ -4,7 +4,7 @@
 # from hypothesis import given
 # import hypothesis.strategies as st
 # 
-# from data.axioms.props import dest_key_pattern 
+# from components.axioms.props import dest_key_pattern 
 # from utils.config_reader import read
 # from golem.core import Golem
 
