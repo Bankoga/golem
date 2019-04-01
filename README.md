@@ -38,6 +38,7 @@ There are docs, and they are useful guidelines. They aren't code documentation a
 ## Thoughts on Tests
 
 NOT ENOUGH TESTING! REQUIRE MORE TESTS! TEST ALL TEH THINGS! I CANNOT AFFORD QA! TEST ALL TEH THINGS!
+We do non-standard testing, through test case inheritance. Class behaviour, and the tests that specify it, should be, more or less, composable. Thus allowing to validate all assumptions in an inheritance stack work together or if they must be locally overridden.
 
 ## Ethics
 
