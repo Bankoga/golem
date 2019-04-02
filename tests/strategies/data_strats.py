@@ -5,7 +5,7 @@ from numpy import full, ones
 from components.axioms.matrix import max_resource_value, min_resource_value
 from tests.strategies.prop_strats import arb_label
 from tests.strategies.pos_strats import valid_pos, arb_addr
-from utils.helpers.prop_gen_help import draw as draw_num
+from utils.helpers.chaos import draw as draw_num
 
 @composite
 def valid_shape(draw):
