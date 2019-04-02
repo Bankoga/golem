@@ -73,7 +73,7 @@ class CollectorSegment(PlasticComp, Segment):
     This returns the resources actually available for useage by the parent of the collector
     """
 
-    # TODO: rework entirely
+    # TODO: rework entirely bc is broken
     actuals = []
     x = resource_data[0]
     y = []
