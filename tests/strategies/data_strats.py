@@ -42,6 +42,16 @@ def valid_resource_data(draw):
   return data
 
 @composite
+def valid_resource_data_and_index(draw):
+  data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  st.assume(data.any())
+  i = draw_num(data.shape[0])
+  j = 0
+  if len(data.shape) > 1:
+    j = draw_num(data.shape[1])
+  return (data, i, j)
+
+@composite
 def valid_resource_array(draw, shape=valid_shape(), num_shapes=st.integers(max_value=30)): # pylint: disable=no-value-for-parameter
   r_set = []
   ns = draw(num_shapes)

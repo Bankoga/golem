@@ -55,6 +55,19 @@ class CollectorSegment(PlasticComp, Segment):
       quadrant = input_shape[x:x+x_sz]
     return quadrant
 
+  def get_quantity(self, resource_data, i, j):
+    if len(resource_data) > 1:
+      try:
+        quantity = resource_data[i][j]
+      except:
+        quantity = 0
+    else:
+      try:
+        quantity = resource_data[i]
+      except:
+        quantity = 0
+    return quantity
+
   def apply(self, resource_data):
     """
     This returns the resources actually available for useage by the parent of the collector
@@ -68,8 +81,11 @@ class CollectorSegment(PlasticComp, Segment):
       y = resource_data[1]
       for i,row in enumerate(self.weights):
         row_actuals = []
-        for j,col_itm in enumerate(row):
-          pass
+        for j,weight in enumerate(row):
+          quantity = self.get_quantity(resource_data, i, j)
+          dist_adj_quantity = quantity - distance_from_source
+          actual = dist_adj_quantity * weight
+          row_actuals.append(actual)
           # item_res = A number
           # [i][j] 
           # quadrant = input_shape[x:x+x_sz][y:y+y_sz]

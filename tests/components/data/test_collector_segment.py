@@ -9,7 +9,9 @@ from components.enums.pos import CtgType
 from components.vars.data import Address
 from tests.components.base.test_plastic_comp import TestPlasticComp
 from tests.components.base.test_segment import TestSegment
-from tests.strategies.data_strats import (valid_resource_data, valid_shape,
+from tests.strategies.data_strats import (valid_resource_data,
+                                          valid_resource_data_and_index,
+                                          valid_shape,
                                           valid_sz_shape_and_index,
                                           valid_weights)
 from tests.strategies.instruction_strats import valid_collector_segment
@@ -98,6 +100,12 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
   @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
   def test_extract_quadrant(self, sz_shape_and_index):
     self.quadrant_helper(sz_shape_and_index)
+
+  @given(valid_resource_data_and_index()) # pylint: disable=no-value-for-parameter
+  def test_get_quantity(self, rd_ij):
+    data,i,j = rd_ij
+    res = self.comp.get_quantity(data, i,j)
+    self.assertTrue(0 <= res and not isnan(res))
 
   @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
   def test_apply(self, resource_data):
