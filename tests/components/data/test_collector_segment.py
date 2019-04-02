@@ -133,3 +133,10 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
 
 if __name__ == '__main__':
   unittest.main()
+
+        # quantity = self.get_quantity(x, i)
+        # # dist_adj_quantity = quantity - distance_from_source
+        # actual = 0
+        # if quantity and weight:
+        #   actual = min(quantity, weight)
+        # actuals.append(actual)

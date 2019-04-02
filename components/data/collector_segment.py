@@ -75,26 +75,4 @@ class CollectorSegment(PlasticComp, Segment):
 
     # TODO: rework entirely bc is broken
     actuals = []
-    x = resource_data[0]
-    y = []
-    if len(resource_data) > 1:
-      y = resource_data[1]
-      for i,row in enumerate(self.weights):
-        row_actuals = []
-        for j,weight in enumerate(row):
-          quantity = self.get_quantity(y, i)
-          # dist_adj_quantity = quantity - distance_from_source
-          actual = 0
-          if quantity and weight:
-            actual = quantity * weight
-          row_actuals.append(actual)
-        actuals.append(row_actuals)
-    else:
-      for i,row in enumerate(self.weights):
-        quantity = self.get_quantity(resource_data, i)
-        # dist_adj_quantity = quantity - distance_from_source
-        actual = 0
-        if quantity and weight:
-          actual = quantity * weight
-        actuals.append(actual)
     return array(actuals)
