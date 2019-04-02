@@ -83,8 +83,8 @@ class CollectorSegment(PlasticComp, Segment):
         row_actuals = []
         for j,weight in enumerate(row):
           quantity = self.get_quantity(resource_data, i, j)
-          dist_adj_quantity = quantity - distance_from_source
-          actual = dist_adj_quantity * weight
+          # dist_adj_quantity = quantity - distance_from_source
+          actual = quantity * weight
           row_actuals.append(actual)
           # item_res = A number
           # [i][j] 
