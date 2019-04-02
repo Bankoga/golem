@@ -118,21 +118,18 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.assertTrue(res.shape == self.comp.weights.shape)
     for i in range(len(self.comp.weights)):
       for j in range(len(self.comp.weights[i])):
-        self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
-
-  @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
-  def test_apply_local_collector_segments(self, resource_data):
-    # conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, self.comp.fill_shape)
-    # expectation = array(self.comp.weights.shape) #this is a numpy array that is the dot product of the two arrays
-    # if self.comp is None:
-    #   with self.assertRaises(AttributeError):
-    #     res = self.comp.apply(resource_data)
-    res = self.comp.apply(resource_data)
-    self.assertTrue(res.shape == self.comp.weights.shape)
-    for i in range(len(self.comp.weights)):
-      for j in range(len(self.comp.weights[i])):
-        self.assertTrue(0 <= res[i][j] and not isnan(res[i][j]))
-
+        r = res[i][j]
+        self.assertTrue(0 <= r and not isnan(r))
+        try:
+          w = weights[i][j]
+          rsrc = resource_data[i][j]
+          if w > 0 and rsrc > 0:
+            if rsrc < w:
+              self.assertEqual(r,rsrc)
+            else:
+              self.assertEqual(r,w)
+        except:
+          self.assertFalse(r)
 
 if __name__ == '__main__':
   unittest.main()

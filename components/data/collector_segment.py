@@ -55,7 +55,7 @@ class CollectorSegment(PlasticComp, Segment):
       quadrant = input_shape[x:x+x_sz]
     return quadrant
 
-  def get_quantity(self, resource_data, i, j):
+  def get_quantity(self, resource_data, i, j=None):
     if len(resource_data) > 1:
       try:
         quantity = resource_data[i][j]
@@ -72,33 +72,29 @@ class CollectorSegment(PlasticComp, Segment):
     """
     This returns the resources actually available for useage by the parent of the collector
     """
-    # diff_mag = diff_addrs(coll_sgmnt.address, self.address)
-    # adjusted_weights = (coll_sgmnt.weights - (diff_mag*self.attenuation_rate))
-    x = resource_data[0]
-    x_sz, y_sz = self.get_side_szs(self.fill_shape)
+
+    # TODO: rework entirely
     actuals = []
+    x = resource_data[0]
+    y = []
     if len(resource_data) > 1:
       y = resource_data[1]
       for i,row in enumerate(self.weights):
         row_actuals = []
         for j,weight in enumerate(row):
-          quantity = self.get_quantity(resource_data, i, j)
+          quantity = self.get_quantity(y, i)
           # dist_adj_quantity = quantity - distance_from_source
-          actual = quantity * weight
+          actual = 0
+          if quantity and weight:
+            actual = quantity * weight
           row_actuals.append(actual)
-          # item_res = A number
-          # [i][j] 
-          # quadrant = input_shape[x:x+x_sz][y:y+y_sz]
-          # quad = self.extract_quadrant(self.source_index, resource_data.shape, coll_sgmnt.shape)
-          # actuals = quad * coll_sgmnt.collection_chances * coll_sgmnt.weights #* coll_sgmnt.fill_shape
-          # loop_through_array(2d) and collect actuals from each expected index
-          # row_actuals.append()
         actuals.append(row_actuals)
     else:
-      # loop_through_array(1d) and collect actuals from each expected index
-      # quadrant = input_shape[x:x+x_sz]
-      # quad = self.extract_quadrant(self.source_index, resource_data.shape, coll_sgmnt.shape)
-      for i,row in enumerate(resource_data):
-        pass
-        # actuals = quad * coll_sgmnt.collection_chances * coll_sgmnt.weights #* coll_sgmnt.fill_shape
+      for i,row in enumerate(self.weights):
+        quantity = self.get_quantity(resource_data, i)
+        # dist_adj_quantity = quantity - distance_from_source
+        actual = 0
+        if quantity and weight:
+          actual = quantity * weight
+        actuals.append(actual)
     return array(actuals)
