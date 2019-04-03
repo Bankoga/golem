@@ -12,10 +12,10 @@ class Cell(packager.Packager):
     # self.setup_convs()
     # self.?
   
-  # WHERE ARE THE LOCALIZED_CONV WEIGHTS?
+  # WHERE ARE THE LOCALIZED_CONV WEIGHTS? inside collectors and their segments
   # WHERE ARE SAID WEIGHTS PLASTICALLY UPDATED?
   # WHERE ARE SAID WEIGHTS USED?
-  # WERE ARE SAID WEIGHTS INITIALIZED?
+  # WERE ARE SAID WEIGHTS INITIALIZED? inside collectors and their segments
 
   def read_data(self):
     s = str(self.get_id())
