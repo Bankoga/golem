@@ -37,16 +37,12 @@ class TestCollector(TestInstruction):
       'reg_id': self.label,
       'address': self.address
     }
-    # residence_address
-    # source_address
-    # source_index
-    # fill_shape
     self.collector_segment_defs = [
       (self.address,(4,4)),
-      (self.address,tuple([1])),
+      (self.address,(1,1)),
       (self.address,(4,4)),
       (self.address,(9,9),(1,1)),
-      (self.address,(4,2),tuple([1])),
+      (self.address,(4,2),(1,1)),
       (self.address,(12,12))
     ]
     self.source_shape = (256,256)
@@ -68,7 +64,7 @@ class TestCollector(TestInstruction):
   def set_up_dynamic_props(self):
     # self.pos = Pos(self.ctg.get_component_type())
     self.collector_segments = [cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
-                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=tuple([1]),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(1,1),label=f'{self.label}_{roll_name()}'),
                         cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
                         cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(9,9),label=f'{self.label}_{roll_name()}'),
                         cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,2),label=f'{self.label}_{roll_name()}'),
@@ -88,6 +84,7 @@ class TestCollector(TestInstruction):
                                 self.resource_accepted,
                                 self.collector_segment_defs,
                                 label=self.label)
+    self.comp.address = self.address
     self.comp.build(*self.values)
 
   def test_get_attenuation_rate(self):
@@ -98,7 +95,6 @@ class TestCollector(TestInstruction):
 
   def test_get_source_ind(self):
     self.assertEqual(self.comp.source_index, self.source_index)
-
   def test_set_source_ind(self):
     with self.assertRaises(RuntimeError):
       self.comp.source_index = self.source_index
@@ -124,7 +120,6 @@ class TestCollector(TestInstruction):
   def test_get_collector_segment_defs(self):
     for i,cnv_shp in enumerate(self.comp.collector_segment_defs):
       self.assertEqual(cnv_shp[0], self.collector_segment_defs[i][0])
-
   def test_set_collector_segment_defs(self):
     with self.assertRaises(RuntimeError):
       self.comp.collector_segment_defs = self.collector_segment_defs
@@ -133,15 +128,15 @@ class TestCollector(TestInstruction):
   def test_set_up_collector_segments(self,collector_segment_defs):
     self.comp.set_up_collector_segments(collector_segment_defs)
     for i,(addr,f_shape) in enumerate(collector_segment_defs):
-      self.assertTrue(self.comp.collector_segments[i].address == addr)
+      self.assertTrue(self.comp.collector_segments[i].residence_address == addr)
       self.assertTrue(self.comp.collector_segments[i].fill_shape == f_shape)
 
   def test_get_collector_segments(self):
     for i,cllct_sgmnt in enumerate(self.comp.collector_segments):
-      self.assertEqual(cllct_sgmnt.address, self.collector_segments[i].address)
+      self.assertEqual(cllct_sgmnt.residence_address, self.collector_segments[i].residence_address)
+      self.assertEqual(cllct_sgmnt.source_address, self.collector_segments[i].source_address)
       self.assertEqual(cllct_sgmnt.source_index, self.collector_segments[i].source_index)
       self.assertEqual(cllct_sgmnt.fill_shape, self.collector_segments[i].fill_shape)
-
   def test_set_collector_segments(self):
     with self.assertRaises(RuntimeError):
       self.comp.collector_segments = self.collector_segments
