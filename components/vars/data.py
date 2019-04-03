@@ -8,6 +8,9 @@ locale = ('address', 'pos')
 # var_types = ['pos', 'f_shape', 's_shape', 'weights']
 
 class Address(typing.NamedTuple):
+  """
+  Addresses are container positions at levels within a matrix.
+  """
   golem: str = None
   matrix: str = None
   func_set: str = None

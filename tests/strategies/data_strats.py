@@ -5,7 +5,7 @@ from numpy import full, ones
 from components.axioms.matrix import max_resource_value, min_resource_value
 from tests.strategies.prop_strats import arb_label
 from tests.strategies.pos_strats import valid_pos, arb_addr
-from utils.helpers.prop_gen_help import draw as draw_num
+from utils.helpers.chaos import draw as draw_num
 
 @composite
 def valid_shape(draw):
@@ -40,6 +40,16 @@ def valid_resource_data(draw):
   data = draw(st.builds(full,valid_shape(),st.floats(min_value=min_resource_value,max_value=max_resource_value))) # pylint: disable=no-value-for-parameter
   st.assume(data.any())
   return data
+
+@composite
+def valid_resource_data_and_index(draw):
+  data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
+  st.assume(data.any())
+  i = draw_num(data.shape[0])
+  j = 0
+  if len(data.shape) > 1:
+    j = draw_num(data.shape[1])
+  return (data, i, j)
 
 @composite
 def valid_resource_array(draw, shape=valid_shape(), num_shapes=st.integers(max_value=30)): # pylint: disable=no-value-for-parameter

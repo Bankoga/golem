@@ -12,7 +12,6 @@ class CollectorSegment(PlasticComp, Segment):
       kwargs['label'] = ''
     kwargs['ctg']=CtgType.DATA
     super().__init__(*args, **kwargs)
-    self.__source_address = kwargs['source_address']
     self.__fill_shape = kwargs['fill_shape']
     self.shape = kwargs['fill_shape']
     self.collection_chances = ones(kwargs['fill_shape'])
@@ -21,13 +20,6 @@ class CollectorSegment(PlasticComp, Segment):
     shape = tuple([1])
     super().set_weighted_defaults(shape=shape,weights=ones(shape))
     self.__collection_chances = ones(shape)
-
-  @property
-  def source_address(self):
-    return self.__source_address
-  @source_address.setter
-  def source_address(self, value):
-    raise RuntimeError('Can not change the source address')
 
   @property
   def fill_shape(self):
@@ -53,41 +45,41 @@ class CollectorSegment(PlasticComp, Segment):
       y_sz = side_szs[1]
     return (x_sz,y_sz)
 
-  def extract_quadrant(self, input_ind, input_shape,side_szs):
+  def extract_quadrant(self, input_ind, resource_data,side_szs):
     x = input_ind[0]
     x_sz, y_sz = self.get_side_szs(side_szs)
     if len(input_ind) > 1:
       y = input_ind[1]
-      quadrant = input_shape[x:x+x_sz][y:y+y_sz]
+      quadrant = resource_data[x:x+x_sz][y:y+y_sz]
     else:
-      quadrant = input_shape[x:x+x_sz]
+      quadrant = resource_data[x:x+x_sz]
     return quadrant
+
+  def get_quantity(self, resource_data, i, j=None):
+    if len(resource_data) > 1:
+      try:
+        quantity = resource_data[i][j]
+      except:
+        quantity = 0
+    else:
+      try:
+        quantity = resource_data[i]
+      except:
+        quantity = 0
+    return quantity
 
   def apply(self, resource_data):
     """
     This returns the resources actually available for useage by the parent of the collector
+    Everything is assumed to be presented in 2d slices.
     """
-    # diff_mag = diff_addrs(coll_sgmnt.address, self.address)
-    # adjusted_weights = (coll_sgmnt.weights - (diff_mag*self.attenuation_rate))
-    x = resource_data[0]
-    x_sz, y_sz = self.get_side_szs(self.fill_shape)
+    if len(resource_data.shape) != 2:
+      raise RuntimeError('Collector segments expect the world to be presented in 2D slices')
     actuals = []
-    if len(resource_data) > 1:
-      y = resource_data[1]
-      for i,row in enumerate(self.weights):
-        ar = []
-        for j,col in enumerate(row):
-          pass
-          # quadrant = input_shape[x:x+x_sz][y:y+y_sz]
-          # quad = self.extract_quadrant(self.source_index, resource_data.shape, coll_sgmnt.shape)
-          # actuals = quad * coll_sgmnt.collection_chances * coll_sgmnt.weights #* coll_sgmnt.fill_shape
-          # loop_through_array(2d) and collect actuals from each expected index
-        actuals.append(ar)
-    else:
-      # loop_through_array(1d) and collect actuals from each expected index
-      # quadrant = input_shape[x:x+x_sz]
-      # quad = self.extract_quadrant(self.source_index, resource_data.shape, coll_sgmnt.shape)
-      for i,row in enumerate(resource_data):
-        pass
-        # actuals = quad * coll_sgmnt.collection_chances * coll_sgmnt.weights #* coll_sgmnt.fill_shape
+    for i,row in enumerate(self.weights):
+      row_actuals = []
+      for j,weight in enumerate(row):
+        actual = round(min(weight, self.get_quantity(resource_data,i,j)), 5)
+        row_actuals.append(actual)
+      actuals.append(row_actuals)
     return array(actuals)

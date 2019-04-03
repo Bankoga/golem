@@ -8,15 +8,10 @@ from utils.pos import diff_addrs
 class Collector(Instruction):
   """
   Collectors are for grabbing parent specific resource availability data from a defined set of addresses
+  args: registry,source_index,source_shape,step_direction,num_steps,resource_accepted,collector_segment_defs
   """
-  def __init__(self,*args,**kwargs):#registry,source_index,source_shape,step_direction,num_steps,resource_accepted,collector_segment_defs
-    # args = [registry, source_index, source_shape, step_direction, num_steps, resource_accepted, collector_segment_defs]
+  def __init__(self,*args,**kwargs):
     super().__init__(*args, **kwargs)
-    # self.set_up_collector_segments(self.collector_segment_defs)
-    # self.shape = source_shape
-    # self.step_direction = step_direction
-    # self.ind = source_index
-    # each conv shape represents a step to take in a direction during the sampling process
 
   @property
   def attenuation_rate(self):
@@ -82,12 +77,11 @@ class Collector(Instruction):
   def set_up_collector_segments(self, shape_defs):
     res = []
     for item in shape_defs:
-      res.append(CollectorSegment(address=item[0],source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
+      res.append(CollectorSegment(residence_address=item[0],source_address=self.address,source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
     self.__collector_segments = res
   def conv(self, npmatrix):
     return 0
 
-  # for nested cardinal rotations, apply each rotation by its value/the number of rotations
   def instruction_details(self,curr_data=[],inputs=None,context=None):
     res = []
     for i, cllct_sgmnt in enumerate(self.collector_segments):
@@ -95,9 +89,4 @@ class Collector(Instruction):
         res.append(cllct_sgmnt.apply(curr_data[i]))
       else:
         res.append(zeros(cllct_sgmnt.weights.shape))
-      
-    #   patch = extract a slice from the input_pack according to the current shape
-    #   step_res = shape.weights * patch
-    #   res.append(step_res * abs(diff(ind,self.pos.z)))
-    # we only return the step_res from a perform, so as to handle plasticity at the function group level
     return res
