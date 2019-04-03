@@ -82,7 +82,7 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.assertEqual(res_y, y_sz)
   
   def quadrant_helper(self, sz_shape_and_index):
-    input_shape, input_ind,side_sz = sz_shape_and_index
+    resource_data, input_ind,side_sz = sz_shape_and_index
     x_sz = side_sz
     y_sz = side_sz
     if type(side_sz) is tuple:
@@ -91,10 +91,10 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     x = input_ind[0]
     if len(input_ind) > 1:
       y = input_ind[1]
-      expectation = input_shape[x:x+x_sz][y:y+y_sz]
+      expectation = resource_data[x:x+x_sz][y:y+y_sz]
     else:
-      expectation = input_shape[x:x+side_sz]
-    res = self.comp.extract_quadrant(input_ind,input_shape,side_sz)
+      expectation = resource_data[x:x+side_sz]
+    res = self.comp.extract_quadrant(input_ind,resource_data,side_sz)
     self.assertTrue(array_equal(res, expectation))
 
   @given(valid_sz_shape_and_index()) # pylint: disable=no-value-for-parameter
@@ -114,6 +114,10 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     # if coll_sgmnt is None:
     #   with self.assertRaises(AttributeError):
     #     res = self.comp.apply(resource_data)
+    if len(resource_data.shape) != 2:
+      with self.assertRaises(RuntimeError):
+        res = self.comp.apply(resource_data)
+
     res = self.comp.apply(resource_data)
     self.assertTrue(res.shape == self.comp.weights.shape)
     for i in range(len(self.comp.weights)):

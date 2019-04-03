@@ -45,14 +45,14 @@ class CollectorSegment(PlasticComp, Segment):
       y_sz = side_szs[1]
     return (x_sz,y_sz)
 
-  def extract_quadrant(self, input_ind, input_shape,side_szs):
+  def extract_quadrant(self, input_ind, resource_data,side_szs):
     x = input_ind[0]
     x_sz, y_sz = self.get_side_szs(side_szs)
     if len(input_ind) > 1:
       y = input_ind[1]
-      quadrant = input_shape[x:x+x_sz][y:y+y_sz]
+      quadrant = resource_data[x:x+x_sz][y:y+y_sz]
     else:
-      quadrant = input_shape[x:x+x_sz]
+      quadrant = resource_data[x:x+x_sz]
     return quadrant
 
   def get_quantity(self, resource_data, i, j=None):
@@ -71,8 +71,10 @@ class CollectorSegment(PlasticComp, Segment):
   def apply(self, resource_data):
     """
     This returns the resources actually available for useage by the parent of the collector
+    Everything is assumed to be presented in 2d slices.
     """
-
-    # TODO: rework entirely bc is broken
+    if len(resource_data.shape) != 2:
+      raise RuntimeError('Collector segments expect the world to be presented in 2D slices')
     actuals = []
+
     return array(actuals)
