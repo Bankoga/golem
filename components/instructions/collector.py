@@ -82,7 +82,7 @@ class Collector(Instruction):
   def set_up_collector_segments(self, shape_defs):
     res = []
     for item in shape_defs:
-      res.append(CollectorSegment(address=item[0],source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
+      res.append(CollectorSegment(residence_address=item[0],source_address=self.address,source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
     self.__collector_segments = res
   def conv(self, npmatrix):
     return 0

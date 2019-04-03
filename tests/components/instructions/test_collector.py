@@ -37,6 +37,10 @@ class TestCollector(TestInstruction):
       'reg_id': self.label,
       'address': self.address
     }
+    # residence_address
+    # source_address
+    # source_index
+    # fill_shape
     self.collector_segment_defs = [
       (self.address,(4,4)),
       (self.address,tuple([1])),
@@ -63,12 +67,12 @@ class TestCollector(TestInstruction):
 
   def set_up_dynamic_props(self):
     # self.pos = Pos(self.ctg.get_component_type())
-    self.collector_segments = [cs(address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
-                        cs(address=self.address,source_index=self.source_index,fill_shape=tuple([1]),label=f'{self.label}_{roll_name()}'),
-                        cs(address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
-                        cs(address=self.address,source_index=self.source_index,fill_shape=(9,9),label=f'{self.label}_{roll_name()}'),
-                        cs(address=self.address,source_index=self.source_index,fill_shape=(4,2),label=f'{self.label}_{roll_name()}'),
-                        cs(address=self.address,source_index=self.source_index,fill_shape=(12,12),label=f'{self.label}_{roll_name()}')]
+    self.collector_segments = [cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=tuple([1]),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(9,9),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,2),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(12,12),label=f'{self.label}_{roll_name()}')]
     self.old_data = []
     self.prev_data = []
 
