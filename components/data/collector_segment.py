@@ -76,5 +76,10 @@ class CollectorSegment(PlasticComp, Segment):
     if len(resource_data.shape) != 2:
       raise RuntimeError('Collector segments expect the world to be presented in 2D slices')
     actuals = []
-
+    for i,row in enumerate(self.weights):
+      row_actuals = []
+      for j,weight in enumerate(row):
+        actual = round(min(weight, self.get_quantity(resource_data,i,j)), 5)
+        row_actuals.append(actual)
+      actuals.append(row_actuals)
     return array(actuals)

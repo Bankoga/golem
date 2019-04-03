@@ -109,31 +109,25 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
 
   @given(valid_resource_data()) # pylint: disable=no-value-for-parameter
   def test_apply(self, resource_data):
-    # conv_quad = self.comp.extract_quadrant(self.source_index, resource_data, coll_sgmnt.fill_shape)
-    # expectation = array(coll_sgmnt.weights.shape) #this is a numpy array that is the dot product of the two arrays
-    # if coll_sgmnt is None:
-    #   with self.assertRaises(AttributeError):
-    #     res = self.comp.apply(resource_data)
     if len(resource_data.shape) != 2:
       with self.assertRaises(RuntimeError):
         res = self.comp.apply(resource_data)
-
     res = self.comp.apply(resource_data)
     self.assertTrue(res.shape == self.comp.weights.shape)
-    for i in range(len(self.comp.weights)):
-      for j in range(len(self.comp.weights[i])):
+    for i,row in enumerate(self.comp.weights):
+      for j,w in enumerate(row):
         r = res[i][j]
         self.assertTrue(0 <= r and not isnan(r))
-        try:
-          w = weights[i][j]
-          rsrc = resource_data[i][j]
-          if w > 0 and rsrc > 0:
-            if rsrc < w:
-              self.assertEqual(r,rsrc)
-            else:
-              self.assertEqual(r,w)
-        except:
-          self.assertFalse(r)
+        # try:
+        rsrc = resource_data[i][j]
+        if w > 0 and rsrc > 0:
+          if rsrc < w:
+            expectation = rsrc
+          else:
+            expectation = w
+        else:
+          expectation = 0
+        self.assertEqual(r,round(expectation,5))
 
 if __name__ == '__main__':
   unittest.main()
