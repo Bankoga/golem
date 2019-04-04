@@ -42,28 +42,7 @@ class TestCell(TestProducer):
     self.set_up_var()
     self.comp = Cell(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
-  
-  @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
-  def test_cell_data(self,cell_type):
-    """
-    here we test that every cell type we have defined, has all of its properties
-    """
-    cell = Cell(cell_type)
-    if (not cell_type in CellType) or cell_type == CellType.UNSET:
-      type_data = cell_data[str(CellType.PYRAMID)]
-      self.assertEqual(cell.get_id(), CellType.PYRAMID)
-    else:
-      type_data = cell_data[str(cell_type)]
-      self.assertEqual(cell.get_id(), cell_type)
 
-    self.assertEqual(cell.ctg_type, PackagerType.CELL)
-    self.assertEqual(cell.cnv_tmplts, type_data['cnv_tmplts'])
-    self.assertEqual(cell.freq_range, type_data['freq_range'])
-    self.assertEqual(cell.init_freq, type_data['init_freq'])
-    self.assertEqual(cell.pct_of_pod, type_data['pct_of_pod'])
-    self.assertEqual(cell.init_threshhold, type_data['init_threshhold'])
-    self.assertEqual(cell.activation_function, type_data['activation_function'])
-  
   @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
   def test_cell_type_data(self, cell_type):
     if cell_type is None:
