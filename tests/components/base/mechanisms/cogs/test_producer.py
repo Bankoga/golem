@@ -11,17 +11,23 @@ from tests.components.base.mechanisms.test_mechanism import TestMechanism
 
 
 class TestProducer(TestMechanism):
-  def setUp(self):
-    self.registry = AddressRegistry(label='global_registry')
-    self.address = Address(golem='a',matrix='l',func_set='b',stage='base',group='randos',packager='star_0')
+  def set_up_base(self):
     self.label = 'star_0'
     self.ctg = CtgType.PACKAGER
+
+  def set_up_var(self):
+    self.registry = AddressRegistry(label='global_registry')
+    self.address = Address(golem='a',matrix='l',func_set='b',stage='base',group='randos',packager='star_0')
     self.reg_item = {
       'reg_id': self.label,
       'address': self.address
     }
     self.values = [self.registry]
     self.var = tuple(self.values)
+
+  def setUp(self):
+    self.set_up_base()
+    self.set_up_var()
     self.comp = Producer(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
