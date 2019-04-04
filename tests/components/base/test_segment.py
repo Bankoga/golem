@@ -19,7 +19,8 @@ class TestSegment(TestStaticComp):
     self.label = 'dend_abov_a_segment_2'
     
   def set_up_var(self):
-    self.address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
+    self.residence_address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
+    self.source_address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
     self.source_index = (0,0)
     self.fill_shape = (4,4)
     self.values = []
@@ -32,13 +33,21 @@ class TestSegment(TestStaticComp):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
-    self.comp = Segment(address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label,ctg=self.ctg)
+    self.comp = Segment(residence_address=self.residence_address,source_address=self.source_address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label,ctg=self.ctg)
 
-  def test_get_address(self):
-    self.assertEqual(self.comp.address, self.address)
-  def test_set_address(self):
+  def test_get_residence_address(self):
+    self.assertEqual(self.comp.source_address, self.source_address)
+  @given(arb_addr()) # pylint: disable=no-value-for-parameter
+  def test_set_residence_address(self, addr):
     with self.assertRaises(RuntimeError):
-      self.comp.address = 'Does not matter'
+      self.comp.source_address = addr
+
+  def test_get_source_address(self):
+    self.assertEqual(self.comp.source_address, self.source_address)
+  @given(arb_addr()) # pylint: disable=no-value-for-parameter
+  def test_set_source_address(self, addr):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_address = addr
 
   def test_get_source_index(self):
     self.assertEqual(self.comp.source_index, self.source_index)
@@ -48,7 +57,6 @@ class TestSegment(TestStaticComp):
 
   def test_get_fill_shape(self):
     self.assertEqual(self.comp.fill_shape, self.fill_shape)
-
   @given(valid_shape()) # pylint: disable=no-value-for-parameter
   def test_set_fill_shape(self, arb_shape):
     self.comp.fill_shape = arb_shape
