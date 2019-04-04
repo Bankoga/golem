@@ -14,6 +14,7 @@ class TestProducer(TestMechanism):
   def set_up_base(self):
     self.label = 'star_0'
     self.ctg = CtgType.PACKAGER
+    self.mech = Producer
 
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_registry')
