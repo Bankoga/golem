@@ -36,9 +36,6 @@ class TestCell(TestProducer):
   # def set_up_defaults(self):
 
   def setUp(self):
-    #   self.get_id() = CellType.PYRAMID
-    #   self.cell = Cell(self.get_id())
-    #   # self.ctg_type_data = cell_data[str(self.get_id())]
     self.set_up_base()
     # self.set_up_defaults()
     self.set_up_var()
@@ -124,55 +121,55 @@ class TestCell(TestProducer):
   #   pass
 
 
-  """
-  What happens before a localized conv
-   patch = we extract a part of the shape
-    - How do we select which part of the shape to process?
-  """
-  @given(st.text())
-  def test_localized_conv(self, patch):
-    """
-    What happens during a localized convolution?
-    - active_connect = get_random_fill_from(base_weights,mod_weights, other_mods) which incorps the * can_be_active_now
-    - acutal_inputs = patch * active_connect
-        the patch is where we can leverage resources from
-        each resource index, has an independent % chance of being activated though
-        thus, we must calc the inputs to be used this timestep before doing anything
-    - 
-    total_compute_per_simulated_ts = avg_latency_per_simulated_ts + avg_compute_per_simulated_ts
-    simulated_fps = num_ts_per_simulated_sec + total_compute_per_simulated_ts
-    there is going to be a slew of timestep logic that spans many components
-    Not sure as to what needs to be abstracted though
-    """
-    pass
+  # """
+  # What happens before a localized conv
+  #  patch = we extract a part of the shape
+  #   - How do we select which part of the shape to process?
+  # """
+  # @given(st.text())
+  # def test_localized_conv(self, patch):
+  #   """
+  #   What happens during a localized convolution?
+  #   - active_connect = get_random_fill_from(base_weights,mod_weights, other_mods) which incorps the * can_be_active_now
+  #   - acutal_inputs = patch * active_connect
+  #       the patch is where we can leverage resources from
+  #       each resource index, has an independent % chance of being activated though
+  #       thus, we must calc the inputs to be used this timestep before doing anything
+  #   - 
+  #   total_compute_per_simulated_ts = avg_latency_per_simulated_ts + avg_compute_per_simulated_ts
+  #   simulated_fps = num_ts_per_simulated_sec + total_compute_per_simulated_ts
+  #   there is going to be a slew of timestep logic that spans many components
+  #   Not sure as to what needs to be abstracted though
+  #   """
+  #   pass
   
-  @given(st.text(),st.text())
-  def test_get_activity_data(self, inputs, timestep):
-    """
-    each nearby cell, has a % chance of raising the current cells activation probability
-    chance = Input_Strength - Distance_factor
-    """
-    pass
+  # @given(st.text(),st.text())
+  # def test_get_activity_data(self, inputs, timestep):
+  #   """
+  #   each nearby cell, has a % chance of raising the current cells activation probability
+  #   chance = Input_Strength - Distance_factor
+  #   """
+  #   pass
 
-  @given(st.text())
-  def test_process(self, inputs):
-    """
-    given the properties
-      - collectors
-      - module_inputs_dict
-      - module_outputs_dict
-    when it is time to process inputs
-    then each instruction should be executed
-    """
-    pass
-  # def test_get_random_fill_from(self):
+  # @given(st.text())
+  # def test_process(self, inputs):
+  #   """
+  #   given the properties
+  #     - collectors
+  #     - module_inputs_dict
+  #     - module_outputs_dict
+  #   when it is time to process inputs
+  #   then each instruction should be executed
+  #   """
+  #   pass
+  # # def test_get_random_fill_from(self):
   
-  @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter
-  def test_exec_instruction(self, instruction):
-    # directions = instruction[0]
-    # collector_segments = instruction[1]
+  # @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter
+  # def test_exec_instruction(self, instruction):
+  #   # directions = instruction[0]
+  #   # collector_segments = instruction[1]
     
-    pass
+  #   pass
 
 if __name__ == '__main__':
   unittest.main()
