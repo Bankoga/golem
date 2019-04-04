@@ -29,7 +29,7 @@ class TestProducer(TestMechanism):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = Producer(label=self.label, ctg=self.ctg)
+    self.comp = self.mech(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
     
   # @given(node_type_prop(),st.from_regex(old_label_pattern)) # pylint: disable=no-value-for-parameter
