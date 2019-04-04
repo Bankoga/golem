@@ -50,7 +50,8 @@ class TestCell(TestProducer):
         self.comp.read_data(cell_type)
     else:
       self.comp.read_data(cell_type)
-      expected_data = cell_data[cell_type]
+      expected_data = cell_data[cell_type.name]
+      # This doesn't test any of the expectations of the values for those though
       self.assertEqual(self.comp.cnv_tmplts, expected_data['cnv_tmplts'])
       self.assertEqual(self.comp.freq_range, expected_data['freq_range'])
       self.assertEqual(self.comp.init_freq, expected_data['init_freq'])

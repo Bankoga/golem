@@ -22,7 +22,7 @@ class Cell(Producer):
   # WERE ARE SAID WEIGHTS INITIALIZED? inside collectors and their segments
 
   def read_data(self, cell_type):
-    type_data = cell_data[cell_type]
+    type_data = cell_data[cell_type.name]
     self.cnv_tmplts = type_data['cnv_tmplts']
     self.freq_range = type_data['freq_range']
     self.init_freq = type_data['init_freq']
