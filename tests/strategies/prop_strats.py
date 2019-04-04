@@ -33,7 +33,7 @@ def arbitrary_invalid_label(draw):
   return res
 
 @composite
-def cell_type_prop(draw):
+def arb_cell_type(draw):
   res = draw(st.sampled_from(CellType))
   st.assume(res)
   st.assume(res != CellType.UNSET)

@@ -3,37 +3,58 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.packagers.cells.cell import Cell
-from components.axioms.cell_types import CellType,cell_data
+from components.cogs.cells.cell import Cell
+from components.enums.pos import CtgType
+from components.matrix.address_registry import AddressRegistry
+from components.vars.data import Address
+from components.axioms.cell_types import CellType, cell_data
 from components.enums.prop_types import RuleType, RsrcType, ChannelType,FieldType, PackagerType
 
 from tests.strategies.channel_strats import valid_cell_instruction
-from tests.strategies.prop_strats import cell_type_prop
+from tests.strategies.prop_strats import arb_cell_type
+from tests.components.base.mechanisms.cogs.test_producer import TestProducer
 
 from components.channels.misc_funcs import build_address, build_meld, build_package
 
-class TestCell(unittest.TestCase):
-  # def setUp(self):
-  #   self.get_id() = CellType.PYRAMID
-  #   self.cell = Cell(self.get_id())
-  #   # self.ctg_type_data = cell_data[str(self.get_id())]
+class TestCell(TestProducer):
+  def set_up_base(self):
+    self.label = 'star_0'
+    self.ctg = CtgType.PACKAGER
+
+  def set_up_var(self):
+    self.registry = AddressRegistry(label='global_registry')
+    self.address = Address(golem='a',matrix='l',func_set='b',stage='base',group='randos',packager='star_0')
+    self.reg_item = {
+      'reg_id': self.label,
+      'address': self.address
+    }
+    self.values = [self.registry]
+    self.var = tuple(self.values)
+
+  # def set_up_defaults(self):
+
+  def setUp(self):
+    #   self.get_id() = CellType.PYRAMID
+    #   self.cell = Cell(self.get_id())
+    #   # self.ctg_type_data = cell_data[str(self.get_id())]
+    self.set_up_base()
+    # self.set_up_defaults()
+    self.set_up_var()
+    self.comp = Cell(label=self.label, ctg=self.ctg)
+    self.comp.build(*self.values)
   
-  # def test_base(self):
-  #   self.assertEqual(self.cell.ctg_type, PackagerType.CELL)
-  #   self.assertEqual(self.cell.get_id(), self.get_id())
-  
-  @given(cell_type_prop()) # pylint: disable=no-value-for-parameter
-  def test_cell_data(self,inp_id):
+  @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
+  def test_cell_data(self,cell_type):
     """
     here we test that every cell type we have defined, has all of its properties
     """
-    cell = Cell(inp_id)
-    if (not inp_id in CellType) or inp_id == CellType.UNSET:
+    cell = Cell(cell_type)
+    if (not cell_type in CellType) or cell_type == CellType.UNSET:
       type_data = cell_data[str(CellType.PYRAMID)]
       self.assertEqual(cell.get_id(), CellType.PYRAMID)
     else:
-      type_data = cell_data[str(inp_id)]
-      self.assertEqual(cell.get_id(), inp_id)
+      type_data = cell_data[str(cell_type)]
+      self.assertEqual(cell.get_id(), cell_type)
 
     self.assertEqual(cell.ctg_type, PackagerType.CELL)
     self.assertEqual(cell.cnv_tmplts, type_data['cnv_tmplts'])
@@ -43,6 +64,21 @@ class TestCell(unittest.TestCase):
     self.assertEqual(cell.init_threshhold, type_data['init_threshhold'])
     self.assertEqual(cell.activation_function, type_data['activation_function'])
   
+  @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
+  def test_cell_type_data(self, cell_type):
+    if cell_type is None:
+      with self.assertRaises(RuntimeError):
+        self.comp.read_data(cell_type)
+    else:
+      self.comp.read_data(cell_type)
+      expected_data = cell_data[cell_type]
+      self.assertEqual(self.comp.cnv_tmplts, expected_data['cnv_tmplts'])
+      self.assertEqual(self.comp.freq_range, expected_data['freq_range'])
+      self.assertEqual(self.comp.init_freq, expected_data['init_freq'])
+      self.assertEqual(self.comp.pct_of_pod, expected_data['pct_of_pod'])
+      self.assertEqual(self.comp.init_threshhold, expected_data['init_threshhold'])
+      self.assertEqual(self.comp.activation_function, expected_data['activation_function'])
+
   # @given()
   # def test_pack(self,inputs):
   #   """

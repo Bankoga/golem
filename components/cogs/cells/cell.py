@@ -1,6 +1,7 @@
 from components.base.mechanisms.cogs.producer import Producer
 from components.axioms.cell_types import CellType, cell_data
 from components.enums.prop_types import PackagerType
+from components.enums.pos import CtgType
 
 class Cell(Producer):
   
@@ -16,21 +17,12 @@ class Cell(Producer):
   # def __init__(self, rule_type, arb_label):
   #   super().__init__(arb_label, rule_type.get_component_type(),rule_type)
   #   self.read_data()
-  # @abstractmethod
-  # def pack(self, inputs):
-  #   pass
-  # @abstractmethod
-  # def read_data(self):
-  #   self.freq_range = prd['freq_range']
-  #   self.init_freq = prd['init_freq']
-  #   self.pct_of_pod = prd['pct_of_pod']
-  #   self.init_threshhold = prd['init_threshhold']
-  #   self.activation_function = prd['activation_function']
-  def __init__(self, cell_id):
-    if (not cell_id in CellType) or cell_id == CellType.UNSET:
-      super().__init__(PackagerType.CELL, CellType.PYRAMID)
-    else:
-      super().__init__(PackagerType.CELL, cell_id)
+  def __init__(self, *args, **kwargs):
+    cell_type=CellType.UNSET
+    if len(args) > 0:
+      cell_type = args[0]
+    kwargs['ctg'] = CtgType.PACKAGER
+    super().__init__(**kwargs)
     # self.setup_convs()
     # self.?
   
@@ -39,9 +31,8 @@ class Cell(Producer):
   # WHERE ARE SAID WEIGHTS USED?
   # WERE ARE SAID WEIGHTS INITIALIZED? inside collectors and their segments
 
-  def read_data(self):
-    s = str(self.get_id())
-    type_data = cell_data[s]
+  def read_data(self, cell_type):
+    type_data = cell_data[cell_type]
     self.cnv_tmplts = type_data['cnv_tmplts']
     self.freq_range = type_data['freq_range']
     self.init_freq = type_data['init_freq']
