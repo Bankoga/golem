@@ -58,6 +58,10 @@ class TestCell(TestProducer):
       self.assertEqual(self.comp.init_threshhold, expected_data['init_threshhold'])
       self.assertEqual(self.comp.activation_function, expected_data['activation_function'])
 
+  # def test_build():
+  #  building a cell includes reading the data of any new cell type provided if provided self.read_data()
+  #  building requires that a cell have a type != UNSET
+
   # @given()
   # def test_pack(self,inputs):
   #   """

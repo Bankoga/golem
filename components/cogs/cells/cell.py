@@ -4,28 +4,18 @@ from components.enums.prop_types import PackagerType
 from components.enums.pos import CtgType
 
 class Cell(Producer):
-  
-  """
-  The actual algorithms that power the matrix
-  Not the function sets, or the meta-containers, or regions, but a unified algorithm or method
-  Examples of producer Types:
-    - Cell
-    - Framework Function
-  We are going to need another metaprovider here.
-  All packagers use multiple instructions to transform input into output
-  """
   # def __init__(self, rule_type, arb_label):
   #   super().__init__(arb_label, rule_type.get_component_type(),rule_type)
-  #   self.read_data()
+  
   def __init__(self, *args, **kwargs):
-    cell_type=CellType.UNSET
+    cell_type = CellType.UNSET
     if len(args) > 0:
       cell_type = args[0]
+      args = [].extend(args)
     kwargs['ctg'] = CtgType.PACKAGER
-    super().__init__(**kwargs)
-    # self.setup_convs()
-    # self.?
-  
+    super().__init__(*args, **kwargs)
+    self.read_data(cell_type)
+
   # WHERE ARE THE LOCALIZED_CONV WEIGHTS? inside collectors and their segments
   # WHERE ARE SAID WEIGHTS PLASTICALLY UPDATED?
   # WHERE ARE SAID WEIGHTS USED?
