@@ -41,7 +41,7 @@ class TestCell(TestProducer):
     self.set_up_base()
     # self.set_up_defaults()
     self.set_up_var()
-    self.comp = Cell(label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
   @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
@@ -60,9 +60,8 @@ class TestCell(TestProducer):
       self.assertEqual(self.comp.init_threshhold, expected_data['init_threshhold'])
       self.assertEqual(self.comp.activation_function, expected_data['activation_function'])
 
-  
   def test_build_with_data(self):
-    self.comp = Cell(label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     #  building a cell includes reading the data of any new cell type provided if provided self.read_data()
     #  building requires that a cell have a type != UNSET
     self.comp.build(*self.values, address=self.address)

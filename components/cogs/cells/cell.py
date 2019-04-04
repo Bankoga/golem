@@ -32,9 +32,7 @@ class Cell(Producer):
   
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
-    if 'address' in kwargs:
-      self.register(kwargs['address'])
-      
+
   def pack(self,inputs):
     pass
   
