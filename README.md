@@ -119,5 +119,6 @@ Only that which is lost, can be found!
 Logic is sufficient
 God is Logic
 Logic is God
+Religion and Science are duals, not opposites
 
 You probably do not get it because I am probably insane
