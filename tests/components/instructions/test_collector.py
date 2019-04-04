@@ -29,7 +29,7 @@ class TestCollector(TestInstruction):
     self.ctg = CtgType.INSTRUCTION
     self.rule_type= RuleType.CONV
     self.max_resources = 256
-    self.mech = Collector
+    self.comp_class = Collector
   
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_address_registry_api')
@@ -77,7 +77,7 @@ class TestCollector(TestInstruction):
     self.set_up_base()
     self.set_up_var()
     self.set_up_dynamic_props()
-    self.comp = self.mech(self.registry,
+    self.comp = self.comp_class(self.registry,
                                 self.source_index,
                                 self.source_shape,
                                 self.step_direction,

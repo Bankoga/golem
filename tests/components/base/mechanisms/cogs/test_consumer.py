@@ -14,7 +14,7 @@ class TestConsumer(TestMechanism):
   def set_up_base(self):
     self.label = 'collector_0'
     self.ctg = CtgType.INSTRUCTION
-    self.mech = Consumer
+    self.comp_class = Consumer
 
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_registry')
@@ -29,7 +29,7 @@ class TestConsumer(TestMechanism):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.mech(label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
 if __name__ == '__main__':

@@ -20,7 +20,7 @@ class TestCell(TestProducer):
   def set_up_base(self):
     self.label = 'star_0'
     self.ctg = CtgType.PACKAGER
-    self.mech = Cell
+    self.comp_class = Cell
 
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_registry')

@@ -17,7 +17,7 @@ class TestMechanism(TestBuildableComp):
   def set_up_base(self):
     self.label = 'pr_0'
     self.ctg = CtgType.PACKAGER
-    self.mech = Mechanism
+    self.comp_class = Mechanism
 
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_registry')
@@ -32,7 +32,7 @@ class TestMechanism(TestBuildableComp):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.mech(label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
   def test_get_registry(self):
@@ -48,7 +48,7 @@ class TestMechanism(TestBuildableComp):
         self.comp.registry = possible_reg
 
   def test_pre_registered_state(self):
-    self.comp = self.mech(label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.assertFalse(self.comp.is_registered)
     self.assertIsNone(self.comp.address)
     with self.assertRaises(RuntimeError):
@@ -61,7 +61,7 @@ class TestMechanism(TestBuildableComp):
 
   @given(arb_addr()) # pylint: disable=no-value-for-parameter
   def test_set_address_pre_registration(self, addr):
-    self.comp = self.mech(label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.address = addr
 
   def test_set_is_registered(self):
@@ -96,7 +96,7 @@ class TestMechanism(TestBuildableComp):
     self.assertTrue(self.comp.operate_details())
 
   def test_build_with_data(self):
-    self.comp = self.mech(label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values, address=self.address)
     self.assertEqual(self.comp.var, self.var)
     self.assertTrue(self.comp.is_built)

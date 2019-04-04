@@ -26,7 +26,7 @@ class TestChannel(TestMediator):
   def set_up_base(self):
     self.label = 'ch_bc_star_energy'
     self.ctg = CtgType.CHANNEL
-    self.mech = Channel
+    self.comp_class = Channel
 
   def set_up_var(self):
     self.address_registry = AddressRegistry(label='global_address_registry_api')
@@ -51,7 +51,7 @@ class TestChannel(TestMediator):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.mech(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
 
   def test_get_meld_str(self):
@@ -104,7 +104,7 @@ class TestChannel(TestMediator):
       self.comp.ch_type  = 'Some string'
 
   def test_build_with_data(self):
-    self.comp = self.mech(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(self.meld_str,self.sender,label=self.label, ctg=self.ctg)
     meld_str = f'{self.ch_type.name};{self.resource.name};{self.sender};{self.shape}'
     meld_var = read_meld_str(meld_str)
     self.values[2] = str(meld_var)

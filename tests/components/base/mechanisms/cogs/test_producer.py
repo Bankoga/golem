@@ -14,7 +14,7 @@ class TestProducer(TestMechanism):
   def set_up_base(self):
     self.label = 'star_0'
     self.ctg = CtgType.PACKAGER
-    self.mech = Producer
+    self.comp_class = Producer
 
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_registry')
@@ -29,7 +29,7 @@ class TestProducer(TestMechanism):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.mech(label=self.label, ctg=self.ctg)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
     
   # @given(node_type_prop(),st.from_regex(old_label_pattern)) # pylint: disable=no-value-for-parameter
