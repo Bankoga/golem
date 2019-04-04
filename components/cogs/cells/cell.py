@@ -8,13 +8,15 @@ class Cell(Producer):
   #   super().__init__(arb_label, rule_type.get_component_type(),rule_type)
   
   def __init__(self, *args, **kwargs):
-    cell_type = CellType.UNSET
-    if len(args) > 0:
-      cell_type = args[0]
-      args = [].extend(args)
     kwargs['ctg'] = CtgType.PACKAGER
     super().__init__(*args, **kwargs)
-    self.read_data(cell_type)
+
+  @property
+  def cell_type(self):
+    return self.var[1]
+  @cell_type.setter
+  def cell_type(self, value):
+    raise RuntimeError('Can not set value of cell type')
 
   # WHERE ARE THE LOCALIZED_CONV WEIGHTS? inside collectors and their segments
   # WHERE ARE SAID WEIGHTS PLASTICALLY UPDATED?

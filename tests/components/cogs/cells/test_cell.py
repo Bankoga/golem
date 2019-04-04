@@ -29,7 +29,8 @@ class TestCell(TestProducer):
       'reg_id': self.label,
       'address': self.address
     }
-    self.values = [self.registry]
+    self.cell_type = CellType.PYRAMID
+    self.values = [self.registry,self.cell_type]
     self.var = tuple(self.values)
 
   # def set_up_defaults(self):
@@ -43,6 +44,13 @@ class TestCell(TestProducer):
     self.set_up_var()
     self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.comp.build(*self.values)
+
+  def test_get_cell_type(self):
+    self.assertEqual(self.comp.cell_type, self.cell_type)
+  @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
+  def test_set_cell_type(self, cell_type):
+    with self.assertRaises(RuntimeError):
+      self.comp.cell_type = cell_type
 
   @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
   def test_cell_type_data(self, cell_type):
@@ -60,6 +68,18 @@ class TestCell(TestProducer):
       self.assertEqual(self.comp.init_threshhold, expected_data['init_threshhold'])
       self.assertEqual(self.comp.activation_function, expected_data['activation_function'])
 
+  def test_determine_residence(self):
+    # can proxy for later! wait until post config to post proxy residence buildable golems
+    pass
+
+  def test_create_collector(self):
+    # cannot proxy
+    pass
+
+  def test_create_collectors(self):
+    # cannot proxy
+    pass
+
   def test_build_with_data(self):
     self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     #  building a cell includes reading the data of any new cell type provided if provided self.read_data()
@@ -68,6 +88,9 @@ class TestCell(TestProducer):
     self.assertEqual(self.comp.var, self.var)
     self.assertTrue(self.comp.is_built)
 
+  def test_collect_resources(self):
+    # can proxy envs init/connection, and resource existance, but not actual collection
+    pass
 
   # @given()
   # def test_pack(self,inputs):
