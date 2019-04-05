@@ -2,6 +2,10 @@ from components.base.mechanisms.cogs.producer import Producer
 from components.axioms.cell_types import CellType, cell_data
 from components.enums.prop_types import PackagerType
 from components.enums.pos import CtgType
+from utils.helpers.prop_gen_help import kin_label_gen_unique
+from components.instructions.collector import Collector
+from components.vars.data import Address
+
 
 class Cell(Producer):
   # def __init__(self, rule_type, arb_label):
@@ -46,8 +50,34 @@ class Cell(Producer):
     self.init_threshhold = type_data['init_threshhold']
     self.activation_function = type_data['activation_function']
   
-  def create_collector(self, collector_def):
-    return {}
+  def create_collectors_from_def(self, name, collector_def):
+    # TODO: rework this after the base build method has been refactored to only update supplied var props
+    if collector_def is None:
+      raise RuntimeError('It is recommended to have an actual collector def when trying to create cells!')
+    collectors = []
+    segment_defs = collector_def[1]
+    resource_accepted=collector_def[2]
+    for c in collector_def[0]:
+      child_label = f'{name}_{c}'
+      new_c = Collector(self.registry,
+                        self.source_index,
+                        self.source_shape,
+                        c,
+                        len(segment_defs),
+                        resource_accepted,
+                        segment_defs,
+                        label=child_label)
+      new_c.address = Address(**self.address._asdict().copy())
+      new_c.address._replace(instruction = child_label)
+      new_c.build(self.registry,
+                  self.source_index,
+                  self.source_shape,
+                  c,
+                  len(segment_defs),
+                  resource_accepted,
+                  segment_defs)
+      collectors.append(new_c)
+    return collectors
 
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)

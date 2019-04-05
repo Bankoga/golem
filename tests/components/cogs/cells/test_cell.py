@@ -11,7 +11,7 @@ from components.axioms.cell_types import CellType, cell_data
 from components.enums.prop_types import RuleType, RsrcType, ChannelType,FieldType, PackagerType
 
 from tests.strategies.channel_strats import valid_cell_instruction
-from tests.strategies.prop_strats import arb_cell_type
+from tests.strategies.prop_strats import arb_cell_type, arb_label
 from tests.strategies.instruction_strats import arb_full_collector_def
 from tests.components.base.mechanisms.cogs.test_producer import TestProducer
 from tests.strategies.data_strats import valid_shape
@@ -84,27 +84,33 @@ class TestCell(TestProducer):
         self.comp.read_data(cell_type)
     else:
       self.comp.read_data(cell_type)
-      self.read_data_assertions
+      self.read_data_assertions(cell_type)
 
   def test_determine_residence(self):
     # can proxy for later! wait until post config to post proxy residence buildable golems
     pass
 
-  @given(arb_full_collector_def()) # pylint: disable=no-value-for-parameter
-  def test_create_collector(self, collector_def):
-    res = self.comp.create_collector(collector_def)
+  @given(arb_label(), arb_full_collector_def()) # pylint: disable=no-value-for-parameter
+  def test_create_collectors_from_def(self, name, collector_def):
     # Collector defs do what?
     # specify a set of directions to set up collectors
     # each step is represented by a list of filter shapes
+    self.comp.address = self.address
+    if collector_def is None:
+      with self.assertRaises(RuntimeError):
+        res = self.comp.create_collectors_from_def(name, collector_def)
+    res = self.comp.create_collectors_from_def(name, collector_def)
     for i,item in enumerate(collector_def):
-      collector = res[i]
-      for c in item:
+      for ic,c in enumerate(item):
+        collector = res[i+ic]
+        self.assertEqual(collector.label, f'{name}_{c}')
         self.assertEqual(collector.step_direction, c)
-      self.assertEqual(collector.num_steps, len(collector_def[i][1]))
-      self.assertEqual(len(collector.segments), len(collector_def[i][1]))
-      self.assertEqual(collector.resource_accepted, collector_def[i][2])
+      self.assertEqual(collector.num_steps, len(collector_def[1]))
+      self.assertEqual(len(collector.segments), len(collector_def[1]))
+      self.assertEqual(collector.resource_accepted, collector_def[2])
       self.assertEqual(collector.source_index, self.source_index)
       self.assertEqual(collector.source_shape, self.source_shape)
+    self.assertEqual(self.comp.address, self.address)
 
   def test_build_with_data(self):
     self.comp = self.comp_class(label=self.label, ctg=self.ctg)
