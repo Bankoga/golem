@@ -51,6 +51,7 @@ class Cell(Producer):
 
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
+    self.read_data(self.cell_type)
 
 
   def pack(self,inputs):

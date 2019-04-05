@@ -67,6 +67,16 @@ class TestCell(TestProducer):
     with self.assertRaises(RuntimeError):
       self.comp.source_shape = source_shape
 
+  def read_data_assertions(self, cell_type):
+    expected_data = cell_data[cell_type.name]
+    # This doesn't test any of the expectations of the values for those though
+    self.assertEqual(self.comp.collector_defs, expected_data['collector_defs'])
+    self.assertEqual(self.comp.freq_range, expected_data['freq_range'])
+    self.assertEqual(self.comp.init_freq, expected_data['init_freq'])
+    self.assertEqual(self.comp.pct_of_pod, expected_data['pct_of_pod'])
+    self.assertEqual(self.comp.init_threshhold, expected_data['init_threshhold'])
+    self.assertEqual(self.comp.activation_function, expected_data['activation_function'])
+
   @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
   def test_cell_type_data(self, cell_type):
     if cell_type is None:
@@ -74,14 +84,7 @@ class TestCell(TestProducer):
         self.comp.read_data(cell_type)
     else:
       self.comp.read_data(cell_type)
-      expected_data = cell_data[cell_type.name]
-      # This doesn't test any of the expectations of the values for those though
-      self.assertEqual(self.comp.collector_defs, expected_data['collector_defs'])
-      self.assertEqual(self.comp.freq_range, expected_data['freq_range'])
-      self.assertEqual(self.comp.init_freq, expected_data['init_freq'])
-      self.assertEqual(self.comp.pct_of_pod, expected_data['pct_of_pod'])
-      self.assertEqual(self.comp.init_threshhold, expected_data['init_threshhold'])
-      self.assertEqual(self.comp.activation_function, expected_data['activation_function'])
+      self.read_data_assertions
 
   def test_determine_residence(self):
     # can proxy for later! wait until post config to post proxy residence buildable golems
@@ -110,6 +113,7 @@ class TestCell(TestProducer):
     self.comp.build(*self.values, address=self.address)
     self.assertEqual(self.comp.var, self.var)
     self.assertTrue(self.comp.is_built)
+    self.read_data_assertions(self.cell_type)
 
   def test_collect_resources(self):
     # can proxy envs init/connection, and resource existance, but not actual collection
