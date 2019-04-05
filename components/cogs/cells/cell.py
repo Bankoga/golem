@@ -25,7 +25,7 @@ class Cell(Producer):
 
   def read_data(self, cell_type):
     type_data = cell_data[cell_type.name]
-    self.segment_defs = type_data['segment_defs']
+    self.collector_defs = type_data['collector_defs']
     self.freq_range = type_data['freq_range']
     self.init_freq = type_data['init_freq']
     self.pct_of_pod = type_data['pct_of_pod']
@@ -54,7 +54,7 @@ class Cell(Producer):
   # TODO: Define where CellType resource data is stored in the configs, and in object creation
 
   # 'CellType.PYRAMID': {
-  #   "segment_defs":[
+  #   "collector_defs":[
   #     ["A",["1x1","1x1","1x1","4x4","8x8"]],
   #     ["B",["4x4"]],
   #     ["B",["8x8,1"]],

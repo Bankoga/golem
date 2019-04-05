@@ -38,7 +38,7 @@ class TestCollector(TestInstruction):
       'reg_id': self.label,
       'address': self.address
     }
-    self.collector_segment_defs = [
+    self.collector_collector_defs = [
       (self.address,(4,4)),
       (self.address,(1,1)),
       (self.address,(4,4)),
@@ -49,7 +49,7 @@ class TestCollector(TestInstruction):
     self.source_shape = (256,256)
     self.source_index = (45,25)
     self.step_direction = 'A' # TODO: Use correct ENUM
-    self.num_steps = len(self.collector_segment_defs)
+    self.num_steps = len(self.collector_collector_defs)
     self.resource_accepted = RsrcType.ENERGY
     self.values = [self.registry,
                    self.source_index,
@@ -57,7 +57,7 @@ class TestCollector(TestInstruction):
                    self.step_direction,
                    self.num_steps,
                    self.resource_accepted,
-                   self.collector_segment_defs
+                   self.collector_collector_defs
                   ]
     self.var = tuple(self.values)
     self.attenuation_rate = 2.5
@@ -83,7 +83,7 @@ class TestCollector(TestInstruction):
                                 self.step_direction,
                                 self.num_steps,
                                 self.resource_accepted,
-                                self.collector_segment_defs,
+                                self.collector_collector_defs,
                                 label=self.label)
     self.comp.address = self.address
     self.comp.build(*self.values)
@@ -118,17 +118,17 @@ class TestCollector(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.resource_accepted = self.resource_accepted
     
-  def test_get_collector_segment_defs(self):
-    for i,cnv_shp in enumerate(self.comp.collector_segment_defs):
-      self.assertEqual(cnv_shp[0], self.collector_segment_defs[i][0])
-  def test_set_collector_segment_defs(self):
+  def test_get_collector_collector_defs(self):
+    for i,cnv_shp in enumerate(self.comp.collector_collector_defs):
+      self.assertEqual(cnv_shp[0], self.collector_collector_defs[i][0])
+  def test_set_collector_collector_defs(self):
     with self.assertRaises(RuntimeError):
-      self.comp.collector_segment_defs = self.collector_segment_defs
+      self.comp.collector_collector_defs = self.collector_collector_defs
 
   @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
-  def test_set_up_collector_segments(self,collector_segment_defs):
-    self.comp.set_up_collector_segments(collector_segment_defs)
-    for i,(addr,f_shape) in enumerate(collector_segment_defs):
+  def test_set_up_collector_segments(self,collector_collector_defs):
+    self.comp.set_up_collector_segments(collector_collector_defs)
+    for i,(addr,f_shape) in enumerate(collector_collector_defs):
       self.assertTrue(self.comp.collector_segments[i].residence_address == addr)
       self.assertTrue(self.comp.collector_segments[i].fill_shape == f_shape)
 
