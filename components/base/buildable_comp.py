@@ -26,4 +26,4 @@ class BuildableComp(PassiveComp):
   
   @abstractmethod
   def build_details(self, *args, **kwargs):
-    self.update(*args)
+    pass
