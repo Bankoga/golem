@@ -78,9 +78,7 @@ class TestCell(TestProducer):
     # Collector defs do what?
     # specify a set of directions to set up collectors
     # each step is represented by a list of filter shapes
-    i = 0
-    for item in collector_def:
-      num_chars = len(item)
+    for i,item in enumerate(collector_def):
       collector = res[i]
       for c in item:
         self.assertEqual(collector.step_direction, c)
@@ -89,7 +87,6 @@ class TestCell(TestProducer):
       self.assertEqual(collector.resource_accepted, collector_def[i][2])
       self.assertEqual(collector.source_index, self.source_index)
       self.assertEqual(collector.source_shape, self.source_shape)
-      i = i +1
 
   def test_build_with_data(self):
     self.comp = self.comp_class(label=self.label, ctg=self.ctg)
