@@ -18,7 +18,7 @@ class CellType(Enum):
 
 cell_data = {
   'BASKET': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["AB",["4x4"]],
       ["AB",["8x8,1"]],
       ["S",["4x4","8x8,1","12x12,2"]]
@@ -30,7 +30,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'BIPOLAR': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["S",["4x4"],["8x8,1"]]
     ],
     "freq_range": [5,256],
@@ -40,7 +40,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'CROWN': {
-    "cnv_tmplts": [
+    "segment_defs": [
       ["A",["4x4"]],
       ["A",["8x8,1"]],
       ["S",["3x3"]]
@@ -52,7 +52,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'GRANULE': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["A",["1x1","1x1","1x1","4x4","8x8"]],
       ["B",["8x8,1"]],
       ["S",["3x3"]]
@@ -64,7 +64,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'INV_CROWN': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["B",["4x4"]],
       ["B",["8x8,1"]],
       ["S",["3x3"]]
@@ -76,7 +76,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'MAX_POOL_ALL': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["*",["NxN"],["8x8,1"]]
     ],
     "freq_range": [5,256],
@@ -86,7 +86,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'DENSE_POOL_SAME': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["S",["NxN"]]
     ],
     "freq_range": [5,256],
@@ -96,7 +96,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'PLATE': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["S",["4x4","8x8,1"]]
     ],
     "freq_range": [5,256],
@@ -106,7 +106,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'POINT': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["S",["1x1"]]
     ],
     "freq_range": [5,256],
@@ -116,7 +116,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'PYRAMID': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["A",["1x1","1x1","1x1","4x4","8x8"]],
       ["B",["4x4"]],
       ["B",["8x8,1"]],
@@ -129,7 +129,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'ROSE': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["A",["4x4"]],
       ["A",["8x8,1"]],
       ["S",["3x3"]]
@@ -141,7 +141,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'STAR': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["*",["4x4","5x5","6x6"]],
       ["*",["8x8,1","10x10,1","12x12,1"]]
     ],
@@ -152,7 +152,7 @@ cell_data = {
     "activation_function":"tanh"
   },
   'UNSET': {
-    "cnv_tmplts":[
+    "segment_defs":[
       ["*",["1x1"]]
     ],
     "freq_range": [5,256],
