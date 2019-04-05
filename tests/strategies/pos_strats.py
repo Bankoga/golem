@@ -72,4 +72,5 @@ def valid_pos(draw): # pylint: disable=no-value-for-parameter
 
 @composite
 def arb_step_directions(draw):
-  return "ABS"
+  res = draw(st.from_regex('[ABS]{1,3}'))
+  return res
