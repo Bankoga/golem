@@ -32,8 +32,12 @@ class Cell(Producer):
     self.init_threshhold = type_data['init_threshhold']
     self.activation_function = type_data['activation_function']
   
+  def create_collector(self, collector_def):
+    return {}
+
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
+
 
   def pack(self,inputs):
     pass

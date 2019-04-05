@@ -11,7 +11,7 @@ from components.channels.misc_funcs import (build_meld)
 from components.vars.meld import read_meld_str
 
 from tests.strategies.pos_strats import full_address, partial_address, arb_addr, rel_addr
-from tests.strategies.prop_strats import (channel_field_shape, channel_resource, ch_type)
+from tests.strategies.prop_strats import (channel_field_shape, arb_resource_type, ch_type)
 from tests.strategies.data_strats import valid_resource_data,valid_shape
 
 """
@@ -35,7 +35,7 @@ def sender_and_recipient_pair(draw):
 @composite
 def proto_meld_str(draw):
   addr = draw(rel_addr()) # pylint: disable=no-value-for-parameter
-  dp_resource = draw(channel_resource()) # pylint: disable=no-value-for-parameter
+  dp_resource = draw(arb_resource_type()) # pylint: disable=no-value-for-parameter
   dp_type = draw(ch_type()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type)
   return meld
@@ -43,7 +43,7 @@ def proto_meld_str(draw):
 @composite
 def full_meld_str(draw):
   addr = draw(rel_addr()) # pylint: disable=no-value-for-parameter
-  dp_resource = draw(channel_resource()) # pylint: disable=no-value-for-parameter
+  dp_resource = draw(arb_resource_type()) # pylint: disable=no-value-for-parameter
   dp_type = draw(ch_type()) # pylint: disable=no-value-for-parameter
   dp_shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter
   meld = build_meld(addr,dp_resource,dp_type,dp_shape)
@@ -52,7 +52,7 @@ def full_meld_str(draw):
 @composite
 def arb_meld_str(draw):
   # meld = draw(st.one_of(proto_meld_str(),full_meld_str())) # pylint: disable=no-value-for-parameter
-  ch_resource = draw(channel_resource()) # pylint: disable=no-value-for-parameter
+  ch_resource = draw(arb_resource_type()) # pylint: disable=no-value-for-parameter
   channel_type = draw(ch_type()) # pylint: disable=no-value-for-parameter
   addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
   ch_shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter

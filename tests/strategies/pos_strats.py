@@ -69,3 +69,7 @@ def valid_pos(draw): # pylint: disable=no-value-for-parameter
   st.assume(s and x and y and z)
   pos = Pos(floor=s,x=x,y=y,z=z)
   return pos
+
+@composite
+def arb_step_directions(draw):
+  return "ABS"

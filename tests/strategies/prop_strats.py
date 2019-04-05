@@ -54,7 +54,7 @@ def hook_type(draw):
   return res
 
 @composite
-def channel_resource(draw):
+def arb_resource_type(draw):
   res = draw(st.sampled_from(RsrcType))
   st.assume(res)
   st.assume(res != RsrcType.UNSET)

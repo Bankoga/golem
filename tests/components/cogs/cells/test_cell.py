@@ -12,6 +12,7 @@ from components.enums.prop_types import RuleType, RsrcType, ChannelType,FieldTyp
 
 from tests.strategies.channel_strats import valid_cell_instruction
 from tests.strategies.prop_strats import arb_cell_type
+from tests.strategies.instruction_strats import arb_full_collector_def
 from tests.components.base.mechanisms.cogs.test_producer import TestProducer
 
 from components.channels.misc_funcs import build_address, build_meld, build_package
@@ -30,7 +31,9 @@ class TestCell(TestProducer):
       'address': self.address
     }
     self.cell_type = CellType.PYRAMID
-    self.values = [self.registry,self.cell_type]
+    self.source_index = (0,0)
+    self.source_shape = (256,256)
+    self.values = [self.registry,self.cell_type,self.source_index,self.source_shape]
     self.var = tuple(self.values)
 
   # def set_up_defaults(self):
@@ -69,18 +72,24 @@ class TestCell(TestProducer):
     # can proxy for later! wait until post config to post proxy residence buildable golems
     pass
 
-  @given(arb_segment_def()) # pylint: disable=no-value-for-parameter
-  def test_create_collector(self, segment_def):
-    res = self.comp.create_collector(segment_def)
-    self.assertEqual(res.source_index, ?)
-    self.assertEqual(res.source_index, ?)
-    self.assertEqual(res.source_index, ?)
-    self.assertEqual(res.source_index, ?)
-    
-
-  def test_create_collectors(self):
-    # cannot proxy
-    pass
+  @given(arb_full_collector_def()) # pylint: disable=no-value-for-parameter
+  def test_create_collector(self, collector_def):
+    res = self.comp.create_collector(collector_def)
+    # Collector defs do what?
+    # specify a set of directions to set up collectors
+    # each step is represented by a list of filter shapes
+    i = 0
+    for item in collector_def:
+      num_chars = len(item)
+      collector = res[i]
+      for c in item:
+        self.assertEqual(collector.step_direction, c)
+      self.assertEqual(collector.num_steps, len(collector_def[i][1]))
+      self.assertEqual(len(collector.segments), len(collector_def[i][1]))
+      self.assertEqual(collector.resource_accepted, collector_def[i][2])
+      self.assertEqual(collector.source_index, self.source_index)
+      self.assertEqual(collector.source_shape, self.source_shape)
+      i = i +1
 
   def test_build_with_data(self):
     self.comp = self.comp_class(label=self.label, ctg=self.ctg)
@@ -172,7 +181,7 @@ class TestCell(TestProducer):
   # @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter
   # def test_exec_instruction(self, instruction):
   #   # directions = instruction[0]
-  #   # collector_segments = instruction[1]
+  #   # leaves = instruction[1]
     
   #   pass
 
