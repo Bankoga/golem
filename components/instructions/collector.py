@@ -63,11 +63,11 @@ class Collector(Instruction):
     raise RuntimeError('Can not set the value of collector_collector_defs!')
 
   @property
-  def collector_segments(self):
+  def leaves(self):
     return self.__collector_segments
-  @collector_segments.setter
-  def collector_segments(self,value):
-    raise RuntimeError('Can not set the value of collector_segments!')
+  @leaves.setter
+  def leaves(self,value):
+    raise RuntimeError('Can not set the value of leaves!')
 
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
@@ -84,7 +84,7 @@ class Collector(Instruction):
 
   def instruction_details(self,curr_data=[],inputs=None,context=None):
     res = []
-    for i, cllct_sgmnt in enumerate(self.collector_segments):
+    for i, cllct_sgmnt in enumerate(self.leaves):
       if len(curr_data) > i:
         res.append(cllct_sgmnt.apply(curr_data[i]))
       else:

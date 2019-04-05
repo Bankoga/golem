@@ -73,8 +73,8 @@ def channel_inputs(draw):
 @composite
 def valid_cell_instruction(draw):
   directions = "S"
-  collector_segments = ["4x4","8x8,1"]
-  instruction = [directions, collector_segments]
+  leaves = ["4x4","8x8,1"]
+  instruction = [directions, leaves]
   return instruction
 
 @composite
