@@ -14,6 +14,7 @@ from tests.strategies.channel_strats import valid_cell_instruction
 from tests.strategies.prop_strats import arb_cell_type
 from tests.strategies.instruction_strats import arb_full_collector_def
 from tests.components.base.mechanisms.cogs.test_producer import TestProducer
+from tests.strategies.data_strats import valid_shape
 
 from components.channels.misc_funcs import build_address, build_meld, build_package
 
@@ -51,6 +52,20 @@ class TestCell(TestProducer):
   def test_set_cell_type(self, cell_type):
     with self.assertRaises(RuntimeError):
       self.comp.cell_type = cell_type
+
+  def test_get_source_index(self):
+    self.assertEqual(self.comp.source_index, self.source_index)
+  @given(valid_shape()) # pylint: disable=no-value-for-parameter
+  def test_set_source_index(self, source_index):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_index = source_index
+
+  def test_get_source_shape(self):
+    self.assertEqual(self.comp.source_shape, self.source_shape)
+  @given(valid_shape()) # pylint: disable=no-value-for-parameter
+  def test_set_source_shape(self, source_shape):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_shape = source_shape
 
   @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
   def test_cell_type_data(self, cell_type):

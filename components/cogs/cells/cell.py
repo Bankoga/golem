@@ -18,6 +18,20 @@ class Cell(Producer):
   def cell_type(self, value):
     raise RuntimeError('Can not set value of cell type')
 
+  @property
+  def source_index(self):
+    return self.var[2]
+  @source_index.setter
+  def source_index(self, value):
+    raise RuntimeError('Can not set value of source index')
+  
+  @property
+  def source_shape(self):
+    return self.var[3]
+  @source_shape.setter
+  def source_shape(self, value):
+    raise RuntimeError('Can not set value of source shape')
+
   # WHERE ARE THE LOCALIZED_CONV WEIGHTS? inside collectors and their segments
   # WHERE ARE SAID WEIGHTS PLASTICALLY UPDATED?
   # WHERE ARE SAID WEIGHTS USED?
