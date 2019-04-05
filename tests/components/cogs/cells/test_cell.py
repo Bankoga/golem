@@ -113,11 +113,9 @@ class TestCell(TestProducer):
     self.assertEqual(self.comp.address, self.address)
 
   def test_build_with_data(self):
-    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     #  building a cell includes reading the data of any new cell type provided if provided self.read_data()
     #  building requires that a cell have a type != UNSET
-    self.comp.build(*self.values, address=self.address)
-    self.assertEqual(self.comp.var, self.var)
+    self.comp.build(address=self.address)
     self.assertTrue(self.comp.is_built)
     self.read_data_assertions(self.cell_type)
 
