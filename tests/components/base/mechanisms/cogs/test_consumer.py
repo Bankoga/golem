@@ -30,7 +30,7 @@ class TestConsumer(TestMechanism):
     self.set_up_base()
     self.set_up_var()
     self.comp = self.comp_class(label=self.label, ctg=self.ctg)
-    self.comp.build(*self.values)
+    self.comp.update(*self.values)
 
 if __name__ == '__main__':
   unittest.main()

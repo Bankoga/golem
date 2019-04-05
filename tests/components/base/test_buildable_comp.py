@@ -23,7 +23,6 @@ class TestBuildableComp(TestPassiveComp):
     self.comp = self.comp_class(label=self.label, ctg=self.ctg)
 
   def test_set_is_built(self):
-    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     with self.assertRaises(RuntimeError):
       self.comp.is_built = 'Does not matter'
 

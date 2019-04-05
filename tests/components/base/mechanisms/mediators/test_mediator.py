@@ -14,6 +14,7 @@ class TestMediator(TestMechanism):
   def set_up_base(self):
     self.label = 'glg'
     self.ctg = CtgType.FSET
+    self.comp_class = Mediator
 
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_address_registry_api')
@@ -32,19 +33,17 @@ class TestMediator(TestMechanism):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = Mediator(label=self.label, ctg=self.ctg)
-    self.comp.build(*self.values)
+    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
+    self.comp.update(*self.values)
 
   def test_get_address_registry(self):
     self.assertEqual(self.comp.address_registry, self.address_registry)
-
   def test_set_address_registry(self):
     with self.assertRaises(RuntimeError):
       self.comp.address_registry = self.address_registry
 
   def test_get_channel_registry(self):
     self.assertEqual(self.comp.channel_registry, self.channel_registry)
-
   def test_set_channel_registry(self):
     with self.assertRaises(RuntimeError):
       self.comp.channel_registry = self.channel_registry
