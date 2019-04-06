@@ -51,31 +51,24 @@ class Cell(Producer):
     self.activation_function = type_data['activation_function']
   
   def create_collectors_from_def(self, name, collector_def):
-    # TODO: rework this after the base build method has been refactored to only update supplied var props
     if collector_def is None:
       raise RuntimeError('It is recommended to have an actual collector def when trying to create cells!')
     collectors = []
     segment_defs = collector_def[1]
     resource_accepted=collector_def[2]
-    for c in collector_def[0]:
-      child_label = f'{name}_{c}'
+    for direction in collector_def[0]:
+      child_label = f'{name}_{direction}'
       new_c = Collector(self.registry,
                         self.source_index,
                         self.source_shape,
-                        c,
+                        direction,
                         len(segment_defs),
                         resource_accepted,
                         segment_defs,
                         label=child_label)
       new_c.address = Address(**self.address._asdict().copy())
       new_c.address._replace(instruction = child_label)
-      new_c.build(self.registry,
-                  self.source_index,
-                  self.source_shape,
-                  c,
-                  len(segment_defs),
-                  resource_accepted,
-                  segment_defs)
+      new_c.build()
       collectors.append(new_c)
     return collectors
 
