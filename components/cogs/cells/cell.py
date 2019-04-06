@@ -72,10 +72,17 @@ class Cell(Producer):
       collectors.append(new_c)
     return collectors
 
+  def create_collectors(self):
+    collectors = []
+    names = kin_label_gen_unique(self.label, len(self.collector_defs))
+    for i,collector_def in enumerate(self.collector_defs):
+      collectors.append(self.create_collectors_from_def(names[i], collector_def))
+    return collectors
+
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
     self.read_data(self.cell_type)
-
+    self.create_collectors()
 
   def pack(self,inputs):
     pass

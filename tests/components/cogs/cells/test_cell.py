@@ -37,11 +37,8 @@ class TestCell(TestProducer):
     self.values = [self.registry,self.cell_type,self.source_index,self.source_shape]
     self.var = tuple(self.values)
 
-  # def set_up_defaults(self):
-
   def setUp(self):
     self.set_up_base()
-    # self.set_up_defaults()
     self.set_up_var()
     self.comp = self.comp_class(label=self.label, ctg=self.ctg)
     self.comp.update(*self.values)
@@ -111,12 +108,37 @@ class TestCell(TestProducer):
       self.assertEqual(collector.source_shape, self.source_shape)
       self.assertEqual(self.comp.address, self.address)
 
+  @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
+  def test_create_collectors(self, cell_type):
+    self.comp.address = self.address
+    expected_data = cell_data[cell_type.name]
+    self.comp.read_data(cell_type)
+    res = self.comp.create_collectors()
+    num_ic = 0
+    for i,collector_def in enumerate(expected_data['collector_defs']):
+      for ic,direction in enumerate(collector_def):
+        num_ic = num_ic + 1
+        collector=res[i+ic+(num_ic-1)]
+        self.assertEqual(collector.step_direction, direction)
+        self.assertEqual(collector.num_steps, len(collector_def[1]))
+        self.assertEqual(len(collector.leaves), len(collector_def[1]))
+        """
+          TODO: Rework resource interconnection with cell data.
+          Previously, cell types were intended to be tied to a resource by the user defined golem configs
+          Is that still the case?
+        """
+        self.assertEqual(collector.resource_accepted, collector_def[2])
+        self.assertEqual(collector.source_index, self.source_index)
+        self.assertEqual(collector.source_shape, self.source_shape)
+        self.assertEqual(self.comp.address, self.address)
+
   def test_build_with_data(self):
     #  building a cell includes reading the data of any new cell type provided if provided self.read_data()
     #  building requires that a cell have a type != UNSET
     self.comp.build(address=self.address)
     self.assertTrue(self.comp.is_built)
     self.read_data_assertions(self.cell_type)
+
 
   def test_collect_resources(self):
     # can proxy envs init/connection, and resource existance, but not actual collection
