@@ -100,13 +100,12 @@ class TestCell(TestProducer):
       with self.assertRaises(RuntimeError):
         res = self.comp.create_collectors_from_def(name, collector_def)
     res = self.comp.create_collectors_from_def(name, collector_def)
-    for i,item in enumerate(collector_def):
-      for ic,c in enumerate(item):
-        collector = res[i+ic]
-        self.assertEqual(collector.label, f'{name}_{c}')
-        self.assertEqual(collector.step_direction, c)
+    for ic,c in enumerate(collector_def[0]):
+      collector = res[ic]
+      self.assertEqual(collector.label, f'{name}_{c}')
+      self.assertEqual(collector.step_direction, c)
       self.assertEqual(collector.num_steps, len(collector_def[1]))
-      self.assertEqual(len(collector.segments), len(collector_def[1]))
+      self.assertEqual(len(collector.leaves), len(collector_def[1]))
       self.assertEqual(collector.resource_accepted, collector_def[2])
       self.assertEqual(collector.source_index, self.source_index)
       self.assertEqual(collector.source_shape, self.source_shape)

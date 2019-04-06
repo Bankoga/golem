@@ -22,7 +22,7 @@ def valid_collector_segment(draw):
 @composite
 def arb_full_collector_def(draw):
   step_directions = draw(arb_step_directions()) # pylint: disable=no-value-for-parameter
-  steps_shapes = draw(st.lists(elements=st.tuples(st.integers(min_value=0),st.integers(min_value=0))))
+  steps_shapes = draw(st.lists(elements=st.tuples(st.integers(min_value=1),st.integers(min_value=1))))
   resource_type = draw(arb_resource_type()) # pylint: disable=no-value-for-parameter
   st.assume(step_directions and steps_shapes and resource_type)
   return [step_directions, steps_shapes, resource_type]
