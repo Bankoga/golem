@@ -109,7 +109,7 @@ class TestCell(TestProducer):
       self.assertEqual(collector.resource_accepted, collector_def[2])
       self.assertEqual(collector.source_index, self.source_index)
       self.assertEqual(collector.source_shape, self.source_shape)
-    self.assertEqual(self.comp.address, self.address)
+      self.assertEqual(self.comp.address, self.address)
 
   def test_build_with_data(self):
     #  building a cell includes reading the data of any new cell type provided if provided self.read_data()
