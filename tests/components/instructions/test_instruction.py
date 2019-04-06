@@ -41,9 +41,9 @@ class TestInstruction(TestConsumer):
     self.comp.update(*self.values)
 
   @given(st.lists(st.integers()))
-  def test_prepare_var_args(self, var_args):
+  def test_package_var_args(self, var_args):
     expectation = tuple(var_args)
-    result = self.comp.prepare_var_args(*var_args)
+    result = self.comp.package_var_args(*var_args)
     self.assertEqual(result, expectation)
     self.assertEqual(self.comp.prev_data, self.prev_data)
     self.assertEqual(self.comp.old_data, self.old_data)
