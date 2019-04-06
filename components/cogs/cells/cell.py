@@ -58,14 +58,14 @@ class Cell(Producer):
     resource_accepted=collector_def[2]
     for direction in collector_def[0]:
       child_label = f'{name}_{direction}'
-      new_c = Collector(self.registry,
-                        self.source_index,
-                        self.source_shape,
-                        direction,
-                        len(segment_defs),
-                        resource_accepted,
-                        segment_defs,
-                        label=child_label)
+      new_c = Collector(label=child_label)
+      new_c.update(self.registry,
+                  self.source_index,
+                  self.source_shape,
+                  direction,
+                  len(segment_defs),
+                  resource_accepted,
+                  segment_defs)
       new_c.address = Address(**self.address._asdict().copy())
       new_c.address._replace(instruction = child_label)
       new_c.build()

@@ -7,7 +7,7 @@ class PassiveComp(StaticComp):
     super().__init__(*args, **kwargs)
     self.__var = self.package_var_args(*args)
 
-  def package_var_args(self,*args):
+  def package_var_args(self, *args):
     return tuple(args)
 
   @property

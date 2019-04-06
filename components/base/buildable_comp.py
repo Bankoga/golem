@@ -3,7 +3,7 @@ from components.base.passive_comp import PassiveComp
 
 class BuildableComp(PassiveComp):
   def __init__(self, *args, **kwargs):
-    args = []
+    # args = []
     super().__init__(*args,**kwargs)
 
   def set_defaults(self):
