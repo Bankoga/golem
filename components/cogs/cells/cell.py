@@ -8,9 +8,6 @@ from components.vars.data import Address
 
 
 class Cell(Producer):
-  # def __init__(self, rule_type, arb_label):
-  #   super().__init__(arb_label, rule_type.get_component_type(),rule_type)
-  
   def __init__(self, *args, **kwargs):
     kwargs['ctg'] = CtgType.PACKAGER
     super().__init__(*args, **kwargs)
