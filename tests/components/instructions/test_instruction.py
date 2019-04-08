@@ -37,8 +37,7 @@ class TestInstruction(TestConsumer):
     self.set_up_base()
     self.set_up_var()
     # self.pos = Pos(RuleType.CONV.get_component_type())
-    self.comp = Instruction(label=self.label)
-    self.comp.update(*self.values)
+    self.comp = Instruction(*self.values, label=self.label)
 
   @given(st.lists(st.integers()))
   def test_package_var_args(self, var_args):

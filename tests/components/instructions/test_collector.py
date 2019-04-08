@@ -86,7 +86,6 @@ class TestCollector(TestInstruction):
                                 self.segment_defs,
                                 label=self.label)
     self.comp.address = self.address
-    self.comp.update(*self.values)
 
   def test_get_attenuation_rate(self):
     self.assertEqual(self.comp.attenuation_rate, self.attenuation_rate)
