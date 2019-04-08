@@ -1,5 +1,5 @@
 defaults = {
-  'cnv_tmplts': [],
+  'collector_defs': [],
   'freq_range': [5,256],
   'init_freq': 5,
   'pct_of_pod': 0,

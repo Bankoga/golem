@@ -3,6 +3,13 @@ from utils.validators.prop_validators import is_valid_label
 
 class StaticComp:
   def __init__(self, *args, **kwargs):
+    """
+    every entity is larger and smaller than itself
+    though itself yet it remains
+    forever embedded within context
+    a place is a thing and a thing is place
+    """
+    # TODO: Unify label and address! Different representations of the same thing
     self.label = kwargs['label']
     self.ctg = kwargs['ctg']
     self.set_defaults()

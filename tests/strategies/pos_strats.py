@@ -2,6 +2,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
+from components.axioms.props import directions_pattern
 from components.axioms.pos import cardinal_keys
 from components.enums.pos import Floor, CtgType, Dimension
 from components.channels.channel import Channel
@@ -69,3 +70,8 @@ def valid_pos(draw): # pylint: disable=no-value-for-parameter
   st.assume(s and x and y and z)
   pos = Pos(floor=s,x=x,y=y,z=z)
   return pos
+
+@composite
+def arb_step_directions(draw):
+  res = draw(st.from_regex(directions_pattern))
+  return res

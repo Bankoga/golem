@@ -33,7 +33,7 @@ def arbitrary_invalid_label(draw):
   return res
 
 @composite
-def cell_type_prop(draw):
+def arb_cell_type(draw):
   res = draw(st.sampled_from(CellType))
   st.assume(res)
   st.assume(res != CellType.UNSET)
@@ -54,7 +54,7 @@ def hook_type(draw):
   return res
 
 @composite
-def channel_resource(draw):
+def arb_resource_type(draw):
   res = draw(st.sampled_from(RsrcType))
   st.assume(res)
   st.assume(res != RsrcType.UNSET)

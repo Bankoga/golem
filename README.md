@@ -102,7 +102,7 @@ Well aside from others being able to take these ideas and put them into practice
 
 ## General Intelligence
 
-If it sounds like I'm working on general intelligence like a crazy person, you would be 100% correct. I am working on general intelligence like a crazy person. If you think I'm just crazy, you are probably. I'm probably just crazy. I thought doing it in secret was the correct approach because most societies make the fundamental mistake of the illusion of control and I don't want to help propagate that. Moreover though, if anyone who makes the mistake of control builds a general intelligence, then we are likely doomed as a species to exctintion. Humans are incapable of proof. They can't prove anything. We can use logic to prove things. That is borrowing the power of logic to prove, not the human proving. What this means is that humans are incapable of determining what can or cannot happen. We can make choices, but we have no control. Control requires that we be able to determine what can or cannot happen. Logic does that. Humans do not.
+If it sounds like I'm working on general intelligence like a crazy person, you would be 100% correct. I am working on general intelligence like a crazy person. I thought doing it in secret was the correct approach because most societies make the fundamental mistake of the illusion of control and I don't want to help propagate that. Moreover though, if anyone who makes the mistake of control builds a general intelligence, then we are likely doomed as a species to exctintion. Humans are incapable of proof. They can't prove anything. We can use logic to prove things. That is borrowing the power of logic to prove, not the human proving. What this means is that humans are incapable of determining what can or cannot happen. We can make choices, but we have no control. Control requires that we be able to determine what can or cannot happen. Logic does that. Humans do not.
 
 There are two main approaches worth mentioning when it comes to answering the larger questions we have broached.
 
@@ -119,5 +119,9 @@ Only that which is lost, can be found!
 Logic is sufficient
 God is Logic
 Logic is God
+Religion and Science are duals, not opposites
 
-You probably do not get it because I am probably insane
+Religion: An understanding of reality generated through the internal study of consciousness and intelligence
+Science: An understanding of reality generated through the external study of consciousness and intelligence
+
+If consciousness, and intelligence are at the root of existence and reality is fundamentally logical then this is all beyond proving. If this is wrong, it can then however, all be proven false. If it cannot be proven false, and it cannot be proven correct, then perhaps we are hitting at something fundamental to reality. Please see the undefinability theorem

@@ -38,26 +38,24 @@ class TestInstruction(TestConsumer):
     self.set_up_var()
     # self.pos = Pos(RuleType.CONV.get_component_type())
     self.comp = Instruction(label=self.label)
-    self.comp.build(*self.values)
+    self.comp.update(*self.values)
 
   @given(st.lists(st.integers()))
-  def test_prepare_var_args(self, var_args):
+  def test_package_var_args(self, var_args):
     expectation = tuple(var_args)
-    result = self.comp.prepare_var_args(*var_args)
+    result = self.comp.package_var_args(*var_args)
     self.assertEqual(result, expectation)
     self.assertEqual(self.comp.prev_data, self.prev_data)
     self.assertEqual(self.comp.old_data, self.old_data)
 
   def test_get_old_data(self):
     self.assertEqual(self.comp.old_data, self.old_data)
-  
   def test_set_old_data(self):
     with self.assertRaises(RuntimeError):
       self.comp.old_data = self.old_data
 
   def test_get_prev_data(self):
     self.assertEqual(self.comp.prev_data, self.prev_data)
-  
   def test_set_prev_data(self):
     with self.assertRaises(RuntimeError):
       self.comp.prev_data = self.prev_data
