@@ -52,7 +52,7 @@ class Cell(Producer):
       raise RuntimeError('It is recommended to have an actual collector def when trying to create cells!')
     collectors = []
     segment_defs = collector_def[1]
-    resource_accepted=collector_def[2]
+    resources_accepted=collector_def[2]
     for direction in collector_def[0]:
       child_label = f'{name}_{direction}'
       new_c = Collector(label=child_label)
@@ -61,7 +61,7 @@ class Cell(Producer):
                   self.source_shape,
                   direction,
                   len(segment_defs),
-                  resource_accepted,
+                  resources_accepted,
                   segment_defs)
       new_c.address = Address(**self.address._asdict().copy())
       new_c.address._replace(instruction = child_label)

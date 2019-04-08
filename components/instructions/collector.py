@@ -8,7 +8,7 @@ from utils.pos import diff_addrs
 class Collector(Instruction):
   """
   Collectors are for grabbing parent specific resource availability data from a defined set of addresses
-  args: registry,source_index,source_shape,step_direction,num_steps,resource_accepted,segment_defs
+  args: registry,source_index,source_shape,step_direction,num_steps,resources_accepted,segment_defs
   """
   def __init__(self,*args,**kwargs):
     super().__init__(*args, **kwargs)
@@ -49,11 +49,11 @@ class Collector(Instruction):
     raise RuntimeError('Can not set the value of num_steps!')
 
   @property
-  def resource_accepted(self):
+  def resources_accepted(self):
     return self.var[5]
-  @resource_accepted.setter
-  def resource_accepted(self,value):
-    raise RuntimeError('Can not set the value of resource_accepted!')
+  @resources_accepted.setter
+  def resources_accepted(self,value):
+    raise RuntimeError('Can not set the value of resources_accepted!')
   
   @property
   def segment_defs(self):
