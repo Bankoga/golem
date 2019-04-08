@@ -62,7 +62,7 @@ class TestInstruction(TestConsumer):
 
   def test_instruction_details(self):
     self.assertTrue(self.comp.instruction_details())
-  
+
   # TODO: Define and implement operate details
   # def test_operate_details(self,inputs):
   #   old_prev = self.comp.prev_data

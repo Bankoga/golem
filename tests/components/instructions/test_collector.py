@@ -86,7 +86,7 @@ class TestCollector(TestInstruction):
                                 self.segment_defs,
                                 label=self.label)
     self.comp.address = self.address
-    self.comp.build(*self.values)
+    self.comp.update(*self.values)
 
   def test_get_attenuation_rate(self):
     self.assertEqual(self.comp.attenuation_rate, self.attenuation_rate)
@@ -132,13 +132,13 @@ class TestCollector(TestInstruction):
       self.assertTrue(self.comp.leaves[i].residence_address == addr)
       self.assertTrue(self.comp.leaves[i].fill_shape == f_shape)
 
-  def test_get_collector_segments(self):
+  def test_get_leaves(self):
     for i,cllct_sgmnt in enumerate(self.comp.leaves):
       self.assertEqual(cllct_sgmnt.residence_address, self.leaves[i].residence_address)
       self.assertEqual(cllct_sgmnt.source_address, self.leaves[i].source_address)
       self.assertEqual(cllct_sgmnt.source_index, self.leaves[i].source_index)
       self.assertEqual(cllct_sgmnt.fill_shape, self.leaves[i].fill_shape)
-  def test_set_collector_segments(self):
+  def test_set_leaves(self):
     with self.assertRaises(RuntimeError):
       self.comp.leaves = self.leaves
 

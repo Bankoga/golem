@@ -88,6 +88,7 @@ class TestMechanism(TestBuildableComp):
     self.assertTrue(self.comp.is_registered)
 
   def test_operate(self):
+    self.comp.build()
     self.comp.register(self.address)
     self.assertTrue(self.comp.operate())
 
