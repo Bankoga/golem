@@ -60,24 +60,31 @@ class TestInstruction(TestConsumer):
     with self.assertRaises(RuntimeError):
       self.comp.prev_data = self.prev_data
 
-  def test_instruction_details(self):
-    self.assertTrue(self.comp.instruction_details())
+  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
+  def test_instruction_details(self,inputs):
+    res = self.comp.instruction_details(*inputs)
+    if len(inputs)>0:
+      self.assertTrue(len(res)>0)
+    else:
+      self.assertFalse(res)
 
-  # TODO: Define and implement operate details
-  @given(st.one_of(st.text(),st.lists(st.integers()),valid_resource_data(),valid_resource_array())) # pylint: disable=no-value-for-parameter
+  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
   def test_operation_details(self,inputs):
     older_data = self.comp.old_data
     old_prev = self.comp.prev_data
-    res = self.comp.operation_details(inputs)
-    expected_success = self.comp.instruction_details(inputs)
-    if not expected_success:
+    res = self.comp.operation_details(*inputs)
+    expected_success = self.comp.instruction_details(*inputs)
+    if len(expected_success)>0:
+      self.assertIn(old_prev, self.comp.old_data)
+      if type(inputs) is iter:
+        self.assertTrue(array_equal(self.comp.prev_data, inputs))
+      else:
+        self.assertEqual(self.comp.prev_data, inputs)
+      self.assertTrue(array_equal(res,expected_success))
+    else:
       self.assertTrue(array_equal(self.comp.old_data, older_data))
       self.assertEqual(self.comp.prev_data, old_prev)
       self.assertFalse(res)
-    else:
-      self.assertIn(old_prev, self.comp.old_data)
-      self.assertTrue(array_equal(self.comp.prev_data, inputs))
-      self.assertIsNotNone(res)
 
   # @given(arb_label(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label, rtype, pos):
