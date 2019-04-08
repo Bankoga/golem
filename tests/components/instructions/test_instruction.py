@@ -86,9 +86,6 @@ class TestInstruction(TestConsumer):
       self.assertEqual(self.comp.prev_data, old_prev)
       self.assertFalse(res)
 
-  @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
-  def test_operate(self, inputs):
-    super().operate_helper(inputs)
   # @given(arb_label(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label, rtype, pos):
   #   # for efficiency reasons, eventually instructions will need to be built before processing

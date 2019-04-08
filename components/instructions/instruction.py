@@ -22,7 +22,6 @@ class Instruction(Consumer):
   @property
   def old_data(self):
     return self.__old_data
-  
   @old_data.setter
   def old_data(self, value):
     raise RuntimeError('Old Data cannot be set!')
@@ -30,7 +29,6 @@ class Instruction(Consumer):
   @property
   def prev_data(self):
     return self.__prev_data
-  
   @prev_data.setter
   def prev_data(self, value):
     raise RuntimeError('Prev Data cannot be set!')

@@ -150,14 +150,11 @@ class TestCollector(TestInstruction):
   def test_instruction_details(self, npmatrix_array):
     self.built_check()
     results = self.comp.instruction_details(npmatrix_array)
+    expectation = self.comp.instruction_details(npmatrix_array)
+    self.assertTrue(array_equal(results, expectation))
     self.assertTrue(len(results),len(self.leaves))
     for i,item in enumerate(results):
       self.assertEqual(item.shape, self.comp.leaves[i].fill_shape)
-    # res = self.comp.instruction_details(*inputs)
-    # if len(inputs)>0:
-    #   self.assertTrue(len(res)>0)
-    # else:
-    #   self.assertFalse(res)
 
   @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
   def test_operation_details(self,inputs):
@@ -171,11 +168,16 @@ class TestCollector(TestInstruction):
       self.assertTrue(array_equal(self.comp.prev_data, inputs))
       # used to use strict equality here, which I suspect to be failing bc floting point ops
       # though at the same time, each time step should affect the results to some degree...
+      # TODO: revisit mis
       self.assertTrue(not res is False)
     else:
       self.assertTrue(array_equal(self.comp.old_data, older_data))
       self.assertEqual(self.comp.prev_data, old_prev)
       self.assertFalse(res)
+  
+  @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
+  def test_operate(self, inputs):
+    super().operate_helper(inputs)
     
 if __name__ == '__main__':
   unittest.main()
