@@ -8,7 +8,7 @@ from utils.pos import diff_addrs
 class Collector(Instruction):
   """
   Collectors are for grabbing parent specific resource availability data from a defined set of addresses
-  args: registry,source_index,source_shape,step_direction,num_steps,resource_accepted,segment_defs
+  args: registry,source_index,source_shape,step_direction,num_steps,resources_accepted,segment_defs
   """
   def __init__(self,*args,**kwargs):
     super().__init__(*args, **kwargs)
@@ -49,11 +49,11 @@ class Collector(Instruction):
     raise RuntimeError('Can not set the value of num_steps!')
 
   @property
-  def resource_accepted(self):
+  def resources_accepted(self):
     return self.var[5]
-  @resource_accepted.setter
-  def resource_accepted(self,value):
-    raise RuntimeError('Can not set the value of resource_accepted!')
+  @resources_accepted.setter
+  def resources_accepted(self,value):
+    raise RuntimeError('Can not set the value of resources_accepted!')
   
   @property
   def segment_defs(self):
@@ -64,7 +64,7 @@ class Collector(Instruction):
 
   @property
   def leaves(self):
-    return self.__collector_segments
+    return self.__leaves
   @leaves.setter
   def leaves(self,value):
     raise RuntimeError('Can not set the value of leaves!')
@@ -73,20 +73,20 @@ class Collector(Instruction):
     super().build_details(*args, **kwargs)
     self.set_up_collector_segments(self.segment_defs)
 
-
   def set_up_collector_segments(self, shape_defs):
     res = []
     for item in shape_defs:
       res.append(CollectorSegment(residence_address=item[0],source_address=self.address,source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
-    self.__collector_segments = res
+    self.__leaves = res
+
   def conv(self, npmatrix):
     return 0
 
-  def instruction_details(self,curr_data=[],inputs=None,context=None):
+  def instruction_details(self,curr_data=[],inputs=None,context=None,*args):
     res = []
     for i, cllct_sgmnt in enumerate(self.leaves):
-      if len(curr_data) > i:
-        res.append(cllct_sgmnt.apply(curr_data[i]))
+      if len(args) > i:
+        res.append(cllct_sgmnt.apply(args[i]))
       else:
         res.append(zeros(cllct_sgmnt.weights.shape))
     return res
