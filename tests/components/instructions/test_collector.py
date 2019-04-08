@@ -148,13 +148,35 @@ class TestCollector(TestInstruction):
     self.assertTrue(len(results),len(self.leaves))
     for i,item in enumerate(results):
       self.assertEqual(item.shape, self.comp.leaves[i].fill_shape)
+    # res = self.comp.instruction_details(*inputs)
+    # if len(inputs)>0:
+    #   self.assertTrue(len(res)>0)
+    # else:
+    #   self.assertFalse(res)
 
   # TODO: Define and implement operate details
+  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
   def test_operation_details(self,inputs):
     old_prev = self.comp.prev_data
     res = self.comp.operation_details(inputs)
     self.assertIn(old_prev, self.comp.old_data)
     self.assertEqual(self.comp.prev_data, inputs)
 
+    older_data = self.comp.old_data
+    old_prev = self.comp.prev_data
+    res = self.comp.operation_details(*inputs)
+    expected_success = self.comp.instruction_details(*inputs)
+    if len(expected_success)>0:
+      self.assertIn(old_prev, self.comp.old_data)
+      if type(inputs) is iter:
+        self.assertTrue(array_equal(self.comp.prev_data, inputs))
+      else:
+        self.assertEqual(self.comp.prev_data, inputs)
+      self.assertTrue(array_equal(res,expected_success))
+    else:
+      self.assertTrue(array_equal(self.comp.old_data, older_data))
+      self.assertEqual(self.comp.prev_data, old_prev)
+      self.assertFalse(res)
+    
 if __name__ == '__main__':
   unittest.main()
