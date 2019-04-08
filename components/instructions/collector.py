@@ -64,7 +64,7 @@ class Collector(Instruction):
 
   @property
   def leaves(self):
-    return self.__collector_segments
+    return self.__leaves
   @leaves.setter
   def leaves(self,value):
     raise RuntimeError('Can not set the value of leaves!')
@@ -73,12 +73,12 @@ class Collector(Instruction):
     super().build_details(*args, **kwargs)
     self.set_up_collector_segments(self.segment_defs)
 
-
   def set_up_collector_segments(self, shape_defs):
     res = []
     for item in shape_defs:
       res.append(CollectorSegment(residence_address=item[0],source_address=self.address,source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
-    self.__collector_segments = res
+    self.__leaves = res
+
   def conv(self, npmatrix):
     return 0
 
