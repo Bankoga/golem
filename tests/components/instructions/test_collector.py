@@ -29,6 +29,7 @@ class TestCollector(TestInstruction):
     self.ctg = CtgType.INSTRUCTION
     self.rule_type= RuleType.CONV
     self.max_resources = 256
+    self.comp_class = Collector
   
   def set_up_var(self):
     self.registry = AddressRegistry(label='global_address_registry_api')
@@ -37,7 +38,7 @@ class TestCollector(TestInstruction):
       'reg_id': self.label,
       'address': self.address
     }
-    self.collector_segment_defs = [
+    self.segment_defs = [
       (self.address,(4,4)),
       (self.address,(1,1)),
       (self.address,(4,4)),
@@ -48,7 +49,7 @@ class TestCollector(TestInstruction):
     self.source_shape = (256,256)
     self.source_index = (45,25)
     self.step_direction = 'A' # TODO: Use correct ENUM
-    self.num_steps = len(self.collector_segment_defs)
+    self.num_steps = len(self.segment_defs)
     self.resource_accepted = RsrcType.ENERGY
     self.values = [self.registry,
                    self.source_index,
@@ -56,14 +57,14 @@ class TestCollector(TestInstruction):
                    self.step_direction,
                    self.num_steps,
                    self.resource_accepted,
-                   self.collector_segment_defs
+                   self.segment_defs
                   ]
     self.var = tuple(self.values)
     self.attenuation_rate = 2.5
 
   def set_up_dynamic_props(self):
     # self.pos = Pos(self.ctg.get_component_type())
-    self.collector_segments = [cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
+    self.leaves = [cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
                         cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(1,1),label=f'{self.label}_{roll_name()}'),
                         cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
                         cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(9,9),label=f'{self.label}_{roll_name()}'),
@@ -76,13 +77,13 @@ class TestCollector(TestInstruction):
     self.set_up_base()
     self.set_up_var()
     self.set_up_dynamic_props()
-    self.comp = Collector(self.registry,
+    self.comp = self.comp_class(self.registry,
                                 self.source_index,
                                 self.source_shape,
                                 self.step_direction,
                                 self.num_steps,
                                 self.resource_accepted,
-                                self.collector_segment_defs,
+                                self.segment_defs,
                                 label=self.label)
     self.comp.address = self.address
     self.comp.build(*self.values)
@@ -117,36 +118,36 @@ class TestCollector(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.resource_accepted = self.resource_accepted
     
-  def test_get_collector_segment_defs(self):
-    for i,cnv_shp in enumerate(self.comp.collector_segment_defs):
-      self.assertEqual(cnv_shp[0], self.collector_segment_defs[i][0])
-  def test_set_collector_segment_defs(self):
+  def test_get_collector_collector_defs(self):
+    for i,cnv_shp in enumerate(self.comp.segment_defs):
+      self.assertEqual(cnv_shp[0], self.segment_defs[i][0])
+  def test_set_collector_collector_defs(self):
     with self.assertRaises(RuntimeError):
-      self.comp.collector_segment_defs = self.collector_segment_defs
+      self.comp.segment_defs = self.segment_defs
 
   @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
-  def test_set_up_collector_segments(self,collector_segment_defs):
-    self.comp.set_up_collector_segments(collector_segment_defs)
-    for i,(addr,f_shape) in enumerate(collector_segment_defs):
-      self.assertTrue(self.comp.collector_segments[i].residence_address == addr)
-      self.assertTrue(self.comp.collector_segments[i].fill_shape == f_shape)
+  def test_set_up_collector_segments(self,segment_defs):
+    self.comp.set_up_collector_segments(segment_defs)
+    for i,(addr,f_shape) in enumerate(segment_defs):
+      self.assertTrue(self.comp.leaves[i].residence_address == addr)
+      self.assertTrue(self.comp.leaves[i].fill_shape == f_shape)
 
   def test_get_collector_segments(self):
-    for i,cllct_sgmnt in enumerate(self.comp.collector_segments):
-      self.assertEqual(cllct_sgmnt.residence_address, self.collector_segments[i].residence_address)
-      self.assertEqual(cllct_sgmnt.source_address, self.collector_segments[i].source_address)
-      self.assertEqual(cllct_sgmnt.source_index, self.collector_segments[i].source_index)
-      self.assertEqual(cllct_sgmnt.fill_shape, self.collector_segments[i].fill_shape)
+    for i,cllct_sgmnt in enumerate(self.comp.leaves):
+      self.assertEqual(cllct_sgmnt.residence_address, self.leaves[i].residence_address)
+      self.assertEqual(cllct_sgmnt.source_address, self.leaves[i].source_address)
+      self.assertEqual(cllct_sgmnt.source_index, self.leaves[i].source_index)
+      self.assertEqual(cllct_sgmnt.fill_shape, self.leaves[i].fill_shape)
   def test_set_collector_segments(self):
     with self.assertRaises(RuntimeError):
-      self.comp.collector_segments = self.collector_segments
+      self.comp.leaves = self.leaves
 
   @given(valid_resource_array()) # pylint: disable=no-value-for-parameter
   def test_instruction_details(self, npmatrix_array):
     results = self.comp.instruction_details(npmatrix_array)
-    self.assertTrue(len(results),len(self.collector_segments))
+    self.assertTrue(len(results),len(self.leaves))
     for i,item in enumerate(results):
-      self.assertEqual(item.shape, self.comp.collector_segments[i].fill_shape)
+      self.assertEqual(item.shape, self.comp.leaves[i].fill_shape)
 
 if __name__ == '__main__':
   unittest.main()

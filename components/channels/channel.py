@@ -121,4 +121,7 @@ class Channel(Mediator):
     
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
+  
+  def update(self, *args, **kwargs):
+    super().update(*args, **kwargs)
     self.__meld = read_meld_str(self.meld_str)

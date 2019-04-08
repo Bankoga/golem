@@ -8,7 +8,7 @@ from utils.pos import diff_addrs
 class Collector(Instruction):
   """
   Collectors are for grabbing parent specific resource availability data from a defined set of addresses
-  args: registry,source_index,source_shape,step_direction,num_steps,resource_accepted,collector_segment_defs
+  args: registry,source_index,source_shape,step_direction,num_steps,resource_accepted,segment_defs
   """
   def __init__(self,*args,**kwargs):
     super().__init__(*args, **kwargs)
@@ -56,22 +56,22 @@ class Collector(Instruction):
     raise RuntimeError('Can not set the value of resource_accepted!')
   
   @property
-  def collector_segment_defs(self):
+  def segment_defs(self):
     return self.var[6]
-  @collector_segment_defs.setter
-  def collector_segment_defs(self,value):
-    raise RuntimeError('Can not set the value of collector_segment_defs!')
+  @segment_defs.setter
+  def segment_defs(self,value):
+    raise RuntimeError('Can not set the value of segment_defs!')
 
   @property
-  def collector_segments(self):
+  def leaves(self):
     return self.__collector_segments
-  @collector_segments.setter
-  def collector_segments(self,value):
-    raise RuntimeError('Can not set the value of collector_segments!')
+  @leaves.setter
+  def leaves(self,value):
+    raise RuntimeError('Can not set the value of leaves!')
 
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
-    self.set_up_collector_segments(self.collector_segment_defs)
+    self.set_up_collector_segments(self.segment_defs)
 
 
   def set_up_collector_segments(self, shape_defs):
@@ -84,7 +84,7 @@ class Collector(Instruction):
 
   def instruction_details(self,curr_data=[],inputs=None,context=None):
     res = []
-    for i, cllct_sgmnt in enumerate(self.collector_segments):
+    for i, cllct_sgmnt in enumerate(self.leaves):
       if len(curr_data) > i:
         res.append(cllct_sgmnt.apply(curr_data[i]))
       else:

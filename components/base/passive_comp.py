@@ -2,11 +2,12 @@ from components.base.static_comp import StaticComp
 
 class PassiveComp(StaticComp):
 
+  # TODO: Add notion of extendable, and composable props lists for passive!
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
-    self.__var = self.prepare_var_args(*args)
+    self.__var = self.package_var_args(*args)
 
-  def prepare_var_args(self,*args):
+  def package_var_args(self, *args):
     return tuple(args)
 
   @property
@@ -21,4 +22,4 @@ class PassiveComp(StaticComp):
     raise RuntimeError('Cannot set var of component!')
 
   def update(self, *args, **kwargs):
-    self.__var = self.prepare_var_args(*args, **kwargs)
+    self.__var = self.package_var_args(*args, **kwargs)

@@ -17,8 +17,8 @@ class CellType(Enum):
   STAR = 13
 
 cell_data = {
-  'CellType.BASKET': {
-    "cnv_tmplts":[
+  'BASKET': {
+    "collector_defs":[
       ["AB",["4x4"]],
       ["AB",["8x8,1"]],
       ["S",["4x4","8x8,1","12x12,2"]]
@@ -29,8 +29,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.BIPOLAR': {
-    "cnv_tmplts":[
+  'BIPOLAR': {
+    "collector_defs":[
       ["S",["4x4"],["8x8,1"]]
     ],
     "freq_range": [5,256],
@@ -39,8 +39,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.CROWN': {
-    "cnv_tmplts": [
+  'CROWN': {
+    "collector_defs": [
       ["A",["4x4"]],
       ["A",["8x8,1"]],
       ["S",["3x3"]]
@@ -51,8 +51,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.GRANULE': {
-    "cnv_tmplts":[
+  'GRANULE': {
+    "collector_defs":[
       ["A",["1x1","1x1","1x1","4x4","8x8"]],
       ["B",["8x8,1"]],
       ["S",["3x3"]]
@@ -63,8 +63,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.INV_CROWN': {
-    "cnv_tmplts":[
+  'INV_CROWN': {
+    "collector_defs":[
       ["B",["4x4"]],
       ["B",["8x8,1"]],
       ["S",["3x3"]]
@@ -75,8 +75,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.MAX_POOL_ALL': {
-    "cnv_tmplts":[
+  'MAX_POOL_ALL': {
+    "collector_defs":[
       ["*",["NxN"],["8x8,1"]]
     ],
     "freq_range": [5,256],
@@ -85,8 +85,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.DENSE_POOL_SAME': {
-    "cnv_tmplts":[
+  'DENSE_POOL_SAME': {
+    "collector_defs":[
       ["S",["NxN"]]
     ],
     "freq_range": [5,256],
@@ -95,8 +95,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.PLATE': {
-    "cnv_tmplts":[
+  'PLATE': {
+    "collector_defs":[
       ["S",["4x4","8x8,1"]]
     ],
     "freq_range": [5,256],
@@ -105,8 +105,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.POINT': {
-    "cnv_tmplts":[
+  'POINT': {
+    "collector_defs":[
       ["S",["1x1"]]
     ],
     "freq_range": [5,256],
@@ -115,8 +115,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.PYRAMID': {
-    "cnv_tmplts":[
+  'PYRAMID': {
+    "collector_defs":[
       ["A",["1x1","1x1","1x1","4x4","8x8"]],
       ["B",["4x4"]],
       ["B",["8x8,1"]],
@@ -128,8 +128,8 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.ROSE': {
-    "cnv_tmplts":[
+  'ROSE': {
+    "collector_defs":[
       ["A",["4x4"]],
       ["A",["8x8,1"]],
       ["S",["3x3"]]
@@ -140,10 +140,20 @@ cell_data = {
     "init_threshhold":0.98,
     "activation_function":"tanh"
   },
-  'CellType.STAR': {
-    "cnv_tmplts":[
+  'STAR': {
+    "collector_defs":[
       ["*",["4x4","5x5","6x6"]],
       ["*",["8x8,1","10x10,1","12x12,1"]]
+    ],
+    "freq_range": [5,256],
+    "init_freq": 5,
+    "pct_of_pod": 0,
+    "init_threshhold":0.98,
+    "activation_function":"tanh"
+  },
+  'UNSET': {
+    "collector_defs":[
+      ["*",["1x1"]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
