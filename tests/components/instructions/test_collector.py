@@ -117,10 +117,10 @@ class TestCollector(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.resource_accepted = self.resource_accepted
     
-  def test_get_collector_collector_defs(self):
+  def test_get_segment_defs(self):
     for i,cnv_shp in enumerate(self.comp.segment_defs):
       self.assertEqual(cnv_shp[0], self.segment_defs[i][0])
-  def test_set_collector_collector_defs(self):
+  def test_set_segment_defs(self):
     with self.assertRaises(RuntimeError):
       self.comp.segment_defs = self.segment_defs
 
@@ -148,6 +148,13 @@ class TestCollector(TestInstruction):
     self.assertTrue(len(results),len(self.leaves))
     for i,item in enumerate(results):
       self.assertEqual(item.shape, self.comp.leaves[i].fill_shape)
+
+  # TODO: Define and implement operate details
+  def test_operation_details(self,inputs):
+    old_prev = self.comp.prev_data
+    res = self.comp.operation_details(inputs)
+    self.assertIn(old_prev, self.comp.old_data)
+    self.assertEqual(self.comp.prev_data, inputs)
 
 if __name__ == '__main__':
   unittest.main()

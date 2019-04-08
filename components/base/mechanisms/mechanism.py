@@ -63,10 +63,10 @@ class Mechanism(BuildableComp):
     if not self.is_registered:
       raise RuntimeError('An unregistered worker type cannot operate!')
     else:
-      return self.operate_details()
+      return self.operation_details()
 
   @abstractmethod
-  def operate_details(self,*args,**kwargs):
+  def operation_details(self,*args,**kwargs):
     return True
     
   def build_details(self, *args, **kwargs):

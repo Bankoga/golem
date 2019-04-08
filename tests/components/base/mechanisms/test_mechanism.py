@@ -90,8 +90,8 @@ class TestMechanism(TestBuildableComp):
     self.comp.register(self.address)
     self.assertTrue(self.comp.operate())
 
-  def test_operate_helper(self):
-    self.assertTrue(self.comp.operate_details())
+  def test_operation_details(self):
+    self.assertTrue(self.comp.operation_details())
 
   def test_build_with_data(self):
     self.comp.build(address=self.address)
