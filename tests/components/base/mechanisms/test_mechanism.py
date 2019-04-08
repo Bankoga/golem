@@ -86,8 +86,7 @@ class TestMechanism(TestBuildableComp):
     """
     self.assertTrue(self.comp.is_registered)
 
-  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
-  def test_operate(self, inputs):
+  def operate_helper(self, inputs):
     if not self.comp.is_built:
       self.comp.build()
       self.comp.register(self.address)
@@ -96,6 +95,10 @@ class TestMechanism(TestBuildableComp):
       self.assertFalse(res)
     else:
       self.assertTrue(not res is False)
+
+  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
+  def test_operate(self, inputs):
+    self.operate_helper(inputs)
 
   @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
   def test_operation_details(self,inputs):

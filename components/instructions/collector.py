@@ -82,11 +82,11 @@ class Collector(Instruction):
   def conv(self, npmatrix):
     return 0
 
-  def instruction_details(self,curr_data=[],inputs=None,context=None):
+  def instruction_details(self,curr_data=[],inputs=None,context=None,*args):
     res = []
     for i, cllct_sgmnt in enumerate(self.leaves):
-      if len(curr_data) > i:
-        res.append(cllct_sgmnt.apply(curr_data[i]))
+      if len(args) > i:
+        res.append(cllct_sgmnt.apply(args[i]))
       else:
         res.append(zeros(cllct_sgmnt.weights.shape))
     return res
