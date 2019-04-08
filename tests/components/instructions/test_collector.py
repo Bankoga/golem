@@ -132,6 +132,7 @@ class TestCollector(TestInstruction):
       self.assertTrue(self.comp.leaves[i].fill_shape == f_shape)
 
   def test_get_leaves(self):
+    self.comp.build()
     for i,cllct_sgmnt in enumerate(self.comp.leaves):
       self.assertEqual(cllct_sgmnt.residence_address, self.leaves[i].residence_address)
       self.assertEqual(cllct_sgmnt.source_address, self.leaves[i].source_address)
