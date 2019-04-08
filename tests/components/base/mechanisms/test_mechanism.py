@@ -6,6 +6,7 @@ from hypothesis import strategies as st
 from components.matrix.address_registry import AddressRegistry
 from components.base.mechanisms.mechanism import Mechanism
 from components.enums.pos import CtgType
+from tests.strategies.data_strats import valid_resource_data, valid_resource_array
 from components.vars.data import Address
 
 from tests.components.base.test_buildable_comp import TestBuildableComp
@@ -85,13 +86,24 @@ class TestMechanism(TestBuildableComp):
     """
     self.assertTrue(self.comp.is_registered)
 
-  def test_operate(self):
-    self.comp.build()
-    self.comp.register(self.address)
-    self.assertTrue(self.comp.operate())
+  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
+  def test_operate(self, inputs):
+    if not self.comp.is_built:
+      self.comp.build()
+      self.comp.register(self.address)
+    res = self.comp.operate(*inputs)
+    if type(res) is bool:
+      self.assertFalse(res)
+    else:
+      self.assertTrue(not res is False)
 
-  def test_operation_details(self):
-    self.assertTrue(self.comp.operation_details())
+  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
+  def test_operation_details(self,inputs):
+    res = self.comp.operation_details(*inputs)
+    if len(inputs)>0:
+      self.assertTrue(len(res)>0)
+    else:
+      self.assertFalse(res)
 
   def test_build_with_data(self):
     self.comp.build(address=self.address)

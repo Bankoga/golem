@@ -63,12 +63,17 @@ class Mechanism(BuildableComp):
     if not self.is_registered:
       raise RuntimeError('An unregistered worker type cannot operate!')
     else:
-      return self.operation_details()
+      return self.operation_details(*args, **kwargs)
 
-  @abstractmethod
   def operation_details(self,*args,**kwargs):
-    return True
-    
+    res = []
+    for arg in args:
+      if type(arg) is iter:
+        res.append(arg.any())
+      else:
+        res.append(not arg is False)
+    return res
+  
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
     if 'address' in kwargs:
