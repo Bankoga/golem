@@ -48,7 +48,6 @@ class TestMechanism(TestBuildableComp):
 
   def test_pre_registered_state(self):
     self.assertFalse(self.comp.is_registered)
-    self.assertIsNone(self.comp.address)
     with self.assertRaises(RuntimeError):
       self.comp.operate()
 
