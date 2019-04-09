@@ -79,7 +79,7 @@ class Cell(Producer):
     collectors = []
     names = kin_label_gen_unique(self.label, len(self.collector_defs))
     for i,collector_def in enumerate(self.collector_defs):
-      collectors.append(self.create_collectors_from_def(names[i], collector_def, self.resources_accepted))
+      collectors.extend(self.create_collectors_from_def(names[i], collector_def, self.resources_accepted))
     return collectors
 
   def build_details(self, *args, **kwargs):

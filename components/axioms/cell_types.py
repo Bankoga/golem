@@ -19,9 +19,9 @@ class CellType(Enum):
 cell_data = {
   'BASKET': {
     "collector_defs":[
-      ["AB",["4x4"]],
-      ["AB",["8x8,1"]],
-      ["S",["4x4","8x8,1","12x12,2"]]
+      ["AB",[(4,4)]],
+      ["AB",[(8,8)]],
+      ["S",[(4,4),(8,8),(12,12)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -31,7 +31,7 @@ cell_data = {
   },
   'BIPOLAR': {
     "collector_defs":[
-      ["S",["4x4"],["8x8,1"]]
+      ["S",[(4,4),(8,8)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -41,9 +41,9 @@ cell_data = {
   },
   'CROWN': {
     "collector_defs": [
-      ["A",["4x4"]],
-      ["A",["8x8,1"]],
-      ["S",["3x3"]]
+      ["A",[(4,4)]],
+      ["A",[(8,8)]],
+      ["S",[(3,3)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -53,9 +53,9 @@ cell_data = {
   },
   'GRANULE': {
     "collector_defs":[
-      ["A",["1x1","1x1","1x1","4x4","8x8"]],
-      ["B",["8x8,1"]],
-      ["S",["3x3"]]
+      ["A",[(1,1),(1,1),(1,1),(4,4),(8,8)]],
+      ["B",[(8,8)]],
+      ["S",[(3,3)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -65,9 +65,9 @@ cell_data = {
   },
   'INV_CROWN': {
     "collector_defs":[
-      ["B",["4x4"]],
-      ["B",["8x8,1"]],
-      ["S",["3x3"]]
+      ["B",[(4,4)]],
+      ["B",[(8,8)]],
+      ["S",[(3,3)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -77,7 +77,7 @@ cell_data = {
   },
   'MAX_POOL_ALL': {
     "collector_defs":[
-      ["*",["NxN"],["8x8,1"]]
+      ["ABS",[(5,5),(8,8)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -87,7 +87,7 @@ cell_data = {
   },
   'DENSE_POOL_SAME': {
     "collector_defs":[
-      ["S",["NxN"]]
+      ["S",[(5,5)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -97,7 +97,7 @@ cell_data = {
   },
   'PLATE': {
     "collector_defs":[
-      ["S",["4x4","8x8,1"]]
+      ["S",[(4,4),(8,8)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -107,7 +107,7 @@ cell_data = {
   },
   'POINT': {
     "collector_defs":[
-      ["S",["1x1"]]
+      ["S",[(1,1)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -117,10 +117,10 @@ cell_data = {
   },
   'PYRAMID': {
     "collector_defs":[
-      ["A",["1x1","1x1","1x1","4x4","8x8"]],
-      ["B",["4x4"]],
-      ["B",["8x8,1"]],
-      ["S",["3x3"]]
+      ["A",[(1,1),(1,1),(1,1),(4,4),(8,8)]],
+      ["B",[(4,4)]],
+      ["B",[(8,8)]],
+      ["S",[(3,3)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -130,9 +130,9 @@ cell_data = {
   },
   'ROSE': {
     "collector_defs":[
-      ["A",["4x4"]],
-      ["A",["8x8,1"]],
-      ["S",["3x3"]]
+      ["A",[(4,4)]],
+      ["A",[(8,8)]],
+      ["S",[(3,3)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -142,8 +142,8 @@ cell_data = {
   },
   'STAR': {
     "collector_defs":[
-      ["*",["4x4","5x5","6x6"]],
-      ["*",["8x8,1","10x10,1","12x12,1"]]
+      ["ABS",[(4,4),(5,5),(6,6)]],
+      ["ABS",[(8,8),(10,10),(12,12)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
@@ -153,7 +153,7 @@ cell_data = {
   },
   'UNSET': {
     "collector_defs":[
-      ["*",["1x1"]]
+      ["ABS",[(1,1)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,

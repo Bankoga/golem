@@ -130,12 +130,7 @@ class TestCell(TestProducer):
         self.assertEqual(collector.step_direction, direction)
         self.assertEqual(collector.num_steps, len(collector_def[1]))
         self.assertEqual(len(collector.leaves), len(collector_def[1]))
-        """
-          TODO: Rework resource interconnection with cell data.
-          Previously, cell types were intended to be tied to a resource by the user defined golem configs
-          Is that still the case?
-        """
-        self.assertEqual(collector.resources_accepted, collector_def[2])
+        self.assertEqual(collector.resources_accepted, self.resources_accepted)
         self.assertEqual(collector.source_index, self.source_index)
         self.assertEqual(collector.source_shape, self.source_shape)
         self.assertEqual(self.comp.address, self.address)
