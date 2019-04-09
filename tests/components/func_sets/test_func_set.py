@@ -9,20 +9,46 @@ from components.enums.prop_types import SuperSet, GroupType
 from components.func_sets.fs_builder_provider import fs_services
 from components.func_sets.func_set import FuncSet
 
+from components.enums.pos import CtgType
+from components.matrix.address_registry import AddressRegistry
+from components.matrix.channel_registry import ChannelRegistry
+from components.vars.data import Address
 from tests.strategies.func_set_strats import module_input_set
+from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
 
-class TestFuncSet(unittest.TestCase):
+class TestFuncSet(TestMediator):
+  def set_up_base(self):
+    self.label = 'glg'
+    self.ctg = CtgType.FSET
+    self.comp_class = FuncSet
+
+  def set_up_var(self):
+    self.registry = AddressRegistry(label='global_address_registry_api')
+    self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
+    self.address_registry = self.registry
+    self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
+    self.address = Address(golem='a',matrix='l',func_set='glg')
+    self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
+    self.reg_item = {
+      'reg_id': self.label,
+      'address': self.address
+    }
+    self.values = [self.registry, self.channel_registry]
+    self.var = tuple(self.values)
 
   def setUp(self):
+    self.set_up_base()
     # self.id = proc_ids['glg']
     # self.factory = proc_services.get(self.id)
     # self.base_group = self.factory.groups[0]
     # self.ctg_type = self.factory.groups[0].ctg_type
     # self.fg = FuncSet(self.id, self.ctg_type)
-    self.fs_id = set_ids['glg']
-    self.fs_type = SuperSet.PROC
-    self.fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
-    self.fset.build()
+    self.set_up_var()
+    self.comp = self.comp_class(*self.values,label=self.label)
+    # self.fs_id = set_ids['glg']
+    # self.fs_type = SuperSet.PROC
+    # self.fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
+    # self.fset.build()
   
   def test_get_type(self):
     expectation = self.fs_type
