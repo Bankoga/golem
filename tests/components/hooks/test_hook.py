@@ -74,7 +74,7 @@
 
 #   def setUp(self):
 #     # In order to test all the variants for the integration, we will need BDD tests
-#     self.meld = build_meld('m_id-g_id',RsrcType.ENERGY,ChannelType.AGGREGATE,FieldType.TEST_INPUT)
+#     self.meld = build_meld('m_id-g_id',RsrcType.ENERGIZER,ChannelType.AGGREGATE,FieldType.TEST_INPUT)
 #     self.hook_id = 'cycle'
 #     self.hook_type = HookType.UNI
 #     self.hook=Hook(self.meld,self.hook_id,self.hook_type)

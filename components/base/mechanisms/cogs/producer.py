@@ -23,5 +23,5 @@ class Producer(Mechanism):
   #   self.pct_of_pod = prd['pct_of_pod']
   #   self.init_threshhold = prd['init_threshhold']
   #   self.activation_function = prd['activation_function']
-  def __init__(self, **kwargs):
-    super().__init__(**kwargs)
+  def __init__(self, *args,**kwargs):
+    super().__init__(*args,**kwargs)

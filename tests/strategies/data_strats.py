@@ -3,7 +3,7 @@ from hypothesis.strategies import composite
 from numpy import full, ones
 
 from components.axioms.matrix import max_resource_value, min_resource_value
-from tests.strategies.prop_strats import arb_label
+from tests.strategies.prop_strats import arb_label,arb_resource_type
 from tests.strategies.pos_strats import valid_pos, arb_addr
 from utils.helpers.chaos import draw as draw_num
 
@@ -58,6 +58,11 @@ def valid_resource_array(draw, shape=valid_shape(), num_shapes=st.integers(max_v
   for i in range(ns):
     r_set.append(draw(valid_resource_data())) # pylint: disable=no-value-for-parameter
   return r_set
+
+@composite
+def arb_resource_set(draw):
+  st.lists(elements=arb_resource_type(), unique=True) # pylint: disable=no-value-for-parameter
+
 
 @composite
 def valid_weights(draw):

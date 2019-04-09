@@ -14,7 +14,7 @@ from tests.strategies.channel_strats import valid_cell_instruction
 from tests.strategies.prop_strats import arb_cell_type, arb_label
 from tests.strategies.instruction_strats import arb_full_collector_def
 from tests.components.base.mechanisms.cogs.test_producer import TestProducer
-from tests.strategies.data_strats import valid_shape
+from tests.strategies.data_strats import valid_shape, arb_resource_set
 
 from components.channels.misc_funcs import build_address, build_meld, build_package
 
@@ -32,16 +32,17 @@ class TestCell(TestProducer):
       'address': self.address
     }
     self.cell_type = CellType.PYRAMID
+    self.resources_accepted = [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
     self.source_index = (0,0)
     self.source_shape = (256,256)
-    self.values = [self.registry,self.cell_type,self.source_index,self.source_shape]
+    self.values = [self.registry,self.cell_type,self.resources_accepted,self.source_index,self.source_shape]
     self.var = tuple(self.values)
 
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
-    self.comp.update(*self.values)
+    self.comp = self.comp_class(*self.values,label=self.label)
+    self.comp.address = self.address
 
   def test_get_cell_type(self):
     self.assertEqual(self.comp.cell_type, self.cell_type)
@@ -50,6 +51,13 @@ class TestCell(TestProducer):
     with self.assertRaises(RuntimeError):
       self.comp.cell_type = cell_type
 
+  def test_get_resources_accepted(self):
+    self.assertEqual(self.comp.resources_accepted, self.resources_accepted)
+  @given(valid_shape()) # pylint: disable=no-value-for-parameter
+  def test_set_resources_accepted(self, resources_accepted):
+    with self.assertRaises(RuntimeError):
+      self.comp.resources_accepted = resources_accepted
+  
   def test_get_source_index(self):
     self.assertEqual(self.comp.source_index, self.source_index)
   @given(valid_shape()) # pylint: disable=no-value-for-parameter
@@ -87,23 +95,23 @@ class TestCell(TestProducer):
     # can proxy for later! wait until post config to post proxy residence buildable golems
     pass
 
-  @given(arb_label(), arb_full_collector_def()) # pylint: disable=no-value-for-parameter
-  def test_create_collectors_from_def(self, name, collector_def):
+  @given(arb_label(), arb_full_collector_def(), arb_resource_set()) # pylint: disable=no-value-for-parameter
+  def test_create_collectors_from_def(self, name, collector_def, resources_accepted):
     # Collector defs do what?
     # specify a set of directions to set up collectors
     # each step is represented by a list of filter shapes
     self.comp.address = self.address
     if collector_def is None:
       with self.assertRaises(RuntimeError):
-        res = self.comp.create_collectors_from_def(name, collector_def)
-    res = self.comp.create_collectors_from_def(name, collector_def)
+        res = self.comp.create_collectors_from_def(name, collector_def, resources_accepted)
+    res = self.comp.create_collectors_from_def(name, collector_def, resources_accepted)
     for ic,c in enumerate(collector_def[0]):
       collector = res[ic]
       self.assertEqual(collector.label, f'{name}_{c}')
       self.assertEqual(collector.step_direction, c)
       self.assertEqual(collector.num_steps, len(collector_def[1]))
       self.assertEqual(len(collector.leaves), len(collector_def[1]))
-      self.assertEqual(collector.resources_accepted, collector_def[2])
+      self.assertEqual(collector.resources_accepted, resources_accepted)
       self.assertEqual(collector.source_index, self.source_index)
       self.assertEqual(collector.source_shape, self.source_shape)
       self.assertEqual(self.comp.address, self.address)
@@ -116,18 +124,14 @@ class TestCell(TestProducer):
     res = self.comp.create_collectors()
     num_ic = 0
     for i,collector_def in enumerate(expected_data['collector_defs']):
-      for ic,direction in enumerate(collector_def):
-        num_ic = num_ic + 1
-        collector=res[i+ic+(num_ic-1)]
+      for ic,direction in enumerate(collector_def[0]):
+        if (ic > 0):
+          num_ic = num_ic + 1
+        collector=res[i+num_ic]
         self.assertEqual(collector.step_direction, direction)
         self.assertEqual(collector.num_steps, len(collector_def[1]))
         self.assertEqual(len(collector.leaves), len(collector_def[1]))
-        """
-          TODO: Rework resource interconnection with cell data.
-          Previously, cell types were intended to be tied to a resource by the user defined golem configs
-          Is that still the case?
-        """
-        self.assertEqual(collector.resources_accepted, collector_def[2])
+        self.assertEqual(collector.resources_accepted, self.resources_accepted)
         self.assertEqual(collector.source_index, self.source_index)
         self.assertEqual(collector.source_shape, self.source_shape)
         self.assertEqual(self.comp.address, self.address)
@@ -139,10 +143,45 @@ class TestCell(TestProducer):
     self.assertTrue(self.comp.is_built)
     self.read_data_assertions(self.cell_type)
 
-
   def test_collect_resources(self):
     # can proxy envs init/connection, and resource existance, but not actual collection
+    # collection should simply be a dedicated buffer for collecting for preestablished connections through the collectors
     pass
+
+  # @given(valid_packages()) # pylint: disable=no-value-for-parameter
+  # def test_operation_details(self,inputs):
+  #   pass
+
+  # """
+  # What happens before a localized conv
+  #  patch = we extract a part of the shape
+  #   - How do we select which part of the shape to process?
+  # """
+  # @given(st.text())
+  # def test_process(self, inputs):
+  #   """
+  #   given the properties
+  #     - collectors
+  #     - module_inputs_dict
+  #     - module_outputs_dict
+  #   when it is time to process inputs
+  #   then each instruction should be executed
+  #   """
+  #   """
+  #   What happens during a localized convolution?
+  #   - active_connect = get_random_fill_from(base_weights,mod_weights, other_mods) which incorps the * can_be_active_now
+  #   - acutal_inputs = patch * active_connect
+  #       the patch is where we can leverage resources from
+  #       each resource index, has an independent % chance of being activated though
+  #       thus, we must calc the inputs to be used this timestep before doing anything
+  #   - 
+  #   total_compute_per_simulated_ts = avg_latency_per_simulated_ts + avg_compute_per_simulated_ts
+  #   simulated_fps = num_ts_per_simulated_sec + total_compute_per_simulated_ts
+  #   there is going to be a slew of timestep logic that spans many components
+  #   Not sure as to what needs to be abstracted though
+  #   """
+  #   pass
+
 
   # @given()
   # def test_pack(self,inputs):
@@ -175,29 +214,6 @@ class TestCell(TestProducer):
   #       st.sampled_from(['sender_set_id','self','Self',''])))
   #   pass
 
-
-  # """
-  # What happens before a localized conv
-  #  patch = we extract a part of the shape
-  #   - How do we select which part of the shape to process?
-  # """
-  # @given(st.text())
-  # def test_localized_conv(self, patch):
-  #   """
-  #   What happens during a localized convolution?
-  #   - active_connect = get_random_fill_from(base_weights,mod_weights, other_mods) which incorps the * can_be_active_now
-  #   - acutal_inputs = patch * active_connect
-  #       the patch is where we can leverage resources from
-  #       each resource index, has an independent % chance of being activated though
-  #       thus, we must calc the inputs to be used this timestep before doing anything
-  #   - 
-  #   total_compute_per_simulated_ts = avg_latency_per_simulated_ts + avg_compute_per_simulated_ts
-  #   simulated_fps = num_ts_per_simulated_sec + total_compute_per_simulated_ts
-  #   there is going to be a slew of timestep logic that spans many components
-  #   Not sure as to what needs to be abstracted though
-  #   """
-  #   pass
-  
   # @given(st.text(),st.text())
   # def test_get_activity_data(self, inputs, timestep):
   #   """
@@ -206,17 +222,6 @@ class TestCell(TestProducer):
   #   """
   #   pass
 
-  # @given(st.text())
-  # def test_process(self, inputs):
-  #   """
-  #   given the properties
-  #     - collectors
-  #     - module_inputs_dict
-  #     - module_outputs_dict
-  #   when it is time to process inputs
-  #   then each instruction should be executed
-  #   """
-  #   pass
   # # def test_get_random_fill_from(self):
   
   # @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter

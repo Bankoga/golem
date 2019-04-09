@@ -13,7 +13,7 @@ class TestMeld(unittest.TestCase):
   def setUp(self):
     self.defaults = {
       'ch_type': ChannelType.OVERLAY,
-      'resource': RsrcType.ENERGY,
+      'resource': RsrcType.ENERGIZER,
       'address': None,
       'shape': (1,1)
     }
