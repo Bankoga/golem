@@ -42,6 +42,7 @@ class TestCell(TestProducer):
     self.set_up_base()
     self.set_up_var()
     self.comp = self.comp_class(*self.values,label=self.label)
+    self.comp.address = self.address
 
   def test_get_cell_type(self):
     self.assertEqual(self.comp.cell_type, self.cell_type)
@@ -123,9 +124,10 @@ class TestCell(TestProducer):
     res = self.comp.create_collectors()
     num_ic = 0
     for i,collector_def in enumerate(expected_data['collector_defs']):
-      for ic,direction in enumerate(collector_def):
-        num_ic = num_ic + 1
-        collector=res[i+ic+(num_ic-1)]
+      for ic,direction in enumerate(collector_def[0]):
+        if (ic > 0):
+          num_ic = num_ic + 1
+        collector=res[i+num_ic]
         self.assertEqual(collector.step_direction, direction)
         self.assertEqual(collector.num_steps, len(collector_def[1]))
         self.assertEqual(len(collector.leaves), len(collector_def[1]))

@@ -20,7 +20,6 @@ cell_data = {
   'BASKET': {
     "collector_defs":[
       ["AB",[(4,4)]],
-      ["AB",[(8,8)]],
       ["S",[(4,4),(8,8),(12,12)]]
     ],
     "freq_range": [5,256],
@@ -42,7 +41,6 @@ cell_data = {
   'CROWN': {
     "collector_defs": [
       ["A",[(4,4)]],
-      ["A",[(8,8)]],
       ["S",[(3,3)]]
     ],
     "freq_range": [5,256],
@@ -66,7 +64,6 @@ cell_data = {
   'INV_CROWN': {
     "collector_defs":[
       ["B",[(4,4)]],
-      ["B",[(8,8)]],
       ["S",[(3,3)]]
     ],
     "freq_range": [5,256],
@@ -118,7 +115,6 @@ cell_data = {
   'PYRAMID': {
     "collector_defs":[
       ["A",[(1,1),(1,1),(1,1),(4,4),(8,8)]],
-      ["B",[(4,4)]],
       ["B",[(8,8)]],
       ["S",[(3,3)]]
     ],
@@ -131,7 +127,6 @@ cell_data = {
   'ROSE': {
     "collector_defs":[
       ["A",[(4,4)]],
-      ["A",[(8,8)]],
       ["S",[(3,3)]]
     ],
     "freq_range": [5,256],
@@ -143,7 +138,6 @@ cell_data = {
   'STAR': {
     "collector_defs":[
       ["ABS",[(4,4),(5,5),(6,6)]],
-      ["ABS",[(8,8),(10,10),(12,12)]]
     ],
     "freq_range": [5,256],
     "init_freq": 5,
