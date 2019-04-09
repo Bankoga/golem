@@ -6,7 +6,7 @@ Welcome ephemeral arrangements of cosmic grain one and all!
 
 When it comes to trying to understand general intelligence in humans, to see if it is possible to replicate in software, there are several questions that need to be answered. Some of the relevant primary questions that needs to be answered are as follows:
 
-* What is conscioussness?
+* What is consciousness?
   * Is consciousness "a thing that there is to be like that entity", or is it modern human level self awareness, with lots of "I"?
 * What is intelligence?
   * Is it simply problem solving, or is it meta-problem solving necessary?
@@ -17,11 +17,11 @@ When it comes to trying to understand general intelligence in humans, to see if 
 * What is the minimum number of neurons required for a human to be generally intelligent?
 
 Given that all doubts as to the immediate possibility of machine general intelligence have long since been removed by the works of others in my mind
-And that the only caveat is the potential necessity of organic chemsitry to consciousness, life, or intelligence
+And that the only caveat is the potential necessity of organic chemistry to consciousness, life, or intelligence
 And thus I have zero expectation of failure in logical feasibility of the current approach (not backprop...)
 When solving for something one thinks if of sufficient impact
 And everyone else thinks is of sufficient impact
-And is indeed going to be of sufficient impact in the miniscule possibility of success
+And is indeed going to be of sufficient impact in the minuscule possibility of success
 Then it is necessary to seriously attempt to converse about it even if in the most likely case that I fail, I will simply be laughed at, called a fool, and in case of virality, quite publicly
 
 **PURPOSE**
@@ -59,7 +59,7 @@ Fun Fact: As of writing 2019-04-09 dev has 951 passing, 1 failing, and 141 error
 https://github.com/Bankoga/golem
 
 These docs are what helped spawn the framework approach, which you'll have to dig some to find any real detail on.
-In technical respects, the readme only covers why modern techniques should be sufficient, and whichs ones should work, sort of. Not really. Thanky you lovely scientists for doing all the work for me! I love you!
+In technical respects, the readme only covers why modern techniques should be sufficient, and which ones should work, sort of. Not really. Thanky you lovely scientists for doing all the work for me! I love you!
 
 https://drive.google.com/drive/folders/1dsulx2QpHxY5RcmM6AYLKsFvVQhhxaw9?usp=sharing
 
