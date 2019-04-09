@@ -65,8 +65,8 @@ outputs:
   noise_dwn_inhib: [self-cntxt_up_inhib;INHIBITOR;OVERLAY,cycle_relay;INHIBITOR;OVERLAY,cntxt_relay;INHIBITOR;OVERLAY]
   noise_adj_inhib: [self-noise_dwn_inhib;INHIBITOR;OVERLAY]
   cycle_gate_ctrl: [self-cycle_relay;INHIBITOR;OVERLAY]
-  cycle_stg_adv: [self-cycle_relay;ENERGY;OVERLAY,cntxt_ctrl;ENERGY;OVERLAY,proc_ctrl;ENERGY;OVERLAY]
-  cntxt_stg_adv: [self-cntxt_relay;ENERGY;OVERLAY,cntxt_ctrl;ENERGY;OVERLAY,proc_ctrl;ENERGY;OVERLAY]
+  cycle_stg_adv: [self-cycle_relay;ENERGIZER;OVERLAY,cntxt_ctrl;ENERGIZER;OVERLAY,proc_ctrl;ENERGIZER;OVERLAY]
+  cntxt_stg_adv: [self-cntxt_relay;ENERGIZER;OVERLAY,cntxt_ctrl;ENERGIZER;OVERLAY,proc_ctrl;ENERGIZER;OVERLAY]
   cntxt_up_inhib: [self-cntxt_relay;INHIBITOR;OVERLAY]
   relay_stg_adv: null
 ...

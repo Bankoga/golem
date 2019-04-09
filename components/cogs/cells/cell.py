@@ -20,15 +20,22 @@ class Cell(Producer):
     raise RuntimeError('Can not set value of cell type')
 
   @property
-  def source_index(self):
+  def resources_accepted(self):
     return self.var[2]
+  @resources_accepted.setter
+  def resources_accepted(self, value):
+    raise RuntimeError('Can not set value of source index')
+
+  @property
+  def source_index(self):
+    return self.var[3]
   @source_index.setter
   def source_index(self, value):
     raise RuntimeError('Can not set value of source index')
   
   @property
   def source_shape(self):
-    return self.var[3]
+    return self.var[4]
   @source_shape.setter
   def source_shape(self, value):
     raise RuntimeError('Can not set value of source shape')
@@ -47,12 +54,11 @@ class Cell(Producer):
     self.init_threshhold = type_data['init_threshhold']
     self.activation_function = type_data['activation_function']
   
-  def create_collectors_from_def(self, name, collector_def):
+  def create_collectors_from_def(self, name, collector_def, resources_accepted):
     if collector_def is None:
       raise RuntimeError('It is recommended to have an actual collector def when trying to create cells!')
     collectors = []
     segment_defs = collector_def[1]
-    resources_accepted=collector_def[2]
     for direction in collector_def[0]:
       child_label = f'{name}_{direction}'
       new_c = Collector(label=child_label)
@@ -73,7 +79,7 @@ class Cell(Producer):
     collectors = []
     names = kin_label_gen_unique(self.label, len(self.collector_defs))
     for i,collector_def in enumerate(self.collector_defs):
-      collectors.append(self.create_collectors_from_def(names[i], collector_def))
+      collectors.append(self.create_collectors_from_def(names[i], collector_def, self.resources_accepted))
     return collectors
 
   def build_details(self, *args, **kwargs):
@@ -83,7 +89,7 @@ class Cell(Producer):
 
   def pack(self,inputs):
     pass
-  
+
   def localized_conv(self, shape):
     pass
   

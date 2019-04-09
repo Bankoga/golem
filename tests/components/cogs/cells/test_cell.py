@@ -14,7 +14,7 @@ from tests.strategies.channel_strats import valid_cell_instruction
 from tests.strategies.prop_strats import arb_cell_type, arb_label
 from tests.strategies.instruction_strats import arb_full_collector_def
 from tests.components.base.mechanisms.cogs.test_producer import TestProducer
-from tests.strategies.data_strats import valid_shape
+from tests.strategies.data_strats import valid_shape, arb_resource_set
 
 from components.channels.misc_funcs import build_address, build_meld, build_package
 
@@ -32,9 +32,10 @@ class TestCell(TestProducer):
       'address': self.address
     }
     self.cell_type = CellType.PYRAMID
+    self.resources_accepted = [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
     self.source_index = (0,0)
     self.source_shape = (256,256)
-    self.values = [self.registry,self.cell_type,self.source_index,self.source_shape]
+    self.values = [self.registry,self.cell_type,self.resources_accepted,self.source_index,self.source_shape]
     self.var = tuple(self.values)
 
   def setUp(self):
@@ -50,6 +51,13 @@ class TestCell(TestProducer):
     with self.assertRaises(RuntimeError):
       self.comp.cell_type = cell_type
 
+  def test_get_resources_accepted(self):
+    self.assertEqual(self.comp.resources_accepted, self.resources_accepted)
+  @given(valid_shape()) # pylint: disable=no-value-for-parameter
+  def test_set_resources_accepted(self, resources_accepted):
+    with self.assertRaises(RuntimeError):
+      self.comp.resources_accepted = resources_accepted
+  
   def test_get_source_index(self):
     self.assertEqual(self.comp.source_index, self.source_index)
   @given(valid_shape()) # pylint: disable=no-value-for-parameter
@@ -87,23 +95,23 @@ class TestCell(TestProducer):
     # can proxy for later! wait until post config to post proxy residence buildable golems
     pass
 
-  @given(arb_label(), arb_full_collector_def()) # pylint: disable=no-value-for-parameter
-  def test_create_collectors_from_def(self, name, collector_def):
+  @given(arb_label(), arb_full_collector_def(), arb_resource_set()) # pylint: disable=no-value-for-parameter
+  def test_create_collectors_from_def(self, name, collector_def, resources_accepted):
     # Collector defs do what?
     # specify a set of directions to set up collectors
     # each step is represented by a list of filter shapes
     self.comp.address = self.address
     if collector_def is None:
       with self.assertRaises(RuntimeError):
-        res = self.comp.create_collectors_from_def(name, collector_def)
-    res = self.comp.create_collectors_from_def(name, collector_def)
+        res = self.comp.create_collectors_from_def(name, collector_def, resources_accepted)
+    res = self.comp.create_collectors_from_def(name, collector_def, resources_accepted)
     for ic,c in enumerate(collector_def[0]):
       collector = res[ic]
       self.assertEqual(collector.label, f'{name}_{c}')
       self.assertEqual(collector.step_direction, c)
       self.assertEqual(collector.num_steps, len(collector_def[1]))
       self.assertEqual(len(collector.leaves), len(collector_def[1]))
-      self.assertEqual(collector.resources_accepted, collector_def[2])
+      self.assertEqual(collector.resources_accepted, resources_accepted)
       self.assertEqual(collector.source_index, self.source_index)
       self.assertEqual(collector.source_shape, self.source_shape)
       self.assertEqual(self.comp.address, self.address)

@@ -36,7 +36,7 @@ class TestChannel(TestMediator):
     self.address = None
     self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
     self.shape = tuple([256,256])
-    self.resource = RsrcType.ENERGY
+    self.resource = RsrcType.ENERGIZER
     self.ch_type = ChannelType.AGGREGATE
     self.meld_str = f'{self.ch_type.name};{self.resource.name};{self.recipient};{self.shape}'
     self.meld_var = read_meld_str(self.meld_str)
