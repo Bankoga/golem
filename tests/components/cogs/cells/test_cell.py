@@ -41,8 +41,7 @@ class TestCell(TestProducer):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
-    self.comp.update(*self.values)
+    self.comp = self.comp_class(*self.values,label=self.label)
 
   def test_get_cell_type(self):
     self.assertEqual(self.comp.cell_type, self.cell_type)
