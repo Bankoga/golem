@@ -33,8 +33,7 @@ class TestMediator(TestMechanism):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
-    self.comp.update(*self.values)
+    self.comp = self.comp_class(*self.values, label=self.label, ctg=self.ctg)
 
   def test_get_address_registry(self):
     self.assertEqual(self.comp.address_registry, self.address_registry)
