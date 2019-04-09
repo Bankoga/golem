@@ -79,9 +79,6 @@ class Collector(Instruction):
       res.append(CollectorSegment(residence_address=item[0],source_address=self.address,source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
     self.__leaves = res
 
-  def conv(self, npmatrix):
-    return 0
-
   def instruction_details(self,curr_data=[],inputs=None,context=None,*args):
     res = []
     for i, cllct_sgmnt in enumerate(self.leaves):
