@@ -59,7 +59,7 @@ Fun Fact: As of writing 2019-04-09 dev has 951 passing, 1 failing, and 141 error
 https://github.com/Bankoga/golem
 
 These docs are what helped spawn the framework approach, which you'll have to dig some to find any real detail on.
-In technical respects, the readme only covers why modern techniques should be sufficient, and which ones should work, sort of. Not really. Thanky you lovely scientists for doing all the work for me! I love you!
+In technical respects, the readme only covers why modern techniques should be sufficient, and which ones should work, sort of. Not really. Thank you lovely scientists for doing all the work for me! I love you!
 
 https://drive.google.com/drive/folders/1dsulx2QpHxY5RcmM6AYLKsFvVQhhxaw9?usp=sharing
 
