@@ -143,10 +143,45 @@ class TestCell(TestProducer):
     self.assertTrue(self.comp.is_built)
     self.read_data_assertions(self.cell_type)
 
-
   def test_collect_resources(self):
     # can proxy envs init/connection, and resource existance, but not actual collection
+    # collection should simply be a dedicated buffer for collecting for preestablished connections through the collectors
     pass
+
+  # @given(valid_packages()) # pylint: disable=no-value-for-parameter
+  # def test_operation_details(self,inputs):
+  #   pass
+
+  # """
+  # What happens before a localized conv
+  #  patch = we extract a part of the shape
+  #   - How do we select which part of the shape to process?
+  # """
+  # @given(st.text())
+  # def test_process(self, inputs):
+  #   """
+  #   given the properties
+  #     - collectors
+  #     - module_inputs_dict
+  #     - module_outputs_dict
+  #   when it is time to process inputs
+  #   then each instruction should be executed
+  #   """
+  #   """
+  #   What happens during a localized convolution?
+  #   - active_connect = get_random_fill_from(base_weights,mod_weights, other_mods) which incorps the * can_be_active_now
+  #   - acutal_inputs = patch * active_connect
+  #       the patch is where we can leverage resources from
+  #       each resource index, has an independent % chance of being activated though
+  #       thus, we must calc the inputs to be used this timestep before doing anything
+  #   - 
+  #   total_compute_per_simulated_ts = avg_latency_per_simulated_ts + avg_compute_per_simulated_ts
+  #   simulated_fps = num_ts_per_simulated_sec + total_compute_per_simulated_ts
+  #   there is going to be a slew of timestep logic that spans many components
+  #   Not sure as to what needs to be abstracted though
+  #   """
+  #   pass
+
 
   # @given()
   # def test_pack(self,inputs):
@@ -179,29 +214,6 @@ class TestCell(TestProducer):
   #       st.sampled_from(['sender_set_id','self','Self',''])))
   #   pass
 
-
-  # """
-  # What happens before a localized conv
-  #  patch = we extract a part of the shape
-  #   - How do we select which part of the shape to process?
-  # """
-  # @given(st.text())
-  # def test_localized_conv(self, patch):
-  #   """
-  #   What happens during a localized convolution?
-  #   - active_connect = get_random_fill_from(base_weights,mod_weights, other_mods) which incorps the * can_be_active_now
-  #   - acutal_inputs = patch * active_connect
-  #       the patch is where we can leverage resources from
-  #       each resource index, has an independent % chance of being activated though
-  #       thus, we must calc the inputs to be used this timestep before doing anything
-  #   - 
-  #   total_compute_per_simulated_ts = avg_latency_per_simulated_ts + avg_compute_per_simulated_ts
-  #   simulated_fps = num_ts_per_simulated_sec + total_compute_per_simulated_ts
-  #   there is going to be a slew of timestep logic that spans many components
-  #   Not sure as to what needs to be abstracted though
-  #   """
-  #   pass
-  
   # @given(st.text(),st.text())
   # def test_get_activity_data(self, inputs, timestep):
   #   """
@@ -210,17 +222,6 @@ class TestCell(TestProducer):
   #   """
   #   pass
 
-  # @given(st.text())
-  # def test_process(self, inputs):
-  #   """
-  #   given the properties
-  #     - collectors
-  #     - module_inputs_dict
-  #     - module_outputs_dict
-  #   when it is time to process inputs
-  #   then each instruction should be executed
-  #   """
-  #   pass
   # # def test_get_random_fill_from(self):
   
   # @given(valid_cell_instruction()) # pylint: disable=no-value-for-parameter

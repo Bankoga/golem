@@ -87,6 +87,15 @@ class Cell(Producer):
     self.read_data(self.cell_type)
     self.create_collectors()
 
+  # def operation_details(self,*args,**kwargs):
+  #   res = self.instruction_details(*args,**kwargs)
+  #   if len(res) > 0:
+  #     self.__old_data.append(self.prev_data)
+  #     self.__prev_data = list(args)
+  #     return res
+  #   else:
+  #     return False
+
   def pack(self,inputs):
     pass
 
