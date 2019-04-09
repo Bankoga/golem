@@ -50,7 +50,7 @@ class TestCollector(TestInstruction):
     self.source_index = (45,25)
     self.step_direction = 'A' # TODO: Use correct ENUM
     self.num_steps = len(self.segment_defs)
-    self.resources_accepted = [RsrcType.ENERGY]
+    self.resources_accepted = [RsrcType.ENERGIZER]
     self.values = [self.registry,
                    self.source_index,
                    self.source_shape,

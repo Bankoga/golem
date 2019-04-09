@@ -75,7 +75,7 @@ class ChannelType(Enum):
 
 class RsrcType(Enum):
   UNSET = 1
-  ENERGY = 2
+  ENERGIZER = 2
   INHIBITOR = 3
   def get_component_type(self):
     return CtgType.DATA

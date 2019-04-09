@@ -5,7 +5,7 @@ from components.vars.data import Address
 
 class Meld(typing.NamedTuple):
   ch_type: ChannelType = ChannelType.OVERLAY
-  resource: RsrcType = RsrcType.ENERGY
+  resource: RsrcType = RsrcType.ENERGIZER
   address: Address = None
   shape: tuple = (1,1)
 
