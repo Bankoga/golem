@@ -10,9 +10,9 @@ from components.func_sets.fs_builder_provider import fs_services
 from components.func_sets.func_set import FuncSet
 
 from components.enums.pos import CtgType
-from components.matrix.address_registry import AddressRegistry
+from components.matrix.lineage_registry import LineageRegistry
 from components.matrix.channel_registry import ChannelRegistry
-from components.vars.data import Address
+from components.vars.data import Lineage
 from tests.strategies.func_set_strats import module_input_set
 from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
 
@@ -23,15 +23,15 @@ class TestFuncSet(TestMediator):
     self.comp_class = FuncSet
 
   def set_up_var(self):
-    self.registry = AddressRegistry(label='global_address_registry_api')
+    self.registry = LineageRegistry(label='global_lineage_registry_api')
     self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
-    self.address_registry = self.registry
-    self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
-    self.address = Address(golem='a',matrix='l',func_set='glg')
-    self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
+    self.lineage_registry = self.registry
+    self.sender = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
+    self.lineage = Lineage(golem='a',matrix='l',func_set='glg')
+    self.recipient = Lineage(golem='a',matrix='l',func_set='vis_a')
     self.reg_item = {
       'reg_id': self.label,
-      'address': self.address
+      'lineage': self.lineage
     }
     self.values = [self.registry, self.channel_registry]
     self.var = tuple(self.values)
@@ -99,11 +99,11 @@ class TestFuncSet(TestMediator):
   # def test_get_component_type(self):
   #   pass
 
-  # def test_address(self):
+  # def test_lineage(self):
   #   # given the rest of the environmental context
-  #   # when I check the address
+  #   # when I check the lineage
   #   # then it should be equal to format(DATA)
-  #   # self.assertTrue(self.group.address)
+  #   # self.assertTrue(self.group.lineage)
   #   pass
 
   # def test_valid_output_packs(self):

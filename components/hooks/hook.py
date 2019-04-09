@@ -36,7 +36,7 @@
 #     self.resource = RsrcType.UNSET
 #     self.ctg_type = ChannelType.UNSET
 #     self.shape = FieldType.UNSET
-#     self.address=self.meld_tuple[0]
+#     self.lineage=self.meld_tuple[0]
 #     if len(self.meld_tuple)>1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
 #       self.resource=RsrcType(self.meld_tuple[1])
 #     if len(self.meld_tuple)>2 and self.meld_tuple[2] and self.meld_tuple[2] in ChannelType:

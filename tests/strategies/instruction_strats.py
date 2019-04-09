@@ -5,18 +5,18 @@ from components.data.collector_segment import CollectorSegment
 
 from tests.strategies.data_strats import valid_shape
 from tests.strategies.prop_strats import arb_resource_type
-from tests.strategies.pos_strats import arb_addr, arb_label,arb_step_directions
-from components.vars.data import Address
+from tests.strategies.pos_strats import arb_lineage, arb_label,arb_step_directions
+from components.vars.data import Lineage
 
 @composite
 def valid_collector_segment(draw):
   x = draw(valid_shape()) # pylint: disable=no-value-for-parameter
-  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  lineage = draw(arb_lineage()) # pylint: disable=no-value-for-parameter
   label = draw(arb_label()) # pylint: disable=no-value-for-parameter
   si = draw(valid_shape()) # pylint: disable=no-value-for-parameter
-  st.assume(x and si and addr and label)
-  st.assume(type(addr) == Address)
-  z = CollectorSegment(address=addr,source_index=si,fill_shape=x,label=label)
+  st.assume(x and si and lineage and label)
+  st.assume(type(lineage) == Lineage)
+  z = CollectorSegment(lineage=lineage,source_index=si,fill_shape=x,label=label)
   return z
 
 @composite

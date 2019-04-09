@@ -1,12 +1,12 @@
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from components.matrix.address_registry import AddressRegistry
+from components.matrix.lineage_registry import LineageRegistry
 
 from tests.strategies.prop_strats import arb_label
 
 @composite
-def addr_reg(draw):
+def lineage_reg(draw):
   lbl = draw(arb_label()) # pylint: disable=no-value-for-parameter
-  reg = AddressRegistry(label=lbl)
+  reg = LineageRegistry(label=lbl)
   return reg

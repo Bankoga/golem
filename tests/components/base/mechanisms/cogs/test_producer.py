@@ -5,8 +5,8 @@ from hypothesis import strategies as st
 
 from components.base.mechanisms.cogs.producer import Producer
 from components.enums.pos import CtgType
-from components.matrix.address_registry import AddressRegistry
-from components.vars.data import Address
+from components.matrix.lineage_registry import LineageRegistry
+from components.vars.data import Lineage
 from tests.components.base.mechanisms.test_mechanism import TestMechanism
 
 
@@ -17,11 +17,11 @@ class TestProducer(TestMechanism):
     self.comp_class = Producer
 
   def set_up_var(self):
-    self.registry = AddressRegistry(label='global_registry')
-    self.address = Address(golem='a',matrix='l',func_set='b',stage='base',group='randos',packager='star_0')
+    self.registry = LineageRegistry(label='global_registry')
+    self.lineage = Lineage(golem='a',matrix='l',func_set='b',stage='base',group='randos',packager='star_0')
     self.reg_item = {
       'reg_id': self.label,
-      'address': self.address
+      'lineage': self.lineage
     }
     self.values = [self.registry]
     self.var = tuple(self.values)

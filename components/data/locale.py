@@ -2,27 +2,27 @@
 # from components.enums.pos import CtgType
 
 # class Locale(PassiveComp):
-#   def __init__(self, address, pos, **kwargs):
+#   def __init__(self, lineage, pos, **kwargs):
 #     kwargs['ctg'] = CtgType.DATA
-#     super().__init__(address, pos, **kwargs)
+#     super().__init__(lineage, pos, **kwargs)
 
 #   @property
-#   def address(self):
+#   def lineage(self):
 #     return self.__var[0]
   
 #   @property
 #   def pos(self):
 #     return self.__var[1]
   
-#   # @address.setter
-#   # def address(self, addr):
+#   # @lineage.setter
+#   # def lineage(self, lineage):
 #   #   pass
 
 #   # @pos.setter
-#   # def pos(self, addr):
+#   # def pos(self, lineage):
 #   #   pass
 
-#   # def update_address(self,new_address):
+#   # def update_lineage(self,new_lineage):
 #   #   pass
     
 #   # def update_pos(self,new_pos):

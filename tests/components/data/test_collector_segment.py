@@ -6,7 +6,7 @@ from numpy import array, array_equal, ones
 
 from components.data.collector_segment import CollectorSegment
 from components.enums.pos import CtgType
-from components.vars.data import Address
+from components.vars.data import Lineage
 from tests.components.base.test_plastic_comp import TestPlasticComp
 from tests.components.base.test_segment import TestSegment
 from tests.strategies.data_strats import (valid_resource_data,
@@ -15,7 +15,7 @@ from tests.strategies.data_strats import (valid_resource_data,
                                           valid_sz_shape_and_index,
                                           valid_weights)
 from tests.strategies.instruction_strats import valid_collector_segment
-from tests.strategies.pos_strats import arb_addr
+from tests.strategies.pos_strats import arb_lineage
 from utils.pos import Pos
 from math import isnan
 
@@ -26,9 +26,9 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.comp_class = CollectorSegment
     
   def set_up_var(self):
-    self.source_address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0')
-    self.residence_address = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
-    self.address = self.residence_address
+    self.source_lineage = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0')
+    self.residence_lineage = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
+    self.lineage = self.residence_lineage
     self.source_index = (0,0)
     self.fill_shape = (4,4)
     self.weights = ones(self.fill_shape)
@@ -48,7 +48,7 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.set_up_base()
     self.set_up_defaults()
     self.set_up_var()
-    self.comp = self.comp_class(self.value,residence_address=self.residence_address,source_address=self.source_address,address=self.address,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
+    self.comp = self.comp_class(self.value,residence_lineage=self.residence_lineage,source_lineage=self.source_lineage,lineage=self.lineage,source_index=self.source_index,fill_shape=self.fill_shape,label=self.label)
 
   @given(valid_shape()) # pylint: disable=no-value-for-parameter
   def test_set_fill_shape(self, arb_shape):
@@ -56,12 +56,12 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.assertEqual(self.comp.fill_shape, arb_shape)
     self.assertEqual(self.comp.shape, arb_shape)
 
-  def test_get_source_address(self):
-    self.assertEqual(self.comp.source_address, self.source_address)
-  @given(arb_addr()) # pylint: disable=no-value-for-parameter
-  def test_set_source_address(self, addr):
+  def test_get_source_lineage(self):
+    self.assertEqual(self.comp.source_lineage, self.source_lineage)
+  @given(arb_lineage()) # pylint: disable=no-value-for-parameter
+  def test_set_source_lineage(self, lineage):
     with self.assertRaises(RuntimeError):
-      self.comp.source_address = addr
+      self.comp.source_lineage = lineage
   
   def test_get_collection_chances(self):
     self.assertTrue(array_equal(self.comp.collection_chances, self.default_collection_chances))

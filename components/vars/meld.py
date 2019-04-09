@@ -1,16 +1,16 @@
 import typing
 
 from components.enums.prop_types import RsrcType,ChannelType
-from components.vars.data import Address
+from components.vars.data import Lineage
 
 class Meld(typing.NamedTuple):
   ch_type: ChannelType = ChannelType.OVERLAY
   resource: RsrcType = RsrcType.ENERGIZER
-  address: Address = None
+  lineage: Lineage = None
   shape: tuple = (1,1)
 
   def __str__(self):
-    return f'{self.ch_type};{self.resource};{self.address};{self.shape}'
+    return f'{self.ch_type};{self.resource};{self.lineage};{self.shape}'
   
   # TODO: add init to meld so that it can process string melds?
 

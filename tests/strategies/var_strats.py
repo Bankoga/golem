@@ -1,7 +1,7 @@
 from hypothesis import strategies as st
 from hypothesis.strategies import composite
 
-from tests.strategies.pos_strats import valid_pos, arb_addr
+from tests.strategies.pos_strats import valid_pos, arb_lineage
 from tests.strategies.prop_strats import arb_label
 
 @composite
@@ -19,26 +19,26 @@ def reg_item_valid_var(draw):
   return reg_item
 
 @composite
-def addr_item_var(draw):
-  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+def lineage_item_var(draw):
+  lineage = draw(arb_lineage()) # pylint: disable=no-value-for-parameter
   reg_id = draw(arb_label()) # pylint: disable=no-value-for-parameter
-  addr_item = {
+  lineage_item = {
     'reg_id': reg_id,
-    'address': addr
+    'lineage': lineage
   }
-  return addr_item
+  return lineage_item
 
 @composite
-def addr_item_valid_var(draw):
-  # addr_item = draw(st.fixed_dictionaries({'address': arb_addr(),'pos': valid_pos(),'reg_id': arb_label()})) # pylint: disable=no-value-for-parameter
-  addr_item = draw(addr_item_var()) # pylint: disable=no-value-for-parameter
-  st.assume(addr_item)
-  return addr_item
+def lineage_item_valid_var(draw):
+  # lineage_item = draw(st.fixed_dictionaries({'lineage': arb_lineage(),'pos': valid_pos(),'reg_id': arb_label()})) # pylint: disable=no-value-for-parameter
+  lineage_item = draw(lineage_item_var()) # pylint: disable=no-value-for-parameter
+  st.assume(lineage_item)
+  return lineage_item
 
 @composite
 def channel_item_var(draw):
-  recipient = draw(arb_addr()) # pylint: disable=no-value-for-parameter
-  sender = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  recipient = draw(arb_lineage()) # pylint: disable=no-value-for-parameter
+  sender = draw(arb_lineage()) # pylint: disable=no-value-for-parameter
   reg_id = draw(arb_label()) # pylint: disable=no-value-for-parameter
   channel_item = {
     'reg_id': reg_id,

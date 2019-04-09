@@ -1,13 +1,13 @@
 import re
 
-from components.axioms.pos import address_pattern
+from components.axioms.pos import lineage_pattern
 from components.enums.pos import CtgType
 
 def is_valid_ctg(ctg):
   return ctg in CtgType
 
-def is_valid_addr(addr):
-  res = re.search(address_pattern, addr)
+def is_valid_lineage(lineage):
+  res = re.search(lineage_pattern, lineage)
   if res is None:
     return False
   else:

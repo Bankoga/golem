@@ -4,13 +4,13 @@ from components.base.mechanisms.mediators.mediator import Mediator
 from components.enums.pos import CtgType
 from components.enums.prop_types import GroupType
 
-from components.channels.misc_funcs import build_address
+from components.channels.misc_funcs import build_lineage
 class FuncSet(Mediator):
   """
-  A functional set is an addressable processing region within a matrix
+  A functional set is an lineageable processing region within a matrix
   It is a package production group
   each functional group in a matrix defines N things
-    - an unique address
+    - an unique lineage
     - the packages it produces
     - the rules for consuming the two types of packages: overlayed and aggregated
     - the types of packages it consumes that are module level

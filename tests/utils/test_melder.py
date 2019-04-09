@@ -20,7 +20,7 @@
 #     datp = self.melder.eval_meld(meld)
 #     self.assertIsInstance(datp,Package)
 #     parts=meld.split(",")
-#     self.assertTrue(datp.address==parts[0])
+#     self.assertTrue(datp.lineage==parts[0])
 #     self.assertTrue(datp.resource==parts[1])
 #     self.assertTrue(datp.shape==parts[2])
 
@@ -29,7 +29,7 @@
 #     datp = self.melder.eval_meld(meld)
 #     self.assertIsInstance(datp,Package)
 #     parts=meld.split(",")
-#     self.assertTrue(datp.address!=parts[0])
+#     self.assertTrue(datp.lineage!=parts[0])
 #     self.assertTrue(datp.resource!=parts[1])
 
 #   @given(st.from_regex(f'{dest_key_pattern},({"|".join(resource_types.keys())})(,SHAPE)'))
@@ -37,7 +37,7 @@
 #     datp = self.melder.eval_meld(meld)
 #     self.assertIsInstance(datp,list(Package))
 #     parts=meld.split(",")
-#     self.assertTrue(datp.address==parts[0])
+#     self.assertTrue(datp.lineage==parts[0])
 #     self.assertTrue(datp.resource==parts[1])
 #     self.assertTrue(datp.shape==parts[2])
 

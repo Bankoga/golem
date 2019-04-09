@@ -235,15 +235,15 @@ WHERE DOES THE ENERGIZER THAT DRIVES PACEMAKERS COME FROM? Many nodes fire spont
       - Low: low Malleability means it can only make small changes in shape in any given direction per BLANK before affecting the baselines.
       - High: High Malleability means it can change a lot in shape per BLANK before affecting the baselines. Imagine nodes that have axons which walk the entire matrix based on the current inputs, and outputs but resets after each session, only changing starting positiuon slightly.
     - Elasticity: indicates a components ability to resist a distorting influence (resources that lead to activation or state change) and to return to it's original shape and size when the influce is removed.
-      - Each Pod produces a matrix which represents the strain energy on each of it's components, and their sub-components shapes which can be used during a specific maintenance stage in a multi-stage operational cycle to drive long-term plasticity (this requires more research into Cauchy stress tensors). The 3x3x3 cauchy matrix may be sufficient if we can represent the axons, dendrites, and soma as 3 dimensions of stress. However, axons and dendrites are both distinct 3D Shapes, with the soma being more an abstract shape that isn't directly addressable, to an extent. So each axon, and dendrite may produce their own tensor.....
-- Edge: A data-flow directing conduit from one Node to a specific address which can form connections with other edges at their unbound destinations (or replace myelination with expanded destination sets?) via ports.
+      - Each Pod produces a matrix which represents the strain energy on each of it's components, and their sub-components shapes which can be used during a specific maintenance stage in a multi-stage operational cycle to drive long-term plasticity (this requires more research into Cauchy stress tensors). The 3x3x3 cauchy matrix may be sufficient if we can represent the axons, dendrites, and soma as 3 dimensions of stress. However, axons and dendrites are both distinct 3D Shapes, with the soma being more an abstract shape that isn't directly lineageable, to an extent. So each axon, and dendrite may produce their own tensor.....
+- Edge: A data-flow directing conduit from one Node to a specific lineage which can form connections with other edges at their unbound destinations (or replace myelination with expanded destination sets?) via ports.
   - There are 3 types of Edges:
     - Read/Consume: Takes resources and adds them to the cells state
     - Write/Produce: Creates resources producing connections at Pods
     - Execute/Instruct: ?
 - Port: A data-bearing conduit between the edges of two nodes. Each reading edge is responsible for handling all of the ports for it's connections
-- Address: A uniquely generated string which serves as a shorthard representation for each pod within the Matrix.
-- Pod: A discretely addressable sub-set of a layer. It is the container/environment which hosts, operates, and prepares any number of nodes. Each pod represents some percentage of the input and output areas it in which it participates. Pods within the same layer cannot coexist in the same indices.
+- Lineage: A uniquely generated string which serves as a shorthard representation for each pod within the Matrix.
+- Pod: A discretely lineageable sub-set of a layer. It is the container/environment which hosts, operates, and prepares any number of nodes. Each pod represents some percentage of the input and output areas it in which it participates. Pods within the same layer cannot coexist in the same indices.
   - State: Represents the environment which affects the operations of a small set of cells. Need different mixing rules for pods within the same layer, across layers within the module, across layers between modules, and across cells between pods
     - Resource Level: An array of real numbers, each betwen [0,256], which represents the background level of an enumerated list of resources within the operating environment of some small set of cells
     - Definition: Pod(size=% of layer area occupied, misc=the rest of the details which are a WIP)
@@ -298,7 +298,7 @@ Adaptation/Growth/Plasticity/?: ?
 - Dendrite: A one-way edge that collections resource production data from one or more other Pods. Can be configured to also read from other directly connected dendrites, and not just from Axons.
 - Spike: A real number between [0,1] that used by all synapses to determine the number of resources generated. The distance of the spike value from 1 represents the refreshedness/cooldown/fatigue/? of the resource production source, i.e. the axons level of fatigue.
 - Chemical State: Represents the cells internal environment which drives cell operations.
-- Synapses: A specific type of Port that forms between two edges at a specific address with different sources which determines the number of resources to be produced for collection in the reading edge. By default, synapses can only form between axons, and dendrites.
+- Synapses: A specific type of Port that forms between two edges at a specific lineage with different sources which determines the number of resources to be produced for collection in the reading edge. By default, synapses can only form between axons, and dendrites.
 - Threshhold: The energy level required to generate resources at directly down-stream synapses.
 - ?: ?
 - ?: ?

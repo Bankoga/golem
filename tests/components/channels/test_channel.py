@@ -6,13 +6,13 @@ from numpy import array_equal
 
 from components.axioms.props import dest_key_pattern
 from components.enums.prop_types import FieldType, ChannelType, RsrcType
-from components.channels.misc_funcs import (build_address, build_meld,
+from components.channels.misc_funcs import (build_lineage, build_meld,
                                             build_package,
                                             build_channel_inputs)
 from components.enums.pos import CtgType
 from components.channels.channel import Channel
-from components.vars.data import Address
-from components.matrix.address_registry import AddressRegistry
+from components.vars.data import Lineage
+from components.matrix.lineage_registry import LineageRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from components.vars.meld import read_meld_str
 from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
@@ -20,7 +20,7 @@ from tests.strategies.channel_strats import arb_meld_str
 from tests.strategies.data_strats import valid_resource_data
 from tests.strategies.channel_strats import (channel_arbitrary, channel_inputs,
                                              valid_channel_arbitrary)
-from tests.strategies.pos_strats import arb_addr
+from tests.strategies.pos_strats import arb_lineage
 
 class TestChannel(TestMediator):
   def set_up_base(self):
@@ -29,12 +29,12 @@ class TestChannel(TestMediator):
     self.comp_class = Channel
 
   def set_up_var(self):
-    self.address_registry = AddressRegistry(label='global_address_registry_api')
+    self.lineage_registry = LineageRegistry(label='global_lineage_registry_api')
     self.registry = ChannelRegistry(label='global_channel_registry_api')
     self.channel_registry = self.registry
-    self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
-    self.address = None
-    self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
+    self.sender = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
+    self.lineage = None
+    self.recipient = Lineage(golem='a',matrix='l',func_set='vis_a')
     self.shape = tuple([256,256])
     self.resource = RsrcType.ENERGIZER
     self.ch_type = ChannelType.AGGREGATE
@@ -45,7 +45,7 @@ class TestChannel(TestMediator):
       'recipient': str(self.recipient),
       'sender': str(self.sender)
     }
-    self.values = [self.registry,self.address_registry,str(self.meld_var),str(self.sender)]
+    self.values = [self.registry,self.lineage_registry,str(self.meld_var),str(self.sender)]
     self.var = tuple(self.values)
 
   def setUp(self):
@@ -106,10 +106,10 @@ class TestChannel(TestMediator):
     self.assertEqual(self.comp.var, tuple(self.values))
   
   
-  # TODO: rewrite to address diff between channel registry and address registry when going over connections later
-  # @given(st.one_of(addr_reg(), st.integers())) # pylint: disable=no-value-for-parameter
+  # TODO: rewrite to lineage diff between channel registry and lineage registry when going over connections later
+  # @given(st.one_of(lineage_reg(), st.integers())) # pylint: disable=no-value-for-parameter
   # def test_set_registry(self, possible_reg):
-  #   if type(possible_reg) == AddressRegistry:
+  #   if type(possible_reg) == LineageRegistry:
   #     self.comp.registry = possible_reg
   #     self.assertEqual(self.comp.registry, possible_reg)
   #   else:

@@ -4,7 +4,7 @@ from numpy import full, ones
 
 from components.axioms.matrix import max_resource_value, min_resource_value
 from tests.strategies.prop_strats import arb_label,arb_resource_type
-from tests.strategies.pos_strats import valid_pos, arb_addr
+from tests.strategies.pos_strats import valid_pos, arb_lineage
 from utils.helpers.chaos import draw as draw_num
 
 @composite
@@ -76,6 +76,6 @@ def valid_locale(draw):
 
 @composite
 def valid_locale_inputs(draw):
-  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  lineage = draw(arb_lineage()) # pylint: disable=no-value-for-parameter
   pos = draw(valid_pos()) # pylint: disable=no-value-for-parameter
-  return (addr,pos)
+  return (lineage,pos)

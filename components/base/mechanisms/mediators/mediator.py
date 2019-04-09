@@ -5,12 +5,12 @@ class Mediator(Mechanism):
     super().__init__(*args, **kwargs)
 
   @property
-  def address_registry(self):
+  def lineage_registry(self):
     return self.registry
 
-  @address_registry.setter
-  def address_registry(self, value):
-    raise RuntimeError('Cannot set address registry!')
+  @lineage_registry.setter
+  def lineage_registry(self, value):
+    raise RuntimeError('Cannot set lineage registry!')
 
   @property
   def channel_registry(self):
@@ -20,7 +20,7 @@ class Mediator(Mechanism):
   def channel_registry(self, value):
     raise RuntimeError('Cannot set channel registry!')
   
-  # def collect_relative_addresses():
+  # def collect_relative_lineagees():
   # for each read, we change the Z in the direction supplied using the PROPER cardinator
   #  we also change the size of the sample
   #   this means we either have to be given the cardinator

@@ -14,7 +14,7 @@ class TestMeld(unittest.TestCase):
     self.defaults = {
       'ch_type': ChannelType.OVERLAY,
       'resource': RsrcType.ENERGIZER,
-      'address': None,
+      'lineage': None,
       'shape': (1,1)
     }
     self.meld = Meld()
@@ -29,7 +29,7 @@ class TestMeld(unittest.TestCase):
     res = read_meld_str(meld_str)
     self.assertEqual(res.ch_type,meld_tuple[0])
     self.assertEqual(res.resource,meld_tuple[1])
-    self.assertTrue(res.address==meld_tuple[2])
+    self.assertTrue(res.lineage==meld_tuple[2])
     self.assertEqual(res.shape,meld_tuple[3])
 
 if __name__ == '__main__':

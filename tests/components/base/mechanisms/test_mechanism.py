@@ -3,16 +3,16 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.matrix.address_registry import AddressRegistry
+from components.matrix.lineage_registry import LineageRegistry
 from components.base.mechanisms.mechanism import Mechanism
 from components.enums.pos import CtgType
 from tests.strategies.data_strats import valid_resource_data, valid_resource_array
-from components.vars.data import Address
+from components.vars.data import Lineage
 
 from tests.components.base.test_buildable_comp import TestBuildableComp
 
-from tests.strategies.matrix_strats import addr_reg
-from tests.strategies.pos_strats import arb_addr
+from tests.strategies.matrix_strats import lineage_reg
+from tests.strategies.pos_strats import arb_lineage
 
 class TestMechanism(TestBuildableComp):
   def set_up_base(self):
@@ -21,11 +21,11 @@ class TestMechanism(TestBuildableComp):
     self.comp_class = Mechanism
 
   def set_up_var(self):
-    self.registry = AddressRegistry(label='global_registry')
-    self.address = Address(golem='a',matrix='l',func_set='b')
+    self.registry = LineageRegistry(label='global_registry')
+    self.lineage = Lineage(golem='a',matrix='l',func_set='b')
     self.reg_item = {
       'reg_id': self.label,
-      'address': self.address
+      'lineage': self.lineage
     }
     self.values = [self.registry]
     self.var = tuple(self.values)
@@ -38,9 +38,9 @@ class TestMechanism(TestBuildableComp):
   def test_get_registry(self):
     self.assertEqual(self.comp.registry, self.var[0])
 
-  @given(st.one_of(addr_reg(), st.integers())) # pylint: disable=no-value-for-parameter
+  @given(st.one_of(lineage_reg(), st.integers())) # pylint: disable=no-value-for-parameter
   def test_set_registry(self, possible_reg):
-    if type(possible_reg) == AddressRegistry:
+    if type(possible_reg) == LineageRegistry:
       self.comp.registry = possible_reg
       self.assertEqual(self.comp.registry, possible_reg)
     else:
@@ -52,22 +52,22 @@ class TestMechanism(TestBuildableComp):
     with self.assertRaises(RuntimeError):
       self.comp.operate()
 
-  def test_set_address_post_registration(self):
-    self.comp.register(self.address)
+  def test_set_lineage_post_registration(self):
+    self.comp.register(self.lineage)
     with self.assertRaises(RuntimeError):
-      self.comp.address = 'Anything'
+      self.comp.lineage = 'Anything'
 
-  @given(arb_addr()) # pylint: disable=no-value-for-parameter
-  def test_set_address_pre_registration(self, addr):
-    self.address = addr
-    self.assertEqual(self.address, addr)
+  @given(arb_lineage()) # pylint: disable=no-value-for-parameter
+  def test_set_lineage_pre_registration(self, lineage):
+    self.lineage = lineage
+    self.assertEqual(self.lineage, lineage)
 
   def test_set_is_registered(self):
     with self.assertRaises(RuntimeError):
       self.comp.is_registered = True
 
   def test_reg_item(self):
-    self.comp.register(self.address)
+    self.comp.register(self.lineage)
     self.maxDiff = None
     self.assertEqual(self.comp.reg_item, self.reg_item)
   
@@ -76,7 +76,7 @@ class TestMechanism(TestBuildableComp):
       self.comp.reg_item = {}
 
   def test_register(self):
-    self.comp.register(self.address)
+    self.comp.register(self.lineage)
     """
     For every worker, what needs to be registered?
     successful registration means
@@ -89,7 +89,7 @@ class TestMechanism(TestBuildableComp):
   def operate_helper(self, inputs):
     if not self.comp.is_built:
       self.comp.build()
-      self.comp.register(self.address)
+      self.comp.register(self.lineage)
     res = self.comp.operate(*inputs)
     if type(res) is bool:
       self.assertFalse(res)
@@ -109,7 +109,7 @@ class TestMechanism(TestBuildableComp):
       self.assertFalse(res)
 
   def test_build_with_data(self):
-    self.comp.build(address=self.address)
+    self.comp.build(lineage=self.lineage)
     self.assertEqual(self.comp.var, self.var)
     self.assertTrue(self.comp.is_built)
 
