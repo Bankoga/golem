@@ -22,7 +22,6 @@ class Instruction(Consumer):
   @property
   def old_data(self):
     return self.__old_data
-  
   @old_data.setter
   def old_data(self, value):
     raise RuntimeError('Old Data cannot be set!')
@@ -30,19 +29,25 @@ class Instruction(Consumer):
   @property
   def prev_data(self):
     return self.__prev_data
-  
   @prev_data.setter
   def prev_data(self, value):
     raise RuntimeError('Prev Data cannot be set!')
 
-  def operate_details(self,curr_data=[]):
-    if self.instruction_details(curr_data):
+  def operation_details(self,*args,**kwargs):
+    res = self.instruction_details(*args,**kwargs)
+    if len(res) > 0:
       self.__old_data.append(self.prev_data)
-      self.__prev_data = curr_data
-      return True
+      self.__prev_data = list(args)
+      return res
     else:
       return False
   
   @abstractmethod
-  def instruction_details(self, curr_data=[]):
-    return True
+  def instruction_details(self, *args,**kwargs):
+    res = []
+    for arg in args:
+      if type(arg) is iter:
+        res.append(arg.any())
+      else:
+        res.append(not arg is False)
+    return res

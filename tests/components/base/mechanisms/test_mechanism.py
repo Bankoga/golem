@@ -6,6 +6,7 @@ from hypothesis import strategies as st
 from components.matrix.address_registry import AddressRegistry
 from components.base.mechanisms.mechanism import Mechanism
 from components.enums.pos import CtgType
+from tests.strategies.data_strats import valid_resource_data, valid_resource_array
 from components.vars.data import Address
 
 from tests.components.base.test_buildable_comp import TestBuildableComp
@@ -32,8 +33,7 @@ class TestMechanism(TestBuildableComp):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
-    self.comp.update(*self.values)
+    self.comp = self.comp_class(*self.values,label=self.label, ctg=self.ctg)
 
   def test_get_registry(self):
     self.assertEqual(self.comp.registry, self.var[0])
@@ -49,7 +49,6 @@ class TestMechanism(TestBuildableComp):
 
   def test_pre_registered_state(self):
     self.assertFalse(self.comp.is_registered)
-    self.assertIsNone(self.comp.address)
     with self.assertRaises(RuntimeError):
       self.comp.operate()
 
@@ -87,12 +86,27 @@ class TestMechanism(TestBuildableComp):
     """
     self.assertTrue(self.comp.is_registered)
 
-  def test_operate(self):
-    self.comp.register(self.address)
-    self.assertTrue(self.comp.operate())
+  def operate_helper(self, inputs):
+    if not self.comp.is_built:
+      self.comp.build()
+      self.comp.register(self.address)
+    res = self.comp.operate(*inputs)
+    if type(res) is bool:
+      self.assertFalse(res)
+    else:
+      self.assertTrue(not res is False)
 
-  def test_operate_helper(self):
-    self.assertTrue(self.comp.operate_details())
+  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
+  def test_operate(self, inputs):
+    self.operate_helper(inputs)
+
+  @given(st.one_of(st.lists(st.text()),st.lists(st.integers()),valid_resource_array())) # pylint: disable=no-value-for-parameter
+  def test_operation_details(self,inputs):
+    res = self.comp.operation_details(*inputs)
+    if len(inputs)>0:
+      self.assertTrue(len(res)>0)
+    else:
+      self.assertFalse(res)
 
   def test_build_with_data(self):
     self.comp.build(address=self.address)
