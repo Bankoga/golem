@@ -1,7 +1,7 @@
 from components.enums.prop_types import FuncSetType
 from utils.object_factory import *
-# # from components.func_sets.asc_cardinator import AscCardinatorBuilder
-# # from components.func_sets.dsc_cardinator import DscCardinatorBuilder
+# # from components.mediators.asc_cardinator import AscCardinatorBuilder
+# # from components.mediators.dsc_cardinator import DscCardinatorBuilder
 # # from components.hooks.gate_i import GateILinkerBuilder
 # # from components.hooks.synch_i import SynchILinkerBuilder
 # # from components.hooks.synch_all import SynchAllLinkerBuilder
@@ -32,11 +32,11 @@ from utils.object_factory import *
 
 from components.enums.prop_types import FuncSetType, SuperSet
 from utils.object_factory import *
-from components.func_sets.coders.coder_provider import coder_services
-from components.func_sets.procs.proc_provider import proc_services
-from components.func_sets.coders.coder import Coder
-from components.func_sets.procs.proc import Proc
-from components.func_sets.func_set import FuncSet
+from components.mediators.coders.coder_provider import coder_services
+from components.mediators.procs.proc_provider import proc_services
+from components.mediators.coders.coder import Coder
+from components.mediators.procs.proc import Proc
+from components.mediators.func_set import FuncSet
 
 class FSBuilderProvider(ObjectFactory):
   """

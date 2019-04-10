@@ -6,8 +6,8 @@ from hypothesis import strategies as st
 from components.axioms.configs import set_ids
 from components.enums.prop_types import SuperSet, GroupType
 
-from components.func_sets.fs_builder_provider import fs_services
-from components.func_sets.func_set import FuncSet
+from components.mediators.fs_builder_provider import fs_services
+from components.mediators.func_set import FuncSet
 
 from components.enums.pos import CtgType
 from components.matrix.lineage_registry import LineageRegistry

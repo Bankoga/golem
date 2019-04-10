@@ -1,4 +1,4 @@
-from components.func_sets.procs.proc import Proc
+from components.mediators.procs.proc import Proc
 from components.axioms.configs import proc_ids
 
 class DFGranularCort(Proc):

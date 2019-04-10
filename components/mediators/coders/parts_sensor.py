@@ -1,4 +1,4 @@
-from components.func_sets.coders.coder import Coder
+from components.mediators.coders.coder import Coder
 from components.axioms.configs import coder_ids
 from components.enums.prop_types import FuncSetType
 

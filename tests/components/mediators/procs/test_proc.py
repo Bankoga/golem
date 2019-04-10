@@ -6,8 +6,8 @@ from numpy import array, append
 
 from components.axioms.configs import proc_ids,file_type,set_ids
 from components.enums.prop_types import FuncSetType, ChannelType
-from components.func_sets.procs.proc import Proc
-from components.func_sets.procs.proc_provider import proc_services
+from components.mediators.procs.proc import Proc
+from components.mediators.procs.proc_provider import proc_services
 
 from tests.strategies.func_set_strats import unbuilt_module_input_set, module_input_set,group_input_set
 from utils.config_reader import read

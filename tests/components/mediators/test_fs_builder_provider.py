@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.func_sets.fs_builder_provider import fs_services
+from components.mediators.fs_builder_provider import fs_services
 from components.enums.prop_types import FuncSetType,SuperSet
 
 from components.axioms.configs import proc_ids

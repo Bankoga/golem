@@ -1,6 +1,6 @@
 from numpy import array, append
 
-from components.func_sets.func_set import FuncSet
+from components.mediators.func_set import FuncSet
 from utils.cardinators.cardinator_provider import cardinator_services
 from components.axioms.configs import file_type
 from components.enums.prop_types import FuncSetType, ChannelType

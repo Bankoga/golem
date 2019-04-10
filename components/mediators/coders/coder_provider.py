@@ -1,7 +1,7 @@
 from utils.object_factory import *
 from components.axioms.configs import coder_ids
-from components.func_sets.coders.parts_sensor import PartsSensorBuilder
-# from components.func_sets.coders.dc_granular_cort import DCGranularCortBuilder
+from components.mediators.coders.parts_sensor import PartsSensorBuilder
+# from components.mediators.coders.dc_granular_cort import DCGranularCortBuilder
 
 class CoderProvider(ObjectFactory):
   """

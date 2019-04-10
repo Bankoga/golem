@@ -14,7 +14,7 @@ from tests.strategies.data_strats import valid_resource_data
 from components.channels.channel import Channel
 from components.channels.misc_funcs import build_lineage, build_meld, build_channel_inputs, build_package
 
-from components.func_sets.fs_builder_provider import fs_services
+from components.mediators.fs_builder_provider import fs_services
 
 @composite
 def list_of_inputs_and_input_set(draw):
