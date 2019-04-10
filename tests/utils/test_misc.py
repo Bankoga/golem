@@ -4,7 +4,7 @@
 # from hypothesis import strategies as st
 
 # from components.axioms.configs import set_ids
-# from tests.strategies.func_set_strats import module_input_set
+# from tests.strategies.module_strats import module_input_set
 
 # from utils.misc import input_sort
 

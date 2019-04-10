@@ -1,15 +1,15 @@
 from numpy import array, append
 
-from components.mediators.func_set import FuncSet
+from components.mediators.module import Module
 from utils.cardinators.cardinator_provider import cardinator_services
 from components.axioms.configs import file_type
-from components.enums.prop_types import FuncSetType, ChannelType
+from components.enums.prop_types import ModuleType, ChannelType
 
 from utils.config_reader import read
 from utils.misc import heapsort
 from utils.pos import Pos
 
-class Proc(FuncSet):
+class Proc(Module):
   """
   A proc is used to create the stubs of some of the functional groups within a matrix
   PROC stands for primary repository of cells
@@ -25,7 +25,7 @@ class Proc(FuncSet):
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
-    self.ctg_type = FuncSetType[self.config['type_data']['type']]
+    self.ctg_type = ModuleType[self.config['type_data']['type']]
     self.purpose = self.config['type_data']['purpose']
     self.cardinal_direction = self.config['type_data']['cardinal_direction']
   

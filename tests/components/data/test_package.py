@@ -17,8 +17,8 @@ class TestPackage(TestPassiveComp):
 
   def set_up_var(self):
     self.data = 'Any arbitrary type of object?'
-    self.sender = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
-    self.recipient = Lineage(golem='a',matrix='b',func_set='vis_a')
+    self.sender = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from')
+    self.recipient = Lineage(golem='a',matrix='b',module='vis_a')
     self.values = [self.data,self.recipient,self.sender]
     self.var = tuple(self.values)
 

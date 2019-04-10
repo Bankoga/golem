@@ -16,7 +16,7 @@ class HookType(Enum):
   def get_component_type(self):
     return CtgType.HOOK
 
-class FuncSetType(Enum):
+class ModuleType(Enum):
   UNSET = 1
   SENSOR = 101
   CORTICAL = 201
@@ -64,7 +64,7 @@ class RuleType(Enum):
   def get_component_type(self):
     return CtgType.INSTRUCTION
 
-# (ChannelType|RsrcType|FieldType|FuncSetType|HookType|RuleType)
+# (ChannelType|RsrcType|FieldType|ModuleType|HookType|RuleType)
 
 class ChannelType(Enum):
   UNSET = 1

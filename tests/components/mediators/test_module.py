@@ -6,29 +6,29 @@ from hypothesis import strategies as st
 from components.axioms.configs import set_ids
 from components.enums.prop_types import SuperSet, GroupType
 
-from components.mediators.fs_builder_provider import fs_services
-from components.mediators.func_set import FuncSet
+from components.mediators.module_builder import fs_services
+from components.mediators.module import Module
 
 from components.enums.pos import CtgType
 from components.matrix.lineage_registry import LineageRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from components.vars.data import Lineage
-from tests.strategies.func_set_strats import module_input_set
+from tests.strategies.module_strats import module_input_set
 from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
 
-class TestFuncSet(TestMediator):
+class TestModule(TestMediator):
   def set_up_base(self):
     self.label = 'glg'
     self.ctg = CtgType.FSET
-    self.comp_class = FuncSet
+    self.comp_class = Module
 
   def set_up_var(self):
     self.registry = LineageRegistry(label='global_lineage_registry_api')
     self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
     self.lineage_registry = self.registry
-    self.sender = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
-    self.lineage = Lineage(golem='a',matrix='l',func_set='glg')
-    self.recipient = Lineage(golem='a',matrix='l',func_set='vis_a')
+    self.sender = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from')
+    self.lineage = Lineage(golem='a',matrix='l',module='glg')
+    self.recipient = Lineage(golem='a',matrix='l',module='vis_a')
     self.reg_item = {
       'reg_id': self.label,
       'lineage': self.lineage
@@ -42,7 +42,7 @@ class TestFuncSet(TestMediator):
     # self.factory = proc_services.get(self.id)
     # self.base_group = self.factory.groups[0]
     # self.ctg_type = self.factory.groups[0].ctg_type
-    # self.fg = FuncSet(self.id, self.ctg_type)
+    # self.fg = Module(self.id, self.ctg_type)
     self.set_up_var()
     self.comp = self.comp_class(*self.values,label=self.label)
     # self.fs_id = set_ids['glg']
@@ -84,7 +84,7 @@ class TestFuncSet(TestMediator):
   #   for set_id in base_groups:
   #     g_dat = base_groups[set_id]
   #     g_type = GroupType[g_dat['group_type']]
-  #     expectation = FuncSet(g_dat,g_type)
+  #     expectation = Module(g_dat,g_type)
   #     result = self.fset.groups[set_id]
   #     self.assertEqual(result, expectation)
   

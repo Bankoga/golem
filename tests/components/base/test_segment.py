@@ -19,8 +19,8 @@ class TestSegment(TestStaticComp):
     self.label = 'dend_abov_a_segment_2'
     
   def set_up_var(self):
-    self.residence_lineage = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
-    self.source_lineage = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
+    self.residence_lineage = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
+    self.source_lineage = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
     self.source_index = (0,0)
     self.fill_shape = (4,4)
     self.values = []

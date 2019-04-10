@@ -5,7 +5,7 @@ from components.enums.pos import CtgType
 from components.enums.prop_types import GroupType
 
 from components.channels.misc_funcs import build_lineage
-class FuncSet(Mediator):
+class Module(Mediator):
   """
   A functional set is an lineageable processing region within a matrix
   It is a package production group

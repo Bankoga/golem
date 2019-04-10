@@ -40,7 +40,7 @@ def diff_lineages(lineage_a, lineage_b):
     diff_mag = diff_mag + 70
   if lineage_a.matrix != lineage_b.matrix:
     diff_mag = diff_mag + 60
-  if lineage_a.func_set != lineage_b.func_set:
+  if lineage_a.module != lineage_b.module:
     diff_mag = diff_mag + 50
   if lineage_a.stage != lineage_b.stage:
     diff_mag = diff_mag + 40

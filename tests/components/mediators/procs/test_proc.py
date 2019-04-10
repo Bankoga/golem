@@ -5,11 +5,11 @@ from hypothesis import strategies as st
 from numpy import array, append
 
 from components.axioms.configs import proc_ids,file_type,set_ids
-from components.enums.prop_types import FuncSetType, ChannelType
+from components.enums.prop_types import ModuleType, ChannelType
 from components.mediators.procs.proc import Proc
 from components.mediators.procs.proc_provider import proc_services
 
-from tests.strategies.func_set_strats import unbuilt_module_input_set, module_input_set,group_input_set
+from tests.strategies.module_strats import unbuilt_module_input_set, module_input_set,group_input_set
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 
@@ -50,7 +50,7 @@ class TestProc(unittest.TestCase):
     if (type_obj['type'] is None):
       self.assertIsNone(self.proc.ctg_type)
     else:
-      self.assertEqual(FuncSetType[type_obj['type']],self.proc.ctg_type)
+      self.assertEqual(ModuleType[type_obj['type']],self.proc.ctg_type)
     
     if (type_obj['purpose'] is None):
       self.assertIsNone(self.proc.purpose)

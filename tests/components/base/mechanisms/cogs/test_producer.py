@@ -18,7 +18,7 @@ class TestProducer(TestMechanism):
 
   def set_up_var(self):
     self.registry = LineageRegistry(label='global_registry')
-    self.lineage = Lineage(golem='a',matrix='l',func_set='b',stage='base',group='randos',packager='star_0')
+    self.lineage = Lineage(golem='a',matrix='l',module='b',stage='base',group='randos',packager='star_0')
     self.reg_item = {
       'reg_id': self.label,
       'lineage': self.lineage

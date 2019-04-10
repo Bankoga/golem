@@ -32,9 +32,9 @@ class TestChannel(TestMediator):
     self.lineage_registry = LineageRegistry(label='global_lineage_registry_api')
     self.registry = ChannelRegistry(label='global_channel_registry_api')
     self.channel_registry = self.registry
-    self.sender = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
+    self.sender = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from')
     self.lineage = None
-    self.recipient = Lineage(golem='a',matrix='l',func_set='vis_a')
+    self.recipient = Lineage(golem='a',matrix='l',module='vis_a')
     self.shape = tuple([256,256])
     self.resource = RsrcType.ENERGIZER
     self.ch_type = ChannelType.AGGREGATE

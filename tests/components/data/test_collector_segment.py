@@ -26,8 +26,8 @@ class TestCollectorSegment(TestPlasticComp,TestSegment):
     self.comp_class = CollectorSegment
     
   def set_up_var(self):
-    self.source_lineage = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0')
-    self.residence_lineage = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
+    self.source_lineage = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from', packager='star_0')
+    self.residence_lineage = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from', packager='star_0', instruction='dend_above_a')
     self.lineage = self.residence_lineage
     self.source_index = (0,0)
     self.fill_shape = (4,4)

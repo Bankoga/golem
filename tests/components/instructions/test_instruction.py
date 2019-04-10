@@ -23,7 +23,7 @@ class TestInstruction(TestConsumer):
 
   def set_up_var(self):
     self.registry = LineageRegistry(label='global_lineage_registry_api')
-    self.lineage = Lineage(golem='a',matrix='l',func_set='b', stage='a',group='a',packager='p',instruction=self.label)
+    self.lineage = Lineage(golem='a',matrix='l',module='b', stage='a',group='a',packager='p',instruction=self.label)
     self.reg_item = {
       'reg_id': self.label,
       'lineage': self.lineage

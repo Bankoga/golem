@@ -16,7 +16,7 @@ from tests.strategies.data_strats import (valid_resource_array,
                                           valid_shape_and_index,
                                           valid_sz_shape_and_index)
 from tests.strategies.instruction_strats import (valid_collector_segment)
-from tests.strategies.func_set_strats import (module_input_set,
+from tests.strategies.module_strats import (module_input_set,
                                               processed_module_input_set)
 from tests.strategies.pos_strats import valid_direction, valid_pos
 from tests.strategies.prop_strats import arb_label, rule_type_prop
@@ -33,7 +33,7 @@ class TestCollector(TestInstruction):
   
   def set_up_var(self):
     self.registry = LineageRegistry(label='global_lineage_registry_api')
-    self.lineage = Lineage(golem='a',matrix='l',func_set='b', stage='a',group='a',packager='p',instruction=self.label)
+    self.lineage = Lineage(golem='a',matrix='l',module='b', stage='a',group='a',packager='p',instruction=self.label)
     self.reg_item = {
       'reg_id': self.label,
       'lineage': self.lineage

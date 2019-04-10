@@ -3,15 +3,15 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.mediators.fs_builder_provider import fs_services
-from components.enums.prop_types import FuncSetType,SuperSet
+from components.mediators.module_builder import fs_services
+from components.enums.prop_types import ModuleType,SuperSet
 
 from components.axioms.configs import proc_ids
 
 from tests.strategies.prop_strats import fs_provider_id
 import utils.object_factory
 
-class TestFSBuilderProvider(unittest.TestCase):
+class TestModuleBuilder(unittest.TestCase):
   def test_get_specific(self):
     fs_type_id = f'{SuperSet.PROC}-{proc_ids["glg"]}'
     if (fs_type_id is None):

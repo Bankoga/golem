@@ -1,4 +1,4 @@
-from components.enums.prop_types import FuncSetType
+from components.enums.prop_types import ModuleType
 from utils.object_factory import *
 # # from components.mediators.asc_cardinator import AscCardinatorBuilder
 # # from components.mediators.dsc_cardinator import DscCardinatorBuilder
@@ -6,16 +6,16 @@ from utils.object_factory import *
 # # from components.hooks.synch_i import SynchILinkerBuilder
 # # from components.hooks.synch_all import SynchAllLinkerBuilder
 
-# class FSBuilderProvider(ObjectFactory):
+# class ModuleBuilder(ObjectFactory):
 #   """
 #   The factory responsible for handling each type of supported link between modules
 #   """
 #   def get(self, fs_type_id, **kwargs):
 #     parts = fs_type_id.split('-')
-#     if parts[0] is FuncSetType.SENSOR:
+#     if parts[0] is ModuleType.SENSOR:
 #       # then use the prexisting sensor Builder
 #       pass
-#     elif parts[0] is FuncSetType.CORTICAL or parts[0] is FuncSetType.GATEWAY:
+#     elif parts[0] is ModuleType.CORTICAL or parts[0] is ModuleType.GATEWAY:
 #       # then use the procs Builder
 #       pass
 #     else:
@@ -30,15 +30,15 @@ from utils.object_factory import *
 # # fs_services.register_builder('', Builder())
 # # fs_services.register_builder('', Builder())
 
-from components.enums.prop_types import FuncSetType, SuperSet
+from components.enums.prop_types import ModuleType, SuperSet
 from utils.object_factory import *
 from components.mediators.coders.coder_provider import coder_services
 from components.mediators.procs.proc_provider import proc_services
 from components.mediators.coders.coder import Coder
 from components.mediators.procs.proc import Proc
-from components.mediators.func_set import FuncSet
+from components.mediators.module import Module
 
-class FSBuilderProvider(ObjectFactory):
+class ModuleBuilder(ObjectFactory):
   """
   The factory responsible for handling each type of supported link between modules
   """
@@ -61,4 +61,4 @@ class FSBuilderProvider(ObjectFactory):
       raise ValueError('The id does not indicate a valid thing!')
 
 
-fs_services = FSBuilderProvider()
+fs_services = ModuleBuilder()

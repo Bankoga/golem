@@ -2,11 +2,11 @@ from components.axioms.configs import file_type
 from utils.config_reader import read
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.pos import Pos
-from components.mediators.func_set import FuncSet
-from components.enums.prop_types import FuncSetType
+from components.mediators.module import Module
+from components.enums.prop_types import ModuleType
 
 
-class Coder(FuncSet):
+class Coder(Module):
   """
   A sensor is used to create the stubs of the functional groups within a matrix
   """
@@ -23,7 +23,7 @@ class Coder(FuncSet):
 
   def _set_type_data_(self):
     self.name = self.config['type_data']['name']
-    self.ctg_type = FuncSetType[self.config['type_data']['type']]
+    self.ctg_type = ModuleType[self.config['type_data']['type']]
     self.purpose = self.config['type_data']['purpose']
   
   # @abstractmethod # pylint: disable=undefined-variable

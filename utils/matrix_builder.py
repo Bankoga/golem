@@ -13,7 +13,7 @@ class Matrix:
 """
 Each matrix module consists of several functional groups
 These groups handle all the processing
-The proc built from the config, is used to build the list of funcsets in the module
+The proc built from the config, is used to build the list of modules in the module
 A funcgoup, is a list of Nodes that all process the same input packages and contribute to different output packages
 ""
   def get_id(self):

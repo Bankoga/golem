@@ -14,7 +14,7 @@ from tests.strategies.data_strats import valid_resource_data
 from components.channels.channel import Channel
 from components.channels.misc_funcs import build_lineage, build_meld, build_channel_inputs, build_package
 
-from components.mediators.fs_builder_provider import fs_services
+from components.mediators.module_builder import fs_services
 
 @composite
 def list_of_inputs_and_input_set(draw):
@@ -45,11 +45,11 @@ def group_input_set(draw, elements=partial_lineage()): # pylint: disable=no-valu
   st.assume(lineage)
   groups = []
   group_inputs = []
-  funcset = draw(proc_group()) # pylint: disable=no-value-for-parameter
-  for group in funcset.groups:
+  module = draw(proc_group()) # pylint: disable=no-value-for-parameter
+  for group in module.groups:
     inp = draw(channel_arbitrary()) # pylint: disable=no-value-for-parameter
-    groups.append(funcset.groups[group]['id'])
-    inp.update(f'{lineage}-{funcset.groups[group]["id"]}')
+    groups.append(module.groups[group]['id'])
+    inp.update(f'{lineage}-{module.groups[group]["id"]}')
     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
     inp.build(resc_data)
     # meld = inp.get_meld()

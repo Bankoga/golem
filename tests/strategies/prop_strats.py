@@ -9,7 +9,7 @@ from components.axioms.maps.set import get_ids
 from components.axioms.matrix import max_resource_value, min_resource_value
 from components.axioms.props import label_pattern, invalid_label_pattern
 from components.channels.channel import Channel
-from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
+from components.enums.prop_types import (ChannelType, FieldType, ModuleType,
                                          HookType, PackagerType, RsrcType,
                                          RuleType, SuperSet)
 
@@ -69,9 +69,9 @@ def superset_prop(draw):
 
 @composite
 def set_type_prop(draw):
-  res = draw(st.sampled_from(FuncSetType))
+  res = draw(st.sampled_from(ModuleType))
   st.assume(res)
-  st.assume(res != FuncSetType.UNSET)
+  st.assume(res != ModuleType.UNSET)
   return res
 
 @composite
@@ -98,7 +98,7 @@ def rule_type_prop(draw):
 @composite
 def fs_provider_id(draw):
     # fs_id = set_ids['glg']
-    # fs_type = FuncSetType.SENSOR
+    # fs_type = ModuleType.SENSOR
     # mismatch between arb actual id and arb actual group type
     # group types need to know if an ID is part of their domain
   # vs = set_ids.values()

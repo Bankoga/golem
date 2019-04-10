@@ -13,7 +13,7 @@ class Lineage(typing.NamedTuple):
   """
   golem: str = None
   matrix: str = None
-  func_set: str = None
+  module: str = None
   stage: str = None
   group: str = None
   packager: str = None

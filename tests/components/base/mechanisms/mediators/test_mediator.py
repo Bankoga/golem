@@ -20,9 +20,9 @@ class TestMediator(TestMechanism):
     self.registry = LineageRegistry(label='global_lineage_registry_api')
     self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
     self.lineage_registry = self.registry
-    self.sender = Lineage(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
-    self.lineage = Lineage(golem='a',matrix='l',func_set='glg')
-    self.recipient = Lineage(golem='a',matrix='l',func_set='vis_a')
+    self.sender = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from')
+    self.lineage = Lineage(golem='a',matrix='l',module='glg')
+    self.recipient = Lineage(golem='a',matrix='l',module='vis_a')
     self.reg_item = {
       'reg_id': self.label,
       'lineage': self.lineage

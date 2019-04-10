@@ -5,7 +5,7 @@ from hypothesis import strategies as st
 
 from components.mediators.coders.coder_provider import coder_services
 from components.axioms.configs import file_type, coder_ids
-from components.enums.prop_types import FuncSetType
+from components.enums.prop_types import ModuleType
 from tests.components.mediators.coders.test_coder import TestCoder
 from utils.config_reader import read
 
@@ -26,7 +26,7 @@ class TestPartsSensor(TestCoder):
     if (type_obj['type'] is None):
       self.assertIsNone(self.coder.ctg_type)
     else:
-      self.assertEqual(FuncSetType[type_obj['type']],self.coder.ctg_type)
+      self.assertEqual(ModuleType[type_obj['type']],self.coder.ctg_type)
     
     if (type_obj['purpose'] is None):
       self.assertIsNone(self.coder.purpose)

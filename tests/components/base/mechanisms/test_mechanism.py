@@ -22,7 +22,7 @@ class TestMechanism(TestBuildableComp):
 
   def set_up_var(self):
     self.registry = LineageRegistry(label='global_registry')
-    self.lineage = Lineage(golem='a',matrix='l',func_set='b')
+    self.lineage = Lineage(golem='a',matrix='l',module='b')
     self.reg_item = {
       'reg_id': self.label,
       'lineage': self.lineage
