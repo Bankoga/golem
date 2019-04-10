@@ -9,6 +9,7 @@ from components.enums.prop_types import SuperSet, GroupType
 from components.mediators.module_builder import fs_services
 from components.mediators.module import Module
 
+from components.enums.module import ModuleType
 from components.enums.pos import CtgType
 from components.matrix.lineage_registry import LineageRegistry
 from components.matrix.channel_registry import ChannelRegistry
@@ -26,13 +27,15 @@ class TestModule(TestMediator):
     self.registry = LineageRegistry(label='global_lineage_registry_api')
     self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
     self.lineage_registry = self.registry
-    self.sender = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from')
     self.lineage = Lineage(golem='a',matrix='l',module='glg')
-    self.recipient = Lineage(golem='a',matrix='l',module='vis_a')
     self.reg_item = {
       'reg_id': self.label,
       'lineage': self.lineage
     }
+    self.module_type = ModuleType.GLG
+    self.b1 = 0
+    self.b2 = 0
+    self.b3 = 0
     self.values = [self.registry, self.channel_registry]
     self.var = tuple(self.values)
 
@@ -50,6 +53,24 @@ class TestModule(TestMediator):
     # self.fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
     # self.fset.build()
   
+  def test_get_b1(self):
+    self.assertEqual(self.comp.b1, self.b1)
+  def test_set_b1(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.b1 = self.b1
+
+  def test_get_b2(self):
+    self.assertEqual(self.comp.b2, self.b2)
+  def test_set_b2(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.b2 = self.b2
+
+  def test_get_b3(self):
+    self.assertEqual(self.comp.b3, self.b3)
+  def test_set_b3(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.b3 = self.b3
+
   def test_get_type(self):
     expectation = self.fs_type
     result = self.fset.get_type()
@@ -59,21 +80,6 @@ class TestModule(TestMediator):
     expectation = self.fs_id
     result = self.fset.get_id()
     self.assertEqual(result, expectation, "id was set incorrectly")
-
-  # def test_process_inputs(self):
-  #   with self.assertRaises(NotImplementedError):
-  #     self.fset.process_inputs()
-
-  def test_reset_weights(self):
-    with self.assertRaises(NotImplementedError):
-      self.fset.reset_weights()
-
-  def test_get_weights(self):
-    with self.assertRaises(NotImplementedError):
-      self.fset.get_weights()
-
-  def test_operate(self):
-    self.fset.operate()
 
   # def test_?(self):
   #   with self.assertRaises(NotImplementedError):
