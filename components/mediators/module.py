@@ -49,6 +49,9 @@ class Module(Mediator,PlasticComp):
   def module_type(self, value):
     self.setter_error()
 
+  def build_details(self, *args, **kwargs):
+    super().build_details(*args, **kwargs)
+
   # @abstractmethod
   # def process_inputs(self, inputs=None):
   #   raise NotImplementedError

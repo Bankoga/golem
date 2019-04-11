@@ -83,24 +83,15 @@ class TestModule(TestMediator,TestPlasticComp):
     with self.assertRaises(RuntimeError):
       self.comp.module_type = self.module_type
 
-  def test_build_group(self):
-    pass
-  
-  def test_build_groups(self):
-    pass
-  
   def test_build_layer(self):
+    # using layer def, check layer props
     pass
   
   def test_build_layers(self):
+    # for layer in self.layer_defs:
+    #   check layer props
+    # check aggregate props about layers
     pass
-  
-  def test_build_(self):
-    pass
-
-  # def test_?(self):
-  #   with self.assertRaises(NotImplementedError):
-  #     self.fset.?()
   # def test_build_funcs(self):
   #   alt_fset = fs_services.get(f'{self.module_type}-{self.fs_id}')
   #   base_groups = alt_fset.groups
@@ -111,6 +102,13 @@ class TestModule(TestMediator,TestPlasticComp):
   #     result = self.fset.groups[set_id]
   #     self.assertEqual(result, expectation)
   
+  
+  # def test_build_details(self, arga, argb):
+  #   pass
+
+  # def test_?(self):
+  #   with self.assertRaises(NotImplementedError):
+  #     self.fset.?()
 
   # def test_operate(self):
   #   pass
