@@ -27,128 +27,85 @@ from utils.misc import heapsort
 
 class TestGLG(TestModule):
 
+  # TODO: get GLG working the new way as if it was just read in by a config
   def setUp(self):
     self.proc_id = proc_ids['glg']
     self.proc =  proc_services.get(self.proc_id, **{})
     self.proc_conf = read(self.proc_id,file_type['proc'])
-    self.proc.build()
-    self.proc_id = proc_ids['glg']
-    self.proc =  proc_services.get(self.proc_id, **{})
-    self.proc_conf = read(self.proc_id,file_type['proc'])
-  
-  # WHAT ARE THE PROPERTIES OF THE CONF TO PROC OBJECT MAP THAT REFLECT THE SUCCESS OF THE METHOD BEING TESTED!
-  def check_groups_for_property(self, conf_prop):
-    prop_obj = self.proc_conf[conf_prop]
-    if conf_prop in self.proc_conf:
-      if prop_obj is None:
-        for group in self.proc.groups:
-          self.assertIsNone(group[conf_prop])
-      else:
-        for conf_group in prop_obj:
-          if prop_obj[conf_group] is None:
-              self.assertIsNone(self.proc.groups[conf_group][conf_prop])
-          else:
-            self.assertEqual(
-              prop_obj[conf_group],
-              self.proc.groups[conf_group][conf_prop]
-            )
+    id: GLG
+    type_data:
+    name: Gateway Layer Groups
+    type: GATEWAY
+    purpose: serves as a global I/O center, & local plus global context matrix (and global map center as STN?)
+    cardinal_direction: dsc
 
-  def test_type_data_were_inserted_correctly(self):
-    type_obj = self.proc_conf['type_data']
-    if (type_obj['name'] is None):
-      self.assertIsNone(self.proc.name)
-    else:
-      self.assertEqual(type_obj['name'],self.proc.name)
-    
-    if (type_obj['type'] is None):
-      self.assertIsNone(self.proc.ctg_type)
-    else:
-      self.assertEqual(ModuleType[type_obj['type']],self.proc.ctg_type)
-    
-    if (type_obj['purpose'] is None):
-      self.assertIsNone(self.proc.purpose)
-    else:
-      self.assertEqual(type_obj['purpose'],self.proc.purpose)
-    
-    if (type_obj['cardinal_direction'] is None):
-      self.assertIsNone(self.proc.cardinal_direction is None)
-    else:
-      self.assertEqual(type_obj['cardinal_direction'],self.proc.cardinal_direction)
+stages_to_groups_dict:
+  - id: noise_ctrl
+    groups: [noise_dwn_inhib,noise_adj_inhib]
+    total_count: 2
+  - id: cycle_relay
+    groups: [cycle_gate_ctrl,cycle_stg_adv]
+    total_count: 2
+  - id: cntxt_relay
+    groups: [cntxt_stg_adv,cntxt_up_inhib]
+    total_count: 2
+  - id: relay
+    groups: [relay_stg_adv]
+    total_count: 1
 
-  def test_proc_groups_were_inserted_correctly(self):
-    for conf_group in self.proc_conf['group_details']:
-      self.assertDictContainsSubset(
-        conf_group,
-        self.proc.groups[conf_group['id']]
-      )
+this should be used to define the groups that get build
+group_details:
+  - id: noise_dwn_inhib
+    group_type: ORGANO
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: -1
+  - id: noise_adj_inhib
+    group_type: ORGANO
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: -1
+  - id: cycle_gate_ctrl
+    group_type: ORGANO
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: -1
+  - id: cycle_stg_adv
+    group_type: ORGANO
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: -1
+  - id: cntxt_stg_adv
+    group_type: ORGANO
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: -1
+  - id: cntxt_up_inhib
+    group_type: ORGANO
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: -1
+  - id: relay_stg_adv
+    group_type: ORGANO
+    node_details:
+      - node_type: plate
+        pct_of_group: 1
+    pct_of_stage: -1
 
-  def test_outputs_were_inserted_correctly(self):
-    conf_prop = 'outputs'
-    self.check_groups_for_property(conf_prop)
-  
-  def test_init_stage_data_were_inserted_correctly(self):
-    conf_obj = self.proc_conf['stages_to_groups_dict']
-    sz = len(conf_obj)
-    for i,stage in enumerate(conf_obj):
-      for group in conf_obj[i]['groups']:
-        ord_to_index = cardinator_services.get(self.proc.cardinal_direction).get_card_index(i,sz)
-        self.assertEqual(self.proc.groups[group]['pos'].s, -1)
-        self.assertEqual(self.proc.groups[group]['pos'].x, -1)
-        self.assertEqual(self.proc.groups[group]['pos'].y, -1)
-        self.assertEqual(self.proc.groups[group]['pos'].z, ord_to_index)
-
-  # def test_reset_weights(self):
-  #   with self.assertRaises(NotImplementedError):
-  #     self.proc.reset_weights()
-  #   # iterate through all weights in the proc
-  #   # TODO: HOW do we iterate through all weights in the proc
-
-  # @given(glg_input_set())  # pylint: disable=no-value-for-parameter
-  # def test_process_unbuilt_inputs(self, inputs):
-  #   # this should raise a runtime error
-  #   with self.assertRaises(RuntimeError):
-  #     self.proc.process_inputs(inputs)
-
-  # def test_process_no_inputs(self):
-  #   #  this seems like it should be a valid case
-  #   # given an arbitrary proc group, we may not get data to process this time step
-  #   pass
-
-  # @given(module_input_set(st.just(set_ids['glg'])),group_input_set(st.just(set_ids['glg']))) # pylint: disable=no-value-for-parameter
-  @given(module_input_set(st.just(set_ids['glg'])))# pylint: disable=no-value-for-parameter
-  def test_process_inputs(self, module_inputs):
-    """
-    what are the assumptions we make as part of testing inputs to a proc group?
-    - every item in the input set has already been built
-    - the proc has been built
-    - inputs exist?
-    - the inputs arrive unsorted, and unaggregated
-    The first three are test cases, The fourth relates to input validity
-    What are the properties of valid inputs to a func set?
-    - The func set or one of its groups is listed as the recipient
-    - Do we assume that we get new data? Do we assume that all groups in the func set have at least one dedicated input?
-    """
-    
-    input_set = module_inputs
-    expectation = []
-    results = self.proc.process_inputs(input_set)
-    expectation = {}
-    for pack in input_set:
-      p_type = pack.get_ctg()
-      if p_type in expectation:
-        expectation[p_type].append(pack)
-      else:
-        expectation[p_type] = [pack]
-    if ChannelType.AGGREGATE in expectation:
-      expectation[ChannelType.AGGREGATE] = heapsort(expectation[ChannelType.AGGREGATE])
-      agg = None
-      for pack in expectation[ChannelType.AGGREGATE]:
-        if agg is None:
-          agg = pack.var
-        else:
-          append(agg, pack.var)
-      expectation[ChannelType.AGGREGATE] = agg
-    self.assertEqual(results, expectation)
+relational_outputs:
+  noise_dwn_inhib: [self-cntxt_up_inhib;INHIBITOR;OVERLAY,cycle_relay;INHIBITOR;OVERLAY,cntxt_relay;INHIBITOR;OVERLAY]
+  noise_adj_inhib: [self-noise_dwn_inhib;INHIBITOR;OVERLAY]
+  cycle_gate_ctrl: [self-cycle_relay;INHIBITOR;OVERLAY]
+  cycle_stg_adv: [self-cycle_relay;ENERGIZER;OVERLAY,cntxt_ctrl;ENERGIZER;OVERLAY,proc_ctrl;ENERGIZER;OVERLAY]
+  cntxt_stg_adv: [self-cntxt_relay;ENERGIZER;OVERLAY,cntxt_ctrl;ENERGIZER;OVERLAY,proc_ctrl;ENERGIZER;OVERLAY]
+  cntxt_up_inhib: [self-cntxt_relay;INHIBITOR;OVERLAY]
+  relay_stg_adv: null
 
 
 if __name__ == '__main__':
