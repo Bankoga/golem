@@ -1,5 +1,15 @@
 import unittest
 
+from hypothesis import given
+from hypothesis import strategies as st
+
+from components.mediators.procs.proc_provider import proc_services
+from components.axioms.configs import file_type, proc_ids
+from tests.components.mediators.procs.test_proc import TestProc
+from utils.config_reader import read
+
+import unittest
+
 from hypothesis import given, reproduce_failure
 from hypothesis import strategies as st
 from numpy import append, array
@@ -15,14 +25,16 @@ from utils.cardinators.cardinator_provider import cardinator_services
 from utils.config_reader import read
 from utils.misc import heapsort
 
-
-class TestProc(TestModule):
+class TestGLG(TestModule):
 
   def setUp(self):
     self.proc_id = proc_ids['glg']
     self.proc =  proc_services.get(self.proc_id, **{})
     self.proc_conf = read(self.proc_id,file_type['proc'])
     self.proc.build()
+    self.proc_id = proc_ids['glg']
+    self.proc =  proc_services.get(self.proc_id, **{})
+    self.proc_conf = read(self.proc_id,file_type['proc'])
   
   # WHAT ARE THE PROPERTIES OF THE CONF TO PROC OBJECT MAP THAT REFLECT THE SUCCESS OF THE METHOD BEING TESTED!
   def check_groups_for_property(self, conf_prop):
