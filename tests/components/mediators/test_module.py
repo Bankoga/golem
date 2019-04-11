@@ -15,13 +15,17 @@ from components.matrix.lineage_registry import LineageRegistry
 from components.matrix.channel_registry import ChannelRegistry
 from components.vars.data import Lineage
 from tests.strategies.module_strats import module_input_set
+from tests.components.base.test_plastic_comp import TestPlasticComp
 from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
 
-class TestModule(TestMediator):
+class TestModule(TestMediator,TestPlasticComp):
   def set_up_base(self):
-    self.label = 'glg'
+    self.label = 'TotallyValidId'
     self.ctg = CtgType.FSET
     self.comp_class = Module
+
+  def set_up_layers(self):
+    self.layers = 0
 
   def set_up_var(self):
     self.registry = LineageRegistry(label='global_lineage_registry_api')
@@ -33,14 +37,16 @@ class TestModule(TestMediator):
       'lineage': self.lineage
     }
     self.module_type = ModuleType.GLG
-    self.b1 = 0
+    self.set_up_layers()
     self.b2 = 0
     self.b3 = 0
-    self.values = [self.registry, self.channel_registry]
+    self.values = [self.registry, self.channel_registry, self.module_type]
     self.var = tuple(self.values)
+    self.baseline = self.values
 
   def setUp(self):
     self.set_up_base()
+    self.set_up_defaults()
     # self.id = proc_ids['glg']
     # self.factory = proc_services.get(self.id)
     # self.base_group = self.factory.groups[0]
@@ -53,33 +59,44 @@ class TestModule(TestMediator):
     # self.fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
     # self.fset.build()
   
-  def test_get_b1(self):
-    self.assertEqual(self.comp.b1, self.b1)
-  def test_set_b1(self):
+  # def test_get_b2(self):
+  #   self.assertEqual(self.comp.b2, self.b2)
+  # def test_set_b2(self):
+  #   with self.assertRaises(RuntimeError):
+  #     self.comp.b2 = self.b2
+
+  # def test_get_b3(self):
+  #   self.assertEqual(self.comp.b3, self.b3)
+  # def test_set_b3(self):
+  #   with self.assertRaises(RuntimeError):
+  #     self.comp.b3 = self.b3
+
+  # def test_get_layers(self):
+  #   self.assertEqual(self.comp.layers, self.layers)
+  # def test_set_layers(self):
+  #   with self.assertRaises(RuntimeError):
+  #     self.comp.layers = self.layers
+
+  def test_get_module_type(self):
+    self.assertEqual(self.comp.module_type, self.module_type)
+  def test_set_module_type(self):
     with self.assertRaises(RuntimeError):
-      self.comp.b1 = self.b1
+      self.comp.module_type = self.module_type
 
-  def test_get_b2(self):
-    self.assertEqual(self.comp.b2, self.b2)
-  def test_set_b2(self):
-    with self.assertRaises(RuntimeError):
-      self.comp.b2 = self.b2
-
-  def test_get_b3(self):
-    self.assertEqual(self.comp.b3, self.b3)
-  def test_set_b3(self):
-    with self.assertRaises(RuntimeError):
-      self.comp.b3 = self.b3
-
-  def test_get_type(self):
-    expectation = self.fs_type
-    result = self.fset.get_type()
-    self.assertTrue(SuperSet(expectation).has_sub_type(result), "type was set incorrectly")
-
-  def test_get_id(self):
-    expectation = self.fs_id
-    result = self.fset.get_id()
-    self.assertEqual(result, expectation, "id was set incorrectly")
+  def test_build_group(self):
+    pass
+  
+  def test_build_groups(self):
+    pass
+  
+  def test_build_layer(self):
+    pass
+  
+  def test_build_layers(self):
+    pass
+  
+  def test_build_(self):
+    pass
 
   # def test_?(self):
   #   with self.assertRaises(NotImplementedError):
