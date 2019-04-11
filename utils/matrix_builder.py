@@ -8,7 +8,6 @@ class Matrix:
     self.name = self.config['type_data']['name']
     self.ctg_type = self.config['type_data']['type']
     self.purpose = self.config['type_data']['purpose']
-    self.groups = dict()
   
 """
 Each matrix module consists of several functional groups
