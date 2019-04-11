@@ -21,7 +21,7 @@ from tests.components.base.mechanisms.mediators.test_mediator import TestMediato
 class TestModule(TestMediator,TestPlasticComp):
   def set_up_base(self):
     self.label = 'TotallyValidId'
-    self.ctg = CtgType.FSET
+    self.ctg = CtgType.MODULE
     self.comp_class = Module
 
   def set_up_layers(self):

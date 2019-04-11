@@ -13,7 +13,7 @@ from tests.components.base.mechanisms.test_mechanism import TestMechanism
 class TestMediator(TestMechanism):
   def set_up_base(self):
     self.label = 'glg'
-    self.ctg = CtgType.FSET
+    self.ctg = CtgType.MODULE
     self.comp_class = Mediator
 
   def set_up_var(self):

@@ -35,7 +35,7 @@ class Module(Mediator,PlasticComp):
   """
   
   def __init__(self, *args, **kwargs):
-    kwargs['ctg'] = CtgType.FSET
+    kwargs['ctg'] = CtgType.MODULE
     super().__init__(*args, **kwargs)
     # once fully initialized, a module has very few aggregate properties to consider during operation.
     # TODO: every group is at most, a 4x4 matrix of packagers!

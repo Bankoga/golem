@@ -22,7 +22,7 @@ class ModuleType(Enum):
   CORTICAL = 201
   GATEWAY = 202
   def get_component_type(self):
-    return CtgType.FSET
+    return CtgType.MODULE
   def sub_group(self):
     if 100 < self.value and self.value < 200:
       return SuperSet.CODER

@@ -11,7 +11,7 @@ from tests.strategies.prop_strats import arb_label,arbitrary_invalid_label
 class TestStaticComp(unittest.TestCase):
   def setUp(self):
     self.label = 'TotallyValidId'
-    self.ctg = CtgType.FSET
+    self.ctg = CtgType.MODULE
     self.comp = StaticComp(label=self.label, ctg=self.ctg)
 
   def set_up_dynamic_props(self):
