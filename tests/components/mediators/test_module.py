@@ -55,8 +55,8 @@ class TestModule(TestMediator,TestPlasticComp):
     self.set_up_var()
     self.comp = self.comp_class(*self.values,label=self.label)
     # self.fs_id = set_ids['glg']
-    # self.fs_type = SuperSet.PROC
-    # self.fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
+    # self.module_type = SuperSet.PROC
+    # self.fset = fs_services.get(f'{self.module_type}-{self.fs_id}')
     # self.fset.build()
   
   # def test_get_b2(self):
@@ -102,7 +102,7 @@ class TestModule(TestMediator,TestPlasticComp):
   #   with self.assertRaises(NotImplementedError):
   #     self.fset.?()
   # def test_build_funcs(self):
-  #   alt_fset = fs_services.get(f'{self.fs_type}-{self.fs_id}')
+  #   alt_fset = fs_services.get(f'{self.module_type}-{self.fs_id}')
   #   base_groups = alt_fset.groups
   #   for set_id in base_groups:
   #     g_dat = base_groups[set_id]

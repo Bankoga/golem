@@ -10,8 +10,8 @@ from utils.object_factory import *
 #   """
 #   The factory responsible for handling each type of supported link between modules
 #   """
-#   def get(self, fs_type_id, **kwargs):
-#     parts = fs_type_id.split('-')
+#   def get(self, module_type_id, **kwargs):
+#     parts = module_type_id.split('-')
 #     if parts[0] is ModuleType.SENSOR:
 #       # then use the prexisting sensor Builder
 #       pass
@@ -21,7 +21,7 @@ from utils.object_factory import *
 #     else:
 #       raise ValueError('The id does not indicate a valid thing!')
 
-#     return self.create(fs_type_id, **kwargs)
+#     return self.create(module_type_id, **kwargs)
 
 # # fs_services.register_builder('', Builder())
 # # fs_services.register_builder('', Builder())
@@ -42,21 +42,21 @@ class ModuleBuilder(ObjectFactory):
   """
   The factory responsible for handling each type of supported link between modules
   """
-  def get(self, fs_type_id, **kwargs):
-    if fs_type_id is None:
+  def get(self, module_type_id, **kwargs):
+    if module_type_id is None:
       raise ValueError('Invalid paramater value')
-    parts = fs_type_id.split('-')
-    fs_type = SuperSet[parts[0].split('.')[1]]
+    parts = module_type_id.split('-')
+    module_type = SuperSet[parts[0].split('.')[1]]
     # if 100 < parts[0].value and parts[0].value < 200:
-    if fs_type is None:
+    if module_type is None:
       raise ValueError('Invalid group type')
-    if fs_type is SuperSet.CODER:
+    if module_type is SuperSet.CODER:
       return coder_services.get(parts[1])
-    # elif 200 < fs_type.value and fs_type.value < 300:
-    elif fs_type is SuperSet.PROC:
+    # elif 200 < module_type.value and module_type.value < 300:
+    elif module_type is SuperSet.PROC:
       return proc_services.get(parts[1])
-    # elif fs_type.value > 1:
-    #   return self.create(fs_type_id, **kwargs)
+    # elif module_type.value > 1:
+    #   return self.create(module_type_id, **kwargs)
     else:
       raise ValueError('The id does not indicate a valid thing!')
 

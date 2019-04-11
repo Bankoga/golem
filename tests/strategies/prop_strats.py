@@ -98,12 +98,12 @@ def rule_type_prop(draw):
 @composite
 def fs_provider_id(draw):
     # fs_id = set_ids['glg']
-    # fs_type = ModuleType.SENSOR
+    # module_type = ModuleType.SENSOR
     # mismatch between arb actual id and arb actual group type
     # group types need to know if an ID is part of their domain
   # vs = set_ids.values()
-  fs_type = draw(superset_prop()) # pylint: disable=no-value-for-parameter
-  ids = sorted(get_ids(fs_type))
+  module_type = draw(superset_prop()) # pylint: disable=no-value-for-parameter
+  ids = sorted(get_ids(module_type))
   g_id = draw(st.sampled_from(ids))
-  st.assume(fs_type and g_id)
-  return f'{fs_type}-{g_id}'
+  st.assume(module_type and g_id)
+  return f'{module_type}-{g_id}'
