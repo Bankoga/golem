@@ -41,7 +41,7 @@ class TestGroup(TestMechanism):
     ]
     self.source_index = (0,0)
     self.source_shape = (256,256)
-    self.values = [self.registry,self.group_type,self.pct_of_stage,self.nodes_details]
+    self.values = [self.registry,self.group_type,self.source_index,self.source_shape,self.pct_of_stage,self.nodes_details]
     self.var = tuple(self.values)
     self.baseline = self.values
     
@@ -73,6 +73,18 @@ class TestGroup(TestMechanism):
     with self.assertRaises(RuntimeError):
       self.comp.group_type = self.group_type
   
+  def test_get_source_index(self):
+    self.assertEqual(self.comp.source_index, self.source_index)
+  def test_set_source_index(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_index = self.source_index
+      
+  def test_get_source_shape(self):
+    self.assertEqual(self.comp.source_shape, self.source_shape)
+  def test_set_source_shape(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.source_shape = self.source_shape
+
   def test_get_pct_of_stage(self):
     self.assertEqual(self.comp.pct_of_stage, self.pct_of_stage)
   def test_set_pct_of_stage(self):
@@ -86,15 +98,15 @@ class TestGroup(TestMechanism):
       self.comp.nodes_details = self.nodes_details
 
   def test_create_nodes(self):
-    res = self.comp.create_nodes(self.nodes_details)
+    res = self.comp.create_nodes(self.node_labels, self.nodes_details)
     self.assertEqual(len(res), len(self.nodes_details))
-    self.assertEqual(res, self.nodes)
+    self.assertTrue(type(node) is Cell and node.cell_type == self.nodes_details[i]['node_type'] and node == self.nodes[i] for i,node in enumerate(res))
 
-  def test_create_arb_nodes(self,nodes_details):
-    res = self.comp.create_nodes(nodes_details)
-    nodes = [{}]
-    self.assertEqual(len(res), len(nodes_details))
-    self.assertEqual(res, nodes)
+  # def test_create_arb_nodes(self,labeled_nodes_details):
+  #   res = self.comp.create_nodes(labeled_nodes_details[0], labeled_node_details[1])
+  #   nodes = [{}]
+  #   self.assertEqual(len(res), len(nodes_details))
+  #   self.assertEqual(res, nodes)
 
 if __name__ == '__main__':
   unittest.main()
