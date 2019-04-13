@@ -38,7 +38,6 @@ class Module(Mediator,PlasticComp):
     kwargs['ctg'] = CtgType.MODULE
     super().__init__(*args, **kwargs)
     # once fully initialized, a module has very few aggregate properties to consider during operation.
-    # TODO: every group is at most, a 4x4 matrix of packagers!
     self.groups = dict()
     # self.prev_activations=dict()
     # self.input_shapes=dict()
