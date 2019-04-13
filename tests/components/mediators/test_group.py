@@ -15,7 +15,6 @@ from components.mediators.group import Group
 from components.vars.data import Lineage
 from tests.components.base.mechanisms.test_mechanism import TestMechanism
 
-
 class TestGroup(TestMechanism):
   def set_up_base(self):
     self.label = 'noise_dwn_inhib'
@@ -107,6 +106,11 @@ class TestGroup(TestMechanism):
   #   nodes = [{}]
   #   self.assertEqual(len(res), len(nodes_details))
   #   self.assertEqual(res, nodes)
+
+  def test_raw_equality(self):
+    comp = self.comp_class(*self.values,label=self.label)
+    self.assertEqual(comp, self.comp)
+
 
 if __name__ == '__main__':
   unittest.main()

@@ -56,3 +56,11 @@ class Group(Mechanism):
       }
       nodes.append(node)
     return nodes
+  
+  def __eq__(self,other):
+    return (self.label == other.label
+            and self.group_type == other.group_type
+            and self.source_index == other.source_index
+            and self.source_shape == other.source_shape
+            and self.pct_of_stage == other.pct_of_stage
+            and self.nodes_details == other.nodes_details)
