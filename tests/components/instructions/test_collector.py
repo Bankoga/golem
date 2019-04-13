@@ -16,10 +16,8 @@ from tests.strategies.data_strats import (valid_resource_array,
                                           valid_shape_and_index,
                                           valid_sz_shape_and_index)
 from tests.strategies.instruction_strats import (valid_collector_segment)
-from tests.strategies.module_strats import (module_input_set,
-                                              processed_module_input_set)
 from tests.strategies.pos_strats import valid_direction, valid_pos
-from tests.strategies.prop_strats import arb_label, rule_type_prop
+from tests.strategies.prop_strats import arb_label, arb_rule_type
 from utils.helpers.prop_gen_help import roll_name
 from utils.pos import Pos
 
@@ -97,9 +95,9 @@ class TestCollector(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.attenuation_rate = self.attenuation_rate
 
-  def test_get_source_ind(self):
+  def test_get_source_index(self):
     self.assertEqual(self.comp.source_index, self.source_index)
-  def test_set_source_ind(self):
+  def test_set_source_index(self):
     with self.assertRaises(RuntimeError):
       self.comp.source_index = self.source_index
     
