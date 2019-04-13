@@ -7,6 +7,8 @@ class Group(Mechanism):
   def __init__(self, *args, **kwargs):
     kwargs['ctg'] = CtgType.GROUP
     super().__init__(*args,**kwargs)
+    self.__source_index = (-1,-1)
+    self.__source_shape = (-1,-1)
 
   @property
   def group_type(self):
@@ -16,31 +18,31 @@ class Group(Mechanism):
     self.setter_error()
 
   @property
-  def source_index(self):
-    return self.var[2]
-  @source_index.setter
-  def source_index(self,value):
-    self.setter_error()
-    
-  @property
-  def source_shape(self):
-    return self.var[3]
-  @source_shape.setter
-  def source_shape(self,value):
-    self.setter_error()
-
-  @property
   def pct_of_stage(self):
-    return self.var[4]
+    return self.var[2]
   @pct_of_stage.setter
   def pct_of_stage(self,value):
     self.setter_error()
 
   @property
   def nodes_details(self):
-    return self.var[5]
+    return self.var[3]
   @nodes_details.setter
   def nodes_details(self,value):
+    self.setter_error()
+
+  @property
+  def source_index(self):
+    return self.__source_index
+  @source_index.setter
+  def source_index(self,value):
+    self.setter_error()
+    
+  @property
+  def source_shape(self):
+    return self.__source_shape
+  @source_shape.setter
+  def source_shape(self,value):
     self.setter_error()
   
   def create_nodes(self, node_labels,nodes_details):
