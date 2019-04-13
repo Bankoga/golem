@@ -58,21 +58,25 @@ class TestStage(TestMechanism):
         'pct_of_stage': -1
       }
     ]
-    self.shape = (16,16)
-    self.values = [self.registry,self.shape,self.group_defs]
+    self.values = [self.registry,self.group_defs]
     self.var = tuple(self.values)
     
-  # def set_up_build_results(self):
+  def set_up_defaults(self):
+    self.default_shape = (-1,-1)
+
+  def set_up_build_results(self):
+    self.shape = (16,16)
   #   groups = []
 
   def setUp(self):
     self.set_up_base()
+    self.set_up_defaults()
     self.set_up_var()
-    # self.set_up_build_results()
+    self.set_up_build_results()
     self.comp = self.comp_class(*self.values,label=self.label)
 
   def test_get_shape(self):
-    self.assertEqual(self.comp.shape, self.shape)
+    self.assertEqual(self.comp.shape, self.default_shape)
   def test_set_shape(self):
     with self.assertRaises(RuntimeError):
       self.comp.shape = self.shape
@@ -83,8 +87,8 @@ class TestStage(TestMechanism):
     with self.assertRaises(RuntimeError):
       self.comp.group_defs = self.group_defs
 
-  def layer_check(self, group_def, res):
-    x,y = get_sizes(self.shape)
+  def layer_check(self, shape, group_def, res):
+    x,y = get_sizes(shape)
     for row in range(x):
       for col in range(y):
         index = (row,col)
@@ -99,13 +103,14 @@ class TestStage(TestMechanism):
 
   @given(arb_group_def()) # pylint: disable=no-value-for-parameter
   def test_create_layer(self, group_def):
-    res = self.comp.create_layer(group_def)
-    self.layer_check(group_def, res)
+    # This test is flaky because of floating point ops for percentages that won't realistically be used. At least I am not. Woo
+    res = self.comp.create_layer(self.shape, group_def)
+    self.layer_check(self.shape,group_def, res)
 
   def test_create_groups(self):
-    res = self.comp.create_groups(self.group_defs)
+    res = self.comp.create_groups(self.shape, self.group_defs)
     for group_def in self.group_defs:
-      self.layer_check(group_def, res)
+      self.layer_check(self.shape, group_def, res)
     # self.assertTrue(type(group) is Group
     #               and group.label == self.group_defs[i]['label']
     #               and group == self.groups[i] for i,group in enumerate(res))
