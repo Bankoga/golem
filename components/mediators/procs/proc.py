@@ -31,7 +31,7 @@ class Proc(Module):
   
   # @abstractmethod # pylint: disable=undefined-variable
   def _set_proc_groups_(self):
-    for i,group in enumerate(self.config['group_details']):
+    for i,group in enumerate(self.config['group_details']): #pylint: disable=unused-variable
       self.groups[group['id']] = group
       # Are there processing group level types?
   
@@ -48,7 +48,7 @@ class Proc(Module):
   def _init_stage_data_(self):
     conf_obj = self.config['stages_to_groups_dict']
     sz = len(conf_obj)
-    for i,stage in enumerate(conf_obj):
+    for i,stage in enumerate(conf_obj):#pylint: disable=unused-variable
       for group in conf_obj[i]['groups']:
         ord_to_index = cardinator_services.get(self.cardinal_direction).get_card_index(i,sz)
         self.groups[group]['pos'] = Pos(z=ord_to_index)

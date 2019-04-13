@@ -61,7 +61,7 @@ def valid_resource_data_and_index(draw):
 def valid_resource_array(draw, shape=valid_shape(), num_shapes=st.integers(max_value=30)): # pylint: disable=no-value-for-parameter
   r_set = []
   ns = draw(num_shapes)
-  for i in range(ns):
+  for i in range(ns): # pylint: disable=unused-variable
     r_set.append(draw(valid_resource_data())) # pylint: disable=no-value-for-parameter
   return r_set
 

@@ -148,7 +148,7 @@ class TestCollector(TestInstruction):
   def test_instruction_details(self, npmatrix_array):
     self.built_check()
     results = self.comp.instruction_details(npmatrix_array)
-    expectation = self.comp.instruction_details(npmatrix_array)
+    # expectation = self.comp.instruction_details(npmatrix_array)
     # self.assertTrue(array_equal(results, expectation))
     self.assertTrue(len(results),len(self.leaves))
     for i,item in enumerate(results):
