@@ -113,5 +113,13 @@ class TestMechanism(TestBuildableComp):
     self.assertEqual(self.comp.var, self.var)
     self.assertTrue(self.comp.is_built)
 
+  # TODO: implement mechanism equality during lineage and mechanism label refactor
+  # def test_equality(self):
+  #   # Two mechanisms are considered equal if they have the same lineage
+  #   # lineages are unique
+  #   comp = self.comp_class(*self.values,label=self.label)
+  #   self.assertEqual(comp, self.comp)
+
+
 if __name__ == '__main__':
   unittest.main()
