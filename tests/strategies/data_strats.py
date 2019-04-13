@@ -14,6 +14,12 @@ def valid_shape(draw):
   return x.shape
 
 @composite
+def arb_percentage(draw):
+  pct = draw(st.floats(min_value=0.00000002, max_value=1))
+  st.assume(pct)
+  return pct
+
+@composite
 def valid_sz_shape_and_index(draw):
   x = draw(valid_shape()) # pylint: disable=no-value-for-parameter
   i = draw_num(x[0])

@@ -7,13 +7,13 @@ from hypothesis.strategies import composite
 from components.axioms.cell_types import CellType
 from components.axioms.maps.set import get_ids
 from components.axioms.matrix import max_resource_value, min_resource_value
-from components.axioms.props import label_pattern, invalid_label_pattern
+from components.axioms.props import invalid_label_pattern, label_pattern
 from components.channels.channel import Channel
-from components.enums.prop_types import (ChannelType, FieldType, ModuleType,
-                                         HookType, PackagerType, RsrcType,
-                                         RuleType, SuperSet)
-
+from components.enums.prop_types import (ChannelType, FieldType, GroupType,
+                                         HookType, ModuleType, PackagerType,
+                                         RsrcType, RuleType, SuperSet)
 from utils.helpers.prop_gen_help import roll_name
+
 
 @composite
 def arb_name(draw):
@@ -44,6 +44,12 @@ def node_type_prop(draw):
   res = draw(st.sampled_from(PackagerType))
   st.assume(res)
   st.assume(res != PackagerType.UNSET)
+  return res
+
+@composite
+def arb_group_type(draw):
+  res = draw(st.sampled_from(GroupType))
+  st.assume(res)
   return res
 
 @composite

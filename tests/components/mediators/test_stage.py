@@ -15,7 +15,8 @@ from components.mediators.group import Group
 from components.mediators.stage import Stage
 from components.vars.data import Lineage
 from tests.components.base.mechanisms.test_mechanism import TestMechanism
-
+from utils.helpers.arrayer import get_sizes
+from tests.strategies.module_strats import arb_group_def
 
 class TestStage(TestMechanism):
   def set_up_base(self):
@@ -33,7 +34,7 @@ class TestStage(TestMechanism):
     }
     self.group_defs = [
       {
-        'id': 'noise_dwn_inhib',
+        'label': 'noise_dwn_inhib',
         'group_type': GroupType.ORGANO,
         'node_details': [
           {
@@ -45,7 +46,7 @@ class TestStage(TestMechanism):
         'pct_of_stage': -1
       },
       {
-        'id': 'noise_adj_inhib',
+        'label': 'noise_adj_inhib',
         'group_type': GroupType.ORGANO,
         'node_details': [
           {
@@ -57,33 +58,13 @@ class TestStage(TestMechanism):
         'pct_of_stage': -1
       }
     ]
-    self.shape = (256,256)
+    self.shape = (4,4)
     self.values = [self.registry,self.shape,self.group_defs]
     self.var = tuple(self.values)
     self.baseline = self.values
     
   # def set_up_build_results(self):
-  #   self.node_labels = [
-  #     f'{self.label}_some_childlabel'
-  #   ]
-  #   self.groups = [
-  #     Group(
-  #       group_type: ORGANO
-  #       node_details:
-  #         - node_type: plate
-  #           pct_of_group: 1
-  #       pct_of_stage: -1
-  #       label = 'noise_dwn_inhib'
-  #     ),
-  #   Group(
-  #       group_type: ORGANO
-  #       node_details:
-  #         - node_type: plate
-  #           pct_of_group: 1
-  #       pct_of_stage: -1
-  #       label='noise_adj_inhib'
-  #   )
-  #   ]
+  #   groups = []
 
   def setUp(self):
     self.set_up_base()
@@ -91,12 +72,44 @@ class TestStage(TestMechanism):
     # self.set_up_build_results()
     self.comp = self.comp_class(*self.values,label=self.label)
 
-    # [self.registry,
-    #  self.group_type,
-    #  self.source_index,
-    #  self.source_shape,
-    #  self.pct_of_stage,
-    #  self.nodes_details]
+  def test_get_shape(self):
+    self.assertEqual(self.comp.shape, self.shape)
+  def test_set_shape(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.shape = self.shape
+  
+  def test_get_group_defs(self):
+    self.assertEqual(self.comp.group_defs, self.group_defs)
+  def test_set_group_defs(self):
+    with self.assertRaises(RuntimeError):
+      self.comp.group_defs = self.group_defs
+
+  def layer_check(self, group_def, res):
+    x,y = get_sizes(self.shape)
+    for row in range(x):
+      for col in range(y):
+        index = (row,col)
+        expectation = Group(self.registry,
+                      group_def['group_type'],
+                      index,
+                      self.shape,
+                      group_def['pct_of_stage'],
+                      group_def['node_details'],
+                      label=group_def['label'])
+        self.assertIn(expectation, res)
+
+  @given(arb_group_def()) # pylint: disable=no-value-for-parameter
+  def test_create_layer(self, group_def):
+    res = self.comp.create_layer(group_def)
+    self.layer_check(group_def, res)
+
+  def test_create_groups(self):
+    res = self.comp.create_groups(self.group_defs)
+    for group_def in self.group_defs:
+      self.layer_check(group_def, res)
+    # self.assertTrue(type(group) is Group
+    #               and group.label == self.group_defs[i]['label']
+    #               and group == self.groups[i] for i,group in enumerate(res))
 
 if __name__ == '__main__':
   unittest.main()
