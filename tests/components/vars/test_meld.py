@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.enums.prop_types import FieldType, ChannelType, RsrcType
+from components.enums.prop_types import FieldType, ChannelType, ResourceType
 from tests.strategies.channel_strats import arb_meld_str
 from components.vars.meld import Meld, read_meld_str
 
@@ -13,7 +13,7 @@ class TestMeld(unittest.TestCase):
   def setUp(self):
     self.defaults = {
       'ch_type': ChannelType.OVERLAY,
-      'resource': RsrcType.ENERGIZER,
+      'resource': ResourceType.ENERGIZER,
       'lineage': None,
       'shape': (1,1)
     }

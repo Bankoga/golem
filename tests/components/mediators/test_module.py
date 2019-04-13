@@ -7,7 +7,7 @@ from components.axioms.cell_types import CellType
 from components.axioms.configs import set_ids
 from components.enums.module import ModuleType
 from components.enums.pos import CtgType
-from components.enums.prop_types import GroupType, RsrcType, SuperSet
+from components.enums.prop_types import GroupType, ResourceType, SuperSet
 from components.matrix.channel_registry import ChannelRegistry
 from components.matrix.lineage_registry import LineageRegistry
 from components.mediators.module import Module

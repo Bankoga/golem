@@ -1,11 +1,11 @@
 import typing
 
-from components.enums.prop_types import RsrcType,ChannelType
+from components.enums.prop_types import ResourceType,ChannelType
 from components.vars.data import Lineage
 
 class Meld(typing.NamedTuple):
   ch_type: ChannelType = ChannelType.OVERLAY
-  resource: RsrcType = RsrcType.ENERGIZER
+  resource: ResourceType = ResourceType.ENERGIZER
   lineage: Lineage = None
   shape: tuple = (1,1)
 

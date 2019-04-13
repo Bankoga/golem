@@ -11,7 +11,7 @@ from components.axioms.props import invalid_label_pattern, label_pattern
 from components.channels.channel import Channel
 from components.enums.prop_types import (ChannelType, FieldType, GroupType,
                                          HookType, ModuleType, PackagerType,
-                                         RsrcType, RuleType, SuperSet)
+                                         ResourceType, RuleType, SuperSet)
 from utils.helpers.prop_gen_help import roll_name
 
 
@@ -61,9 +61,9 @@ def hook_type(draw):
 
 @composite
 def arb_resource_type(draw):
-  res = draw(st.sampled_from(RsrcType))
+  res = draw(st.sampled_from(ResourceType))
   st.assume(res)
-  st.assume(res != RsrcType.UNSET)
+  st.assume(res != ResourceType.UNSET)
   return res
 
 @composite

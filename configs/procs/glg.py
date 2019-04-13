@@ -1,4 +1,4 @@
-from components.enums.prop_types import GroupType, RsrcType
+from components.enums.prop_types import GroupType, ResourceType
 from components.axioms.cell_types import CellType
 
 stage_defs = [
@@ -28,7 +28,7 @@ group_defs = [
       {
         'node_type': CellType.PLATE,
         'pct_of_group': 1,
-        'resources_accepted': [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
+        'resources_accepted': [ResourceType.ENERGIZER,ResourceType.INHIBITOR]
       }
     ],
     'pct_of_stage': -1
@@ -40,7 +40,7 @@ group_defs = [
       {
         'node_type': CellType.PLATE,
         'pct_of_group': 1,
-        'resources_accepted': [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
+        'resources_accepted': [ResourceType.ENERGIZER,ResourceType.INHIBITOR]
       }
     ],
     'pct_of_stage': -1

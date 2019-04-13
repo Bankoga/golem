@@ -6,7 +6,7 @@ from numpy import array, array_equal
 
 from components.data.collector_segment import CollectorSegment as cs
 from components.enums.pos import CtgType
-from components.enums.prop_types import RsrcType, RuleType
+from components.enums.prop_types import ResourceType, RuleType
 from components.instructions.collector import Collector
 from components.matrix.lineage_registry import LineageRegistry
 from components.vars.data import Lineage
@@ -48,7 +48,7 @@ class TestCollector(TestInstruction):
     self.source_index = (45,25)
     self.step_direction = 'A' # TODO: Use correct ENUM
     self.num_steps = len(self.segment_defs)
-    self.resources_accepted = [RsrcType.ENERGIZER]
+    self.resources_accepted = [ResourceType.ENERGIZER]
     self.values = [self.registry,
                    self.source_index,
                    self.source_shape,

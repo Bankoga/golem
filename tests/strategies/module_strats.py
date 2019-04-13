@@ -133,7 +133,7 @@ def module_input_set(draw, elements=partial_lineage()): # pylint: disable=no-val
 
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_set_id','self','Self', '']),
-# st.sampled_from(RsrcType),
+# st.sampled_from(ResourceType),
 # st.sampled_from(ChannelType),
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
@@ -147,7 +147,7 @@ def module_input_set(draw, elements=partial_lineage()): # pylint: disable=no-val
 
 # @given(st.sampled_from(['SenderModuleId','self','Self']),
 # st.sampled_from(['sender_set_id','self','Self', '']),
-# st.sampled_from(RsrcType),
+# st.sampled_from(ResourceType),
 # st.sampled_from(ChannelType),
 # st.sampled_from(FieldType),
 # st.sampled_from(['SenderModuleId','self','Self']),
@@ -182,7 +182,7 @@ def module_input_set(draw, elements=partial_lineage()): # pylint: disable=no-val
 #   # build a
 #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
 #       st.sampled_from(['sender_set_id','self','Self', '']),
-#       st.sampled_from(RsrcType),
+#       st.sampled_from(ResourceType),
 #       st.sampled_from(ChannelType),
 #       st.sampled_from(FieldType),
 #       st.sampled_from(['SenderModuleId','self','Self']),

@@ -8,7 +8,7 @@ from components.axioms.cell_types import CellType
 from components.cogs.cells.cell import Cell
 from components.enums.module import ModuleType
 from components.enums.pos import CtgType
-from components.enums.prop_types import GroupType, RsrcType
+from components.enums.prop_types import GroupType, ResourceType
 from components.matrix.channel_registry import ChannelRegistry
 from components.matrix.lineage_registry import LineageRegistry
 from components.mediators.group import Group
@@ -35,7 +35,7 @@ class TestGroup(TestMechanism):
       {
         'node_type': CellType.PLATE,
         'pct_of_group': 1,
-        'resources_accepted': [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
+        'resources_accepted': [ResourceType.ENERGIZER,ResourceType.INHIBITOR]
       }
     ]
     self.source_index = (0,0)
@@ -51,7 +51,7 @@ class TestGroup(TestMechanism):
       {
         'node': Cell(self.registry,
                     CellType.PLATE,
-                    [RsrcType.ENERGIZER,RsrcType.INHIBITOR],
+                    [ResourceType.ENERGIZER,ResourceType.INHIBITOR],
                     self.source_index,
                     self.source_shape,
                     label=self.node_labels[0]),

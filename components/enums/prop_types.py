@@ -64,7 +64,7 @@ class RuleType(Enum):
   def get_component_type(self):
     return CtgType.INSTRUCTION
 
-# (ChannelType|RsrcType|FieldType|ModuleType|HookType|RuleType)
+# (ChannelType|ResourceType|FieldType|ModuleType|HookType|RuleType)
 
 class ChannelType(Enum):
   UNSET = 1
@@ -73,7 +73,7 @@ class ChannelType(Enum):
   def get_component_type(self):
     return CtgType.CHANNEL
 
-class RsrcType(Enum):
+class ResourceType(Enum):
   UNSET = 1
   ENERGIZER = 2
   INHIBITOR = 3

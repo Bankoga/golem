@@ -5,7 +5,7 @@ from hypothesis import given
 from numpy import array_equal
 
 from components.axioms.props import dest_key_pattern
-from components.enums.prop_types import FieldType, ChannelType, RsrcType
+from components.enums.prop_types import FieldType, ChannelType, ResourceType
 from components.channels.misc_funcs import (build_lineage, build_meld,
                                             build_package,
                                             build_channel_inputs)
@@ -36,7 +36,7 @@ class TestChannel(TestMediator):
     self.lineage = None
     self.recipient = Lineage(golem='a',matrix='l',module='vis_a')
     self.shape = tuple([256,256])
-    self.resource = RsrcType.ENERGIZER
+    self.resource = ResourceType.ENERGIZER
     self.ch_type = ChannelType.AGGREGATE
     self.meld_str = f'{self.ch_type.name};{self.resource.name};{self.recipient};{self.shape}'
     self.meld_var = read_meld_str(self.meld_str)

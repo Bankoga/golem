@@ -8,7 +8,7 @@ from components.enums.pos import CtgType
 from components.matrix.lineage_registry import LineageRegistry
 from components.vars.data import Lineage
 from components.axioms.cell_types import CellType, cell_data
-from components.enums.prop_types import RuleType, RsrcType, ChannelType,FieldType, PackagerType
+from components.enums.prop_types import RuleType, ResourceType, ChannelType,FieldType, PackagerType
 
 from tests.strategies.channel_strats import valid_cell_instruction
 from tests.strategies.prop_strats import arb_cell_type, arb_label
@@ -32,7 +32,7 @@ class TestCell(TestProducer):
       'lineage': self.lineage
     }
     self.cell_type = CellType.PYRAMID
-    self.resources_accepted = [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
+    self.resources_accepted = [ResourceType.ENERGIZER,ResourceType.INHIBITOR]
     self.source_index = (0,0)
     self.source_shape = (256,256)
     self.values = [self.registry,self.cell_type,self.resources_accepted,self.source_index,self.source_shape]
@@ -207,7 +207,7 @@ class TestCell(TestProducer):
   #   # build a
   #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
   #       st.sampled_from(['sender_set_id','self','Self', '']),
-  #       st.sampled_from(RsrcType),
+  #       st.sampled_from(ResourceType),
   #       st.sampled_from(ChannelType),
   #       st.sampled_from(FieldType),
   #       st.sampled_from(['SenderModuleId','self','Self']),

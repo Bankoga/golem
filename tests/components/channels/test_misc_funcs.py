@@ -3,7 +3,7 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from components.enums.prop_types import FieldType,ChannelType,RsrcType
+from components.enums.prop_types import FieldType,ChannelType,ResourceType
 
 from tests.strategies.data_strats import valid_shape
 from tests.strategies.pos_strats import full_lineage,partial_lineage,arb_lineage
@@ -32,7 +32,7 @@ class TestMiscFuncs(unittest.TestCase):
       self.assertEqual(meld, f'{ch_type};{dp_resource};{recip_lineage};{dp_shape}')
   
   @given(st.sampled_from(ChannelType),
-  st.sampled_from(RsrcType),
+  st.sampled_from(ResourceType),
   arb_lineage(), # pylint: disable=no-value-for-parameter
   valid_shape(), # pylint: disable=no-value-for-parameter
   st.sampled_from(['SenderModuleId','self','Self']),
@@ -47,7 +47,7 @@ class TestMiscFuncs(unittest.TestCase):
     self.assertEqual(inputs, res)
 
   @given(st.sampled_from(ChannelType),
-  st.sampled_from(RsrcType),
+  st.sampled_from(ResourceType),
   arb_lineage(), # pylint: disable=no-value-for-parameter
   valid_shape(), # pylint: disable=no-value-for-parameter
   st.sampled_from(['SenderModuleId','self','Self']),

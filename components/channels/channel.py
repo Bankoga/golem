@@ -1,6 +1,6 @@
 from components.base.mechanisms.mediators.mediator import Mediator
 from components.enums.pos import CtgType
-from components.enums.prop_types import ChannelType,RsrcType
+from components.enums.prop_types import ChannelType,ResourceType
 from chainer import Variable
 from components.vars.meld import read_meld_str
 from components.vars.data import Lineage
@@ -105,7 +105,7 @@ class Channel(Mediator):
 
   @property
   def resource(self):
-    return RsrcType[self.meld.resource]
+    return ResourceType[self.meld.resource]
 
   @resource.setter
   def resource(self, value):
