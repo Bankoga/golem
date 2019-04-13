@@ -6,7 +6,7 @@ from utils.object_factory import *
 # # from components.hooks.synch_i import SynchILinkerBuilder
 # # from components.hooks.synch_all import SynchAllLinkerBuilder
 
-# class ModuleBuilder(ObjectFactory):
+# class ModuleCreator(ObjectFactory):
 #   """
 #   The factory responsible for handling each type of supported link between modules
 #   """
@@ -23,12 +23,12 @@ from utils.object_factory import *
 
 #     return self.create(module_type_id, **kwargs)
 
-# # fs_services.register_builder('', Builder())
-# # fs_services.register_builder('', Builder())
-# # fs_services.register_builder('', Builder())
-# # fs_services.register_builder('', Builder())
-# # fs_services.register_builder('', Builder())
-# # fs_services.register_builder('', Builder())
+# # module_creator_services.register_builder('', Builder())
+# # module_creator_services.register_builder('', Builder())
+# # module_creator_services.register_builder('', Builder())
+# # module_creator_services.register_builder('', Builder())
+# # module_creator_services.register_builder('', Builder())
+# # module_creator_services.register_builder('', Builder())
 
 from components.enums.prop_types import ModuleType, SuperSet
 from utils.object_factory import *
@@ -38,7 +38,7 @@ from components.mediators.coders.coder import Coder
 from components.mediators.procs.proc import Proc
 from components.mediators.module import Module
 
-class ModuleBuilder(ObjectFactory):
+class ModuleCreator(ObjectFactory):
   """
   The factory responsible for handling each type of supported link between modules
   """
@@ -61,4 +61,4 @@ class ModuleBuilder(ObjectFactory):
       raise ValueError('The id does not indicate a valid thing!')
 
 
-fs_services = ModuleBuilder()
+module_creator_services = ModuleCreator()
