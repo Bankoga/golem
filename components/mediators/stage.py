@@ -27,14 +27,14 @@ class Stage(Mechanism):
     x,y = get_sizes(self.shape)
     for row in range(x):
       for col in range(y):
-        source_index = (row, col)
+        index = (row,col)
         group = Group(self.registry,
                       group_def['group_type'],
-                      source_index,
+                      index,
                       self.shape,
                       group_def['pct_of_stage'],
                       group_def['node_details'],
-                      label=group_def['label'])
+                      label=f'{group_def["label"]}_{row}_{col}')
         layer.append(group)
     return layer
 

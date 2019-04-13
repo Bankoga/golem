@@ -58,7 +58,7 @@ class TestStage(TestMechanism):
         'pct_of_stage': -1
       }
     ]
-    self.shape = (4,4)
+    self.shape = (16,16)
     self.values = [self.registry,self.shape,self.group_defs]
     self.var = tuple(self.values)
     self.baseline = self.values
@@ -89,14 +89,14 @@ class TestStage(TestMechanism):
     for row in range(x):
       for col in range(y):
         index = (row,col)
-        expectation = Group(self.registry,
+        group = Group(self.registry,
                       group_def['group_type'],
                       index,
                       self.shape,
                       group_def['pct_of_stage'],
                       group_def['node_details'],
-                      label=group_def['label'])
-        self.assertIn(expectation, res)
+                      label=f'{group_def["label"]}_{row}_{col}')
+        self.assertIn(group, res)
 
   @given(arb_group_def()) # pylint: disable=no-value-for-parameter
   def test_create_layer(self, group_def):
