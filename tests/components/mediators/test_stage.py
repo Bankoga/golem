@@ -61,7 +61,6 @@ class TestStage(TestMechanism):
     self.shape = (16,16)
     self.values = [self.registry,self.shape,self.group_defs]
     self.var = tuple(self.values)
-    self.baseline = self.values
     
   # def set_up_build_results(self):
   #   groups = []

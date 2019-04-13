@@ -42,7 +42,6 @@ class TestGroup(TestMechanism):
     self.source_shape = (256,256)
     self.values = [self.registry,self.group_type,self.source_index,self.source_shape,self.pct_of_stage,self.nodes_details]
     self.var = tuple(self.values)
-    self.baseline = self.values
     
   def set_up_build_results(self):
     self.node_labels = [
