@@ -31,42 +31,34 @@ class TestStage(TestMechanism):
       'reg_id': self.label,
       'lineage': self.lineage
     }
-    self.group_type = GroupType.ORGANO
-    self.pct_of_stage = -1
-    self.nodes_details = [
+    self.group_defs = [
       {
-        'node_type': CellType.PLATE,
-        'pct_of_group': 1,
-        'resources_accepted': [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
+        'id': 'noise_dwn_inhib',
+        'group_type': GroupType.ORGANO,
+        'node_details': [
+          {
+            'node_type': CellType.PLATE,
+            'pct_of_group': 1,
+            'resources_accepted': [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
+          }
+        ],
+        'pct_of_stage': -1
+      },
+      {
+        'id': 'noise_adj_inhib',
+        'group_type': GroupType.ORGANO,
+        'node_details': [
+          {
+            'node_type': CellType.PLATE,
+            'pct_of_group': 1,
+            'resources_accepted': [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
+          }
+        ],
+        'pct_of_stage': -1
       }
     ]
-    self.group_labels: ['noise_dwn_inhib','noise_adj_inhib']
-    # [self.registry,
-    #  self.group_type,
-    #  self.source_index,
-    #  self.source_shape,
-    #  self.pct_of_stage,
-    #  self.nodes_details]
-    # self.groups = [
-    #   Group(
-    #     group_type: ORGANO
-    #     node_details:
-    #       - node_type: plate
-    #         pct_of_group: 1
-    #     pct_of_stage: -1
-    #     label = 'noise_dwn_inhib'
-    #   ),
-    # Group(
-    #     group_type: ORGANO
-    #     node_details:
-    #       - node_type: plate
-    #         pct_of_group: 1
-    #     pct_of_stage: -1
-    #     label='noise_adj_inhib'
-    # )
-    # ]
     self.shape = (256,256)
-    self.values = [self.registry,self.group_type,self.shape,self.pct_of_stage,self.nodes_details]
+    self.values = [self.registry,self.shape,self.group_defs]
     self.var = tuple(self.values)
     self.baseline = self.values
     
@@ -98,6 +90,13 @@ class TestStage(TestMechanism):
     self.set_up_var()
     # self.set_up_build_results()
     self.comp = self.comp_class(*self.values,label=self.label)
+
+    # [self.registry,
+    #  self.group_type,
+    #  self.source_index,
+    #  self.source_shape,
+    #  self.pct_of_stage,
+    #  self.nodes_details]
 
 if __name__ == '__main__':
   unittest.main()
