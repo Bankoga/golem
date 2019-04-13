@@ -8,7 +8,7 @@ from components.channels.misc_funcs import (build_channel_inputs,
                                             build_lineage, build_meld,
                                             build_package)
 from components.enums.prop_types import ChannelType, SuperSet
-from components.mediators.module_creator import module_creator_services
+# from components.mediators.module_creator import module_creator_services
 from tests.strategies.channel_strats import channel_arbitrary
 from tests.strategies.data_strats import arb_percentage, valid_resource_data
 from tests.strategies.pos_strats import arb_lineage, partial_lineage
@@ -54,36 +54,36 @@ def arb_group_def(draw):
   }
   return group_def
 
-@composite
-def proc_group(draw):
-  proc_id = draw(st.sampled_from(sorted(proc_ids.keys())))
-  proc = module_creator_services.get(proc_ids[proc_id], **{})
-  return proc
+# @composite
+# def proc_group(draw):
+#   proc_id = draw(st.sampled_from(sorted(proc_ids.keys())))
+#   proc = module_creator_services.get(proc_ids[proc_id], **{})
+#   return proc
 
 # # @composite
 # # def unbuilt_module_input_set(draw):
 # #   return []
 
-@composite
-def group_input_set(draw, elements=partial_lineage()): # pylint: disable=no-value-for-parameter
-  # the inputs to a module, consist of an array of inputs sent to its, and its descendants, environments 
-  # thus we need to generate two or more sets of inputs that get merged into one
-  # inputs to the module
-  lineage = draw(elements)#partial_lineage()) # pylint: disable=no-value-for-parameter
-  st.assume(lineage)
-  groups = []
-  group_inputs = []
-  module = draw(proc_group()) # pylint: disable=no-value-for-parameter
-  for group in module.groups:
-    inp = draw(channel_arbitrary()) # pylint: disable=no-value-for-parameter
-    groups.append(module.groups[group]['id'])
-    inp.update(f'{lineage}-{module.groups[group]["id"]}')
-    resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
-    inp.build(resc_data)
-    # meld = inp.get_meld()
-    group_inputs.append(inp)
-  st.assume(group_inputs)
-  return group_inputs
+# @composite
+# def group_input_set(draw, elements=partial_lineage()): # pylint: disable=no-value-for-parameter
+#   # the inputs to a module, consist of an array of inputs sent to its, and its descendants, environments 
+#   # thus we need to generate two or more sets of inputs that get merged into one
+#   # inputs to the module
+#   lineage = draw(elements)#partial_lineage()) # pylint: disable=no-value-for-parameter
+#   st.assume(lineage)
+#   groups = []
+#   group_inputs = []
+#   module = draw(proc_group()) # pylint: disable=no-value-for-parameter
+#   for group in module.groups:
+#     inp = draw(channel_arbitrary()) # pylint: disable=no-value-for-parameter
+#     groups.append(module.groups[group]['id'])
+#     inp.update(f'{lineage}-{module.groups[group]["id"]}')
+#     resc_data = draw(valid_resource_data()) # pylint: disable=no-value-for-parameter
+#     inp.build(resc_data)
+#     # meld = inp.get_meld()
+#     group_inputs.append(inp)
+#   st.assume(group_inputs)
+#   return group_inputs
 
 # @settings(suppress_health_check=[HealthCheck.filter_too_much])
 @composite
@@ -111,21 +111,21 @@ def module_input_set(draw, elements=partial_lineage()): # pylint: disable=no-val
   st.assume(inputs)
   return inputs
 
-@composite
-def processed_module_input_set(draw, elements=st.sampled_from(sorted(proc_ids.values()))):
-  # Draw a proc id (until all listed func set ids have this implemented)
-  fs_id = draw(elements)
-  st.assume(fs_id)
-  # Draw an input set for the drawn proc id
-  inputs = draw(module_input_set(st.just(fs_id))) # pylint: disable=no-value-for-parameter
-  # Draw a copy of the proc from proc_service
-  fs = module_creator_services.get(f'{SuperSet.PROC}-{fs_id}')
-  st.assume(fs)
-  # build the proc
-  fs.build()
-  # use the proc to process the inputs
-  fs_inputs = fs.process_inputs(inputs)
-  return (fs_inputs, fs)
+# @composite
+# def processed_module_input_set(draw, elements=st.sampled_from(sorted(proc_ids.values()))):
+#   # Draw a proc id (until all listed func set ids have this implemented)
+#   fs_id = draw(elements)
+#   st.assume(fs_id)
+#   # Draw an input set for the drawn proc id
+#   inputs = draw(module_input_set(st.just(fs_id))) # pylint: disable=no-value-for-parameter
+#   # Draw a copy of the proc from proc_service
+#   fs = module_creator_services.get(f'{SuperSet.PROC}-{fs_id}')
+#   st.assume(fs)
+#   # build the proc
+#   fs.build()
+#   # use the proc to process the inputs
+#   fs_inputs = fs.process_inputs(inputs)
+#   return (fs_inputs, fs)
 
 # @composite
 # def valid_module_input_set(draw):

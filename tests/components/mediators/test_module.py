@@ -3,50 +3,55 @@ import unittest
 from hypothesis import given
 from hypothesis import strategies as st
 
+from components.axioms.cell_types import CellType
 from components.axioms.configs import set_ids
-from components.enums.prop_types import SuperSet, GroupType
-
-from components.mediators.module_creator import module_creator_services
-from components.mediators.module import Module
-
 from components.enums.module import ModuleType
 from components.enums.pos import CtgType
-from components.matrix.lineage_registry import LineageRegistry
+from components.enums.prop_types import GroupType, RsrcType, SuperSet
 from components.matrix.channel_registry import ChannelRegistry
+from components.matrix.lineage_registry import LineageRegistry
+from components.mediators.module import Module
 from components.vars.data import Lineage
-from tests.strategies.module_strats import module_input_set
-from tests.components.base.test_plastic_comp import TestPlasticComp
 from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
+from tests.components.base.test_plastic_comp import TestPlasticComp
+from tests.strategies.module_strats import module_input_set
+from configs.procs.glg import stage_defs, group_defs
 
 class TestModule(TestMediator,TestPlasticComp):
   def set_up_base(self):
-    self.label = 'TotallyValidId'
+    self.label = 'thalamus'
     self.ctg = CtgType.MODULE
     self.comp_class = Module
 
-  def set_up_layers(self):
-    self.layers = 0
+  def set_up_alt_props(self):
+    self.shape = (16,16)
+
+  def set_up_stages_defs(self):
+    self.group_defs = group_defs
+    self.stage_defs = stage_defs
 
   def set_up_var(self):
     self.registry = LineageRegistry(label='global_lineage_registry_api')
     self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
     self.lineage_registry = self.registry
     self.lineage = Lineage(golem='a',matrix='l',module='glg')
+    self.lineage = Lineage(golem='arith_brain',matrix='left',module=self.label)
     self.reg_item = {
       'reg_id': self.label,
       'lineage': self.lineage
     }
     self.module_type = ModuleType.GLG
-    self.set_up_layers()
     self.b2 = 0
     self.b3 = 0
-    self.values = [self.registry, self.channel_registry, self.module_type]
+    self.set_up_stages_defs()
+    self.values = [self.registry, self.channel_registry, self.module_type, self.stage_defs]
     self.var = tuple(self.values)
     self.baseline = self.values
 
   def setUp(self):
     self.set_up_base()
     self.set_up_defaults()
+    self.set_up_alt_props()
     # self.id = proc_ids['glg']
     # self.factory = proc_services.get(self.id)
     # self.base_group = self.factory.groups[0]
@@ -83,15 +88,36 @@ class TestModule(TestMediator,TestPlasticComp):
     with self.assertRaises(RuntimeError):
       self.comp.module_type = self.module_type
 
-  def test_build_layer(self):
-    # using layer def, check layer props
+  def stage_check(self, stage_def, res):
     pass
+    # x,y = get_sizes(self.shape)
+    # for row in range(x):
+    #   for col in range(y):
+    #     index = (row,col)
+    #     stage = Stage(self.registry,
+    #                   stage_def['group_type'],
+    #                   index,
+    #                   self.shape,
+    #                   stage_def['pct_of_stage'],
+    #                   stage_def['node_details'],
+    #                   label=f'{stage_def["label"]}_{row}_{col}')
+    #     self.assertIn(group, res)
+
+  # @given(arb_stage_def()) # pylint: disable=no-value-for-parameter
+  # def test_create_stage(self, stage_def):
+  #   res = self.comp.create_stage(stage_def)
+    # self.stage_check(stage_def, res)
   
-  def test_build_layers(self):
-    # for layer in self.layer_defs:
-    #   check layer props
-    # check aggregate props about layers
-    pass
+    # for stage_def in self.stage_defs:
+    #   check stage props
+    # check aggregate props about stages
+  def test_create_stages(self):
+    res = self.comp.create_stages(self.stage_defs)
+    for stage_def in self.stage_defs:
+      self.stage_check(stage_def, res)
+    # self.assertTrue(type(group) is Group
+    #               and group.label == self.stage_defs[i]['label']
+    #               and group == self.groups[i] for i,group in enumerate(res))
   # def test_build_funcs(self):
   #   alt_fset = module_creator_services.get(f'{self.module_type}-{self.fs_id}')
   #   base_groups = alt_fset.groups

@@ -4,7 +4,7 @@ from components.base.mechanisms.mediators.mediator import Mediator
 
 from components.enums.pos import CtgType
 from components.enums.prop_types import GroupType
-
+from components.mediators.stage import Stage
 from components.channels.misc_funcs import build_lineage
 
 class Module(Mediator,PlasticComp):
@@ -49,6 +49,14 @@ class Module(Mediator,PlasticComp):
   @module_type.setter
   def module_type(self, value):
     self.setter_error()
+
+  def create_stages(self, stage_defs):
+    stages = []
+    for stage_def in stage_defs:
+      # TODO: this is a stub that does not actually work
+      stage = Stage(self.registry,stage_def['group_defs'])
+      stages.extend(stage)
+    return stages
 
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
