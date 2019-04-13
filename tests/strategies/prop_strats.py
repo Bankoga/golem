@@ -81,7 +81,7 @@ def set_type_prop(draw):
   return res
 
 @composite
-def ch_type(draw):
+def arb_channel_type(draw):
   res = draw(st.sampled_from(ChannelType))
   st.assume(res)
   st.assume(res != ChannelType.UNSET)
@@ -95,7 +95,7 @@ def channel_field_shape(draw):
   return res
 
 @composite
-def rule_type_prop(draw):
+def arb_rule_type(draw):
   res = draw(st.sampled_from(RuleType))
   st.assume(res)
   st.assume(res != RuleType.UNSET)

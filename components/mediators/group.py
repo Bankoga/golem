@@ -1,6 +1,7 @@
 from components.base.mechanisms.mechanism import Mechanism
 from components.enums.pos import CtgType
 from components.cogs.cells.cell import Cell
+from numpy import array_equal
 
 class Group(Mechanism):
   def __init__(self, *args, **kwargs):
@@ -61,5 +62,4 @@ class Group(Mechanism):
     return (self.label == other.label
             and self.group_type == other.group_type
             and self.source_index == other.source_index
-            and self.source_shape == other.source_shape
-            and self.nodes_details == other.nodes_details)
+            and self.source_shape == other.source_shape)

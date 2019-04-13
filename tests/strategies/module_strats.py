@@ -9,7 +9,7 @@ from components.channels.misc_funcs import (build_channel_inputs,
                                             build_package)
 from components.enums.prop_types import ChannelType, SuperSet
 # from components.mediators.module_builder import fs_services
-# from tests.strategies.channel_strats import channel_arbitrary
+from tests.strategies.channel_strats import channel_arbitrary
 from tests.strategies.data_strats import arb_percentage, valid_resource_data
 from tests.strategies.pos_strats import arb_lineage, partial_lineage
 from tests.strategies.prop_strats import (arb_cell_type, arb_group_type,
@@ -60,9 +60,9 @@ def arb_group_def(draw):
 #   proc = fs_services.get(proc_ids[proc_id], **{})
 #   return proc
 
-# @composite
-# def unbuilt_module_input_set(draw):
-#   return []
+# # @composite
+# # def unbuilt_module_input_set(draw):
+# #   return []
 
 # @composite
 # def group_input_set(draw, elements=partial_lineage()): # pylint: disable=no-value-for-parameter

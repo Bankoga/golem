@@ -84,7 +84,7 @@
 #     meld = ";".join(meld_tuple)
 #     self._read_data_(meld)
 
-#   @given(arb_label(), hook_type(), arb_lineage(), arb_resource_type(), ch_type(), channel_field_shape()) # pylint: disable=no-value-for-parameter
+#   @given(arb_label(), hook_type(), arb_lineage(), arb_resource_type(), arb_channel_type(), channel_field_shape()) # pylint: disable=no-value-for-parameter
 #   def test_sampled_msg_read(self,hook_id,hook_type,lineage,dp_resource,dp_type,dp_shape):
 #     inputs = self._build_inputs_meld_(hook_id,hook_type,lineage,dp_resource,dp_type,dp_shape)
 #     self._read_data_(inputs)

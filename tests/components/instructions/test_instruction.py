@@ -12,7 +12,7 @@ from components.vars.data import Lineage
 from tests.components.base.mechanisms.cogs.test_consumer import TestConsumer
 from tests.strategies.data_strats import valid_resource_data, valid_resource_array
 from tests.strategies.pos_strats import valid_pos
-from tests.strategies.prop_strats import arb_label, rule_type_prop
+from tests.strategies.prop_strats import arb_label, arb_rule_type
 from utils.pos import Pos
 
 
@@ -86,7 +86,7 @@ class TestInstruction(TestConsumer):
       self.assertEqual(self.comp.prev_data, old_prev)
       self.assertFalse(res)
 
-  # @given(arb_label(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
+  # @given(arb_label(), arb_rule_type(), valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label, rtype, pos):
   #   # for efficiency reasons, eventually instructions will need to be built before processing
   #   # label = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?

@@ -7,7 +7,7 @@ from components.enums.prop_types import FieldType,ChannelType,RsrcType
 
 from tests.strategies.data_strats import valid_shape
 from tests.strategies.pos_strats import full_lineage,partial_lineage,arb_lineage
-from tests.strategies.prop_strats import channel_field_shape,arb_resource_type,ch_type, arb_label
+from tests.strategies.prop_strats import channel_field_shape,arb_resource_type,arb_channel_type, arb_label
 
 from components.channels.channel import Channel
 from components.channels.misc_funcs import build_lineage, build_meld, build_channel_inputs, build_package
@@ -22,7 +22,7 @@ class TestMiscFuncs(unittest.TestCase):
     else:
       self.assertEqual(lineage, f'{m_id}-{g_id}')
 
-  @given(ch_type(),arb_resource_type(),arb_lineage(),channel_field_shape()) # pylint: disable=no-value-for-parameter
+  @given(arb_channel_type(),arb_resource_type(),arb_lineage(),channel_field_shape()) # pylint: disable=no-value-for-parameter
   def test_build_meld(self, ch_type,dp_resource,recip_lineage,dp_shape):
     # lineage = build_lineage(rm_id,rg_id)
     meld = build_meld(ch_type,dp_resource,recip_lineage,dp_shape)
