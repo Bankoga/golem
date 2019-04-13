@@ -111,6 +111,5 @@ class TestGroup(TestMechanism):
     comp = self.comp_class(*self.values,label=self.label)
     self.assertEqual(comp, self.comp)
 
-
 if __name__ == '__main__':
   unittest.main()
