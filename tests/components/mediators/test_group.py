@@ -38,7 +38,7 @@ class TestGroup(TestMechanism):
         'resources_accepted': [ResourceType.ENERGIZER,ResourceType.INHIBITOR]
       }
     ]
-    self.values = [self.registry,self.group_type,self.source_index,self.source_shape,self.pct_of_stage,self.nodes_details]
+    self.values = [self.registry,self.group_type,self.pct_of_stage,self.nodes_details]
     self.var = tuple(self.values)
     
   def set_up_build_results(self):
