@@ -107,6 +107,18 @@ class TestModule(TestMediator,TestPlasticComp):
   # def test_create_stage(self, stage_def):
   #   res = self.comp.create_stage(stage_def)
     # self.stage_check(stage_def, res)
+    def collect_stages_data(self, stages):
+      # TODO: um... 
+      """
+      gather the information required to validate that a stage is sufficiently soundly put together
+        all stage lineages
+        all expected_input packages
+        all expected_output packages
+        all locally available hook data
+      Ie sound given it is out of the used context
+      This will be expaned upon in golem building to check that all pieces connect without any dead or missing edges
+      golem building will be involved
+      """
   
     # for stage_def in self.stage_defs:
     #   check stage props
