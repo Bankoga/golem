@@ -3,6 +3,7 @@ from numpy import array, ones
 from components.base.segment import Segment
 from components.base.plastic_comp import PlasticComp
 from components.enums.pos import CtgType
+from utils.helpers.arrayer import get_sizes, get_quantity
 
 class CollectorSegment(PlasticComp, Segment):
 
@@ -36,37 +37,6 @@ class CollectorSegment(PlasticComp, Segment):
   @collection_chances.setter
   def collection_chances(self, value):
     self.__collection_chances = value
-  
-  def get_side_szs(self, side_szs):
-    x_sz = side_szs
-    y_sz = side_szs
-    if type(side_szs) is tuple:
-      x_sz = side_szs[0]
-      y_sz = side_szs[1]
-    return (x_sz,y_sz)
-
-  def extract_quadrant(self, input_ind, resource_data,side_szs):
-    x = input_ind[0]
-    x_sz, y_sz = self.get_side_szs(side_szs)
-    if len(input_ind) > 1:
-      y = input_ind[1]
-      quadrant = resource_data[x:x+x_sz][y:y+y_sz]
-    else:
-      quadrant = resource_data[x:x+x_sz]
-    return quadrant
-
-  def get_quantity(self, resource_data, i, j=None):
-    if len(resource_data) > 1:
-      try:
-        quantity = resource_data[i][j]
-      except:
-        quantity = 0
-    else:
-      try:
-        quantity = resource_data[i]
-      except:
-        quantity = 0
-    return quantity
 
   def apply(self, resource_data):
     """
@@ -79,7 +49,7 @@ class CollectorSegment(PlasticComp, Segment):
     for i,row in enumerate(self.weights):
       row_actuals = []
       for j,weight in enumerate(row):
-        actual = round(min(weight, self.get_quantity(resource_data,i,j)), 5)
+        actual = round(min(weight, get_quantity(resource_data,i,j)), 5)
         row_actuals.append(actual)
       actuals.append(row_actuals)
     return array(actuals)
