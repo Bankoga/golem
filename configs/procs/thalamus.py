@@ -1,7 +1,6 @@
 from components.enums.prop_types import GroupType, ResourceType, ChannelType,ModuleType
 from components.axioms.cell_types import CellType
 
-
 type_data = {
   'name': 'Gateway Layer Groups',
   'type': ModuleType.GATEWAY,

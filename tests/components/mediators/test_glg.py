@@ -5,20 +5,15 @@ from hypothesis import strategies as st
 from numpy import append, array
 
 from components.axioms.cell_types import CellType
-from components.axioms.configs import file_type, proc_ids, set_ids
 from components.enums.pos import CtgType
-from components.enums.prop_types import (ChannelType, GroupType, ModuleType,
-                                         ResourceType, SuperSet)
+from components.enums.prop_types import (ModuleType, SuperSet)
 from components.matrix.channel_registry import ChannelRegistry
 from components.matrix.lineage_registry import LineageRegistry
 from components.mediators.module import Module
-from components.mediators.procs.proc import Proc
-from components.mediators.procs.proc_provider import proc_services
 from components.vars.data import Lineage
-from configs.procs.thalamus import group_defs, stage_defs
+from configs.procs.thalamus import group_defs, stage_defs, type_data
 from tests.components.mediators.test_module import TestModule
 from utils.cardinators.cardinator_provider import cardinator_services
-from utils.config_reader import read
 from utils.misc import heapsort
 
 
@@ -34,6 +29,7 @@ class TestGLG(TestModule):
   def set_up_stages_defs(self):
     self.group_defs = group_defs
     self.stage_defs = stage_defs
+    self.type_data = type_data
 
   def set_up_var(self):
     self.registry = LineageRegistry(label='global_lineage_registry_api')
