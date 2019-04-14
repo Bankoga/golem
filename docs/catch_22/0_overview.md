@@ -1,6 +1,6 @@
 # Catch-22: Overview of an Anthological Pedestal
 
-> **TL;DR**: "Yadda yadda. The end is nigh! Yet another idiot doomspeaker..."
+> **TL;DR**: "Yadda yadda. The end is nigh! Yet another idiot doomspeaker... With a collection of other things."
 
 ## Purpose
 
