@@ -7,7 +7,7 @@ from components.axioms.pos import cardinal_keys
 from components.enums.pos import Floor, CtgType, Dimension
 from components.channels.channel import Channel
 from components.vars.data import Lineage
-from utils.helpers.props import build_lineage_id
+from utils.helpers.properter import build_lineage_id
 
 from tests.strategies.prop_strats import arb_label
 
