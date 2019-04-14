@@ -18,7 +18,7 @@ class GLG(Module):
   PROC stands for primary repository of cells
   Groups of this type emulate or simulate (depending on degree of granularity) regions with only cells
   """
-  def __init__(self, proc_id):
+  def __init__(self):
     proc_id = proc_ids['glg']
     self.config = read(proc_id,file_type['proc'])
     self._set_type_data_()

@@ -123,10 +123,10 @@ class TestModule(TestMediator,TestPlasticComp):
     # for stage_def in self.stage_defs:
     #   check stage props
     # check aggregate props about stages
-  def test_create_stages(self):
-    res = self.comp.create_stages(self.stage_defs)
-    for stage_def in self.stage_defs:
-      self.stage_check(stage_def, res)
+  # def test_create_stages(self):
+  #   res = self.comp.create_stages(self.stage_defs)
+  #   for stage_def in self.stage_defs:
+  #     self.stage_check(stage_def, res)
     # self.assertTrue(type(group) is Group
     #               and group.label == self.stage_defs[i]['label']
     #               and group == self.groups[i] for i,group in enumerate(res))
