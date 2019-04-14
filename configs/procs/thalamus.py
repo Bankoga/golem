@@ -2,7 +2,7 @@ from components.enums.prop_types import GroupType, ResourceType, ChannelType,Mod
 from components.axioms.cell_types import CellType
 
 type_data = {
-  'name': 'Gateway Layer Groups',
+  'name': 'Pseudo_Thalamus',
   'type': ModuleType.GATEWAY,
   'purpose': "serves as a global I/O center, & local plus global context matrix (and global map center as STN?)",
   'cardinal_direction': 'dsc'

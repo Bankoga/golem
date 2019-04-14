@@ -15,11 +15,13 @@ from configs.procs.thalamus import group_defs, stage_defs, type_data
 from tests.components.mediators.test_module import TestModule
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.misc import heapsort
-
+from utils.helpers.prop_gen_help import roll_name
 
 class TestGLG(TestModule):
   def set_up_base(self):
-    self.label = 'thalamus'
+    self.rolled_name = roll_name()
+    self.type_name = type_data['name']
+    self.label = f'{self.rolled_name}_the_{self.type_name}'
     self.ctg = CtgType.MODULE
     self.comp_class = Module
 
