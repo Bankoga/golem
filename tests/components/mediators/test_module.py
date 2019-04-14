@@ -15,7 +15,7 @@ from components.vars.data import Lineage
 from tests.components.base.mechanisms.mediators.test_mediator import TestMediator
 from tests.components.base.test_plastic_comp import TestPlasticComp
 from tests.strategies.module_strats import module_input_set
-from configs.procs.glg import stage_defs, group_defs
+from configs.procs.thalamus import stage_defs, group_defs
 
 class TestModule(TestMediator,TestPlasticComp):
   def set_up_base(self):
