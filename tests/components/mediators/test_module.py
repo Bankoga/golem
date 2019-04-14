@@ -112,8 +112,8 @@ class TestModule(TestMediator,TestPlasticComp):
       """
       gather the information required to validate that a stage is sufficiently soundly put together
         all stage lineages
-        all expected_input packages
-        all expected_output packages
+        all expected_inputs from lineages
+        all expected_output to lineages
         all locally available hook data
       Ie sound given it is out of the used context
       This will be expaned upon in golem building to check that all pieces connect without any dead or missing edges
