@@ -30,6 +30,17 @@ class ModuleType(Enum):
       return SuperSet.PROC
     else:
       return SuperSet.UNSET
+  # DCGC = auto()
+  # DCAGC = auto()
+  # DFG = auto()
+  # DFAGC = auto()
+  # GLG = auto()
+  # PS = auto()
+  # TIC = auto()
+  # ASLG = auto()
+  # SLG = auto()
+  # MLG = auto()
+  # KBL = auto()
 
 class SuperSet(Enum):
   UNSET = auto()

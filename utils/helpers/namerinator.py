@@ -1,31 +1,46 @@
 from utils.helpers.chaos import draw, draw_from, roll
 
-from components.axioms.props import pg_data
+from components.axioms.props import name_gen_data
+
+def get_sound_type_of_char(character):
+  return 'unrecognized'
+
+def produce_arb_syllable():
+  return 'no'
 
 def produce_syllables(num_syllables):
   res = []
-  max_len = len(pg_data['syllables'])
-  for i in range(num_syllables):
+  max_len = len(name_gen_data['syllables'])
+  for i in range(num_syllables): # pylint: disable=unused-variable
     ind = draw(max_len)
     if ind == max_len:
-      sylb = draw_from(pg_data['vowels'])
+      sylb = draw_from(name_gen_data['vowels'])
     else:
-      sylb = draw_from(pg_data['syllables'])
+      sylb = draw_from(name_gen_data['syllables'])
     res.append(sylb)
   return res
 
 def roll_for_syllables():
+  # TODO: convert to use distribution gen rule instead of if-elif-else
   res_roll = roll(100)
-  if 1 <= res_roll and res_roll <= 10:
+  if 1 == res_roll:
     num_syllables = 1
-  elif 11 <= res_roll and res_roll <= 70:
+  elif 2 <= res_roll and res_roll <= 24:
     num_syllables = 2
-  elif 71 <= res_roll and res_roll <= 80:
+  elif 25 <= res_roll and res_roll <= 50:
     num_syllables = 3
-  elif 81 <= res_roll and res_roll <= 90:
+  elif 51 <= res_roll and res_roll <= 60:
     num_syllables = 4
-  else:
+  elif 61 <= res_roll and res_roll <= 70:
     num_syllables = 5
+  elif 71 <= res_roll and res_roll <= 80:
+    num_syllables = 6
+  elif 81 <= res_roll and res_roll <= 90:
+    num_syllables = 7
+  elif 91 <= res_roll and res_roll <= 99:
+    num_syllables = 8
+  else:
+    num_syllables = 9
   return produce_syllables(num_syllables)
 
 def roll_name():
@@ -44,7 +59,7 @@ def roll_name():
 
 def kin_label_gen_unique(parent, num_children, prefix=None,suffix=None):
   names = []
-  for i in range(num_children):
+  for i in range(num_children): # pylint: disable=unused-variable
     name = f'{parent}_{roll_new_name(names)}'
     names.append(name)
   return names

@@ -18,7 +18,7 @@ from tests.strategies.data_strats import (valid_resource_array,
 from tests.strategies.instruction_strats import (valid_collector_segment)
 from tests.strategies.pos_strats import valid_direction, valid_pos
 from tests.strategies.prop_strats import arb_label, arb_rule_type
-from utils.helpers.prop_gen_help import roll_name
+from utils.helpers.namerinator import roll_name
 from utils.pos import Pos
 
 class TestCollector(TestInstruction):

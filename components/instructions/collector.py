@@ -1,7 +1,7 @@
 from components.enums.prop_types import RuleType
 from components.data.collector_segment import CollectorSegment
 from components.instructions.instruction import Instruction
-from utils.helpers.prop_gen_help import roll_name
+from utils.helpers.namerinator import roll_name
 from numpy import array, zeros
 from utils.pos import diff_lineages
 

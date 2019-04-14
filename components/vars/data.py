@@ -2,7 +2,7 @@ import numpy
 import typing
 
 from utils.pos import Pos
-from utils.helpers.props import build_lineage_id
+from utils.helpers.properter import build_lineage_id
 
 locale = ('lineage', 'pos')
 # var_types = ['pos', 'f_shape', 's_shape', 'weights']
