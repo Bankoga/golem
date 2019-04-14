@@ -23,10 +23,10 @@ class TestNamerinator(unittest.TestCase):
 
   def test_produce_arb_syllable(self):
     res = produce_arb_syllable()
-    prev_chars = []
+    prev_chars = [None]
     for i,char in enumerate(res):
       # act based on state_of_prev_char and current char
-      last_type = get_sound_type_of_char(prev_chars[i-1])
+      last_type = get_sound_type_of_char(prev_chars[i])
       prev_chars.append(char)
 
   @given(st.integers(min_value=1, max_value=30))
