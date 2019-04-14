@@ -1,5 +1,13 @@
-from components.enums.prop_types import GroupType, ResourceType, ChannelType
+from components.enums.prop_types import GroupType, ResourceType, ChannelType,ModuleType
 from components.axioms.cell_types import CellType
+
+
+type_data = {
+  'name': 'Gateway Layer Groups',
+  'type': ModuleType.GATEWAY,
+  'purpose': "serves as a global I/O center, & local plus global context matrix (and global map center as STN?)",
+  'cardinal_direction': 'dsc'
+}
 
 stage_defs = [
   {
