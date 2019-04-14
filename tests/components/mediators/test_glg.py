@@ -15,7 +15,7 @@ from configs.procs.thalamus import group_defs, stage_defs, type_data
 from tests.components.mediators.test_module import TestModule
 from utils.cardinators.cardinator_provider import cardinator_services
 from utils.misc import heapsort
-from utils.helpers.prop_gen_help import roll_name
+from utils.helpers.namerinator import roll_name
 
 class TestGLG(TestModule):
   def set_up_base(self):
