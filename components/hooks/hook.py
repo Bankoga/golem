@@ -1,5 +1,5 @@
 # from components.axioms.props import old_label_pattern 
-# from components.enums.prop_types import HookType,ChannelType,RsrcType,FieldType
+# from components.enums.prop_types import HookType,ChannelType,ResourceType,FieldType
 # from components.channels.channel import Channel
 # import re
 
@@ -33,12 +33,12 @@
 #       self.hook_type=HookType(hook_type)
 
 #   def read_data(self):
-#     self.resource = RsrcType.UNSET
+#     self.resource = ResourceType.UNSET
 #     self.ctg_type = ChannelType.UNSET
 #     self.shape = FieldType.UNSET
-#     self.address=self.meld_tuple[0]
-#     if len(self.meld_tuple)>1 and self.meld_tuple[1] and self.meld_tuple[1] in RsrcType:
-#       self.resource=RsrcType(self.meld_tuple[1])
+#     self.lineage=self.meld_tuple[0]
+#     if len(self.meld_tuple)>1 and self.meld_tuple[1] and self.meld_tuple[1] in ResourceType:
+#       self.resource=ResourceType(self.meld_tuple[1])
 #     if len(self.meld_tuple)>2 and self.meld_tuple[2] and self.meld_tuple[2] in ChannelType:
 #       self.ctg_type=ChannelType(self.meld_tuple[2])
 #     if len(self.meld_tuple)>3 and self.meld_tuple[3] and self.meld_tuple[3] in FieldType:

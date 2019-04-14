@@ -9,7 +9,7 @@ class StaticComp:
     forever embedded within context
     a place is a thing and a thing is place
     """
-    # TODO: Unify label and address! Different representations of the same thing
+    # TODO: Unify label and lineage! Different representations of the same thing
     self.label = kwargs['label']
     self.ctg = kwargs['ctg']
     self.set_defaults()

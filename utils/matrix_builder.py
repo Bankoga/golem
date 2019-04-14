@@ -8,12 +8,11 @@ class Matrix:
     self.name = self.config['type_data']['name']
     self.ctg_type = self.config['type_data']['type']
     self.purpose = self.config['type_data']['purpose']
-    self.groups = dict()
   
 """
 Each matrix module consists of several functional groups
 These groups handle all the processing
-The proc built from the config, is used to build the list of funcsets in the module
+The proc built from the config, is used to build the list of modules in the module
 A funcgoup, is a list of Nodes that all process the same input packages and contribute to different output packages
 ""
   def get_id(self):

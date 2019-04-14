@@ -4,7 +4,7 @@ from components.enums.prop_types import PackagerType
 from components.enums.pos import CtgType
 from utils.helpers.prop_gen_help import kin_label_gen_unique
 from components.instructions.collector import Collector
-from components.vars.data import Address
+from components.vars.data import Lineage
 
 
 class Cell(Producer):
@@ -69,8 +69,8 @@ class Cell(Producer):
                   len(segment_defs),
                   resources_accepted,
                   segment_defs)
-      new_c.address = Address(**self.address._asdict().copy())
-      new_c.address._replace(instruction = child_label)
+      new_c.lineage = Lineage(**self.lineage._asdict().copy())
+      new_c.lineage._replace(instruction = child_label)
       new_c.build()
       collectors.append(new_c)
     return collectors

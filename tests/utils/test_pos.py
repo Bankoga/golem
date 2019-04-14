@@ -5,8 +5,8 @@ from hypothesis import strategies as st
 
 from components.enums.pos import Floor, Dimension
 
-from utils.pos import Pos, diff_addrs
-from tests.strategies.pos_strats import valid_pos, ctg_prop,dimension_prop,valid_floor, arb_addr
+from utils.pos import Pos, diff_lineages
+from tests.strategies.pos_strats import valid_pos, ctg_prop,dimension_prop,valid_floor, arb_lineage
 
 class TestPos(unittest.TestCase):
 
@@ -58,7 +58,7 @@ class TestPos(unittest.TestCase):
       with self.assertRaises(ValueError):
         pos.get_dim_value(dim)
   
-  @given(arb_addr(), arb_addr()) # pylint: disable=no-value-for-parameter
-  def test_diff_addr(self, addr_a, addr_b):
-    res = diff_addrs(addr_a, addr_b)
+  @given(arb_lineage(), arb_lineage()) # pylint: disable=no-value-for-parameter
+  def test_diff_lineage(self, lineage_a, lineage_b):
+    res = diff_lineages(lineage_a, lineage_b)
     self.assertTrue(0 <= res and res <= 281)

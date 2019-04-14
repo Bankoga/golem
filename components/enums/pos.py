@@ -17,8 +17,8 @@ class DimensionallyOrdered(Enum):
 
 class CtgType(Enum):
   MATRIX = auto()
-  HOOK = auto()
-  FSET = auto()
+  MODULE = auto()
+  STAGE = auto()
   GROUP = auto()
   PACKAGER = auto()
   INSTRUCTION = auto()

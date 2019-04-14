@@ -16,13 +16,13 @@ class HookType(Enum):
   def get_component_type(self):
     return CtgType.HOOK
 
-class FuncSetType(Enum):
+class ModuleType(Enum):
   UNSET = 1
   SENSOR = 101
   CORTICAL = 201
   GATEWAY = 202
   def get_component_type(self):
-    return CtgType.FSET
+    return CtgType.MODULE
   def sub_group(self):
     if 100 < self.value and self.value < 200:
       return SuperSet.CODER
@@ -64,7 +64,7 @@ class RuleType(Enum):
   def get_component_type(self):
     return CtgType.INSTRUCTION
 
-# (ChannelType|RsrcType|FieldType|FuncSetType|HookType|RuleType)
+# (ChannelType|ResourceType|FieldType|ModuleType|HookType|RuleType)
 
 class ChannelType(Enum):
   UNSET = 1
@@ -73,7 +73,7 @@ class ChannelType(Enum):
   def get_component_type(self):
     return CtgType.CHANNEL
 
-class RsrcType(Enum):
+class ResourceType(Enum):
   UNSET = 1
   ENERGIZER = 2
   INHIBITOR = 3

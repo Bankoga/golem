@@ -1,9 +1,9 @@
 from components.base.mechanisms.mediators.mediator import Mediator
 from components.enums.pos import CtgType
-from components.enums.prop_types import ChannelType,RsrcType
+from components.enums.prop_types import ChannelType,ResourceType
 from chainer import Variable
 from components.vars.meld import read_meld_str
-from components.vars.data import Address
+from components.vars.data import Lineage
 
 class Channel(Mediator):
   """
@@ -22,9 +22,9 @@ class Channel(Mediator):
   
   eventually, are package shapes going to be chainer variables?
   """
-  def __init__(self, meld_str,sender_address, **kwargs):
+  def __init__(self, meld_str,sender_lineage, **kwargs):
     # meld_var = read_meld_str(meld)
-    args = [{},{},meld_str,sender_address]
+    args = [{},{},meld_str,sender_lineage]
     kwargs['ctg'] = CtgType.CHANNEL
     super().__init__(*args,**kwargs)
 
@@ -41,12 +41,12 @@ class Channel(Mediator):
     }
 
   @property
-  def address_registry(self):
+  def lineage_registry(self):
     return self.var[1]
 
-  @address_registry.setter
-  def address_registry(self, value):
-    raise RuntimeError('Cannot set address registry!')
+  @lineage_registry.setter
+  def lineage_registry(self, value):
+    raise RuntimeError('Cannot set lineage registry!')
 
   @property
   def channel_registry(self):
@@ -81,7 +81,7 @@ class Channel(Mediator):
 
   @property
   def recipient(self):
-    return self.meld.address
+    return self.meld.lineage
 
   @recipient.setter
   def recipient(self, value):
@@ -105,7 +105,7 @@ class Channel(Mediator):
 
   @property
   def resource(self):
-    return RsrcType[self.meld.resource]
+    return ResourceType[self.meld.resource]
 
   @resource.setter
   def resource(self, value):

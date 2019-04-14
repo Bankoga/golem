@@ -5,7 +5,7 @@ Golems configs are based on a composable field component grouping system where e
 <!-- - Module Configs: Golem processing matrix components (groups) and their interconnections are defined via module function configs. A module config determines the internal properties of object, sans Links -->
 
 - Golem Configs: Each type of golem corresponds to a specific set of interconnected functions. Each function is defined via a key that corresponds to some module config, with the connections between modules largely being defined here.
-- ProcType Configs: Each functional part of a module corresponds to some specific group within a processing cycle. Each proc cycle consists of a number of groups which are the subdestinations of package addressess.
+- ProcType Configs: Each functional part of a module corresponds to some specific group within a processing cycle. Each proc cycle consists of a number of groups which are the subdestinations of package lineageess.
 
 ## Properties
 
@@ -51,10 +51,10 @@ A proc func (or cycle) is the series of transformations that are performed inter
 
 ## Connections
 
-There are two types of melds between modules: full, and link. All connection descriptions, are used to produce the packages used during runtime. Descriptions are only designed for use during initialization at present. Each package consists of an unique set of address, resource type, and shape. Thus all connections produce the same full format with several definitional formats.
+There are two types of melds between modules: full, and link. All connection descriptions, are used to produce the packages used during runtime. Descriptions are only designed for use during initialization at present. Each package consists of an unique set of lineage, resource type, and shape. Thus all connections produce the same full format with several definitional formats.
 
 One of the most important distinctions between a link and a full meld, is that a link only touches the pieces which have the appropriate hooks.
-A meld is a pattern for describing one or more data_packs which have a static address, resource type, and shape. They show up in all properties that use melds.
+A meld is a pattern for describing one or more data_packs which have a static lineage, resource type, and shape. They show up in all properties that use melds.
 A link is a pattern for describing changes to the shape_composition function that corresponds to a group or meld based on hooks. Links can introduce new packages into the inputs, and outputs of a module as well as affect the number of regions in the module. They only show up in ProcGroup I/O melds.
 
 - Full: Modulekey-subdestkey,Resource_type,Field_shape,hooks

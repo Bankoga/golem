@@ -5,27 +5,27 @@ from hypothesis import strategies as st
 
 from components.base.mechanisms.mediators.mediator import Mediator
 from components.enums.pos import CtgType
-from components.matrix.address_registry import AddressRegistry
+from components.matrix.lineage_registry import LineageRegistry
 from components.matrix.channel_registry import ChannelRegistry
-from components.vars.data import Address
+from components.vars.data import Lineage
 from tests.components.base.mechanisms.test_mechanism import TestMechanism
 
 class TestMediator(TestMechanism):
   def set_up_base(self):
     self.label = 'glg'
-    self.ctg = CtgType.FSET
+    self.ctg = CtgType.MODULE
     self.comp_class = Mediator
 
   def set_up_var(self):
-    self.registry = AddressRegistry(label='global_address_registry_api')
+    self.registry = LineageRegistry(label='global_lineage_registry_api')
     self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
-    self.address_registry = self.registry
-    self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
-    self.address = Address(golem='a',matrix='l',func_set='glg')
-    self.recipient = Address(golem='a',matrix='l',func_set='vis_a')
+    self.lineage_registry = self.registry
+    self.sender = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from')
+    self.lineage = Lineage(golem='a',matrix='l',module='glg')
+    self.recipient = Lineage(golem='a',matrix='l',module='vis_a')
     self.reg_item = {
       'reg_id': self.label,
-      'address': self.address
+      'lineage': self.lineage
     }
     self.values = [self.registry, self.channel_registry]
     self.var = tuple(self.values)
@@ -33,14 +33,13 @@ class TestMediator(TestMechanism):
   def setUp(self):
     self.set_up_base()
     self.set_up_var()
-    self.comp = self.comp_class(label=self.label, ctg=self.ctg)
-    self.comp.update(*self.values)
+    self.comp = self.comp_class(*self.values, label=self.label, ctg=self.ctg)
 
-  def test_get_address_registry(self):
-    self.assertEqual(self.comp.address_registry, self.address_registry)
-  def test_set_address_registry(self):
+  def test_get_lineage_registry(self):
+    self.assertEqual(self.comp.lineage_registry, self.lineage_registry)
+  def test_set_lineage_registry(self):
     with self.assertRaises(RuntimeError):
-      self.comp.address_registry = self.address_registry
+      self.comp.lineage_registry = self.lineage_registry
 
   def test_get_channel_registry(self):
     self.assertEqual(self.comp.channel_registry, self.channel_registry)

@@ -3,11 +3,11 @@ from components.data.collector_segment import CollectorSegment
 from components.instructions.instruction import Instruction
 from utils.helpers.prop_gen_help import roll_name
 from numpy import array, zeros
-from utils.pos import diff_addrs
+from utils.pos import diff_lineages
 
 class Collector(Instruction):
   """
-  Collectors are for grabbing parent specific resource availability data from a defined set of addresses
+  Collectors are for grabbing parent specific resource availability data from a defined set of lineagees
   args: registry,source_index,source_shape,step_direction,num_steps,resources_accepted,segment_defs
   """
   def __init__(self,*args,**kwargs):
@@ -76,7 +76,7 @@ class Collector(Instruction):
   def set_up_collector_segments(self, shape_defs):
     res = []
     for item in shape_defs:
-      res.append(CollectorSegment(residence_address=item[0],source_address=self.address,source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
+      res.append(CollectorSegment(residence_lineage=item[0],source_lineage=self.lineage,source_index=self.source_index,fill_shape=item[1],label=f'{self.label}_{roll_name()}'))
     self.__leaves = res
 
   def instruction_details(self,curr_data=[],inputs=None,context=None,*args):

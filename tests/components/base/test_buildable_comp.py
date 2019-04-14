@@ -10,7 +10,7 @@ from tests.components.base.test_passive_comp import TestPassiveComp
 class TestBuildableComp(TestPassiveComp):
   def set_up_base(self):
     self.label = 'TotallyValidId'
-    self.ctg = CtgType.FSET
+    self.ctg = CtgType.MODULE
     self.comp_class = BuildableComp
 
   def set_up_var(self):

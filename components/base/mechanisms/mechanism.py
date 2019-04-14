@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
 from components.base.buildable_comp import BuildableComp
-from components.matrix.address_registry import AddressRegistry
+from components.matrix.lineage_registry import LineageRegistry
 
 class Mechanism(BuildableComp):
   def __init__(self, *args,**kwargs):
@@ -9,7 +9,7 @@ class Mechanism(BuildableComp):
 
   def set_defaults(self):
     self.__is_registered = False
-    self.__address = None
+    self.__lineage = None
     return super().set_defaults()
 
   @property
@@ -18,7 +18,7 @@ class Mechanism(BuildableComp):
 
   @registry.setter
   def registry(self, value):
-    if type(value) == AddressRegistry:
+    if type(value) == LineageRegistry:
       self.update(value)
     else:
       raise RuntimeError('Attempted to set an invalid reg connection!')
@@ -27,7 +27,7 @@ class Mechanism(BuildableComp):
   def reg_item(self):
     return {
       'reg_id': self.label,
-      'address': self.address
+      'lineage': self.lineage
     }
   
   @reg_item.setter
@@ -35,15 +35,15 @@ class Mechanism(BuildableComp):
     raise RuntimeError('The reg item cannot be set!')
 
   @property
-  def address(self):
-    return self.__address
+  def lineage(self):
+    return self.__lineage
 
-  @address.setter
-  def address(self, value):
+  @lineage.setter
+  def lineage(self, value):
     if self.is_registered:
-      raise RuntimeError('The address cannot be changed after registration!')
+      raise RuntimeError('The lineage cannot be changed after registration!')
     else:
-      self.__address = value
+      self.__lineage = value
 
   @property
   def is_registered(self):
@@ -54,8 +54,8 @@ class Mechanism(BuildableComp):
     raise RuntimeError('This property cannot be set by the user!')
 
   @abstractmethod
-  def register(self, address, registry=None):
-    self.__address = address
+  def register(self, lineage, registry=None):
+    self.__lineage = lineage
     self.registry.add_item(self.reg_item)
     self.__is_registered = True
 
@@ -76,5 +76,5 @@ class Mechanism(BuildableComp):
   
   def build_details(self, *args, **kwargs):
     super().build_details(*args, **kwargs)
-    if 'address' in kwargs:
-      self.register(kwargs['address'])
+    if 'lineage' in kwargs:
+      self.register(kwargs['lineage'])

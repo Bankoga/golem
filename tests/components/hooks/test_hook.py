@@ -5,10 +5,10 @@
 
 # from components.hooks.hook import Hook
 # from components.axioms.props import dest_key_pattern, old_label_pattern 
-# from components.enums.prop_types import FieldType,HookType,RsrcType,ChannelType
-# from components.channels.misc_funcs import build_address, build_meld
+# from components.enums.prop_types import FieldType,HookType,ResourceType,ChannelType
+# from components.channels.misc_funcs import build_lineage, build_meld
 # from tests.components.channels.test_channel import TestChannel
-# from tests.strategies.pos_strats import arb_addr,full_address,partial_address
+# from tests.strategies.pos_strats import arb_lineage,full_lineage,partial_lineage
 # from tests.strategies.prop_strats import arb_label, channel_field_shape,set_type_prop,arb_resource_type,hook_type,ch_type
 
 # class TestHook(TestChannel):
@@ -22,8 +22,8 @@
 #   #   self.assertEqual(hook.direction, direction)
 #   #   self.assertEqual(hook.target, target)
 
-#   def _build_inputs_meld_(self,hook_id,hook_type, addr,dp_resource,dp_type,dp_shape):
-#     meld = build_meld(addr,dp_resource,dp_type,dp_shape)
+#   def _build_inputs_meld_(self,hook_id,hook_type, lineage,dp_resource,dp_type,dp_shape):
+#     meld = build_meld(lineage,dp_resource,dp_type,dp_shape)
 #     return f'{hook_id};{hook_type};{meld}'
 
 #   def _read_data_(self, meld):
@@ -35,11 +35,11 @@
 #       self.assertTrue(hook.hook_type == HookType.UNSET or hook.hook_type==HookType(meld_tuple[1]))
 #     else:
 #       self.assertTrue(hook.hook_type == HookType.UNSET)
-#     self.assertTrue(hook.address==meld_tuple[2])
+#     self.assertTrue(hook.lineage==meld_tuple[2])
 #     if len(meld_tuple)>3 and meld_tuple[3]:
-#       self.assertTrue(hook.resource == RsrcType.UNSET or hook.resource==RsrcType(meld_tuple[3]))
+#       self.assertTrue(hook.resource == ResourceType.UNSET or hook.resource==ResourceType(meld_tuple[3]))
 #     else:
-#       self.assertTrue(hook.resource == RsrcType.UNSET)
+#       self.assertTrue(hook.resource == ResourceType.UNSET)
 #     if len(meld_tuple)>4 and meld_tuple[4]:
 #       self.assertTrue(hook.ctg_type == ChannelType.UNSET or hook.ctg_type==ChannelType(meld_tuple[4]))
 #     else:
@@ -58,11 +58,11 @@
 #       self.assertTrue(hook.hook_type == HookType.UNSET or hook.hook_type==HookType(hook_type))
 #     else:
 #       self.assertTrue(hook.hook_type == HookType.UNSET)
-#     self.assertTrue(hook.address==meld_tuple[0])
+#     self.assertTrue(hook.lineage==meld_tuple[0])
 #     if len(meld_tuple)>1 and meld_tuple[1]:
-#       self.assertTrue(hook.resource == RsrcType.UNSET or hook.resource==RsrcType(meld_tuple[1]))
+#       self.assertTrue(hook.resource == ResourceType.UNSET or hook.resource==ResourceType(meld_tuple[1]))
 #     else:
-#       self.assertTrue(hook.resource == RsrcType.UNSET)
+#       self.assertTrue(hook.resource == ResourceType.UNSET)
 #     if len(meld_tuple)>2 and meld_tuple[2]:
 #       self.assertTrue(hook.ctg_type == ChannelType.UNSET or hook.ctg_type==ChannelType(meld_tuple[2]))
 #     else:
@@ -74,7 +74,7 @@
 
 #   def setUp(self):
 #     # In order to test all the variants for the integration, we will need BDD tests
-#     self.meld = build_meld('m_id-g_id',RsrcType.ENERGIZER,ChannelType.AGGREGATE,FieldType.TEST_INPUT)
+#     self.meld = build_meld('m_id-g_id',ResourceType.ENERGIZER,ChannelType.AGGREGATE,FieldType.TEST_INPUT)
 #     self.hook_id = 'cycle'
 #     self.hook_type = HookType.UNI
 #     self.hook=Hook(self.meld,self.hook_id,self.hook_type)
@@ -84,11 +84,11 @@
 #     meld = ";".join(meld_tuple)
 #     self._read_data_(meld)
 
-#   @given(arb_label(), hook_type(), arb_addr(), arb_resource_type(), ch_type(), channel_field_shape()) # pylint: disable=no-value-for-parameter
-#   def test_sampled_msg_read(self,hook_id,hook_type,addr,dp_resource,dp_type,dp_shape):
-#     inputs = self._build_inputs_meld_(hook_id,hook_type,addr,dp_resource,dp_type,dp_shape)
+#   @given(arb_label(), hook_type(), arb_lineage(), arb_resource_type(), arb_channel_type(), channel_field_shape()) # pylint: disable=no-value-for-parameter
+#   def test_sampled_msg_read(self,hook_id,hook_type,lineage,dp_resource,dp_type,dp_shape):
+#     inputs = self._build_inputs_meld_(hook_id,hook_type,lineage,dp_resource,dp_type,dp_shape)
 #     self._read_data_(inputs)
-#     meld = build_meld(addr,dp_resource,dp_type,dp_shape)
+#     meld = build_meld(lineage,dp_resource,dp_type,dp_shape)
 #     self._read_data_alt_(hook_id,hook_type,meld)
 
 #   def _check_hook_(self,container_id):
