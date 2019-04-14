@@ -7,13 +7,13 @@ from hypothesis.strategies import composite
 from components.axioms.cell_types import CellType
 from components.axioms.maps.set import get_ids
 from components.axioms.matrix import max_resource_value, min_resource_value
-from components.axioms.props import label_pattern, invalid_label_pattern
+from components.axioms.props import invalid_label_pattern, label_pattern
 from components.channels.channel import Channel
-from components.enums.prop_types import (ChannelType, FieldType, FuncSetType,
-                                         HookType, PackagerType, RsrcType,
-                                         RuleType, SuperSet)
-
+from components.enums.prop_types import (ChannelType, FieldType, GroupType,
+                                         HookType, ModuleType, PackagerType,
+                                         ResourceType, RuleType, SuperSet)
 from utils.helpers.prop_gen_help import roll_name
+
 
 @composite
 def arb_name(draw):
@@ -47,6 +47,12 @@ def node_type_prop(draw):
   return res
 
 @composite
+def arb_group_type(draw):
+  res = draw(st.sampled_from(GroupType))
+  st.assume(res)
+  return res
+
+@composite
 def hook_type(draw):
   res = draw(st.sampled_from(HookType))
   st.assume(res)
@@ -55,9 +61,9 @@ def hook_type(draw):
 
 @composite
 def arb_resource_type(draw):
-  res = draw(st.sampled_from(RsrcType))
+  res = draw(st.sampled_from(ResourceType))
   st.assume(res)
-  st.assume(res != RsrcType.UNSET)
+  st.assume(res != ResourceType.UNSET)
   return res
 
 @composite
@@ -69,13 +75,13 @@ def superset_prop(draw):
 
 @composite
 def set_type_prop(draw):
-  res = draw(st.sampled_from(FuncSetType))
+  res = draw(st.sampled_from(ModuleType))
   st.assume(res)
-  st.assume(res != FuncSetType.UNSET)
+  st.assume(res != ModuleType.UNSET)
   return res
 
 @composite
-def ch_type(draw):
+def arb_channel_type(draw):
   res = draw(st.sampled_from(ChannelType))
   st.assume(res)
   st.assume(res != ChannelType.UNSET)
@@ -89,7 +95,7 @@ def channel_field_shape(draw):
   return res
 
 @composite
-def rule_type_prop(draw):
+def arb_rule_type(draw):
   res = draw(st.sampled_from(RuleType))
   st.assume(res)
   st.assume(res != RuleType.UNSET)
@@ -98,12 +104,12 @@ def rule_type_prop(draw):
 @composite
 def fs_provider_id(draw):
     # fs_id = set_ids['glg']
-    # fs_type = FuncSetType.SENSOR
+    # module_type = ModuleType.SENSOR
     # mismatch between arb actual id and arb actual group type
     # group types need to know if an ID is part of their domain
   # vs = set_ids.values()
-  fs_type = draw(superset_prop()) # pylint: disable=no-value-for-parameter
-  ids = sorted(get_ids(fs_type))
+  module_type = draw(superset_prop()) # pylint: disable=no-value-for-parameter
+  ids = sorted(get_ids(module_type))
   g_id = draw(st.sampled_from(ids))
-  st.assume(fs_type and g_id)
-  return f'{fs_type}-{g_id}'
+  st.assume(module_type and g_id)
+  return f'{module_type}-{g_id}'

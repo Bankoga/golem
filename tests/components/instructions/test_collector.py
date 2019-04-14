@@ -6,20 +6,18 @@ from numpy import array, array_equal
 
 from components.data.collector_segment import CollectorSegment as cs
 from components.enums.pos import CtgType
-from components.enums.prop_types import RsrcType, RuleType
+from components.enums.prop_types import ResourceType, RuleType
 from components.instructions.collector import Collector
-from components.matrix.address_registry import AddressRegistry
-from components.vars.data import Address
+from components.matrix.lineage_registry import LineageRegistry
+from components.vars.data import Lineage
 from tests.components.instructions.test_instruction import TestInstruction
 from tests.strategies.data_strats import (valid_resource_array,
                                           valid_resource_data, valid_shape,
                                           valid_shape_and_index,
                                           valid_sz_shape_and_index)
 from tests.strategies.instruction_strats import (valid_collector_segment)
-from tests.strategies.func_set_strats import (module_input_set,
-                                              processed_module_input_set)
 from tests.strategies.pos_strats import valid_direction, valid_pos
-from tests.strategies.prop_strats import arb_label, rule_type_prop
+from tests.strategies.prop_strats import arb_label, arb_rule_type
 from utils.helpers.prop_gen_help import roll_name
 from utils.pos import Pos
 
@@ -32,25 +30,25 @@ class TestCollector(TestInstruction):
     self.comp_class = Collector
   
   def set_up_var(self):
-    self.registry = AddressRegistry(label='global_address_registry_api')
-    self.address = Address(golem='a',matrix='l',func_set='b', stage='a',group='a',packager='p',instruction=self.label)
+    self.registry = LineageRegistry(label='global_lineage_registry_api')
+    self.lineage = Lineage(golem='a',matrix='l',module='b', stage='a',group='a',packager='p',instruction=self.label)
     self.reg_item = {
       'reg_id': self.label,
-      'address': self.address
+      'lineage': self.lineage
     }
     self.segment_defs = [
-      (self.address,(4,4)),
-      (self.address,(1,1)),
-      (self.address,(4,4)),
-      (self.address,(9,9),(1,1)),
-      (self.address,(4,2),(1,1)),
-      (self.address,(12,12))
+      (self.lineage,(4,4)),
+      (self.lineage,(1,1)),
+      (self.lineage,(4,4)),
+      (self.lineage,(9,9),(1,1)),
+      (self.lineage,(4,2),(1,1)),
+      (self.lineage,(12,12))
     ]
     self.source_shape = (256,256)
     self.source_index = (45,25)
     self.step_direction = 'A' # TODO: Use correct ENUM
     self.num_steps = len(self.segment_defs)
-    self.resources_accepted = [RsrcType.ENERGIZER]
+    self.resources_accepted = [ResourceType.ENERGIZER]
     self.values = [self.registry,
                    self.source_index,
                    self.source_shape,
@@ -64,12 +62,12 @@ class TestCollector(TestInstruction):
 
   def set_up_dynamic_props(self):
     # self.pos = Pos(self.ctg.get_component_type())
-    self.leaves = [cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
-                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(1,1),label=f'{self.label}_{roll_name()}'),
-                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
-                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(9,9),label=f'{self.label}_{roll_name()}'),
-                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(4,2),label=f'{self.label}_{roll_name()}'),
-                        cs(residence_address=self.address,source_address=self.address,source_index=self.source_index,fill_shape=(12,12),label=f'{self.label}_{roll_name()}')]
+    self.leaves = [cs(residence_lineage=self.lineage,source_lineage=self.lineage,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_lineage=self.lineage,source_lineage=self.lineage,source_index=self.source_index,fill_shape=(1,1),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_lineage=self.lineage,source_lineage=self.lineage,source_index=self.source_index,fill_shape=(4,4),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_lineage=self.lineage,source_lineage=self.lineage,source_index=self.source_index,fill_shape=(9,9),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_lineage=self.lineage,source_lineage=self.lineage,source_index=self.source_index,fill_shape=(4,2),label=f'{self.label}_{roll_name()}'),
+                        cs(residence_lineage=self.lineage,source_lineage=self.lineage,source_index=self.source_index,fill_shape=(12,12),label=f'{self.label}_{roll_name()}')]
     self.old_data = []
     self.prev_data = []
 
@@ -89,7 +87,7 @@ class TestCollector(TestInstruction):
                                 self.resources_accepted,
                                 self.segment_defs,
                                 label=self.label)
-    self.comp.address = self.address
+    self.comp.lineage = self.lineage
 
   def test_get_attenuation_rate(self):
     self.assertEqual(self.comp.attenuation_rate, self.attenuation_rate)
@@ -97,9 +95,9 @@ class TestCollector(TestInstruction):
     with self.assertRaises(RuntimeError):
       self.comp.attenuation_rate = self.attenuation_rate
 
-  def test_get_source_ind(self):
+  def test_get_source_index(self):
     self.assertEqual(self.comp.source_index, self.source_index)
-  def test_set_source_ind(self):
+  def test_set_source_index(self):
     with self.assertRaises(RuntimeError):
       self.comp.source_index = self.source_index
     
@@ -131,15 +129,15 @@ class TestCollector(TestInstruction):
   @given(st.lists(valid_shape())) # pylint: disable=no-value-for-parameter
   def test_set_up_collector_segments(self,segment_defs):
     self.comp.set_up_collector_segments(segment_defs)
-    for i,(addr,f_shape) in enumerate(segment_defs):
-      self.assertTrue(self.comp.leaves[i].residence_address == addr)
+    for i,(lineage,f_shape) in enumerate(segment_defs):
+      self.assertTrue(self.comp.leaves[i].residence_lineage == lineage)
       self.assertTrue(self.comp.leaves[i].fill_shape == f_shape)
 
   def test_get_leaves(self):
     self.built_check()
     for i,cllct_sgmnt in enumerate(self.comp.leaves):
-      self.assertEqual(cllct_sgmnt.residence_address, self.leaves[i].residence_address)
-      self.assertEqual(cllct_sgmnt.source_address, self.leaves[i].source_address)
+      self.assertEqual(cllct_sgmnt.residence_lineage, self.leaves[i].residence_lineage)
+      self.assertEqual(cllct_sgmnt.source_lineage, self.leaves[i].source_lineage)
       self.assertEqual(cllct_sgmnt.source_index, self.leaves[i].source_index)
       self.assertEqual(cllct_sgmnt.fill_shape, self.leaves[i].fill_shape)
   def test_set_leaves(self):
@@ -150,7 +148,7 @@ class TestCollector(TestInstruction):
   def test_instruction_details(self, npmatrix_array):
     self.built_check()
     results = self.comp.instruction_details(npmatrix_array)
-    expectation = self.comp.instruction_details(npmatrix_array)
+    # expectation = self.comp.instruction_details(npmatrix_array)
     # self.assertTrue(array_equal(results, expectation))
     self.assertTrue(len(results),len(self.leaves))
     for i,item in enumerate(results):

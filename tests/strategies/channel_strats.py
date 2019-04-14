@@ -10,8 +10,8 @@ from components.channels.channel import Channel
 from components.channels.misc_funcs import (build_meld)
 from components.vars.meld import read_meld_str
 
-from tests.strategies.pos_strats import full_address, partial_address, arb_addr, rel_addr
-from tests.strategies.prop_strats import (channel_field_shape, arb_resource_type, ch_type)
+from tests.strategies.pos_strats import full_lineage, partial_lineage, arb_lineage, rel_lineage
+from tests.strategies.prop_strats import (channel_field_shape, arb_resource_type, arb_channel_type)
 from tests.strategies.data_strats import valid_resource_data,valid_shape
 
 """
@@ -24,39 +24,39 @@ What are the pools of object examples we need to draw from?
 
 @composite
 def sender_and_recipient_pair(draw):
-  recip_addr = arb_addr() # pylint: disable=no-value-for-parameter
-  sender_addr = arb_addr() # pylint: disable=no-value-for-parameter
-  st.assume(recip_addr != sender_addr)
-  st.assume(recip_addr)
-  st.assume(sender_addr)
-  return (recip_addr, sender_addr)
+  recip_lineage = arb_lineage() # pylint: disable=no-value-for-parameter
+  sender_lineage = arb_lineage() # pylint: disable=no-value-for-parameter
+  st.assume(recip_lineage != sender_lineage)
+  st.assume(recip_lineage)
+  st.assume(sender_lineage)
+  return (recip_lineage, sender_lineage)
 
 
 @composite
 def proto_meld_str(draw):
-  addr = draw(rel_addr()) # pylint: disable=no-value-for-parameter
+  lineage = draw(rel_lineage()) # pylint: disable=no-value-for-parameter
   dp_resource = draw(arb_resource_type()) # pylint: disable=no-value-for-parameter
-  dp_type = draw(ch_type()) # pylint: disable=no-value-for-parameter
-  meld = build_meld(addr,dp_resource,dp_type)
+  dp_type = draw(arb_channel_type()) # pylint: disable=no-value-for-parameter
+  meld = build_meld(lineage,dp_resource,dp_type)
   return meld
 
 @composite
 def full_meld_str(draw):
-  addr = draw(rel_addr()) # pylint: disable=no-value-for-parameter
+  lineage = draw(rel_lineage()) # pylint: disable=no-value-for-parameter
   dp_resource = draw(arb_resource_type()) # pylint: disable=no-value-for-parameter
-  dp_type = draw(ch_type()) # pylint: disable=no-value-for-parameter
+  dp_type = draw(arb_channel_type()) # pylint: disable=no-value-for-parameter
   dp_shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter
-  meld = build_meld(addr,dp_resource,dp_type,dp_shape)
+  meld = build_meld(lineage,dp_resource,dp_type,dp_shape)
   return meld
 
 @composite
 def arb_meld_str(draw):
   # meld = draw(st.one_of(proto_meld_str(),full_meld_str())) # pylint: disable=no-value-for-parameter
   ch_resource = draw(arb_resource_type()) # pylint: disable=no-value-for-parameter
-  channel_type = draw(ch_type()) # pylint: disable=no-value-for-parameter
-  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  channel_type = draw(arb_channel_type()) # pylint: disable=no-value-for-parameter
+  lineage = draw(arb_lineage()) # pylint: disable=no-value-for-parameter
   ch_shape = draw(valid_shape()) # pylint: disable=no-value-for-parameter
-  meld = build_meld(channel_type,ch_resource,addr,ch_shape)
+  meld = build_meld(channel_type,ch_resource,lineage,ch_shape)
   return meld
 
 @composite
@@ -67,8 +67,8 @@ def arb_meld(draw):
 @composite
 def channel_inputs(draw):
   meld = draw(arb_meld_str()) # pylint: disable=no-value-for-parameter
-  sender_addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
-  return (meld, sender_addr)
+  sender_lineage = draw(arb_lineage()) # pylint: disable=no-value-for-parameter
+  return (meld, sender_lineage)
 
 @composite
 def valid_cell_instruction(draw):

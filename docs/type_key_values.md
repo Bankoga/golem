@@ -27,13 +27,13 @@ Paired items are simply sign flipped in terms of position or use a paired dictio
 
 | Key | Pattern | Dimension Change | Purpose |
 | --- | --- | --- | --- | --- |
-| A | --- | --- | Z+ | Addressing things above |
-| B | --- | --- | Z- | Addressing things below |
+| A | --- | --- | Z+ | Lineageing things above |
+| B | --- | --- | Z- | Lineageing things below |
 | N | --- | --- | --- | --- |
 | E | --- | --- | --- | --- |
 | S | --- | --- | --- | --- |
 | W | --- | --- | --- | --- |
-| P | --- | --- | --- | Addressing paired things |
+| P | --- | --- | --- | Lineageing paired things |
 
 ## Hook Types
 

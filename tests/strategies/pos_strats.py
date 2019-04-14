@@ -6,36 +6,36 @@ from components.axioms.props import directions_pattern
 from components.axioms.pos import cardinal_keys
 from components.enums.pos import Floor, CtgType, Dimension
 from components.channels.channel import Channel
-from components.vars.data import Address
-from utils.helpers.props import build_addr_id
+from components.vars.data import Lineage
+from utils.helpers.props import build_lineage_id
 
 from tests.strategies.prop_strats import arb_label
 
 from utils.pos import Pos
 
 @composite
-def full_address(draw):
+def full_lineage(draw):
   ids = draw(st.lists(arb_label(),max_size=7)) # pylint: disable=no-value-for-parameter
-  res = Address(*ids)
+  res = Lineage(*ids)
   return res
 
 @composite
-def partial_address(draw):
+def partial_lineage(draw):
   ids = draw(st.lists(arb_label(),max_size=7)) # pylint: disable=no-value-for-parameter
-  res = Address(*ids)
+  res = Lineage(*ids)
   return res
 
 @composite
-def rel_addr(draw):
+def rel_lineage(draw):
   ids = draw(st.lists(arb_label(),max_size=7)) # pylint: disable=no-value-for-parameter
-  res = build_addr_id(ids)
+  res = build_lineage_id(ids)
   return res
 
 @composite
-def arb_addr(draw):
-  addr = draw(st.one_of(partial_address())) # pylint: disable=no-value-for-parameter
-  st.assume(addr)
-  return addr
+def arb_lineage(draw):
+  lineage = draw(st.one_of(partial_lineage())) # pylint: disable=no-value-for-parameter
+  st.assume(lineage)
+  return lineage
 
 @composite
 def valid_floor(draw):

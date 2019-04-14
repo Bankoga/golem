@@ -4,11 +4,11 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from components.data.package import Package
-from components.vars.data import Address
+from components.vars.data import Lineage
 from tests.components.base.test_passive_comp import TestPassiveComp
 from components.enums.pos import CtgType
 from tests.strategies.data_strats import valid_resource_data 
-from tests.strategies.pos_strats import arb_addr
+from tests.strategies.pos_strats import arb_lineage
 
 class TestPackage(TestPassiveComp):
   def set_up_base(self):
@@ -17,8 +17,8 @@ class TestPackage(TestPassiveComp):
 
   def set_up_var(self):
     self.data = 'Any arbitrary type of object?'
-    self.sender = Address(golem='a',matrix='l',func_set='glg', stage='prim', group='assoc_from')
-    self.recipient = Address(golem='a',matrix='b',func_set='vis_a')
+    self.sender = Lineage(golem='a',matrix='l',module='glg', stage='prim', group='assoc_from')
+    self.recipient = Lineage(golem='a',matrix='b',module='vis_a')
     self.values = [self.data,self.recipient,self.sender]
     self.var = tuple(self.values)
 
@@ -29,7 +29,7 @@ class TestPackage(TestPassiveComp):
 
   def test_get_recipient(self):
     self.assertEqual(self.comp.recipient, self.recipient)
-  @given(arb_addr()) # pylint: disable=no-value-for-parameter
+  @given(arb_lineage()) # pylint: disable=no-value-for-parameter
   def test_set_recipient(self, recipient):
     with self.assertRaises(RuntimeError):
       self.comp.recipient = recipient
@@ -43,7 +43,7 @@ class TestPackage(TestPassiveComp):
 
   def test_get_sender(self):
     self.assertEqual(self.comp.sender, self.sender)
-  @given(arb_addr()) # pylint: disable=no-value-for-parameter
+  @given(arb_lineage()) # pylint: disable=no-value-for-parameter
   def test_set_sender(self, sender):
     with self.assertRaises(RuntimeError):
       self.comp.sender = sender

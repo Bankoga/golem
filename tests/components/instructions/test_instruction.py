@@ -7,12 +7,12 @@ from numpy import array_equal
 from components.enums.pos import CtgType
 from components.enums.prop_types import RuleType
 from components.instructions.instruction import Instruction
-from components.matrix.address_registry import AddressRegistry
-from components.vars.data import Address
+from components.matrix.lineage_registry import LineageRegistry
+from components.vars.data import Lineage
 from tests.components.base.mechanisms.cogs.test_consumer import TestConsumer
 from tests.strategies.data_strats import valid_resource_data, valid_resource_array
 from tests.strategies.pos_strats import valid_pos
-from tests.strategies.prop_strats import arb_label, rule_type_prop
+from tests.strategies.prop_strats import arb_label, arb_rule_type
 from utils.pos import Pos
 
 
@@ -22,11 +22,11 @@ class TestInstruction(TestConsumer):
     self.ctg = CtgType.INSTRUCTION
 
   def set_up_var(self):
-    self.registry = AddressRegistry(label='global_address_registry_api')
-    self.address = Address(golem='a',matrix='l',func_set='b', stage='a',group='a',packager='p',instruction=self.label)
+    self.registry = LineageRegistry(label='global_lineage_registry_api')
+    self.lineage = Lineage(golem='a',matrix='l',module='b', stage='a',group='a',packager='p',instruction=self.label)
     self.reg_item = {
       'reg_id': self.label,
-      'address': self.address
+      'lineage': self.lineage
     }
     self.rule_type = RuleType.CONV
     self.old_data = []
@@ -86,7 +86,7 @@ class TestInstruction(TestConsumer):
       self.assertEqual(self.comp.prev_data, old_prev)
       self.assertFalse(res)
 
-  # @given(arb_label(), rule_type_prop(), valid_pos()) # pylint: disable=no-value-for-parameter
+  # @given(arb_label(), arb_rule_type(), valid_pos()) # pylint: disable=no-value-for-parameter
   # def test_default(self, label, rtype, pos):
   #   # for efficiency reasons, eventually instructions will need to be built before processing
   #   # label = f'{rtype.name}-{pos.get_hash()}' # What is the id of AN instruction in the matrix?

@@ -1,4 +1,4 @@
-def build_addr_id(itr):
+def build_lineage_id(itr):
   res = ''
   for i in itr:
     if i is None:

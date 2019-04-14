@@ -5,10 +5,10 @@ from hypothesis import strategies as st
 
 from components.cogs.cells.cell import Cell
 from components.enums.pos import CtgType
-from components.matrix.address_registry import AddressRegistry
-from components.vars.data import Address
+from components.matrix.lineage_registry import LineageRegistry
+from components.vars.data import Lineage
 from components.axioms.cell_types import CellType, cell_data
-from components.enums.prop_types import RuleType, RsrcType, ChannelType,FieldType, PackagerType
+from components.enums.prop_types import RuleType, ResourceType, ChannelType,FieldType, PackagerType
 
 from tests.strategies.channel_strats import valid_cell_instruction
 from tests.strategies.prop_strats import arb_cell_type, arb_label
@@ -16,7 +16,7 @@ from tests.strategies.instruction_strats import arb_full_collector_def
 from tests.components.base.mechanisms.cogs.test_producer import TestProducer
 from tests.strategies.data_strats import valid_shape, arb_resource_set
 
-from components.channels.misc_funcs import build_address, build_meld, build_package
+from components.channels.misc_funcs import build_lineage, build_meld, build_package
 
 class TestCell(TestProducer):
   def set_up_base(self):
@@ -25,14 +25,14 @@ class TestCell(TestProducer):
     self.comp_class = Cell
 
   def set_up_var(self):
-    self.registry = AddressRegistry(label='global_registry')
-    self.address = Address(golem='a',matrix='l',func_set='b',stage='base',group='randos',packager='star_0')
+    self.registry = LineageRegistry(label='global_registry')
+    self.lineage = Lineage(golem='a',matrix='l',module='b',stage='base',group='randos',packager='star_0')
     self.reg_item = {
       'reg_id': self.label,
-      'address': self.address
+      'lineage': self.lineage
     }
     self.cell_type = CellType.PYRAMID
-    self.resources_accepted = [RsrcType.ENERGIZER,RsrcType.INHIBITOR]
+    self.resources_accepted = [ResourceType.ENERGIZER,ResourceType.INHIBITOR]
     self.source_index = (0,0)
     self.source_shape = (256,256)
     self.values = [self.registry,self.cell_type,self.resources_accepted,self.source_index,self.source_shape]
@@ -42,7 +42,7 @@ class TestCell(TestProducer):
     self.set_up_base()
     self.set_up_var()
     self.comp = self.comp_class(*self.values,label=self.label)
-    self.comp.address = self.address
+    self.comp.lineage = self.lineage
 
   def test_get_cell_type(self):
     self.assertEqual(self.comp.cell_type, self.cell_type)
@@ -100,7 +100,7 @@ class TestCell(TestProducer):
     # Collector defs do what?
     # specify a set of directions to set up collectors
     # each step is represented by a list of filter shapes
-    self.comp.address = self.address
+    self.comp.lineage = self.lineage
     if collector_def is None:
       with self.assertRaises(RuntimeError):
         res = self.comp.create_collectors_from_def(name, collector_def, resources_accepted)
@@ -114,11 +114,11 @@ class TestCell(TestProducer):
       self.assertEqual(collector.resources_accepted, resources_accepted)
       self.assertEqual(collector.source_index, self.source_index)
       self.assertEqual(collector.source_shape, self.source_shape)
-      self.assertEqual(self.comp.address, self.address)
+      self.assertEqual(self.comp.lineage, self.lineage)
 
   @given(arb_cell_type()) # pylint: disable=no-value-for-parameter
   def test_create_collectors(self, cell_type):
-    self.comp.address = self.address
+    self.comp.lineage = self.lineage
     expected_data = cell_data[cell_type.name]
     self.comp.read_data(cell_type)
     res = self.comp.create_collectors()
@@ -134,12 +134,12 @@ class TestCell(TestProducer):
         self.assertEqual(collector.resources_accepted, self.resources_accepted)
         self.assertEqual(collector.source_index, self.source_index)
         self.assertEqual(collector.source_shape, self.source_shape)
-        self.assertEqual(self.comp.address, self.address)
+        self.assertEqual(self.comp.lineage, self.lineage)
 
   def test_build_with_data(self):
     #  building a cell includes reading the data of any new cell type provided if provided self.read_data()
     #  building requires that a cell have a type != UNSET
-    self.comp.build(address=self.address)
+    self.comp.build(lineage=self.lineage)
     self.assertTrue(self.comp.is_built)
     self.read_data_assertions(self.cell_type)
 
@@ -190,7 +190,7 @@ class TestCell(TestProducer):
   #   but I need a guaranteed order to some of the inputs don't I?
   #   Why? Bc agg type packages get combined in a spatially oriented way
   #   Actually, bc of position data that is embedded in each sender we have a way to guarantee order of processing
-  #   Given that each sender has a position, this can be added to the package along with sender address (or in place of?)
+  #   Given that each sender has a position, this can be added to the package along with sender lineage (or in place of?)
   #   Given that we are sent inputs
   #   When we prepare to evaluate them
   #   Then we sort them using a guaranteed sort by pos first!
@@ -207,7 +207,7 @@ class TestCell(TestProducer):
   #   # build a
   #   st.lists(st.builds(build_package, st.sampled_from(['SenderModuleId','self','Self']),
   #       st.sampled_from(['sender_set_id','self','Self', '']),
-  #       st.sampled_from(RsrcType),
+  #       st.sampled_from(ResourceType),
   #       st.sampled_from(ChannelType),
   #       st.sampled_from(FieldType),
   #       st.sampled_from(['SenderModuleId','self','Self']),

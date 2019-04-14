@@ -4,7 +4,7 @@ from numpy import full, ones
 
 from components.axioms.matrix import max_resource_value, min_resource_value
 from tests.strategies.prop_strats import arb_label,arb_resource_type
-from tests.strategies.pos_strats import valid_pos, arb_addr
+from tests.strategies.pos_strats import valid_pos, arb_lineage
 from utils.helpers.chaos import draw as draw_num
 
 @composite
@@ -12,6 +12,12 @@ def valid_shape(draw):
   x = draw(st.just(ones((256,256))))
   st.assume(x.any())
   return x.shape
+
+@composite
+def arb_percentage(draw):
+  pct = draw(st.floats(min_value=0.00000002, max_value=1))
+  st.assume(pct)
+  return pct
 
 @composite
 def valid_sz_shape_and_index(draw):
@@ -55,7 +61,7 @@ def valid_resource_data_and_index(draw):
 def valid_resource_array(draw, shape=valid_shape(), num_shapes=st.integers(max_value=30)): # pylint: disable=no-value-for-parameter
   r_set = []
   ns = draw(num_shapes)
-  for i in range(ns):
+  for i in range(ns): # pylint: disable=unused-variable
     r_set.append(draw(valid_resource_data())) # pylint: disable=no-value-for-parameter
   return r_set
 
@@ -76,6 +82,6 @@ def valid_locale(draw):
 
 @composite
 def valid_locale_inputs(draw):
-  addr = draw(arb_addr()) # pylint: disable=no-value-for-parameter
+  lineage = draw(arb_lineage()) # pylint: disable=no-value-for-parameter
   pos = draw(valid_pos()) # pylint: disable=no-value-for-parameter
-  return (addr,pos)
+  return (lineage,pos)

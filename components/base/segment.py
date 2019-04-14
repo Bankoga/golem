@@ -3,23 +3,23 @@ from components.base.static_comp import StaticComp
 class Segment(StaticComp):
   def __init__(self, *args,**kwargs):
     super().__init__(**kwargs)
-    self.__residence_address = kwargs['residence_address']
-    self.__source_address = kwargs['source_address']
+    self.__residence_lineage = kwargs['residence_lineage']
+    self.__source_lineage = kwargs['source_lineage']
     self.__source_index = kwargs['source_index']
     self.__fill_shape = kwargs['fill_shape']
   
   @property
-  def residence_address(self):
-    return self.__residence_address
-  @residence_address.setter
-  def residence_address(self, value):
+  def residence_lineage(self):
+    return self.__residence_lineage
+  @residence_lineage.setter
+  def residence_lineage(self, value):
     self.setter_error()
 
   @property
-  def source_address(self):
-    return self.__source_address
-  @source_address.setter
-  def source_address(self, value):
+  def source_lineage(self):
+    return self.__source_lineage
+  @source_lineage.setter
+  def source_lineage(self, value):
     self.setter_error()
     
   @property

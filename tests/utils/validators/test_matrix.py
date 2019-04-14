@@ -5,10 +5,10 @@ from hypothesis import strategies as st
 
 from numpy import array_equal
 
-from components.vars.misc import reg_keys, addr_keys, channel_keys
+from components.vars.misc import reg_keys, lineage_keys, channel_keys
 
-from tests.strategies.var_strats import reg_item_var,reg_item_valid_var,addr_item_var,addr_item_valid_var, channel_item_var, channel_item_valid_var
-from utils.validators.matrix import reg_item_check,addr_item_check,channel_item_check
+from tests.strategies.var_strats import reg_item_var,reg_item_valid_var,lineage_item_var,lineage_item_valid_var, channel_item_var, channel_item_valid_var
+from utils.validators.matrix import reg_item_check,lineage_item_check,channel_item_check
 
 class TestMatrix(unittest.TestCase):
 
@@ -27,12 +27,12 @@ class TestMatrix(unittest.TestCase):
     # if everything else passes, return True
 
   # TODO: the is a really poorly written test case... Need to rewrite
-  @given(st.one_of(addr_item_var(), addr_item_valid_var())) # pylint: disable=no-value-for-parameter
-  def test_addr_item_check(self, addr_item):
-    # if it does not fit the addr_item dict pattern, return False
-    expectation = (array_equal(tuple(addr_item.keys()),addr_keys))
+  @given(st.one_of(lineage_item_var(), lineage_item_valid_var())) # pylint: disable=no-value-for-parameter
+  def test_lineage_item_check(self, lineage_item):
+    # if it does not fit the lineage_item dict pattern, return False
+    expectation = (array_equal(tuple(lineage_item.keys()),lineage_keys))
 
-    result = addr_item_check(addr_item)
+    result = lineage_item_check(lineage_item)
     self.assertEqual(result, expectation)
     # if each property does not pass validation, return False
     # if everything else passes, return True
