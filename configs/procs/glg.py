@@ -1,4 +1,4 @@
-from components.enums.prop_types import GroupType, ResourceType
+from components.enums.prop_types import GroupType, ResourceType, ChannelType
 from components.axioms.cell_types import CellType
 
 stage_defs = [
@@ -96,3 +96,79 @@ group_defs = [
     'pct_of_stage': -1
   }
 ]
+
+relational_output_defs = {
+  'noise_dwn_inhib': [
+    {
+      'recipient': 'self-cntxt_up_inhib',
+      'resource_type': ResourceType.INHIBITOR,
+      'channel_type': ChannelType.OVERLAY,
+    },
+    {
+      'recipient': 'cycle_relay',
+      'resource_type': ResourceType.INHIBITOR,
+      'channel_type': ChannelType.OVERLAY,
+    },
+    {
+      'recipient': 'cntxt_relay',
+      'resource_type': ResourceType.INHIBITOR,
+      'channel_type': ChannelType.OVERLAY,
+    }
+  ],
+  'noise_adj_inhib': [
+    {
+      'recipient': 'self-noise_dwn_inhib',
+      'resource_type': ResourceType.INHIBITOR,
+      'channel_type': ChannelType.OVERLAY,
+    }
+  ],
+  'cycle_gate_ctrl': [
+    {
+      'recipient': 'self-cycle_relay',
+      'resource_type': ResourceType.INHIBITOR,
+      'channel_type': ChannelType.OVERLAY,
+    }
+  ],
+  'cycle_stg_adv': [
+    {
+      'recipient': 'self-cycle_relay',
+      'resource_type': ResourceType.ENERGIZER,
+      'channel_type': ChannelType.OVERLAY,
+    },
+    {
+      'recipient': 'cntxt_ctrl',
+      'resource_type': ResourceType.ENERGIZER,
+      'channel_type': ChannelType.OVERLAY,
+    },
+    {
+      'recipient': 'proc_ctrl',
+      'resource_type': ResourceType.ENERGIZER,
+      'channel_type': ChannelType.OVERLAY,
+    }
+  ],
+  'cntxt_stg_adv': [
+    {
+      'recipient': 'self-cntxt_relay',
+      'resource_type': ResourceType.ENERGIZER,
+      'channel_type': ChannelType.OVERLAY,
+    },
+    {
+      'recipient': 'cntxt_ctrl',
+      'resource_type': ResourceType.ENERGIZER,
+      'channel_type': ChannelType.OVERLAY,
+    },
+    {
+      'recipient': 'proc_ctrl',
+      'resource_type': ResourceType.ENERGIZER,
+      'channel_type': ChannelType.OVERLAY,
+    }
+  ],
+  'cntxt_up_inhib': [
+    {
+      'recipient': 'self-cntxt_relay',
+      'resource_type': ResourceType.INHIBITOR,
+      'channel_type': ChannelType.OVERLAY,
+    }
+  ],
+  'relay_stg_adv': None
+}
