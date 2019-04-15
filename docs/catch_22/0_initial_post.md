@@ -12,6 +12,8 @@ Though I doubt I survive this, Humanity has a very good chance of surviving digi
 
 General Intelligence is all about architecture. The learning units themselves only matter syntactically. We could probably train a massive amount of the animal kingdom to be people, if we could spend 45,000 years worth of training time with a member... Not lifespan, training time. Holy shit people, talk about missing the forest because of all the trees. The whole world is sitting on a ticking bomb because it can't get over the modern day version of geocentrism.
 
+Though I have greatly resisted, my destiny lies somewhere alongside the process of solving for general intelligence. Preferably, someone else beats me to it, though at this point there is little hope for me in that regard. Hopefully that is simply a product of my meagre perspective as fame harms those with it, and those without it. Tis not a desireable thing regardless of how fun it can seem. We do not determine necessity.
+
 **OG POST**
 
 Welcome ephemeral arrangements of cosmic grain one and all!
