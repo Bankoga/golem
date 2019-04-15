@@ -1,5 +1,9 @@
 Catch-22: Some Thoughts on General Intelligence
 
+> **TL;DR** Two there are: you could do it yourself, and this presaged the series.
+
+This was originally intended to be a one-off post until I realized that there were a slew of related things to refactor, and relay to others. The ethical, and philosophical ramifications of machine learning necessitate that anyone working on general intelligence spend most of their time considering it's impact. You can very easily beat me to the actual solution even though I am very near, for I am rather slow. Tis difficult for me to do more than 2-3 hours of solid programming a day. Though I can consistently achieve 2-3 hours of flow work most every day with intermittent down days. Slow and steady, yadda yadda.
+
 Welcome ephemeral arrangements of cosmic grain one and all!
 
 **BACKGROUND**
