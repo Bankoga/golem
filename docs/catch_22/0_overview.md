@@ -13,8 +13,6 @@ Each topic will be no more than a handful of thoughts on a broad, and pertinent 
 Appearing here, in no particular order outside of that which they were thought up, lie the current shadows of current and future posts. To be updated with links to the actual posts, with timestamps, as they are made.
 
 * 'Some Thoughts on General Intelligence'
-  * 2019-04-09/10
-  * https://www.reddit.com/r/philosophy/comments/bb94mw/catch22_some_thoughts_on_general_intelligence/
 * 'True vs False, & Truthy-Falsy'
 * 'Intelligence: Past, and Present'
 * 'My Way, Your Way, and The Way'
@@ -37,6 +35,8 @@ Expected Release Rate: Undetermined, bounded between 1/day and 2/week. Slower th
 ## Afterword
 
 Thanks for reading! May your life always be interesting!
+
+Here is the repo for the code: https://github.com/Bankoga/golem
 
 NOTE: All things are subject to change. It is beyond my capability to determine how this has all taken shape, or will take shape; my choices my carry along with whatever that entails. Logic has guided me here, and logic will carry me the rest of the way. In logic do I believe.
 
