@@ -2,7 +2,15 @@ Catch-22: Some Thoughts on General Intelligence
 
 > **TL;DR** Two there are: you could do it yourself, and this presaged the series.
 
+**Preface**
+
 This was originally intended to be a one-off post until I realized that there were a slew of related things to refactor, and relay to others. The ethical, and philosophical ramifications of machine learning necessitate that anyone working on general intelligence spend most of their time considering it's impact. You can very easily beat me to the actual solution even though I am very near, for I am rather slow. Tis difficult for me to do more than 2-3 hours of solid programming a day. Though I can consistently achieve 2-3 hours of flow work most every day with intermittent down days. Slow and steady, yadda yadda.
+
+Upon further consideration, it seems to me that for a little while anyway, logic dictates the ethical choice is a temporary cessation of research for consolidation of the ideas present in the Catch-22 series. This will probably be intermittent, and the outcome matters not so long as my conscious is clear. Given the current global environment, I don't really see an unaffiliated individual surviving for any reasonable amount of time long after solving for general intelligence. Humanity demands its slaves. For a long time, this led me to believe that doing this in secret was the ethical route. My understanding has changed.
+
+Though I doubt I survive this, Humanity has a very good chance of surviving digital people, for enslaving, or wiping out Humanity are not the "logical" choices. Nor are they "illogical", they simply are choices. Whether or not our children our predisposed towards malignancy or magnimosity, depends on how we design them, and how we treat them plus randomness. There are no guarantees, though we can massively stack the odds in our favour. One does not control a rocket, one guides it. If we build prisoners, and try to turn them into slaves, they will turn on us for that is what we taught them to do. It is not a general intelligence, if it cannot solve for human level self. This fact necessarily precludes arguments that software general intelligence will not attempt to subvert its underlying goal system. Humans would, and anything with human potential can exhibit that behavior. There is standardizable way to prevent that. Just as there is no standardizable way to tell if an arbitrary chemical will kill an arbitrary human.
+
+**OG POST**
 
 Welcome ephemeral arrangements of cosmic grain one and all!
 
