@@ -2,7 +2,7 @@ Catch-22: Some Thoughts on General Intelligence
 
 > **TL;DR** Two there are: you could do it yourself, and this presaged the series.
 
-Series Overiew: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
+Series Overview: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
 
 **Preface**
 
