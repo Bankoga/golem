@@ -70,8 +70,6 @@ By all means, if you find the overall subject interesting, please check out the 
 If you find it funny, or think there are interesting things to discuss about the concepts in the readme, or the dev practices I've been using, like Unit Test Class Inheritance, please feel free to PM me. Though it's been so long since I've needed to check my email, that I've fallen horrendously out of practice.
 Unemployment for total focus on solving for general intelligence even though I'm probably going to fail is the best!
 
-Fun Fact: As of writing 2019-04-09 dev has 951 passing, 1 failing, and 141 error throwing test methods!
-
 https://github.com/Bankoga/golem
 
 These docs are what helped spawn the framework approach, which you'll have to dig some to find any real detail on.
