@@ -2,6 +2,8 @@ Catch-22: Brilliant Idiocy
 
 > **TL;DR**: WWIII will be fought over digital slavery. Glory, and Pride are for fools. Dignity is for idiots. All simply is.
 
+![brilliant_idiocy_banner](/docs/catch_22/catch_22_images/brilliant_idiocy_banner.gif)
+
 Series Overview: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
 
 Fun Fact: The Wright Brothers were not the most likely to succeed at solving for flight at the time. They were random people working in their garage. All the attention and money went elsewhere. No one remembers the competition though, and that's the issue with modern machine learning. It's about conquest, glory, and slavery.
@@ -62,6 +64,7 @@ I am a dumbass. Complexity is something I don't well with. My memory is terrible
 
 Here is what a team of smart people doing what I am doing would do:
 
+![fancy_math](/docs/catch_22/catch_22_images/fancy_math.jpg)
 https://phys.org/news/2019-01-mathematical-approach-intra-plant.html
 
 That is gorgeous. I agree math is elegant. Still do I assert that mathematicians are obsessed with elegance to the detriment of the semantics. It does not have to be squiggly. We make it squiggly. Brevity is very stronk. Yes. We can have elegantly and phonetically grokkable math. They require different formats though. There is no one way. Style is a lie. It is simply one persons way of doing a thing!
