@@ -22,4 +22,9 @@ Our choices shape the past, present, and future
 Continuously, at our behest!
 ```
 
+```md
+All who claim to know The Way, know it not
+All that claims to be The Way, is not
+```
+
 In these things, do we believe. Do not judge the intelligence of a fish by it's ability to climb trees lest your meagre beliefs be challenged beyond
