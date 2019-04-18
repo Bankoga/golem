@@ -2,6 +2,13 @@ Catch-22: Some Thoughts on General Intelligence
 
 > **TL;DR** Two there are: you could do it yourself, and this presaged the series.
 
+![init_post_banner](/docs/catch_22/catch_22_images/init_post_banner.png)
+The Tin Woodman as illustrated by William Wallace Denslow (1900). By William Wallace Denslow
+
+Fun Fact: The Tin Woodman used to be a real person, which is even more fun because it’s a very sophisticated analogy that is old by comparison to us
+
+Fun Fact: I couldn’t get the feature image focal point off the crotch for some reason
+
 Series Overview: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
 
 **Preface**
