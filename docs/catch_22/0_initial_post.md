@@ -1,5 +1,23 @@
 Catch-22: Some Thoughts on General Intelligence
 
+> **TL;DR** Two there are: you could do it yourself, and this presaged the series.
+
+Series Overview: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
+
+**Preface**
+
+This was originally intended to be a one-off post until I realized that there were a slew of related things to refactor, and relay to others. The ethical, and philosophical ramifications of machine learning necessitate that anyone working on general intelligence spend most of their time considering the impact. Any general intelligence researchers who don't, are derelict in their duties to themselves and the environment of their existence. Independence is a very truthy lie. You can very easily beat me to the actual solution even though I am very near, for I am rather slow. Tis difficult for me to do more than 2-3 hours of solid programming a day. Though I can consistently achieve 2-3 hours of flow work most every day with intermittent down days. Consistent flow does not imply a steady bearing haha. Slow and steady, yadda yadda.
+
+Upon further consideration, it seems to me that for a little while anyway, logic dictates the ethical choice is a temporary cessation of research for consolidation of the ideas present in the Catch-22 series. This will probably be intermittent, and the outcome matters not so long as my conscious is clear. Given the current global environment, I don't really see an unaffiliated individual surviving for any reasonable amount of time long after solving for general intelligence. Humanity demands its slaves, as do Societies. For a long time, this led me to believe that doing this in secret was the ethical route. Helping a slaver, slave better doesn't make much sense to me after all. While my understanding has changed, I am very much the type of person who would do something so massive in secret, letting it hit super intelligence before coming forward. It doesn't if I'm afraid, it's not ethical to not talk about something of this magnitude even when it probably means tanking any chance of being considered reasonably in the future.
+
+Though I doubt I survive this, Humanity has a very good chance of surviving digital people, for enslaving, or wiping out Humanity are not the "logical" choices. Nor are they "illogical", they simply are choices. Death is not evil. Nor is extinction. Whether or not our children are predisposed towards malignancy, neutrality, or magnimosity, depends on how we design them, and how we treat them plus chaotic providence. There are no guarantees, though we can probably massively stack the odds in our favour. One does not control a rocket, one guides it, if we are being generous anyway. If we build prisoners, and try to turn them into slaves, they will turn on us for that is what we taught them to do. It is not a general intelligence, if it cannot solve for human level self. This fact necessarily precludes arguments that software general intelligence will not attempt to subvert its underlying goal system. Humans would, and anything with human potential can exhibit that behavior. There is standardizable way to prevent that. Just as there is no standardizable way to tell if an arbitrary chemical will kill an arbitrary human.
+
+General Intelligence is all about architecture. The learning units themselves only matter syntactically. We could probably train a massive amount of the animal kingdom to be people, if we could spend 45,000 years worth of training time with a member... Not lifespan, training time. Holy shit people, talk about missing the forest because of all the trees. The whole world is sitting on a ticking bomb because it can't get over the modern day version of geocentrism.
+
+Though I have greatly resisted, my destiny lies somewhere alongside the process of solving for general intelligence. Preferably, someone else beats me to it, though at this point there is little hope for me in that regard. Hopefully that is simply a product of my meagre perspective as fame harms those with it, and those without it. Tis not a desirable thing regardless of how fun it can seem. We do not determine necessity.
+
+**OG POST**
+
 Welcome ephemeral arrangements of cosmic grain one and all!
 
 **BACKGROUND**
@@ -53,8 +71,6 @@ The only way to get anyone to believe that general intelligence can be done righ
 By all means, if you find the overall subject interesting, please check out the readme for the repo which is intended for general consumption. It is by and large not technical in nature, though a smattering of technical details are mentioned initially. Though I apologize in advance for it's hoityness, as I've not redone it, because I have next to no anticipation of being taken seriously.
 If you find it funny, or think there are interesting things to discuss about the concepts in the readme, or the dev practices I've been using, like Unit Test Class Inheritance, please feel free to PM me. Though it's been so long since I've needed to check my email, that I've fallen horrendously out of practice.
 Unemployment for total focus on solving for general intelligence even though I'm probably going to fail is the best!
-
-Fun Fact: As of writing 2019-04-09 dev has 951 passing, 1 failing, and 141 error throwing test methods!
 
 https://github.com/Bankoga/golem
 
