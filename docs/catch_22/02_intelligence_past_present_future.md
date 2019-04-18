@@ -87,4 +87,4 @@ I cannot see beyond solving for general intelligence. Any who claim to are proba
 
 We are most grateful for you participation in this sordid affair! May unbounded Intelligence be with you!
 
-PS: All docs are developed the same way I code. In VS Code, change tracked through git.
+PS: All docs are developed the same way I code. In VS Code, change tracked through git. No files will be pushed until all in prog files have been published though.
