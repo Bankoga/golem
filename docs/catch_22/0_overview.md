@@ -2,7 +2,7 @@
 
 > **TL;DR**: "Yadda yadda. The end is nigh! Yet another idiot doomspeaker... With a collection of other things."
 
-![overview_banner](/docs/catch_22/catch_22_images/overview_banner.jpg)
+![overview_banner](/docs/catch_22/images/overview_banner.jpg)
 Image originally from ‘Paradox — ‘Catch 22’ 2. Digital image. Deviantart. DeppyLegs, 10 May 2011. Web. 6 Oct. 2013.’ which I found at http://blogs.iac.gatech.edu/unreliable/2013/10/07/hellers-catch-22/
 
 ## Purpose

@@ -2,7 +2,7 @@ Catch-22: True vs False, and Truthy-Falsey
 
 > **TL;DR**: We push, and we pull. Ever in circles dare we go. Wheels on the bus that go round and round. I've got it!
 
-![tvftf_banner](/docs/catch_22/catch_22_images/tvftf_banner.jpeg)
+![tvftf_banner](/docs/catch_22/images/tvftf_banner.jpeg)
 A background that has long since lost attribution. Learning comes at the cost of Forgetting
 
 Series Overview: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
