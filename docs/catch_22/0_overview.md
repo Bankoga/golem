@@ -20,7 +20,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Some Thoughts on General Intelligence' 2019–04–16 08:45
 * 'True vs False, & Truthy-Falsy' 2019–04–17 11:15
 * 'Brilliant Idiocy' 2019–04–18 11:23
-* 'My Way, Your Way, and The Way'
+* 'The Way' 2019-04-19 ??:??
 * 'Belief vs Ignorance & Knowledge'
 * 'Catch-22's'
 * 'The Issue of Translation'

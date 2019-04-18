@@ -1,4 +1,4 @@
-Catch-22: Brilliant Idiocy
+# Catch-22: Brilliant Idiocy
 
 > **TL;DR**: WWIII will be fought over digital slavery. Glory, and Pride are for fools. Dignity is for idiots. All simply is.
 

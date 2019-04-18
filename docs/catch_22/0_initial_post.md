@@ -1,4 +1,4 @@
-Catch-22: Some Thoughts on General Intelligence
+# Catch-22: Some Thoughts on General Intelligence
 
 > **TL;DR** Two there are: you could do it yourself, and this presaged the series.
 
