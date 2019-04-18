@@ -1,38 +1,67 @@
 import unittest
 
-from hypothesis import given
-from hypothesis import strategies as st
-
-from components.mediators.procs.proc_provider import proc_services
-from components.axioms.configs import file_type, proc_ids
-from tests.components.mediators.procs.test_proc import TestProc
-from utils.config_reader import read
-
-import unittest
-
 from hypothesis import given, reproduce_failure
 from hypothesis import strategies as st
 from numpy import append, array
 
-from components.axioms.configs import file_type, proc_ids, set_ids
-from components.enums.prop_types import ChannelType, ModuleType
-from components.mediators.procs.proc import Proc
-from components.mediators.procs.proc_provider import proc_services
+from components.axioms.cell_types import CellType
+from components.enums.pos import CtgType
+from components.enums.prop_types import (ModuleType, SuperSet)
+from components.matrix.channel_registry import ChannelRegistry
+from components.matrix.lineage_registry import LineageRegistry
+from components.mediators.module import Module
+from components.vars.data import Lineage
+from configs.procs.thalamus import group_defs, stage_defs, type_data
 from tests.components.mediators.test_module import TestModule
-from tests.strategies.module_strats import (group_input_set, module_input_set,
-                                            unbuilt_module_input_set)
 from utils.cardinators.cardinator_provider import cardinator_services
-from utils.config_reader import read
 from utils.misc import heapsort
+from utils.helpers.namerinator import roll_name
 
 class TestGLG(TestModule):
+  def set_up_base(self):
+    self.rolled_name = roll_name()
+    self.type_name = type_data['name']
+    self.label = f'{self.rolled_name}_the_{self.type_name}'
+    self.ctg = CtgType.MODULE
+    self.comp_class = Module
 
-  # TODO: get GLG working the new way as if it was just read in by a config
+  def set_up_alt_props(self):
+    self.shape = (16,16)
+
+  def set_up_stages_defs(self):
+    self.group_defs = group_defs
+    self.stage_defs = stage_defs
+    self.type_data = type_data
+
+  def set_up_var(self):
+    self.registry = LineageRegistry(label='global_lineage_registry_api')
+    self.channel_registry = ChannelRegistry(label='global_channel_registry_api')
+    self.lineage_registry = self.registry
+    self.lineage = Lineage(golem='a',matrix='l',module='glg')
+    self.lineage = Lineage(golem='arith_brain',matrix='left',module=self.label)
+    self.reg_item = {
+      'reg_id': self.label,
+      'lineage': self.lineage
+    }
+    self.module_type = ModuleType.GATEWAY
+    self.b2 = 0
+    self.b3 = 0
+    self.set_up_stages_defs()
+    self.values = [self.registry, self.channel_registry, self.module_type, self.stage_defs]
+    self.var = tuple(self.values)
+    self.baseline = self.values
+
   def setUp(self):
-    self.proc_id = proc_ids['glg']
-    self.proc =  proc_services.get(self.proc_id, **{})
-    self.proc_conf = read(self.proc_id,file_type['proc'])
-    # id: GLG
+    # self.fs_id = set_ids['glg']
+    # self.module_type = SuperSet.PROC
+    # self.fset = module_creator_services.get(f'{self.module_type}-{self.fs_id}')
+    self.set_up_base()
+    self.set_up_defaults()
+    self.set_up_alt_props()
+    self.set_up_var()
+    self.comp = self.comp_class(*self.values,label=self.label)
+
+# id: GLG
 #     type_data:
 #     name: Gateway Layer Groups
 #     type: GATEWAY

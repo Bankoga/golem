@@ -2,7 +2,7 @@ from components.base.mechanisms.cogs.producer import Producer
 from components.axioms.cell_types import CellType, cell_data
 from components.enums.prop_types import PackagerType
 from components.enums.pos import CtgType
-from utils.helpers.prop_gen_help import kin_label_gen_unique
+from utils.helpers.namerinator import kin_label_gen_unique
 from components.instructions.collector import Collector
 from components.vars.data import Lineage
 

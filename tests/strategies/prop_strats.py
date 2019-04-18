@@ -12,7 +12,7 @@ from components.channels.channel import Channel
 from components.enums.prop_types import (ChannelType, FieldType, GroupType,
                                          HookType, ModuleType, PackagerType,
                                          ResourceType, RuleType, SuperSet)
-from utils.helpers.prop_gen_help import roll_name
+from utils.helpers.namerinator import roll_name
 
 
 @composite
