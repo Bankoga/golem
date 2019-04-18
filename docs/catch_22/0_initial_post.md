@@ -9,7 +9,7 @@ Fun Fact: The Tin Woodman used to be a real person, which is even more fun becau
 
 Fun Fact: I couldn’t get the feature image focal point off the crotch for some reason
 
-Series Overview: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
+[Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
 **Preface**
 

@@ -5,7 +5,7 @@
 ![the_way_banner](/docs/catch_22/images/the_way_banner.jpg)
 > Such is the way
 
-Series Overview: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
+[Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
 ```md
 Your way is not my way

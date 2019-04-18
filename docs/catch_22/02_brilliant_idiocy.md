@@ -4,7 +4,7 @@
 
 ![brilliant_idiocy_banner](/docs/catch_22/images/brilliant_idiocy_banner.gif)
 
-Series Overview: https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d
+[Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
 Fun Fact: The Wright Brothers were not the most likely to succeed at solving for flight at the time. They were random people working in their garage. All the attention and money went elsewhere. No one remembers the competition though, and that's the issue with modern machine learning. It's about conquest, glory, and slavery.
 
@@ -65,7 +65,7 @@ I am a dumbass. Complexity is something I don't well with. My memory is terrible
 Here is what a team of smart people doing what I am doing would do:
 
 ![fancy_math](/docs/catch_22/images/fancy_math.jpg)
-https://phys.org/news/2019-01-mathematical-approach-intra-plant.html
+[source](https://phys.org/news/2019-01-mathematical-approach-intra-plant.html)
 
 That is gorgeous. I agree math is elegant. Still do I assert that mathematicians are obsessed with elegance to the detriment of the semantics. It does not have to be squiggly. We make it squiggly. Brevity is very stronk. Yes. We can have elegantly and phonetically grokkable math. They require different formats though. There is no one way. Style is a lie. It is simply one persons way of doing a thing!
 Regardless, I cannot do that currently. Language I don't use constantly, I've never bothered remembering for any great length of time. Memory takes much effort for me, though it isn't the point of all brains to begin with. We all solve differently problems. Uniform brains would be utterly terrible. Uniformity of capability would be suicidal as a species. It is miraculous that we have diversified so strongly across so many different problem domains. Miraculous is perhaps not what you think tis. So rather, I'm building an arbitrary neural description system (based on descriptions of cell types plus localizable details and cohesively semantic cell groups, a layer can have multiple groups) that builds instances of functions in such categories as the exemplar above. The problem of general intelligence at this point in time, is architecture. Nothing more. Thus my framework, once completed will allow me to focus fully upon that problem without a need to wait for the rest of the machine learning community to realize that over specified graphs are not the approach. We've proven that machines can learn! What's more, barring a nature that is greater than logic, we've further proven that evolution is literally learning. It doesn't have to learn the way we do on the timescales we do in order to learn, or be intelligent. This is homocentrisim that prevents us from solving the problem. By all means, ignore me at your leisure. Once I have finished this anthology, I will return to my appointed task. Fate is real it would seem to me. Tis not a matter of whether or not we can avoid it. For surely we can. Life is all about choices after all. The choice to run from fate, surely can lead only to harm. Though yet, tis funny that I should think it possible to work against Logic. Tis surely funny indeed. Logic will always work with me, regardless of how I feel about the situation.
