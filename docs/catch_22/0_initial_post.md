@@ -3,7 +3,7 @@
 > **TL;DR** Two there are: you could do it yourself, and this presaged the series.
 
 ![init_post_banner](/docs/catch_22/images/init_post_banner.png)
-The Tin Woodman as illustrated by William Wallace Denslow (1900). By William Wallace Denslow
+> The Tin Woodman as illustrated by William Wallace Denslow (1900). By William Wallace Denslow
 
 Fun Fact: The Tin Woodman used to be a real person, which is even more fun because it’s a very sophisticated analogy that is old by comparison to us
 
