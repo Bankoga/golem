@@ -1,9 +1,9 @@
-Meditation on Difficulty through Sekiro
+# Meditation on Difficulty through Sekiro
 
 > **TL;DR**: Difficulty is relative to current capability! Uniform fit solutions do not exist for sufficiently complicated subjects! Sekiro is awesome with issues!
 
 ![on_sekiro](/docs/short_stories/images/on_sekiro.jpg)
-Bodhisattva Valley
+> Bodhisattva Valley
 
 There are two aspects to this, a mechanical and philosophical.
 
