@@ -5,6 +5,8 @@
 ![overview_banner](/docs/catch_22/images/overview_banner.jpg)
 > Image originally from ‘Paradox — ‘Catch 22’ 2. Digital image. Deviantart. DeppyLegs, 10 May 2011. Web. 6 Oct. 2013.’ which I found at http://blogs.iac.gatech.edu/unreliable/2013/10/07/hellers-catch-22/
 
+CONSUMER LABEL: Intended for consumption of not more than one serving per day. Warning: Self reference inserted!
+
 ## Purpose
 
 As the culmination of a lifetime of philosophical research, and 2 years of intensive dedicated research, I believe I am in the final run up to a fully operational generally intelligent software system, the endgame so to speak. The timing of this couldn't be more hilarious, for so many different cultural reasons. Coincidence, I have found, never was, merely lacking perspective. While like all things, this is a process, the destination is in plain sight. There are briars, brambles, and a few hills in between certainly. However there are no ideological hurdles to be overcome any longer.
