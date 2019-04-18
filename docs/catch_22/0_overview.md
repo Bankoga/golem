@@ -2,6 +2,9 @@
 
 > **TL;DR**: "Yadda yadda. The end is nigh! Yet another idiot doomspeaker... With a collection of other things."
 
+![overview_banner](/docs/catch_22/catch_22_images/overview_banner.jpg)
+Image originally from ‘Paradox — ‘Catch 22’ 2. Digital image. Deviantart. DeppyLegs, 10 May 2011. Web. 6 Oct. 2013.’ which I found at http://blogs.iac.gatech.edu/unreliable/2013/10/07/hellers-catch-22/
+
 ## Purpose
 
 As the culmination of a lifetime of philosophical research, and 2 years of intensive dedicated research, I believe I am in the final run up to a fully operational generally intelligent software system, the endgame so to speak. The timing of this couldn't be more hilarious, for so many different cultural reasons. Coincidence, I have found, never was, merely lacking perspective. While like all things, this is a process, the destination is in plain sight. There are briars, brambles, and a few hills in between certainly. However there are no ideological hurdles to be overcome any longer.
@@ -14,9 +17,9 @@ Each topic will be no more than a handful of thoughts on a broad, and pertinent 
 
 Appearing here, in no particular order outside of that which they were thought up, lie the current shadows of current and future posts. To be updated with links to the actual posts, with timestamps, as they are made.
 
-* 'Some Thoughts on General Intelligence'
-* 'True vs False, & Truthy-Falsy'
-* 'Intelligence: Past, and Present'
+* 'Some Thoughts on General Intelligence' 2019–04–16 08:45
+* 'True vs False, & Truthy-Falsy' 2019–04–17 11:15
+* 'Brilliant Idiocy' 2019–04–18 11:23
 * 'My Way, Your Way, and The Way'
 * 'Belief vs Ignorance & Knowledge'
 * 'Catch-22's'
