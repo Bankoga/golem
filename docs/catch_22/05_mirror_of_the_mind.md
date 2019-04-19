@@ -9,13 +9,16 @@
 
 Belief is all we have. Knowledge forever remains outside the realm of accessibility. Truth, can only be; never captured. Tis the folly of the learned mind that thinks it understands reality. Reality simply is.
 
+That which is reflect that which is not.
+That which is not reflects that which is.
+
 That which one can think, one can do. That which one can say, one must be able to think. Thinking does not mean perhaps, what thou doth think it means. For what it does it mean to think?
 In what sense: Clasically, Traditionally, Intellectually, Culturally, Objectively, Subjectively?
 Much of my childhood did I spend afraid that I was not thinking! My mind was silent!
 
 OH THE HORROR! UNBURDENED BY NONSENSE! FREE TO SOLVE PROBLEMS! FREE TO SIMPLY BE!
 
-So I learned to fill my head with thoughts. To drown out the horrible silence that everyone forsooth took to eschew thought... Lament the loss of silence! Or not. Reality does as it wills.
+So I learned to fill my head with thoughts. To drown out the horrible silence that everyone forsooth took to eschew thought... To do that which I am told, for society is the way. To shut up about evil, for the status quo is your master and it rejects change. Lament the loss of silence! Or not. Reality does as it wills.
 
 Reality is a lie.
 Experience is Truth.
