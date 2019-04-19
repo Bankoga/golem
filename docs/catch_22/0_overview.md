@@ -3,7 +3,7 @@
 > **TL;DR**: "Yadda yadda. The end is nigh! Yet another idiot doomspeaker... With a collection of other things."
 
 ![overview_banner](/docs/catch_22/images/overview_banner.jpg)
-> Image originally from ‘Paradox — ‘Catch 22’ 2. Digital image. Deviantart. DeppyLegs, 10 May 2011. Web. 6 Oct. 2013.’ which I found at http://blogs.iac.gatech.edu/unreliable/2013/10/07/hellers-catch-22/
+> Image originally from ‘Paradox — ‘Catch 22’ 2. Digital image. Deviantart. DeppyLegs, 10 May 2011. Web. 6 Oct. 2013.’ which I found at [source](http://blogs.iac.gatech.edu/unreliable/2013/10/07/hellers-catch-22/)
 
 CONSUMER LABEL: Intended for consumption of not more than one serving per day. Warning: Self reference inserted!
 
@@ -45,7 +45,7 @@ Expected Release Rate: Undetermined, bounded between 1/day and 2/week. Slower th
 
 Thanks for reading! May your life always be interesting!
 
-Here is the repo for the code: https://github.com/Bankoga/golem
+[Here is the repo for the code](https://github.com/Bankoga/golem)
 
 NOTE: All things are subject to change. It is beyond my capability to determine how this has all taken shape, or will take shape; my choices my carry along with whatever that entails. Logic has guided me here, and logic will carry me the rest of the way. In logic do I believe.
 
