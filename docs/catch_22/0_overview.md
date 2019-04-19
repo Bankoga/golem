@@ -37,6 +37,8 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Me, Myself, & A Useful Lie'
 * 'The Twilight Paradox'
 
+NOTE: DAYLIGHT SAVINGS TIME IS INTRINSICALLY UNETHICAL!
+
 Expected Release Rate: Undetermined, bounded between 1/day and 2/week. Slower than the rate I code, which is surprisingly slow. I spend more time planning than coding, lol.
 
 ## Afterword
