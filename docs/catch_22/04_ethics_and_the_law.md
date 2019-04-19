@@ -1,13 +1,18 @@
 # Ethics and The Law
 
-> **TL;DR**: ?
+> **TL;DR**: The Evils I fight are only slightly less depraved than the evils I commit in so doing.
+
+![ethics_and_the_law_banner](/docs/catch_22/images/ethics_and_the_law_banner.jpg)
+> 
+
+[Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
 Simply because your way was disrespected does not mean that one should disrepect the way of others. Kill or be killed exemplifies this.
 
 I am a peaceful individual living my life. We are largely vegetarian, though have some lab grown meat. The animals we live, and work with, are participants, in so far as the can be. Doing as little harm as necessary.
 Over the horizon, come raiders. They demand that we pay tithe or they shall kill us. What then is the ethical to do for the peace loving individual?
 Kill the raiders that do no wish to surrender ,and work together with those that surrendered to prevent this from happening again. Any who abuse this generosity should be killed on the spot. Though as with all things, context matters. To assert that this is the way to deal with this situation acontextually, is unethical.
-However, this individuals have chosen kill or be killed. They may disrespect my way of peace with their violence, but I should not disrespect their way of violence by forcing them to live when they do not surrender. If you care about dignity, then killing those who do not surrender is more ethical than violating their way so as to keep them alive. This is merely your hubris. Not your way. I do not know your way, and yet I highly doubt that is it.
+However, these individuals have chosen kill or be killed. They may disrespect my way of peace with their violence, but I should not disrespect their way of violence by forcing them to live when they do not surrender. If you care about dignity, then killing those who do not surrender is more ethical than violating their way so as to keep them alive. This is merely your hubris. Not your way. I do not know your way, and yet I highly doubt that is it. Further still I would assert that such is the way of enslavement.
 Perhaps they are in need, and if we have plenty, then it is only ethical that we share what we can, if we can. If we cannot, then reality is what it is. Tis beyond our control. We have made our choices, and they had whatever effects they had. No one is entitled to continued existance. Existance is a privilege that comes from collaboration with reality. We do not determine reality. We participate in it.
 
 The Law presupposes its justness. If you disagree with it, you shall be forced to comply. For it is just, and right! It IS what lets us exist! The Law is a lie. The Law is evil!
