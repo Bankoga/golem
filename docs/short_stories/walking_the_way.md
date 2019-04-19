@@ -1,6 +1,6 @@
 # Walking the Way
 
-> **TL;DR**: The Way is everything. The Way is nothing. There is only The Way. There is no Way.
+> **TL;DR**: In the dark; I remain
 
 ![walking_the_way](/docs/short_stories/images/walking_the_way.jpg)
 > Imagination is Reality. Reality is Imagination.
