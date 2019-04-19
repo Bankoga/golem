@@ -23,7 +23,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'True vs False, & Truthy-Falsy' 2019–04–17 11:15
 * 'Brilliant Idiocy' 2019–04–18 11:23
 * 'The Way' 2019-04-19 05:36
-* 'Belief vs Ignorance & Knowledge'
+* 'Mirror of the Mind'
 * 'Catch-22's'
 * 'The Issue of Translation'
 * 'Communication and Education'
