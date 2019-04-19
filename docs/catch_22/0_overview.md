@@ -5,7 +5,7 @@
 ![overview_banner](/docs/catch_22/images/overview_banner.jpg)
 > Image originally from ‘Paradox — ‘Catch 22’ 2. Digital image. Deviantart. DeppyLegs, 10 May 2011. Web. 6 Oct. 2013.’ which I found at [source](http://blogs.iac.gatech.edu/unreliable/2013/10/07/hellers-catch-22/)
 
-CONSUMER LABEL: Intended for consumption of not more than one serving per day. Warning: Self reference inserted!
+CONSUMER LABEL: Intended for consumption of not more than one serving per day. Perhaps. Warning: Self reference inserted!
 
 ## Purpose
 
@@ -31,7 +31,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Control & Ownership'
 * 'Religion & Science'
 * 'Politics'
-* 'Ethics & The Law'
+* 'Ethics and The Law' 2019-04-19 10:31
 * 'Conflict, Peace, & Violence'
 * 'The Cycle of Life'
 * 'Me, Myself, & A Useful Lie'
