@@ -20,22 +20,24 @@ Each topic will be no more than a handful of thoughts on a broad, and pertinent 
 Appearing here, in no particular order outside of that which they were thought up, lie the current shadows of current and future posts. To be updated with links to the actual posts, with timestamps, as they are made.
 
 * 'Some Thoughts on General Intelligence' 2019–04–16 08:45
-* 'True vs False, & Truthy-Falsy' 2019–04–17 11:15
+* 'True vs False, and Truthy-Falsy' 2019–04–17 11:15
 * 'Brilliant Idiocy' 2019–04–18 11:23
 * 'The Way' 2019-04-19 05:36
-* 'Mirror of the Mind'
+* 'Mirror of the Mind' 2019-04-20 08:32
 * 'Catch-22's'
-* 'The Issue of Translation'
+* 'An Illusion with Translation'
 * 'Communication and Education'
 * 'Civilization vs Society'
-* 'Control & Ownership'
-* 'Religion & Science'
-* 'Politics'
+* 'Control and Ownership'
+* 'Religion and Science'
+* 'Politics...'
 * 'Ethics and The Law' 2019-04-19 10:31
-* 'Conflict, Peace, & Violence'
+* 'Conflict, Peace, and Violence'
 * 'The Cycle of Life'
-* 'Me, Myself, & A Useful Lie'
+* 'Me, Myself, and A Useful Lie'
 * 'The Twilight Paradox'
+* 'Static vs Dynamic and Quality,Value'
+* 'An Observation on Past, Present, Future'
 
 NOTE: DAYLIGHT SAVINGS TIME IS INTRINSICALLY UNETHICAL!
 
