@@ -16,7 +16,13 @@ That which one can think, one can do. That which one can say, one must be able t
 In what sense: Clasically, Traditionally, Intellectually, Culturally, Objectively, Subjectively, Smartly, Stupidly, Brilliantly, Dumbly? Snicker snack goes the whicker whack of the muler.
 Much of my childhood did I spend afraid that I was not thinking! My mind was silent!
 
-OH THE HORROR! UNBURDENED BY NONSENSE! FREE TO SOLVE PROBLEMS! FREE TO SIMPLY BE! WHAT OROTUND NONSENSE!
+```md
+OH THE HORROR!
+UNBURDENED BY NONSENSE!
+FREE TO SOLVE PROBLEMS!
+FREE TO SIMPLY BE!
+OH OROTUND NONSENSE!
+```
 
 So I learned to fill my head with thoughts. To drown out the horrible silence that forsooth eschewed thought... To do that which I am told, for society is the way. To shut up about evil, for the status quo is your master and it rejects change. Lament the loss of silence! Or not. Reality does as it wills.
 
@@ -42,4 +48,4 @@ Thus pursue style, only insofar as thou might be free of style!
 For style is not
 ```
 
-Hubris, lies within the details, after all. Thus can we believe, that all those who speak the greatest good are capable of the greatest evil. Further still do we believe, those who speak the greatest evil are also capable of the greatest good. To do harm, is not evil! Simply tis.
+Hubris, lies within the details, after all. Thus can we believe, that all those who speak the greatest good are capable of the greatest evil. Further still do we believe, those who speak the greatest evil are similarly capable of the greatest good. To do harm, is not evil! Simply tis.
