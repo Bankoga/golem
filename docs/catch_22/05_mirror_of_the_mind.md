@@ -3,7 +3,7 @@
 > **TL;DR**: Language reflects Logic. Follow me into the dark
 
 ![mirror_of_the_mind_banner](/docs/catch_22/images/mirror_of_the_mind_banner.jpg)
-> The Light is a Lie
+> The Light is a Lie for The Way is
 
 [Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
