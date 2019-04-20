@@ -16,9 +16,9 @@ That which one can think, one can do. That which one can say, one must be able t
 In what sense: Clasically, Traditionally, Intellectually, Culturally, Objectively, Subjectively?
 Much of my childhood did I spend afraid that I was not thinking! My mind was silent!
 
-OH THE HORROR! UNBURDENED BY NONSENSE! FREE TO SOLVE PROBLEMS! FREE TO SIMPLY BE!
+OH THE HORROR! UNBURDENED BY NONSENSE! FREE TO SOLVE PROBLEMS! FREE TO SIMPLY BE! OH OROTUND NONSENSE!
 
-So I learned to fill my head with thoughts. To drown out the horrible silence that everyone forsooth took to eschew thought... To do that which I am told, for society is the way. To shut up about evil, for the status quo is your master and it rejects change. Lament the loss of silence! Or not. Reality does as it wills.
+So I learned to fill my head with thoughts. To drown out the horrible silence that forsooth eschewed thought... To do that which I am told, for society is the way. To shut up about evil, for the status quo is your master and it rejects change. Lament the loss of silence! Or not. Reality does as it wills.
 
 Reality is a lie.
 Experience is Truth.
@@ -33,5 +33,7 @@ To remember is to lie. Naught but an expectation of the past. Reality itself is 
 
 To be absent from The Now is to be present in Imagination, and Lost in Reality.
 To be present in Reality, is to be lost in Imagination.
-For only the lost can be found.
+For only the lost can be found!
 However, be forewarned indeed, that where I am is not where I was.
+Thus pursue style, only insofar as thou might be free of style!
+For style is not
