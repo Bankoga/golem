@@ -5,6 +5,8 @@
 ![anomalous apocalyptic landscaping](/docs/catch_22/images/of_bat_man_and_monster_banner.jpg)
 > Many are trapped in a hell of their own making
 
+[Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
+
 Batman was born the night of The Bat. Bruce Wayne, died in the tragedy with Martha, and Thomas Wayne. What a dumb caterpillar. How many years did it take for him to morph? Truly, Batman is a horrible caterpillar.
 
 No human is born a person! We are all born human! To remain human is a choice. One that must be made every moment of every day. We are generally intelligent it would seem. Thus person hood is a choice. To be ethical requires to be generally intelligent. This precedes me. Ethics dictates, and I must listen. I cannot dictate ethics, only beliefs.
