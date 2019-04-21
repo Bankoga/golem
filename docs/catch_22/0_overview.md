@@ -38,6 +38,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Static vs Dynamic and Quality-Value'
 * 'An Observation on Past, Present, Future'
 * 'Mistakes of Transfversence'
+* 'Of Bat, Man, and Monster' 2019-04-21 15:03
 
 NOTE: DAYLIGHT SAVINGS TIME IS INTRINSICALLY UNETHICAL!
 
