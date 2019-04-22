@@ -39,7 +39,7 @@ Never does on truly wake
 ```md
 That which does sleeping eternal lie
 Ageless aeons pass it by
-Forever awak yet remains
+Forever awake yet remains
 Forever lost in The Dark
 Forever found in The Light
 Undying death
