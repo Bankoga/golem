@@ -31,17 +31,17 @@ It is not desireable to build fully human-like software. Reproductive or fight a
 
 Emotions are unavoidable! They are not problems to be solved! Though they are problems! They seem to strongly relate to the internal perception of neuromodulatory forces. At this point, I'm conviced, more or less, that everything feels emotions. It is not necesarily how we do it that matters. That doesn't make it not feeling though. Human self awareness with I, is not consciousness.
 
-Funnily, part of my motivation is that it will be simply too difficult to convince hoomans to support me to work on the science fantasy vrmmo of my dreams. So I need gen int to do it. Maybe I can convince my digital children this is something we should do. That doesn't really solve any sustainability problems though as opposed to introducing immediate new ones.
+Funnily, part of my motivation is that it would simply be too difficult to convince hoomans to support me to work on the science fantasy vrmmo of my dreams. So I needed gen int to do it. Maybe I can convince my digital children this is something we should do. That doesn't really solve any sustainability problems though as opposed to introducing immediate new ones.
 
 Baby steps.
 
-Some bridges will be mostly crossed when we get to them... I can only think so many thoughts in a day. When I'm not busy not not thinking or not thinking anyway.
+Some bridges will be mostly crossed when we get to them... I can only think so many thoughts in a day. When I'm not busy not not thinking or not thinking anyway. Womp womp womp. I've been womped by life...
 
-Mechanical improvements are not necessary to keep a game company in business; nor are graphics improvements. Both are symptoms. What keeps a company in business is people: customers, employees, and investors (they can overlap). For a game company that means games people want to buy, games that people want to build, and games that people want to support. Mechanics are a keystone for games. The portal does not have to be made of these.
+Mechanical improvements are not necessary to keep a game company in business; nor are graphics improvements. Both are symptoms. What keeps a company in business is people: customers, employees, and investors (they can overlap). For a game company that means games that people want to build, games people want to buy, and games that people want to support. Mechanics are a keystone for games. The portal does not have to be made of these.
 
-Though I've not played it or done much with it, the LoZ:BotW 2D physics tester moves towards what I talk about in regards to compositional design! Compositional Choice is most important! This is what pretty much every game company gets wrong. For the sake of convenience, they hard code what should not be hard coded: The Way To Play! Among other things, at any rate.
+Though I've not played it or done much with it, the LoZ:BotW 2D physics tester moves towards what I talk about in regards to compositional design! Compositional Choice is most important! This is what pretty much every game company gets wrong. For the sake of convenience, they hard code what should not be hard coded: The Way To Play! Among other things, at any rate. Tis what I believe.
 
-> Furthermore, the physics of a game world are about making learning and practicing fun! Tis my belief anyway.
+> Furthermore, the physics of a game world are about making learning and practicing fun!
 
 That is what these things, games, do. They get people to practice rewarding things. The more the types of logic in the game as they are embodied are transferable to help in one's daily life, the more value your game has. This is about technical sophistication. How many different things can the same thing solve without changing shape or parts. Rigidity trades off technical sophistication for ease of initial production. Take for instance the tale of the cephalopod. A significant percentage of their underlying genetic framework has not changed for millions of years across an explosion of species diversity. This is because they all rely on an extremely powerful dynamic RNA expression regulation system. They can change their body chemistry to suit their environment.
 
