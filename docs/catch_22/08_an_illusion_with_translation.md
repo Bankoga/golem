@@ -34,7 +34,7 @@ The Way
 Is a common tale indeed
 ```
 
-Never does on truly wake
+Never does one truly wake
 
 ```md
 That which does sleeping eternal lie

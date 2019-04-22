@@ -36,7 +36,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Me, Myself, and Useful Lies'
 * 'The Twilight Paradox'
 * 'Static vs Dynamic and Quality-Value'
-* 'An Observation on Past, Present, Future'
+* 'An Observation on Past, Present, Future' 2019–04–22 12:08
 * 'Mistakes of Transfversence'
 * 'Of Bat, Man, and Monster' 2019-04-21 15:03
 
