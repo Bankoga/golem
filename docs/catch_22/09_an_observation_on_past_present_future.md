@@ -2,8 +2,8 @@
 
 > **TL;DR**: Things are, it would seem. Further still, this is not passion. Tis necessity. Which is the greatest of passions!
 
-![Accessibility Text](/docs/catch_22/images/_banner.jpg)
-> BLURB
+![Flaming Heart supported by Need](/docs/catch_22/images/an_observation_on_past_present_future_banner)
+> We are always both. The Heart, and The Need!
 
 [Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
