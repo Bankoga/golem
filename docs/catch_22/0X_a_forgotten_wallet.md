@@ -1,6 +1,6 @@
 # Catch-22: TITLE
 
-> BLURB
+> **TL;DR**: 
 
 ![Accessibility Text](/docs/catch_22/images/_banner.jpg)
 > BLURB

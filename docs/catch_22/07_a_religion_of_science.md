@@ -1,6 +1,6 @@
 # Catch-22: A Religion of Science
 
-> Understanding is a process
+> **TL;DR**: Understanding is a process
 
 ![The Pipe Smoking Galactic Emperor Rabbit](/docs/catch_22/images/a_religion_of_science_banner.png)
 > I thought I'd pretend I was one of those loquacious fellows of impeccable hearing. At least that was an expectation of activity

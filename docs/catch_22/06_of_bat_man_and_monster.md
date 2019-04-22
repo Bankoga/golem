@@ -1,6 +1,6 @@
 # Catch-22: Of Bat, Man, and Monster
 
-> Who made who? Come on come on, listen to the attributional divisional measurement of spatio-temporality!
+> **TL;DR**: Who made who? Come on come on, listen to the attributional divisional measurement of spatio-temporality!
 
 ![anomalous apocalyptic landscaping](/docs/catch_22/images/of_bat_man_and_monster_banner.jpg)
 > Many are trapped in a hell of their own making

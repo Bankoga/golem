@@ -1,6 +1,6 @@
 # Catch-22: An Illusion with Translation
 
-> Enlightenment is a seed
+> **TL;DR**: Enlightenment is a seed
 
 ![Overlayed Items](/docs/catch_22/images/an_illusion_with_translation_banner.jpg)
 > Over Fitting. Though tis a lie that is not a lie
