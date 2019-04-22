@@ -24,12 +24,12 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Brilliant Idiocy' 2019–04–18 11:23
 * 'The Way' 2019-04-19 05:36
 * 'Mirror of the Mind' 2019-04-20 08:32
-* 'To Catch Two'
+* 'To Catch Two' 2019-04-22 14:24
 * 'An Illusion with Translation' 2019-04-22 09:46
-* 'Uncivilized Societies'
+* 'Uncivilized Societies' 2019-04-22 17:58
 * 'Taking Control of Ownership'
 * 'A Religion of Science' 2019-04-22 09:39
-* 'H_rs_ Sh_t'
+* 'H_rs_ Sh_t' 2019-04-22 15:56
 * 'Ethics and The Law' 2019-04-19 10:31
 * 'Peaceful Violence'
 * 'A Cycle of Life'
