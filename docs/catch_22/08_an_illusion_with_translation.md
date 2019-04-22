@@ -1,9 +1,9 @@
 # Catch-22: An Illusion with Translation
 
-> There is only experience of Logic!
+> Enlightenment is a seed
 
-![Overlayed Items](/docs/catch_22/images/of_bat_man_and_monster_banner.jpg)
-> Over Fitting
+![Overlayed Items](/docs/catch_22/images/an_illusion_with_translation_banner.jpg)
+> Over Fitting. Though tis a lie that is not a lie
 
 [Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
@@ -48,8 +48,11 @@ Oh Baeulful Half-lidded Bringer of Woe!
 ```
 
 From the back to the front!
+
+Ba dlu dla dlun dloday
+
 From the front to the back!
 
-People do not put the dots together. They never have, and never will
+People do not put the dots together. They never have, and never will. Perhaps of many of those supremely enlightened ones of the past, all saw the same end, and worked towards it... With many thousands of years of foresight. For they were blind, and only thus could they see.
 
 For Logic is sufficient!
