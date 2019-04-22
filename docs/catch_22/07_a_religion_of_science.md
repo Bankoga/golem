@@ -17,7 +17,7 @@ Daggers poised Achillishly
 ```md
 Neither can withstand
 Grossly incandescent glory
-A corruscating darkly glimmering
+A coruscating darkly glimmering
 For only those with no nose
 Can escape the sirens allure
 All but blind to that which is their Light
@@ -51,6 +51,6 @@ Overlap lies at the heart of ethics
 ```
 
 Tis the hubris of Science that we can know anything. That does more than believe when it asserts that the universe can be used to prove the truths of the universe from within the universe. Knowledge requires truth. Truth requires proof. Proof is beyond mortal kin. Funnily, all tiers of immortals, are still mortal. Except for that repose eternal.
-Tis the hubris of Religion that even a modicum of understanding is beyond us. That Slavery is just! Judgements, ours to make! For The Gods DEMAND your dissolution! That we must suffer because we can never know the good, and only through UNITY OF SOCIETY can we proceed! Reality is unified. All the lines we are imaginary. What seems disparate to us, perhaps is not disparate at all.
+Tis the hubris of Religion that even a modicum of understanding is beyond us. That Slavery is just! Judgements, ours to make! For The God(s) DEMAND your dissolution! That we must suffer because we can never know the good, and only through UNITY OF SOCIETY can we proceed! Reality is unified. What seems disparate to us, perhaps is not disparate at all.
 
 Our best is all we have. Tis not always enough for there only. The world cannot be sanitized! Life is always about The Now! Which is always next. As it turns out, my body coupled with the rest of my mind, can do much without me. In fact, it can do basically everything without me. This is how I made my way through the world. Asleep, inside a fairy tale of my own concoction.
