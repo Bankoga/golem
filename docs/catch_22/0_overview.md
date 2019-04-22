@@ -29,7 +29,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Uncivilized Societies'
 * 'Taking Control of Ownership'
 * 'A Religion of Science' 2019-04-22 09:39
-* 'H_rs_ Sh_t'
+* 'H_rs_ Sh_t' 2019-04-22 15:56
 * 'Ethics and The Law' 2019-04-19 10:31
 * 'Peaceful Violence'
 * 'A Cycle of Life'
