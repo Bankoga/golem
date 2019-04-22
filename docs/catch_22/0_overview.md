@@ -24,7 +24,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Brilliant Idiocy' 2019–04–18 11:23
 * 'The Way' 2019-04-19 05:36
 * 'Mirror of the Mind' 2019-04-20 08:32
-* 'To Catch Two'
+* 'To Catch Two' 2019-04-22 14:24
 * 'An Illusion with Translation' 2019-04-22 09:46
 * 'Uncivilized Societies'
 * 'Taking Control of Ownership'
