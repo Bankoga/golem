@@ -23,7 +23,7 @@ The Dead are not!
 
 When there are no good choices, what is one to do?
 
-I am meek, though mistake this not. My fang may be of plain iron. Yes! Tis crude of design. With purpose gleaned through empty swing
+I am meek, though mistake this not. My fang may be of plain iron. Yes! Tis crude of design. With purpose gleaned through empty swing does it rend The Light
 
 Fun Fact: Continental "Gods" are perhaps more real than thou might think
 
