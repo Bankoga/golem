@@ -45,8 +45,6 @@ Though I've not played it or done much with it, the LoZ:BotW 2D physics tester m
 
 That is what these things, games, do. They get people to practice rewarding things. The more the types of logic in the game as they are embodied are transferable to help in one's daily life, the more value your game has. This is about technical sophistication. How many different things can the same thing solve without changing shape or parts. Rigidity trades off technical sophistication for ease of initial production. Take for instance the tale of the cephalopod. A significant percentage of their underlying genetic framework has not changed for millions of years across an explosion of species diversity. This is because they all rely on an extremely powerful dynamic RNA expression regulation system. They can change their body chemistry to suit their environment.
 
-Balance and Harmony are not practices of "trade-offing". There is good reason to live 996! Not for someone else! Hard work can be enoyable, fun, and satisfying. Tis about what we do in order to do what we do.
-
 ```md
 Life is not continuous
 It flows and stops
@@ -55,3 +53,7 @@ A little over here
 A little less over there
 Back and Forth do we go
 ```
+
+Balance and Harmony are not practices of "trade-offing". There is good reason to live even harder than 996! 996 is weak! BUT NOT FOR SOMEONE ELSE! In my opinion, live for The Way, of which you are a part. This does not mean to trample on The Way of others. For there is No Way. There is only The Way. You do not matter, which is why you matter. Hard work can be enoyable, fun, and satisfying. Tis about what we do in order to do what we do. Live 100%!
+
+To believe fully in even 20% of The Way, is a tremendous thing indeed
