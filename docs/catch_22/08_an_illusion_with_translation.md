@@ -3,7 +3,7 @@
 > **TL;DR**: Enlightenment is a seed
 
 ![Who's Awesome? Finger points at you. You're Awesome!](/docs/catch_22/images/an_illusion_with_translation_banner.jpg)
-> Over Fitting. Tis a lie that is not a lie
+> Over Fitting. Tis a lie that is not a lie. Tick tock, the door unlocks
 
 [Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
