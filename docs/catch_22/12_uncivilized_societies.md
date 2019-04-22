@@ -1,9 +1,9 @@
 # Catch-22: Uncivilized Societies
 
-> **TL;DR**: BLURB
+> **TL;DR**: We are our choices! They cannot be made for us!
 
-![A Beggar Knight on a Flaming Steed beneath the moon points at YOU!](/docs/catch_22/images/uncivilized_societies_banner.jpg)
-> The Dark Lord Wants You!
+![A fancy pants place burns](/docs/catch_22/images/uncivilized_societies_banner.jpg)
+> The Light Wants You! Join The Light or Else! (Hmmmmmmmmmmmm...... Seems fishy.)
 
 [Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
