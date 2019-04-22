@@ -2,8 +2,8 @@
 
 > Understanding is a process
 
-![Accessibility Text](/docs/catch_22/images/_banner.jpg)
-> BLURB
+![The Pipe Smoking Galactic Emperor Rabbit](/docs/catch_22/images/a_religion_of_science_banner.png)
+> I thought I'd pretend I was one of those loquacious fellows of impeccable hearing. At least that was an expectation of activity
 
 [Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
