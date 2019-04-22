@@ -1,4 +1,4 @@
-# Catch-22: An Illusion of Translation
+# Catch-22: An Illusion with Translation
 
 > There is only experience of Logic!
 
