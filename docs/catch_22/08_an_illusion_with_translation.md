@@ -2,8 +2,8 @@
 
 > **TL;DR**: Enlightenment is a seed
 
-![Overlayed Items](/docs/catch_22/images/an_illusion_with_translation_banner.jpg)
-> Over Fitting. Though tis a lie that is not a lie
+![Who's Awesome? Finger points at you. You're Awesome!](/docs/catch_22/images/an_illusion_with_translation_banner.jpg)
+> Over Fitting. Tis a lie that is not a lie
 
 [Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
