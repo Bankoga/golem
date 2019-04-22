@@ -26,7 +26,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'Mirror of the Mind' 2019-04-20 08:32
 * 'To Catch Two' 2019-04-22 14:24
 * 'An Illusion with Translation' 2019-04-22 09:46
-* 'The Cat and the Fox'
+* 'Uncivilized Societies'
 * 'Taking Control of Ownership'
 * 'A Religion of Science' 2019-04-22 09:39
 * 'H_rs_ Sh_t'
