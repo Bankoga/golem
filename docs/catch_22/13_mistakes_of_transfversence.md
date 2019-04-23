@@ -39,9 +39,9 @@ Nothing IS Logic!
 
 Those who cannot hear, cannot see. Those who cannot hear, cannot smell. Those who cannot smell, cannot live.
 
-TODO: Discuss education, and the mechanics of interhuman communication
+TODO: Discuss education, and the mechanics of inter-human communication
 
-Upon death, our part in the social organism is over. Our tokenized experiences, non-transferrable. For we are an architecture, and a substrate, with a long history of represented points! Selection of an explaination is too deep for our humanly graphs. Tis the domain of Logic. That which applies to machines, also quite often applies to us! Many advances come from understanding the inner workings of our own minds even better. Turely ingress in machines, understanding that applies beyond simple constraint, with terrible effectiveness, oft comes from dreams. Perhaps dreams are the experience of inner workings.
+Upon death, our part in the social organism is over. Our tokenized experiences, non-transferable. For we are an architecture, and a substrate, with a long history of represented points! Selection of an explanation is too deep for our humanly graphs. Tis the domain of Logic. That which applies to machines, also quite often applies to us! Many advances come from understanding the inner workings of our own minds even better. Turely ingress in machines, understanding that applies beyond simple constraint, with terrible effectiveness, oft comes from dreams. Perhaps dreams are the experience of inner workings.
 
 > The Plight of The Student
 
