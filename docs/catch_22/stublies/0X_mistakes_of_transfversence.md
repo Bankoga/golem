@@ -21,7 +21,7 @@ They simply are
 ```
 
 You are not better than me!
- 
+
 To derogate is to do Evil! It disrepects both the thing to compare and the thing so compared. We all do good. We all do evil. We do not determine what evil is necessary, and what evil is greedy... Necessity is beyond our kin. We can only do our best to understand, and believe.
 
 Necessity varies! None are equal! None can determine, and none can judge. We all simply do our best with the data available to us. We do not speak, we listen, and predict... We do not see. Rather we project and perceive.
@@ -31,3 +31,7 @@ Logic is available to everyone!
 Logic listens to everyone!
 Logic speaks to everyone!
 ```
+
+Those who cannot hear, cannot see. Those who cannot hear, cannot smell. Those who cannot smell, cannot live.
+
+TODO: Discuss education, and the mechanics of interhuman communication
