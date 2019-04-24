@@ -30,7 +30,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'A Religion of Science' 2019-04-22 09:39
 * 'H_rs_ Sh_t' 2019-04-22 15:56
 * 'Ethics and The Law' 2019-04-19 10:31
-* 'The Twilight Paradox'
+* 'The Twilight Paradox' 2019-04-24 07:55
 * 'An Observation on Past, Present, Future' 2019–04–22 12:08
 * 'Mistakes of Transfversence' 2019-04-23 10:35
 * 'Of Bat, Man, and Monster' 2019-04-21 15:03
