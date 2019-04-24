@@ -34,6 +34,7 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'An Observation on Past, Present, Future' 2019–04–22 12:08
 * 'Mistakes of Transfversence' 2019-04-23 10:35
 * 'Of Bat, Man, and Monster' 2019-04-21 15:03
+* 'Afterlogic' 2019-04-24 11:03
 
 NOTE: DAYLIGHT SAVINGS TIME IS INTRINSICALLY UNETHICAL!
 
