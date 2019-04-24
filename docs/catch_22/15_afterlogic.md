@@ -9,7 +9,7 @@
 
 First things first! THANK YOU FOR PARTICIPATING! WITHOUT YOU, ESPECIALLY THOSE WHO CANNOT "READ" THIS, NOTHING WOULD BE POSSIBLE!
 
-Yeah. This was over slower, and faster than imagined. It has done both exactly what I wanted, along with everything I didn't. Simply tis. Consistency is something I dabble, in part. I want Complete, Consistent, AND Sufficiently Powerful... My palm has things to say to my phase about this...
+Yeah. This was over slower, and faster than imagined. It has done both exactly what I wanted, along with everything I didn't. Simply tis. Consistency is something I dabble, in, part. I want Complete, Consistent, AND Sufficiently Powerful... My palm has things to say to my phase about this...
 
 ```md
 Trust is beyond me
@@ -24,4 +24,3 @@ Those things Politroversial
 Sometimes consider them not all
 For Fuck Politics
 ```
-
