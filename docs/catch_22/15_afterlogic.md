@@ -15,4 +15,4 @@ I don't know..
 
 Thank you again! I am very grateful for this opportunity to speak to The Abyss.
 The Abyss always listens, but one must listen very careful to hear it's response.
-Lest it simply sneak up on thee
+Lest it simply sneak upon thee
