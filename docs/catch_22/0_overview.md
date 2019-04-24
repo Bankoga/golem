@@ -27,15 +27,10 @@ Appearing here, in no particular order outside of that which they were thought u
 * 'To Catch Two' 2019-04-22 14:24
 * 'An Illusion with Translation' 2019-04-22 09:46
 * 'Uncivilized Societies' 2019-04-22 17:58
-* 'Taking Control of Ownership'
 * 'A Religion of Science' 2019-04-22 09:39
 * 'H_rs_ Sh_t' 2019-04-22 15:56
 * 'Ethics and The Law' 2019-04-19 10:31
-* 'Peaceful Violence'
-* 'A Cycle of Life'
-* 'Me, Myself, and Useful Lies'
 * 'The Twilight Paradox'
-* 'Static vs Dynamic and Quality-Value'
 * 'An Observation on Past, Present, Future' 2019–04–22 12:08
 * 'Mistakes of Transfversence' 2019-04-23 10:35
 * 'Of Bat, Man, and Monster' 2019-04-21 15:03
@@ -43,6 +38,18 @@ Appearing here, in no particular order outside of that which they were thought u
 NOTE: DAYLIGHT SAVINGS TIME IS INTRINSICALLY UNETHICAL!
 
 Expected Release Rate: Undetermined, bounded between 1/day and 2/week. Slower than the rate I code, which is surprisingly slow. I spend more time planning than coding, lol.
+
+## Unexpected Removals
+
+The Twilight Paradox is the capstone of the series. All of the below were intended to be written, and have been removed because they now appear to be superfluous. The titles, alone, in the context, seem sufficient. Why? Because everything I could say, has already been said herein Teh Pedestal. Actually implementing these, seems glib on my part. I don't believe in unnecessary frill. Tis not a thing that exists.
+
+* 'Taking Control of Ownership'
+* 'Peaceful Violence'
+* 'A Cycle of Life'
+* 'Me, Myself, and Useful Lies'
+* 'Static vs Dynamic and Quality-Value'
+
+I don't want to set the world on fire! I just want to set a great big flame in part of the universe. Though, that sounds kind of like I'm trying to set the universe on fire...
 
 ## Afterword
 
