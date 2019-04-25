@@ -75,7 +75,7 @@ An export of my bookmarks from the date this file was created lives in the repo.
 - Fuck you Miyazaki Endeavours... Too much is too much...
 - Endless Waltz
 
-Fun Fact: I once lost a Minnox camera for over 5 years inside a pocket on a underjumpsuit thing for space travler likes.
+Fun Fact: I once lost a Minnox camera for over 5 years inside a pocket on an underjumpsuit thing for space travler likes.
 
 ## Comics
 
