@@ -44,7 +44,7 @@ Expected Release Rate: Undetermined, bounded between 1/day and 2/week. Slower th
 
 The Twilight Paradox is the capstone of the series. All of the below were intended to be written, and have been removed because they now appear to be superfluous. The titles, alone, in the context, seem sufficient. Why? Because everything I could say, has already been said herein Teh Pedestal. Actually implementing these, seems glib on my part. I don't believe in unnecessary frill. Tis not a thing that exists.
 
-* 'Taking Control of Ownership'
+* 'Taking Control of Ownership' 2019–04–25 08:44
 * 'Peaceful Violence'
 * 'A Cycle of Life'
 * 'Me, Myself, and Useful Lies'
