@@ -2,8 +2,8 @@
 
 > **TL;DR**: Dual Faces of Evil! Own the Perpindicularity of Duality!
 
-![Accessibility Text](/docs/catch_22/images/_banner.jpg)
-> BLURB
+![A Black Face on a Black Background with Leering Red Eyes, below Horns above a jeering Tongue frame by Tusks and A Spiny Bonestache](/docs/catch_22/images/taking_control_of_ownership_banner.png)
+> What composes a depiction of Evil? Across breakdowns?
 
 [Series Overview](https://medium.com/@bankoga/catch-22-overview-of-an-anthological-pedestal-66458dfb5c1d)
 
