@@ -45,6 +45,8 @@ An export of my bookmarks from the date this file was created lives in the repo.
 
 ## Games
 
+This is being kept barebones everywhere...
+
 - Random Barbie Detective Games from like 1999
 - Dark Souls 1 - 3 + Sekiro
 - Modrym
@@ -74,6 +76,12 @@ An export of my bookmarks from the date this file was created lives in the repo.
 - Crouching Tiger, Hidden Dragon (which I went to see with subtitles in theaters with my grandparents)
 - Fuck you Miyazaki Endeavours... Too much is too much...
 - Endless Waltz
+- There are a few other corporation entities here (..........)
+- By and large though, live action I've eschewed
+- Avengers
+- Into the Spiderverse
+- The entire MCU has been pretty awesome but most don't end up here. I do not care to differentiate.
+- Endgame (though I can't see it for a few weeks bc fam. Though I'm not concerned about spoilers. Tis pretty obvi, heroic sacrifices are made, Thanos gets whomped(ish it's always an ish. They can't kill death. Unless he's not death. Then who the fuck is this imposter, and how did dey gauntlet?), shit happens, life is better(ish))
 
 Fun Fact: I once lost a Minnox camera for over 5 years inside a pocket on an underjumpsuit thing for space travler likes.
 
@@ -107,7 +115,8 @@ When I was in kindergartgen, I was almost held back for a year because I refused
 - Mistborn Trilogy
 - Heart of Darkness (While I felt it was all pretty obvious when I read it, the nature of it can make it hard to stomach. Context must be always considered. Life comes from shit. After all.)
 - I, Robot (perhaps the 3 laws are not what they smell like)
-- 
+- There's probably stuff I'm missing.
+- Oh. Outside of the Silmarillion
 
 The media that you need in order to develop however you want to develop, varies. Recreating the past to recreate another is a mistake. It depends...
 
