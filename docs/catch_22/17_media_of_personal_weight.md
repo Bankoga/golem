@@ -42,6 +42,7 @@ An export of my bookmarks from the date this file was created lives in the repo.
 - Scooby Doo
 - Courage the Cowardly Dog
 - Sigh another vein of comedy that I want to avoid iterating
+- JoJos Bizarre Adventures
 
 ## Games
 
