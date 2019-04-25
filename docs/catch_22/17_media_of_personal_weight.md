@@ -117,6 +117,8 @@ When I was in kindergartgen, I was almost held back for a year because I refused
 - I, Robot (perhaps the 3 laws are not what they smell like)
 - There's probably stuff I'm missing.
 - Oh. Outside of the Silmarillion
+- Harry Potter Series
+- Harry Potter and the methods of rationality
 
 The media that you need in order to develop however you want to develop, varies. Recreating the past to recreate another is a mistake. It depends...
 
