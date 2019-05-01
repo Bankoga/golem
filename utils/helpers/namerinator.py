@@ -5,8 +5,22 @@ from components.axioms.props import name_gen_data
 def get_sound_type_of_char(character):
   return 'unrecognized'
 
+def produce_consonant():
+  return draw_from(name_gen_data['consonants'])
+
+def produce_vowel():
+  return draw_from(name_gen_data['vowels'])
+
 def produce_arb_syllable():
-  return 'no'
+  sylb = 'No'
+  res_roll = roll(3)
+  if 1 == res_roll:
+    sylb = f'{produce_consonant()}{produce_vowel()}'
+  elif 2 == res_roll:
+    sylb = f'{produce_consonant()}{produce_consonant()}{produce_vowel()}'
+  elif 3 == res_roll:
+    sylb = f'{produce_consonant()}{produce_vowel()}{produce_vowel()}'
+  return sylb
 
 def produce_syllables(num_syllables):
   res = []
