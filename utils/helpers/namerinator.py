@@ -13,13 +13,23 @@ def produce_vowel():
 
 def produce_arb_syllable():
   sylb = 'No'
-  res_roll = roll(3)
+  res_roll = roll(8)
   if 1 == res_roll:
     sylb = f'{produce_consonant()}{produce_vowel()}'
   elif 2 == res_roll:
     sylb = f'{produce_consonant()}{produce_consonant()}{produce_vowel()}'
   elif 3 == res_roll:
     sylb = f'{produce_consonant()}{produce_vowel()}{produce_vowel()}'
+  elif 4 == res_roll:
+    sylb = f'{produce_vowel()}{produce_consonant()}'
+  elif 5 == res_roll:
+    sylb = f'{produce_vowel()}{produce_consonant()}{produce_consonant()}'
+  elif 6 == res_roll:
+    sylb = f'{produce_vowel()}{produce_vowel()}{produce_consonant()}'
+  elif 7 == res_roll:
+    sylb = f'{produce_vowel()}{produce_consonant()}{produce_vowel()}'
+  elif 8 == res_roll:
+    sylb = f'{produce_consonant()}{produce_vowel()}{produce_consonant()}'
   return sylb
 
 def produce_syllables(num_syllables):
@@ -35,7 +45,7 @@ def produce_syllables(num_syllables):
   return res
 
 def roll_for_syllables():
-  # TODO: convert to use distribution gen rule instead of if-elif-else
+  # TODO: convert to use distribution gen rule instead of if-elif-else via some distributor
   res_roll = roll(100)
   if 1 == res_roll:
     num_syllables = 1
