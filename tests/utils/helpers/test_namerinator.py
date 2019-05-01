@@ -7,7 +7,7 @@ from hypothesis import strategies as st
 from components.axioms.props import name_gen_data
 from tests.strategies.prop_strats import arb_label
 from utils.helpers.namerinator import (
-    get_sound_type_of_char, kin_label_gen_unique, produce_arb_syllable,
+    get_sound_type_of_char, kin_label_gen_unique, produce_syllable,
     produce_consonant, produce_syllables, produce_vowel, roll_for_syllables,
     roll_name, roll_new_name)
 from utils.validators.prop_validators import is_valid_label
@@ -33,8 +33,8 @@ class TestNamerinator(unittest.TestCase):
     result = produce_vowel()
     self.assertIn(result, name_gen_data['vowels'])
 
-  def test_produce_arb_syllable(self):
-    res = produce_arb_syllable()
+  def test_produce_syllable(self):
+    res = produce_syllable()
     prev_chars = [None]
     for i,char in enumerate(res):
       # act based on state_of_prev_char and current char

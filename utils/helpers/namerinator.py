@@ -11,7 +11,7 @@ def produce_consonant():
 def produce_vowel():
   return draw_from(name_gen_data['vowels'])
 
-def produce_arb_syllable():
+def produce_syllable():
   sylb = 'No'
   res_roll = roll(8)
   if 1 == res_roll:
