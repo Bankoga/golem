@@ -35,6 +35,7 @@ A way to think about it perhaps, is that herein lie most of the pieces to severa
 
 I've been under surveillance for ~2 years.
 One tends to notice an odd overlap of small fixed winged aircraft, and ones outings.
+Though made more notable by a distinct lack of social life.
 Tis only polite to wave!
 They never wave back though, and it makes me sad.
 Furthermore, tis pretty obvious when military form looking drones are used under bad weather conditions for low level flight over extensive private property directly over a walking path.
@@ -43,3 +44,6 @@ I liked that.
 They know I know, and I know they know.
 Security through obscurity, never was.
 Who listens to crazy people who think they are under surveillance though?
+
+Part of the reason why it's taken me so long to actually get here is because for the first year, I was really hoping the spoopers would steal this from me.
+Tis too awesome to not steal.
