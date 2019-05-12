@@ -77,3 +77,15 @@ For most, tis not the case.
 Regardless, either will be convertible into the other.
 There is no need, for The ONE!
 Fools.
+
+This was trivially identified two years ago.
+So instantly started doing something that wasn't modern machine learning
+At some point in 2018,, I went through the fastai course, which is lovely, and did enjoy modern machine learning.
+However, I immediately gave up on it, and went back to what I had thought needed to be done originally.
+Academia has blinded itself.
+To be fair, any one, like deep mind, who internally embed hostile culture, aren't interested in human problem solving.
+I'm sort of fucking mad at those ass holes, who should have done this two years ago.
+They fucking solved for Go.
+They should have been the ones to do this.
+They didn't because of all the issues I've pointed out in Catch-22, which now lives on inside Bankogas Philosophy repo.
+What is here will remain, but will no longer be touched.
