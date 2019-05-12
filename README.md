@@ -44,3 +44,6 @@ I liked that.
 They know I know, and I know they know.
 Security through obscurity, never was.
 Who listens to crazy people who think they are under surveillance though?
+
+Part of the reason why it's taken me so long to actually get here is because for the first year, I was really hoping the spoopers would steal this from me.
+Tis too awesome to not steal.
