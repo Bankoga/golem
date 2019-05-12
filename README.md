@@ -47,3 +47,33 @@ Who listens to crazy people who think they are under surveillance though?
 
 Part of the reason why it's taken me so long to actually get here is because for the first year, I was really hoping the spoopers would steal this from me.
 Tis too awesome to not steal.
+
+OHHHHHHHHHHHHHHHH! Right.
+
+THIS CODE BASE WAS ENTIRELY NOT THE POINT!
+THIS IS A PRE-PROJECT SO THAT I COULD DO THE REAL GENERAL INTELLIGENCE PROJECT!
+
+I try to avoid stupidity.
+A stupid thing, is one that is fundamentally incapable of solving some problem given an unbounded amount of time.
+Modern machine learning neural network description techniques, are stupid.
+If not, they simply make it too difficult for ME, to reason about neural networks.
+
+I'm trying to describe large distributions of non-heterogenous things in a way I can understand at a glance.
+All said things locally evolve too!
+Yes.
+Tis unfortunate that I can't glance at the entire thing at once.
+Tis large.
+Oh my goodness.
+That's what representations across scales really helps with.
+
+Describing things with math, is about leaving out most of the logic because it doesn't matter for a broad, and detailed pictures.
+Perhaps fractally detailed.
+Fractally detailing something that isn't fractal however, makes no sense to me.
+I despise modern machine learning descriptions.
+Math is part of the solution...
+The "elegance", of mathematics, gets in the way of understanding.
+For some, a mathematical representation is most useful.
+For most, tis not the case.
+Regardless, either will be convertible into the other.
+There is no need, for The ONE!
+Fools.
