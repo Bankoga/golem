@@ -91,3 +91,7 @@ They fucking solved for Go.
 They should have been the ones to do this.
 They didn't because of all the issues I've pointed out in Catch-22, which now lives on inside Bankogas Philosophy repo.
 What is here will remain, but will no longer be touched.
+
+Oh and back prop seems to be a hindrance for machine learning research at this point more so than a boon.
+Tis naught but training wheels we refuse to get rid of because learning without them is too hard.
+Not because we aren't sufficiently capable.
