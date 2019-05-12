@@ -12,6 +12,8 @@ The purpose of this framework is twofold:
   - Like Top: load golem config, load saved golem, build golem, repl golem
   - Botttom (cells)
 
+Fun Fact: Architecting can be largely divorced from engineering through property based automated evaluation.
+
 The code does not matter to me.
 Sort of.
 Details are not my forte.
