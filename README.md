@@ -12,6 +12,8 @@ The purpose of this framework is twofold:
   - Like Top: load golem config, load saved golem, build golem, repl golem
   - Botttom (cells)
 
+Fun Fact: Architecting can be largely divorced from engineering through property based automated evaluation.
+
 The code does not matter to me.
 Sort of.
 Details are not my forte.
@@ -47,3 +49,53 @@ Who listens to crazy people who think they are under surveillance though?
 
 Part of the reason why it's taken me so long to actually get here is because for the first year, I was really hoping the spoopers would steal this from me.
 Tis too awesome to not steal.
+
+OHHHHHHHHHHHHHHHH! Right.
+
+THIS CODE BASE WAS ENTIRELY NOT THE POINT!
+THIS IS A PRE-PROJECT SO THAT I COULD DO THE REAL GENERAL INTELLIGENCE PROJECT!
+
+I try to avoid stupidity.
+A stupid thing, is one that is fundamentally incapable of solving some problem given an unbounded amount of time.
+Modern machine learning neural network description techniques, are stupid.
+If not, they simply make it too difficult for ME, to reason about neural networks.
+
+I'm trying to describe large distributions of non-heterogenous things in a way I can understand at a glance.
+All said things locally evolve too!
+Yes.
+Tis unfortunate that I can't glance at the entire thing at once.
+Tis large.
+Oh my goodness.
+That's what representations across scales really helps with.
+
+Describing things with math, is about leaving out most of the logic because it doesn't matter for a broad, and detailed pictures.
+Perhaps fractally detailed.
+Fractally detailing something that isn't fractal however, makes no sense to me.
+I despise modern machine learning descriptions.
+Math is part of the solution...
+The "elegance", of mathematics, gets in the way of understanding.
+For some, a mathematical representation is most useful.
+For most, tis not the case.
+Regardless, either will be convertible into the other.
+There is no need, for The ONE!
+Fools.
+
+This was trivially identified two years ago.
+So instantly started doing something that wasn't modern machine learning
+At some point in 2018,, I went through the fastai course, which is lovely, and did enjoy modern machine learning.
+However, I immediately gave up on it, and went back to what I had thought needed to be done originally.
+Academia has blinded itself.
+To be fair, any one, like deep mind, who internally embed hostile culture, aren't interested in human problem solving.
+I'm sort of fucking mad at those ass holes, who should have done this two years ago.
+They fucking solved for Go.
+They should have been the ones to do this.
+They didn't because of all the issues I've pointed out in Catch-22, which now lives on inside Bankogas Philosophy repo.
+What is here will remain, but will no longer be touched.
+
+Oh and back prop seems to be a hindrance for machine learning research at this point more so than a boon.
+Tis naught but training wheels we refuse to get rid of because learning without them is too hard.
+Not because we aren't sufficiently capable.
+
+Oh fuck it.
+I need to finish this damn thing.
+I've had a fun philosophical vacation.
