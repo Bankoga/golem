@@ -5,8 +5,32 @@ from components.axioms.props import name_gen_data
 def get_sound_type_of_char(character):
   return 'unrecognized'
 
-def produce_arb_syllable():
-  return 'no'
+def produce_consonant():
+  return draw_from(name_gen_data['consonants'])
+
+def produce_vowel():
+  return draw_from(name_gen_data['vowels'])
+
+def produce_syllable():
+  sylb = 'No'
+  res_roll = roll(8)
+  if 1 == res_roll:
+    sylb = f'{produce_consonant()}{produce_vowel()}'
+  elif 2 == res_roll:
+    sylb = f'{produce_consonant()}{produce_consonant()}{produce_vowel()}'
+  elif 3 == res_roll:
+    sylb = f'{produce_consonant()}{produce_vowel()}{produce_vowel()}'
+  elif 4 == res_roll:
+    sylb = f'{produce_vowel()}{produce_consonant()}'
+  elif 5 == res_roll:
+    sylb = f'{produce_vowel()}{produce_consonant()}{produce_consonant()}'
+  elif 6 == res_roll:
+    sylb = f'{produce_vowel()}{produce_vowel()}{produce_consonant()}'
+  elif 7 == res_roll:
+    sylb = f'{produce_vowel()}{produce_consonant()}{produce_vowel()}'
+  elif 8 == res_roll:
+    sylb = f'{produce_consonant()}{produce_vowel()}{produce_consonant()}'
+  return sylb
 
 def produce_syllables(num_syllables):
   res = []
@@ -21,7 +45,7 @@ def produce_syllables(num_syllables):
   return res
 
 def roll_for_syllables():
-  # TODO: convert to use distribution gen rule instead of if-elif-else
+  # TODO: convert to use distribution gen rule instead of if-elif-else via some distributor
   res_roll = roll(100)
   if 1 == res_roll:
     num_syllables = 1
