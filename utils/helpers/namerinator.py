@@ -12,25 +12,25 @@ def produce_vowel():
   return draw_from(name_gen_data['vowels'])
 
 def produce_syllable():
-  sylb = 'No'
+  syllable = 'No'
   res_roll = roll(8)
   if 1 == res_roll:
-    sylb = f'{produce_consonant()}{produce_vowel()}'
+    syllable = f'{produce_consonant()}{produce_vowel()}'
   elif 2 == res_roll:
-    sylb = f'{produce_consonant()}{produce_consonant()}{produce_vowel()}'
+    syllable = f'{produce_consonant()}{produce_consonant()}{produce_vowel()}'
   elif 3 == res_roll:
-    sylb = f'{produce_consonant()}{produce_vowel()}{produce_vowel()}'
+    syllable = f'{produce_consonant()}{produce_vowel()}{produce_vowel()}'
   elif 4 == res_roll:
-    sylb = f'{produce_vowel()}{produce_consonant()}'
+    syllable = f'{produce_vowel()}{produce_consonant()}'
   elif 5 == res_roll:
-    sylb = f'{produce_vowel()}{produce_consonant()}{produce_consonant()}'
+    syllable = f'{produce_vowel()}{produce_consonant()}{produce_consonant()}'
   elif 6 == res_roll:
-    sylb = f'{produce_vowel()}{produce_vowel()}{produce_consonant()}'
+    syllable = f'{produce_vowel()}{produce_vowel()}{produce_consonant()}'
   elif 7 == res_roll:
-    sylb = f'{produce_vowel()}{produce_consonant()}{produce_vowel()}'
+    syllable = f'{produce_vowel()}{produce_consonant()}{produce_vowel()}'
   elif 8 == res_roll:
-    sylb = f'{produce_consonant()}{produce_vowel()}{produce_consonant()}'
-  return sylb
+    syllable = f'{produce_consonant()}{produce_vowel()}{produce_consonant()}'
+  return syllable
 
 def produce_syllables(num_syllables):
   res = []
@@ -38,10 +38,10 @@ def produce_syllables(num_syllables):
   for i in range(num_syllables): # pylint: disable=unused-variable
     ind = draw(max_len)
     if ind == max_len:
-      sylb = draw_from(name_gen_data['vowels'])
+      syllable = draw_from(name_gen_data['vowels'])
     else:
-      sylb = draw_from(name_gen_data['syllables'])
-    res.append(sylb)
+      syllable = draw_from(name_gen_data['syllables'])
+    res.append(syllable)
   return res
 
 def roll_for_syllables():
@@ -68,17 +68,17 @@ def roll_for_syllables():
   return produce_syllables(num_syllables)
 
 def roll_name():
-  sylbs = roll_for_syllables()
+  syllables = roll_for_syllables()
   res = ''
-  for sylb in sylbs:
+  for syllable in syllables:
       if res == '':
-        res = sylb
+        res = syllable
       else:
         join_roll = roll(2)
         if join_roll == 1:
-            res = f'{res}{sylb.lower()}'
+            res = f'{res}{syllable.lower()}'
         elif join_roll == 2:
-          res = f'{res}_{sylb}'
+          res = f'{res}_{syllable}'
   return res
 
 def kin_label_gen_unique(parent, num_children, prefix=None,suffix=None):
